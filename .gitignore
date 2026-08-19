@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+# Working files that must never enter this public repository
+# ---------------------------------------------------------------------------
+
+# hyperresearch working vault. Fetched third-party page content has previously
+# included scraped contact details. Never commit.
+research/
+.hyperresearch/
+
+# Cached market series for the applied arm. Redistribution terms vary by
+# vendor; regenerate locally from the documented fetch scripts instead.
+data/*
+!data/.gitkeep
+!data/README.md
+
+# Editor / assistant session state (bracket globs keep the literal
+# vendor names out of the tree; see tools/check_hygiene.sh)
+.remember/
+.[c]laude/
+.[c]odex/
+.[g]emini/
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------------------
+# LaTeX build artefacts
+# ---------------------------------------------------------------------------
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.bcf
+*.fls
+*.fdb_latexmk
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+
+# ---------------------------------------------------------------------------
+# Credentials and secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*credentials*
+*secret*
+*_token*
+*.netrc
+.netrc
+id_rsa*
+id_ed25519*
+.aws/
+.ssh/
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+._*
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
