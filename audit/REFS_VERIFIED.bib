@@ -1045,3 +1045,98 @@
              standard, decades-old construction in this literature, and that it fixes
              realised coverage and mean width exactly.}
 }
+
+% ===========================================================================
+% [ADDED S1 POST-REPORT, 2026-08-19] From the hiding-place-1 hunt, which
+% returned after docs/S1_REPORT.md was written. All four from Crossref
+% records saved under research/S1/records/.
+% ===========================================================================
+
+@article{ding2016windstorage,
+  author  = {Ding, Huajie and Pinson, Pierre and Hu, Zechun and Song, Yonghua},
+  title   = {Integrated Bidding and Operating Strategies for Wind-Storage Systems},
+  journal = {IEEE Transactions on Sustainable Energy},
+  volume  = {7},
+  number  = {1},
+  pages   = {163--172},
+  year    = {2016},
+  doi     = {10.1109/TSTE.2015.2472576},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_1109_TSTE_2015_2472576.json; full text obtained from the
+             author copy at pierrepinson.com. **The closest work found anywhere to R1's
+             remaining Q3 leg.** Generates scenarios by NORTA, applying the inverse CDF of
+             the day-ahead probability forecast, so per-lead-time marginals are IDENTICAL BY
+             CONSTRUCTION for every value of the autoregressive factor rho, which is swept
+             from -1 to 1 in increments of 0.05 (Q1, Q2). Prices them through a storage
+             decision with state of charge, round-trip efficiency, SoC bounds and a two-price
+             imbalance settlement, where holding is free (Q3, partially). Reports a real
+             degradation for the naive filter strategy -- unit profit falls with correlation
+             because the storage "will continuously charge or discharge" and hit its bounds
+             -- and a NULL for their own strategy, whose profit "remains steady regardless of
+             rho" (Q4). **BUT its movement charge is round-trip efficiency and capacity
+             limits only: no start-up cost, no ramp cost, no cycling-degradation cost, and
+             the paper defers degradation to future work.** Conference precursor:
+             doi 10.1109/PTC.2015.7232244. Pierre Pinson is also a co-author of both
+             vanbelle2026stabilizing and pinson2012scenarios.}
+}
+
+@article{williams1985lotsizing,
+  author  = {Williams, William W. and Peters, Michael H. and Raiszadeh, M. E.},
+  title   = {Time-dependent demand in requirements planning: An exploratory assessment of
+             the effects of serially correlated demand sequences on lot-sizing performance},
+  journal = {Journal of Operations Management},
+  volume  = {6},
+  number  = {1},
+  pages   = {69--85},
+  year    = {1985},
+  doi     = {10.1016/0272-6963(85)90036-1},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_1016_0272-6963_85_90036-1.json; abstract verified against
+             the publisher deposit. **BODY NOT OBTAINED -- the assessment below rests on the
+             abstract and must be redone from the paper.** Rearranges demand sequences so
+             that the resulting sets differ ONLY in the strength of serial correlation, and
+             evaluates lot-sizing rules that carry a genuine setup cost per order (EOQ,
+             part-period balancing, minimum-cost-per-period, Wagner-Whitin). On the abstract
+             it scores the mechanism on all of Q1 to Q4, in 1985 -- but its inputs are
+             deterministic rearranged requirement sequences, not probabilistic forecast
+             scenarios, and there is no interval and no coverage object.}
+}
+
+@article{rachunok2020scenarios,
+  author  = {Rachunok, Benjamin and Staid, Andrea and Watson, Jean-Paul and Woodruff, David L.},
+  title   = {Assessment of wind power scenario creation methods for stochastic power
+             systems operations},
+  journal = {Applied Energy},
+  volume  = {268},
+  pages   = {114986},
+  year    = {2020},
+  doi     = {10.1016/j.apenergy.2020.114986},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_1016_j_apenergy_2020_114986.json. **NOTE ON THE VOLUME:
+             this work was reported as volume 274 in one agent's output and as volume 270 in
+             another's. Crossref gives 268. THE FETCHED RECORD IS USED.** It was the named
+             unclosed candidate for occupying R1 outright. **Q1 = NO**, established from the
+             FERC presentation deck: its arms are quantile-regression versus epi-spline
+             cut-probability variants, which differ in dispersion and therefore do not share
+             marginals. Q2 yes, Q3 yes (stochastic unit commitment re-enactment cost),
+             Q4 yes. NARROW, not OCCUPIED. Full text not obtained; osti.gov was unreachable
+             throughout.}
+}
+
+@inproceedings{chen2013temporalcorrelation,
+  author    = {Chen, Fang and Yang, Ming and Li, Jianxiang and Liu, Haibo},
+  title     = {The value of wind generation temporal correlation information for {SBS-UC}},
+  booktitle = {IEEE 2013 Tencon - Spring},
+  pages     = {535--539},
+  year      = {2013},
+  doi       = {10.1109/TENCONSPRING.2013.6584502},
+  note      = {Record from Crossref, saved at
+               research/S1/records/10_1109_TENCONSPRING_2013_6584502.json.
+               **UNRESOLVED AND UNREAD -- the single unclosed occupancy risk on R1's Q3 leg.**
+               Its title is an exact framing match: the VALUE of temporal correlation
+               information for scenario-based stochastic unit commitment, which is a decision
+               carrying start-up and ramping costs. No abstract exists in Crossref, Semantic
+               Scholar or Unpaywall; no open copy; zero citations. Whether its compared arms
+               share marginals is unknown, and that is the whole question. Reachable, if at
+               all, by the headed-browser route that defeated the ACM Digital Library.}
+}

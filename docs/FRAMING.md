@@ -400,7 +400,35 @@ session must attack.**
    stated by someone else, with an attempted theorem attached.** R2 must now be positioned
    against Dupuy Theorem 2 specifically — as discharging the assumption they could not, or
    as not being written at all.
-4. **Every "nothing in the literature" statement in this project is abstract-level only.**
+4. **R1's Q3 leg — the last thing it owned — is now partially occupied, and the qualifier
+   is what R1 has left.** **Ding, Pinson, Hu & Song, *IEEE Trans. Sustainable Energy*
+   7(1):163–172 (2016)** generate scenarios by NORTA, so per-lead-time marginals are
+   **identical by construction** for every value of the autoregressive factor ρ, sweep ρ from
+   −1 to 1 in steps of 0.05, and price the result through a storage decision with a state of
+   charge in which **holding is free**. Q1 ∧ Q2 ∧ Q3 ⇒ OCCUPIED by the letter of the rubric.
+   **Two qualifiers, both from the paper's own text, and R1 now lives entirely inside them:**
+   their movement charge is **round-trip efficiency and capacity bounds — physics, not a
+   price on changing an incumbent decision**; there is no start-up cost, no ramp cost and no
+   cycling-degradation cost, and they defer degradation to future work. And their headline is
+   a **null**: their own strategy's profit "remains steady regardless of ρ", with the real
+   degradation appearing only for a naive filter strategy. **Pierre Pinson is a co-author —
+   the third time in this file.**
+   **What survives, and it is now the whole of R1's claim to Q3:** across a wide hunt with
+   heavily evidenced zero-result queries, **no work holds marginals fixed, measures a
+   temporal path functional, AND prices it through a start-up, ramping or cycling cost.**
+   Both Pinson & Girard and Bessa (PSCC 2016) explicitly defer the decision step, and nobody
+   took it up with a matched-marginal design. **State R1's decision leg in those terms — a
+   priced movement cost, not merely a decision with a state — or it is not distinguished.**
+   The one unresolved risk is **Chen, Yang, Li & Liu, IEEE Tencon-Spring 2013,
+   doi 10.1109/TENCONSPRING.2013.6584502**, whose title is an exact framing match and for
+   which no abstract exists anywhere. See `audit/PRIOR_ART.md` §7.9.
+5. **A 1985 antecedent scores the mechanism on Q1–Q4** — Williams, Peters & Raiszadeh,
+   *J. Oper. Mgmt* 6(1):69–85, which rearranges demand sequences to differ *only* in serial
+   correlation and evaluates lot-sizing rules carrying a real setup cost. Its body was not
+   obtained, and its inputs are deterministic sequences rather than probabilistic forecasts,
+   with no interval and no coverage object. **But no sentence in this paper may imply the
+   mechanism is recent.**
+6. **Every "nothing in the literature" statement in this project is abstract-level only.**
    The OpenAlex full-text budget was exhausted before the adversarial wave began and not one
    of the named full-text queries ran. Full-text search is the only instrument that sees a
    smoother in a methods section.
