@@ -24,8 +24,8 @@ search, and direct retrieval of full text from arXiv HTML and author copies.
 
 | Tool | Failure | Consequence |
 |---|---|---|
-| Semantic Scholar API | HTTP 429 throughout the session, on both the direct API and the connected server | **No forward-citation screen of Gibbs–Candès ACI was possible.** This is the single biggest gap in this sweep and it is exactly the screen the plan's prior sweep claims to have run over 100 titles. |
-| OpenAlex | HTTP 429 on most calls; the one ACI record it returned carries 27 citations, which is obviously incomplete | Not usable as a citation-graph substitute. |
+| Semantic Scholar API | HTTP 429 throughout the G0 session, on both the direct API and the connected server | **The forward-citation screen of Gibbs–Candès ACI was not possible during G0.** It was subsequently run in S1 (2026-08-19) with **no API key**, using incremental backoff: 659 unique citing papers across ACI, DtACI, conformal PID and SAOCP. The gap this row records is closed; the row is retained because it explains why §3's verdicts were written without it. |
+| OpenAlex | HTTP 429 on most calls; the one ACI record it returned carries 27 citations, which is obviously incomplete | Not usable as a citation-graph substitute. **Confirmed in S1 (2026-08-19): Semantic Scholar returns 557 citing papers for the same record, so the prescribed OpenAlex fallback misses ~95 % of the citing set and would have produced a false negative.** |
 | Consensus | Monthly search quota exhausted before this session | No third academic-search opinion. |
 | SSRN direct | HTTP 403 on every endpoint | SSRN was reached only indirectly through web search. The plan flags SSRN as unswept; **it remains only partially swept.** |
 
@@ -74,7 +74,9 @@ uncited:**
   is available (parameter-free methods optimise coverage-tracking, not movement cost) but
   it has to be made.
 - **Wang & Hasuike, arXiv:2605.01176.** In the plan's own reference list as a bare
-  identifier in a trailing clause. See §4 — it is the closest published neighbour to C2.
+  identifier in a trailing clause. See §4.3 — it is the closest published neighbour on the
+  *pathology* (decision-focused learning induces excessive turnover; damping helps), and it
+  has no conformal or interval content whatsoever.
 - **Kato, *Conformal Predictive Portfolio Selection* (arXiv:2410.16333, q-fin.PM).**
   The only other conformal-prediction portfolio paper besides Ryan's. Uses prediction
   intervals to select portfolios; no adaptation-rate analysis, no transaction costs.
@@ -147,10 +149,11 @@ switching cost` — each in several arXiv formulations (counts in §2) and as we
   Alonso), and adaptive conformal prediction under structural breaks (Calleo). None
   addresses adaptation rate versus trading cost.
 
-**The forward-citation screen of ACI could not be run** (§0). This is the one query most
-likely to surface a paper that does the F7 experiment inside a larger applied study
-without advertising it in the abstract. **It must be run before gate G1 is signed**, from
-a machine with a Semantic Scholar API key. Recorded in `docs/OUTSTANDING.md`.
+**The forward-citation screen of ACI could not be run during G0** (§0). This is the one
+query most likely to surface a paper that does the F7 experiment inside a larger applied
+study without advertising it in the abstract. **It was run in S1 (2026-08-19) with no API
+key, using incremental backoff — 659 unique citing papers across ACI, DtACI, conformal PID
+and SAOCP.** Its verdict must be folded into §5 before gate G1 is signed.
 
 **A caution about the word "turnover".** The plain arXiv query
 `conformal AND turnover` returns fifteen results of which fourteen are enzyme kinetics —
@@ -252,7 +255,8 @@ and dismisses. **F7 cannot claim that observation.** The verdict in §5 is uncha
 this strengthens rather than weakens the reasoning behind it — but the distinguishing
 sentence now has to work harder: F7's claim is not that estimate movement causes
 turnover, which is thirty-three years old, but that **the coverage criterion used to tune
-the estimator cannot see that turnover**.
+the estimator does not record that turnover: arms matched on realised coverage and mean
+width differ in it by an order of magnitude**.
 
 Both Chopra references have been verified against Crossref and added to
 `audit/REFS_VERIFIED.bib`.
@@ -282,7 +286,7 @@ the switching-cost learning literature the quadratic form is the default, which 
 more reason the L1 dead-band needs Constantinides and Davis–Norman rather than anything
 from this line.
 
-### 4.3 The closest published neighbour to C2, and it is in the plan's own reference list
+### 4.3 The closest published neighbour on the *pathology*, and it is in the plan's own reference list
 
 **Wang & Hasuike, arXiv:2605.01176** (q-fin.PM, 2026-05-02), *"Decision-Induced Ranking
 Explains Prediction Inflation and Excessive Turnover in SPO-Based Portfolio
@@ -295,8 +299,17 @@ That is: **a decision-focused learning method induces excessive turnover, and a 
 scheme fixes it.** Structurally, this is C1 and C2 together — in smart-predict-then-
 optimize rather than conformal prediction, with prediction inflation rather than
 adaptation rate as the cause, and with a heuristic rather than a coverage-preserving
-update. It is the single most important comparison in the paper and the plan gives it a
-parenthesis.
+update. **Read in full, S1 2026-08-19: the paper contains zero occurrences of
+"conformal", "coverage", "quantile" or "prediction interval". It has no interval object of
+any kind, so it is not a neighbour on C2's method at all — only on the pathology and the
+remedy.** It still deserves a paragraph rather than the parenthesis the plan gives it.
+
+**What it does pre-empt is the argument shape.** Its Table 1 caption already publishes
+"Increasing risk aversion does not meaningfully reduce turnover" — the same move F7 makes
+with the adaptation rate, one knob over. Two openings survive that: its risk-aversion
+parameter δ is **fixed at 0.1 and never swept**, so the caption is an assertion rather
+than a measured curve; and its partial adjustment is a **heuristic** stabilisation
+mechanism rather than a rule derived from a movement cost.
 
 **It is also a partial scoop of the framing**, not of the result: "decision-focused
 methods churn, and damping helps" is now published. F7's distinct contribution has to be
@@ -334,20 +347,24 @@ obtained. Recorded in `docs/OUTSTANDING.md`.
 
 ### The blind spot this exposes, which matters more than the paper
 
-Module E's sweep was **arXiv-centric**. Jia & Han has **no arXiv identifier** — it is a
-Springer LNCS conference chapter. No arXiv API query, however well constructed, could ever
-have returned it. It surfaced here only because Ryan's Conformal Kelly cites it.
+Module E's sweep queried **only the arXiv API**. Jia & Han has **no arXiv identifier** — it
+is a Springer LNCS conference chapter — so no arXiv query, however well constructed, could
+have returned it. **But DBLP indexes the chapter and returns it on the first query, and
+DBLP was already in this sweep's working-tool list (§0).** The failure was therefore
+instrument choice, not venue coverage: a second index that was available and untried. It
+surfaced here only because Ryan's Conformal Kelly cites it.
 
 Two consequences for how the prior-art verdict should be read:
 
-1. **The sweep's coverage of non-arXiv venues is weak and must be treated as such.**
-   Springer LNCS, INFORMS journals, quantitative-finance journals and SSRN are all
-   substantially invisible to the method used. The CLEAR/NARROW/OCCUPIED verdicts below
-   are conditioned on that.
-2. **The forward-citation screen of Gibbs–Candès ACI, which could not be run because the
-   Semantic Scholar API was rate-limited throughout this session, is now the single
-   highest-value outstanding prior-art action.** It is the one instrument that indexes
-   across venue types and would have caught this. It is recorded as a G1 blocker.
+1. **The sweep's coverage of non-arXiv venues is weak because it did not use the indexes
+   that cover them, not because those venues are unreachable.** DBLP covers Springer LNCS
+   and was available; INFORMS journals, quantitative-finance journals and SSRN remain
+   substantially unswept. The CLEAR/NARROW/OCCUPIED verdicts below are conditioned on that.
+2. **The forward-citation screen of Gibbs–Candès ACI, which could not be run during G0
+   because the Semantic Scholar API was rate-limited, was run in S1 (2026-08-19) with no
+   API key via incremental backoff — 659 unique citing papers across ACI, DtACI, conformal
+   PID and SAOCP.** It is the one instrument that indexes across venue types. It is no
+   longer a G1 blocker; folding its verdict into §5 is.
 
 A prior-art verdict produced by an arXiv-only method, which has just been shown to miss
 the closest-titled work in the field, should not be signed off as final. That is a
@@ -430,6 +447,10 @@ across application domains**, not only on conformal-plus-finance.
 
 ### C1 — the coverage/turnover dissociation
 
+> **[Superseded 2026-08-19 by §7.]** This verdict was reached against the old claim, which
+> varied the ACI adaptation rate. See §7 for the verdict against C1′/C2′ and the
+> matched-width design.
+
 > **NARROW.**
 
 **The single sentence that distinguishes F7 from the nearest neighbour:**
@@ -437,12 +458,15 @@ across application domains**, not only on conformal-plus-finance.
 > Zaffran et al. (ICML 2022) prove that ACI's coverage is asymptotically valid for every
 > step size while its mean interval **length** degrades linearly in that step size; F7's
 > claim is about the **variation** of the interval path rather than its level — a
-> functional that no coverage-based and no efficiency-based criterion measures, and the
-> one that a position-holding decision actually pays for.
+> functional that neither realised coverage nor mean interval width records, and the
+> one that a position-holding decision actually pays for. Concretely: across arms matched
+> on realised coverage to within 0.002 and on mean interval width to within a stated
+> tolerance, realised decision cost varies by N points of annual net log growth.
 
 **Why not CLEAR.** The abstract structure of C1 — "coverage is insensitive to γ; a
-downstream quantity is very sensitive to γ; therefore coverage cannot tune γ" — is
-**already published, with a theorem**, for the downstream quantity *interval length*.
+downstream quantity is very sensitive to γ; so coverage does not discriminate among values
+of γ" — is **already published, with a theorem**, for the downstream quantity *interval
+length*.
 Zaffran et al. §3, Theorem 3.1 gives
 
     E_{π_γ}[L] = L₀ + Q''(1−α)·(γ/2)·α(1−α) + O(γ^{3/2}),
@@ -459,16 +483,18 @@ needs the answer above on page one, not in related work.
 
 1. **Level versus variation.** `E[L]` is a first moment of the interval *level*; turnover
    is a first moment of the interval *increment*. Two methods can have identical mean
-   width and order-of-magnitude different path variation. Nothing in the conformal
-   literature — Zaffran, Vaze, Srinivas included — measures the increment functional. The
+   width and order-of-magnitude different path variation. Neither Zaffran nor Vaze nor
+   Srinivas reports the increment functional; the sweep in §2–§4 found no work that does. The
    entire coverage-efficiency frontier line of work is about level.
 2. **Monetisation through a decision with memory.** Zaffran's cost is a statistical
    inefficiency. F7's cost is realised money, mediated by a position that must be moved
    and charged for. That requires a decision with an incumbent state, which the conformal
    literature does not have.
-3. **The published anomaly.** Ryan's 0.7–5.3 point result is an unexplained empirical
-   finding in the wild, and no explanation exists for it. Explaining someone else's
-   anomaly is a contribution independent of the theory around it.
+3. **The published anomaly.** Ryan's 0.7–5.3 point result is a published empirical
+   finding in the wild for which the reporting author offers a hedged, unmeasured
+   explanation — estimation variance charged through a nonlinear sizing map — that is
+   measured for one device only and is not a turnover account. Correcting someone else's
+   published mechanism is a contribution independent of the theory around it.
 
 **Residual risk, stated plainly.** If the C1 simulation is rebuilt and it turns out the
 turnover effect tracks the mean-width effect closely — that is, if `Σ|Δq|` is
@@ -479,6 +505,10 @@ rebuilt simulator emits.** It is recorded as a G2 acceptance criterion.
 
 ### C2 — the turnover-aware conformal update
 
+> **[Superseded 2026-08-19 by §7.]** This verdict was reached against the old claim, which
+> varied the ACI adaptation rate. See §7 for the verdict against C1′/C2′ and the
+> matched-width design.
+
 > **NARROW**, and conditionally so: NARROW if the coverage guarantee is delivered,
 > effectively OCCUPIED if it is not.
 
@@ -487,7 +517,7 @@ rebuilt simulator emits.** It is recorded as a G2 acceptance criterion.
 > Switching-cost online learning has lazy algorithms with regret guarantees but no notion
 > of coverage, and the conformal literature has coverage guarantees but no notion of
 > movement cost; F7's contribution is a movement-penalised conformal update that provably
-> retains the coverage identity, which no existing work supplies — and the gap is not a
+> retains the coverage identity, which the sweep in §2–§4 found no existing work supplying — and the gap is not a
 > free composition, because regret bounds are known not to imply coverage adversarially.
 >
 > *(Revised after §4.5.2. The earlier phrasing "the only object in the intersection" is
@@ -501,13 +531,16 @@ the shrinking dartboard (2010). Soft-thresholding as the proximal operator of an
 penalty is textbook convex analysis. "Decision-focused method churns, damping helps" is
 published for SPO (Wang & Hasuike, 2026). None of these is F7's.
 
-**Why not OCCUPIED.** The intersection is genuinely empty, in both directions, and — this
-is the part that makes it a contribution rather than a composition — **it is empty for a
-reason**. Ramalingam, Kiyani & Roth prove that you cannot obtain a coverage guarantee from
+**Why not OCCUPIED.** What is unoccupied — per the precise statement in §4.5.2, which
+retires the now-superseded "the intersection is empty" — is a coverage *guarantee* under
+a movement-penalised conformal update; and — this
+is the part that makes it a contribution rather than a composition — **it is unoccupied for
+a reason**. Ramalingam, Kiyani & Roth prove that you cannot obtain a coverage guarantee from
 a regret guarantee in adversarial settings. So a lazy no-regret algorithm applied to the
 conformal update does not inherit ACI's coverage property; the property has to be
 re-established on the thresholded recursion directly. That is a real theorem-shaped
-problem, and nobody has solved it because nobody has posed it.
+problem, and this sweep — with the instrument limits recorded in §0, §4.4 and §4.5.3 —
+found no work that poses it.
 
 **The conditional, and it is the most important sentence in this file.** C2's novelty and
 C2's principal risk are the *same object*. If the coverage result is proved, C2 is a clean
@@ -566,9 +599,210 @@ grid with no minimax claim, **or** drop the word.
 There is also a second problem with that sentence, independent of framing. The plan's own
 table shows coverage is **flat** over γ ≥ 0.005, which means there is no
 "coverage-optimal point" to sit at the wrong end of anything. The stronger and more
-accurate statement is that **coverage does not locate a point on the frontier at all** —
-it is constant along it. That is a better sentence and it is what the data show.
+accurate statement is that **coverage does not locate a point on the measured
+turnover–tracking-error curve at all** — it is constant along it. That is a better
+sentence, it is what the data show, and it avoids the word "frontier" for F7's own object,
+which is what Risk 2 asks for.
 
 **Elsewhere the plan is disciplined about this** — it explicitly says "F7's claim is
 decision-theoretic, not information-theoretic — keep it that way" — and that instruction
 is correct and should be enforced against the two sentences above.
+
+---
+
+# 7. Verdicts against C1′ and C2′ — session S1, 2026-08-19
+
+**This section supersedes §5.** §5's verdicts were reached against the **old** claims,
+which varied ACI's adaptation rate γ and measured turnover. That design is abandoned
+(`docs/FRAMING.md` §5). The verdicts below are assessed against the **matched-width
+design** and its claims C1′ and C2′, and they are not inherited from §5 in either
+direction. §5 is retained as the record of what was believed and on what evidence.
+
+**Method.** Seven retrieval agents, then one synthesis agent applying a five-question
+occupancy rubric mechanically rather than by impression. Every query logged verbatim with
+its result count in `research/S1/A1`–`A7*.json`; the synthesis, the ten-work table with all
+five rubric answers, the stress test and the adjudications are in
+`research/S1/B1-verdicts.md`.
+
+**The rubric.** Q1 — does it hold mean interval width, or an equivalent level functional,
+fixed across compared arms? Q2 — does it measure a temporal path-variation functional?
+Q3 — does the decision it drives have an incumbent state charged for movement? Q4 — does it
+claim something about what the tuning criterion can or cannot see? Q5 — does it prove or
+bound a coverage property for a post-processed or movement-penalised interval? **OCCUPIED**
+if Q1 ∧ Q2 ∧ Q3, or Q5 for a movement penalty; **NARROW** if three or four of Q1–Q4;
+**ADJACENT** if one or two; **CLEAR** if none. **Screening was on mechanism, never on
+application domain** — the §4.5.3 failure mode was the thing this sweep was designed to
+avoid.
+
+## 7.1 The verdicts
+
+> ### C1′ — OCCUPIED as worded.
+>
+> **Van Belle, Wen, Verbeke & Pinson, "Stabilizing distribution-free probabilistic
+> forecasts", arXiv:2605.28531, 27 May 2026** scores **Q1 ∧ Q2 ∧ Q3 all yes** and pre-empts
+> Q4 verbatim. Read in full and independently by two agents. **C1′ as worded should not be
+> submitted.** A residual claim survives and is stated in §7.4.
+>
+> ### C2′ — NARROW, conditional on one unread theorem.
+>
+> Nothing read occupies it: no work in the corpus states a coverage property for a
+> movement-penalised or post-hoc-smoothed conformal quantile. The single live threat is
+> **IPOC** (KDD 2023, doi 10.1145/3580305.3599396, and its extension, IEEE TKDE
+> 38(5):3277–3290, doi 10.1109/TKDE.2026.3674583), whose Q5 stands at **unclear** after
+> eleven failed retrieval routes. **C2′ cannot be certified until that theorem is read.**
+> Independently of IPOC, C2′'s no-novelty concession must now extend from the two functional
+> forms to the **readout-map formulation itself**.
+
+**Both verdicts changed.** C1 moved NARROW → OCCUPIED. C2 stayed NARROW-conditional, but
+the conditional now rests on a different object and the concession list is longer.
+
+## 7.2 The occupant, and why no conformal query could have found it
+
+Van Belle et al. §2 builds a stable and an unstable forecaster with *identical* bias
+variances (4, 2.5, 1.75) and *identical* bias magnitudes, differing only in the **sign** of
+the bias recursion (+½τ versus −½τ). Because the initial sign is symmetric, every marginal
+functional coincides by construction. Table 2 verifies it — CRPS 2.91 / 1.43 / 0.83 against
+2.91 / 1.44 / 0.83 — and the paper states that "the forecasters are indistinguishable in
+terms of forecast quality" (**Q1**). The varied quantity is the 1-Wasserstein distance
+between forecasts for the same target at consecutive origins, reported as 2.00 / 1.00
+against 6.00 / 3.00, a threefold gap, with non-adjacent stability identical across arms
+(**Q2**). It is priced through a newsvendor with an incumbent order, `c_e` to add, `c_c` to
+cancel and **retain free**, giving +0.83 % to +3.49 % average profit with the stable arm
+winning 76–81 % of periods; a "procrastination" arm that never revises an incumbent shows
+**+0.00 %**, a placebo isolating the movement channel (**Q3**). And it draws the moral:
+forecast instability "may go unnoticed if forecasts are evaluated solely from a forecast
+quality perspective" (**Q4**).
+
+**Q5 is no.** "Coverage", "interval width", "conformal", "pinball" and "guarantee" occur
+**zero** times in its 16,217 words. Its λ (Eq. 9) is a training regulariser convexly mixing
+scaled CRPS with a scaled Wasserstein distance; it yields neither partial adjustment nor a
+dead-band. Its design is a synthetic two-DGP simulation, and that is its only structural
+weakness — it does not rescue C1′ as worded.
+
+**Why the G0 sweep could not have found it, and why this one did.** The paper contains no
+conformal vocabulary at all, so no query anchored on "conformal" returns it in any
+instrument. It was reached by mechanism screening across application domains, and
+independently by a citation traversal from an earlier paper by the same group. This is the
+§4.5.3 lesson, vindicated: **the mechanism recurs where the vocabulary does not.**
+
+## 7.3 The literature behind it, which this project had never cited
+
+A named **forecast-stability** literature, roughly seventeen years old, largely in the
+*International Journal of Forecasting* and in operations journals. It already has the
+increment metrics (MASC / RMSSC — mean absolute *scaled change*), and it already publishes
+**both** of C2′'s readout maps.
+
+| Work | What it already establishes |
+|---|---|
+| **Godahewa, Bergmeir, Baz et al., "On forecast stability", *IJF* 41(4):1539–1558, doi 10.1016/j.ijforecast.2025.01.006** | Publishes the linear partial-adjustment readout `ỹ = (1−w_s)·ŷ_new + w_s·ỹ_prev`, one scalar, as **model-agnostic post-processing** — C2′'s quadratic-cost map, in print. Also the canonical vertical/horizontal vocabulary and six stability metrics. |
+| **Genov, Ruddick, Bergmeir et al., *ESWA* 298:129305, doi 10.1016/j.eswa.2025.129305 (preprint arXiv:2407.03368)** | **Eq. 18–20 state C2′'s readout-map formulation directly:** `x_t = M(ŷ_t)` with `M` assumed Lipschitz with constant `L_M`, and the switching cost bounded by `β·L_M·Σ‖ŷ_t − ŷ_{t−v}‖`. Plus an explicit switching cost `β‖S_t − S_{t−1}‖` in a formal OCO-with-switching-costs framework, four path-variation metrics including a novel probabilistic one, and real battery scheduling with ramping costs. |
+| Van Belle, Crevits & Verbeke, *IJF* 39(3):1333–1350 (2023); Caljon et al., *IJF* 42(2):344–358 (2026) | The composite quality-plus-stability loss. |
+| Pritularga & Kourentzes (2024), doi 10.2139/ssrn.4711817 | *Forecast congruence*: only weakly correlated with accuracy, and good congruence at acceptable accuracy beats best accuracy on inventory decisions. |
+| Tunc, Kilic, Tarim & Eksioglu, *IJPE* 141(2):619–625 (2013) | The cost of system nervousness. |
+
+**Genov is the old γ design, in another field, and it fails exactly where this audit
+predicted the old design would fail.** Its arms are commitment periods v = 1…12 driven by a
+single fixed forecaster, and its §4.4 states that "the forecast error generally decreases
+with shorter commitment periods, while the vertical stability is better with longer
+commitment periods" — level and variation move together, and attribution runs through a
+cross-arm correlation table. The strings *matched*, *same accuracy*, *equal accuracy*,
+*controlling for* and *holding* appear zero times. **Q1 = no ⇒ NARROW.** A third-party
+citation glossing it as showing stable forecasts win "even when raw accuracy is equivalent"
+is **not supported by the paper**, and one agent's verdict rested on that gloss until two
+others read the full text. That adjudication is recorded in `research/S1/B1-verdicts.md`
+§1.2.
+
+**The bridge between the two literatures is unbuilt.** On arXiv, `"conformal"` crossed with
+`"forecast stability"`, `"forecast instability"`, `"forecast congruence"`, `"jumpiness"` and
+`"forecast revision"` returns **zero** on every pairing in both directions, and
+`"forecast stability" coverage` returns zero. Not one of the papers citing Van Belle et al.
+2023 is conformal. **That zero is title-and-abstract-level and is weaker than a full-text
+zero** — see §7.6.
+
+## 7.4 The residual claim
+
+Two legs, claimed separately because they have different strengths. Full wording and the
+stress test against the five nearest neighbours are in `docs/FRAMING.md` §2.2 and
+`research/S1/B1-verdicts.md` §5.
+
+- **R1 (measurement, the motivation).** On a real online conformal producer, the pair the
+  online conformal literature reports and tunes on — realised coverage **together with**
+  mean interval width — can be held fixed while the width path `Σ|Δq_t|` varies by a factor
+  of F, and the difference in annual net log growth on a position charged to move is N
+  points. **Claimed as the conformal instance of a result established outside conformal
+  prediction, and no wider.**
+- **R2 (the object and its validity, the paper).** A one-scalar movement penalty on the
+  **deployed** conformal quantile is not covered by the existing predictable-modification
+  arguments, because it acts on the quantile-based width mechanism and puts at risk the
+  monotonicity condition those arguments require. The paper states the conditions under
+  which ACI's long-run coverage survives, and reports smoothed-arm realised coverage as a
+  measured control regardless.
+
+**R1 survives all five nearest neighbours — thinly against Van Belle, contingently against
+Ryan. R2 survives all five cleanly, and is void only if IPOC's theorem quantifies over the
+movement-constrained object.** R2 is the headline; R1 is the motivation.
+
+**The inherited STOP condition is now wrong.** "Fall back to reporting C1 alone" was written
+before this sweep, and C1 alone is the occupied leg. The replacement is in
+`docs/FRAMING.md` §2.3: **if R2 cannot be delivered, re-scope rather than submit R1 alone.**
+
+## 7.5 Corrections this sweep forces on earlier sections
+
+| Section | What it said | What is true |
+|---|---|---|
+| §0 | The Semantic Scholar API was unusable and no forward-citation screen of ACI was possible | **The screen ran, with no API key.** 659 unique citing papers across ACI (557), DtACI (188), Conformal PID (147) and SAOCP (101); 12 candidates; **zero OCCUPIED, zero NARROW**. The instrument is incremental backoff against the anonymous pool. Note also that the OpenAlex fallback would have produced a **false negative**: its ACI record carries 27 citations against 557, a 95 % miss. |
+| §4.3 | Wang & Hasuike is "the closest published neighbour to C2" | Overstated. Full-text read: **zero** occurrences of "conformal", "coverage", "quantile" or "prediction interval" — no interval object at all. What it does pre-empt is the *argument shape*: Table 1's caption already publishes "Increasing risk aversion does not meaningfully reduce turnover", its δ is fixed at 0.1 and never swept, and its damping is heuristic rather than cost-derived. |
+| §4.4 | Jia & Han was missed because the sweep was arXiv-centric | True but incomplete. **DBLP indexes it and returns it on the first query.** The failure was instrument choice, not venue coverage. Scored **CLEAR / CLEAR** on its abstract and full reference list; the body remains closed. |
+| §4.5.2 | arXiv:2607.26547 was dismissed on domain and the dismissal was wrong | The **dismissal method** was wrong; the **answer** was right. Read in full: Q3 yes — `Q_t(a) = EHI_t(a\|a_{t−1}) − η_e·E_mv(a\|a_{t−1})` with the stay action free, a genuine proportional movement cost with a stay region — but Q1, Q2, Q4 and Q5 all no. There is no theorem, the conformal step is a rolling-window empirical quantile used as a variance inflator, and the penalty sits downstream in the acquisition function. **ADJACENT / ADJACENT**, and a must-cite: `"conformal" "switching cost"` returns exactly this one paper on arXiv. |
+| §5, C1 residual risk | "If `Σ\|Δq\|` is approximately a monotone function of `E[L]` across the γ grid, C1 reduces to Zaffran's theorem times a cost rate" | The risk was correctly identified and the proposed test for it — the old G2.10 conditional discriminator — was **rank-deficient and could not have been estimated**, because both regressors are approximately affine in the single manipulated variable. Deleted with reason; see `docs/GATES.md` G2 and `docs/OUTSTANDING.md` O8. |
+
+## 7.6 What the sweep still cannot see
+
+Stated so that the verdicts are read with their instrument, in the spirit of §0.
+
+1. **IPOC is unread and C2′'s Q5 is unknown.** Eleven routes failed: ACM DL 403 on the
+   abstract page, the PDF path, a real-browser fetch and a server-side fetch; IEEE Xplore
+   JavaScript-gated; ResearchGate 403; Unpaywall `is_oa: false`, `oa_status: closed`, zero
+   locations; no arXiv preprint, and the first author has four others, so this is a genuine
+   absence rather than an indexing gap; the corresponding author's homepage lists the paper
+   but hosts no copy. **This needs institutional access, not more open-web searching.**
+2. **The full-text instrument ran out mid-sweep.** OpenAlex's anonymous daily budget was
+   exhausted with roughly twenty queries unrun. Full-text search is the **only** instrument
+   in the set that sees a smoother buried in a methods section — the arXiv API and HTML UI
+   index title and abstract only, and the Semantic Scholar screen is abstract-level.
+   **The hole is demonstrably non-empty:** two SSRN papers carry "turnover" and "transaction
+   cost" in their full text but not their abstracts, appear in no Semantic Scholar citing
+   set, and surfaced only through full-text indexing. §0's caution about abstract-level
+   nulls should therefore be **strengthened, not relaxed**.
+3. **No forward-citation screen was run on Godahewa or Van Belle**, in either direction.
+   Two agents independently name the mirror traversal — screening the online-conformal
+   anchors' citing sets for forecast-stability vocabulary and vice versa — as the
+   highest-value follow-up. The instrument is known to work: Semantic Scholar's
+   `/paper/{id}`, `/citations` and `/references` return 200 even while `/paper/search` is
+   throttled, and it was a traversal of this kind that surfaced Genov, which no keyword
+   query reached.
+4. **Unread material bearing on the verdicts:** Van Belle et al. (2024), *IEEE TNNLS*
+   35:18872–18885 — the composite loss extended to *probabilistic* forecasts using KL and
+   2-Wasserstein distances between successive predictive distributions, named as the single
+   closest published object to "penalise the movement of a predictive interval", and never
+   fetched; Genov et al.'s companion paper; the full texts of Godahewa et al. and
+   Pritularga & Kourentzes; *Conformal Portfolio Optimization* (doi 10.2139/ssrn.5011129),
+   recorded UNRESOLVED; Chopra (1993), not obtained at all, not even an abstract; and 72 of
+   the 659 citing papers screened on title only.
+5. **A venue-speed conditional.** An SSRN cluster is forming around conformal intervals
+   meeting financial decisions — Ryan, Cotton, Koukorinis, Schmitt, Noguer i Alonso,
+   Beckman, Hoxha & Thanasi, Dai, Manokhin and others, most dated 2026 and several only
+   weeks old. It is invisible to arXiv and to DBLP. **Crossref `prefix:10.2139` must be
+   re-run immediately before any submission.**
+
+## 7.7 Metadata corrections that must propagate
+
+- **Genov et al.'s DOI is `10.1016/j.eswa.2025.129305`.** The 2026 form returns HTTP 404,
+  despite the issue being dated March 2026.
+- Semantic Scholar mis-normalises Conformal-ABR's venue to "International Conference on
+  Multimodal Interaction" — an acronym collision. Use the Crossref record: *2026 IEEE 5th
+  International Conference on Computing and Machine Intelligence (ICMI)*.
+- A web-search summariser fabricated an author list for IPOC during this session. Crossref
+  and Semantic Scholar agree on the true one and it is what `audit/REFS_VERIFIED.bib`
+  carries.
+- Ryan's *Conformal Kelly* also has an SSRN record, doi 10.2139/ssrn.7221760.

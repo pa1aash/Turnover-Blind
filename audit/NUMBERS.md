@@ -41,7 +41,7 @@ governing fact of this trace and it is not a per-row observation.
 |---|---|---|---|---|---|
 | 8 | arXiv:2608.01494 | identifier of the anomaly paper | present-in-plan-only | **yes** | Externally verified: the work exists. |
 | 9 | Aug 2026 | date of that preprint | present-in-plan-only | no | Externally verified: submitted 2 Aug 2026. |
-| 10 | 0.7 to 5.3 points | the unexplained growth cost of faster adaptation | present-in-plan-only | **yes** | Externally verified against the preprint's abstract. This is the empirical anomaly the whole paper exists to explain. |
+| 10 | 0.7 to 5.3 points | the growth cost of faster adaptation, which the plan calls unexplained | present-in-plan-only | **yes** | Externally verified against the preprint's abstract. This is the empirical anomaly the paper exists to explain. Note Ryan does offer an explanation for it — hedged, measured for one device, and not a turnover account; see `docs/FRAMING.md`. |
 
 ## 3. The C1 table — configuration
 
@@ -128,7 +128,7 @@ paper's *framing* depends on the citation being right, not merely on it existing
 | 67 | 2023 | Bhatnagar et al., SAOCP, ICML | present-in-plan-only | no | |
 | 68 | 2024 / arXiv:2310.05921 | Lekeufack et al., Conformal Decision Theory, ICRA | present-in-plan-only | **yes** | The headline baseline; the differentiation argument depends on its trading experiment being zero-cost synthetic. |
 | 69 | arXiv:2602.03903 | Schmitt, RWCP | present-in-plan-only | no | |
-| 70 | 2013 | Gârleanu & Pedersen | present-in-plan-only | **yes** | Source of the dead-band form C2 borrows. |
+| 70 | 2013 | Gârleanu & Pedersen | present-in-plan-only | **yes** | **The plan calls this "the source of the dead-band form". It is not.** G–P assume *quadratic* costs and derive *linear partial adjustment*, explicitly distinguishing themselves from proportional-cost strategies "which exhibit periods of no trading". The dead-band's sources are Constantinides (1986) and Davis & Norman (1990). G–P remains a correct citation for *quadratic costs ⇒ partial adjustment* only. See `audit/REFS_REJECTED.md` §1.1. |
 | 71 | 2022 / arXiv:2202.07282 | Zaffran et al., ICML | present-in-plan-only | **yes** | The closest existing analysis of the ACI learning rate; the plan concedes it must be engaged directly. |
 | 72 | 2024 / arXiv:2402.01139 | Angelopoulos, Barber & Bates, ICML | present-in-plan-only | **yes** | Existing partial account of slow-beats-fast that F7 must be distinguished from. |
 | 73 | arXiv:2607.26577 | Vaze | present-in-plan-only | **yes** | Basis of the hard "do not frame as an impossibility result" constraint. |
@@ -138,7 +138,7 @@ paper's *framing* depends on the citation being right, not merely on it existing
 | 77 | 2026 / arXiv:2507.02496 | Srinivas, SODA | present-in-plan-only | **yes** | Second pillar of the same framing constraint. |
 | 78 | 2025 / arXiv:2502.10947 | Ramalingam, Kiyani & Roth, ICML | present-in-plan-only | no | |
 | 79 | 2022 | Elmachtoub & Grigas, SPO, *Mgmt Sci* | present-in-plan-only | no | |
-| 80 | arXiv:2605.01176 | decision-induced turnover in SPO | present-in-plan-only | no | Closest cited neighbour to C1 in the plan's own list. |
+| 80 | arXiv:2605.01176 | decision-induced turnover in SPO | present-in-plan-only | no | Wang & Hasuike. Closest cited neighbour on the *pathology* (decision-focused learning churns; damping helps). Read in full S1: it contains no conformal, coverage, quantile or prediction-interval content. See `audit/PRIOR_ART.md` §4.3. |
 | 81 | 2003 | Zinkevich | present-in-plan-only | no | |
 | 82 | arXiv:2502.10947 (second occurrence) | "no-regret ↔ online conformal" | present-in-plan-only | no | **The same identifier appears twice in the reference list under two different descriptions** (row 78 and this row). See `audit/REFS_REJECTED.md`. |
 | 83 | 1956 | Kelly | present-in-plan-only | no | |

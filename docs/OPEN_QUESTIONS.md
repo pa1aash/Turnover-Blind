@@ -173,20 +173,26 @@ submitted version. No co-author has been contacted or named in this repository.
 ## Q9 — Semantic Scholar API key (added S1, 2026-08-19)
 
 **The question.** `SEMANTIC_SCHOLAR_API_KEY` is not present in the session environment,
-and the anonymous pool returned HTTP 429 on **every** call this session — through the
-direct API, through the connected Semantic Scholar server, and through a server-side
-fetch from a different network egress. The 429 is therefore a property of the anonymous
-quota, not of this machine's address.
+and the anonymous pool returned HTTP 429 on every **unthrottled** call this session —
+through the direct API, through the connected Semantic Scholar server, and through a
+server-side fetch from a different network egress. The 429 is therefore a property of the
+anonymous quota, not of this machine's address. It is a rate limit, not a wall:
+**incremental backoff (4 s → 40 s, ~25 retries) clears it**, which is how the screen below
+was in fact run.
 
-**Consequence.** G1.1 — the forward-citation screen of Gibbs–Candès ACI — could only be
-run in degraded form (OpenAlex citation graph plus manual traversal of the citing sets of
-DtACI, conformal PID and SAOCP). OpenAlex's own coverage of that paper was already
-flagged as visibly incomplete in `audit/PRIOR_ART.md` §0.
+**Consequence — superseded, S1 2026-08-19.** The screen was subsequently run **without a
+key**, using incremental backoff against the anonymous pool, returning **659 unique citing
+papers** across ACI, DtACI, conformal PID and SAOCP. G1.1 is therefore satisfiable on the
+present environment and O1 is closed. A key would still make the screen faster and
+re-runnable on demand, so the question below is worth answering, but nothing is blocked on
+it. Note also that the OpenAlex fallback prescribed above would have produced a **false
+negative**: OpenAlex's ACI record carries `cited_by_count = 27` against Semantic Scholar's
+557, a 95 % miss.
 
 **Answer one of:**
 - (a) A key exists / can be obtained — supply it and the screen is re-run properly in S2;
-- (b) No key is available — then G1.1 must be re-worded to name the degraded instrument,
-  and the residual scoop risk stays open in `docs/OUTSTANDING.md`.
+- (b) No key is available — then nothing is blocked: the backoff route already produced the
+  screen, and it is the documented fallback.
 
 **Why it is not closed here.** Applying for a key is an action taken in the operator's
 name against a third party. The session records the question and runs the fallback.

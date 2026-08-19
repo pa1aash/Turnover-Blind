@@ -1,5 +1,52 @@
 # F7 — Coverage Is Turnover-Blind: Why Adaptive Conformal Is Mis-Tuned for Costly Decisions
 
+> ## ⚠️ CORRECTION NOTE — added 2026-08-19 (session S1). Do not edit the text below it.
+>
+> **This document is the historical record of what was believed at planning time. It is
+> preserved unaltered on purpose.** Several of its claims are now known to be false. They
+> are left in place so that the error and its catching are both on the record. The binding
+> framing for this project is `docs/FRAMING.md`; where that file and this one disagree,
+> `docs/FRAMING.md` wins.
+>
+> Specifically, this document contains the following condemned claims:
+>
+> 1. **"Nobody has explained it. I have"** (line 28), and **"reports, and cannot explain"**
+>    (line 22). **False.** Ryan explains the anomaly in his own abstract and conclusion. The
+>    explanation is hedged, measured for one device only, and is not a turnover account —
+>    which is a specific, falsifiable disagreement and a better paper than a universal
+>    negative. See `audit/CLAIMS.md` A2/A3 and `docs/OPEN_QUESTIONS.md` Q2.
+> 2. **"no coverage-based criterion — marginal, conditional, or adaptive — can select the
+>    adaptation rate for a decision that pays for turnover"** (lines 66–68). **Condemned
+>    grammar and refuted in fact.** DtACI selects the step size online by a coverage-based
+>    criterion. Replace the quantifier with the measurement. See `audit/PRIOR_ART.md` §6
+>    Risk 1.
+> 3. **"Formalise the turnover-vs-tracking-error frontier and show the coverage-optimal
+>    point sits at the wrong end of it"** (lines 68–69). **Condemned.** A formalised
+>    frontier is Srinivas's object (SODA 2026, arXiv:2507.02496), and Vaze
+>    (arXiv:2607.26577) holds the minimax ground. There is also no coverage-optimal point:
+>    coverage is flat over γ ≥ 0.005 on this document's own table. See `audit/PRIOR_ART.md`
+>    §6 Risk 2.
+> 4. **"exactly as in the Gârleanu–Pedersen dynamic-trading solution"** (lines 89–90) and
+>    **"the source of the dead-band form"** (lines 140–141). **False.** Gârleanu & Pedersen
+>    (2013) assume *quadratic* costs, derive *linear partial adjustment*, and write a
+>    sentence explicitly distinguishing themselves from proportional-cost strategies "which
+>    exhibit periods of no trading". The dead-band's sources are **Constantinides (1986)**
+>    and **Davis & Norman (1990)**. G–P remains correct for *quadratic ⇒ partial
+>    adjustment* only. See `audit/REFS_REJECTED.md` §1.1.
+> 5. **"this simulation gives 1.0–4.4 points … An independently derived quantitative match"**
+>    (lines 50–52). **Not derivable.** This document's own paired differences are 0.02,
+>    0.10, 0.43, 1.84 and 4.37 points; nothing yields 1.0. The configurations also differ on
+>    coverage level, data, universe, estimator and frictions, so "quantitative match" is
+>    unavailable regardless. See `audit/CLAIMS.md` §C-c and `audit/NUMBERS.md` row 54.
+> 6. **"arXiv returns 0 for `conformal`×`downstream decision`×`variance`, 0 for
+>    `prediction interval`×`Kelly`"** (lines 166–167). **False for the first.** A single
+>    arXiv API query on `conformal` × `downstream decision` returns a full page of on-topic
+>    work. See `audit/PRIOR_ART.md` §2, Finding 1.
+>
+> One instruction in this document is **correct and remains binding**: "**F7's claim is
+> decision-theoretic, not information-theoretic — keep it that way**" (lines 174–175). Six of
+> this document's own sentences violate it.
+
 **One sentence:** The adaptation rate of every online conformal method is **invisible to coverage** but
 directly controls interval jitter, which drives position turnover and cost drag — so tuning by coverage
 is systematically wrong for any decision that pays to trade, and this explains a published, unexplained

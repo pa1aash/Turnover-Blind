@@ -337,7 +337,8 @@ OpenReview submission invitation, and the fetched `neurips_2026.sty` and
 - [ ] Conformal Inverse Optimization (Lin, **Delage** & Chan) cited. Delage is a
       confirmed speaker.
 - [ ] No claim framed as an impossibility result, a coverage floor or a fundamental
-      limit (`audit/PRIOR_ART.md` §6).
+      limit, and no claim on the condemned list in `docs/FRAMING.md`
+      (`audit/PRIOR_ART.md` §6 is the earlier and narrower version of the same rule).
 - [ ] No unproved theorem stated as proved (`audit/CLAIMS.md` C-a).
 - [ ] Every number in the paper traceable to a `results/` JSON.
 

@@ -282,9 +282,11 @@ authors or title. The identifier resolves to Yi Wang and Takashi Hasuike,
 "Decision-Induced Ranking Explains Prediction Inflation and Excessive Turnover in
 SPO-Based Portfolio Optimization", q-fin.PM, 2026-05-02, and the gloss is accurate.
 
-Flagged here for a different reason: **this is the nearest published neighbour to C2 in
-the plan's own reference list, and it is cited as a bare identifier in a trailing
-clause.** It studies excessive turnover induced by decision-focused learning and
+Flagged here for a different reason: **this is the nearest published neighbour on C2's
+*pathology* in the plan's own reference list, and it is cited as a bare identifier in a
+trailing clause.** (Read in full, S1 2026-08-19: the paper contains zero occurrences of
+"conformal", "coverage", "quantile" or "prediction interval", so it is not a neighbour on
+C2's method.) It studies excessive turnover induced by decision-focused learning and
 evaluates *partial portfolio adjustment* as a stabilization mechanism — which is a
 damping scheme for exactly the pathology C2 addresses, in SPO rather than conformal
 prediction. It deserves a paragraph in related work, not a parenthesis. See

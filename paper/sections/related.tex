@@ -1,0 +1,35 @@
+\section{Related work}
+\label{sec:related}
+
+\citet{zaffran2022aci} price ACI's learning rate in the \emph{level}: Theorem~3.1 gives
+$\mathbb{E}_{\pi_\gamma}[L] = L_0 + \tfrac{1}{2}Q''(1-\alpha)\gamma\alpha(1-\alpha) + O(\gamma^{3/2})$, a
+statement about \emph{mean length}, which integrates the path away; we hold it fixed.
+\citet{min2026questioning} also call coverage and length insufficient, but their interval stability
+(Def.~4.1), $\mathbb{E}_X[\operatorname{Var}_{A \mid X, \mathcal{D}_{\mathrm{ca}}}(\lvert C_{1-\alpha}(X)
+\rvert)]$, varies over the algorithm's own randomness given test point \emph{and} calibration set and is
+``zero for deterministic methods by design'': a deterministic interval oscillating daily scores exactly zero.
+\citet{zhou2025inverse} vary the coverage \emph{level} along a miscoverage--regret trade-off; we fix coverage
+and vary the path.
+\citet{ryan2026conformalkelly} charges the growth loss to estimation variance passing through the nonlinear
+Kelly sizing map, hedged as ``a structural explanation consistent with the results'', and already reports the
+daily $\mathrm{sd}(\Delta \log q)$ ($0.00343$ vs.\ $0.00391$) and matched gross leverage
+($1.957$--$1.959$); what he does not match is width, nor phrase it as turnover.
+\citet{wang2026spoturnover} report that ``[i]ncreasing risk aversion does not meaningfully reduce turnover''
+and damp the \emph{weight} path by a heuristic $\delta = 0.1$ partial adjustment, never swept; their paper
+carries no interval, coverage or quantile object.
+\citet{zhu2026stayorswitch} charge the \emph{decision} for moving and leave the interval free;
+\citet{jia2026portfolio} read a VaR off an adaptive conformal bound; \citet{lin2024cio} calibrate
+inverse-optimisation decisions.
+
+\citet{godahewa2025stability} already publish the linear partial-adjustment readout
+$\tilde{y} = (1-w_s)\hat{y}_{\mathrm{new}} + w_s\tilde{y}_{\mathrm{prev}}$ as model-agnostic
+post-processing, so we claim no novelty for either form; switching-cost online learning
+\citep{kalai2005lazy,geulen2010dartboard,andrew2013twometrics,chen2018obd} and both maps --- quadratic cost
+giving partial adjustment \citep{garleanu2013dynamic}, proportional cost a no-trade band
+\citep{constantinides1986,davis1990} --- are prior work, not claims.
+\citet{vanbelle2026stabilizing} pin CRPS across arms ($2.91/1.43/0.83$ vs.\ $2.91/1.44/0.83$,
+``indistinguishable in terms of forecast quality''), vary $W_1$ between consecutive updates threefold, and
+price it through a newsvendor; but their functional is over forecast \emph{revisions} of a fixed target, they
+carry no interval and no coverage object, and the effect is $+0.00\%$ in their single-horizon arm.
+On arXiv as of August~2026, ``conformal'' pairs with none of ``forecast stability'', ``forecast
+instability'', ``forecast congruence'', ``jumpiness'' or ``forecast revision'', in either direction.

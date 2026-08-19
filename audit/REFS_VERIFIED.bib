@@ -599,3 +599,247 @@
   year    = {2000},
   doi     = {10.21314/jor.2000.038}
 }
+
+% ===========================================================================
+% [ADDED S1, 2026-08-19] Forecast stability, movement penalties, and the
+% post-processed-coverage question.
+%
+% Every entry in this block was built from a record fetched during session S1:
+% Crossref api.crossref.org for the DOI-bearing works, and the Semantic Scholar
+% graph API (api.semanticscholar.org/graph/v1/paper/arXiv:<id>) or the arXiv
+% abstract page for the preprints. Nothing here was written from memory.
+%
+% This block exists because the S1 sweep found a named forecast-stability
+% literature -- roughly seventeen years old, largely in the International
+% Journal of Forecasting and in operations journals -- that had never been
+% cited by this project, and that already contains both of the readout maps.
+% ===========================================================================
+
+@article{godahewa2025stability,
+  author  = {Godahewa, Rakshitha and Bergmeir, Christoph and Erkin Baz, Zeynep and
+             Zhu, Chengjun and Song, Zhangdi and Garc{\'i}a, Salvador and Benavides, Dario},
+  title   = {On forecast stability},
+  journal = {International Journal of Forecasting},
+  volume  = {41},
+  number  = {4},
+  pages   = {1539--1558},
+  year    = {2025},
+  doi     = {10.1016/j.ijforecast.2025.01.006},
+  eprint  = {2310.17332},
+  archivePrefix = {arXiv},
+  note    = {Record from Crossref; preprint identifier confirmed from the arXiv
+             abstract page. Publishes the linear partial-adjustment readout
+             ytilde = (1-w_s) yhat_new + w_s ytilde_prev as model-agnostic
+             post-processing, and names both vertical and horizontal stability.
+             This is C2 prime's quadratic-cost readout map, already in print;
+             the project claims no novelty for the form and must cite this.}
+}
+
+@misc{vanbelle2026stabilizing,
+  author = {Van Belle, Jente and Wen, Honglin and Verbeke, Wouter and Pinson, Pierre},
+  title  = {Stabilizing distribution-free probabilistic forecasts},
+  year   = {2026},
+  eprint = {2605.28531},
+  archivePrefix = {arXiv},
+  note   = {Record from the Semantic Scholar graph API, arXiv:2605.28531, 2026-05-27.
+             The nearest work to C1 prime found anywhere. Matches arms on CRPS by
+             construction and varies only the temporal sign pattern of the bias
+             recursion, then prices the difference through a newsvendor charged for
+             revising an incumbent order. Contains no interval, coverage or width
+             object; full-text search returns zero occurrences of ``coverage'' and
+             ``interval width''.}
+}
+
+@article{vanbelle2023deepstability,
+  author  = {Van Belle, Jente and Crevits, Ruben and Verbeke, Wouter},
+  title   = {Improving forecast stability using deep learning},
+  journal = {International Journal of Forecasting},
+  volume  = {39},
+  number  = {3},
+  pages   = {1333--1350},
+  year    = {2023},
+  doi     = {10.1016/j.ijforecast.2022.06.007},
+  note    = {Record from Crossref. Crossref carries the 2022 DOI stem and a 2023
+             issue date; the issue date is used here.}
+}
+
+@article{caljon2026dynamicloss,
+  author  = {Caljon, Daan and Vercauteren, Jeff and De Vos, Simon and
+             Verbeke, Wouter and Van Belle, Jente},
+  title   = {Using dynamic loss weighting to boost improvements in forecast stability},
+  journal = {International Journal of Forecasting},
+  volume  = {42},
+  number  = {2},
+  pages   = {344--358},
+  year    = {2026},
+  doi     = {10.1016/j.ijforecast.2025.07.002},
+  note    = {Record from Crossref.}
+}
+
+@article{genov2026switching,
+  author  = {Genov, Evgenii and Ruddick, Julian and Bergmeir, Christoph and
+             Vafaeipour, Majid and Coosemans, Thierry and Garc{\'i}a, Salvador and
+             Messagie, Maarten},
+  title   = {Balancing forecast accuracy and switching costs in online optimization
+             of energy management systems},
+  journal = {Expert Systems with Applications},
+  volume  = {298},
+  pages   = {129305},
+  year    = {2026},
+  doi     = {10.1016/j.eswa.2025.129305},
+  eprint  = {2407.03368},
+  archivePrefix = {arXiv},
+  note    = {Record from Crossref; preprint arXiv:2407.03368 confirmed via the
+             Semantic Scholar graph API, which reports the same DOI. NOTE ON THE DOI:
+             the form 10.1016/j.eswa.2026.129305 returns HTTP 404 -- the correct stem
+             is 2025 even though the issue is dated March 2026. Its equations 18--20
+             state the readout-map formulation directly: x_t = M(yhat_t) with M assumed
+             Lipschitz with constant L_M, and the switching cost bounded by
+             beta * L_M * sum || yhat_t - yhat_{t-v} ||. Its compared arms do not hold
+             a level functional fixed -- accuracy and stability move together across
+             its commitment periods -- so it is not the matched-level design.}
+}
+
+@article{pritularga2024congruence,
+  author = {Pritularga, Kandrika and Kourentzes, Nikolaos},
+  title  = {Forecast Congruence: A Quantity to Align Forecasts and Inventory Decisions},
+  year   = {2024},
+  doi    = {10.2139/ssrn.4711817},
+  note   = {Record from Crossref; SSRN working paper, no container title in the
+             Crossref record. Reports that accuracy and congruence are only weakly
+             correlated and that good congruence at acceptable accuracy beats best
+             accuracy on inventory decisions.}
+}
+
+@article{tunc2013nervousness,
+  author  = {Tunc, Huseyin and Kilic, Onur A. and Tarim, S. Armagan and Eksioglu, Burak},
+  title   = {A simple approach for assessing the cost of system nervousness},
+  journal = {International Journal of Production Economics},
+  volume  = {141},
+  number  = {2},
+  pages   = {619--625},
+  year    = {2013},
+  doi     = {10.1016/j.ijpe.2012.09.022},
+  note    = {Record from Crossref.}
+}
+
+@misc{ma2026beyondaccuracy,
+  author = {Ma, Chutian and Pomazkin, Grigorii and Saggese, Giacinto Paolo and Smith, Paul},
+  title  = {Beyond Accuracy: A Stability-Aware Metric for Multi-Horizon Forecasting},
+  year   = {2026},
+  eprint = {2601.10863},
+  archivePrefix = {arXiv},
+  note   = {Record from the arXiv abstract page; submitted 2026-01-15, v3 2026-04-22.}
+}
+
+@inproceedings{chen2023ipoc,
+  author    = {Chen, Jiadong and Luo, Yang and Huang, Xiuqi and Jiang, Fuxin and
+               Shi, Yangguang and Zhang, Tieying and Gao, Xiaofeng},
+  title     = {{IPOC}: An Adaptive Interval Prediction Model based on Online Chasing
+               and Conformal Inference for Large-Scale Systems},
+  booktitle = {Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery
+               and Data Mining},
+  pages     = {202--212},
+  year      = {2023},
+  doi       = {10.1145/3580305.3599396},
+  note      = {Record from Crossref. NOT READ. Eleven retrieval routes failed in
+               session S1 -- ACM Digital Library returns HTTP 403 to direct fetch, to a
+               real browser and to a server-side fetch; no arXiv preprint exists; the
+               authors' pages carry no copy. Its abstract claims validation ``through
+               sublinear regret analysis and satisfaction of confidence interval
+               requirements''. Whether that coverage-type guarantee attaches to the
+               movement-penalised object is UNRESOLVED and is the single open question
+               that could occupy C2 prime. Requires institutional access.}
+}
+
+@article{chen2026ipoctkde,
+  author  = {Chen, Jiadong and Luo, Yang and Huang, Xiuqi and Jiang, Fuxin and
+             Shi, Yangguang and Zhang, Tieying and Gao, Xiaofeng},
+  title   = {Uncertainty-Aware Online Time Series Multi-Step Forecasting Framework
+             in Cloud Systems},
+  journal = {IEEE Transactions on Knowledge and Data Engineering},
+  volume  = {38},
+  number  = {5},
+  pages   = {3277--3290},
+  year    = {2026},
+  doi     = {10.1109/TKDE.2026.3674583},
+  note    = {Record from Crossref. The journal extension of chen2023ipoc. Also NOT
+             READ; IEEE Xplore is JavaScript-gated. Its abstract states ``The chasing
+             regret of the Chasing Oracle is O(L_c)''.}
+}
+
+@inproceedings{darwich2026conformalabr,
+  author    = {Darwich, Mahmoud and Khalil, Kasem and Ismail, Yasser and
+               Abdelgawad, Ahmed and Bayoumi, Magdy},
+  title     = {{Conformal-ABR}: Distribution-Free Risk-Controlled Bitrate Selection
+               for {HTTP} Adaptive Streaming},
+  booktitle = {2026 IEEE 5th International Conference on Computing and Machine
+               Intelligence (ICMI)},
+  pages     = {1--6},
+  year      = {2026},
+  doi       = {10.1109/ICMI68585.2026.11539758},
+  note      = {Record from Crossref. The sole survivor of the S1 forward-citation
+               pattern screen over 659 papers citing ACI, DtACI, conformal PID and
+               SAOCP. Paywalled, no open version. Its risk control is on prediction
+               error from the calibration layer, and its smoothness penalty is on the
+               bitrate, downstream of the interval -- two separate objects.}
+}
+
+@misc{lade2026bcaci,
+  author = {Lade, Ankit and J., Sai Krishna and Kumar, Indar},
+  title  = {Bias-Corrected Adaptive Conformal Inference for Multi-Horizon Time
+            Series Forecasting},
+  year   = {2026},
+  eprint = {2604.13253},
+  archivePrefix = {arXiv},
+  note   = {Record from the arXiv abstract page; submitted 2026-04-14. Unrefereed
+             preprint. Contains both an exponentially weighted moving-average smoother
+             and an adaptive dead-zone inside an ACI pipeline, but both act on a bias
+             estimator upstream of the quantile and modify the interval CENTRE, not the
+             width. Its Proposition 3 is the citable general statement that a
+             predictable modification of the interval construction preserves ACI's
+             long-run coverage when the recursion is fed the deployed interval's
+             indicator; the same proof names the monotonicity side condition that a
+             width smoother puts at risk.}
+}
+
+@article{gupta2022nested,
+  author  = {Gupta, Chirag and Kuchibhotla, Arun K. and Ramdas, Aaditya},
+  title   = {Nested conformal prediction and quantile out-of-bag ensemble methods},
+  journal = {Pattern Recognition},
+  volume  = {127},
+  pages   = {108496},
+  year    = {2022},
+  doi     = {10.1016/j.patcog.2021.108496},
+  eprint  = {1910.10562},
+  archivePrefix = {arXiv},
+  note    = {Journal DOI and preprint identifier both from the Semantic Scholar graph
+             API record for arXiv:1910.10562. Cited for the nesting/monotonicity
+             argument -- an interval containing a valid conformal interval inherits its
+             validity. That argument covers ENLARGING post-processing only, and so does
+             not cover a two-sided smoother, which can shrink.}
+}
+
+@misc{zheng2025scdsplit,
+  author = {Zheng, Mingyi and Jiang, Hongyu and Lu, Yizhou and Teng, Jiaye},
+  title  = {Smoothing-Based Conformal Prediction for Balancing Efficiency and
+            Interpretability},
+  year   = {2025},
+  eprint = {2509.22529},
+  archivePrefix = {arXiv},
+  note   = {Record from the Semantic Scholar graph API. Relevant because it already
+             states that post-hoc smoothing of the conformal quantile invalidates
+             coverage -- the obstacle C2 prime has to clear is pre-published.}
+}
+
+@misc{fang2026spatiotemporal,
+  author = {Fang, Yu-Hsueh and Lee, Chia-Yen},
+  title  = {Optimal Spatio-Temporal Decoupling for Bayesian Conformal Prediction},
+  year   = {2026},
+  eprint = {2605.00432},
+  archivePrefix = {arXiv},
+  note   = {Record from the Semantic Scholar graph API. Its Theorem 1 bounds a
+             discounted quantile's coverage error with a bias term of order (1-beta):
+             direct evidence that smoothing a threshold costs coverage, scaled by
+             smoothing strength.}
+}

@@ -28,8 +28,8 @@ computed", never "verified as computed".
 | # | Claim | Status | Load-bearing | Evidence |
 |---|---|---|---|---|
 | A1 | Conformal Kelly (arXiv:2608.01494) reports that every tweak adapting the interval faster costs 0.7–5.3 points of annual growth | asserted | **yes** | Externally verified against the preprint's abstract. Solid. |
-| A2 | Ryan reports this and *cannot explain it* | asserted | **yes** | The abstract supports "reports"; **"cannot explain" is a claim about the content of another author's discussion section and has not been checked against it.** Must be verified before print. If Ryan offers any explanation, the paper's opening move collapses. |
-| A3 | "Nobody has explained it" | asserted | **yes** | none. A universal negative over the literature, three weeks after the preprint appeared. Unfalsifiable as stated and unnecessary — "no published explanation" is both weaker and defensible. |
+| A2 | Ryan reports this and *cannot explain it* | asserted | **yes** | **FALSE — checked and resolved.** Ryan explains it in his abstract ("the stability of the width matters more than its local sharpness") and again in his conclusion ("a scale estimator consumed by a nonlinear sizing map is charged for its own estimation variance"). The explanation is hedged, measured for one device only, and is **not** a turnover account. The paper's opening move must be rewritten; see `docs/FRAMING.md`. |
+| A3 | "Nobody has explained it" | asserted | **yes** | **FALSE, and the obvious weakening is also false.** Ryan publishes an explanation in his own abstract and conclusion, so "no published explanation" fails too. The defensible statement is the specific one: Ryan proposes a hedged, unmeasured, non-turnover mechanism — estimation variance charged through a nonlinear sizing map, measured for one device and conjectured for the rest — and F7 tests it against a turnover account. See `docs/OUTSTANDING.md` (resolved) and `docs/FRAMING.md`. |
 | A4 | Slow unweighted per-asset rolling quantiles beat ACI, DtACI and conformal PID in Ryan's experiments | asserted | **yes** | Externally corroborated. |
 | A5 | This "runs directly against the adaptive-conformal literature's premise that faster adaptation is better under non-stationarity" | asserted | **yes** | **none, and false in the strong form.** Two of the plan's own citations say the opposite: Angelopoulos, Barber & Bates (ICML 2024) show *decaying* step sizes give per-timepoint coverage under stability, and Zaffran et al. (ICML 2022) prove ACI's efficiency degrades **linearly in γ**. The literature does not hold the premise this sentence attributes to it. See §7. |
 
@@ -63,7 +63,7 @@ computed", never "verified as computed".
 | C1a | For **any** online conformal method, the adaptation rate is first-order in downstream turnover and zeroth-order in coverage | planned | **yes** | One simulation, of one method, on one data-generating process, at one coverage level. The universal quantifier is not supported and is not needed; the claim is worth making for the class of methods actually tested. |
 | C1b | Therefore no coverage-based criterion — marginal, conditional or adaptive — can select the adaptation rate for a decision that pays for turnover | planned | **yes** | The paper's thesis. Note it is a *negative* claim about a class of criteria, so a demonstration on one method cannot establish it; it needs either an argument that coverage is invariant to the relevant perturbation, or explicit restriction to the tested class. See §7 on DtACI, which selects the step size online *by a coverage-based criterion* and is therefore the sharpest test case. |
 | C1c | Formalise the turnover-versus-tracking-error frontier | planned | **yes** | Nothing exists yet. |
-| C1d | The coverage-optimal point sits at the wrong end of that frontier | planned | **yes** | Nothing exists yet. Note the plan's own table does not identify a coverage-*optimal* γ — coverage is flat over γ ≥ 0.005, which means coverage does not have an interior optimum to sit at the wrong end of. The claim needs restating as "coverage does not locate a point on the frontier at all", which is stronger and is what the table shows. |
+| C1d | The coverage-optimal point sits at the wrong end of that frontier | planned | **yes** | Nothing exists yet. Note the plan's own table does not identify a coverage-*optimal* γ — coverage is flat over γ ≥ 0.005, which means coverage does not have an interior optimum to sit at the wrong end of. The claim needs restating as "coverage does not locate a point on the measured turnover–tracking-error curve at all", which is stronger, is what the table shows, and avoids the word "frontier" (see `audit/PRIOR_ART.md` §6, Risk 2). |
 
 ## 4. Secondary claim C2 — the method
 
@@ -143,7 +143,7 @@ for a soft-threshold `S_τ`, and the sum no longer telescopes: the residual is t
 accumulated *suppressed* increment, which nothing in the construction bounds. Long-run
 coverage is not preserved for free; it has to be re-established.
 
-### The asymmetry nobody has noticed, and it points the wrong way
+### The asymmetry the plan does not address, and it points the wrong way
 
 With `err_t ∈ {0,1}` and `α = 0.10`, the ACI increment takes exactly two values:
 `+0.1γ` when the interval covers, and `−0.9γ` when it misses. A symmetric dead-band of
@@ -289,8 +289,10 @@ The honest structure is:
 > Take a switching-cost-bounded online scheme from the SOCO literature. Show that,
 > applied to the conformal quantile update, it retains the ACI coverage identity.
 
-That is a well-posed problem, it is clearly novel — the intersection is empty in both
-directions — and it makes the related-work section a strength rather than an exposure.
+That is a well-posed problem, it is novel in the precise sense `audit/PRIOR_ART.md` §4.5.2
+fixes — what is unoccupied is a coverage *guarantee* under a movement-penalised conformal
+update, not the pairing of conformal prediction with switching costs as such — and it makes
+the related-work section a strength rather than an exposure.
 The framing "we invent a dead-band" is neither novel nor necessary; the framing "we
 show a known lazy scheme is coverage-safe" is both.
 
@@ -327,7 +329,7 @@ interval "1.0–4.4" is not derivable from the table it claims to summarise
 
 The coverage difference alone is disqualifying for a *quantitative* claim: 75 % and
 90 % intervals have different quantile curvature, so the map from α-jitter to
-width-jitter differs by a factor that nobody has computed.
+width-jitter differs by a factor the plan never computes.
 
 **3. Overlapping ranges are a weak statistic in any case.** Two intervals overlapping
 is not quantitative agreement. It would be satisfied by a wide class of unrelated

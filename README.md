@@ -12,9 +12,11 @@ nominal target. The conjecture this repository is built to test is that the
 adaptation rate is close to *zeroth-order* in coverage and *first-order* in the
 turnover of any downstream decision that must move a position when the interval
 moves. If that holds, a wide band of adaptation rates all hit nominal coverage while
-producing decision costs that differ by percentage points of annual growth, and no
-coverage-based criterion — marginal, conditional or adaptive — can select the
-adaptation rate for a decision that pays to trade. The intended secondary
+producing decision costs that differ by percentage points of annual growth. Across
+arms matched on realised coverage and on mean interval width, realised decision cost
+then varies by a measurable number of points of annual net log growth, and coverage
+and mean width are uninformative for selecting the adaptation rate of a decision that
+pays to trade. The intended secondary
 contribution is a turnover-aware conformal update: a cost-derived dead-band on the
 quantile update, so the interval moves only when accumulated coverage evidence
 outweighs the cost of the position change it implies.

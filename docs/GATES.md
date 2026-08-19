@@ -53,76 +53,137 @@ automated session under any circumstances.**
 
 ## G1 — Prior-art verdict accepted; framing locked; venue chosen
 
-**Status: `not started`.**
+**Status: `ready for review`.** Prepared by session S1 (2026-08-19).
 
 **What this gate asks:** is the project pointed at something real, and does it know what
 it is claiming?
 
-| # | Criterion | How it is evidenced |
-|---|---|---|
-| G1.1 | **The forward-citation screen of Gibbs–Candès ACI has been run**, filtered for cost, turnover, trading and execution, from an environment with a working Semantic Scholar API key | A logged query, a result list committed to `audit/`, and a written verdict. This is the single largest hole in the G0 sweep. |
-| G1.2 | The prior-art sweep has been extended beyond arXiv to Springer, INFORMS and the quantitative-finance journals | Jia & Han (PAKDD 2026) was missed precisely because the sweep was arXiv-centric. That failure must not repeat. |
-| G1.3 | Jia & Han (doi 10.1007/978-981-92-2014-4_25) obtained in full text and its proximity to C1 and C2 assessed from the paper, not the abstract | A note in `audit/PRIOR_ART.md` |
-| G1.4 | The CLEAR / NARROW / OCCUPIED verdicts are re-affirmed or revised after G1.1–G1.3 | `audit/PRIOR_ART.md` revision with a dated amendment |
-| G1.5 | The opening framing no longer claims the anomaly is unexplained | The corrected framing — that Ryan offers an unmeasured, non-turnover-specific conjecture and F7 tests it — is written down and adopted |
-| G1.6 | No claim is framed as an impossibility result, a coverage floor or a fundamental limit | A grep of the draft against the two at-risk phrasings named in `audit/PRIOR_ART.md` §6 |
-| G1.7 | Venue chosen by the operator | `docs/VENUE.md` updated with the decision and its date |
-| G1.8 | The C-a fork is decided: dead-band on the quantile update, or on the decision map | A one-paragraph written decision. C2's scope, novelty and risk all follow from it. |
+**Read `docs/FRAMING.md` before reviewing this gate.** The claims this gate certifies are
+not the claims it was written against. The prior-art sweep found the first claim occupied,
+and the framing is locked around what survives.
 
-**Explicit fail conditions.** G1 fails if the forward-citation screen surfaces a work that
-varies a conformal adaptation rate and reports a downstream movement cost; or if Jia & Han
-turns out to sweep adaptation rate against turnover. Either would move C1 to OCCUPIED, and
-the honest response is to stop and re-scope, not to re-word.
+| # | Criterion | Evidence | Met? |
+|---|---|---|---|
+| G1.1 | **The forward-citation screen of Gibbs–Candès ACI has been run**, filtered for cost, turnover, trading and execution | **Ran in full, with no API key.** 659 unique citing papers across ACI (557), DtACI (188), Conformal PID (147) and SAOCP (101); 38 queries logged verbatim; 12 candidates; zero OCCUPIED, zero NARROW. `research/S1/A1-forward-citations.json`, `audit/PRIOR_ART.md` §7. The instrument was incremental backoff (4 s → 40 s, ~25 retries) against the anonymous Semantic Scholar pool. **The originally prescribed OpenAlex fallback would have produced a false negative** — its ACI record carries 27 citations against Semantic Scholar's 557, a 95 % miss | yes |
+| G1.2 | The prior-art sweep has been extended beyond arXiv to Springer, INFORMS and the quantitative-finance journals | `research/S1/A3-non-arxiv.json` — 130 queries, 12 venues. COPA swept exhaustively: all nine PMLR volumes and all 243 paper abstracts term-scanned. All seven INFORMS journals and seven quantitative-finance journals via Crossref. SSRN reached through Crossref prefix `10.2139`, which sidesteps its 403 wall | yes |
+| G1.3 | Jia & Han (doi 10.1007/978-981-92-2014-4_25) obtained and its proximity assessed from the paper, not the abstract | **Partially met, and the shortfall is recorded.** Abstract, full 26-item reference list, keywords and affiliations obtained from the Springer landing page; the body is closed — no open-access location, no preprint, absent from the author's own publication page. Scored **CLEAR / CLEAR**. `research/S1/A4-fulltext.json` | partial |
+| G1.4 | The CLEAR / NARROW / OCCUPIED verdicts are re-affirmed or revised after G1.1–G1.3 | **Revised, and one moved to OCCUPIED.** `audit/PRIOR_ART.md` §7, dated, superseding §5. Full synthesis in `research/S1/B1-verdicts.md` | yes |
+| G1.5 | The opening framing no longer claims the anomaly is unexplained | `docs/FRAMING.md` §4 item (i); the condemned wording is removed from every working document and marked by dated correction note in the three historical ones | yes |
+| G1.6 | No claim is framed as an impossibility result, a coverage floor or a fundamental limit | `docs/FRAMING.md` §3 states the operational restatement rule; `research/S1/B3-framing-audit.md` lists every hit in the tree with `file:line`; `research/S1/W3-patch-application.md` records the application and the verification greps | yes |
+| G1.7 | Venue chosen by the operator | **NOT MET — operator decision.** `docs/OPEN_QUESTIONS.md` Q3 | no |
+| G1.8 | The C-a fork is decided: dead-band on the quantile update, or on the decision map | **Superseded by the matched-width design and re-posed.** The penalty now sits on the width path — the readout — which is neither of the two original branches. What remains open is the penalty's functional form (`docs/OPEN_QUESTIONS.md` Q7) and whether a validity condition is proved or the arm is reported as a measured control (G3.3) | superseded |
+| **G1.9** | **The matched-width design is recorded in `docs/FRAMING.md` before any code exists** | `docs/FRAMING.md`, committed 2026-08-19. No simulator exists in `src/`; the design is therefore recorded against no results, which is the point of the criterion | yes |
+
+**Explicit fail conditions, as written before the sweep, and how they resolved.** G1 was to
+fail if the forward-citation screen surfaced a work that varies a conformal adaptation rate
+and reports a downstream movement cost, or if Jia & Han turned out to sweep adaptation rate
+against turnover. **Neither occurred.** The screen returned zero OCCUPIED and zero NARROW
+across 659 papers, and Jia & Han is CLEAR on both claims.
+
+**But a fail condition that was not written did occur**, and it is recorded here rather
+than let pass: the claim was found occupied by a work in a **different literature**, which
+neither stated condition would have caught, because both were phrased in conformal
+vocabulary and the occupant uses none of it. See `docs/FRAMING.md` §0. The honest response
+was to re-scope, and that is what `docs/FRAMING.md` §2.2 does.
 
 **Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
 automated session under any circumstances.**
 
 ---
 
-## G2 — C1 reproduced and hardened; protocol frozen and pre-registered
+## G2 — R1 measured under the matched-width design; protocol frozen and pre-registered
 
 **Status: `not started`.** This is the gate that the missing simulator makes into the
 project's critical path.
 
+**Rewritten 2026-08-19 for the matched-width design.** The old G2 was written against a
+design that varied ACI's adaptation rate γ. That design is abandoned; see
+`docs/FRAMING.md` §5 for what the change bought and cost. Criteria G2.1–G2.9 and
+G2.11–G2.12 carry over essentially unchanged because they are about experimental hygiene
+rather than about the manipulated variable. **G2.10 is deleted and replaced; G2.13 is new.**
+
 | # | Criterion | How it is evidenced |
 |---|---|---|
 | G2.1 | A simulator exists in `src/`, and every free choice in `audit/RECONSTRUCTION_SPEC.md` R1–R13 is fixed in a committed configuration file **before** the sweep is run | Config file, committed, with a timestamp preceding the first results JSON |
-| G2.2 | The five tests in `audit/RECONSTRUCTION_SPEC.md` §3 pass: CRN bit-identity, zero-cost invariance, the cost identity, γ=0 degeneracy, and leakage | A test file and a green run recorded in `results/` |
+| G2.2 | The five tests in `audit/RECONSTRUCTION_SPEC.md` §3 pass: CRN bit-identity, zero-cost invariance, the cost identity, the degenerate-arm check, and leakage | A test file and a green run recorded in `results/` |
 | G2.3 | Every run emits a `results/` JSON carrying the full config, the git commit, wall-clock time, library versions, **per-path raw quantities**, and the aggregate table as a derived field | The files themselves |
 | G2.4 | The reproduction targets in `audit/RECONSTRUCTION_SPEC.md` §4 are met, or the failure to meet them is reported as the result | A written comparison |
-| G2.5 | **The interval is the empirical-quantile ACI, not a Gaussian proxy** — or both are run and both reported | R1 is the highest-severity specification risk and a conformal-literate reviewer will find it |
+| G2.5 | **The interval is the empirical-quantile ACI, not a Gaussian proxy** — or both are run and both reported | R1 is the highest-severity specification risk and a conformal-literate reviewer will find it. It matters more under the matched-width design than it did before: the empirical quantile is a *step function* of α_t and therefore already carries a dead-band, which is part of the very mechanism now being manipulated |
 | G2.6 | The 0 bps and 5 bps tables are **displayed**, not asserted | Tables in the repository |
-| G2.7 | `Var(Δq)` reported **both** normalised and absolute, **and** the level statistic `Var(q)` reported alongside | `audit/CLAIMS.md` C-d: the plan may be falsifying a statistic the competing channel does not depend on |
+| G2.7 | `Var(Δq)` reported **both** normalised and absolute, **and** the level statistic `Var(q)` reported alongside | `audit/CLAIMS.md` C-d |
 | G2.8 | An equivalence test with a stated margin replaces "flat within 1 SE" | Absence of evidence is not evidence of absence |
-| G2.9 | Time-at-α-clip and time-at-leverage-cap reported per arm | R5 and R7: the headline γ=0.400 arm may be governed by an undocumented clip |
-| G2.10 | **The Zaffran discriminator is run, in its strict form**: does `Σ\|Δq\|` carry information about net growth **conditional on** `E[L]` across the γ grid? | The weak form — "is turnover monotone in γ" — discriminates nothing. On the plan's own table, excess turnover over the γ=0.005 arm is 1.0, 3.5, 12.4 and 27.6 at γ = 0.020, 0.050, 0.150, 0.400, giving slopes of 67, 78, 86 and 70 per unit γ: **turnover is already approximately affine in γ, which is the same functional form Zaffran proves for mean interval length.** Both are monotone. The conditional test is the one that separates them, and it is the paper's load-bearing assumption |
-| G2.11 | Path count set by the smallest γ difference the paper intends to claim, not the largest | The γ=0.020 comparison sits at 2.5 SE in the plan's own table |
+| G2.9 | Time-at-α-clip and time-at-leverage-cap reported per arm | R5 and R7 |
+| **G2.10** | **The arms are MATCHED, and the match is verified and reported before any growth column is computed.** Realised coverage matched across arms to within **0.002**; `E[L]` matched to within a tolerance stated in the protocol **before the sweep is run**. The match-verification table is produced, committed and inspected **first**; the growth column is computed only afterwards | The match-verification table as its own committed artefact, timestamped before the results JSON that carries growth. **If the arms do not match, the finding is that they do not match** — the tolerance is not to be widened after seeing the growth column, and widening it after the fact is a G2 failure by the same logic as the fail condition below |
+| G2.11 | Path count set by the smallest difference the paper intends to claim, not the largest | Set from the smallest smoother-parameter separation whose growth difference the paper will report |
 | G2.12 | The protocol is pre-registered before the applied arm is touched | A committed, timestamped protocol document |
+| **G2.13** | **Total turnover is decomposed into its ŝ_t-driven and α_t-driven components, per arm** | Two columns per arm plus a residual, in the results JSON. The γ = 0 arm of the abandoned design already carried annual turnover 3.2 entirely from scale-estimator churn, so an undecomposed turnover column cannot attribute anything. This is what makes the manipulated variable identifiable rather than merely correlated |
+| **G2.14** | **The measured path functional is reported under the name it already has in the literature, or under a new name that collides with none of the taken ones** | `Σ\|Δq\|` is already published as Zanotti's MQC/SMQC, and *smoothed conformal*, *stable conformal*, *smoothing-based conformal* and *interval stability* are all taken. `docs/FRAMING.md` §7 item 5 |
+
+### G2.10 — the deleted criterion, and why
+
+The previous G2.10 read:
+
+> **The Zaffran discriminator is run, in its strict form**: does `Σ|Δq|` carry information
+> about net growth **conditional on** `E[L]` across the γ grid?
+
+**It is deleted, and the deletion is recorded rather than silently dropped.**
+
+**The reason it cannot be run: the test is rank-deficient.** Across the only manipulated
+variable of the abandoned design, both `E[L]` and `Σ|Δq|` are approximately affine in γ —
+the plan's own turnover column gives slopes of 67, 78, 86 and 70 per unit γ, and Zaffran's
+Theorem 3.1 gives mean length as affine in γ to leading order. Two regressors that are both
+affine in the single manipulated variable are collinear, so the conditional coefficient is
+not identified. The test could be *computed*; it could not be *estimated*. Recording it as
+an acceptance criterion invited a session to run it and report a number that meant nothing.
+
+**What replaces it is not a weaker test but a different one.** The matched-width design
+achieves by construction what the conditional test was trying to achieve by regression:
+`E[L]` is held fixed, so any growth difference across arms cannot be attributed to it. The
+new G2.10 verifies that construction actually held, which is the assumption the whole design
+rests on. `docs/OUTSTANDING.md` O8 is closed as deleted-with-reason.
 
 **Explicit fail condition.** If the free parameters are adjusted after seeing whether the
-output matches the plan's table, G2 has failed regardless of the numbers. The agreement
-would carry no evidential weight, and the question "how were these constants chosen?" has
-no good answer.
+output matches an expected table, G2 has failed regardless of the numbers. The same applies
+to the matching tolerance in G2.10: a tolerance chosen after seeing the growth column is not
+a tolerance.
 
 **Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
 automated session under any circumstances.**
 
 ---
 
-## G3 — C2 implemented; theorem proved or claim demoted; journal nomination fixed
+## G3 — R2: the movement penalty on the deployed quantile, and what it does to validity
 
 **Status: `not started`.**
 
+**Rewritten 2026-08-19.** The old G3 required a coverage theorem or an explicit demotion.
+**That framing is replaced.** Session S1 established (`research/S1/A6-postprocessing-coverage.json`)
+that no existing result covers a two-sided smoother on a conformal quantile, that the
+enlarging-only monotonicity arguments do not extend to it, and that the obligation is
+narrower than a theorem: **a lemma with three verifiable conditions.** No theorem is
+required, and none may be claimed without a proof.
+
 | # | Criterion | How it is evidenced |
 |---|---|---|
-| G3.1 | The C-a fork decision from G1.8 is implemented as specified | Code in `src/` |
-| G3.2 | The dead-band asymmetry is tested: with α = 0.10 the ACI increment is +0.1γ on cover and −0.9γ on miss, so a symmetric threshold suppresses one direction only | A measured over-coverage result, or a demonstration that an asymmetric threshold is required |
-| G3.3 | **Either** a coverage theorem is proved for the implemented update, with the accumulated-suppression term bounded sublinearly, **or** the claim is demoted to the a-posteriori certificate in `audit/CLAIMS.md` C-a | A proof, or a written demotion. Not a sentence that reads like a theorem and is not one |
-| G3.4 | The Online Balanced Descent potential-function template has been attempted for G3.3 | It is the one concrete technique this audit surfaced for the problem |
+| G3.1 | The movement penalty is implemented on the **width path** — a one-scalar smoother on the deployed quantile `q_t` — as recorded in `docs/FRAMING.md` §1 | Code in `src/`. Note that this is neither branch of the superseded C-a fork; it is the readout |
+| G3.2 | **The dead-band asymmetry is tested.** With α = 0.10 the ACI increment is +0.1γ on a cover and −0.9γ on a miss, so a symmetric threshold suppresses one direction only | A measured over-coverage result, or a demonstration that an asymmetric threshold is required. **Retained deliberately**: it is cheap, and it is the evidence for why the penalty belongs on the readout rather than on the α_t update |
+| **G3.3** | **The smoothed interval's realised coverage is MEASURED and REPORTED, per arm. No theorem is claimed.** | The measured coverage column. **Coverage may be claimed by construction for the RAW arm only.** ACI's telescoping identity is untouched by a readout smoother — and therefore certifies the raw interval, not the deployed smoothed one. Gibbs–Candès Lemma 4.1 turns on `α_t < 0 ⇒ Q̂_t(1−α_t) = ∞ ⇒ err_t = 0`, a property of the construction; feeding the recursion the smoothed indicator breaks that proof. `docs/FRAMING.md` §4, seventh item |
+| **G3.4** | **The three lemma conditions are checked for the specific smoother used**: (a) `q̃_t` is `F_{t−1}`-measurable; (b) deployed miscoverage stays monotone in α_t; (c) α_t stays bounded | (a) is trivial for partial adjustment and (c) follows with lag of order 1/λ. **(b) is where the work is**, and it is the condition that BC-ACI's own coverage proposition (arXiv:2604.13253, Prop. 3) names and secures only by leaving the width mechanism untouched. If (b) holds under a stated bounded-lag condition, that is the paper's technical contribution. If it does not, say so and rely on G3.3 |
 | G3.5 | The dominance claim is stated compatibly with Andrew et al. Theorem 2, using the one-dimensional Theorem 7 exception | "Dominates both" without qualification is not available |
-| G3.6 | The switching-cost literature is engaged in related work | Kalai–Vempala, shrinking dartboard, Andrew et al., smoothed OCO |
-| G3.7 | Journal nomination fixed by the operator | Working default *Stochastic Systems*; the *Mathematics of Operations Research* upgrade is conditional on G3.3 being a proof rather than a demotion |
-| G3.8 | If C2 is demoted, the STOP condition is exercised deliberately: report C1 alone | A written decision, not a drift |
+| G3.6 | The switching-cost literature is engaged in related work | Kalai–Vempala, shrinking dartboard, Andrew et al., smoothed OCO. `paper/sections/related.tex` |
+| **G3.7** | **The forecast-stability literature is engaged in the OPENING, not in related work**, and the no-novelty concession for the readout forms is made explicitly and by name | Godahewa et al. (*IJF* 2025) publish the linear partial-adjustment readout; Genov et al. (*ESWA* 2026, Eq. 18–20) publish the Lipschitz readout-map bound on switching cost. `docs/FRAMING.md` §7 item 1. A paper that does not do this is a rediscovery and will be recognised as one |
+| **G3.8** | **IPOC is read and distinguished, or R2 is stated with its conditional visible** | KDD 2023 doi 10.1145/3580305.3599396 pp. 202–212, and IEEE TKDE 38(5):3277–3290. Unread after eleven failed retrieval routes; requires institutional access. `docs/FRAMING.md` §8. **This is the one open question that could occupy R2** |
+| G3.9 | Journal nomination fixed by the operator | Working default *Stochastic Systems*. The *Mathematics of Operations Research* upgrade is conditional on G3.4(b) being discharged as a proof |
+| **G3.10** | **If R2 cannot be delivered, the project re-scopes rather than submitting R1 alone** | A written decision. **The inherited STOP condition — "fall back to reporting C1 alone" — is now the wrong fallback**, because R1 alone is the occupied leg. `docs/FRAMING.md` §2.3 |
+
+**What was removed and why.** The old G3.3 offered "either a coverage theorem with the
+accumulated-suppression term bounded sublinearly, **or** demotion to an a-posteriori
+certificate". The dichotomy was false in both directions: a full theorem is more than the
+design needs, and demotion is less than it can support. The lemma route in G3.4 is the
+correct middle, and it exists because S1 read the proofs that name its conditions. The old
+G3.4 (attempt the Online Balanced Descent potential-function template) is dropped as a
+criterion — it was the one technique available before those proofs were read, and it is now
+superseded by a specific and cheaper obligation.
 
 **Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
 automated session under any circumstances.**
@@ -187,7 +248,26 @@ automated session under any circumstances.**
 
 ## Note on gate ordering
 
-G2 is the critical path. Nothing in G3, G4 or G5 can be evidenced without a simulator, and
-G1.8 (the C-a fork) should be decided *before* G3 work begins rather than discovered
-during it. G1 and G2 can proceed in parallel: the citation screen does not depend on the
-simulator, and the simulator does not depend on the citation screen.
+**Revised 2026-08-19.**
+
+G2 is still the critical path in the sense that nothing in G3, G4 or G5 can be evidenced
+without a simulator. But the ordering *reason* has changed. Under the abandoned design, G2
+carried the paper: C1 was the result and C2 was the extension. Under the matched-width
+design that is inverted — **G3 carries the paper and G2 is its motivation**
+(`docs/FRAMING.md` §2.2). G2 must still come first mechanically, because the smoother
+cannot be measured before the producer exists; it no longer comes first in importance.
+
+Two consequences for sequencing:
+
+1. **G3.8 (read IPOC) does not depend on the simulator and should be started immediately.**
+   It requires institutional access, not compute, and it is the one open question that could
+   occupy R2 — which is to say, the one that could make the whole build pointless. Resolving
+   it costs a library login and it gates the value of everything downstream.
+2. **G3.4(b) — whether deployed miscoverage stays monotone in α_t under the smoother — can
+   be attacked on paper before any code exists**, and should be. It is the paper's technical
+   contribution if it holds. Discovering during implementation that it does not hold would
+   waste the implementation.
+
+G1.8 is superseded (see G1). What replaces it as the decision that must precede G3 work is
+the penalty's functional form — `docs/OPEN_QUESTIONS.md` Q7 — and it is an operator
+decision, not a discovery.

@@ -1,5 +1,42 @@
 # Coverage Is Turnover-Blind — scope, aim, novelty, references, claims, state, and the order the work should happen in
 
+> ## ⚠️ CORRECTION NOTE — added 2026-08-19 (session S1). Do not edit the report below it.
+>
+> **This report is the historical record of the research-pipeline run.** It is preserved
+> unaltered. Like `docs/G0_REPORT.md` it is largely corrective — §"Objection 1", the
+> correction table at lines 180–193, and the recommendation at line 274 are where four of the
+> six condemned claims were named and their fixes drafted — but it carries three framing
+> residues of its own and two findings since superseded. The binding framing is
+> `docs/FRAMING.md`.
+>
+> Condemned claims this document itself asserts:
+>
+> 1. **Line 85**, the quoted C1 distinguishing sentence — "*a functional … which no coverage
+>    criterion and no efficiency criterion measures*" — is a universal negative over a class
+>    of criteria. Replace the quantifier with the measurement.
+> 2. **Line 89** — "*nobody has measured the temporal path variation of an online conformal
+>    interval, and nobody has priced it in the movement cost of the decision it drives*" —
+>    the same grammar this report condemns two sections earlier. State it as what the sweep
+>    found, bounded by the sweep's documented limits.
+> 3. **Line 123** — "*Nobody has stated that question, let alone answered it*" — same.
+>
+> Findings since superseded (facts, not framing):
+>
+> 4. **Lines 150 and 354** state that the **forward-citation screen of the foundational
+>    adaptive-conformal paper was never run** because the academic search API returned HTTP
+>    429. It ran in S1 (2026-08-19) with **no** API key, using incremental backoff — **659
+>    unique citing papers** across ACI, DtACI, conformal PID and SAOCP. O1 is closed and the
+>    "largest single hole" characterisation no longer applies.
+> 5. **Lines 150 and 355** attribute the Jia & Han (PAKDD 2026) miss to the sweep being
+>    arXiv-centric. True but incomplete: **DBLP indexes the chapter and returns it on the
+>    first query**, and DBLP was already in the sweep's working-tool list. The failure was
+>    instrument choice, not venue coverage.
+>
+> Uses of the word *frontier* in this report at lines 21, 68, 185, 186 and 350 all **report
+> other people's objects** — Srinivas's coverage–efficiency frontier, Zhou & Zhu's
+> miscoverage–regret frontier — or recommend dropping the word for F7's own. Those are
+> correct and are not condemned.
+
 **The answer, first.** F7 is a four-page decision-theoretic workshop paper carrying one measurement claim and one method claim. Its *design* is established; its *evidence* is not. The simulator named as the source of the central table does not exist anywhere on the operator's machine — ten search commands, by filename, by content string, by the distinctive value `0.8993`, across every retained scratch directory and every retained session transcript, all negative [1]. Of 88 numbers catalogued in the planning document, **0 were reproduced from code and 12 are orphans**: asserted in prose, displayed in no table, derivable from nothing, corroborated by nothing [2]. Five load-bearing quantities — the zero-cost null, the 5 bps case, the claimed 1.0–4.4 point magnitude match, the 330× variance rise, the claimed 5–100× statistical power — have no displayed table behind any of them: **a 100% orphan rate in exactly the subset the paper leans on hardest** [2]. And the opening claim, that the anomaly F7 explains is unexplained [3], is contradicted by the abstract of the paper cited for the anomaly [4].
 
 That half is bad, and it is not the whole picture. Three things here were produced by verification rather than assertion: a reference audit that resolved 22 citations on three independent checks and failed 7, one of them cited for the opposite of what it says [5]; independent prior-art verdicts of NARROW for both claims, each with a distinguishing sentence that survives contact with its nearest neighbour [6]; and a 45-entry bibliography built entirely from fetched canonical records [7]. Several of the project's positions came through every check unweakened (§6.B). Nothing below says the idea is bad. What it says is that the central experiment does not currently exist, that four of the five statements the paper leans on hardest have never been printed, and that the gap between established and asserted is wide evidentially and narrow in effort: roughly one week of simulator engineering, one email to another author, and one operator decision.

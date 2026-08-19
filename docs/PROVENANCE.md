@@ -36,12 +36,12 @@ so the `sglblindworkshop` option used by both ML×OR and the E-values workshop s
 exists for anonymous workshops. `neurips_2026.tex` further states that for workshop
 papers "both `\title{}` and `\workshoptitle{}` are required".
 
-## Not yet fetched
+## Not fetched at G0, with their status now
 
 | Artefact | Canonical source | Blocking? | Recorded in |
 |---|---|---|---|
 | TS-LIMITS call-for-papers detail (page limit, anonymity, archival status) | `https://ts-limits.github.io/` — JavaScript-rendered; no method available in this session retrieved the call text | Blocks nothing at G0; blocks a TS-LIMITS submission | `docs/OUTSTANDING.md` |
-| Forward-citation list of Gibbs & Candès ACI | Semantic Scholar graph API (HTTP 429 throughout this session; needs an API key) | **Blocks G1** — it is the prior-art screen most likely to surface a scoop | `docs/OUTSTANDING.md` |
+| Forward-citation list of Gibbs & Candès ACI | Semantic Scholar graph API. HTTP 429 throughout the G0 session; **obtained in S1 (2026-08-19) with no API key via incremental backoff — 659 unique citing papers across ACI, DtACI, conformal PID and SAOCP** | **No longer blocks G1.** O1 is closed | `docs/OUTSTANDING.md` |
 
 ## Facts carried in from external verification
 

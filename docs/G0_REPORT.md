@@ -5,6 +5,41 @@ Costly Decisions*
 **Session date:** 2026-08-19
 **Status: G0 is ready for review. It is not signed, and no automated session may sign it.**
 
+> ## ⚠️ CORRECTION NOTE — added 2026-08-19 (session S1). Do not edit the report below it.
+>
+> **This report is the historical record of the G0 characterisation as it stood.** It is
+> preserved unaltered. It is overwhelmingly a *corrective* document — it is where five of the
+> six condemned claims were first caught — but it carries two framing residues of its own and
+> two findings later superseded. The binding framing is `docs/FRAMING.md`.
+>
+> Condemned claims this document itself asserts:
+>
+> 1. **The C1 distinguishing sentence at lines 190–195** — "*a functional that no
+>    coverage-based and no efficiency-based criterion measures*" — is a universal negative
+>    over a class of criteria, proposed for page one of the paper. Replace the quantifier
+>    with the measurement: across arms matched on realised coverage to within 0.002 and on
+>    mean interval width to within a stated tolerance, realised decision cost varies by N
+>    points of annual net log growth.
+> 2. **Line 126** — "*and no coverage guarantee exists under a movement-penalised update*" —
+>    same grammar, same fix: state it as what the sweep found, bounded by the sweep's
+>    documented instrument limits.
+>
+> Findings later superseded (facts, not framing):
+>
+> 3. This report's prior-art position inherits `audit/PRIOR_ART.md` §0's statement that the
+>    **forward-citation screen of ACI could not be run**. It ran in S1 (2026-08-19) with **no**
+>    Semantic Scholar API key, via incremental backoff — **659 unique citing papers** across
+>    ACI, DtACI, conformal PID and SAOCP. Outstanding item O1 is closed.
+> 4. It likewise inherits the claim that **Wang & Hasuike (arXiv:2605.01176) is the closest
+>    published neighbour to C2**. Full text read in S1: the paper contains **zero**
+>    occurrences of "conformal", "coverage", "quantile" or "prediction interval". It is the
+>    closest neighbour on the *pathology* only.
+>
+> Everything else in this report — the missing simulator, the 0-of-88 reproduction count, the
+> five untabulated load-bearing quantities, the Gârleanu–Pedersen substantive failure, the
+> DtACI refutation of C1's thesis, and the finding that Ryan does explain the anomaly — stands
+> and is the basis of the corrections applied elsewhere.
+
 ---
 
 ## The five findings that most change what this project should do next
