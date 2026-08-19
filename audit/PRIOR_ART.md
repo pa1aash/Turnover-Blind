@@ -209,6 +209,79 @@ give C2 its coverage theorem**. That is a genuinely useful fact: it tells you th
 in `audit/CLAIMS.md` C-a has to be proved directly on the coverage recursion, and it
 explains why the intersection of the two literatures is empty rather than trivial.
 
+### 4.2b Amendment — a 1993 antecedent for "estimate movement causes turnover"
+
+*Added after the Module E sweep, from the research-pipeline run. See
+`docs/HYPERRESEARCH_REPORT.md`.*
+
+The planning document cites "MacLean, Thorp & Ziemba" with no locator and claims to have
+experimentally ruled out the channel it describes. That citation has now been resolved to
+**MacLean, Thorp & Ziemba, "Good and bad properties of the Kelly criterion" (2010)**, and
+reading it produces two findings that bear directly on prior art.
+
+**First, the plan mis-describes the channel.** The plan says the sweep argued the anomaly
+was explained by "noisy **scale** estimates asymmetrically punish Kelly log-growth". What
+the paper actually says is:
+
+> "Given the extreme sensitivity of E log calculations to errors in **mean** estimates,
+> these estimates must be accurate and to be on the safe side, the size of the wagers
+> should be reduced."
+
+and, citing Chopra & Ziemba (1993):
+
+> "the mean is much more important than the variances and co-variances. **Errors in means
+> versus errors in variances were about 20:2:1 in importance** as measured by the cash
+> equivalent value of final wealth."
+
+A conformal interval supplies a **scale** estimate. On the cited source's own numbers,
+that is the channel roughly an order of magnitude *less* important than the one the paper
+warns about. This cuts both ways for F7 and both should be said: the competing
+explanation was weaker than the plan believed, so rejecting it is easier — and
+correspondingly less impressive than "the difference between an over-determined
+observation and an identified mechanism".
+
+**Second, and more consequential: the same paper reproduces a figure of portfolio
+turnover induced by input-estimate error.** Its Figure 2 is captioned "Average turnover
+for different percentage changes in means, variances and co-variances", sourced to
+**Chopra, "Improving Optimization", *The Journal of Investing* 2(3):51–59, 1993**
+(doi 10.3905/joi.2.3.51).
+
+So "moving input estimates induce portfolio turnover" is in the portfolio-optimization
+literature from **1993**, and it appears in the very paper the planning document cites
+and dismisses. **F7 cannot claim that observation.** The verdict in §5 is unchanged —
+this strengthens rather than weakens the reasoning behind it — but the distinguishing
+sentence now has to work harder: F7's claim is not that estimate movement causes
+turnover, which is thirty-three years old, but that **the coverage criterion used to tune
+the estimator cannot see that turnover**.
+
+Both Chopra references have been verified against Crossref and added to
+`audit/REFS_VERIFIED.bib`.
+
+### 4.2c Amendment — the switching-cost "calibration" lead does not scoop C2
+
+*Added after the Module E sweep, from the research-pipeline run.*
+
+The pipeline probed **Li, Yang & Ren, "Expert-Calibrated Learning for Online Optimization
+with Switching Costs" (arXiv:2204.08572)** on the hypothesis that a paper combining
+"calibration" with "switching costs" might already occupy C2's intersection. **It does
+not.** From the paper's own text:
+
+> "By tapping into the power of machine learning (ML) based optimizers, ML-augmented
+> online algorithms (**also referred to as expert calibration in this paper**) have been
+> emerging as state of the art, with provable worst-case performance guarantees."
+
+"Calibration" there is the learning-augmented-algorithms sense — combining an ML
+optimizer with a robust expert to bound the worst-case competitive ratio — not
+statistical coverage calibration. Its comparator is a competitive ratio against an
+offline optimal oracle, and its switching cost is a **Mahalanobis (quadratic)** distance,
+not an L1 movement penalty.
+
+Two consequences. The C2 intersection remains empty, so the NARROW verdict in §5 stands
+and is now better tested. And the quadratic switching cost reinforces §4.1: even inside
+the switching-cost learning literature the quadratic form is the default, which is one
+more reason the L1 dead-band needs Constantinides and Davis–Norman rather than anything
+from this line.
+
 ### 4.3 The closest published neighbour to C2, and it is in the plan's own reference list
 
 **Wang & Hasuike, arXiv:2605.01176** (q-fin.PM, 2026-05-02), *"Decision-Induced Ranking
@@ -232,6 +305,54 @@ blind to it*, and (c) that the damping can be made *coverage-preserving*. Points
 (c) are unoccupied. Point (a) is adjacent to occupied.
 
 ---
+
+## 4.4 Amendment — one work the sweep missed, and the blind spot it reveals
+
+*Added from the research-pipeline run.*
+
+**Jia, Y. and Han, B., "Portfolio Selection with Adaptive Conformal Prediction",
+PAKDD 2026, Lecture Notes in Computer Science vol. 16603, pp. 312–323, Springer Nature
+Singapore, 14 July 2026, doi 10.1007/978-981-92-2014-4_25.**
+
+This is the **closest-titled published work to F7** and it postdates nothing in this
+project — it appeared a month before this audit. Module E's sweep did not find it.
+
+What it does, from its abstract: a model-free portfolio-selection framework in which
+investment risk is estimated by conformal prediction, accommodating distribution shift and
+supplying coverage guarantees; VaR is taken from the lower bound of the conformal
+prediction set; portfolio weights are optimised by projected gradient descent under
+investor-specified constraints. Conformalised strategies with short-selling constraints
+beat equal-weighted and non-conformal counterparts.
+
+**Proximity assessment: close in territory, not in claim.** It does not vary the
+adaptation rate, and neither the abstract nor the indexed metadata mentions transaction
+costs or turnover. It therefore does not occupy C1's or C2's square. But it is a must-cite:
+same application, same method family, one month old, and a reviewer who works in this area
+will know it. Its full text sits behind a JavaScript challenge and **was not read**; the
+proximity assessment above rests on the abstract and should be redone once the PDF is
+obtained. Recorded in `docs/OUTSTANDING.md`.
+
+### The blind spot this exposes, which matters more than the paper
+
+Module E's sweep was **arXiv-centric**. Jia & Han has **no arXiv identifier** — it is a
+Springer LNCS conference chapter. No arXiv API query, however well constructed, could ever
+have returned it. It surfaced here only because Ryan's Conformal Kelly cites it.
+
+Two consequences for how the prior-art verdict should be read:
+
+1. **The sweep's coverage of non-arXiv venues is weak and must be treated as such.**
+   Springer LNCS, INFORMS journals, quantitative-finance journals and SSRN are all
+   substantially invisible to the method used. The CLEAR/NARROW/OCCUPIED verdicts below
+   are conditioned on that.
+2. **The forward-citation screen of Gibbs–Candès ACI, which could not be run because the
+   Semantic Scholar API was rate-limited throughout this session, is now the single
+   highest-value outstanding prior-art action.** It is the one instrument that indexes
+   across venue types and would have caught this. It is recorded as a G1 blocker.
+
+A prior-art verdict produced by an arXiv-only method, which has just been shown to miss
+the closest-titled work in the field, should not be signed off as final. That is a
+statement about the method, not about the conclusion — the conclusion still looks right —
+and it is exactly why G1 requires the citation screen before the framing is locked.
 
 ## 5. Verdicts
 

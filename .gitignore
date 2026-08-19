@@ -17,6 +17,9 @@ data/*
 # vendor names out of the tree; see tools/check_hygiene.sh)
 .remember/
 .[c]laude/
+# Tool-injected local agent instruction file. Not project source; regenerated
+# by `hyperresearch init`, and its content breaks tools/check_hygiene.sh.
+*AUDE.md
 .[c]odex/
 .[g]emini/
 

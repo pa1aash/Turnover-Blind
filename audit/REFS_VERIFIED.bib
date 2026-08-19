@@ -312,6 +312,42 @@
             time-weighted calibration (TWC) as a special case.}
 }
 
+@inproceedings{jia2026portfolio,
+  author    = {Jia, Yusen and Han, Bingyan},
+  title     = {Portfolio Selection with Adaptive Conformal Prediction},
+  booktitle = {Advances in Knowledge Discovery and Data Mining (PAKDD 2026)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {16603},
+  pages     = {312--323},
+  publisher = {Springer Nature Singapore},
+  year      = {2026},
+  doi       = {10.1007/978-981-92-2014-4_25},
+  note      = {[ADDED, AND MISSED BY THE MODULE E SWEEP] Published 14 July 2026. Model-free
+               portfolio selection with risk estimated by conformal prediction; VaR taken
+               from the lower bound of the prediction set; projected gradient descent for
+               weights under investor constraints. The closest-titled published work to F7
+               and one month older. It does NOT vary the adaptation rate and does not
+               report turnover or transaction costs, so it does not occupy F7's square --
+               but it must be cited. It has no arXiv identifier, which is why an
+               arXiv-centric sweep could not see it; it surfaced only because Ryan cites
+               it. Crossref record verified; full text is behind a JavaScript challenge and
+               was NOT read.}
+}
+
+@misc{kato2024cpps,
+  author = {Kato, Masahiro},
+  title  = {Conformal Predictive Portfolio Selection},
+  year   = {2024},
+  eprint = {2410.16333},
+  archivePrefix = {arXiv},
+  primaryClass = {q-fin.PM},
+  note   = {[ADDED] Verified from the paper's own text: ``We assume that investors can
+            adjust their portfolio holdings without incurring additional transaction
+            costs.'' Selects from a discrete candidate set; no Kelly sizing, no leverage,
+            no turnover. A second zero-cost conformal-portfolio precedent alongside
+            Conformal Decision Theory.}
+}
+
 % ---------------------------------------------------------------------------
 % Decision-focused learning and induced turnover
 % ---------------------------------------------------------------------------
@@ -459,6 +495,54 @@
   doi     = {10.1002/j.1538-7305.1956.tb03809.x}
 }
 
+@article{maclean2010goodbad,
+  author  = {MacLean, Leonard C. and Thorp, Edward O. and Ziemba, William T.},
+  title   = {Good and Bad Properties of the {K}elly Criterion},
+  year    = {2010},
+  note    = {[RESOLVED AFTER THE MODULE D AUDIT] Dated 1 January 2010; appears as a
+             chapter in maclean2011kelly. Retrieved as a PDF from
+             https://www.stat.berkeley.edu/~aldous/157/Papers/Good_Bad_Kelly.pdf and
+             extracted directly with pymupdf after the fetch tool rejected it with
+             JUNK_CONTENT. This is almost certainly the work the planning document meant
+             by its locator-free ``MacLean, Thorp \& Ziemba'' citation. Its actual
+             content does NOT say what the planning document attributes to it: the paper
+             warns about sensitivity to errors in the MEAN, and cites chopra1993errors
+             for the finding that errors in means versus variances versus covariances
+             matter in a 20:2:1 ratio. A conformal interval supplies a SCALE estimate,
+             i.e. the weak channel.}
+}
+
+@article{chopra1993errors,
+  author  = {Chopra, Vijay K. and Ziemba, William T.},
+  title   = {The Effect of Errors in Means, Variances, and Covariances on Optimal Portfolio Choice},
+  journal = {The Journal of Portfolio Management},
+  volume  = {19},
+  number  = {2},
+  pages   = {6--11},
+  year    = {1993},
+  doi     = {10.3905/jpm.1993.409440},
+  note    = {[ADDED] The 20:2:1 result. Establishes that scale-estimate error is roughly
+             an order of magnitude less important than mean-estimate error for
+             cash-equivalent wealth, which weakens the significance of falsifying the
+             scale-noise channel.}
+}
+
+@article{chopra1993improving,
+  author  = {Chopra, Vijay K.},
+  title   = {Improving Optimization},
+  journal = {The Journal of Investing},
+  volume  = {2},
+  number  = {3},
+  pages   = {51--59},
+  year    = {1993},
+  doi     = {10.3905/joi.2.3.51},
+  note    = {[ADDED] Source of the average-turnover-versus-input-error data reproduced as
+             Figure 2 of maclean2010goodbad. ESTABLISHES A 1993 ANTECEDENT for the
+             observation that moving input estimates induce portfolio turnover. F7 cannot
+             claim that observation; its claim must be the narrower one that the coverage
+             criterion is blind to the turnover it induces.}
+}
+
 @book{maclean2011kelly,
   editor    = {MacLean, Leonard C. and Thorp, Edward O. and Ziemba, William T.},
   title     = {The Kelly Capital Growth Investment Criterion: Theory and Practice},
@@ -466,11 +550,11 @@
   series    = {World Scientific Handbook in Financial Economics Series},
   year      = {2011},
   doi       = {10.1142/7598},
-  note      = {CANDIDATE RESOLUTION ONLY. The planning document cites ``MacLean, Thorp \&
-               Ziemba'' with no year, title or identifier. This edited volume is the most
-               likely referent; the chapter ``Good and Bad Properties of the Kelly
-               Criterion'' (doi 10.1142/9789814293501_0039) is the most likely specific
-               target. The operator must confirm which work is meant before this is cited.}
+  note      = {The edited volume containing maclean2010goodbad. The planning document's
+               locator-free ``MacLean, Thorp \& Ziemba'' citation is now resolved to that
+               chapter -- see maclean2010goodbad -- but the operator should still confirm
+               that this is the work intended, since the plan's characterisation of it
+               does not match its content.}
 }
 
 @article{rockafellar2000cvar,
