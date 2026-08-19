@@ -178,10 +178,10 @@ deployed width.
 |---|---|---|---|---|
 | `N0` | P-PID | — | No penalty. Rolling-empirical-quantile scorecaster, constant-gain clipped integrator | Reference arm. All matching is to `N0` |
 | `N0t` | P-PID | — | As `N0` with ACT23's tan integrator and their own `C_sat`, `K_I` heuristics | The opposite corner of the exchange: weak inherited rate, small injected movement |
-| `B1` | P-PID | **B** | L2 penalty on the slot: `q̂_{t+1} = (1−λ)q̂_t + λ q̂ʳᵃʷ_{t+1}`, `λ = 1−w` | **Primary treatment.** The placement the claim describes |
+| `B1` | P-PID | **B** | L2 penalty on the slot: `q̂_{t+1} = (1−λ)q̂_t + λ q̂ʳᵃʷ_{t+1}`, `λ = 1−w` | **Working primary, pending OI-1 — NOT a decision.** The L2 form is carried as the reference treatment only so that the specification has a definite arm to match against; **OI-1 is what selects the primary and it is unanswered.** If the operator selects L1, `B1τ` becomes the primary and every match, power and reporting statement below transfers to it unchanged |
 | `B1τ` | P-PID | **B** | L1 penalty on the slot: `q̂_{t+1} = q̂_t + S_τ(q̂ʳᵃʷ_{t+1} − q̂_t)` | The other branch of OI-1. Implemented, not chosen here |
 | `B1a` | P-PID | **B** | As `B1τ` with asymmetric thresholds, `τ⁻/τ⁺ = α/(1−α) = 1/9` | Discharges `docs/GATES.md` G3.2: the accumulator's increments are `+(1−α)` on a miss and `−α` on a cover, so a symmetric threshold suppresses one direction only |
-| `B2` | P-PID | **B** | The penalty is applied to **deployed** movement: `q̂ʳᵃʷ` pre-subtracts `r_{t}(E_{t})`, then the L2/L1 penalty acts, then the result is clipped to `[−b/2, b/2]` | **The named dilemma arm** (§2.3) |
+| `B2` | P-PID | **B** | The penalty is applied to **deployed** movement: `q̂ʳᵃʷ` pre-subtracts `r_{t}(E_{t})`, then the L2/L1 penalty acts, then the result is clipped to `[−B_q, B_q]` | **PROMOTED 2026-08-19 from dilemma arm to the arm that carries what remains of the claim.** Wave 4 withdrew the on-paper result this protocol was first written around, and identified this arm as the only route to a non-degenerate one. **Two changes follow.** The clip is to a declared budget `B_q` rather than to `b/2`: Proposition 2's hypothesis is `[−b, b]`, so any split `B_q + B_s ≤ b` is admissible with the identical proof and the symmetric half-split carries no information. **`B_q/b` therefore becomes a swept parameter, not a constant.** And the arm must be run under distribution shift as well as stationarity, because that is where the answer stops being degenerate: a cancelling scorecaster cut deployed travel from 91.2 to 0.21 at `T = 10⁴` with the clip binding on 24 of 10,000 rounds, and the same construction under shift collapsed to a 1.12× reduction with the clip binding on 89 %. `research/S2/F1-adversarial.json`; `docs/OUTSTANDING.md` O42 |
 | `B3` | P-PID | design lever | Relay / dead-band integrator, `r_t(x) = b·sign(x)·1{|x| ≥ c·h(t)}`, no scorecaster penalty | Condition (4) lower-bounds `r_t` past the threshold and requires neither continuity nor strict monotonicity, so this integrator is admissible and Theorem 1 applies to it verbatim. It contributes exactly zero movement inside the band |
 | `A1` | P-PID | **A** | EMA on the completed output, `q̃_{t+1} = (1−w)q_{t+1} + w q̃_t`; the recursion is fed the **deployed** indicator `1{s_t > q̃_t}` | **The forfeit arm.** This is what a practitioner who smooths the output actually builds |
 | `A1b` | P-PID | **A** | As `A1`, but the recursion is fed the **raw** indicator `1{s_t > q_t}` | The variant in which the inherited identity certifies a set nobody deploys — `docs/FRAMING.md` §4, seventh item |
@@ -1130,7 +1130,11 @@ R1, R2, R6 and R7 are marked OPERATOR in `audit/RECONSTRUCTION_SPEC.md`. This pr
 each a value with a justification, and each is flagged for operator override at freeze time.
 `docs/OPEN_QUESTIONS.md` Q4 is superseded by the placement taxonomy of §1.1–§1.2 — the penalty
 sits in neither of Q4's two branches, and the three placements A, B and C are what the
-experiment now varies. Q6's three sub-questions are answered by R6 and R7 as stated.
+experiment now varies. **Q6 is NOT answered here, and the earlier wording of this sentence overstepped.** R6 and R7
+supply working values with justifications so that the specification is complete and
+executable; **Q6 remains an open operator item** and `docs/OPEN_QUESTIONS.md` is unchanged by
+this session. Where the operator's answer differs from the working value, the operator's
+answer governs and this protocol is amended, not the other way round.
 
 ---
 

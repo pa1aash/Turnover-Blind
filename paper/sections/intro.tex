@@ -99,18 +99,26 @@ PID scorecaster's width path.
 % BIB ENTRY SUPPLIED, wave 3: duerst2024calibrating (doi 10.4054/mpidr-wp-2024-016,
 % record at research/S2/records/10.4054_mpidr-wp-2024-016.json).
 
-\paragraph{Contributions.} What the placement exposes is a trade-off, and that is the paper.
-\textbf{(i)} Deployed movement decomposes as $\Delta q_t = \Delta \hat{q}_t + \Delta r_t$, and
-the integrator's share is out of the penalty's reach: Theorem~1 confines $\hat{q}$ to
-$[-b/2,b/2]$ while the saturation condition drives $r_t$ to $\pm b$, so a scorecaster offsets
-at most half the integrator's reach. \textbf{(ii)} Two independent derivations give the same
-exchange relation: the product of Proposition~2's coverage-gap bound at horizon $T$ with the
-integrator's per-step contribution to travel is a constant of the horizon, equal to
-$2\alpha(1-\alpha)b/T$ for a constant-gain integrator, with the gain cancelling and the
-penalty weight absent. Tightening the inherited guarantee buys movement, and the penalty does
-not buy it back. \textbf{(iii)} Smoothing the \emph{completed} output instead forfeits that
-theorem and its finite-sample rate --- under an EMA of weight $0.999$ the accumulator reached
-$623.7$ against a Proposition~2 bound of $14.8$ --- while long-run coverage survives it, six
-smoother families returning miscoverage $0.1000$--$0.1002$ against $\alpha = 0.1$ over $T = 2
-\times 10^5$. \textbf{(iv)} On a real producer we report coverage, mean width, travel and the
-net log growth of a position charged to move, the first two matched across arms.
+% CONTRIBUTIONS REWRITTEN 2026-08-19 after this session's own adversarial critic overturned
+% the first two. The withdrawn (i) claimed the scorecaster can offset "at most half" the
+% integrator's reach: that is an artefact of the symmetric b/2 + b/2 split, because Prop 2's
+% hypothesis is [-b,b] and b is an analysis constant the designer declares. The withdrawn (ii)
+% claimed an exchange relation in which the penalty weight is absent: both of its factors are
+% independent of the penalty weight BY CONSTRUCTION, so it restated the inheritance rather
+% than pricing it, and it is not conserved on the measured object for the tan integrator.
+% Full record: docs/FRAMING.md 2.2b, research/S2/F1-adversarial.json.
+\paragraph{Contributions.} \textbf{(i)} Smoothing the \emph{completed} output of a quantile
+tracker forfeits the inherited theorem and its finite-sample rate: under an exponential filter
+of weight $0.999$ the accumulator reached $623.7$ against a Proposition~2 bound of $14.8$, and
+the forfeit grows in exactly the time constant a movement-averse designer raises. The failing
+step is the induction's ``saturated at $T$ implies covered at $T$'', not the saturation
+condition, which constrains the integrator alone and which a downstream filter never touches.
+\textbf{(ii)} Long-run coverage nonetheless survives that placement --- six filter families
+return miscoverage $0.1000$--$0.1002$ against $\alpha = 0.1$ over $T = 2 \times 10^5$ --- so
+the price of smoothing downstream is the certificate and its rate, and we claim nothing about
+coverage loss. \textbf{(iii)} Placing the penalty in the scorecaster slot instead forfeits
+nothing, which corrects a claim in print that doing so ``breaks the theoretical coverage
+guarantee'' \citep{li2024neuralconformal}: iteration~(5) quantifies over any function of the
+past, and both penalty forms are convex combinations of quantities already in range.
+\textbf{(iv)} On a real producer we report coverage, mean width, travel and the net log growth
+of a position charged to move, the first two matched across arms.

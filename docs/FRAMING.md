@@ -146,16 +146,83 @@ outputs were richer than the synthesis built from them.**
 > width-movement constraint inside a Conformal PID scorecaster — *"We added the constraint
 > that the scorecaster's width is not allowed to narrow with time."*
 >
-> **What the paper claims instead is the trade-off the placement exposes.** Deployed movement
+> ~~**What the paper claims instead is the trade-off the placement exposes.** Deployed movement
 > is `Δq_t = Δq̂_t + Δr_t`, and the integrator's contribution is **irreducible**: Theorem 1
 > confines `q̂` to `[−b/2, b/2]` while condition (4) forces `r_t` to reach `±b`, so a
 > scorecaster can cancel **at most half** the integrator's reach. Two agents derived the same
 > **conservation law** independently and without contact: the product of Proposition 2's
 > coverage-gap bound at horizon `T` and the integrator's per-step movement is a constant of
-> the horizon, **and the penalty weight `w` does not appear in it** — `ε·M = 2α(1−α)b/T`
-> exactly for a constant-gain integrator, with the gain cancelling, and `π·α(1−α)·K_I/T` for
-> ACT23's tan integrator. **Tightening the inherited guarantee buys movement, and the penalty
-> cannot buy it back.**
+> the horizon, and the penalty weight `w` does not appear in it.~~
+>
+> **WITHDRAWN THE SAME DAY IT WAS WRITTEN, BY THIS SESSION'S OWN ADVERSARIAL CRITIC. THE
+> CONSERVATION LAW IS TRIVIAL AND IS NOT A CONTRIBUTION.** The arithmetic is correct — it was
+> re-derived a third time and confirmed numerically, `ε·M = 2α(1−α)(b+η)/T` with the gain
+> cancelling exactly — **and that is the problem.** Both factors are independent of the penalty
+> weight *by construction*: `ε` is Proposition 2's bound, which the inheritance claim asserts is
+> **unchanged** by the scorecaster, and `M` is *defined* as the integrator's own movement, which
+> the scorecaster does not enter. **"`w` does not appear in `ε·M`" therefore restates the
+> inheritance claim rather than pricing it.** The cancellation of `η` is `x · (1/x)`: ACT23
+> print `c = 1/η` for the constant-gain integrator on the same page as the proof, and `M ∝ η`
+> is immediate. **Two agents deriving it independently is not evidence it is deep; it is
+> evidence it is easy.**
+>
+> Three further defects, any one of which is disqualifying. **It is not conserved on the object
+> the paper measures:** `Σ|Δq_t|` × Proposition 2's bound grows as **Θ(log T)** for ACT23's own
+> default tan integrator — measured 2.37 / 2.97 / 3.53 / 4.15 at T = 10³/10⁴/10⁵/10⁶. **The
+> printed `π·α(1−α)K_I/T` form requires `b = ∞`**, the branch this very section forbids; with
+> ACT23's own `K_I` heuristic the constant is 2.21, not π. And it multiplies a **worst-case
+> certificate** by an **average-case** movement, with one to three orders of magnitude of slack
+> between the bound and the realised gap.
+>
+> **"At most half" falls with it, and for a related reason: it is an artefact of a
+> normalisation.** Theorem 1's proof needs only `s_t − q̂_t ∈ [−b, b]`, because **Proposition 2's
+> hypothesis is `[−b, b]`, not `[−b/2, b/2]`.** ACT23's symmetric `b/2 + b/2` split is one
+> point on a continuum: any split `B_q + B_s ≤ b` works with the identical one-line proof, and
+> `b` is an **analysis constant the designer declares**, not an algorithm input — nothing in
+> iteration (5) needs to know it. Setting `B_q = 0.9b` lets the scorecaster offset 90 % of the
+> saturation level with Theorem 1, Proposition 2, `c` and `h` all unchanged. For the tan
+> integrator the cost of declaring a larger `b` is uniformly bounded, since
+> `c = C_sat·arctan(b/K_I) ≤ C_sat·π/2`; moving the cancellable fraction from ½ to 0.95 costs
+> 37 % on the constant. **The number ½ carries no information about the algorithm.**
+>
+> **And "irreducible" is simply false.** Iteration (5) permits `q̂` to be any function of the
+> past **including `q_i`**, hence of the accumulated error `E_t`. A scorecaster that
+> pre-subtracts the integrator satisfies every hypothesis of Theorem 1 and **cut deployed travel
+> from 91.2 to 0.21 at T = 10⁴**, with realised miscoverage 0.0953 and the budget clip binding
+> on 24 of 10,000 rounds.
+
+**WHAT ACTUALLY SURVIVES, AND IT IS A SMALLER PAPER.** Stated plainly, because the section
+above has now been through two corrections in one day and a reader deserves the current
+position without reconstructing it.
+
+1. **The reduction holds, and it is the tightest point in the whole argument.** The suspected
+   factor-of-two hole is not there: `s′_t = s_t − q̂_t ∈ [−b, b]` and **Proposition 2's
+   hypothesis is exactly `[−b, b]`**, so `b/2 + b/2 = b` is exactly tight and no unstated
+   condition is missing. Three agents attacked the reduction on every axis and none damaged it.
+   **But it is not new** — see the three sources above — so it is a citation, not a claim.
+2. **The Placement A forfeit is the one measured result that survived every attack.**
+   `max|E_t| = 623.7` at `w = 0.999` against a Proposition 2 bound of 14.8, with the forfeit
+   growing in exactly the knob a turnover-motivated designer turns up. Reproducible,
+   falsifiable, and not in print anywhere the session could find.
+3. **The correction of the record against arXiv:2412.18144** — which prints that a scorecaster
+   *"breaks the theoretical coverage guarantee"*, and is wrong — costs one paragraph and is a
+   genuine service.
+
+**That is a measurement paper and a correction, not a theory paper.** `docs/GATES.md` G3.9's
+*Mathematics of Operations Research* upgrade was made conditional on the conservation law and
+**should now be dropped rather than re-argued.**
+
+**THE ONE ROUTE BACK TO A REAL RESULT, found while trying to destroy the current one.** Make
+**deployed travel `Σ|Δq_t|` the movement variable** — not `q̂`'s movement — **and let the
+scorecaster see `E_t`**, which iteration (5) explicitly permits. The question then is *how much
+of the integrator's movement a bounded scorecaster can cancel, as a function of the budget
+split `B_q/b` and the severity of the distribution shift, and what the cancellation costs in
+the certificate.* That has the two things the withdrawn relation lacks — **a free parameter and
+a regime dependence**: the same cancelling scorecaster that cuts travel 91.2 → 0.21 in the
+stationary case collapses to a 1.12× reduction under shift, because the budget clip binds on
+89 % of rounds instead of 24 in 10,000. **The withdrawn conservation law is the degenerate
+corner of this question, obtained by freezing the scorecaster.** It is one experiment away and
+nobody in the vault has asked it. `docs/OUTSTANDING.md` O42.
 
 **What is true about Placement A, and what §2.2's R2 got wrong about it.** §2.2 said the
 downstream smoother breaks the saturation condition, *"because a smoother damps exactly the

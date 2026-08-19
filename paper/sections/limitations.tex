@@ -33,6 +33,19 @@ Appendix~A; and \citet{duerst2024calibrating} already constrain how a Conformal 
 scorecaster's width may move.
 % BIB ENTRY SUPPLIED, wave 3: duerst2024calibrating (doi 10.4054/mpidr-wp-2024-016,
 % record at research/S2/records/10.4054_mpidr-wp-2024-016.json).
+\textbf{We do not claim an exchange relation between the certificate and the movement.} An
+earlier draft did. The product of Proposition~2's bound with the integrator's per-step
+movement is indeed constant in the horizon and free of the penalty weight, but both factors
+are free of the penalty weight by construction --- the bound because the placement leaves it
+unchanged, the movement because it is the integrator's own --- so the relation restates the
+inheritance rather than pricing it, and it fails to hold on the summed deployed travel for the
+tangent integrator of \citet{angelopoulos2023pid}. For the same reason we do not claim that
+the integrator's share is beyond the penalty's reach: iteration~(5) admits a scorecaster that
+depends on the accumulated error, and such a scorecaster cuts deployed travel by more than two
+orders of magnitude when the score distribution is stationary, though the gain falls away when
+the budget clip binds. How much of the integrator's movement a bounded scorecaster can offset,
+as a function of the budget split and the severity of the shift, is the question this paper
+leaves open and does not answer.
 \textbf{The inherited guarantee is weak.} With the tangent integrator of
 \citet{angelopoulos2023pid} and their own constants, condition~(4) holds with $h(t)=t/\log t$,
 so Proposition~2's bound decays as $O(1/\log T)$: at $T=2500$ it certifies realised coverage
