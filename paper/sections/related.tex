@@ -1,22 +1,33 @@
 % Related work.
 %
-% LENGTH: measured 315.2 pt against a NeurIPS 2026 textheight of 650.4 pt = 0.485 pages,
-% compiled with the sglblindworkshop option. THE 0.3-PAGE TARGET IS NOT MET, and it is not
-% reachable while every must-cite stays in: deleting both one-clause blocks still leaves
-% roughly 0.38 pages. In a 4-page body this section is therefore spending about 0.18 pages
-% more than budgeted, and that has to come from somewhere else or from a decision to drop a
-% citation. See docs/OUTSTANDING.md O23 for the ranked cut list and what each cut costs.
+% LENGTH: measured 424.4 pt against a NeurIPS 2026 textheight of 650.4 pt
+% = 0.652 pages, compiled with the sglblindworkshop option. The pre-S2 file
+% measured 325.8 pt (0.501 pages) by the same instrument; the figure of 315.2 pt
+% recorded in the previous header was measured before the amsmath-only macros in
+% this file were replaced. THE 0.3-PAGE TARGET IS NOT MET and was not met before
+% either. The growth is the R2** replacement: FRAMING sec. 6 sentence 9 has been
+% replaced by a concession of the placement to Angelopoulos et al., Dupuy et al.
+% and Duerst et al. plus a claim of the exchange instead, and that is longer than
+% the sentence it replaced. Two further S2 corrections are in: the BC-ACI
+% characterisation, and the closing negative statement, which is now scoped to
+% the arXiv title-and-abstract instrument that actually supports it, because a
+% wave-1 body-text screen found methods-level occupants that a metadata index
+% does not return. See docs/OUTSTANDING.md O23 for the ranked cut list.
 %
+% FRAMING sec. 6 sentences 1-7 are used as they stand and must not be reworded.
 % Every citation key here resolves against audit/REFS_VERIFIED.bib.
+% Base LaTeX + amsfonts only; the amsmath-only macros this file previously used
+% (\lvert, \rvert, \operatorname, \tfrac) have been replaced, since the paper
+% preamble loads amsfonts and nicefrac but not amsmath.
 \section{Related work}
 \label{sec:related}
 
 \citet{zaffran2022aci} price ACI's learning rate in the \emph{level}: Theorem~3.1 gives
-$\mathbb{E}_{\pi_\gamma}[L] = L_0 + \tfrac{1}{2}Q''(1-\alpha)\gamma\alpha(1-\alpha) + O(\gamma^{3/2})$, a
+$\mathbb{E}_{\pi_\gamma}[L] = L_0 + \frac{1}{2}Q''(1-\alpha)\gamma\alpha(1-\alpha) + O(\gamma^{3/2})$, a
 statement about \emph{mean length}, which integrates the path away; we hold it fixed.
 \citet{min2026questioning} also call coverage and length insufficient, but their interval stability
-(Def.~4.1), $\mathbb{E}_X[\operatorname{Var}_{A \mid X, \mathcal{D}_{\mathrm{ca}}}(\lvert C_{1-\alpha}(X)
-\rvert)]$, varies over the algorithm's own randomness given test point \emph{and} calibration set and is
+(Def.~4.1), $\mathbb{E}_X[\mathrm{Var}_{A \mid X, \mathcal{D}_{\mathrm{ca}}}(| C_{1-\alpha}(X)
+|)]$, varies over the algorithm's own randomness given test point \emph{and} calibration set and is
 ``zero for deterministic methods by design'': a deterministic interval oscillating daily scores exactly zero.
 \citet{zhou2025inverse} vary the coverage \emph{level} along a miscoverage--regret trade-off; we fix coverage
 and vary the path.
@@ -27,14 +38,13 @@ daily $\mathrm{sd}(\Delta \log q)$ ($0.00343$ vs.\ $0.00391$) and matched gross 
 \citet{wang2026spoturnover} report that ``[i]ncreasing risk aversion does not meaningfully reduce turnover''
 and damp the \emph{weight} path by a heuristic $\delta = 0.1$ partial adjustment, never swept; their paper
 carries no interval, coverage or quantile object.
-\citet{zhu2026stayorswitch} charge the \emph{decision} for moving and leave the interval free;
-\citet{jia2026portfolio} read a VaR off an adaptive conformal bound; \citet{lin2024cio} calibrate
-inverse-optimisation decisions.
+\citet{zhu2026stayorswitch} charge the \emph{decision} for moving; \citet{jia2026portfolio} read a
+VaR off an adaptive conformal bound; \citet{lin2024cio} calibrate inverse-optimisation decisions.
 
 \citet{godahewa2025stability} already publish the linear partial-adjustment readout
 $\tilde{y} = (1-w_s)\hat{y}_{\mathrm{new}} + w_s\tilde{y}_{\mathrm{prev}}$ as model-agnostic
 post-processing, and \citet{genov2026switching} already bound a decision's switching cost by
-$\beta L_M \sum_t \lVert \hat{y}_t - \hat{y}_{t-v} \rVert$ through a Lipschitz readout map, so we
+$\beta L_M \sum_t \| \hat{y}_t - \hat{y}_{t-v} \|$ through a Lipschitz readout map, so we
 claim no novelty for either form or for the formulation; switching-cost online learning
 \citep{kalai2005lazy,geulen2010dartboard,andrew2013twometrics,chen2018obd} and both maps --- quadratic cost
 giving partial adjustment \citep{garleanu2013dynamic}, proportional cost a no-trade band
@@ -43,9 +53,22 @@ giving partial adjustment \citep{garleanu2013dynamic}, proportional cost a no-tr
 ``indistinguishable in terms of forecast quality''), vary $W_1$ between consecutive updates threefold, and
 price it through a newsvendor; but their functional is over forecast \emph{revisions} of a fixed target, they
 carry no interval and no coverage object, and the effect is $+0.00\%$ in their single-horizon arm.
-Closest on the conformal side, \citet{lade2026bcaci} place an exponentially weighted smoother and
-a dead-zone inside an ACI pipeline, but upstream of the quantile and on the interval centre; their
-coverage proposition holds for any predictable modification precisely because it leaves the width
-mechanism untouched, which is the condition a width smoother puts at risk. On arXiv as of
-August~2026, ``conformal'' pairs with none of ``forecast stability'', ``forecast instability'',
-``forecast congruence'', ``jumpiness'' or ``forecast revision'', in either direction.
+Closest on the conformal side, \citet{lade2026bcaci} place an exponentially weighted smoother and a
+dead-zone in an ACI pipeline but keep both off the width mechanism, and their coverage proposition
+turns on that: they secure the monotonicity their proof needs by modifying only the interval centre
+and the score computation, leaving the quantile-based width mechanism alone. Their own statement of
+that monotonicity's direction is internally inconsistent, and their guarantee is an almost-sure
+Robbins--Monro limit, so we read it as corroboration. The placement used here is conceded likewise
+--- \citet{angelopoulos2023pid} state coverage for any admissible integrator and any scorecaster and
+run a smoothing-family scorecaster themselves, \citet{dupuy2026relevance} give the generic argument
+in their Appendix~A, and \citet{duerst2024calibrating} already constrain a Conformal PID scorecaster's
+width path --- and what we claim is the exchange it exposes.
+% BIB ENTRY SUPPLIED, wave 3: duerst2024calibrating (doi 10.4054/mpidr-wp-2024-016,
+% record at research/S2/records/10.4054_mpidr-wp-2024-016.json).
+Elsewhere in the loop \citet{zheng2025scdsplit}, \citet{wu2025eci}, \citet{chen2023ipoc} and
+\citet{dupuy2026relevance} each reach an obstacle and stop, and \citet{binny2025whomoved} state
+safety only at the fixed point where their smoothing weight is inert. Our negative statements are
+scoped to their instrument: in arXiv title-and-abstract metadata as of August~2026, ``conformal''
+pairs with none of ``forecast stability'', ``forecast instability'', ``forecast congruence'',
+``jumpiness'' or ``forecast revision'', in either direction, while a body-text index does return
+methods-level occupants that a metadata index does not.

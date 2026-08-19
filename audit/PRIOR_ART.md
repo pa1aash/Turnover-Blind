@@ -1010,8 +1010,28 @@ scenarios, and there is no interval and no coverage object.
 
 ### 7.9.3 What the hunt did NOT find, and the absence is well evidenced
 
-> **No paper was found that holds marginals fixed AND measures a temporal path functional
-> AND prices it through a start-up, ramping or cycling cost.**
+> ~~**No paper was found that holds marginals fixed AND measures a temporal path functional
+> AND prices it through a start-up, ramping or cycling cost.**~~
+>
+> **WITHDRAWN 2026-08-19 BY SESSION S2. THIS CLAIM IS FALSE.** The paper §7.9.5 named as the
+> one unresolved risk is exactly such a paper. **Chen, Yang, Li & Liu (2013),
+> doi 10.1109/TENCONSPRING.2013.6584502** holds marginals fixed by construction via a
+> Gaussian-copula correlation matrix, plots the gradient curves of both scenario sets in its
+> Fig. 4, and prices the difference through a stochastic unit commitment whose **Table II
+> carries a per-start start-up cost of \$300–\$4500**, with minimum on/off times and ramp
+> rates. **Q1 ∧ Q2 ∧ Q3 ⇒ OCCUPIED.** An independent restatement exists five years later
+> (Hong Chen & Yu Lei, doi 10.12783/dteees/appeec2018/23559), so it is not a one-paper fluke.
+>
+> **The zero-result queries below are not thereby invalidated, and that is the lesson.** They
+> were run correctly, they are honestly logged, and they still return zero — because the
+> occupant's abstract was absent from the Semantic Scholar title-and-abstract index that every
+> one of them searched. **A well-evidenced absence is evidence about the instrument as much as
+> about the literature.** The paper was found by driving IEEE Xplore with headed Chrome and
+> reading an embedded metadata block, and by pulling its figures and tables from Semantic
+> Scholar's figure-extraction service for the paywalled PDF. Neither route is a search index.
+>
+> `research/S2/D4-hiding-places.json`; `docs/FRAMING.md` §8b item 4; `docs/OUTSTANDING.md`
+> O27–O30.
 
 Both Pinson & Girard (2012) and Bessa (PSCC 2016) explicitly defer the decision step to
 future work — Bessa's own words: "compare the quality of temporal trajectories … in a
@@ -1058,6 +1078,24 @@ costs. **No abstract exists in Crossref, Semantic Scholar or Unpaywall; no open 
 citations.** Whether its compared arms share marginals is unknown, and that is the entire
 question. It is reachable, if at all, by the headed-browser route that defeated the ACM
 Digital Library.
+
+> **RESOLVED 2026-08-19 BY SESSION S2. THE RISK MATERIALISED AND THE HEADING IS SUPERSEDED:
+> it is no longer an unresolved risk, it is an occupancy.**
+>
+> The abstract does exist — in an embedded metadata block on the IEEE Xplore landing page,
+> reachable by headed Chrome, which is a different object from the indexes §7.9.5 searched.
+> All seven figures and tables were recovered from **Semantic Scholar's figure-extraction
+> service**, which serves extracted figures for PDFs that are themselves paywalled. Scored on
+> the rubric: **Q1 yes** — same per-period forecast distributions by construction, via a
+> Gaussian-copula correlation matrix; **Q2 yes** — Fig. 4 plots the gradient curves of both
+> scenario sets; **Q3 yes and priced** — Table II, per-start start-up cost \$300–\$4500, with
+> minimum on/off times and ramp rates; **Q4 yes; Q5 no.**
+>
+> **Q1 ∧ Q2 ∧ Q3 ⇒ OCCUPIED**, by the same rubric applied mechanically that occupied C1′. The
+> body remains unread; two checks could soften the verdict and neither is likely to reverse it
+> (`docs/OUTSTANDING.md` O29). **What R1 retains is Q5 alone** — no coverage object appears
+> anywhere in this literature — **plus the calendar-time-revision-path object distinction.**
+> Whether that carries a paper is `docs/OUTSTANDING.md` O28 and it is not settled here.
 
 ### 7.9.6 Also surfaced, all NARROW, all matched-marginal without a movement charge
 
