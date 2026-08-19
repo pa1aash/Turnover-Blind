@@ -30,10 +30,18 @@ document's citation or use of it.
 |---|---|
 | Distinct reference entries in the planning document | 22 |
 | Entries failing at least one check | **7** |
-| — failing (iii), attribution | 1 substantive + 1 qualified |
-| — failing (ii), metadata | 4 |
-| — failing (i), unresolvable as cited | 1 |
-| — duplicate list entries | 1 |
+
+Failures by check. **These columns sum to more than 7 because one entry fails two checks:**
+MacLean–Thorp–Ziemba is both unresolvable as cited (check (i)) and missing its year and
+title (check (ii)), and is counted once in the total above.
+
+| Check failed | count |
+|---|---|
+| (iii) attribution — substantive | 1 (Gârleanu–Pedersen) |
+| (iii) attribution — qualified | 1 (Vaze) |
+| (ii) metadata | 4 (conformal PID year; conformal risk control author order and missing year; Schmitt method name; MacLean–Thorp–Ziemba missing year and title) |
+| (i) unresolvable as cited | 1 (MacLean–Thorp–Ziemba, **also counted under (ii)**) |
+| list hygiene — duplicate entry | 1 (arXiv:2502.10947) |
 | Entries passing all three checks | 15 |
 | **Failure rate** | **7 / 22 = 31.8 %** |
 
