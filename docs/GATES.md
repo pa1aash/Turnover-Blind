@@ -182,7 +182,9 @@ required, and none may be claimed without a proof.
 | G3.5 | The dominance claim is stated compatibly with Andrew et al. Theorem 2, using the one-dimensional Theorem 7 exception | "Dominates both" without qualification is not available |
 | G3.6 | The switching-cost literature is engaged in related work | Kalai–Vempala, shrinking dartboard, Andrew et al., smoothed OCO. `paper/sections/related.tex` |
 | **G3.7** | **The forecast-stability literature is engaged in the OPENING, not in related work**, and the no-novelty concession for the readout forms is made explicitly and by name | Godahewa et al. (*IJF* 2025) publish the linear partial-adjustment readout; Genov et al. (*ESWA* 2026, Eq. 18–20) publish the Lipschitz readout-map bound on switching cost. `docs/FRAMING.md` §7 item 1. A paper that does not do this is a rediscovery and will be recognised as one |
-| **G3.8** | **IPOC is read and distinguished, or R2 is stated with its conditional visible** | KDD 2023 doi 10.1145/3580305.3599396 pp. 202–212, and IEEE TKDE 38(5):3277–3290. Unread after eleven failed retrieval routes; requires institutional access. `docs/FRAMING.md` §8. **This is the one open question that could occupy R2** |
+| **G3.8** | **IPOC is read and distinguished** | **MET 2026-08-19.** Read in full; its single coverage statement (Lemma 3, §5.1) is Gibbs–Candès imported for the **base model's** interval `c^f_t`, not for the chased ensemble interval the movement cost acts on, and Appendix A's notation table settles the scope. **Q5 = no; the conditional is closed in the project's favour.** `docs/FRAMING.md` §8, `audit/PRIOR_ART.md` §7.8.1. Residual: the TKDE extension's theory section is still unverified |
+| **G3.11** | **R2 is positioned against Dupuy et al. Theorem 2 specifically**, not against an empty field | Dupuy, Xu, Perrey, Montmain & Imoussaten, arXiv:2510.02809 / doi 10.1007/978-3-032-16708-8_17 already prove long-run coverage for an online conformal update explicitly designed to prevent abrupt threshold changes. Their Thms 1 and 3 are the inherited saturating-integrator argument; **their Thm 2 is the case where the width mechanism is driven by the smoothed signal, and it needs a domination hypothesis they themselves call "pretty strong" and "highly dependent on the choice of parameters".** R2 must discharge that assumption or not be written. `audit/PRIOR_ART.md` §7.8.3 |
+| **G3.12** | **No novelty is claimed for the smoother as an object** | Binny & Dixit, arXiv:2511.11567, Eq. (13), publish `q ← (1−γ)q + γ q̂` on a deployed conformal calibration threshold. `docs/FRAMING.md` §2.1 |
 | G3.9 | Journal nomination fixed by the operator | Working default *Stochastic Systems*. The *Mathematics of Operations Research* upgrade is conditional on G3.4(b) being discharged as a proof |
 | **G3.10** | **If R2 cannot be delivered, the project re-scopes rather than submitting R1 alone** | A written decision. **The inherited STOP condition — "fall back to reporting C1 alone" — is now the wrong fallback**, because R1 alone is the occupied leg. `docs/FRAMING.md` §2.3 |
 
@@ -269,10 +271,17 @@ cannot be measured before the producer exists; it no longer comes first in impor
 
 Two consequences for sequencing:
 
-1. **G3.8 (read IPOC) does not depend on the simulator and should be started immediately.**
-   It requires institutional access, not compute, and it is the one open question that could
-   occupy R2 — which is to say, the one that could make the whole build pointless. Resolving
-   it costs a library login and it gates the value of everything downstream.
+1. **G3.8 is met — IPOC has been read and does not occupy R2.** What replaced it as the
+   first thing to do without compute is **G3.11**: position R2 against Dupuy et al.
+   Theorem 2, which is a real attempt at R2's result with a disowned assumption. That is a
+   reading-and-thinking task, not a compute task.
+
+   **An operational note that outranks the finding.** The eleven routes that failed to reach
+   IPOC all assumed the ACM Digital Library's HTTP 403 was a paywall. **It is Cloudflare bot
+   detection; the ACM Digital Library is open access.** A headed system Chrome instance with
+   a persistent profile passes the challenge and the PDF downloads. **Every ACM paper in
+   this project is reachable this way, and the same misdiagnosis is likely hiding several
+   IEEE, Springer and Elsevier items** — see `audit/PRIOR_ART.md` §7.8.7 item 2.
 2. **G3.4(b) — whether deployed miscoverage stays monotone in α_t under the smoother — can
    be attacked on paper before any code exists**, and should be. It is the paper's technical
    contribution if it holds. Discovering during implementation that it does not hold would

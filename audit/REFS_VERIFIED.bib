@@ -855,3 +855,193 @@
              direct evidence that smoothing a threshold costs coverage, scaled by
              smoothing strength.}
 }
+
+% ===========================================================================
+% [ADDED S1 WAVE 5, 2026-08-19] Found by the adversarial critic, which was
+% tasked with overturning this session's own verdicts. Every entry from a
+% record fetched in Wave 5 and saved under research/S1/records/ (Crossref) or
+% research/notes/ (arXiv abstract pages).
+%
+% The first three are the probabilistic-forecast-verification line, where
+% "hold reliability and sharpness fixed and compare the temporal structure"
+% was actually invented -- fourteen years before this project reached it.
+% ===========================================================================
+
+@article{gneiting2007calibration,
+  author  = {Gneiting, Tilmann and Balabdaoui, Fadoua and Raftery, Adrian E.},
+  title   = {Probabilistic Forecasts, Calibration and Sharpness},
+  journal = {Journal of the Royal Statistical Society Series B: Statistical Methodology},
+  volume  = {69},
+  number  = {2},
+  pages   = {243--268},
+  year    = {2007},
+  doi     = {10.1111/j.1467-9868.2007.00587.x},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_1111_j_1467-9868_2007_00587_x.json. The source of the
+             "maximise sharpness subject to calibration" paradigm. Calibration and sharpness
+             are the same evaluation pair as realised coverage and mean interval width under
+             a different name, and this is where that pair was established as the standard.}
+}
+
+@article{pinson2012scenarios,
+  author  = {Pinson, P. and Girard, R.},
+  title   = {Evaluating the quality of scenarios of short-term wind power generation},
+  journal = {Applied Energy},
+  volume  = {96},
+  pages   = {12--20},
+  year    = {2012},
+  doi     = {10.1016/j.apenergy.2011.11.004},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_1016_j_apenergy_2011_11_004.json. Compares three arms on a
+             REAL producer that share the full marginal predictive distribution -- hence
+             identical realised coverage and identical mean interval width by construction --
+             and differ only in temporal dependence structure. It therefore removes both of
+             the distinctions R1 was resting on, fourteen years early. It fails Q3 only: no
+             decision, no movement cost -- and its own conclusion commissions that study.
+             Pierre Pinson is also a co-author of vanbelle2026stabilizing, the work that
+             occupies C1 prime.}
+}
+
+@article{pinson2009wpfscenarios,
+  author  = {Pinson, Pierre and Madsen, Henrik and Nielsen, Henrik Aa. and
+             Papaefthymiou, George and Kl{\"o}ckl, Bernd},
+  title   = {From probabilistic forecasts to statistical scenarios of short-term wind
+             power production},
+  journal = {Wind Energy},
+  volume  = {12},
+  number  = {1},
+  pages   = {51--62},
+  year    = {2008},
+  doi     = {10.1002/we.284},
+  note    = {Record from Crossref, saved at research/S1/records/10_1002_we_284.json.
+             NOTE ON THE CITATION: the adversarial critic reported this as
+             "Pinson, Papaefthymiou, Klockl, Nielsen \& Verboomen (2009), Wind Energy
+             12:51-62". Crossref gives a different author list and an online date of
+             2008-09-22 in issue 12(1). THE FETCHED RECORD IS USED. The method paper behind
+             pinson2012scenarios's three arms. NOT READ; a full text is reported at
+             backend.orbit.dtu.dk. It may contain a decision case study, which would upgrade
+             this line's proximity.}
+}
+
+@misc{binny2025whomoved,
+  author = {Binny, Allen Emmanuel and Dixit, Anushri},
+  title  = {Who Moved My Distribution? Conformal Prediction for Interactive Multi-Agent
+            Systems},
+  year   = {2025},
+  eprint = {2511.11567},
+  archivePrefix = {arXiv},
+  primaryClass = {eess.SY},
+  note   = {Record from the arXiv abstract page, submitted 2025-11-14. **Its Equation (13)
+             publishes the one-scalar smoother on the DEPLOYED conformal calibration
+             threshold verbatim**: a filter on the calibration threshold of the form
+             q <- (1-gamma) q + gamma qhat, with gamma in [0,1] a smoothness hyperparameter.
+             Data-dependent, and it can shrink. Its Theorem 5 is a Banach
+             contraction/convergence result in which gamma does not appear, and its coverage
+             claim holds at the fixed point where the smoother is inert; the transient is
+             never analysed. **The object is therefore not new and no novelty may be claimed
+             for it. The validity property remains open.**}
+}
+
+@inproceedings{dupuy2026relevance,
+  author    = {Dupuy, Th{\'e}o and Xu, Binbin and Perrey, St{\'e}phane and
+               Montmain, Jacky and Imoussaten, Abdelhak},
+  title     = {Relevance-Aware Thresholding in Online Conformal Prediction for Time Series},
+  booktitle = {Communications in Computer and Information Science},
+  pages     = {196--217},
+  year      = {2026},
+  doi       = {10.1007/978-3-032-16708-8_17},
+  eprint    = {2510.02809},
+  archivePrefix = {arXiv},
+  note      = {Crossref record saved at
+               research/S1/records/10_1007_978-3-032-16708-8_17.json; preprint from the arXiv
+               abstract page, submitted 2025-10-03, v2 2025-10-06. **The closest published
+               work to R2 and the one that most constrains it.** Replaces the binary indicator
+               in the online conformal update with a smooth relevance function explicitly to
+               prevent abrupt threshold changes while maintaining coverage validity, and
+               proves three long-run-coverage theorems. Theorems 1 and 3 are inherited from
+               the conformal PID / ECI saturating-integrator argument, by the authors' own
+               proof text. **Theorem 2 is the case where the width mechanism itself is driven
+               by the smoothed signal, and it needs an extra domination hypothesis that the
+               authors immediately disown** as "pretty strong" and "highly dependent on the
+               choice of parameters". That is R2's thesis, stated by someone else, with an
+               attempted theorem attached.}
+}
+
+@misc{wu2025eci,
+  author = {Wu, Junxi and Hu, Dongjian and Bao, Yajie and Xia, Shu-Tao and Zou, Changliang},
+  title  = {Error-quantified Conformal Inference for Time Series},
+  year   = {2025},
+  eprint = {2502.00818},
+  archivePrefix = {arXiv},
+  primaryClass = {stat.ML},
+  note   = {Record from the arXiv abstract page, submitted 2025-02-02, v2 2025-09-08.
+             Counter-evidence in R2's favour and a required citation: states that under a
+             fully smoothed update rule the averaged miscoverage gap cannot be directly
+             controlled, because of the smoothing bias. A second independent group naming the
+             same obstacle.}
+}
+
+@misc{stratigakos2026decisioncalibrated,
+  author = {Stratigakos, Akylas and Wen, Honglin and Spyrou, Elina and Pinson, Pierre},
+  title  = {Decision-calibrated prediction sets for robust power system operations},
+  year   = {2026},
+  eprint = {2606.02081},
+  archivePrefix = {arXiv},
+  primaryClass = {math.OC},
+  note   = {Record from the arXiv abstract page, submitted 2026-06-01. Publishes, in the
+             conformal setting in 2026, the claim that coverage is the wrong criterion to tune
+             on when a decision pays for it. **Two of its authors -- Wen and Pinson -- are
+             co-authors of vanbelle2026stabilizing**, the work occupying C1 prime.}
+}
+
+@misc{shekhar2026pacing,
+  author = {Shekhar, Prashant and Howard, Caroline},
+  title  = {Decision-Calibrated Conformal Uncertainty for Pacing Decisions in Streaming
+            Advertising},
+  year   = {2026},
+  eprint = {2606.10187},
+  archivePrefix = {arXiv},
+  primaryClass = {stat.ML},
+  note   = {Record from the arXiv abstract page, submitted 2026-06-08.}
+}
+
+@article{vanbelle2024nbeats,
+  author  = {Van Belle, Jente and Crevits, Ruben and Caljon, Daan and Verbeke, Wouter},
+  title   = {Probabilistic Forecasting With Modified {N-BEATS} Networks},
+  journal = {IEEE Transactions on Neural Networks and Learning Systems},
+  volume  = {35},
+  number  = {12},
+  pages   = {18872--18885},
+  year    = {2024},
+  doi     = {10.1109/TNNLS.2024.3450832},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_1109_TNNLS_2024_3450832.json. Full text read in Wave 5 via
+             a KU Leuven Lirias open copy. Its Eq. (14) penalises movement of the whole
+             Gaussian (mu-hat, sigma-hat) via a KL, 2-Wasserstein or root-mean-square-change
+             distance between successive predictive distributions. Sigma-hat drift is
+             penalised and is proportional to interval half-width under a Gaussian -- but
+             width is never derived, weighted or evaluated as such. In its full text the words
+             coverage, validity, guarantee, width and nominal each occur ZERO times, and both
+             occurrences of conformal are purely citational. **No coverage or validity
+             statement exists in it.**}
+}
+
+@article{worsnop2018scenarios,
+  author  = {Worsnop, Rochelle P. and Scheuerer, Michael and Hamill, Thomas M. and
+             Lundquist, Julie K.},
+  title   = {Generating wind power scenarios for probabilistic ramp event prediction
+             using multivariate statistical post-processing},
+  journal = {Wind Energy Science},
+  volume  = {3},
+  number  = {1},
+  pages   = {371--393},
+  year    = {2018},
+  doi     = {10.5194/wes-3-371-2018},
+  note    = {Record from Crossref, saved at
+             research/S1/records/10_5194_wes-3-371-2018.json. Pins the matched-marginal
+             construction more literally than pinson2012scenarios does -- its compared
+             scenario sets have "the same quantiles ... the same spread" and differ only in
+             their rank dependence. Cited for the point that matching the marginals is a
+             standard, decades-old construction in this literature, and that it fixes
+             realised coverage and mean width exactly.}
+}

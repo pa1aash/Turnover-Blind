@@ -66,10 +66,19 @@ are recorded here so later sessions can see what changed, followed by what repla
 > movement cost gives linear partial adjustment, proportional cost gives a dead-band. No
 > novelty is claimed for either form.
 
-C1' is occupied by Van Belle et al. §2. C2''s no-novelty concession, which used to cover
-the two functional forms, must now extend to **the readout-map formulation itself**: Genov
-et al. (*ESWA* 2026), Eq. 18–20, already write `x_t = M(ŷ_t)` with `M` assumed Lipschitz
-with constant `L_M`, and bound the switching cost by `β·L_M·Σ‖ŷ_t − ŷ_{t−v}‖`.
+C1' is occupied by Van Belle et al. §2. **C2''s no-novelty concession has had to be extended
+twice, and now covers three things, not one:**
+
+1. the two functional forms — Godahewa et al. (*IJF* 2025) publish the linear
+   partial-adjustment readout as model-agnostic post-processing;
+2. **the readout-map formulation itself** — Genov et al. (*ESWA* 2026), Eq. 18–20, write
+   `x_t = M(ŷ_t)` with `M` Lipschitz with constant `L_M`, and bound the switching cost by
+   `β·L_M·Σ‖ŷ_t − ŷ_{t−v}‖`;
+3. **the smoother applied to a deployed conformal quantile** — Binny & Dixit
+   (arXiv:2511.11567), Eq. (13), `q ← (1−γ)q + γ q̂`, one scalar, data-dependent, able to
+   shrink.
+
+**Nothing about the object is claimed as new. Only the validity condition is.**
 
 ### 2.2 What the paper claims — R1 and R2
 
@@ -212,26 +221,51 @@ These go in the paper. Sentences 1–7 are the related-work section (`paper/sect
 
 **8 — the R1 sentence.**
 
-> Van Belle et al. (2026) match two synthetic forecasters on CRPS and price the difference
-> in their update paths through a newsvendor charged to revise an incumbent order; the
-> question here begins one step later, inside a producer whose coverage is pinned by the
-> conformal construction rather than by a matched data-generating process, and asks what
-> the freedom that remains is worth — with realised coverage *and* mean interval width, the
-> pair the online conformal literature actually tunes on, both held fixed on a real
-> producer, the width path is still free to move, and it is that residual freedom that is
-> priced here in annual net log growth on a position charged to move.
+> Matching a probabilistic forecast's level and comparing what its structure does is not
+> new: Pinson & Girard (2012) match the full marginal across three real wind-power scenario
+> sets — hence coverage and mean width exactly — and compare only their rank dependence,
+> and Van Belle et al. (2026) match CRPS across two forecasters and price the difference
+> through a newsvendor charged to revise an incumbent order. What the scenario literature
+> matches away, however, is the quantity studied here: with the marginals held equal, the
+> calendar-time variation of the deployed width is identically zero across their arms,
+> because the object they vary is the copula within a single forecast issue. This paper
+> varies that revision path instead, on a producer whose level is pinned by a
+> distribution-free calibration construction rather than by a matched data-generating
+> process, and prices it through the decision step that Pinson & Girard's own conclusion
+> commissions and does not take.
+
+**Honest weakness of sentence 8, to be pre-empted in the paper rather than discovered in
+review — and note that this weakness is now DIFFERENT from what it was, and smaller.** The two
+distinctions this file originally gave R1 — that the matched pair is *(coverage, mean
+width)* specifically, and that the producer is real rather than synthetic — are **both
+destroyed by Pinson & Girard**, who match the entire marginal (a strictly stronger control
+that subsumes the pair) on real data, in 2012, inside the reliability-and-sharpness framing
+that *is* this pair under its meteorological name. **R1 therefore rests on Q3 alone: the
+movement-charged decision.** The reviewer line to expect is not "CRPS versus your pair is a
+detail" but the much better "matching the whole predictive marginal is stronger than
+matching your pair, on real data, fourteen years ago". The only answer is that neither
+Pinson & Girard nor the verification literature attaches a decision that pays to move — and
+that answer must be stated in the paper, with Pinson & Girard cited, not left to be found.
+The stronger half of the reply is the object distinction above: their arms have identical
+width paths by construction, so the quantity this paper measures is not merely unmeasured in
+their design — it is identically zero in it.
 
 **9 — the R2 sentence.**
 
 > Godahewa et al. (*IJF* 2025) publish the one-scalar partial-adjustment smoother as
-> model-agnostic post-processing, and Genov et al. (*ESWA* 2026, Eq. 18–20) already bound a
-> decision's switching cost by the forecast path variation through a Lipschitz readout map;
-> neither object carries a validity property, and the one statement in print about what a
-> post-hoc smoother does to a conformal quantile is SCD-split's remark that it invalidates
-> the guarantee — so what remains to establish is the condition under which a movement
-> penalty on the *deployed* quantile keeps ACI's long-run coverage, which is exactly the
-> monotonicity hypothesis that BC-ACI's own coverage proposition names and secures only by
-> leaving the width mechanism untouched.
+> model-agnostic post-processing, Genov et al. (*ESWA* 2026, Eq. 18–20) bound a decision's
+> switching cost by the forecast path variation through a Lipschitz readout map, and Binny
+> & Dixit (arXiv:2511.11567, Eq. 13) apply exactly this smoother to a deployed conformal
+> threshold — so we claim novelty for none of them; what no one has established is the
+> condition under which the smoothed quantile stays valid *in transit*, and four independent
+> groups have now named that obstacle without clearing it: SCD-split states that post-hoc
+> smoothing of the conformal quantile invalidates the guarantee, ECI that a fully smoothed
+> update leaves the averaged miscoverage gap uncontrolled because of the smoothing bias,
+> IPOC that its chased interval can only "approximately guarantee" coverage, and Dupuy et
+> al. prove it under a domination hypothesis they themselves call "pretty strong" and
+> "highly dependent on the choice of parameters" — which is precisely the monotonicity
+> condition BC-ACI's coverage proposition names and secures only by leaving the width
+> mechanism untouched.
 
 **Honest weakness of sentence 8, to be pre-empted in the paper rather than discovered in
 review.** A hostile reviewer will say: *you matched a level functional; so did they; CRPS
@@ -245,12 +279,18 @@ about accuracy in general. That answer is defensible. It is not overwhelming.
 
 ## 7. Positioning rules that follow
 
-1. **The forecast-stability chain goes in the OPENING, not in related work.** Godahewa et
-   al. 2025; Van Belle et al. 2023, 2024, 2026; Pritularga & Kourentzes 2024; Caljon et al.
-   2026; Tunc et al. 2013; Genov et al. 2026. A four-page paper that cites this chain first
-   and then says what the conformal setting adds is a legitimate contribution. The same
-   paper without those citations is a rediscovery, and anyone from forecasting will
-   recognise it as one.
+1. **Two chains go in the OPENING, not in related work.**
+   **(a) Forecast stability:** Godahewa et al. 2025; Van Belle et al. 2023, 2024, 2026;
+   Pritularga & Kourentzes 2024; Caljon et al. 2026; Tunc et al. 2013; Genov et al. 2026.
+   **(b) Probabilistic-forecast verification, which is where "hold reliability and sharpness
+   fixed and compare the temporal structure" was actually invented:** Gneiting, Balabdaoui &
+   Raftery (2007) — the "sharpness subject to calibration" paradigm, i.e. this project's
+   matched pair under its own name; Pinson & Girard (2012); Worsnop et al. (2018);
+   Pinson et al. (2008).
+   A four-page paper that cites both chains first and then says what the conformal setting
+   adds is a legitimate contribution. **The same paper without chain (b) repeats the exact
+   failure mode that occupied C1′, one literature over** — and Pinson is an author in both
+   chains and a likely reviewer.
 2. **Do not claim "coverage and length are not sufficient" as this project's move.** Cite
    Min et al. and Vaze first, then name the quantity added.
 3. **Do not use a vertical/horizontal (revision-index versus calendar-time) distinction to
@@ -278,25 +318,92 @@ about accuracy in general. That answer is defensible. It is not overwhelming.
 
 ---
 
-## 8. The open conditional
+## 8. The IPOC conditional — CLOSED 2026-08-19, in the project's favour
 
-**R2's distinguishing sentence is void if IPOC's confidence-interval theorem quantifies over
-the movement-constrained chased object.**
+**IPOC has been read in full, and its coverage guarantee does not quantify over the
+movement-constrained object. R2's distinguishing sentence is not void.**
 
-IPOC — Chen, Luo, Huang, Jiang, Shi, Zhang & Gao, KDD 2023, doi 10.1145/3580305.3599396,
-pp. 202–212, and its extension, IEEE TKDE 38(5):3277–3290, doi 10.1109/TKDE.2026.3674583 —
-is **unread**. Eleven retrieval routes failed in session S1: the ACM Digital Library returns
-HTTP 403 to direct fetch, to a real browser and to a server-side fetch; ResearchGate 403s;
-Unpaywall reports it closed; there is no arXiv preprint though the first author has four
-others; nothing is on the authors' pages; IEEE Xplore is JavaScript-gated. Its abstract
-claims validation "through sublinear regret analysis and satisfaction of confidence interval
-requirements", and the extension states "The chasing regret of the Chasing Oracle is O(L_c)"
-— a coverage-type guarantee and an explicit movement cost in one theory sentence.
+Chen, Luo, Huang, Jiang, Shi, Zhang & Gao, *IPOC*, KDD 2023, doi 10.1145/3580305.3599396,
+pp. 202–212. Obtained in Wave 5 after eleven earlier routes failed. **The eleven failures
+shared one wrong premise: that the ACM Digital Library's HTTP 403 was a paywall. It is
+Cloudflare bot detection, and the ACM Digital Library is open access.** A headed system
+Chrome instance driven through a persistent profile passes the challenge and the full
+eleven-page PDF downloads. **Every ACM paper in this project is reachable this way**, and
+that is the single most useful operational fact this session produced.
 
-**It requires institutional access. Until it is read, R2 is stated with the conditional
-visible, and no gate that depends on R2's novelty may be signed.**
+**What the theorem actually says.** IPOC has exactly one coverage statement — Lemma 3 in
+§5.1, titled "The Effectiveness of ACI", imported verbatim from Gibbs & Candès: *"The
+average miscoverage ratio of confidence intervals {c^f_t} will converge to α with enough
+training steps."* Appendix A's notation table is decisive: `c^f_t` is "confidence interval
+of **model f** at time t by ACI", where `f` is the point prediction model and `f̄`, listed
+separately, is the ensemble model. **The guarantee is on the base model's interval, not on
+the chased ensemble interval that the movement cost acts upon.** The chased interval's
+validity is asserted and never proved — §5.1 says only that "we can still approximately
+guarantee coverage rate, which is verified in the experiment results". Theorems 1 and 2 are
+pure pinball-loss regret.
+
+**IPOC is therefore a supporting citation, not a threat.** Its own hedge is a fourth
+independent instance of the obstacle R2 names.
+
+**One residual, and it is small.** The TKDE 2026 extension's theory section
+(doi 10.1109/TKDE.2026.3674583, IEEE Xplore article 11435627) is still unread — the abstract
+was obtained, `isOpenAccess` is false, and the PDF download timed out. Its abstract
+enumerates only the same two regret results plus a Dd-MDP solvability framework, so a new
+coverage theorem is unlikely, but this is formally unverified. `docs/GATES.md` G3.8.
 
 ---
+
+## 8b. What replaced it — the conditionals that are actually open
+
+**These are more constraining than the IPOC conditional was, and they are what a later
+session must attack.**
+
+1. **R1 no longer survives on the two distinctions this file originally gave it.**
+   **Pinson & Girard, *Applied Energy* 96:12–20 (2012), doi 10.1016/j.apenergy.2011.11.004**
+   compares three arms on a **real** producer that share the **full marginal predictive
+   distribution** — hence identical realised coverage and identical mean interval width, by
+   construction, a strictly stronger control than the pair — and varies only the temporal
+   dependence structure, and states the Q4 moral. It fails **Q3 only**: no decision, no
+   movement cost. And its own conclusion commissions exactly that study: *"a more intuitive
+   approach to the evaluation of sets of scenarios may be to concentrate on their value
+   instead, i.e. on the comparative benefits from their use as input to various
+   decision-making problems."*
+   **The aggravating fact:** **Pierre Pinson is a co-author of the paper that occupies C1′**,
+   and is a likely reviewer. Worsnop, Scheuerer, Hamill & Lundquist (*WES* 3:371–393, 2018)
+   pin the construction still more literally — their compared scenario sets have "the same
+   quantiles … the same spread".
+
+   **But R1 survives for a reason nobody in this session had identified, and it is better
+   than the two that died.** Because these papers match the *marginals*, `Σ|Δq_t|` differs by
+   **zero** across their arms. They vary the copula **within a single forecast issue** — the
+   rank dependence across lead times inside one scenario set — not the **calendar-time
+   revision path of the deployed width**. Those are different objects, and the distinction
+   is an *object* distinction, not the banned time-axis move of §7 rule 3: the quantity R1
+   varies is identically constant in their design, so their design cannot measure it even in
+   principle. **State R1 on that basis**, and note that Q3 fails in all of them — Pinson &
+   Girard and Bessa (PSCC 2016) both defer the decision step to future work, and Pinson &
+   Girard's conclusion commissions it explicitly.
+2. **R2's object is not new.** **Binny & Dixit, arXiv:2511.11567, Eq. (13)** publishes the
+   one-scalar smoother on the deployed conformal calibration threshold verbatim:
+   `q ← (1−γ)q + γ q̂`, data-dependent, able to shrink. Their Theorem 5 is a Banach
+   contraction result in which γ does not appear, and their coverage claim holds at the
+   fixed point where the smoother is inert; the transient is never analysed. **The property
+   is still open. The object is not.**
+3. **The question is already contested.** **Dupuy, Xu, Perrey, Montmain & Imoussaten,
+   arXiv:2510.02809 / doi 10.1007/978-3-032-16708-8_17** replaces the binary indicator in
+   the online conformal update with a smooth relevance function, explicitly to prevent
+   abrupt threshold changes while maintaining coverage validity, and proves three long-run
+   coverage theorems. Theorems 1 and 3 are inherited from the saturating-integrator
+   argument. **Theorem 2 is the case where the width mechanism itself is driven by the
+   smoothed signal, and it needs a domination hypothesis the authors immediately disown** as
+   "pretty strong" and "highly dependent on the choice of parameters". **That is R2's thesis,
+   stated by someone else, with an attempted theorem attached.** R2 must now be positioned
+   against Dupuy Theorem 2 specifically — as discharging the assumption they could not, or
+   as not being written at all.
+4. **Every "nothing in the literature" statement in this project is abstract-level only.**
+   The OpenAlex full-text budget was exhausted before the adversarial wave began and not one
+   of the named full-text queries ran. Full-text search is the only instrument that sees a
+   smoother in a methods section.
 
 ## 9. Evidentiary basis
 

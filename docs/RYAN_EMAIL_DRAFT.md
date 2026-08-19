@@ -3,7 +3,7 @@
 **Status: DRAFT. Not sent. [OPERATOR INPUT] — Palaash sends this himself.**
 
 Prepared 2026-08-19. Recipient address not known to this repository; see
-`docs/OPEN_QUESTIONS.md` Q9.
+`docs/OPEN_QUESTIONS.md` Q10.
 
 **What it asks for.** The experiment ledger offered in Appendix A of *Conformal Kelly*
 (arXiv:2608.01494v1, q-fin.PM, 2 Aug 2026): `results.tsv` (47 rows) and `NOTES.md`, on
@@ -35,13 +35,12 @@ the trading-cost channel or through the estimation-variance channel your §"stru
 explanation" proposes. With 47 rows of turnover alongside the growth column, the question
 is settled arithmetically on real multi-asset data.
 
-I am building a controlled synthetic experiment aimed at the same distinction, and would
-much rather calibrate it against your numbers than guess at them. Anything you send would
-be cited and acknowledged explicitly; if the comparison develops into a substantive
-result I would be glad to discuss co-authorship rather than presume either way.
+I am building a controlled experiment aimed at the same distinction, and would rather
+calibrate it against your numbers than guess at them. Anything you send would be cited and
+acknowledged explicitly, and if the comparison develops into a substantive result I would
+be glad to discuss co-authorship rather than presume either way.
 
-Happy to sign anything you need regarding the data snapshot, and equally happy to be told
-no.
+Happy to sign whatever the data snapshot needs, and equally happy to be told no.
 
 With thanks,
 
@@ -50,7 +49,7 @@ palaashgang@gmail.com
 
 ---
 
-*(Body word count: 197.)*
+*(Body word count: 189, salutation to sign-off. Counted, not estimated.)*
 
 ## Notes for the sender
 

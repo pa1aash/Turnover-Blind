@@ -806,3 +806,149 @@ Stated so that the verdicts are read with their instrument, in the spirit of §0
   and Semantic Scholar agree on the true one and it is what `audit/REFS_VERIFIED.bib`
   carries.
 - Ryan's *Conformal Kelly* also has an SSRN record, doi 10.2139/ssrn.7221760.
+
+---
+
+## 7.8 Amendment — the adversarial pass, 2026-08-19
+
+*Added after §7 was written. A critic was tasked with overturning this session's own
+verdicts: assume they are wrong and find the paper that proves it. It did not overturn
+either, and it damaged both. It also resolved the session's largest open question.*
+
+### 7.8.1 IPOC is read. Its Q5 is NO. The conditional in §7.6 item 1 is closed.
+
+**The eleven failed routes shared one wrong premise: that the ACM Digital Library's HTTP
+403 was a paywall. It is Cloudflare bot detection, and the ACM Digital Library is open
+access.** A headed system Chrome instance driven through a persistent profile passes the
+challenge, and the full eleven-page PDF downloads. **Every ACM paper in this project is
+reachable this way.** That is an operational fact worth more than the finding it produced.
+
+**What the theorem says.** IPOC has exactly one coverage statement — Lemma 3 in §5.1,
+titled "The Effectiveness of ACI", imported verbatim from Gibbs & Candès: *"The average
+miscoverage ratio of confidence intervals {c^f_t} will converge to α with enough training
+steps."* Appendix A's notation table settles the scope: `c^f_t` is "confidence interval of
+**model f** at time t by ACI", where `f` is the point prediction model and `f̄`, listed
+separately, is the ensemble. **The guarantee is on the base model's interval, not on the
+chased ensemble interval the movement cost acts upon.** The chased interval's validity is
+asserted and never proved — §5.1 offers only "we can still approximately guarantee coverage
+rate, which is verified in the experiment results". Theorems 1 and 2 are pinball-loss regret.
+
+**IPOC becomes a supporting citation, not a threat.** Its hedge is a fourth independent
+instance of the obstacle R2 names. The TKDE extension's theory section remains unread
+(`isOpenAccess: false`, PDF download timed out); its abstract enumerates only the same two
+regret results plus a Dd-MDP framework.
+
+### 7.8.2 R1's two stated distinctions are destroyed. It survives on Q3 alone.
+
+**Pinson, P. & Girard, R., "Evaluating the quality of scenarios of short-term wind power
+generation", *Applied Energy* 96:12–20 (2012), doi 10.1016/j.apenergy.2011.11.004.**
+
+§7.4 rested R1's survival on exactly two claims: that the matched pair is *(realised
+coverage, mean interval width)* specifically rather than any level functional, and that the
+producer is real rather than a synthetic two-DGP simulation. **Both are false.**
+
+Pinson & Girard compare three arms on a **real** producer that share the **full marginal
+predictive distribution** — hence identical realised coverage and identical mean interval
+width, exactly, by construction — and differ only in temporal dependence structure. That is
+a **strictly stronger** control than the pair, and it subsumes it. They do it inside the
+reliability-and-sharpness framing, citing Gneiting, Balabdaoui & Raftery for the paradigm —
+**which is this project's matched pair under its meteorological name.** And they state the
+Q4 moral.
+
+**They fail Q3 only: no decision, no movement cost.** Their own conclusion commissions
+exactly the missing study: *"a more intuitive approach to the evaluation of sets of
+scenarios may be to concentrate on their value instead, i.e. on the comparative benefits
+from their use as input to various decision-making problems."*
+
+**So R1 rests on Q3 — the movement-charged decision — and on nothing else.** The reviewer
+line to expect is not the one §7.4 anticipated; it is *"matching the whole predictive
+marginal is stronger than matching your pair, on real data, fourteen years ago."*
+
+**Aggravating fact: Pierre Pinson is a co-author of Van Belle et al. (arXiv:2605.28531), the
+work that occupies C1′.** The two papers that between them cover everything R1 claimed share
+an author, and he is a likely reviewer.
+
+**Consequence for positioning:** the **probabilistic-forecast-verification line** must join
+the forecast-stability chain in the paper's opening — Gneiting, Balabdaoui & Raftery (2007);
+Pinson & Girard (2012); Pinson et al. (2008). **Omitting it repeats the exact failure mode
+that occupied C1′, one literature over.**
+
+### 7.8.3 R2's object is not new, and the question is already contested
+
+| Work | What it does to R2 |
+|---|---|
+| **Binny & Dixit, "Who Moved My Distribution?", arXiv:2511.11567, Eq. (13)** | **Publishes R2's smoother verbatim** on the deployed conformal calibration threshold: `q ← (1−γ)q + γ q̂`, one scalar, data-dependent, able to shrink. Their Theorem 5 is a Banach contraction result in which γ does not appear, and the coverage claim holds at the fixed point where the smoother is inert; the transient is never analysed. **The object is not new. The property is still open.** |
+| **Dupuy, Xu, Perrey, Montmain & Imoussaten, arXiv:2510.02809 / doi 10.1007/978-3-032-16708-8_17** | **The closest published work to R2 and the one that most constrains it.** Replaces the binary indicator in the online conformal update with a smooth relevance function, explicitly to prevent abrupt threshold changes while maintaining coverage validity, and proves three long-run coverage theorems. Theorems 1 and 3 are inherited from the saturating-integrator argument, by the authors' own proof text. **Theorem 2 is the case where the width mechanism itself is driven by the smoothed signal — and it needs a domination hypothesis the authors immediately disown**, as "pretty strong" and "highly dependent on the choice of parameters ω and v". **That is R2's thesis, stated by someone else, with an attempted theorem attached.** |
+
+**R2 must now be positioned against Dupuy Theorem 2 specifically** — as discharging the
+assumption they could not, or as not being written.
+
+### 7.8.4 A statement in §7 and in `docs/FRAMING.md` was false and is corrected
+
+Both asserted that *the one statement in print about what a post-hoc smoother does to a
+conformal quantile is SCD-split's remark that it invalidates the guarantee.* **There are at
+least four**, and the corrected sentence is **stronger**, because four independent groups
+hitting the same obstacle is better evidence that the obstacle is real and unsolved than one
+remark ever was:
+
+1. **SCD-split** (arXiv:2509.22529) — post-hoc smoothing of the conformal quantile
+   invalidates the coverage guarantee.
+2. **ECI** (Wu, Hu, Bao, Xia & Zou, arXiv:2502.00818) — under a fully smoothed update rule
+   "we cannot directly control the averaged miscoverage gap … due to the smoothing bias".
+3. **Dupuy et al.** — Theorem 2's self-disowned domination assumption.
+4. **IPOC** §5.1 — "we can still approximately guarantee coverage rate, which is verified in
+   the experiment results".
+
+### 7.8.5 Two further must-cites, both with authors shared with the occupant
+
+- **Stratigakos, Wen, Spyrou & Pinson, "Decision-calibrated prediction sets for robust power
+  system operations", arXiv:2606.02081.** Publishes, in the conformal setting in 2026, the
+  claim that coverage is the wrong criterion to tune on when a decision pays for it. **Two
+  of its authors — Wen and Pinson — are co-authors of the work occupying C1′.**
+- **Shekhar & Howard, "Decision-Calibrated Conformal Uncertainty for Pacing Decisions in
+  Streaming Advertising", arXiv:2606.10187.**
+
+### 7.8.6 Settled, and corrected
+
+- **Van Belle et al. (2024), *IEEE TNNLS* 35(12):18872–18885, is fetched and settled.** Its
+  Eq. (14) penalises movement of the whole Gaussian via KL, 2-Wasserstein or
+  root-mean-square-change distance; σ̂-drift is penalised and is proportional to interval
+  half-width under a Gaussian, but **width is never derived, weighted or evaluated as
+  such**, and in its full text *coverage*, *validity*, *guarantee*, *width* and *nominal*
+  each occur **zero** times. No coverage object. ADJACENT.
+- **The Genov companion line is closed:** there is no second stability paper, and the
+  readout-map Lipschitz argument is new in the *ESWA* v5 revision, absent from arXiv v2.
+- **The KU Leuven / DTU programme is four items, not three, and none adds coverage content.**
+- **A citation correction, and it is the reason the fetched-record rule exists.** The critic
+  reported the scenario method paper as "Pinson, Papaefthymiou, Klöckl, Nielsen & Verboomen
+  (2009), *Wind Energy* 12:51–62". **Crossref gives a different author list and an online
+  date of 2008.** The fetched record is used in `audit/REFS_VERIFIED.bib`.
+
+### 7.8.7 Where a scoop is still hiding — three named places, with routes
+
+1. **The decision-value follow-up to Pinson & Girard.** Matched-marginal scenario sets
+   priced through stochastic unit commitment or hydro/battery scheduling, where start-up and
+   ramping costs charge an incumbent schedule for moving. **That is Q1 ∧ Q2 ∧ Q3 on a real
+   producer, and R1 falls outright.** Pinson & Girard has 257 citations and the traversal
+   returned 1,023 unique citing papers, screened at abstract level only — and
+   matched-marginal construction is a methods-section fact that rarely reaches an abstract.
+   The named unclosed candidate is **Rachunok, Staid, Watson & Woodruff, *Applied Energy*
+   274:114986 (2020), doi 10.1016/j.apenergy.2020.114986**; the single question is whether
+   its three scenario-creation methods share matched marginals. Three fetch attempts failed
+   on network reachability.
+2. **The applied conformal layer behind publisher bot walls**, which this project wrongly
+   treated as paywalls for an entire session. The named item is **"AQA",
+   doi 10.1109/CEEPE69795.2026.11552153**, which "anchors the conformal threshold to a
+   weighted estimate of recent score quantiles" to produce narrower *and* more stable
+   intervals — the closest method match to R2's object after Binny & Dixit. Now reachable by
+   the proven headed-Chrome route, along with the IPOC extension, Conformal-ABR's full text,
+   and the three title-only-screened incumbent-state candidates in §7.6 item 4.
+3. **The hydrology and reservoir-operations branch of the Schaake-shuffle and
+   ensemble-copula-coupling literature, which is entirely absent from this repository** —
+   `Schaake`, `copula coupling`, `variogram` and `PINAW` return **zero** occurrences across
+   the whole tree. ECC and the Schaake shuffle **preserve the univariate margins exactly by
+   construction** and change only the rank dependence, so *every* ECC-versus-alternative
+   comparison is automatically a matched-(coverage, width) comparison on a real producer.
+   Reservoir operations charge for changing releases through ramping limits, re-operation
+   penalties and hydropower start-up. The branch's own vocabulary was never used as a query
+   in any instrument this session.
