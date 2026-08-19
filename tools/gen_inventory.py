@@ -33,6 +33,7 @@ DESCRIPTIONS = {
     "docs/VENUE.md": ("source", "Venue scoring across ML*OR and five alternatives, with a ranked recommendation and a desk-rejection compliance checklist."),
     "docs/GATES.md": ("source", "Stage gates G0-G6 with acceptance criteria fixed in advance. No gate may be recorded as signed by an automated session."),
     "docs/COMPUTE.md": ("source", "Compute plan. CPU-only working assumption, with the conditions that would change it and the instance spec if one is ever needed."),
+    "audit/RECONSTRUCTION_SPEC.md": ("output", "Specification a rebuild of the missing simulator would need, with all thirteen underdetermined choices listed and ranked by severity."),
     "docs/HYPERRESEARCH_REPORT.md": ("output", "Consolidated output of the research-pipeline run: scope, aim, novelty, references, claims, current state, forward pipeline."),
     "docs/G0_REPORT.md": ("output", "The G0 characterisation report. Session deliverable; opens with the five findings that most change what the project should do next."),
     "audit/INVENTORY.md": ("output", "This file. Complete file-by-file state of the repository."),

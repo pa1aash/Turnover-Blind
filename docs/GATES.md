@@ -95,7 +95,7 @@ project's critical path.
 | G2.7 | `Var(Δq)` reported **both** normalised and absolute, **and** the level statistic `Var(q)` reported alongside | `audit/CLAIMS.md` C-d: the plan may be falsifying a statistic the competing channel does not depend on |
 | G2.8 | An equivalence test with a stated margin replaces "flat within 1 SE" | Absence of evidence is not evidence of absence |
 | G2.9 | Time-at-α-clip and time-at-leverage-cap reported per arm | R5 and R7: the headline γ=0.400 arm may be governed by an undocumented clip |
-| G2.10 | **The Zaffran discriminator is run**: is turnover a monotone function of mean interval width across the γ grid? | If it is, C1 reduces to Zaffran's theorem times a cost rate. Cheap, decisive, and it must be run early |
+| G2.10 | **The Zaffran discriminator is run, in its strict form**: does `Σ\|Δq\|` carry information about net growth **conditional on** `E[L]` across the γ grid? | The weak form — "is turnover monotone in γ" — discriminates nothing. On the plan's own table, excess turnover over the γ=0.005 arm is 1.0, 3.5, 12.4 and 27.6 at γ = 0.020, 0.050, 0.150, 0.400, giving slopes of 67, 78, 86 and 70 per unit γ: **turnover is already approximately affine in γ, which is the same functional form Zaffran proves for mean interval length.** Both are monotone. The conditional test is the one that separates them, and it is the paper's load-bearing assumption |
 | G2.11 | Path count set by the smallest γ difference the paper intends to claim, not the largest | The γ=0.020 comparison sits at 2.5 SE in the plan's own table |
 | G2.12 | The protocol is pre-registered before the applied arm is touched | A committed, timestamped protocol document |
 
