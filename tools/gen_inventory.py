@@ -41,6 +41,7 @@ DESCRIPTIONS = {
     "audit/PRIOR_ART.md": ("output", "Three prior-art sweeps and the CLEAR / NARROW / OCCUPIED verdicts for claims C1 and C2."),
     "audit/REFS_VERIFIED.bib": ("output", "Bibliography entries built only from fetched canonical records. Nothing here is written from memory."),
     "audit/REFS_REJECTED.md": ("output", "Every reference that failed identifier resolution, metadata agreement or attribution accuracy, with the reason."),
+    "audit/CODE_READ.md": ("output", "Line-level reading of the simulator, if one is ever recovered."),
     "audit/REPRO_C1.md": ("output", "Reproduction attempt for the C1 table in docs/PLAN_ORIGINAL.md, cell by cell."),
     "audit/RECONSTRUCTION_SPEC.md": ("output", "Specification a rebuild of the missing simulator would need, with every underdetermined choice listed."),
     "audit/CODE_READ.md": ("output", "Line-level reading of the simulator, if one is ever recovered."),

@@ -1,0 +1,485 @@
+% ===========================================================================
+% REFS_VERIFIED.bib
+%
+% Every entry below was built from a record fetched from a canonical source
+% during the G0 characterisation session (2026-08-19). Nothing here was
+% written from memory. Sources used, in order of preference:
+%
+%   arXiv API          export.arxiv.org/api/query   (preprint metadata, abstracts)
+%   DBLP               dblp.org/search/publ/api     (computer-science venues)
+%   Crossref           api.crossref.org             (DOIs, journals, pages)
+%   publisher / author copy                          (full text, for claim checking)
+%
+% Where the planning document's citation disagreed with the fetched record,
+% THE FETCHED RECORD WINS and the disagreement is logged in REFS_REJECTED.md.
+% Entries appearing in REFS_REJECTED.md are still present here when the work
+% itself is real and correctly identifiable — the rejection is of the planning
+% document's use of it, not of the work.
+%
+% Entries marked [ADDED] were not in the planning document; they come from the
+% Module E prior-art sweep and are needed for an honest related-work section.
+% ===========================================================================
+
+% ---------------------------------------------------------------------------
+% Core online conformal prediction
+% ---------------------------------------------------------------------------
+
+@inproceedings{gibbs2021aci,
+  author    = {Gibbs, Isaac and Cand{\`e}s, Emmanuel},
+  title     = {Adaptive Conformal Inference Under Distribution Shift},
+  booktitle = {Advances in Neural Information Processing Systems 34 (NeurIPS 2021)},
+  year      = {2021},
+  eprint    = {2106.00170},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ME},
+  note      = {Venue confirmed via DBLP; preprint 2021-06-01.}
+}
+
+@article{gibbs2024dtaci,
+  author  = {Gibbs, Isaac and Cand{\`e}s, Emmanuel},
+  title   = {Conformal Inference for Online Prediction with Arbitrary Distribution Shifts},
+  journal = {Journal of Machine Learning Research},
+  year    = {2024},
+  eprint  = {2208.08401},
+  archivePrefix = {arXiv},
+  note    = {The method known as DtACI. Preprint 2022-08-17; journal publication 2024.
+             The planning document cites this as ``DtACI 2022'', which is the preprint
+             year, not the publication year.}
+}
+
+@inproceedings{angelopoulos2023pid,
+  author    = {Angelopoulos, Anastasios N. and Cand{\`e}s, Emmanuel J. and Tibshirani, Ryan J.},
+  title     = {Conformal PID Control for Time Series Prediction},
+  booktitle = {Advances in Neural Information Processing Systems 36 (NeurIPS 2023)},
+  year      = {2023},
+  eprint    = {2307.16895},
+  archivePrefix = {arXiv},
+  note      = {YEAR CORRECTED. The planning document dates this 2024; the preprint is
+               2023-07-31 and DBLP records the venue as NeurIPS 2023.}
+}
+
+@inproceedings{bhatnagar2023saocp,
+  author    = {Bhatnagar, Aadyot and Wang, Huan and Xiong, Caiming and Bai, Yu},
+  title     = {Improved Online Conformal Prediction via Strongly Adaptive Online Learning},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML 2023)},
+  year      = {2023},
+  eprint    = {2302.07869},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{angelopoulos2024crc,
+  author    = {Angelopoulos, Anastasios N. and Bates, Stephen and Fisch, Adam and Lei, Lihua and Schuster, Tal},
+  title     = {Conformal Risk Control},
+  booktitle = {International Conference on Learning Representations (ICLR 2024)},
+  year      = {2024},
+  eprint    = {2208.02814},
+  archivePrefix = {arXiv},
+  note      = {AUTHOR ORDER CORRECTED. The planning document writes ``Bates, Angelopoulos
+               et al.''; Angelopoulos is first author. Venue and year were not stated in
+               the planning document.}
+}
+
+@inproceedings{zaffran2022aci,
+  author    = {Zaffran, Margaux and F{\'e}ron, Olivier and Goude, Yannig and Josse, Julie and Dieuleveut, Aymeric},
+  title     = {Adaptive Conformal Predictions for Time Series},
+  booktitle = {Proceedings of the 39th International Conference on Machine Learning (ICML 2022)},
+  year      = {2022},
+  eprint    = {2202.07282},
+  archivePrefix = {arXiv},
+  note      = {Author order follows the published ICML record (DBLP); the arXiv v1
+               metadata lists a different order. Section 3, Theorem 3.1 gives
+               E[L] = L_0 + Q''(1-alpha) (gamma/2) alpha(1-alpha) + O(gamma^{3/2}):
+               ACI efficiency degrades LINEARLY in the step size while coverage is
+               unaffected. This is the closest existing result to claim C1.}
+}
+
+@inproceedings{angelopoulos2024decaying,
+  author    = {Angelopoulos, Anastasios N. and Barber, Rina Foygel and Bates, Stephen},
+  title     = {Online Conformal Prediction with Decaying Step Sizes},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML 2024)},
+  year      = {2024},
+  eprint    = {2402.01139},
+  archivePrefix = {arXiv},
+  note      = {Claim verified from the abstract: with decaying step sizes and a stable
+               distribution, coverage is close to nominal at every time point, not only
+               on average. An existing partial account of slow-beats-fast, statistical
+               in mechanism rather than economic.}
+}
+
+@misc{vaze2026simultaneous,
+  author = {Vaze, Rahul},
+  title  = {Simultaneous Coverage and Efficiency Guarantee in Online Conformal Prediction},
+  year   = {2026},
+  eprint = {2607.26577},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  note   = {Preprint, 2026-07-29. Theorem 7 (``Minimax lower bound'') gives, for Model II
+            (nonstationary stochastic scalar scores with variation budget V_T),
+            inf_A sup R(T) >= c_1 T^{2/3} V_T^{1/3} for dynamic regret R(T), and
+            inf_A sup Q(T) >= c_1 f_min T^{2/3} V_T^{1/3} for cumulative coverage error
+            Q(T). Remark 11 states the Q(T) bound is NOT tight. See REFS_REJECTED.md.}
+}
+
+@inproceedings{srinivas2026efficiency,
+  author    = {Srinivas, Vaidehi},
+  title     = {Online Conformal Prediction with Efficiency Guarantees},
+  booktitle = {Proceedings of the 2026 ACM-SIAM Symposium on Discrete Algorithms (SODA 2026)},
+  year      = {2026},
+  eprint    = {2507.02496},
+  archivePrefix = {arXiv},
+  note      = {Verified: any algorithm achieving a mu-approximation in average interval
+               length against the best fixed interval achieving coverage in hindsight
+               must make a multiplicative factor more mistakes than alpha T, with a
+               matching algorithm recovering all Pareto-optimal settings. Efficiency
+               here is interval LENGTH, not decision movement cost.}
+}
+
+@inproceedings{ramalingam2025noregret,
+  author    = {Ramalingam, Ramya and Kiyani, Shayan and Roth, Aaron},
+  title     = {The Relationship Between No-Regret Learning and Online Conformal Prediction},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML 2025)},
+  year      = {2025},
+  eprint    = {2502.10947},
+  archivePrefix = {arXiv},
+  note      = {Verified: standard regret guarantees imply marginal coverage in i.i.d.
+               settings but fail under adversarial environments or group-conditional
+               coverage; the tight correspondence is with SWAP regret. Cited twice in the
+               planning document under two different descriptions.}
+}
+
+@book{vovk2005alrw,
+  author    = {Vovk, Vladimir and Gammerman, Alexander and Shafer, Glenn},
+  title     = {Algorithmic Learning in a Random World},
+  publisher = {Springer},
+  year      = {2005},
+  doi       = {10.1007/b106715},
+  note      = {First edition. A second edition exists: Springer 2022, doi 10.1007/978-3-031-06649-8.}
+}
+
+@misc{podkopaev2024betting,
+  author = {Podkopaev, Aleksandr and Xu, Darren and Lee, Kuang-Chih},
+  title  = {Adaptive Conformal Inference by Betting},
+  year   = {2024},
+  eprint = {2412.19318},
+  archivePrefix = {arXiv},
+  note   = {[ADDED] Parameter-free adaptive conformal inference. Stated motivation is
+            that existing methods depend explicitly on, and are sensitive to, the choice
+            of learning rate. Directly relevant to the claim that the field has not
+            noticed the step size matters.}
+}
+
+% ---------------------------------------------------------------------------
+% Decision-focused conformal prediction  [all ADDED except CDT]
+% ---------------------------------------------------------------------------
+
+@inproceedings{lekeufack2024cdt,
+  author    = {Lekeufack, Jordan and Angelopoulos, Anastasios N. and Bajcsy, Andrea and Jordan, Michael I. and Malik, Jitendra},
+  title     = {Conformal Decision Theory: Safe Autonomous Decisions from Imperfect Predictions},
+  booktitle = {2024 IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2024},
+  doi       = {10.1109/ICRA57147.2024.10610041},
+  eprint    = {2310.05921},
+  archivePrefix = {arXiv},
+  note      = {Claim verified from the paper's own text, Section V-C: ``We model the agent
+               as able to either buy or short-sell the stock, with no trading cost'' and
+               ``We simulate stock returns using a geometric Brownian motion.'' The
+               decision space is binary (buy / short-sell), not a continuous position.}
+}
+
+@inproceedings{lin2024cio,
+  author    = {Lin, Bo and Delage, Erick and Chan, Timothy C. Y.},
+  title     = {Conformal Inverse Optimization},
+  booktitle = {Advances in Neural Information Processing Systems 37 (NeurIPS 2024)},
+  year      = {2024},
+  eprint    = {2402.01489},
+  archivePrefix = {arXiv},
+  note      = {[ADDED] Not cited in the planning document. Delage is a confirmed ML*OR speaker.}
+}
+
+@article{yeh2025endtoend,
+  author  = {Yeh, Christopher and Christianson, Nicolas and Wu, Alan and Wierman, Adam and Yue, Yisong},
+  title   = {End-to-End Conformal Calibration for Optimization Under Uncertainty},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2025},
+  eprint  = {2409.20534},
+  archivePrefix = {arXiv},
+  note    = {[ADDED] Journal reference from the arXiv record: TMLR, December 2025.
+             Learns uncertainty sets informed by the downstream decision loss;
+             applications include portfolio optimization.}
+}
+
+@misc{zhou2025credo,
+  author = {Zhou, Wenbin and Orfanoudaki, Agni and Zhu, Shixiang},
+  title  = {Conformalized Decision Risk Assessment},
+  year   = {2025},
+  eprint = {2505.13243},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+@misc{zhou2025inverse,
+  author = {Zhou, Wenbin and Zhu, Shixiang},
+  title  = {Calibrating Decision Robustness via Inverse Conformal Risk Control},
+  year   = {2025},
+  eprint = {2510.07750},
+  archivePrefix = {arXiv},
+  note   = {[ADDED] Traces the miscoverage-regret Pareto frontier for robust
+            predict-then-optimize policies. Nearest neighbour to C1 on the
+            ``coverage level is the wrong knob'' axis; varies the coverage LEVEL,
+            not the temporal adaptation rate.}
+}
+
+@misc{chen2026polyhedral,
+  author = {Chen, Shuyi and Zhou, Wenbin and Zhu, Shixiang},
+  title  = {Learning Polyhedral Conformal Sets for Robust Optimization},
+  year   = {2026},
+  eprint = {2605.08506},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+@misc{zhu2026actionconditional,
+  author = {Zhu, Zihan and Kiyani, Shayan and Pappas, George and Hassani, Hamed},
+  title  = {Conformal Risk-Averse Decision Making with Action Conditional Guarantee},
+  year   = {2026},
+  eprint = {2606.05551},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+@misc{liang2026trainingconditional,
+  author = {Liang, Jiadong and Ren, Zhimei and Chen, Yuxin},
+  title  = {Optimal Training-Conditional Regret for Online Conformal Prediction},
+  year   = {2026},
+  eprint = {2602.16537},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+@misc{cortesgomez2024utility,
+  author = {Cortes-Gomez, Santiago and Pati{\~n}o, Carlos and Byun, Yewon and Wu, Steven and Horvitz, Eric and Wilder, Bryan},
+  title  = {Utility-Directed Conformal Prediction: A Decision-Aware Framework for Actionable Uncertainty Quantification},
+  year   = {2024},
+  eprint = {2410.01767},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+@misc{wang2026optimaldecision,
+  author = {Wang, Tao and Dobriban, Edgar},
+  title  = {Optimal Decision-Making Based on Prediction Sets},
+  year   = {2026},
+  eprint = {2602.00989},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+@misc{bao2025croms,
+  author = {Bao, Yajie and Hu, Yang and Ren, Haojie and Zhao, Peng and Zou, Changliang},
+  title  = {Optimal Model Selection for Conformalized Robust Optimization},
+  year   = {2025},
+  eprint = {2507.04716},
+  archivePrefix = {arXiv},
+  note   = {[ADDED]}
+}
+
+% ---------------------------------------------------------------------------
+% Conformal prediction in finance
+% ---------------------------------------------------------------------------
+
+@misc{ryan2026conformalkelly,
+  author = {Ryan, Robert Jacob},
+  title  = {Conformal Kelly: Conformal Prediction Intervals as the Scale in Fractional Kelly Position Sizing},
+  year   = {2026},
+  eprint = {2608.01494},
+  archivePrefix = {arXiv},
+  primaryClass = {q-fin.PM},
+  note   = {Single-author, unrefereed preprint, submitted 2 August 2026. Configuration:
+            75 percent conformal interval, 2016-2021 development window, trading costs
+            and leverage caps. Existence and abstract content established by external
+            verification; not re-fetched during this audit.}
+}
+
+@misc{schmitt2026rwc,
+  author = {Schmitt, Marc},
+  title  = {Taming Tail Risk in Financial Markets: Conformal Calibration for Nonstationary Portfolio VaR},
+  year   = {2026},
+  eprint = {2602.03903},
+  archivePrefix = {arXiv},
+  primaryClass = {q-fin.RM},
+  note   = {METHOD NAME CORRECTED. The planning document names the method ``RWCP''; the
+            paper proposes regime-weighted conformal calibration, abbreviated RWC, with
+            time-weighted calibration (TWC) as a special case.}
+}
+
+% ---------------------------------------------------------------------------
+% Decision-focused learning and induced turnover
+% ---------------------------------------------------------------------------
+
+@article{elmachtoub2022spo,
+  author  = {Elmachtoub, Adam N. and Grigas, Paul},
+  title   = {Smart ``Predict, then Optimize''},
+  journal = {Management Science},
+  volume  = {68},
+  number  = {1},
+  pages   = {9--26},
+  year    = {2022},
+  doi     = {10.1287/mnsc.2020.3922}
+}
+
+@misc{wang2026spoturnover,
+  author = {Wang, Yi and Hasuike, Takashi},
+  title  = {Decision-Induced Ranking Explains Prediction Inflation and Excessive Turnover in {SPO}-Based Portfolio Optimization},
+  year   = {2026},
+  eprint = {2605.01176},
+  archivePrefix = {arXiv},
+  primaryClass = {q-fin.PM},
+  note   = {The planning document cites the identifier with the gloss ``decision-induced
+            turnover in SPO'' and no authors or title. Description verified accurate.
+            Evaluates clipping, min-max rescaling and PARTIAL PORTFOLIO ADJUSTMENT as
+            stabilization mechanisms -- the closest existing neighbour to C2's damping
+            idea, in decision-focused learning rather than conformal prediction.}
+}
+
+% ---------------------------------------------------------------------------
+% Switching costs: online learning
+% ---------------------------------------------------------------------------
+
+@inproceedings{zinkevich2003ogd,
+  author    = {Zinkevich, Martin},
+  title     = {Online Convex Programming and Generalized Infinitesimal Gradient Ascent},
+  booktitle = {Proceedings of the 20th International Conference on Machine Learning (ICML 2003)},
+  year      = {2003}
+}
+
+@article{kalai2005lazy,
+  author  = {Kalai, Adam and Vempala, Santosh},
+  title   = {Efficient Algorithms for Online Decision Problems},
+  journal = {Journal of Computer and System Sciences},
+  volume  = {71},
+  number  = {3},
+  pages   = {291--307},
+  year    = {2005},
+  doi     = {10.1016/j.jcss.2004.10.016},
+  note    = {[ADDED] Follow the Lazy Leader: no-regret with a bounded number of switches.
+             Conference version COLT 2003.}
+}
+
+@inproceedings{geulen2010dartboard,
+  author    = {Geulen, Sascha and V{\"o}cking, Berthold and Winkler, Melanie},
+  title     = {Regret Minimization for Online Buffering Problems Using the Weighted Majority Algorithm},
+  booktitle = {Proceedings of the 23rd Conference on Learning Theory (COLT 2010)},
+  year      = {2010},
+  note      = {[ADDED] The shrinking-dartboard construction.}
+}
+
+@inproceedings{andrew2013twometrics,
+  author    = {Andrew, Lachlan L. H. and Barman, Siddharth and Ligett, Katrina and Lin, Minghong and Meyerson, Adam and Roytman, Alan and Wierman, Adam},
+  title     = {A Tale of Two Metrics: Simultaneous Bounds on Competitiveness and Regret},
+  booktitle = {Proceedings of the 26th Conference on Learning Theory (COLT 2013)},
+  year      = {2013},
+  eprint    = {1508.03769},
+  archivePrefix = {arXiv},
+  note      = {[ADDED] No online algorithm can be simultaneously constant-competitive and
+               no-regret under switching costs. A direct constraint on C2's claim to
+               dominate both a fast and a slow baseline. Also appeared at SIGMETRICS 2013,
+               doi 10.1145/2465529.2465533.}
+}
+
+@inproceedings{chen2018obd,
+  author    = {Chen, Niangjun and Goel, Gautam and Wierman, Adam},
+  title     = {Smoothed Online Convex Optimization in High Dimensions via Online Balanced Descent},
+  booktitle = {Proceedings of the 31st Conference on Learning Theory (COLT 2018)},
+  year      = {2018},
+  eprint    = {1803.10366},
+  archivePrefix = {arXiv},
+  note      = {[ADDED]}
+}
+
+% ---------------------------------------------------------------------------
+% Switching costs: portfolio choice (the actual source of the no-trade band)
+% ---------------------------------------------------------------------------
+
+@article{garleanu2013dynamic,
+  author  = {G{\^a}rleanu, Nicolae and Pedersen, Lasse Heje},
+  title   = {Dynamic Trading with Predictable Returns and Transaction Costs},
+  journal = {The Journal of Finance},
+  volume  = {68},
+  number  = {6},
+  pages   = {2309--2340},
+  year    = {2013},
+  doi     = {10.1111/jofi.12080},
+  note    = {ATTRIBUTION WARNING. This paper assumes QUADRATIC trading costs and derives
+             LINEAR PARTIAL ADJUSTMENT toward an aim portfolio -- ``aim in front of the
+             target'' and ``trade partially towards the current aim''. It explicitly
+             states that its strategy ``is qualitatively different from the optimal
+             strategy with proportional or fixed transaction costs, which exhibits
+             periods of no trading.'' It is NOT the source of a dead-band or no-trade
+             band. See REFS_REJECTED.md.}
+}
+
+@article{constantinides1986,
+  author  = {Constantinides, George M.},
+  title   = {Capital Market Equilibrium with Transaction Costs},
+  journal = {Journal of Political Economy},
+  volume  = {94},
+  number  = {4},
+  pages   = {842--862},
+  year    = {1986},
+  doi     = {10.1086/261410},
+  note    = {[ADDED] No-trade region under proportional transaction costs. One of the two
+             correct citations in place of garleanu2013dynamic for the dead-band form.}
+}
+
+@article{davis1990,
+  author  = {Davis, M. H. A. and Norman, A. R.},
+  title   = {Portfolio Selection with Transaction Costs},
+  journal = {Mathematics of Operations Research},
+  volume  = {15},
+  number  = {4},
+  pages   = {676--713},
+  year    = {1990},
+  doi     = {10.1287/moor.15.4.676},
+  note    = {[ADDED] The no-trade cone under proportional costs. The second correct
+             citation for the dead-band form.}
+}
+
+% ---------------------------------------------------------------------------
+% Growth-optimal betting and risk measures
+% ---------------------------------------------------------------------------
+
+@article{kelly1956,
+  author  = {Kelly, J. L.},
+  title   = {A New Interpretation of Information Rate},
+  journal = {Bell System Technical Journal},
+  volume  = {35},
+  number  = {4},
+  pages   = {917--926},
+  year    = {1956},
+  doi     = {10.1002/j.1538-7305.1956.tb03809.x}
+}
+
+@book{maclean2011kelly,
+  editor    = {MacLean, Leonard C. and Thorp, Edward O. and Ziemba, William T.},
+  title     = {The Kelly Capital Growth Investment Criterion: Theory and Practice},
+  publisher = {World Scientific},
+  series    = {World Scientific Handbook in Financial Economics Series},
+  year      = {2011},
+  doi       = {10.1142/7598},
+  note      = {CANDIDATE RESOLUTION ONLY. The planning document cites ``MacLean, Thorp \&
+               Ziemba'' with no year, title or identifier. This edited volume is the most
+               likely referent; the chapter ``Good and Bad Properties of the Kelly
+               Criterion'' (doi 10.1142/9789814293501_0039) is the most likely specific
+               target. The operator must confirm which work is meant before this is cited.}
+}
+
+@article{rockafellar2000cvar,
+  author  = {Rockafellar, R. Tyrrell and Uryasev, Stanislav},
+  title   = {Optimization of Conditional Value-at-Risk},
+  journal = {The Journal of Risk},
+  volume  = {2},
+  number  = {3},
+  pages   = {21--41},
+  year    = {2000},
+  doi     = {10.21314/jor.2000.038}
+}
