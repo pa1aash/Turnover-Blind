@@ -46,6 +46,13 @@ DESCRIPTIONS = {
     "audit/RECONSTRUCTION_SPEC.md": ("output", "Specification a rebuild of the missing simulator would need, with every underdetermined choice listed."),
     "audit/CODE_READ.md": ("output", "Line-level reading of the simulator, if one is ever recovered."),
 }
+EXTRA = {
+    "paper/neurips_2026.sty": ("third-party", "NeurIPS 2026 LaTeX style file, fetched verbatim from the official author kit. Provenance in docs/PROVENANCE.md. Never edit."),
+    "paper/neurips_2026.tex": ("third-party", "NeurIPS 2026 template and its usage documentation, fetched verbatim from the official author kit."),
+    "paper/checklist.tex": ("third-party", "NeurIPS 2026 paper checklist, fetched verbatim. NOT to be submitted to ML*OR, which requires no checklist."),
+}
+DESCRIPTIONS.update(EXTRA)
+
 PREFIXES = {
     "results/": ("output", "Experiment run record. One JSON per run; append-only."),
     "figures/": ("output", "Figure generation script or rendered figure."),
