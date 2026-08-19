@@ -354,6 +354,78 @@ the closest-titled work in the field, should not be signed off as final. That is
 statement about the method, not about the conclusion — the conclusion still looks right —
 and it is exactly why G1 requires the citation screen before the framing is locked.
 
+## 4.5 Amendment — two works found by the corpus critic that narrow the verdicts
+
+*Added from the research-pipeline run's step-8 adversarial pass, which was tasked with
+finding what would overturn this file's own conclusions. It found two things, and one of
+them is a mistake this sweep made.*
+
+### 4.5.1 "Coverage and length are not enough" is already published
+
+**Min, Lu, Li, Zhang & Teng, "Questioning the Coverage-Length Metric in Conformal
+Prediction: When Shorter Intervals Are Not Better", arXiv:2601.21455, January 2026.**
+
+From the abstract: the paper "critically examines the sufficiency of these standard
+metrics", shows interval length can be "deceptively improved" while marginal coverage
+remains valid, and "introduce[s] a new metric **interval stability**".
+
+**This is F7's framing, already in print.** The structural move — *the standard evaluation
+pair is insufficient, and here is a third quantity that exposes it* — is no longer
+available as a novel contribution.
+
+**What survives, and it is a genuine distinction.** Their instability is **across repeated
+runs** of a randomised algorithm on the same input: the same test point can receive
+different intervals on different executions. F7's turnover is variation of the interval
+path **across time within a single run**, and it is the *decision* that pays for it, not
+the reader's confidence in reproducibility. Those are different quantities with different
+motivations.
+
+But the distinction now has to be *stated*. Before this paper, F7 could say "nobody looks
+past coverage and length". After it, F7 must say "the one existing critique of the
+coverage-length pair measures run-to-run instability; we measure temporal path variation,
+because that is what a position-holding decision is charged for." That is a narrower and
+more precise claim, and it is still a claim.
+
+### 4.5.2 A conformal-plus-switching-cost paper this sweep dismissed on domain
+
+**Zhu, Yan & Gao, "Stay or Switch: Online Conformal Bayesian Optimization Guided Fluid
+Antenna Configuration", arXiv:2607.26547, July 2026.**
+
+This paper appeared in §2's own query results — `conformal AND "switching cost"` returned
+exactly one hit — and **this sweep dismissed it in a single line as "unrelated: fluid
+antenna configuration".** That was a judgement on the application domain, not on the
+mechanism, and it was wrong.
+
+What it actually does: formulates "a cost-aware multi-objective FAS switching problem
+jointly considering slot-level ISAC performance and **switching energy**", and proposes
+online conformal Bayesian optimization to "calibrate surrogate uncertainty for robust
+**stay-or-switch** decisions".
+
+**So online conformal calibration has been combined with an explicit switching cost inside
+a decision.** It is an application paper in wireless sensing, not a methods paper: it does
+not vary the conformal adaptation rate, does not claim coverage is blind to switching cost,
+and proves no coverage property under a movement-penalised update. So it does not occupy
+C2's square.
+
+**But the sentence "the intersection is empty" must be retired and replaced with something
+exact:** what is empty is the set of *methods with a coverage guarantee under a
+movement-penalised conformal update*. The set of *applications combining conformal
+calibration with a switching cost* is not empty, and F7 must cite this one.
+
+### 4.5.3 The lesson, which is about method and is the more useful finding
+
+Both misses came from the same failure mode, and it is not the arXiv blind spot of §4.4.
+**Both of these were retrievable by the queries this sweep actually ran.** One was returned
+and discarded on a one-line domain judgement; the other would have been caught by any query
+about evaluation metrics rather than about occupancy.
+
+A prior-art sweep that screens on *application domain* rather than on *mechanism* will keep
+making this error, because the mechanism F7 cares about — an uncertainty estimate that
+moves, driving a decision that pays to move — appears in wireless scheduling, in inventory
+control, in data-centre right-sizing and in electricity dispatch, none of which look like
+finance. **G1 should require that the prior-art screen be re-run on mechanism keywords
+across application domains**, not only on conformal-plus-finance.
+
 ## 5. Verdicts
 
 ### C1 — the coverage/turnover dissociation
@@ -414,10 +486,14 @@ rebuilt simulator emits.** It is recorded as a G2 acceptance criterion.
 
 > Switching-cost online learning has lazy algorithms with regret guarantees but no notion
 > of coverage, and the conformal literature has coverage guarantees but no notion of
-> movement cost; F7's contribution is the only object in the intersection — a
-> movement-penalised conformal update that provably retains the coverage identity — and
-> the intersection is not a free composition, because regret bounds are known not to
-> imply coverage adversarially.
+> movement cost; F7's contribution is a movement-penalised conformal update that provably
+> retains the coverage identity, which no existing work supplies — and the gap is not a
+> free composition, because regret bounds are known not to imply coverage adversarially.
+>
+> *(Revised after §4.5.2. The earlier phrasing "the only object in the intersection" is
+> too strong: conformal calibration has been combined with an explicit switching cost in
+> an applied setting. What is unoccupied is a coverage GUARANTEE under a movement-penalised
+> update, not the pairing of conformal prediction with switching costs as such.)*
 
 **Why not CLEAR.** Every ingredient is off the shelf. The dead-band is Constantinides
 (1986) and Davis–Norman (1990). Laziness with bounded regret is Kalai–Vempala (2005) and
