@@ -175,8 +175,8 @@ different remedy from "the idea is in trouble".
 | Numbers reproduced from code | **0 of 88 = 0.0 %** |
 | Load-bearing quantities with no displayed table | **5 of 5 = 100 %** |
 | **Novelty verdict, C1** | **NARROW** |
-| **Novelty verdict, C2** | **NARROW, conditional** — NARROW if the coverage guarantee is delivered; effectively an obvious composition if it is not |
-| **Reference-audit failures** (`audit/REFS_REJECTED.md`) | **7 of 22 = 31.8 %** — 1 substantive attribution failure, 1 qualified, 4 metadata, 1 duplicate |
+| **Novelty verdict, C2** | **NARROW, conditional — and both legs must be carried.** NARROW if the coverage guarantee is delivered; **effectively OCCUPIED if it is not**. Since no proof route was found for the branch where the novelty lives, **the OCCUPIED leg is the live one on present evidence** |
+| **Reference-audit failures** (`audit/REFS_REJECTED.md`) | **7 of 22 = 31.8 %** — 1 substantive attribution failure, 1 qualified attribution, 4 metadata, 1 duplicate list entry. The per-check counts sum to 8 because one entry fails two checks; it is counted once |
 | **Venue recommendation** (`docs/VENUE.md`) | **ML×OR (NeurIPS 2026, Atlanta)**, with E-values as a genuine second and the calendar decision separated from the venue decision |
 
 ### The distinguishing sentences, in full
@@ -247,6 +247,23 @@ No gate in this project has been signed, and none may be signed by an automated 
 operator's explicit sign-off on G0 before proceeding, and answers to the eight questions in
 `docs/OPEN_QUESTIONS.md` — of which Q1 (does the simulator exist?), Q3 (venue and calendar)
 and Q4 (which dead-band fork?) determine most of what the project does next.
+
+### One caveat about this report's own reliability
+
+The research run that produced `docs/HYPERRESEARCH_REPORT.md` was specified with four
+independent adversarial review passes and ran one. That single pass returned **twelve
+findings — two critical, six major, four minor — and all twelve were applied.** The two
+critical ones were a gate ladder that contradicted `docs/GATES.md` on three of six rows and
+in the process erased the writing gate, and a novelty verdict that had silently dropped the
+OCCUPIED leg of its own two-legged conditional. One major finding was a scope violation:
+the report had closed an operator question it was required to leave open.
+
+Those defects were found and fixed. The inference to draw is not that the report is now
+clean — it is that **a document whose first serious check surfaced two critical defects has
+had one check, not four**, and should be read accordingly. The same caution applies to this
+file, which no independent pass reviewed at all.
+
+### Status
 
 This session ran no experiment, implemented no method, wrote no paper section, and made no
 strategic decision. It produced findings and stopped.
