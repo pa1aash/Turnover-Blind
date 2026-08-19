@@ -1131,12 +1131,210 @@
   year      = {2013},
   doi       = {10.1109/TENCONSPRING.2013.6584502},
   note      = {Record from Crossref, saved at
-               research/S1/records/10_1109_TENCONSPRING_2013_6584502.json.
-               **UNRESOLVED AND UNREAD -- the single unclosed occupancy risk on R1's Q3 leg.**
-               Its title is an exact framing match: the VALUE of temporal correlation
-               information for scenario-based stochastic unit commitment, which is a decision
-               carrying start-up and ramping costs. No abstract exists in Crossref, Semantic
-               Scholar or Unpaywall; no open copy; zero citations. Whether its compared arms
-               share marginals is unknown, and that is the whole question. Reachable, if at
-               all, by the headed-browser route that defeated the ACM Digital Library.}
+               research/S1/records/10_1109_TENCONSPRING_2013_6584502.json; abstract and all
+               seven figures/tables saved at research/S2/records/ (see
+               ieee_xplore_6584502_chen2013_page.txt and chen2013_figures/).
+               **RESOLVED 2026-08-19 BY SESSION S2, AND IT OCCUPIES R1'S DECISION LEG.**
+               The previous note recorded this as UNREAD and as the single unclosed occupancy
+               risk, and said ``whether its compared arms share marginals is unknown, and that
+               is the whole question''. That question is now answered and the answer is
+               against the project. S1's finding that no abstract exists in Crossref, Semantic
+               Scholar or Unpaywall was accurate; the abstract is in an embedded metadata
+               block on the IEEE Xplore landing page, reachable by headed Chrome, and the
+               figures and tables were recovered from Semantic Scholar's figure-extraction
+               service for the paywalled PDF. Scored: Q1 YES -- same per-period forecast
+               distributions by construction, via a Gaussian-copula correlation matrix;
+               Q2 YES -- its Fig. 4 plots the gradient curves of both scenario sets;
+               Q3 YES AND PRICED -- its Table II carries a per-start start-up cost of
+               \$300--\$4500, with minimum on/off times and ramp rates; Q4 YES; Q5 NO.
+               Q1 and Q2 and Q3 imply OCCUPIED, by the same rubric applied mechanically that
+               occupied C1'. See chen2018utility for an independent restatement five years
+               later. **The body is still unread and two checks could soften but are unlikely
+               to reverse the verdict** -- docs/OUTSTANDING.md O29. What R1 retains is Q5
+               alone plus the calendar-time-revision-path object distinction:
+               docs/FRAMING.md section 8b item 4, docs/OUTSTANDING.md O27 and O28.}
+}
+
+% ---------------------------------------------------------------------------
+% Added by session S2, 2026-08-19. EVERY entry below was built from a canonical
+% record FETCHED IN THIS SESSION and saved under research/S2/records/. No entry
+% here was reconstructed from memory or from a secondary description.
+%
+% Provenance note, recorded because it recurred: session S1 left three entries
+% whose claimed record was a 174-byte stored HTTP 429 error page, and S2's own
+% wave-1 output reproduced the same failure once more, plus six zero-byte arXiv
+% records caused by the http:// endpoint returning empty where https:// works.
+% All ten were caught by a byte-size-and-content audit and repaired. The audit,
+% not the fetch, is what makes the rule real.
+% ---------------------------------------------------------------------------
+
+@misc{zanotti2026smqc,
+  author = {Zanotti, Marco},
+  title  = {Analyzing the retraining frequency of global forecasting models:
+            towards more stable forecasting systems},
+  year   = {2026},
+  eprint = {2506.05776},
+  archivePrefix = {arXiv},
+  primaryClass = {stat.AP},
+  note   = {Record from the arXiv API, saved at research/S2/records/arxiv\_2506.05776.xml;
+            submitted 2025-06-06, revised 2026-02-10. RESOLVES A REFERENCE THE PROJECT HAD
+            CARRIED UNRESOLVED. This is the source of the MQC / SMQC metric named in
+            docs/FRAMING.md section 7 rule 5; the abstract defines SMQC as the
+            ``Scaled Multi-Quantile Change'', a model-agnostic, distribution-free and
+            scale-free measure of probabilistic forecast stability. ONE DISTINCTION MATTERS
+            AND WEAKENS THE COLLISION THE PROJECT ASSUMED: SMQC aggregates change ACROSS
+            QUANTILE LEVELS of a predictive distribution between retraining scenarios,
+            whereas this project's path functional is the calendar-time variation of a
+            SINGLE deployed quantile. The names still collide and the metric must be cited,
+            but it is not the same object.}
+}
+
+@techreport{duerst2024calibrating,
+  author      = {Duerst, Ricarda and Sch{\"o}ley, Jonas and Hellstrand, Julia and
+                 Myrskyl{\"a}, Mikko},
+  title       = {Calibrating probabilistic forecast paths on past forecast errors:
+                 an application to the {Finnish} Total Fertility Rate},
+  institution = {Max Planck Institute for Demographic Research},
+  number      = {WP-2024-016},
+  year        = {2024},
+  month       = {7},
+  doi         = {10.4054/mpidr-wp-2024-016},
+  note        = {Record from Crossref, saved at
+                 research/S2/records/10.4054\_mpidr-wp-2024-016.json. FOUND ONLY BY FULL-TEXT
+                 SEARCH; invisible to every title-and-abstract instrument this project has
+                 used. It instantiates the Conformal PID SCORECASTER SLOT and then constrains
+                 how its width may move -- ``We added the constraint that the scorecaster's
+                 width is not allowed to narrow with time'' -- which is a movement constraint
+                 in the slot R2 proposed to occupy. Together with Angelopoulos et al.'s own
+                 three statements that the scorecaster may be any function of the past, and
+                 with Dupuy et al.'s generic argument, it is the third independent source
+                 establishing that THE PLACEMENT IS NOT NEW. docs/FRAMING.md section 2.2b.}
+}
+
+@article{bitran1986stylegoods,
+  author  = {Bitran, Gabriel R. and Haas, Elizabeth A. and Matsuo, Hirofumi},
+  title   = {Production Planning of Style Goods with High Setup Costs and
+             Forecast Revisions},
+  journal = {Operations Research},
+  volume  = {34},
+  number  = {2},
+  pages   = {226--236},
+  year    = {1986},
+  doi     = {10.1287/opre.34.2.226},
+  note    = {Record from Crossref, saved at research/S2/records/10\_1287\_opre\_34\_2\_226.json.
+             Joins forecast REVISION to a real setup cost in 1986 -- the calendar-time
+             revision-path half of R1's object, priced -- without matched marginals and
+             without a dependence-structure arm. Carried for the same reason as Williams,
+             Peters and Raiszadeh (1985): NO SENTENCE IN THIS PAPER MAY IMPLY THE MECHANISM
+             IS RECENT. Body not obtained. docs/OUTSTANDING.md O36.}
+}
+
+@inproceedings{delikaraoglou2014reserves,
+  author    = {Delikaraoglou, Stefanos and Heussen, Kai and Pinson, Pierre},
+  title     = {Operational strategies for predictive dispatch of control reserves
+               in view of stochastic generation},
+  booktitle = {2014 Power Systems Computation Conference (PSCC)},
+  pages     = {1--7},
+  year      = {2014},
+  doi       = {10.1109/pscc.2014.7038417},
+  note      = {Record from Crossref, saved at
+               research/S2/records/10\_1109\_pscc\_2014\_7038417.json. Carries R1's
+               matched-marginal generator AND a priced start-up and shut-down cost in one
+               paper, and fails the rubric only on Q2 because it builds a single arm rather
+               than a compared pair. PIERRE PINSON'S FOURTH APPEARANCE among this project's
+               near-neighbours, after Van Belle et al. (which occupies C1'), Pinson and
+               Girard (2012) and Ding et al. (2016). He is a likely reviewer.
+               docs/OUTSTANDING.md O35.}
+}
+
+@article{chen2018utility,
+  author  = {Chen, Hong and Lei, Yu},
+  title   = {Utility Analysis of Wind Generation Time-domain Correlation Information
+             for Stochastic Unit Commitment},
+  journal = {DEStech Transactions on Environment, Energy and Earth Sciences},
+  year    = {2018},
+  doi     = {10.12783/dteees/appeec2018/23559},
+  note    = {Record from Crossref, saved at
+             research/S2/records/10\_12783\_dteees\_appeec2018\_23559.json. AN INDEPENDENT
+             RESTATEMENT, FIVE YEARS LATER, OF THE DESIGN THAT OCCUPIES R1'S DECISION LEG
+             (see chen2013temporalcorrelation). It removes the ``one obscure uncited
+             conference paper'' defence: two groups published this comparison. Abstract-level
+             citation only -- DEStech has no galley for it. docs/OUTSTANDING.md O30.}
+}
+
+@misc{li2024neuralconformal,
+  author = {Li, Ruipu and Rodr{\'i}guez, Alexander},
+  title  = {Neural Conformal Control for Time Series Forecasting},
+  year   = {2024},
+  eprint = {2412.18144},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  note   = {Record from the arXiv API, saved at research/S2/records/arxiv\_2412.18144.xml;
+            submitted 2024-12-24, one version. CITED FOR A CLAIM THAT IS FALSE, AND THAT IS
+            WHY IT IS USEFUL. Its baselines paragraph prints: ``Since using a scorecaster
+            (D-part) in C-PID breaks the theoretical coverage guarantee, we only use the
+            quantile tracker and error integrator, which are the P and I part in PID.''
+            Conformal PID Theorem 1 quantifies over ``any function of the past'', so filling
+            the slot forfeits nothing. Two further deployed studies leave the slot empty on
+            the same basis. Answering this by name converts a conceded contribution into a
+            correction of the record. docs/GATES.md G3.16, docs/OUTSTANDING.md O40.}
+}
+
+@misc{hu2026distinformed,
+  author = {Hu, Dongjian and Wu, Junxi and Xia, Shu-Tao and Zou, Changliang},
+  title  = {Distribution-informed Online Conformal Prediction},
+  year   = {2026},
+  eprint = {2512.07770},
+  archivePrefix = {arXiv},
+  primaryClass = {stat.ML},
+  note   = {Record from the arXiv API, saved at research/S2/records/arxiv\_2512.07770.xml;
+            submitted 2025-12-08, ICLR 2026 camera-ready 2026-02-24. STATES THE OPEN PROBLEM
+            THIS PAPER ANSWERS, in its related-work section: ``For Conformal PID, the
+            selection of its scorecaster model is arbitrary and lacks principled guidance.
+            An inaccurate or excessively complex scorecaster may impair performance by
+            introducing additional variance.'' A published, refereed statement that the slot
+            needs principled guidance is a better home for this project's contribution than
+            any claim to have discovered the slot.}
+}
+
+@article{mudasir2026rbcad,
+  author  = {Mudasir, Muhammad and Asiri, Yousef and Ameer, Iqra and
+             Al Reshan, Mana Saleh and Almansour, Hamad and Awan, Kamran Ahmad and
+             Shaikh, Asadullah},
+  title   = {{RBC-AD}: conformal anomaly detection with explicit false-alarm control
+             for the {Tennessee Eastman} Process},
+  journal = {Connection Science},
+  volume  = {38},
+  number  = {1},
+  year    = {2026},
+  doi     = {10.1080/09540091.2026.2707826},
+  note    = {Record from Crossref, saved at
+             research/S2/records/10.1080\_09540091.2026.2707826.json. FOUND ONLY BY FULL-TEXT
+             SEARCH. Its Eq. (27) blends a freshly recomputed conformal quantile into the
+             DEPLOYED threshold by a one-scalar exponential filter, with a downward-shift
+             restriction and a drift-detection trigger. It is this project's object, in
+             Placement A, unheadlined in a methods section of an applied anomaly-detection
+             paper -- which is the concrete demonstration that the project's abstract-level
+             prior-art sweeps could not have seen it.}
+}
+
+@article{hardy2001rsln,
+  author  = {Hardy, Mary R.},
+  title   = {A Regime-Switching Model of Long-Term Stock Returns},
+  journal = {North American Actuarial Journal},
+  volume  = {5},
+  number  = {2},
+  pages   = {41--53},
+  year    = {2001},
+  doi     = {10.1080/10920277.2001.10595984},
+  note    = {Record from Crossref, saved at
+             research/S2/records/10\_1080\_10920277\_2001\_10595984.json. The published
+             calibration docs/PROTOCOL.md R2 cites for the two-state regime process, in place
+             of invented parameters. THE BIBLIOGRAPHIC RECORD IS VERIFIED; THE PRINTED
+             PARAMETER TABLE IS NOT. The four RSLN-2 values used in PROTOCOL R2 are
+             corroborated second-hand, and confirming them against the printed table is a
+             blocking pre-sweep check recorded as PROTOCOL OI-2. Three retrieval routes
+             failed this session and the obstacle is a subscription wall rather than a search
+             failure, so it needs a library card and not another crawler:
+             research/S2/records/hardy2001-fetch-log.md.}
 }

@@ -24,6 +24,15 @@ conformal-anchored query in any instrument would ever have returned it.
 **What survives is narrower than what was intended, and it is stated in §2 as R1 and R2.
 R2 is the paper. R1 is the motivation.**
 
+> **AMENDED 2026-08-19 BY SESSION S2 — read §2.2b before §2.2.** R2 as stated in §2.2 is
+> superseded by **R2\*\***. The reduction to Conformal PID Theorem 1 **holds**, so no new
+> theorem is needed — **and none may be claimed, because the placement is already in print in
+> three places.** What the paper claims instead is the **price** of the placement, which is a
+> conservation law derived independently by two agents. Separately, **§8b item 4 is withdrawn:
+> R1's priced-movement-cost leg is occupied** by Chen, Yang, Li & Liu (2013), and R1 now rests
+> on the absence of a coverage object plus one object distinction. **Neither change is a
+> softening. Both are losses, and the second is the larger one.**
+
 ---
 
 ## 1. The aim
@@ -98,6 +107,134 @@ twice, and now covers three things, not one:**
 
 **R2 is the headline. R1 is the motivation. Not the other way round.** R1 alone is a
 restatement of a 2026 result in a new instrument, and it is the leg that has been occupied.
+
+### 2.2b R2 is superseded by R2\*\* — amended 2026-08-19 by session S2
+
+**R2 as stated in §2.2 is superseded. It is not deleted, because the project's convention is
+to supersede and because the shape of the error is instructive.**
+
+**Why the change was forced, and it is not to the project's credit.** The finding that
+required it was **already in the repository** when §2.2 was written. `research/S1/A6-postprocessing-coverage.json`
+records Conformal PID Theorem 1 in full and its `citable_as` field already contained the route
+in one sentence: *"if the architecture is rearranged so the movement-penalised value enters as
+q̂_{t+1} and the saturating integrator is retained on top with feedback from the deployed
+interval, Theorem 1 applies verbatim and NO new theorem is needed."* **S1's own synthesis did
+not absorb it.** §2.2's R2 and §6 sentence 9 were both written as though the field were empty
+of a route, when S1's own retrieval agent had found one and written it down. A later session
+had to rediscover it. Record this as a process failure, not only a content one: **the agent
+outputs were richer than the synthesis built from them.**
+
+> **R2\*\* — the placement, and what it costs.**
+>
+> **The inheritance.** A one-scalar movement penalty on a deployed conformal quantile can be
+> placed in the **additive scorecaster slot** of Conformal PID (Angelopoulos, Candès &
+> Tibshirani, NeurIPS 2023), where `q_{t+1} = q̂_{t+1} + r_t(Σ_{i≤t}(err_i − α))`. Both the
+> **L2** (convex-combination) and **L1** (soft-threshold) forms are convex combinations of
+> quantities already in `[−b/2, b/2]` — the L1 case via `S_τ(u) = u(1 − τ/|u|)₊` — so
+> Theorem 1's hypotheses hold unmodified, its constant is unchanged, and long-run coverage is
+> inherited deterministically, with no probabilistic model on the data. **No new theorem is
+> required.**
+>
+> **And none is claimed, because the placement is not new.** Three independent sources state
+> or use it: ACT23 themselves say `q̂` may be any function of the past **three separate
+> times** — including *"There is no limit to what we can choose for the scorecasting model"* —
+> and **deploy a Theta-model scorecaster** in their Figure-3 experiment and throughout their
+> appendix; **Dupuy et al. publish the generic argument** at Appendix A, p.15, Eq. 12, *"with
+> q̂_{t+1} being any function of the past"*, and in their §4.1 place the previous deployed
+> quantile in the slot outright, *"we take ŝ_t = q_t to facilitate the computation"*; and
+> **Duerst, Schöley, Hellstrand & Myrskylä** (MPIDR WP-2024-016) already impose an explicit
+> width-movement constraint inside a Conformal PID scorecaster — *"We added the constraint
+> that the scorecaster's width is not allowed to narrow with time."*
+>
+> **What the paper claims instead is the trade-off the placement exposes.** Deployed movement
+> is `Δq_t = Δq̂_t + Δr_t`, and the integrator's contribution is **irreducible**: Theorem 1
+> confines `q̂` to `[−b/2, b/2]` while condition (4) forces `r_t` to reach `±b`, so a
+> scorecaster can cancel **at most half** the integrator's reach. Two agents derived the same
+> **conservation law** independently and without contact: the product of Proposition 2's
+> coverage-gap bound at horizon `T` and the integrator's per-step movement is a constant of
+> the horizon, **and the penalty weight `w` does not appear in it** — `ε·M = 2α(1−α)b/T`
+> exactly for a constant-gain integrator, with the gain cancelling, and `π·α(1−α)·K_I/T` for
+> ACT23's tan integrator. **Tightening the inherited guarantee buys movement, and the penalty
+> cannot buy it back.**
+
+**What is true about Placement A, and what §2.2's R2 got wrong about it.** §2.2 said the
+downstream smoother breaks the saturation condition, *"because a smoother damps exactly the
+excursions the condition needs"*. **That is wrong, and the sign is backwards.** Condition (4)
+constrains `r_t` alone, and a smoother placed downstream of the completed output never touches
+`r_t`. What fails is the single load-bearing step of Proposition 2's induction —
+`c·h(T−1) < E_{T−1} ⟹ q_T = r(E_{T−1}) ≥ b ⟹ s_T ≤ q_T ⟹ err_T = 0` — because the integrator
+reaches `b` but an EMA of the output attains `b` only in the limit of infinitely many
+consecutive saturated rounds. **The smoother does not damp the accumulator's excursions; it
+lets the accumulator excurse further, because the correction it is waiting for is delayed.**
+
+**And Placement A does not lose coverage. The paper must not say it does.** Six smoother
+families — EMA at w = 0.5/0.9/0.99, dead band at τ = 0.5/0.9/1.5, running mean, and EMA with
+time constant growing as t^0.5 and t^0.9 — returned realised miscoverage **0.1000–0.1002**
+against α = 0.1 under an adversary playing the score at the deployed threshold over
+T = 2×10⁵. Verbatim inheritance is refutable only on a **zero-slack** instance, verified in
+exact rational arithmetic, which is legal under Theorem 1's uniform hypotheses and evaporates
+under any strict slack.
+
+> **The claim to make:** *Placement A forfeits the inherited theorem and its finite-sample
+> rate and requires a new argument; Placement B requires none.*
+> **The claim NOT to make:** *Placement A loses coverage.* **A referee will build the
+> counter-simulation in ten minutes.**
+
+The forfeit is measured and it is the empirically meaningful failure: unsmoothed
+max|E_t| = 5.5 / 6.6 / 7.8 at T = 10⁴/10⁵/10⁶ against a Proposition 2 bound of
+10.2 / 12.5 / 14.8; with an EMA of weight w = 0.999, **max|E_t| = 623.7**, forty to sixty
+times the bound; a running-mean smoother grows faster than `h(T) = log T`. **The forfeit grows
+in exactly the knob a turnover-motivated designer wants to turn up.**
+
+**Four further constraints that follow, and each is load-bearing.**
+
+1. **The inherited guarantee is weak, and "inherits an existing guarantee" must never be
+   allowed to read as "inherits a strong one."** With ACT23's own tan integrator and their own
+   heuristic constants, condition (4) holds with `h(t) = t/log t`, so Proposition 2's rate is
+   **O(1/log T), not O(1/T)** — a certified coverage band of only **[0.821, 0.979] at
+   T = 2500** against a 0.90 target, and identical for δ = 0.01, 0.05 and 0.10 because
+   `⌈δ log T⌉ = 1` for every δ ≤ 1/log T. **Do not take the `b = ∞` branch**: it is legal, but
+   the deployed set becomes all of `Y` and `Σ|Δq|` is infinite.
+2. **Placement B replaces ACI with Conformal PID. It is a change of producer, not a repair.**
+   ACI's manipulated variable is `α_t` and its deployed quantile is `Q̂_t(1−α_t)`; **ACI has no
+   `q̂` slot** — there is nothing in the ACI recursion for a penalised value to be added to.
+   Consequences: ACT23 becomes a baseline to beat, not merely a citation; turnover measured on
+   an ACI arm does not transfer, because ACI's width moves through the empirical quantile
+   function while Conformal PID's moves additively on the score scale; and `C_sat` and `K_I`
+   enter as new free parameters that ACT23 themselves set by hand. **And §4's seventh
+   condemned claim evaporates** — the argument that ACI's telescoping identity certifies the
+   raw rather than the deployed interval has no purchase here, because Conformal PID's `err_i`
+   is already the deployed set's indicator. Do not repeat that motivation under Placement B.
+3. **Dupuy et al.'s domination hypothesis is AVOIDED, not DISCHARGED, and these are different
+   claims.** Their hypothesis compares partial sums of *two* feedback sequences and exists only
+   because their Eqs. (7)/(8) put the smoothed signal **inside** the integrator: the induction
+   bounds the smoothed sum while long-run coverage is about the raw one, so domination is
+   imposed by hand as the bridge. Under Placement B the integrator's argument is the unmodified
+   indicator, **so no smoothed sequence exists and the inequality has no referent.** Conformal
+   PID Theorem 1's hypothesis list is exactly three items and contains no domination condition.
+   **The paper may NOT claim to have discharged their assumption.** `docs/GATES.md` G3.11.
+4. **There are not exactly two placements. A third exists** — inside the integrator, on the
+   loop-closing feedback signal — and it is occupied by **Dupuy Eqs. (7)/(8)** and **ECI
+   Eq. (4)**, both of which report an obstacle there. **The "exactly two placements" wording is
+   falsified and may not be printed.** Nor may the sentence that four lines *"all make the same
+   error"*: only two of five are in Placement A (Binny & Dixit Eq. 13, and IPOC), and
+   **SCD-split is in neither — it names post-hoc alteration as invalidating and deliberately
+   places its smoothing upstream of the quantile computation, which makes it an authority
+   against Placement A rather than an instance of it.** The correct general sentence is that
+   each of these works puts the penalty somewhere the validity argument's load-bearing step
+   passes through, and none puts it in the slot the existing proofs already quantify over.
+
+**A design lever the reduction unlocks.** Condition (4) admits a **relay / dead-band
+saturator**, which contributes *exactly zero* movement inside its band while Theorem 1 still
+applies verbatim. There is no a priori bound on the crossing count, and Proposition 2 bounds
+`|E_T|` rather than crossings. This is a new argument on the L1 side of `docs/OPEN_QUESTIONS.md`
+Q7, which remains an operator decision.
+
+**Evidentiary basis for all of §2.2b:** `research/S2/D1-reduction.json` (the reduction, both
+paper versions diffed, the Placement A analysis), `D2-attack.json` (the occupancy of the
+placement, the conservation law, the change-of-producer finding), `D3-neighbours.json` (the
+five neighbours, discharge-versus-avoid, the third placement), `D5-fulltext.json` (Duerst et
+al., and the methods-level screen), and `research/checkpoints/S2-W1-reduction.md`.
 
 ### 2.3 The STOP condition is replaced
 
@@ -250,7 +387,34 @@ The stronger half of the reply is the object distinction above: their arms have 
 width paths by construction, so the quantity this paper measures is not merely unmeasured in
 their design — it is identically zero in it.
 
-**9 — the R2 sentence.**
+**9 — the R2 sentence. REPLACED 2026-08-19 by session S2. The superseded wording is kept
+below the replacement.**
+
+> Placing a movement penalty on an online conformal threshold is not new, and neither is
+> putting it where it inherits a validity guarantee: Godahewa et al. (*IJF* 2025) publish the
+> one-scalar partial-adjustment smoother as model-agnostic post-processing, Genov et al.
+> (*ESWA* 2026, Eq. 18–20) bound a decision's switching cost by the forecast path variation
+> through a Lipschitz readout map, Binny & Dixit (arXiv:2511.11567, Eq. 13) apply the smoother
+> to a deployed conformal threshold, and Angelopoulos et al. (NeurIPS 2023) state three times
+> that the scorecaster in their iteration may be any function of the past and run an
+> exponential-smoothing-family model in that slot — so the object, the bound and the placement
+> are all prior work. What has not been stated is the price of the placement. The scorecaster
+> is confined to half the range the saturation condition requires of the integrator, so at
+> most half of the integrator's contribution to deployed movement can be cancelled by any
+> penalty; and the product of the guarantee's coverage-gap bound and the integrator's own
+> per-step movement is a constant of the horizon in which the penalty weight does not appear.
+> Tightening the inherited guarantee therefore buys movement that the penalty cannot buy back.
+> The same arithmetic explains the hedges: SCD-split places its smoothing upstream of the
+> quantile and states that post-hoc alteration invalidates the guarantee, ECI and Dupuy et al.
+> smooth the feedback signal inside the integrator and report an uncontrolled averaged
+> miscoverage gap and a domination hypothesis the authors call "pretty strong" respectively,
+> IPOC clamps the deployed width and reports that it can only "approximately guarantee"
+> coverage, and BC-ACI secures its monotonicity condition by leaving the width mechanism
+> untouched. Each puts the penalty where the validity argument's load-bearing step passes
+> through; this paper measures what it costs to put it where the existing proof already
+> quantifies over.
+
+**Superseded wording, kept for the record:**
 
 > Godahewa et al. (*IJF* 2025) publish the one-scalar partial-adjustment smoother as
 > model-agnostic post-processing, Genov et al. (*ESWA* 2026, Eq. 18–20) bound a decision's
@@ -266,6 +430,13 @@ their design — it is identically zero in it.
 > "highly dependent on the choice of parameters" — which is precisely the monotonicity
 > condition BC-ACI's coverage proposition names and secures only by leaving the width
 > mechanism untouched.
+
+**Three defects in the superseded wording, recorded so they are not reintroduced.** It used
+the forbidden construction *"what no one has established"* (§3 watch-list), in a file that
+forbids it. It asserted that four groups make the same error, which §2.2b item 4 refutes. And
+its gloss of SCD-split misstates both nouns — SCD-split does not smooth the conformal
+quantile post hoc; it places smoothing upstream of the quantile computation and names post-hoc
+alteration as the thing that invalidates.
 
 **Honest weakness of sentence 8, to be pre-empted in the paper rather than discovered in
 review.** A hostile reviewer will say: *you matched a level functional; so did they; CRPS
@@ -330,6 +501,27 @@ Cloudflare bot detection, and the ACM Digital Library is open access.** A headed
 Chrome instance driven through a persistent profile passes the challenge and the full
 eleven-page PDF downloads. **Every ACM paper in this project is reachable this way**, and
 that is the single most useful operational fact this session produced.
+
+> **NARROWED 2026-08-19 BY SESSION S2. THE RULE ABOVE IS TRUE OF THE ACM DIGITAL LIBRARY AND
+> OVER-GENERAL EVERYWHERE ELSE.** Applied unamended it will cost the next session what the
+> paywall assumption cost S1, in the opposite direction. The corrected rule:
+>
+> - **ACM Digital Library** — 403 is bot detection, the library is open access behind it, and
+>   headed Chrome with a persistent profile gets the PDF. Unchanged, and still the single most
+>   useful operational fact in this file. *(Not re-verified in S2: ACM's challenge defeated all
+>   six routes tried this session, so treat the route as established by S1, not as guaranteed.)*
+> - **IEEE Xplore and Wiley** — headed Chrome defeats the bot check on the first attempt, and
+>   **a real subscription wall sits behind it.** Four IEEE targets reached, **zero PDFs.**
+>   Expect abstract-plus-introduction, not full text.
+> - **ScienceDirect / Elsevier** — adds a Turnstile CAPTCHA that **headed Chrome does not
+>   pass.** Crossref metadata only.
+>
+> **Two substitute routes, and they are what actually resolved this session's single
+> unresolved occupancy risk** (§8b item 4): **IEEE Xplore's embedded metadata block** carries
+> the abstract even when the PDF is walled, and **Semantic Scholar's figure-extraction service
+> returns figures and tables for paywalled PDFs.** Record both.
+>
+> `docs/OUTSTANDING.md` O34; `research/S2/D4-hiding-places.json`.
 
 **What the theorem actually says.** IPOC has exactly one coverage statement — Lemma 3 in
 §5.1, titled "The Effectiveness of ACI", imported verbatim from Gibbs & Candès: *"The
@@ -422,6 +614,38 @@ session must attack.**
    The one unresolved risk is **Chen, Yang, Li & Liu, IEEE Tencon-Spring 2013,
    doi 10.1109/TENCONSPRING.2013.6584502**, whose title is an exact framing match and for
    which no abstract exists anywhere. See `audit/PRIOR_ART.md` §7.9.
+
+   > **WITHDRAWN 2026-08-19 BY SESSION S2. THE PARAGRAPH ABOVE IS FALSE FROM "What survives"
+   > ONWARDS, AND THE RISK IT NAMES HAS MATERIALISED.**
+   >
+   > **Chen, Yang, Li & Liu (2013) is resolved, and it OCCUPIES R1's decision leg.** S1 could
+   > find no abstract in Crossref, Semantic Scholar or Unpaywall, and that was accurate. The
+   > abstract is on the IEEE Xplore landing page, in an embedded metadata block reachable by
+   > headed Chrome, and **all seven figures and tables were recovered from Semantic Scholar's
+   > figure-extraction service for the paywalled PDF.** Scored on the rubric:
+   > **Q1 yes** — same per-period forecast distributions by construction, via a Gaussian-copula
+   > correlation matrix; **Q2 yes** — its Fig. 4 plots the gradient curves of both scenario
+   > sets; **Q3 yes AND PRICED** — its Table II carries a per-start start-up cost of
+   > **\$300–\$4500**, with minimum on/off times and ramp rates; **Q4 yes; Q5 no.**
+   > Q1 ∧ Q2 ∧ Q3 ⇒ **OCCUPIED**, by the same rubric applied mechanically that occupied C1′.
+   > An independent 2018 restatement exists (doi 10.12783/dteees/appeec2018/23559), so it is
+   > not a one-paper fluke.
+   >
+   > **Therefore the sentence "no work holds marginals fixed, measures a temporal path
+   > functional, AND prices it through a start-up, ramping or cycling cost" is withdrawn, and
+   > so is the corresponding block quote at `audit/PRIOR_ART.md` §7.9.3.** So is the
+   > instruction to state R1's decision leg as the thing that distinguishes it: **the priced
+   > movement cost no longer distinguishes R1.**
+   >
+   > **What R1 has left is Q5 alone** — the absence of a coverage object anywhere in the
+   > matched-marginal decision-value literature — **plus the calendar-time-revision-path
+   > object distinction of item 1 above.** Whether that carries a paper is `docs/OUTSTANDING.md`
+   > O28 and it is not settled here. A further near-miss found in the same sweep sharpens the
+   > problem: **Delikaraoglou & Pinson (2014)** has the matched-marginal generator *and* priced
+   > start-up and shut-down costs in one paper, and fails only Q2 because it builds a single
+   > arm. **That is Pierre Pinson's fourth appearance in this file.**
+   >
+   > `research/S2/D4-hiding-places.json`; `docs/OUTSTANDING.md` O27, O28, O29, O30, O35.
 5. **A 1985 antecedent scores the mechanism on Q1–Q4** — Williams, Peters & Raiszadeh,
    *J. Oper. Mgmt* 6(1):69–85, which rearranges demand sequences to differ *only* in serial
    correlation and evaluates lot-sizing rules carrying a real setup cost. Its body was not

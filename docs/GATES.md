@@ -56,6 +56,23 @@ automated session under any circumstances.**
 **Status: `ready for review`, with one criterion outstanding by design.** Prepared by
 session S1 (2026-08-19).
 
+> **AMENDED 2026-08-19 BY SESSION S2, AND THE AMENDMENT IS AGAINST THE GATE.** G1 certifies a
+> prior-art verdict. **That verdict has changed since this gate was prepared, and it changed
+> in the direction that matters.** S2 resolved the one work S1 recorded as an unclosed
+> occupancy risk — **Chen, Yang, Li & Liu (2013), doi 10.1109/TENCONSPRING.2013.6584502** —
+> and it scores Q1 ∧ Q2 ∧ Q3 with a **priced** start-up cost, which occupies R1's decision
+> leg. G1.4's verdicts are therefore **not** re-affirmed as they stand; one of them moves.
+> **The operator should read `docs/FRAMING.md` §8b item 4 and `docs/OUTSTANDING.md` O27 and
+> O28 before signing G1**, and should treat O27 — withdrawing the false claim from
+> `audit/PRIOR_ART.md` §7.9.3 — as a precondition rather than a follow-up.
+>
+> Three further amendments, all smaller: **G1.1's screen is confirmed sound but is
+> abstract-level**, and S2's full-text screen found methods-level occupants it could not have
+> seen (`docs/OUTSTANDING.md` O39); **G1.6 is strengthened** — the superseded FRAMING sentence
+> 9 itself contained a watch-list construction, now removed; and **G1.8's "superseded"
+> resolution is now stale**, because the validity question it deferred to G3.3 has been
+> answered. **This session does not change G1's recorded status and does not sign it.**
+
 **A note on that status, because the file's own vocabulary is strict.** `ready for review`
 is defined above as "every criterion has evidence in the repository". **G1.7 (venue chosen)
 has no evidence and cannot have any**, because it is an operator decision this session is
@@ -129,6 +146,66 @@ rather than about the manipulated variable. **G2.10 is deleted and replaced; G2.
 | **G2.13** | **Total turnover is decomposed into its ŝ_t-driven and α_t-driven components, per arm** | Two columns per arm plus a residual, in the results JSON. The γ = 0 arm of the abandoned design already carried annual turnover 3.2 entirely from scale-estimator churn, so an undecomposed turnover column cannot attribute anything. This is what makes the manipulated variable identifiable rather than merely correlated |
 | **G2.14** | **The measured path functional is reported under the name it already has in the literature, or under a new name that collides with none of the taken ones** | `Σ\|Δq\|` is already published as Zanotti's MQC/SMQC, and *smoothed conformal*, *stable conformal*, *smoothing-based conformal* and *interval stability* are all taken. `docs/FRAMING.md` §7 item 5 |
 
+### G2-pre — the pre-registration half of G2
+
+**Status: `ready for review`. Prepared by session S2 (2026-08-19). NOT SIGNED, and this
+session is forbidden to sign it.**
+
+**What G2-pre is, and what it deliberately is not.** G2 as a whole cannot be met without a
+simulator, and no simulator exists (`audit/REPRO_C1.md`). But G2 mixes two different kinds of
+criterion: those that require *results*, and those that require *decisions made and frozen
+before results exist*. **The second kind can be met now, and freezing them before any code
+exists is the entire point of the gate** — the register's own warning is that rebuilding a
+simulator against a table already read is a fitting exercise, not a reproduction. G2-pre
+certifies only the second kind.
+
+**The artefact.** `docs/PROTOCOL.md`, written this session. It resolves **all thirteen** free
+choices in `audit/RECONSTRUCTION_SPEC.md` R1–R13 with a value, a justification and a stated
+consequence if wrong, and adds **twelve more (R14–R25)** that the corrected claim introduces —
+producer and placement assignment, integrator family and gain, the scorecaster and its anchor,
+the penalty forms, the score bound, ACI's now-fixed step size, the matching knob, execution-order
+enforcement, what `Σ|Δq|` is measured on, which indicator closes the loop, the penalty-strength
+grid, and the placebo arm.
+
+| G2 criterion | Status at pre-registration | Where |
+|---|---|---|
+| G2.1 (free choices fixed **before** the sweep) | **Specification met; the committed config file remains to be written from it** | `docs/PROTOCOL.md` §4, R1–R25 |
+| G2.5 (empirical-quantile ACI, not a Gaussian proxy — or both) | **Met as a specification: both, empirical-quantile primary, Gaussian secondary, both reported** | R1 |
+| G2.7 (`Var(Δq)` normalised **and** absolute, plus `Var(q)`) | **Met as a specification** | R12, §5.3 |
+| G2.8 (equivalence test with a stated margin) | **Met as a specification** — TOST with four pre-declared margins | §6 |
+| G2.9 (time-at-clip and time-at-cap per arm) | **Met as a specification** | R5, R7, §7 |
+| G2.10 (arms matched; match verified and reported **first**) | **Met as a specification, including the ordering mechanism** — coverage to 0.002, `E[L]` to 0.5 % relative, the tolerance *derived* rather than asserted, and a five-point enforcement mechanism so that widening a tolerance after the fact is visible in `git log` | §3 |
+| G2.11 (path count set by the **smallest** claimed difference) | **Met as a specification** — a fixed formula with `sd` from a pre-registered disjoint-seed pilot | §6 |
+| G2.12 (protocol pre-registered before the applied arm is touched) | **MET** | `docs/PROTOCOL.md`, committed this session, before any simulator exists |
+| G2.13 (turnover decomposed into `ŝ_t`- and `α_t`-driven components) | **Met as a specification, and extended.** S2 adds a second, independent decomposition required by the corrected claim: under Placement B, `Σ|Δq|` must also be split into the `q̂` contribution and the integrator contribution, because a reviewer who knows the conservation law will ask which part the penalty actually reduced | §5.2 |
+| G2.14 (the path functional's name collides with none of the taken ones) | **Depends on `paper/sections/setup.tex`; the collision check is recorded there.** S2 adds one casualty: **`"total variation"` is unusable**, since all ten screened arXiv hits are the TV distance between measures | `docs/OUTSTANDING.md` O22 |
+| G2.2, G2.3, G2.4, G2.6 | **Not addressable without a simulator.** Unchanged, and out of G2-pre's scope by construction | — |
+
+**Two items are open by design and are recorded as `[OPERATOR INPUT]`, not resolved.**
+
+1. **OI-1 — the penalty's functional form, L1 or L2** (`docs/OPEN_QUESTIONS.md` Q7). Both are
+   implemented in the specification as arms, with an asymmetric variant. **The session records
+   the question and does not answer it.** S2 adds one new consideration to the L1 side that
+   did not previously exist: condition (4) admits a **relay / dead-band saturator** that
+   contributes exactly zero movement inside its band while Theorem 1 applies verbatim — with
+   the honest limit that Proposition 2 bounds `|E_T|` and not the crossing count.
+2. **OI-2 — the regime calibration's numeric transcription.** The protocol cites **Hardy
+   (2001), *NAAJ* 5(2):41–53** rather than inventing regime parameters, and the bibliographic
+   record is verified against Crossref and saved. **The printed parameter table was not
+   obtained** — three routes failed and the obstacle is a subscription wall, not a search
+   failure — so the four values used are corroborated second-hand and this is a **blocking
+   pre-sweep check**. The operator chooses between confirming against the printed table and
+   substituting a Hamilton-filter two-state fit on the G4 window. **Proceeding on unverified
+   numbers presented as a citation is recorded as not an option.**
+
+**What would make G2-pre fail on review.** A tolerance widened after a growth column has been
+seen; a free choice quietly reopened; either operator item answered by an automated session;
+or a config file that does not match the register. **G2-pre asserts that the decisions are
+frozen, not that they are correct.**
+
+**Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
+automated session under any circumstances.**
+
 ### G2.10 — the deleted criterion, and why
 
 The previous G2.10 read:
@@ -162,40 +239,62 @@ automated session under any circumstances.**
 
 ---
 
-## G3 — R2: the movement penalty on the deployed quantile, and what it does to validity
+## G3 — R2\*\*: the placement, its price, and what the movement penalty does to validity
 
 **Status: `not started`.**
 
-**Rewritten 2026-08-19.** The old G3 required a coverage theorem or an explicit demotion.
-**That framing is replaced.** Session S1 established (`research/S1/A6-postprocessing-coverage.json`)
-that no existing result covers a two-sided smoother on a conformal quantile, that the
-enlarging-only monotonicity arguments do not extend to it, and that the obligation is
-narrower than a theorem: **a lemma with three verifiable conditions.** No theorem is
-required, and none may be claimed without a proof.
+**REWRITTEN 2026-08-19 BY SESSION S2, and this is the second rewrite.** The first rewrite
+(S1) replaced a coverage-theorem requirement with "a lemma with three verifiable conditions".
+**That framing is also replaced, and it was aimed at the wrong condition.** Session S2 ran five
+agents in parallel and established, with two independent derivations of the central result:
+
+1. **The reduction HOLDS.** A movement-penalised value placed in Conformal PID's additive
+   scorecaster slot satisfies every hypothesis of Theorem 1 — both the L2 and the L1 form are
+   convex combinations of quantities already in `[−b/2, b/2]`, the L1 case via
+   `S_τ(u) = u(1 − τ/|u|)₊` — so long-run coverage is inherited deterministically and
+   **no lemma and no theorem are required.**
+2. **The placement is not new**, so none may be claimed. ACT23 state it three times and deploy
+   a Theta-model scorecaster; Dupuy et al. publish the generic argument; Duerst et al. already
+   constrain a scorecaster's width movement.
+3. **The obligation therefore moves from proving validity to measuring its price** — the
+   conservation law of `docs/FRAMING.md` §2.2b.
+
+**What was removed, and why the removal matters more than the addition.** The old **G3.4**
+required checking three conditions for the specific smoother: `F_{t−1}`-measurability,
+monotonicity of deployed miscoverage in `α_t`, and boundedness of `α_t`, with "(b) is where
+the work is". **All three are now known to be aimed at the wrong object.** Measurability is
+not a hypothesis of Theorem 1 at all, only of implementability. Monotonicity is a step in
+BC-ACI's *probabilistic* Robbins–Monro proof route, not a condition of the *deterministic*
+theorem the project can inherit. And boundedness of `α_t` is an ACI concept that does not
+arise under a producer with no `α_t`. **The old G3.4 is retained below as `G3.4-SUPERSEDED`
+so a later session does not re-derive it.**
+
+**One numbering defect, inherited and not repaired here.** The table below is listed in the
+order G3.1–G3.8, then G3.11–G3.12, then G3.9–G3.10. **The S2 brief asked for two new criteria
+numbered G3.9 and G3.10; both identifiers were already occupied**, so the new criteria are
+**G3.13 and G3.14**. Sorting the table is `docs/OUTSTANDING.md` O41 and must be done with every
+cross-reference updated, which is why it was not done inline.
 
 | # | Criterion | How it is evidenced |
 |---|---|---|
-| G3.1 | The movement penalty is implemented on the **width path** — a one-scalar smoother on the deployed quantile `q_t` — as recorded in `docs/FRAMING.md` §1 | Code in `src/`. Note that this is neither branch of the superseded C-a fork; it is the readout |
-| G3.2 | **The dead-band asymmetry is tested.** With α = 0.10 the ACI increment is +0.1γ on a cover and −0.9γ on a miss, so a symmetric threshold suppresses one direction only | A measured over-coverage result, or a demonstration that an asymmetric threshold is required. **Retained deliberately**: it is cheap, and it is the evidence for why the penalty belongs on the readout rather than on the α_t update |
-| **G3.3** | **The smoothed interval's realised coverage is MEASURED and REPORTED, per arm. No theorem is claimed.** | The measured coverage column. **Coverage may be claimed by construction for the RAW arm only.** ACI's telescoping identity is untouched by a readout smoother — and therefore certifies the raw interval, not the deployed smoothed one. Gibbs–Candès Lemma 4.1 turns on `α_t < 0 ⇒ Q̂_t(1−α_t) = ∞ ⇒ err_t = 0`, a property of the construction; feeding the recursion the smoothed indicator breaks that proof. `docs/FRAMING.md` §4, seventh item |
-| **G3.4** | **The three lemma conditions are checked for the specific smoother used**: (a) `q̃_t` is `F_{t−1}`-measurable; (b) deployed miscoverage stays monotone in α_t; (c) α_t stays bounded | (a) is trivial for partial adjustment and (c) follows with lag of order 1/λ. **(b) is where the work is**, and it is the condition that BC-ACI's own coverage proposition (arXiv:2604.13253, Prop. 3) names and secures only by leaving the width mechanism untouched. If (b) holds under a stated bounded-lag condition, that is the paper's technical contribution. If it does not, say so and rely on G3.3 |
+| G3.1 | The movement penalty is implemented on the **width path** — a one-scalar penalty on the deployed conformal quantile — as recorded in `docs/FRAMING.md` §1 | Code in `src/`, against `docs/PROTOCOL.md` R14 and R17. Note that this is neither branch of the superseded C-a fork |
+| G3.2 | **The dead-band asymmetry is tested.** With α = 0.10 the ACI increment is +0.1γ on a cover and −0.9γ on a miss, so a symmetric threshold suppresses one direction only | A measured over-coverage result, or a demonstration that an asymmetric threshold is required. **Retained deliberately**, and S2 strengthened the case for it: condition (4) admits a **relay / dead-band saturator** contributing exactly zero movement inside its band with Theorem 1 applying verbatim, which is a new argument on the L1 side of Q7. `docs/PROTOCOL.md` R15, OI-1 |
+| **G3.3** | **The reduction to Conformal PID Theorem 1 is stated with locators and verified — OR the failure of the reduction is reported as the result.** | **MET 2026-08-19, in the first direction.** `research/S2/D1-reduction.json` verifies it against **both** the NeurIPS proceedings PDF (doi 10.52202/075280-1000) and arXiv:2307.16895, which has exactly one version; Theorem 1, condition (4), *admissible*, iteration (5) and Proposition 2's statement **and constant** are character-for-character identical between them. **The written reduction and its caveats are in `docs/FRAMING.md` §2.2b.** What remains for the paper is to print it with locators |
+| **G3.3a** | **The proceedings numbering is used, not the preprint's.** | The statements are identical but **the numbering moved**: the error-integration iteration is **(9) preprint → (8) proceedings**, Proposition 2's bound **(10) → (9)**, Proposition 3's **(12) → (11)**, and the proofs moved from **§2.2 to Appendix A**. A draft written from the preprint cites two wrong equation numbers and a wrong proof location. Safest form: cite Theorem 1 and Proposition 2 by name and avoid bare equation numbers in prose |
+| **G3.4** | **The inherited guarantee's STRENGTH is stated, not just its existence.** | With ACT23's own tan integrator and their own heuristic constants, condition (4) holds with `h(t) = t/log t`, so Proposition 2's rate is **O(1/log T), not O(1/T)** — a certified coverage band of **[0.821, 0.979] at T = 2500** against a 0.90 target, identical for δ = 0.01, 0.05 and 0.10. **"Inherits an existing guarantee" must not be allowed to read as "inherits a strong one."** A paper that inherits a weak bound and does not say it is weak will be caught |
+| G3.4-SUPERSEDED | *The three lemma conditions are checked for the specific smoother: (a) `q̃_t` is `F_{t−1}`-measurable; (b) deployed miscoverage stays monotone in `α_t`; (c) `α_t` stays bounded.* | **SUPERSEDED 2026-08-19.** Retained so a later session does not re-derive it. (a) is not a hypothesis of Theorem 1; (b) is a step in BC-ACI's probabilistic proof route rather than a condition of the deterministic theorem; (c) is an ACI concept with no referent under Conformal PID. **Note also that BC-ACI's monotonicity sentence contains an internal sign error** — it states that decreasing `α_t` "does not decrease the miscoverage probability" and then the opposite in the next sentence; **the second is correct. Quote with [sic] or paraphrase; build no argument on the literal wording** |
 | G3.5 | The dominance claim is stated compatibly with Andrew et al. Theorem 2, using the one-dimensional Theorem 7 exception | "Dominates both" without qualification is not available |
 | G3.6 | The switching-cost literature is engaged in related work | Kalai–Vempala, shrinking dartboard, Andrew et al., smoothed OCO. `paper/sections/related.tex` |
-| **G3.7** | **The forecast-stability literature is engaged in the OPENING, not in related work**, and the no-novelty concession for the readout forms is made explicitly and by name | Godahewa et al. (*IJF* 2025) publish the linear partial-adjustment readout; Genov et al. (*ESWA* 2026, Eq. 18–20) publish the Lipschitz readout-map bound on switching cost. `docs/FRAMING.md` §7 item 1. A paper that does not do this is a rediscovery and will be recognised as one |
-| **G3.8** | **IPOC is read and distinguished** | **MET 2026-08-19.** Read in full; its single coverage statement (Lemma 3, §5.1) is Gibbs–Candès imported for the **base model's** interval `c^f_t`, not for the chased ensemble interval the movement cost acts on, and Appendix A's notation table settles the scope. **Q5 = no; the conditional is closed in the project's favour.** `docs/FRAMING.md` §8, `audit/PRIOR_ART.md` §7.8.1. Residual: the TKDE extension's theory section is still unverified |
-| **G3.11** | **R2 is positioned against Dupuy et al. Theorem 2 specifically**, not against an empty field | Dupuy, Xu, Perrey, Montmain & Imoussaten, arXiv:2510.02809 / doi 10.1007/978-3-032-16708-8_17 already prove long-run coverage for an online conformal update explicitly designed to prevent abrupt threshold changes. Their Thms 1 and 3 are the inherited saturating-integrator argument; **their Thm 2 is the case where the width mechanism is driven by the smoothed signal, and it needs a domination hypothesis they themselves call "pretty strong" and "highly dependent on the choice of parameters".** R2 must discharge that assumption or not be written. `audit/PRIOR_ART.md` §7.8.3 |
-| **G3.12** | **No novelty is claimed for the smoother as an object** | Binny & Dixit, arXiv:2511.11567, Eq. (13), publish `q ← (1−γ)q + γ q̂` on a deployed conformal calibration threshold. `docs/FRAMING.md` §2.1 |
-| G3.9 | Journal nomination fixed by the operator | Working default *Stochastic Systems*. The *Mathematics of Operations Research* upgrade is conditional on G3.4(b) being discharged as a proof |
-| **G3.10** | **If R2 cannot be delivered, the project re-scopes rather than submitting R1 alone** | A written decision. **The inherited STOP condition — "fall back to reporting C1 alone" — is now the wrong fallback**, because R1 alone is the occupied leg. `docs/FRAMING.md` §2.3 |
-
-**What was removed and why.** The old G3.3 offered "either a coverage theorem with the
-accumulated-suppression term bounded sublinearly, **or** demotion to an a-posteriori
-certificate". The dichotomy was false in both directions: a full theorem is more than the
-design needs, and demotion is less than it can support. The lemma route in G3.4 is the
-correct middle, and it exists because S1 read the proofs that name its conditions. The old
-G3.4 (attempt the Online Balanced Descent potential-function template) is dropped as a
-criterion — it was the one technique available before those proofs were read, and it is now
-superseded by a specific and cheaper obligation.
+| **G3.7** | **The forecast-stability literature is engaged in the OPENING, not in related work**, and the no-novelty concession for the readout forms is made explicitly and by name | Godahewa et al. (*IJF* 2025); Genov et al. (*ESWA* 2026, Eq. 18–20). `docs/FRAMING.md` §7 item 1. **S2 raises the stakes: the probabilistic-forecast-verification chain must also be in the opening, and Pierre Pinson is now on FOUR of this project's near-neighbours** — Van Belle et al. (the C1′ occupant), Pinson & Girard (2012), Ding et al. (2016) and Delikaraoglou & Pinson (2014). A paper that does not do this is a rediscovery and will be recognised as one |
+| **G3.8** | **IPOC is read and distinguished** | **MET 2026-08-19 (S1).** Its single coverage statement (Lemma 3, §5.1) is Gibbs–Candès imported for the **base model's** interval `c^f_t`, not the chased ensemble interval the movement cost acts on. **S2 could not re-verify it** — ACM's challenge defeated all six routes tried — so this remains established by S1's read, not re-confirmed. Residual: the TKDE extension, now G3.15 |
+| **G3.11** | **R2 is positioned against Dupuy et al. Theorem 2 specifically** | **MET 2026-08-19, with a correction that changes what may be said.** **Placement B AVOIDS the domination hypothesis; it does not DISCHARGE it**, and these are different claims. Their hypothesis compares partial sums of two feedback sequences and exists only because their Eqs. (7)/(8) put the smoothed signal **inside** the integrator; under Placement B no smoothed sequence exists, so the inequality has no referent, and Conformal PID Theorem 1's hypothesis list contains no domination condition. **The paper may NOT claim to have discharged their assumption.** The old wording of this gate — "R2 must discharge that assumption or not be written" — is therefore itself withdrawn: **avoiding it is a legitimate and sufficient answer, and claiming to have discharged it is not available.** `research/S2/D3-neighbours.json` |
+| **G3.12** | **No novelty is claimed for the smoother as an object** | Binny & Dixit, arXiv:2511.11567, Eq. (13). **S2 extends this: no novelty may be claimed for the PLACEMENT either** — see G3.13 |
+| G3.9 | Journal nomination fixed by the operator | Working default *Stochastic Systems*. **The *Mathematics of Operations Research* upgrade was conditional on G3.4(b) being discharged as a proof. That condition is void** — there is no proof to produce, because the guarantee is inherited. The upgrade must be re-argued on the conservation law or dropped |
+| **G3.10** | **If R2 cannot be delivered, the project re-scopes rather than submitting R1 alone** | A written decision. **S2 makes this sharper and more urgent: R1's priced-movement-cost leg is now occupied** by Chen, Yang, Li & Liu (2013), so the fallback is worse than it was. `docs/FRAMING.md` §2.3, §8b item 4; `docs/OUTSTANDING.md` O27, O28 |
+| **G3.13** | **Placement A's forfeit is stated with the SPECIFIC MECHANISM, not asserted — and the mechanism is not the one previously named.** | **The S2 brief asked for this gate as "Placement A's failure of conditions (4) and monotonicity". Wave 1 refuted that framing and the gate is written against the corrected mechanism.** Condition (4) constrains `r_t` alone and a downstream smoother never touches it. What fails is the load-bearing step of Proposition 2's induction — `c·h(T−1) < E_{T−1} ⟹ q_T ≥ b ⟹ s_T ≤ q_T ⟹ err_T = 0` — because the integrator reaches `b` but an EMA of the output attains `b` only in the limit of infinitely many consecutive saturated rounds. **The sign is opposite to what was asserted: the smoother does not damp the accumulator's excursions, it lets the accumulator excurse further.** The gate is met by stating that, with locators, **and by stating the limit of the claim: Placement A does NOT lose coverage** — six smoother families returned 0.1000–0.1002 against α = 0.1 under adversarial scores over T = 2×10⁵. **The paper claims the forfeit of the theorem and its finite-sample rate, measured (max\|E_t\| = 623.7 against a bound of 14.8 at w = 0.999), and claims nothing about coverage loss. A referee will build the counter-simulation in ten minutes** |
+| **G3.14** | **The trade-off — whether Placement B retains the turnover reduction — is measured and reported whichever way it falls.** | `docs/PROTOCOL.md` §1.3 and §5.5. The measurement is not optional and its direction is not pre-committed. **S2 established on paper that part of the answer is already negative and quantified**: the integrator's contribution to deployed movement is irreducible, because Theorem 1 confines `q̂` to `[−b/2, b/2]` while condition (4) forces `r_t` to reach `±b`, so **at most half** the integrator's reach can be cancelled by any penalty. The **conservation law** — the product of Proposition 2's bound and the integrator's per-step movement is a constant of the horizon in which the penalty weight does not appear — was derived independently by two agents and **must be printed as a falsifiable check against the measurement**, not merely cited |
+| **G3.15** | **The TKDE IPOC extension's theory section is read for a validity statement attached to the renamed module** | doi 10.1109/TKDE.2026.3674583. **The abstract-level prediction is VERIFIED** — two regret results plus a Dd-MDP framework, no coverage theorem. **But the residual went up, not down**: the extension renames the conformal module from plain ACI to **"Adaptive Copula Conformal Inference (ACCI)"**, and copula conformal prediction carries its own validity literature. `docs/OUTSTANDING.md` O33 |
+| **G3.16** | **The published contrary reading is answered by name.** | arXiv:2412.18144 prints, of Conformal PID, that *"using a scorecaster (D-part) … breaks the theoretical coverage guarantee"*, and three deployed studies leave the slot empty on that basis. **The claim is false** — Theorem 1 quantifies over "any function of the past: x_i, y_i, **q_i**". Answering it converts a conceded contribution into a correction of the record, and it is the clearest evidence that the placement is worth **stating** even though it is not **new**. `docs/OUTSTANDING.md` O40 |
 
 **Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
 automated session under any circumstances.**
