@@ -53,9 +53,15 @@ structural explanation consistent with the results: a scale estimator consumed b
 nonlinear sizing map is charged for its own estimation variance, so there is an interior
 optimum in adaptation speed."*
 
-Two qualifications, both material. Ryan's mechanism is **hedged and largely unmeasured** —
-conjectured for six of seven devices, measured for one. And it is **not a turnover
-account**; he never connects the growth cost to turnover. So F7's turnover-specific
+Two qualifications, both material. Ryan's mechanism is **hedged and largely unmeasured**.
+Seven devices are tabulated; the variance mechanism is attributed to the **first four** —
+*"Every one of the first four devices makes the interval adapt faster, and every one loses,
+because the sizing map integrates the interval and so charges the variance of q"* — while
+*"the last three rows fail for a different reason"*, and *"for the other devices the
+mechanism is conjectured, not measured"*. So **every device the mechanism is claimed for is
+conjectured**, and the single device where it was measured sits in the category the author
+himself says fails differently. And it is **not a turnover account**; he never connects the
+growth cost to turnover. So F7's turnover-specific
 explanation is not scooped. Only its claim to be the first explanation is.
 
 **This is better for the project than what it replaces.** "Nobody explained it" is an
@@ -202,7 +208,7 @@ different remedy from "the idea is in trouble".
 | Artefact | What it establishes |
 |---|---|
 | `audit/INVENTORY.md` | Complete file-by-file repository state, regenerable |
-| `audit/REPRO_C1.md` | The simulator is absent; all 23 table cells and 7 named claims NOT-EMITTED |
+| `audit/REPRO_C1.md` | The simulator is absent; every cell of the central table (24 rows, 23 numeric plus one reference arm) and all 7 named claims NOT-EMITTED |
 | `audit/RECONSTRUCTION_SPEC.md` | 13 underdetermined choices a rebuild must freeze, with severity |
 | `audit/NUMBERS.md` | 88 numbers traced; orphan count; two arithmetic findings from the plan's own table |
 | `audit/CLAIMS.md` | Atomic claim ledger plus the five required treatments C-a to C-e |
