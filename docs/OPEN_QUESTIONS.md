@@ -167,3 +167,35 @@ theorem reachable, at the cost of losing the dead-band that gives the paper its 
 Out of scope for this session by instruction, and recorded so it is not lost: the paper has
 co-authors, the venue is non-anonymous, and G6.2 requires co-author approval of the
 submitted version. No co-author has been contacted or named in this repository.
+
+---
+
+## Q9 — Semantic Scholar API key (added S1, 2026-08-19)
+
+**The question.** `SEMANTIC_SCHOLAR_API_KEY` is not present in the session environment,
+and the anonymous pool returned HTTP 429 on **every** call this session — through the
+direct API, through the connected Semantic Scholar server, and through a server-side
+fetch from a different network egress. The 429 is therefore a property of the anonymous
+quota, not of this machine's address.
+
+**Consequence.** G1.1 — the forward-citation screen of Gibbs–Candès ACI — could only be
+run in degraded form (OpenAlex citation graph plus manual traversal of the citing sets of
+DtACI, conformal PID and SAOCP). OpenAlex's own coverage of that paper was already
+flagged as visibly incomplete in `audit/PRIOR_ART.md` §0.
+
+**Answer one of:**
+- (a) A key exists / can be obtained — supply it and the screen is re-run properly in S2;
+- (b) No key is available — then G1.1 must be re-worded to name the degraded instrument,
+  and the residual scoop risk stays open in `docs/OUTSTANDING.md`.
+
+**Why it is not closed here.** Applying for a key is an action taken in the operator's
+name against a third party. The session records the question and runs the fallback.
+
+---
+
+## Q10 — Ryan email: address and dispatch (added S1, 2026-08-19)
+
+`docs/RYAN_EMAIL_DRAFT.md` is written and ready. The session does not hold a contact
+address for Robert Jacob Ryan (ACS Athens) and does not send mail on the operator's
+behalf. **Palaash sends this himself.** It is the longest external latency in the
+project; everything else can be redone, a reply cannot be hurried.
