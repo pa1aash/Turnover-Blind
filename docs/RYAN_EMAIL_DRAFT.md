@@ -49,7 +49,7 @@ palaashgang@gmail.com
 
 ---
 
-*(Body word count: 189, salutation to sign-off. Counted, not estimated.)*
+*(Body word count: 199, from the salutation to "With thanks". Counted, not estimated.)*
 
 ## Notes for the sender
 
