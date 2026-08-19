@@ -8,18 +8,25 @@ Internal project identifier: F7.
 Online conformal predictors are tuned by coverage. The adaptation rate — the step
 size `gamma` in the adaptive conformal inference (ACI) update, and its analogues in
 DtACI, conformal PID and SAOCP — is chosen so that realised coverage tracks the
-nominal target. The conjecture this repository is built to test is that the
-adaptation rate is close to *zeroth-order* in coverage and *first-order* in the
-turnover of any downstream decision that must move a position when the interval
-moves. If that holds, a wide band of adaptation rates all hit nominal coverage while
-producing decision costs that differ by percentage points of annual growth. Across
-arms matched on realised coverage and on mean interval width, realised decision cost
-then varies by a measurable number of points of annual net log growth, and coverage
-and mean width are uninformative for selecting the adaptation rate of a decision that
-pays to trade. The intended secondary
-contribution is a turnover-aware conformal update: a cost-derived dead-band on the
-quantile update, so the interval moves only when accumulated coverage evidence
-outweighs the cost of the position change it implies.
+nominal target, and reported on realised coverage together with mean interval width.
+
+This repository tests what that pair leaves free. Hold both fixed across arms, apply a
+one-scalar movement penalty to the interval's **width path**, and measure what the
+remaining freedom is worth to a decision that must move a position when the interval
+moves. The primary measurement is that at matched coverage and matched mean width the
+width path still varies materially, and realised decision cost varies with it by a
+measurable number of points of annual net log growth. The contribution the paper is
+built on is the second question: **what a movement penalty on the deployed quantile
+does to the interval's validity**, which existing predictable-modification arguments do
+not cover, because they require a monotonicity condition that a width smoother puts at
+risk.
+
+**An earlier design, which varied the adaptation rate γ directly and placed a dead-band
+on the quantile update, is abandoned.** It could not separate mean width from path
+variation, because both are approximately affine in γ. **A prior-art sweep has since
+found the primary measurement occupied**, in the forecast-stability literature, by work
+that uses no conformal vocabulary at all. **Read `docs/FRAMING.md` before anything
+else** — it states what is claimed, what is conceded, and why.
 
 The claim is **decision-theoretic, not information-theoretic**. It is not an
 impossibility result, not a coverage floor and not a statement about a fundamental

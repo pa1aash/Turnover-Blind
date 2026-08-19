@@ -53,7 +53,17 @@ automated session under any circumstances.**
 
 ## G1 — Prior-art verdict accepted; framing locked; venue chosen
 
-**Status: `ready for review`.** Prepared by session S1 (2026-08-19).
+**Status: `ready for review`, with one criterion outstanding by design.** Prepared by
+session S1 (2026-08-19).
+
+**A note on that status, because the file's own vocabulary is strict.** `ready for review`
+is defined above as "every criterion has evidence in the repository". **G1.7 (venue chosen)
+has no evidence and cannot have any**, because it is an operator decision this session is
+forbidden to make, and G1.3 is met only partially. The status is used here to mean *every
+criterion an automated session could evidence has been evidenced, and the remainder are
+identified* — the gate is put in front of the operator with its gaps named, not asserted
+complete. If that stretches the vocabulary too far, the correct status is `in progress`, and
+that is the operator's call to make on review.
 
 **What this gate asks:** is the project pointed at something real, and does it know what
 it is claiming?

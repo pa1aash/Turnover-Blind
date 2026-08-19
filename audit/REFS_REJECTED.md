@@ -312,3 +312,47 @@ against the full text and **held**:
 - **Zaffran et al.** The plan says this is "the closest existing analysis of γ and must
   be engaged directly." It is — and it is closer than the plan appears to realise. See
   `audit/PRIOR_ART.md`.
+
+---
+
+## 8. Provenance failure caught by the session-S1 instruction critic, 2026-08-19
+
+**Not a rejection of a work — a rejection of how three entries were produced.** Recorded
+here because the rule it breached is the strictest one this project has, and a breach that
+is quietly repaired is a breach that will recur.
+
+**The rule.** Every bibliography entry is built from a fetched canonical record. Nothing
+from memory. If a fetch fails, write a pointer and log it in `docs/OUTSTANDING.md`.
+
+**What happened.** Three of the sixteen entries added to `audit/REFS_VERIFIED.bib` in
+session S1 were written without a saved record behind them:
+
+| Key | What was wrong |
+|---|---|
+| `tunc2013nervousness` | Fields came from a Crossref **title search** whose output was printed to a terminal and never saved. The entry asserted "Record from Crossref" with no artefact to point at. |
+| `pritularga2024congruence` | Same failure, same search. |
+| `gupta2022nested` | Worse. The only saved record was the Semantic Scholar one for arXiv:1910.10562, which carries year 2019, journal `ArXiv`, **no volume and no pages**. The entry nonetheless asserted `volume = {127}`, `pages = {108496}`, `year = {2022}` and the given name `Arun K.` — none of which appeared in any saved record. Those fields were correct, but at the moment of writing they were not evidenced, and "correct" is not the standard. |
+
+**How it was caught.** The Wave-4 instruction critic was asked to check that every new
+`.bib` entry came from a fetched record, and it checked by looking for the record rather
+than by trusting the `note` field. It found no artefact for two entries and a
+field-by-field mismatch for the third.
+
+**Repair.** All three DOIs were fetched from Crossref and the raw records saved to
+`research/S1/records/`. **Every asserted field matches its record**, so no entry needed a
+value changed. The `note` fields now name the exact saved record file, and
+`gupta2022nested` additionally records that its volume, pages and year were originally
+unevidenced and have since been checked.
+
+**The lesson, which matters more than the repair.** Two of the three fetches had genuinely
+happened; the failure was that their output was not persisted, so the claim "from a fetched
+record" could not be audited. The third was a genuine fabrication of four fields from a
+plausible reconstruction, and it went unnoticed precisely because it was right. **A
+provenance rule that is satisfied by a correct answer rather than by a saved record is not
+a provenance rule.** Later sessions must save the record to disk at fetch time, and name
+the file in the entry.
+
+**Still unentered, and deliberately so:** Zanotti's MQC/SMQC, named in `audit/PRIOR_ART.md`
+§7 as the existing published name for `Σ|Δq|`. Crossref title search did not resolve it and
+no canonical record was obtained, so **no entry was written**. It is carried as a pointer
+in `docs/OUTSTANDING.md` O22.

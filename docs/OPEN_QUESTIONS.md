@@ -79,6 +79,27 @@ question has a clear answer; the calendar question does not.
 
 ## Q4 — Which fork does the dead-band take?
 
+> **RE-POSED 2026-08-19, NOT ANSWERED. Read this block before the question below it.**
+>
+> The question as written offers two branches: the dead-band on the **decision map**, or on
+> the **quantile update**. Session S1 adopted a design in which the movement penalty sits on
+> the **width path** — the readout — which is **neither branch**. `docs/GATES.md` G3.1
+> records that placement, and G1.8 is marked `superseded` rather than answered.
+>
+> **This is a reclassification, and the session flags it as such rather than letting it pass
+> as a closure.** The placement changed because the manipulated variable changed, not
+> because anyone chose between branch (a) and branch (b). If the operator's answer to the
+> original question would have been branch (a) — the dead-band on the decision map, giving
+> coverage identical to ACI's and a trivial theorem — **then the S1 design is a different
+> project from what was intended, and that should be said now rather than at G3.**
+>
+> **What remains genuinely open, and is `Q7` below:** the movement penalty's functional form,
+> L1 (proportional, dead-band) or L2 (quadratic, linear partial adjustment). G3.4's
+> tractability depends on it.
+>
+> **The question below is the original text, preserved unedited.**
+
+
 **The question.** C2 adds a cost-aware dead-band. The plan is inconsistent about what the
 dead-band acts on, and the two readings are different projects.
 

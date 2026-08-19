@@ -1,3 +1,13 @@
+% Related work.
+%
+% LENGTH: measured 315.2 pt against a NeurIPS 2026 textheight of 650.4 pt = 0.485 pages,
+% compiled with the sglblindworkshop option. THE 0.3-PAGE TARGET IS NOT MET, and it is not
+% reachable while every must-cite stays in: deleting both one-clause blocks still leaves
+% roughly 0.38 pages. In a 4-page body this section is therefore spending about 0.18 pages
+% more than budgeted, and that has to come from somewhere else or from a decision to drop a
+% citation. See docs/OUTSTANDING.md O23 for the ranked cut list and what each cut costs.
+%
+% Every citation key here resolves against audit/REFS_VERIFIED.bib.
 \section{Related work}
 \label{sec:related}
 
@@ -23,7 +33,9 @@ inverse-optimisation decisions.
 
 \citet{godahewa2025stability} already publish the linear partial-adjustment readout
 $\tilde{y} = (1-w_s)\hat{y}_{\mathrm{new}} + w_s\tilde{y}_{\mathrm{prev}}$ as model-agnostic
-post-processing, so we claim no novelty for either form; switching-cost online learning
+post-processing, and \citet{genov2026switching} already bound a decision's switching cost by
+$\beta L_M \sum_t \lVert \hat{y}_t - \hat{y}_{t-v} \rVert$ through a Lipschitz readout map, so we
+claim no novelty for either form or for the formulation; switching-cost online learning
 \citep{kalai2005lazy,geulen2010dartboard,andrew2013twometrics,chen2018obd} and both maps --- quadratic cost
 giving partial adjustment \citep{garleanu2013dynamic}, proportional cost a no-trade band
 \citep{constantinides1986,davis1990} --- are prior work, not claims.
@@ -31,5 +43,9 @@ giving partial adjustment \citep{garleanu2013dynamic}, proportional cost a no-tr
 ``indistinguishable in terms of forecast quality''), vary $W_1$ between consecutive updates threefold, and
 price it through a newsvendor; but their functional is over forecast \emph{revisions} of a fixed target, they
 carry no interval and no coverage object, and the effect is $+0.00\%$ in their single-horizon arm.
-On arXiv as of August~2026, ``conformal'' pairs with none of ``forecast stability'', ``forecast
-instability'', ``forecast congruence'', ``jumpiness'' or ``forecast revision'', in either direction.
+Closest on the conformal side, \citet{lade2026bcaci} place an exponentially weighted smoother and
+a dead-zone inside an ACI pipeline, but upstream of the quantile and on the interval centre; their
+coverage proposition holds for any predictable modification precisely because it leaves the width
+mechanism untouched, which is the condition a width smoother puts at risk. On arXiv as of
+August~2026, ``conformal'' pairs with none of ``forecast stability'', ``forecast instability'',
+``forecast congruence'', ``jumpiness'' or ``forecast revision'', in either direction.
