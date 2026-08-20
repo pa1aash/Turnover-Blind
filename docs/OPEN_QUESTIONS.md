@@ -281,3 +281,39 @@ name against a third party. The session records the question and runs the fallba
 address for Robert Jacob Ryan (ACS Athens) and does not send mail on the operator's
 behalf. **Palaash sends this himself.** It is the longest external latency in the
 project; everything else can be redone, a reply cannot be hurried.
+
+---
+
+## Q11 — What affiliation should the author block show? (added S5, 2026-08-20)
+
+**The question.** `paper/main.tex`'s author block carried the template's literal placeholder
+(`Author Name / Affiliation / Address / email@example.com`) until session S5. Two of those
+four lines are settled and are **not** operator questions: the name is **Palaash Gang** and
+the email is **palaashgang@gmail.com**, both now written into the file. The address line was
+**deleted rather than filled** — no postal address was available and the session did not
+invent one; the NeurIPS 2026 template imposes no line count on `\author` (its own shell block
+runs to five lines), so a three-line block is legal. **The affiliation is the one line that is
+still a placeholder.** It currently reads `Independent Researcher`, chosen so the document
+builds and displays sensibly, not because it was decided.
+
+**Answer one of:**
+- (a) `Independent Researcher` is correct — keep it; or
+- (b) A school, department or institution — give the exact string as it should be printed; or
+- (c) Something else (a lab, a company, a joint affiliation across two lines) — state it.
+
+**Why it matters.** Under **(b)** the answer is not only cosmetic. E-values is single-blind
+and prints the author block, so the affiliation is visible to reviewers, and an institutional
+affiliation carries an implicit claim that the institution is associated with the work. It
+also interacts with **Q8** — if there are co-authors, `\And` / `\AND` blocks are added beside
+this one and the first-page geometry is re-measured, because a second author column changes
+the height of the title box.
+
+**What is already measured, so the answer does not reopen the page count.** With the
+three-line block, three passes plus bibtex under **both** venue options give: 6 pages total,
+last body line on p.4, `References` the **first** content on p.5, **offset 0**, 0 TeX errors,
+0 undefined citations, 0 undefined references, 0 overfull boxes, 0 LaTeX warnings, 0 bibtex
+warnings. Dropping the address line moves exactly **one** body line from p.2 up to p.1 in the
+`sglblindworkshop` build (37 numbered lines on p.1 against the anonymous build's 36);
+`\flushbottom` re-absorbs it inside p.2, and pp.2–6 are line-for-line identical between the
+two builds. **A longer affiliation string that wraps to two lines would undo that and must be
+re-measured** by the offset test, never by a page count. Record: `research/S5/E-template-metadata.json`.
