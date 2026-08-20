@@ -38,6 +38,31 @@
 % THE BODY IS EXACTLY FULL.  Wave 5 paid for every addition with a cut; the
 % cuts are recorded in the header of the file each one was taken from.
 %
+% S5 SUB-SESSION A (2026-08-20): NUMERIC PROVENANCE AUDIT.  Two things changed here.
+%   1. THE ABSTRACT'S MISCOVERAGE WAS THE WRONG HORIZON.  It read "overruns Proposition 2's
+%      bound 42x at T = 10^6 and still covers, 0.100035".  0.100035 is arm ema_w0.999's
+%      miscoverage at T = 2x10^5 (aggregate_table[18]); the 42x ratio is its T = 10^6 figure
+%      (aggregate_table[19].ratio = 42.0978).  The sentence paired a 10^6 ratio with a 2x10^5
+%      miscoverage while implying both were at 10^6.  The measurement EXISTS at the right
+%      horizon -- aggregate_table[19].miscoverage = 0.100004 -- so it is PRINTED, not footnoted.
+%   2. TABLE 1 GAINED A "miscov. 10^6" COLUMN so the abstract's number is visible in the table
+%      it points at.  Seven columns fit: 0 overfull boxes, body still 4 pages, offset 0.
+%
+% RE-MEASURED, S5 SUB-SESSION A, BOTH VENUE OPTIONS, three passes + bibtex, artefacts deleted
+% first.  This supersedes the S4 wave 2 block below.
+%   body = 4 pages under BOTH options.  "References" is the FIRST content on p.5, OFFSET 0.
+%   6 pages total, references on pp.5-6.
+%   0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull boxes, 3 underfull
+%   hboxes, 0 bibtex warnings, 0 \pdfendlink warnings.
+%
+% THE pdfvlistout HAZARD FIRED AGAIN AND IS NOW CLOSED AT ITS SOURCE.  The wider Table 1
+% moved the page 1/2 break into \citet{li2024neuralconformal} in sections/intro.tex, and
+% pdflatex SEGFAULTED (rc 139) on the third pass under dblblindworkshop -- it already emitted
+% one "\pdfendlink ended up in different nesting level" warning BEFORE this session's edits,
+% on that same citation, without dying.  That citation is now \mbox-wrapped, exactly as the
+% forfeit.tex one is, and both venues build with zero \pdfendlink warnings.  Bisected: the
+% table column alone reproduces the crash; none of the prose edits does.
+%
 % S4 WAVE 4 (orchestrator, after adversarial critic N1): RETITLED AGAIN, AND THE REASON
 % MATTERS.  Wave 2's title asserted flatly "The Admissible Radius Is Tight".  N1 showed on the
 % paper's own numbers that the radius is tight at exactly ONE non-degenerate setting -- the null
@@ -128,7 +153,7 @@ $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, which is the published
 radius itself there, and past it realised miscoverage is $1.000000$ against
 $\alpha = 0.1$ while saturation fires every round. Leaving the set costs coverage
 and not only the rate: partial adjustment there overruns Proposition~2's bound
-$42\times$ at $T = 10^{6}$ and still covers, $0.100035$. The edge belongs to the
+$42\times$ at $T = 10^{6}$ and still covers, $0.100004$. The edge belongs to the
 saturator--scorecaster pair, not to the readout, and elsewhere the condition is
 sufficient only: under the equally legal $\hat{q} \equiv +b/2$ the failing band
 covers, and under $\hat{q} \equiv -b/2$ both the failing band and partial

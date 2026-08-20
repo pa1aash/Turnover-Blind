@@ -40,6 +40,14 @@
 % bibliography, this is ordinary self-correction, and the joining is what this paper
 % adds."  No form of "erred", "were wrong", "mistake" or "incorrectly" appears.
 
+% S5 SUB-SESSION A (2026-08-20): \citet{li2024neuralconformal} in the four-surface sentence is
+% \mbox-WRAPPED FOR BUILD REASONS ONLY -- no text changed.  The page 1/2 break lands inside
+% "Li and Rodriguez [2024]", pdftex cannot split a hyperref link across a page boundary, and it
+% emitted "\pdfendlink ended up in different nesting level" on every dblblindworkshop build.
+% Once Table 1 widened this session it stopped warning and started SEGFAULTING (rc 139) on the
+% third pass.  Do not remove the \mbox without rebuilding under BOTH venue options and
+% grepping main.log for pdfendlink.
+
 \section{Introduction}
 \label{sec:intro}
 
@@ -67,7 +75,7 @@ generic-slot argument carries AcMCP's long-run coverage \citep{wang2026acmcp}. T
 of \citet{li2024neuralconformal} and cite it: the halves already share a bibliography, this is
 ordinary self-correction, and the joining is what this paper adds. Four surfaces, queried on 20 August 2026 for the two papers' identifiers and for
 ``scorecaster'' --- arXiv full text, arXiv abstracts, OpenReview, and the six works Semantic
-Scholar records as citing \citet{li2024neuralconformal} --- return no document containing both
+Scholar records as citing \mbox{\citet{li2024neuralconformal}} --- return no document containing both
 the claim and the corollary. \citet{hu2026distinformed} still calls scorecaster choice ``arbitrary'' and
 lacking ``principled guidance'', while asserting valid coverage: model selection, not validity. \textbf{We claim neither the placement nor the derivation.}
 % Wave 3 closed both former bibliography gaps here: li2025o2cp (arXiv:2508.13362) and wang2026acmcp

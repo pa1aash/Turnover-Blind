@@ -57,6 +57,14 @@
 % goes with it.  What forfeit.tex prints instead is the traceable 19-of-19 check and
 % its resolution caveat.
 
+% S5 SUB-SESSION A (2026-08-20): "under i.i.d. scores it returns 0.249376" NOW NAMES ITS
+% HORIZON.  The figure is aggregate_table[163].miscoverage -- arm deadband_tau1.5, regime
+% iid, T = 10^6 -- and that arm's i.i.d. miscoverage moves with T (0.244700 / 0.250440 /
+% 0.250515 / 0.249376), so an unqualified number was ambiguous.  The framing is honest: with
+% n = T = 1,000,000 and p = 0.25, se = sqrt(p(1-p)/n) = 0.000433, and 0.249376 sits 1.44
+% standard errors below 0.25 -- ordinary sampling noise around the exact value the uniform
+% -score calculation predicts, not a discrepancy.  n_err = 249,376 is stored alongside it.
+
 \section{Limitations}
 \label{sec:limitations}
 
@@ -66,7 +74,7 @@ inherited guarantee is weak where it applies.} Under the tangent integrator $h(t
 the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$: what is forfeited
 was not a tight certificate. \textbf{The dead-band widths are absolute, and the failure is total
 only against the adversary.} $\tau$ is in score units with $b = 2$, so the failing $\tau = 1.5$ is
-$0.75\,b$; under i.i.d.\ scores it returns $0.249376$, which is not a retreat but an
+$0.75\,b$; under i.i.d.\ scores it returns $0.249376$ at $T = 10^6$, which is not a retreat but an
 adversary-free confirmation of the mechanism --- the threshold pins at $b-\tau = 0.5$ and uniform
 scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly. \textbf{The harness was rebuilt against numbers already read}, which carries less
 weight than a rerun done without sight of them. \textbf{Placement~B is conceded, not tested.}
