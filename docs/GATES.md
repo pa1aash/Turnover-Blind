@@ -4,6 +4,36 @@ Acceptance criteria are written **now, before the work**, so they cannot be retr
 to whatever the work happens to produce. That is the entire point of this file. A gate
 whose criteria are written after the result is not a gate.
 
+## RE-SCOPE, 2026-08-20 — read this before any gate below
+
+**Session S3 re-scoped the paper (`docs/FRAMING.md` §2.2c), and four gates lost their
+referents.** **G2, G2-pre, G3 and G4 are RETIRED.** None is deleted. A new **G7 — re-scoped
+paper complete** is written below, with its criteria fixed **now**, before the paper that will
+be judged against them is finished, which is the only condition under which a gate means
+anything.
+
+| Gate | Disposition 2026-08-20 | The referent it lost |
+|---|---|---|
+| **G0** | stands | — |
+| **G1** | stands, with its S2 amendment | — |
+| **G2** | **RETIRED** | The matched-width experiment. R1 is dropped, and the re-scoped paper carries neither a market model nor a decision, a growth column or matched arms to verify |
+| **G2-pre** | **RETIRED** | The pre-registration of that experiment. `docs/PROTOCOL.md` R1–R25 specify a sweep the re-scoped paper does not run |
+| **G3** | **RETIRED**, with **G3.16 carried into G7** | The placement theorem. The derivation is in print twice, so the gate certifies a contribution the paper no longer makes |
+| **G4** | **RETIRED** | The Ryan-configuration replication. The applied arm is out of scope |
+| **G5** | stands | — |
+| **G6** | stands | — |
+| **G7** | **NEW** | — |
+
+**What "retired" means here, exactly.** The gate is not met, not failed, not signed, and not
+deleted. Its criteria are kept in full so that a later session reviving a decision-cost paper
+inherits them rather than re-deriving them, and so that the operator can see what was given up.
+**Retirement is a scope decision recorded by an automated session; it is not sign-off, and it
+does not discharge the operator's review of G0 or G1.** Every retired gate keeps its
+operator-sign-off prohibition line, and **no gate in this file is recorded as signed by session
+S3.**
+
+---
+
 ## The rule that governs every entry below
 
 > **Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
@@ -24,6 +54,7 @@ review" instead.
 | `ready for review` | Every criterion has evidence in the repository. Awaiting operator sign-off. |
 | `signed` | **Only the operator may set this.** |
 | `failed` | The operator reviewed and did not sign. Record why. |
+| `retired` | **Added 2026-08-20.** The gate's referent no longer exists after a re-scope. Not met, not failed, not signed, not deleted. The reason is recorded in the gate and the criteria are kept in full. Only a scope change sets this, and setting it is not sign-off. |
 
 ---
 
@@ -120,8 +151,39 @@ automated session under any circumstances.**
 
 ## G2 — R1 measured under the matched-width design; protocol frozen and pre-registered
 
-**Status: `not started`.** This is the gate that the missing simulator makes into the
-project's critical path.
+**Status: `retired` 2026-08-20 by session S3. Previously `not started`. NOT DELETED.**
+
+> **Why it is retired.** G2 certifies a **matched-width experiment measuring R1**, and
+> **R1 is dropped** (`docs/FRAMING.md` §2.2c and the §2.2 banner). The re-scoped paper has no
+> market model, no position charged to move, no net-log-growth column, no cost rate, no
+> coverage/`E[L]` matching across arms and no ACI producer, so **G2.1–G2.14 have no referent**:
+> nothing remains to match, nothing remains to decompose into `ŝ_t`- and `α_t`-driven shares,
+> and the growth column whose computation had to follow the match-verification table is gone. What replaced the
+> experiment is `src/forfeit.py` — an adversarial score sequence against a Conformal PID
+> threshold, measuring the deployed threshold's travel and `max|E_t|` against Proposition 2's
+> bound — and its acceptance criteria are **G7**.
+>
+> **Three criteria are carried forward rather than retired, because their content survives the
+> change of experiment.** **G2.3** (every run emits a `results/` JSON carrying config, git
+> commit, wall-clock, library versions and per-path raw quantities) becomes **G7.1**;
+> **G2.14** (the path functional's name collides with none of the taken ones) becomes
+> **G7.11**, with the count corrected from four taken names to six; and G2.1's principle —
+> free choices frozen in a committed artefact before the run — is discharged for the re-scoped
+> experiment by `src/forfeit.py` and its committed results JSONs rather than by
+> `docs/PROTOCOL.md`.
+>
+> **What the retirement costs, stated rather than hidden.** G2 was the only gate in this file
+> that forced a *pre-registration discipline* on a measurement. G7 is written before the paper
+> is finished but **after** the R3b runs exist, so it is weaker in exactly that respect, and a
+> reader should discount it accordingly. The mitigation is that R3b's numbers come from
+> committed code with committed outputs and a from-scratch independent re-derivation
+> (`research/checkpoints/S3-W1-findings.md` §2), so they can be re-run rather than trusted.
+>
+> **`docs/PROTOCOL.md` is not deleted and is not maintained.** It specifies a sweep the project
+> is not running. A later session reviving the decision-cost paper starts from it.
+
+**Criteria kept in full below. This is the gate that the missing simulator made into the
+project's critical path, under the design that has now been dropped.**
 
 **Rewritten 2026-08-19 for the matched-width design.** The old G2 was written against a
 design that varied ACI's adaptation rate γ. That design is abandoned; see
@@ -148,8 +210,25 @@ rather than about the manipulated variable. **G2.10 is deleted and replaced; G2.
 
 ### G2-pre — the pre-registration half of G2
 
-**Status: `ready for review`. Prepared by session S2 (2026-08-19). NOT SIGNED, and this
-session is forbidden to sign it.**
+**Status: `retired` 2026-08-20 by session S3. Previously `ready for review`, prepared by
+session S2 (2026-08-19). NEVER SIGNED, AND RETIREMENT IS NOT SIGN-OFF. NOT DELETED.**
+
+> **Why it is retired.** G2-pre certifies that the free choices of the matched-width sweep were
+> **frozen before results existed**. The freeze happened and the artefact is real
+> (`docs/PROTOCOL.md`, R1–R25). **The sweep is not being run**, so the gate certifies a
+> discipline over an experiment that has no referent. **The freeze itself is not withdrawn**:
+> if a later session revives the decision-cost paper, `docs/PROTOCOL.md` is still binding on it
+> and re-opening any of R1–R25 after reading a result is still the failure this gate was built
+> to catch.
+>
+> **OI-1 and OI-2 are SUPERSEDED, not answered, and not closed** — see `docs/OUTSTANDING.md`,
+> where the reasons are recorded. **OI-2** (the Hardy 2001 regime-parameter table) has no
+> referent because the re-scoped paper has no market model. **OI-1** (L1 or L2) stops being a
+> decision point because R3b's experiment **sweeps smoother families rather than choosing
+> one**. Wave 1 nonetheless handed the L1 side a hard new fact, recorded here as information
+> for the operator and **not** as a decision by any automated session: **the dead band is the
+> L1 form, and it is exactly the family that loses long-run coverage for `τ > b/2`** — strictly;
+> `τ = b/2` covers. **No automated session may answer either item.**
 
 **What G2-pre is, and what it deliberately is not.** G2 as a whole cannot be met without a
 simulator, and no simulator exists (`audit/REPRO_C1.md`). But G2 mixes two different kinds of
@@ -208,6 +287,12 @@ automated session under any circumstances.**
 
 ### G2.10 — the deleted criterion, and why
 
+> **RETIRED WITH G2, 2026-08-20. The lesson in it does not retire**, and it is the reason this
+> subsection is kept: an acceptance criterion can name a test that is **computable but not
+> estimable**, and recording one invites a later session to run it and report a number that
+> means nothing. Check every new criterion against that failure mode. **G7 was checked against
+> it.**
+
 The previous G2.10 read:
 
 > **The Zaffran discriminator is run, in its strict form**: does `Σ|Δq|` carry information
@@ -241,7 +326,46 @@ automated session under any circumstances.**
 
 ## G3 — R2\*\*: the placement, its price, and what the movement penalty does to validity
 
-**Status: `not started`.**
+**Status: `retired` 2026-08-20 by session S3, with G3.16 carried into G7. Previously
+`not started`. NOT DELETED.**
+
+> **Why it is retired.** G3 certifies **a contribution the paper no longer makes.** Its subject
+> is the placement of a movement penalty in Conformal PID's scorecaster slot and the *price* of
+> that placement. S2 conceded the placement and kept the derivation; **S3 found the derivation
+> in print twice** — **arXiv:2508.13362 Corollary 2** (Li, Menacho & Rodríguez), which folds a
+> bounded predictable perturbation into the slot in Conformal PID's own notation and concludes
+> *"The CPID saturation result therefore applies"*, and **arXiv:2410.13115v2** (AcMCP). The
+> price the gate was rewritten around — the conservation law — was withdrawn by S2's own critic
+> the day it was written. **A gate certifying a placement theorem therefore has nothing left to
+> certify.** `docs/FRAMING.md` §2.2c.
+>
+> **G3.16 survives and is carried into G7 as G7.6**, unchanged in content: *the published
+> contrary reading is answered by name.* It is the one criterion here whose object is other
+> people's printed text rather than this project's theorem, and it is exactly what R3a now is.
+>
+> **`docs/OUTSTANDING.md` O41 — the G3 numbering defect — is RETIRED WITH THIS GATE, NOT
+> REPAIRED.** The table below is still listed G3.1–G3.8, then G3.11–G3.12, then G3.9–G3.10,
+> then G3.13–G3.16. Sorting it would require updating every cross-reference in the repository
+> to a retired gate, which spends real risk on a document nobody will act on again. **The
+> defect is recorded and left visible**, which is what the project does with defects.
+>
+> **Four items of content here outlive the gate and are not to be re-derived.** (i) The
+> reduction to Theorem 1 holds and `b/2 + b/2 = b` is exactly tight — attacked by three agents
+> and undamaged (G3.3). (ii) The inherited guarantee is **weak**: `h(t) = t/log t` under ACT23's
+> own constants gives an `O(1/log T)` rate and a certified band of [0.821, 0.979] at `T = 2500`
+> (G3.4), and the paper must say so. (iii) Placement B **avoids** Dupuy et al.'s domination
+> hypothesis and does not **discharge** it (G3.11). (iv) The proceedings numbering, not the
+> preprint's, and cite Theorem 1 and Proposition 2 by name (G3.3a). **All four are carried by
+> `docs/FRAMING.md` §2.2b, which is superseded but retained**, and (ii)–(iv) are still binding
+> on the prose of the re-scoped paper.
+>
+> **G3.14 is retired twice over**: its measurement was already rewritten once after its
+> on-paper answer was withdrawn, and its successor question — `docs/OUTSTANDING.md` **O42** —
+> is now **CLOSED AS OCCUPIED**. It is integrator anti-windup with a feedforward path; the
+> free-until-saturation dichotomy is that field's problem statement
+> (Galeani–Tarbouriech–Turner–Zaccarian), the (authority, severity) boundary exists in three
+> published forms, the budget split is printed (arXiv:2606.07208 eq. 46–47), and `Σ|Δq_t|` is
+> the discrete-time IACER. **O42 does not come back.**
 
 **REWRITTEN 2026-08-19 BY SESSION S2, and this is the second rewrite.** The first rewrite
 (S1) replaced a coverage-theorem requirement with "a lemma with three verifiable conditions".
@@ -283,7 +407,7 @@ cross-reference updated, which is why it was not done inline.
 | **G3.3a** | **The proceedings numbering is used, not the preprint's.** | The statements are identical but **the numbering moved**: the error-integration iteration is **(9) preprint → (8) proceedings**, Proposition 2's bound **(10) → (9)**, Proposition 3's **(12) → (11)**, and the proofs moved from **§2.2 to Appendix A**. A draft written from the preprint cites two wrong equation numbers and a wrong proof location. Safest form: cite Theorem 1 and Proposition 2 by name and avoid bare equation numbers in prose |
 | **G3.4** | **The inherited guarantee's STRENGTH is stated, not just its existence.** | With ACT23's own tan integrator and their own heuristic constants, condition (4) holds with `h(t) = t/log t`, so Proposition 2's rate is **O(1/log T), not O(1/T)** — a certified coverage band of **[0.821, 0.979] at T = 2500** against a 0.90 target, identical for δ = 0.01, 0.05 and 0.10. **"Inherits an existing guarantee" must not be allowed to read as "inherits a strong one."** A paper that inherits a weak bound and does not say it is weak will be caught |
 | G3.4-SUPERSEDED | *The three lemma conditions are checked for the specific smoother: (a) `q̃_t` is `F_{t−1}`-measurable; (b) deployed miscoverage stays monotone in `α_t`; (c) `α_t` stays bounded.* | **SUPERSEDED 2026-08-19.** Retained so a later session does not re-derive it. (a) is not a hypothesis of Theorem 1; (b) is a step in BC-ACI's probabilistic proof route rather than a condition of the deterministic theorem; (c) is an ACI concept with no referent under Conformal PID. **Note also that BC-ACI's monotonicity sentence contains an internal sign error** — it states that decreasing `α_t` "does not decrease the miscoverage probability" and then the opposite in the next sentence; **the second is correct. Quote with [sic] or paraphrase; build no argument on the literal wording** |
-| G3.5 | The dominance claim is stated compatibly with Andrew et al. Theorem 2, using the one-dimensional Theorem 7 exception | "Dominates both" without qualification is not available |
+| G3.5 | The dominance claim is stated compatibly with Andrew et al. Theorem 2, using the one-dimensional Theorem 7 exception | "Dominates both" without qualification is not available. **CORRECTED 2026-08-20, AND THE CORRECTION OUTLIVES THIS RETIRED GATE.** The gloss of Theorem 7 as a one-dimensional exception yielding *"sublinear regret with a competitive ratio that grows arbitrarily slowly"* **overstates it. Theorem 7 is a TRADE-OFF**: verbatim from arXiv:1508.03769v1 p.10, `CR^α_1 = (1+θ)/min{θ,α}` and `R′_0 = O(max{T/θ, θ})`, so at **fixed θ** it gives a **constant competitive ratio with LINEAR regret**, and **sublinear regret needs θ growing with `T`, which grows the ratio** — their own `θ(T) = O(√T)` gives `O(√T)` regret **and** an `O(√T)` ratio. Verified by H5 against the source, 2026-08-20. Print the trade-off. `docs/FRAMING.md` §3; remaining uncorrected occurrences at `docs/OUTSTANDING.md` O50 |
 | G3.6 | The switching-cost literature is engaged in related work | Kalai–Vempala, shrinking dartboard, Andrew et al., smoothed OCO. `paper/sections/related.tex` |
 | **G3.7** | **The forecast-stability literature is engaged in the OPENING, not in related work**, and the no-novelty concession for the readout forms is made explicitly and by name | Godahewa et al. (*IJF* 2025); Genov et al. (*ESWA* 2026, Eq. 18–20). `docs/FRAMING.md` §7 item 1. **S2 raises the stakes: the probabilistic-forecast-verification chain must also be in the opening, and Pierre Pinson is now on FOUR of this project's near-neighbours** — Van Belle et al. (the C1′ occupant), Pinson & Girard (2012), Ding et al. (2016) and Delikaraoglou & Pinson (2014). A paper that does not do this is a rediscovery and will be recognised as one |
 | **G3.8** | **IPOC is read and distinguished** | **MET 2026-08-19 (S1).** Its single coverage statement (Lemma 3, §5.1) is Gibbs–Candès imported for the **base model's** interval `c^f_t`, not the chased ensemble interval the movement cost acts on. **S2 could not re-verify it** — ACM's challenge defeated all six routes tried — so this remains established by S1's read, not re-confirmed. Residual: the TKDE extension, now G3.15 |
@@ -294,7 +418,7 @@ cross-reference updated, which is why it was not done inline.
 | **G3.13** | **Placement A's forfeit is stated with the SPECIFIC MECHANISM, not asserted — and the mechanism is not the one previously named.** | **The S2 brief asked for this gate as "Placement A's failure of conditions (4) and monotonicity". Wave 1 refuted that framing and the gate is written against the corrected mechanism.** Condition (4) constrains `r_t` alone and a downstream smoother never touches it. What fails is the load-bearing step of Proposition 2's induction — `c·h(T−1) < E_{T−1} ⟹ q_T ≥ b ⟹ s_T ≤ q_T ⟹ err_T = 0` — because the integrator reaches `b` but an EMA of the output attains `b` only in the limit of infinitely many consecutive saturated rounds. **The sign is opposite to what was asserted: the smoother does not damp the accumulator's excursions, it lets the accumulator excurse further.** The gate is met by stating that, with locators, **and by stating the limit of the claim: Placement A does NOT lose coverage** — six smoother families returned 0.1000–0.1002 against α = 0.1 under adversarial scores over T = 2×10⁵. **The paper claims the forfeit of the theorem and its finite-sample rate, measured (max\|E_t\| = 623.7 against a bound of 14.8 at w = 0.999), and claims nothing about coverage loss. A referee will build the counter-simulation in ten minutes** |
 | **G3.14** | **The trade-off — whether Placement B retains the turnover reduction — is measured and reported whichever way it falls.** | `docs/PROTOCOL.md` §1.3 and §5.5. The measurement is not optional and its direction is not pre-committed. **AMENDED 2026-08-19, SAME DAY: the on-paper answer this gate was first written around has been withdrawn.** The claimed conservation law is **trivial** — both of its factors are independent of the penalty weight by construction, so its headline property restates the inheritance claim — and the accompanying "at most half" bound is an artefact of ACT23's symmetric `b/2 + b/2` split rather than a constraint, since Proposition 2's hypothesis is `[−b, b]` and the designer declares `b`. **"Irreducible" is false**: iteration (5) lets `q̂` depend on `q_i` and hence on `E_t`, and a cancelling scorecaster legal under Theorem 1 cut deployed travel from 91.2 to 0.21 at T = 10⁴. **The gate now requires the measurement with `Σ|Δq_t|` as the movement variable and the scorecaster permitted to see `E_t`**, reported against the budget split `B_q/b` and the shift severity — the version of the question that has a free parameter and a regime dependence. `research/S2/F1-adversarial.json`; `docs/OUTSTANDING.md` O42 |
 | **G3.15** | **The TKDE IPOC extension's theory section is read for a validity statement attached to the renamed module** | doi 10.1109/TKDE.2026.3674583. **The abstract-level prediction is VERIFIED** — two regret results plus a Dd-MDP framework, no coverage theorem. **But the residual went up, not down**: the extension renames the conformal module from plain ACI to **"Adaptive Copula Conformal Inference (ACCI)"**, and copula conformal prediction carries its own validity literature. `docs/OUTSTANDING.md` O33 |
-| **G3.16** | **The published contrary reading is answered by name.** | arXiv:2412.18144 prints, of Conformal PID, that *"using a scorecaster (D-part) … breaks the theoretical coverage guarantee"*, and three deployed studies leave the slot empty on that basis. **The claim is false** — Theorem 1 quantifies over "any function of the past: x_i, y_i, **q_i**". Answering it converts a conceded contribution into a correction of the record, and it is the clearest evidence that the placement is worth **stating** even though it is not **new**. `docs/OUTSTANDING.md` O40 |
+| **G3.16** | **The published contrary reading is answered by name. → CARRIED INTO G7 AS G7.6, 2026-08-20. This is the one G3 criterion whose content survives the re-scope**, and R3a is now exactly this criterion and nothing more. | arXiv:2412.18144 prints, of Conformal PID, that *"using a scorecaster (D-part) … breaks the theoretical coverage guarantee"*, and three deployed studies leave the slot empty on that basis. **The claim is false** — Theorem 1 quantifies over "any function of the past: x_i, y_i, **q_i**". Answering it converts a conceded contribution into a correction of the record, and it is the clearest evidence that the placement is worth **stating** even though it is not **new**. `docs/OUTSTANDING.md` O40 |
 
 **Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
 automated session under any circumstances.**
@@ -303,8 +427,29 @@ automated session under any circumstances.**
 
 ## G4 — Ryan-configuration replication complete
 
-**Status: `not started`.** The applied arm is a replication of Ryan's configuration, not a
-generic equity experiment.
+**Status: `retired` 2026-08-20 by session S3. Previously `not started`. NOT DELETED.**
+
+> **Why it is retired.** The Ryan replication was the **applied arm of R1**, and R1 is dropped.
+> The re-scoped paper carries no ETF universe, no Kelly sizing map, no leverage cap, no cost
+> rate in basis points and no development window, so **G4.1–G4.7 have no referent.** Ryan
+> (arXiv:2608.01494) survives in the paper at most as one motivating sentence, and the
+> qualifications that governed how he could be cited survive with it: **the anomaly is a
+> DEV-window finding from a ~200-configuration search whose sizing map failed out of sample**
+> (G4.6), and **Ryan offers an explanation** — estimation variance through the nonlinear sizing
+> map, hedged in his own text (`docs/FRAMING.md` §4 item (i)). Any sentence about him must
+> carry both.
+>
+> **The author data request is retired with the gate and is NOT sent by any automated session.**
+> `docs/RYAN_EMAIL_DRAFT.md` keeps its own `[OPERATOR INPUT]` header and is not deleted.
+> Under the re-scope the reply is no longer load-bearing: the per-device ledger it asks for
+> served R1's Ryan leg. `docs/OUTSTANDING.md` O0c and O4b, closed as retired-with-reason.
+>
+> **One thing here does not retire.** G4.5 — the disclosed `z = 1.2816` versus `1.1503`
+> inconsistency — records the principle that **silently "fixing" a disclosed defect in someone
+> else's configuration makes a replication not a replication.** Keep the principle.
+
+**Criteria kept in full below.** The applied arm was a replication of Ryan's configuration, not
+a generic equity experiment.
 
 | # | Criterion | How it is evidenced |
 |---|---|---|
@@ -357,7 +502,83 @@ automated session under any circumstances.**
 
 ---
 
+## G7 — Re-scoped paper complete
+
+**Status: `not started`. Written 2026-08-20 by session S3, before the paper it judges is
+finished.** This is the gate the re-scoped paper is held to. It replaces G2, G2-pre, G3 and G4,
+which are retired above.
+
+**What this gate asks:** does the paper print only what the project can defend, and does it
+concede everything it owes?
+
+**It does not retire G5 or G6, which stand.** Where G7 and G5 overlap — the page limit, the
+bibliography source, the number-trace table — **G7's wording is the operative one for the
+re-scoped paper**, because it is written against R3a/R3b/R3c rather than against R1/R2.
+
+**Honest statement of this gate's weakness, made before it is used.** G2-pre's virtue was that
+it froze the experiment's free choices before any result existed. **G7 is written after R3b's
+runs exist**, so it cannot claim that discipline, and a reader should discount it accordingly.
+What replaces the discipline is reproducibility rather than pre-registration: the runs come
+from committed code (`src/forfeit.py`, `src/test_forfeit.py`) with committed outputs
+(`results/forfeit-*.json`) and were re-derived from a from-scratch implementation by a second
+party (`research/checkpoints/S3-W1-findings.md` §2). **A criterion below that a later session
+finds it can only meet by re-running the experiment differently is a criterion that has been
+retrofitted, and G7 has failed.**
+
+| # | Criterion | How it is evidenced |
+|---|---|---|
+| **G7.1** | **Every number printed in the paper traces to a `results/` JSON**, by a trace table with one row per printed number giving the file, the JSON key path and the value. Numbers derivable by hand from a printed formula (Proposition 2's `c·h(T)+1`) are marked as derived and their inputs traced | A committed trace table. **This is `docs/OUTSTANDING.md` O43 and it is the criterion the project has broken before**: `audit/NUMBERS.md` §11 booked ten numbers on the authority of a session transcript and three of them reached `paper/sections/`. Each `results/` JSON must carry its config, the git commit, wall-clock time and library versions — the surviving content of the retired G2.3. **Rows 55–58 of `audit/NUMBERS.md` §11 are the withdrawn conservation law's numbers: they are orphaned by design and the paper prints none of them.** A number that cannot be traced is deleted from the paper, not footnoted |
+| **G7.2** | **R3b is stated against O2CP's PUBLISHED admissible set, not as an unqualified forfeit** | arXiv:2508.13362 **Corollary 2** proves that a predictable modification of the deployed Conformal PID threshold **retains** `|E_T| ≤ c h(T) + 1` while it stays inside `|d_t| ≤ μ_t(b/2 − |q̂_t|)`. **The paper's claim is therefore about modifications that LEAVE that set**, and it must print the set, cite the corollary, and locate its own exhibit relative to it. A draft that says "post-processing the deployed threshold forfeits Proposition 2" without that qualification is refuted by a printed corollary, and the gate fails |
+| **G7.3** | **Every negative literature claim is scoped to the instrument that supports it, naming the index, the query family, the count and the date** | The form to use is H3's: *"In arXiv's full-text index (search.arxiv.org), queried on 20 August 2026, `"shrinking dartboard" AND "conformal"`, `"online balanced descent" AND "conformal"`, `"conformal prediction" AND "follow the lazy leader"` and `"conformal" AND "smoothed online convex optimization"` each return zero, while the same index returns 192 documents for `"conformal prediction" AND "Gneiting" AND "sharpness"`."* `research/S3/H3-fulltext-close.json` carries the scoped sentence and all 286 logged queries. **Two hard rules.** A surface that blocked is an **instrument gap** and is named as one — **Google Scholar contributed zero queries to this project's S3 record and no zero was drawn from it**. And `docs/FRAMING.md` §3's watch-list applies: the sentence reports counts, never a quantifier |
+| **G7.4** | **The concession list is complete and by name.** Six items, each with a locator, and none of them buried in a footnote | **(1) The placement** — ACT23 state that `q̂` may be any function of the past three separate times and deploy a Theta-model scorecaster; Dupuy et al. Appendix A p.15 Eq. 12; Duerst, Schöley, Hellstrand & Myrskylä, MPIDR WP-2024-016, who already constrain a scorecaster's width movement. **(2) The derivation** — G7.5. **(3) The smoother as an object** — Binny & Dixit, arXiv:2511.11567, Eq. (13), `q ← (1−γ)q + γ q̂`. **(4) The metric arithmetic** — `Σ|Δq_t|` is already published as Zanotti's MQC/SMQC. **(5) The readout forms** — Godahewa et al. (*IJF* 2025) for linear partial adjustment; Genov et al. (*ESWA* 2026, Eq. 18–20) for the Lipschitz readout map bounding switching cost; and the dead band is **Constantinides (1986)** and **Davis & Norman (1990)**, **not** Gârleanu–Pedersen, who assume quadratic costs (`docs/FRAMING.md` §4 item iii). **(6) The six taken names** — G7.11 |
+| **G7.5** | **The derivation is conceded to arXiv:2508.13362 and arXiv:2410.13115v2 BY NAME** | **Added 2026-08-20; the S3 brief could not have asked for it, because the finding post-dates the brief.** The paper must cite **arXiv:2508.13362 Corollary 2** (Li, Menacho & Rodríguez) as prior art **for its own derivation**, quoting or citing the operative line — *"which has exactly the CPID error-integration form with `q̂′_t` acting as the scorecaster … The CPID saturation result therefore applies"* — and must cite **arXiv:2410.13115v2** (AcMCP) as the independent second instance. **A paper that concedes the placement while presenting the derivation as its own fails this gate.** `research/S3/records/arxiv_2508.13362.txt`; `research/checkpoints/S3-W1-findings.md` §1 |
+| **G7.6** | **The published contrary reading is answered by name.** *(Carried unchanged from the retired G3.16 — the one G3 criterion whose content survives.)* | arXiv:2412.18144 prints, of Conformal PID, that *"using a scorecaster (D-part) … breaks the theoretical coverage guarantee"*, and deployed studies leave the slot empty on that basis while arXiv:2512.07770 (ICLR 2026) still calls scorecaster selection *"arbitrary and lacking principled guidance"*. **The claim is false, and it is refuted by Theorem 1's own hypothesis** — *"any function of the past: `x_i`, `y_i`, `q_i`"* — rather than by anything this project contributes, which is precisely why the correction is robust. **The paper must also record that arXiv:2412.18144's two authors are the first and last authors of arXiv:2508.13362**, and it must do so as a statement about the record and not about the people. `docs/OUTSTANDING.md` O40 |
+| **G7.7** | **Four pages of body in the chosen venue's style, building under the venue's own unmodified style file** | A compiled PDF. **One mechanical item with an already-passed date: E-values asks that every author's OpenReview profile exist at least two weeks before its deadline, i.e. by 2026-08-15** (`research/S3/H2-venue.json`, item H2-c) — an advisory, not a stated bar, and it is checked rather than assumed. **The venue is `[OPERATOR INPUT]` and stays open** — G1.7, `docs/OPEN_QUESTIONS.md` Q3. **No automated session may choose it.** The two live options and their measured constraints (`research/S3/H2-venue.json`): **E-values** — **4 pages**, single-blind as of 2026-08-14 after three flips in 17 days, deadline **2026-08-29 23:59 AoE**, names conformal prediction in its call; **TS-LIMITS** — **4–7 pages plus references, double-blind**. **The body is therefore written to exactly 4 pages, self-contained, in anonymity-neutral prose, and must build under both options**, which is the only version compatible with an unmade decision. `\workshoptitle{}` set alongside `\title{}` where the style requires it. Switching is one-directional and expires 2026-08-29 |
+| **G7.8** | **The bibliography is built from `audit/REFS_VERIFIED.bib` only** | No entry written from memory, and no entry added without a fetched canonical record. **Seven entries the re-scoped paper needs are missing** and must be fetched before they can be cited — four of them HIGH: Zsótér et al. (doi 10.1175/2009MWR2960.1), Ehret (doi 10.1127/0941-2948/2010/0480), Pappenberger et al. (doi 10.5194/hess-15-2391-2011) and Stankevičiūtė et al. (NeurIPS 2021). `docs/OUTSTANDING.md` O48. **Zanotti must be quoted from v3 or the version pinned explicitly** — v2 and v3 differ in the title and in a load-bearing sentence (O47). The `note`-field escaping defect (O24) is fixed before the build, not after it fails |
+| **G7.9** | **The coverage claim is stated in BOTH directions, and neither direction is stated unqualified** | The measured position: **nine of ten smoothed arms return realised miscoverage 0.099940–0.100060 against α = 0.1**, so *"smoothing loses coverage"* is refuted by this project's own controls; **and a dead band with `τ > b/2` loses long-run coverage outright** — miscoverage 1.000000, `max|E_t| = 0.9·T`, `frac_saturated = 1.0000` so condition (4) holds at every round and it is Proposition 2's induction that breaks — so *"Placement A does not lose coverage"* is refuted too. **CORRECTED 2026-08-20 by wave 4's adversarial critic (F1), verified by the orchestrator at 31 of 32 grid points: `τ > b/2` is the NULL-SCORECASTER SPECIAL CASE, not the law.** The boundary is **`τ* = sup r_t + sup q̂ − b/2`**. Both constant scorecasters `q̂ ≡ ±b/2` are legal under Theorem 1, and they move it: at `q̂ ≡ +b/2` the arm printed as failing (`τ = 1.5`) **covers**; at `q̂ ≡ −b/2` the failure is far worse than measured — `τ = 0.5` fails, and so does EMA `w = 0.999`, an arm printed as covering. The failing set is also **unbounded above**, not `(b/2, b]`: `τ = 2.5`, `3.0` and `5.0` all fail. **And the boundary at `μ = 1, q̂ = 0` is exactly O2CP Corollary 2's admissible radius `μ_t(b/2 − |q̂_t|)`, so what is measured is that the CONCEDED result is TIGHT** — stepping outside the admissible set costs coverage, not merely the rate. The gate is met by stating the general law with the measured instance named as one corner, never by printing `b/2` as if general. `research/S3/F1-adversarial.json` |
+| **G7.10** | **R3c claims NO disconnection between any pair; the two instruments are kept apart** | The four-way disconnection is **false**: L2×L3 is connected (Van Belle, Wen, Verbeke & Pinson, arXiv:2605.28531), L2×L4 is connected (Genov et al., arXiv:2407.03368, citing Lin–Liu–Wierman–Andrew), and L1×L3 is strongly connected at 192 documents. **AND SO IS THE L1×L4 CELL, falsified 2026-08-20 by this session's own wave-2 agent (H6) and verified independently by the orchestrator**: Semantic Scholar's *citations* endpoint for `kalai2005lazy` returns **875 citing works, three of them online conformal** — including **`chen2023ipoc`, which this paper itself cites** — so the last cell is occupied and **no disconnection may be claimed between any pair**. H5 measured outgoing references and found it empty; H6 measured incoming citations and found it occupied. **A negative claim is a claim about an instrument, and one direction of one instrument is not the literature.** **The reference-list instrument (13 of 900 cross-literature references, 1.4 %, twelve of the thirteen outgoing from forecast stability and all twelve inside three papers) and the full-text instrument answer different questions, and co-occurrence is not citation.** The forecast-stability query family is **partial**, so its counts are lower bounds on contact and must be printed as such |
+| **G7.11** | **The coined term collides with none of the taken names, and the paper concedes every taken name it can evidence — the count is NOT six** | *travel* / *quantile travel*, with the collision check recorded (`paper/sections/setup.tex`). The six: *smoothed conformal* (randomised smoothing), *stable conformal* (Ndiaye), *smoothing-based conformal* (SCD-split), *interval stability* (Min et al.), MQC/SMQC (Zanotti) for the metric, plus **jumpiness** (Zsótér et al. 2009), **convergence index** (Ehret 2010), **forecast (in)consistency** (Pappenberger et al. 2011) and the discrete-time **IACER** of applied control. **CORRECTED 2026-08-20 by F1: "six" is wrong and the paper's own Table 2 caption names ten, eleven with IACER**, and F1 adds path length / variation budget, total variation, and forecast-revision volatility (arXiv:2510.04487, Mahoney & Oreshkin, a named metric). **A printed count that the paper's own caption contradicts is worse than no count**; the gate is met by conceding the names with the caption as evidence rather than by asserting a total. `docs/FRAMING.md` §7 rule 5, rewritten 2026-08-20, count corrected the same day |
+| **G7.12** | **`docs/FRAMING.md` §3's watch-list returns clean on the paper source, and the four condemned-claim corrections that still have referents are honoured** | A recorded grep over `paper/` for `no X can`, `cannot select`, `floor`, `fundamental limit`, `impossible`, `impossibility`, `nobody has`, `no one has`, `never been`, `no method`, `no criterion`, `provably cannot`, `there is no`, and `blind` as a load-bearing word — with each surviving hit justified as reporting **someone else's** result. Andrew et al. Theorem 7 is described as a **trade-off** and not as a free lunch (`docs/FRAMING.md` §3, corrected 2026-08-20) |
+
+**Explicit fail conditions, written now.**
+
+1. **A number is printed that no `results/` JSON contains.** This has already happened once in
+   this project and G7.1 exists because of it.
+2. **The paper claims the derivation**, or concedes it in a hedge rather than by name and
+   citation.
+3. **R3b is stated as an unqualified forfeit of Proposition 2**, ignoring the published
+   admissible set that bounds when the forfeit occurs.
+4. **A negative claim appears without its instrument**, or a blocked surface is reported as a
+   zero. **An instrument gap recorded as a measured zero is a G7 failure regardless of whether
+   the underlying claim is true.**
+5. **A criterion above is weakened after a draft has been read.** The correct response to a
+   criterion the paper cannot meet is to change the paper or to record the gate as failed.
+
+**Requires explicit operator sign-off. This gate MUST NOT be recorded as signed by an
+automated session under any circumstances.**
+
+---
+
 ## Note on gate ordering
+
+> **REVISED AGAIN 2026-08-20 BY SESSION S3, AND THE ORDERING QUESTION HAS DISSOLVED.** G2, G3
+> and G4 are retired, so **the critical path through them has dissolved.** The live order is
+> **G7, then G5's residue, then G6**: the paper is written against G7's criteria, the
+> compliance checklist of G5 is run against whichever venue the operator picks, and G6 is
+> submission. **The simulator that blocked everything for two sessions now exists**
+> (`src/forfeit.py`), it is not the matched-width simulator, and it is sufficient for the whole
+> of the re-scoped paper.
+>
+> **Two items of the note below have outlived their gates and should be read for their
+> content, not their sequencing.** The **ACM / headed-Chrome operational rule is WITHDRAWN as
+> an instrument** by a binding operator retrieval policy issued 2026-08-20 — retrieval is
+> headless and API-based, and an unreachable source is an **instrument gap**, never a measured
+> zero (`docs/OUTSTANDING.md` O34, rewritten; `docs/FRAMING.md` §8). And **item 2's advice to
+> attack G3.4(b) on paper is void twice over**: S2 established that monotonicity was aimed at
+> the wrong object, and the gate that contained it is retired.
+>
+> **G1.7 — venue chosen by the operator — is the one criterion in this file that now blocks
+> everything downstream**, and it expires with the E-values deadline of 2026-08-29.
 
 **Revised 2026-08-19.**
 

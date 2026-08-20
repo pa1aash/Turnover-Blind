@@ -33,6 +33,18 @@ R2 is the paper. R1 is the motivation.**
 > on the absence of a coverage object plus one object distinction. **Neither change is a
 > softening. Both are losses, and the second is the larger one.**
 
+> **AMENDED AGAIN 2026-08-20 BY SESSION S3 — read §2.2c before §2.2 and §2.2b.** The S2
+> amendment above is itself superseded. **R1 is dropped** and **R2\*\* is superseded**; what the
+> paper claims is stated in **§2.2c as R3a, R3b and R3c**. The one-line summary: the derivation
+> that §2.2b conceded only the *placement* of is **also in print** — arXiv:2508.13362
+> Corollary 2, by the first and last authors of the very paper R3a corrects — so **R3a is a
+> correction of the record and nothing more**; the surviving contribution is the **measurement**,
+> R3b, which is now stated against O2CP's *published* admissible set and carries a new and
+> sharper result (a dead band with `τ > b/2` loses long-run coverage outright); and the
+> four-way disconnection is false, leaving one cell. **§2.3's STOP condition has fired and this
+> session is the re-scope it commissioned.** `docs/GATES.md` retires G2, G2-pre, G3 and G4 and
+> writes **G7** in their place.
+
 ---
 
 ## 1. The aim
@@ -91,6 +103,14 @@ twice, and now covers three things, not one:**
 
 ### 2.2 What the paper claims — R1 and R2
 
+> **SUPERSEDED 2026-08-20 BY SESSION S3 — see §2.2c. NOT DELETED.** **R1 is dropped**, and with
+> it the matched-width experiment, the finance arm and the turnover motivation: its
+> priced-movement-cost leg was occupied in S2 (§8b item 4), and what remained rested on Q5 plus
+> one object distinction, which the re-scope judges too little to carry a leg of a four-page
+> paper that already has a measurement. **R2 was superseded by R2\*\* in §2.2b and R2\*\* is
+> superseded in turn.** The text below is history and is retained under the project's
+> supersede-never-delete convention.
+
 > **R1 (measurement — the motivation).** On a real online conformal producer, the pair on
 > which the online conformal literature reports and tunes — realised coverage together with
 > mean interval width — can be held fixed while the width path `Σ|Δq_t|` varies by a factor
@@ -109,6 +129,21 @@ twice, and now covers three things, not one:**
 restatement of a 2026 result in a new instrument, and it is the leg that has been occupied.
 
 ### 2.2b R2 is superseded by R2\*\* — amended 2026-08-19 by session S2
+
+> **R2\*\* IS ITSELF SUPERSEDED 2026-08-20 BY SESSION S3 — see §2.2c. NOT DELETED.** Three things
+> in this section changed. **(i)** The reduction is conceded further: §2.2b conceded the
+> *placement* and kept the *derivation*; the derivation is in print too, twice
+> (arXiv:2508.13362 Corollary 2; arXiv:2410.13115v2). **(ii)** The Placement A forfeit — item 2
+> of "WHAT ACTUALLY SURVIVES" below — **survives and is promoted to the headline as R3b**, with
+> better numbers, a published boundary to state it against, and one measured family that loses
+> coverage outright. **(iii)** The claim *"Placement A does not lose coverage"* below is
+> **narrowed, not withdrawn**: it holds for nine of ten smoothed arms at
+> 0.099940–0.100060, and it fails for a dead band with `τ > b/2`, where miscoverage is
+> 1.000000. **The paper may not print the unqualified form in either direction.** Everything
+> else here — the withdrawn conservation law, "at most half", "irreducible" — stays withdrawn.
+> **O42, the route back to a theory result that this section names, is CLOSED as OCCUPIED**
+> (`docs/OUTSTANDING.md` O42): it is integrator anti-windup with a feedforward path, and the
+> free-until-saturation dichotomy is that field's problem statement.
 
 **R2 as stated in §2.2 is superseded. It is not deleted, because the project's convention is
 to supersede and because the shape of the error is instructive.**
@@ -303,6 +338,194 @@ placement, the conservation law, the change-of-producer finding), `D3-neighbours
 five neighbours, discharge-versus-avoid, the third placement), `D5-fulltext.json` (Duerst et
 al., and the methods-level screen), and `research/checkpoints/S2-W1-reduction.md`.
 
+### 2.2c What the paper claims now — R3a, R3b, R3c. Added 2026-08-20 by session S3.
+
+**This section supersedes §2.2 (R1 and R2) and §2.2b (R2\*\*). Neither is deleted.** §2.2 stays
+because the shape of R1's death is the project's most instructive error; §2.2b stays because
+its own withdrawals are the second. Read them as history. Read this as the position.
+
+**Read `research/checkpoints/S3-W1-findings.md` alongside this section.** It is the wave record
+these three claims are drawn from, and it carries the locators, the run tables and the counts
+in full. Where this section and any earlier section of this file disagree, this section wins.
+
+> **R3a (the correction — and it is a correction only).** The literature contains both halves
+> of a contradiction about the same object and prints them under overlapping authorship.
+> **arXiv:2412.18144** (Ruipu Li & Alexander Rodríguez, *Neural Conformal Control for Time
+> Series Forecasting* — a two-author paper) states of Conformal PID that using a
+> scorecaster *"breaks the theoretical coverage guarantee"*. **arXiv:2508.13362** (Ruipu Li,
+> Daniel Menacho, Alexander Rodríguez, *Optimization-Based Online Conformal Prediction for
+> Multi-Step Forecasting*, Aug 2025), **Corollary 2**, folds a bounded predictable perturbation
+> `d_t` with `|d_t| ≤ μ_t(b/2 − |q̂_t|)` into `q̂′_t = q̂_t + d_t`, observes that the selected
+> threshold then *"has exactly the CPID error-integration form with `q̂′_t` acting as the
+> scorecaster"*, checks `|q̂′_t| ≤ b/2`, and concludes *"The CPID saturation result therefore
+> applies"* with `|E_T| ≤ c h(T) + 1 = o(T)`. **The first and last authors of the second paper
+> are the two authors of the first.** A second, independent instance of the same derivation is
+> **arXiv:2410.13115v2** (AcMCP, Feb 2026), which establishes its long-run coverage by writing
+> that `q̂_{t+h|t}` may be any function of the past observations **and of the past deployed
+> quantile estimates**.
+>
+> **The paper therefore claims no novelty for the placement and none for the derivation.** What
+> it claims is the correction: the record contradicts itself; the two halves are not joined in
+> any document either of this session's instruments reached; and practitioners act on the wrong
+> half — three deployed studies leave the scorecaster slot empty on the strength of it, and
+> arXiv:2512.07770 (ICLR 2026) still calls scorecaster selection *"arbitrary and lacking
+> principled guidance"*. **This is one paragraph of the paper and a real service. It is not a
+> theorem and may not be dressed as one.**
+
+> **R3b (the measurement — the headline).** **O2CP publishes the admissible set.**
+> arXiv:2508.13362 Corollary 2 proves that a predictable modification of the deployed Conformal
+> PID threshold **retains** Proposition 2's bound as long as it stays inside a ball of radius
+> `μ_t(b/2 − |q̂_t|)` around the nominal threshold. **R3b is therefore a claim about
+> modifications that LEAVE that set**, and this paper exhibits one that leaves it
+> catastrophically, with the boundary located exactly.
+>
+> Measured by `src/forfeit.py` under the paper's own strict indicator, with the adversary
+> specified as `s_t = clip(q̂_t + ε, ±b/2)` so that the tie convention carries no free choice
+> (`b = 2`, `α = 0.1`, `h(t) = log(t+2)`, `c = 1`):
+>
+> | | `T = 10⁴` | `10⁵` | `2×10⁵` | `10⁶` |
+> |---|---|---|---|---|
+> | Proposition 2 bound `c·h(T)+1` | 10.2105 | 12.5129 | 13.2061 | **14.8155** |
+> | unsmoothed `max\|E_t\|` | 5.50 | 6.60 | 7.00 | 7.80 |
+> | EMA `w = 0.999` | 623.70 | 623.70 | 623.70 | **623.70** (42.1×) |
+> | dead band `τ = 1.5` | 9,000 | 90,000 | 180,000 | **900,000** |
+>
+> **The forfeit is flat in `T` and grows in exactly the knob a stability-motivated designer
+> turns up**, with the measured law `max|E_t| ≈ max(0.5·h(T) + 0.9, 0.63/(1−w))`. Five of
+> eleven arms forfeit the bound at `T = 10⁶`.
+>
+> **The new result, and it is sharper than a forfeit of the rate.** A **dead band on the
+> completed output loses long-run coverage outright for `τ > b/2`** — strictly; `τ = b/2`
+> covers. Miscoverage **1.000000**, `max|E_t| = 0.9·T`. The deployed threshold has a fixed
+> point at `b − τ`, measured `sup q̃ = b − τ` to the printed digit at every `τ ≥ 0.9`; once
+> `b − τ < b/2` it sits permanently below the adversary's reachable score range, the feedback
+> loop stops closing, and `|E_t|` diverges linearly. **`frac_saturated = 1.0000`: condition (4)
+> holds at every single round. It is Proposition 2's induction that breaks**, which is the
+> mechanism §2.2b already identified and this session measured to its boundary.
+>
+> **Coverage survives everywhere else, and the paper must say so in the same breath.** Nine of
+> the ten smoothed arms return realised miscoverage in **0.099940–0.100060** against `α = 0.1`.
+> The claim is the forfeit of the theorem and its finite-sample rate, plus the one exhibited
+> family that does lose coverage and the exact condition under which it does. **A general
+> "smoothing loses coverage" sentence is refuted by this session's own control arms.**
+>
+> Not reconciled with S2 and reported as unreconciled: the miscoverage band is 0.099940–0.100060,
+> not 0.1000–0.1002, and the running-mean arm reads 13.90 / 31.20 / 49.50 against S2's
+> 10.6 / 41.6 / 71.7. **Print the S3 numbers; they come from a from-scratch implementation the
+> orchestrator re-derived independently, and every one of them traces to a `results/` JSON.**
+> The nearest unaudited neighbour is **arXiv:2410.08852, "intermittent quantile tracking"**,
+> surfaced by the dead-band screen and **not read** (`docs/OUTSTANDING.md` O46).
+
+> **R3c (the bridge — narrowed, and the four-way version is false).** Two instruments were run
+> independently and they agree on the shape.
+>
+> - **Reference lists** (Semantic Scholar `/references`, 28 anchor files but **26 distinct works**,
+>   **862** references): **13 cross-literature references, 1.5 %** — but
+>   *(**CORRECTED 2026-08-20.** The figures first recorded here were 900 and 264 and 1.4 %. One
+>   anchor was counted twice — `L2_genov.json` and `L2_genov_arx.json` are the same paper resolved
+>   by DOI and by arXiv ID, identical `paperId`, identical 38-reference list — and a second work
+>   resolved twice with one attempt returning nothing. The numerator 13 is unaffected. Caught by
+>   the orchestrator while verifying the denominator before it was typeset.)* — but
+>   **concentrated, not sparse.** Twelve of the thirteen are outgoing from forecast stability
+>   and all twelve sit in three papers: Van Belle et al. (2026) 8, Genov 3, Zanotti 1.
+> - **Full text** (arXiv's full-text index, `search.arxiv.org`, 20 August 2026): L2×L3 is
+>   connected (Van Belle, Wen, Verbeke & Pinson, arXiv:2605.28531), L2×L4 is connected (Genov
+>   et al., arXiv:2407.03368, citing Lin, Liu, Wierman & Andrew), and **L1×L3 is strongly
+>   connected — 192 documents** for `"conformal prediction" AND "Gneiting" AND "sharpness"`.
+>
+> With L1 = online conformal prediction, L2 = forecast stability, L3 = probabilistic-forecast
+> verification and L4 = switching-cost online learning, wave 1 recorded **the survivable cell as
+> L1×L4 alone**.
+>
+> **FALSIFIED 2026-08-20, LATER THE SAME DAY, BY THIS SESSION'S OWN WAVE-2 AGENT (H6), AND
+> INDEPENDENTLY VERIFIED BY THE ORCHESTRATOR. THERE IS NO SURVIVING DISCONNECTED CELL.**
+> H6 ran an instrument nobody had run — **incoming** citations to the switching-cost canon, rather
+> than outgoing references from it. Semantic Scholar's citations endpoint for `kalai2005lazy`
+> returns **875 citing works, of which three are online conformal**: **IPOC** (`chen2023ipoc`,
+> doi 10.1145/3580305.3599396) — **which this project's own paper cites** — **arXiv:2410.02561**
+> (*The Benefit of Being Bayesian in Online Conformal Prediction*), and a third,
+> *Uncertainty-Aware Online Time Series Multi-Step Forecasting Framework in Cloud Systems* (2026),
+> which H6 classified by content rather than by title. All 875 were scanned. Record:
+> `research/S3/ft/h6/s2b_results.json`; orchestrator's independent scan of the same endpoint
+> confirms the two title-matching cases.
+>
+> **The paper therefore claims NO disconnection between any pair**, and prints so in bold. What
+> survives, and never needed the disconnection, is the payload: four fields name one quantity many
+> ways, and the object that settles its validity sits in one of them. Keep the two instruments
+> apart in the prose regardless — bibliography membership and body-text co-occurrence answer
+> different questions, and **co-occurrence is not citation**.
+>
+> **The methodological lesson, and it is the third time this project has learned it.** H5 measured
+> *outgoing* references and found the cell empty; H6 measured *incoming* citations and found it
+> occupied. **A negative claim is a claim about an instrument, and one direction of one instrument
+> is not the literature.**
+>
+> **A concession the project did not know it owed.** The measured quantity has **six taken
+> names, not four** — see §7 rule 5, rewritten this session. The coined term is *more*
+> necessary, not less.
+
+**Evidentiary basis for §2.2c:** `research/checkpoints/S3-W1-findings.md` and
+`research/checkpoints/S3-W3-orchestrator.md`; `research/S3/H1-antiwindup.json`,
+`H2-venue.json`, `H3-fulltext-close.json`, `H4-repro.json`, `H5-bridge.json`,
+**`H6-repositories.json`** (the wave-2 headless repository retry, which falsified R3c's last cell
+and corrected the Duerst reading), **`F1-adversarial.json`** (which corrected the R3b boundary from
+`b/2` to `τ* = sup r_t + sup q̂ − b/2` and ran ACT23's own tangent integrator) and
+**`F2-instruction.json`**; `src/forfeit.py`, `src/test_forfeit.py`; the four
+`results/forfeit-*.json`; `research/S3/records/arxiv_2508.13362.txt`;
+`research/S3/records/mpidr_wp-2024-016_duerst.txt`; `research/S3/ft/h6/s2b_results.json`;
+`research/S2/records/arxiv_2412.18144.xml`.
+
+**Two corrections that arrived AFTER §2.2c was first written, both from this session's own later
+waves, both recorded here rather than folded silently into the text above.** (i) **R3c's last
+disconnected cell is falsified** — see the block above. (ii) **R3b's boundary is not `b/2` in
+general** — it is `τ* = sup r_t + sup q̂ − b/2`, and under ACT23's own **tangent** integrator,
+which they state they use *"in all our experiments"*, the headline forfeit falls from `623.70` to
+`20.10` and the failing dead band **covers**. Both were found by adversarial passes inside this
+session. **Wave 1's findings were not final and a later session must not read them as final.**
+
+#### The dated note — three claims, three sessions, and why this territory is theorem-hostile
+
+**2026-08-20.** The S3 brief said two claims had died in two sessions. It was written before
+wave 1 reported. **The count is three, across three sessions**, and they are:
+
+1. **C1′ — occupied** (S1, 2026-08-19), by Van Belle, Wen, Verbeke & Pinson, arXiv:2605.28531,
+   published three months before the framing that claimed it. §0.
+2. **R2\*\*'s conservation law — withdrawn** (S2, 2026-08-19), by this project's own adversarial
+   critic, **four hours after it was written**, and after two agents had derived it
+   independently. §2.2b.
+3. **R3a's derivation — occupied** (S3, 2026-08-20), by arXiv:2508.13362 Corollary 2, **whose
+   first and last authors are the two authors of the paper R3a corrects.** §2.2c.
+
+**Why the territory is theorem-hostile, in the terms the S3 brief used and this session
+confirmed.** Conformal PID Theorem 1's hypothesis on the scorecaster is *"any function of the
+past: `x_i`, `y_i`, `q_i`"*. That hypothesis is wide enough that a placement in the scorecaster
+slot is a member of a set an already-printed theorem quantifies over, and the instantiation
+turned out to be printed twice. And every relation derived by pairing condition (4) with
+Proposition 2 is a one-line consequence of two printed objects, one of which — `c = 1/η` for
+the constant-gain integrator — ACT23 print **on the same page as the proof**. That is what the
+conservation law turned out to be, and two agents deriving it independently was evidence it was
+easy rather than evidence it was deep.
+
+**What S3 learned and the brief could not have known, and it is the one consolation in the
+list.** *The same width that forecloses novelty in the slot is what makes the correction worth
+printing.* Because Theorem 1 quantifies over any function of the past, the false claim in
+arXiv:2412.18144 is refuted **by the theorem's own hypothesis** rather than by anything this
+project contributes. The correction costs a paragraph, rests entirely on other people's printed
+text, and is therefore the most robust sentence in the paper — precisely because the project
+owns none of it.
+
+**The methodological lesson, written by S2 and confirmed by S3: agent outputs have twice been
+richer than the synthesis built from them.** S1's own A6 agent had the reduction to Conformal
+PID Theorem 1 in its `citable_as` field
+(`research/S1/A6-postprocessing-coverage.json`) and S1's synthesis did not absorb it, so S2 had
+to rediscover it. S3's H3 found the occupancy of R3a's derivation in one full-text query whose
+family had been available to two earlier sessions. **Later sessions must read the agent JSONs,
+not only the checkpoint written from them.**
+
+**What this note is not.** It is not an argument that the project should stop. It is the reason
+`docs/GATES.md` retires G2, G2-pre, G3 and G4 and replaces them with **G7**, and the reason the
+surviving paper is a measurement plus a correction at four pages rather than a theory paper.
+
 ### 2.3 The STOP condition is replaced
 
 The inherited STOP condition — *"if the method fails, fall back to reporting C1 alone"* —
@@ -310,6 +533,16 @@ was written before session S1 and is **now the wrong fallback**, because C1 alon
 precisely the occupied leg. The replacement:
 
 > **If R2 cannot be delivered, re-scope. Do not submit R1 by itself.**
+
+> **THIS CONDITION HAS FIRED, AND IT HAS BEEN ACTED ON. 2026-08-20, session S3.** R2 was
+> superseded by R2\*\* (§2.2b) and R2\*\*'s contribution — the conservation law — was withdrawn
+> the day it was written. **This session is the re-scope the condition commissioned**, and R1
+> is not submitted by itself: it is dropped. What is submitted instead is §2.2c — a measurement
+> (R3b), a correction of the record (R3a) and a scoped bridge claim (R3c), at four pages.
+> The gate that governs it is `docs/GATES.md` **G7**, and G2, G2-pre, G3 and G4 are retired
+> with their reasons recorded. **The STOP condition is not re-armed against R3b by this
+> session; setting the next one is an operator decision and no automated session may fire or
+> re-write it.**
 
 ---
 
@@ -345,6 +578,17 @@ Reporting *someone else's* impossibility result is legitimate and required — A
 (COLT 2013) genuinely is an impossibility theorem and describing it correctly is not a
 violation. The prohibition is on this project claiming one.
 
+> **CORRECTION ADDED 2026-08-20 BY SESSION S3, AND IT BINDS EVERY DOCUMENT IN THIS
+> REPOSITORY.** "Describing it correctly" has been failing. **Andrew et al. Theorem 7 is a
+> TRADE-OFF, not a one-dimensional free lunch.** Verbatim from arXiv:1508.03769v1 p.10, read by
+> H5 on 2026-08-20: the theorem gives `CR^α_1 = (1+θ)/min{θ,α}` and `R′_0 = O(max{T/θ, θ})`. At
+> **fixed θ** that is a **constant competitive ratio with LINEAR regret** of small coefficient;
+> **sublinear regret requires θ to grow with T, and that grows the competitive ratio too** —
+> their own text gives `θ(T) = O(√T)` yielding `O(√T)` regret **and** an `O(√T)` competitive
+> ratio. The repo's inherited gloss — *"sublinear regret with a competitive ratio that grows
+> arbitrarily slowly"* — **overstates it and may not be printed.** Print the trade-off.
+> Remaining uncorrected occurrences are booked at `docs/OUTSTANDING.md` O50.
+
 ---
 
 ## 4. The six condemned claims, with their replacements
@@ -369,6 +613,22 @@ raw arm only. Report the smoothed arm's realised coverage as a measured control.
 ---
 
 ## 5. What the design change bought and what it cost — state this, do not hide it
+
+> **RETIRED IN SUBSTANCE 2026-08-20 BY SESSION S3 — NOT DELETED, AND NOT ALL OF IT.** This
+> section weighs the **matched-width design** against the abandoned γ design. **The re-scope
+> retires the matched-width experiment itself**, and with it the finance arm, the simulated
+> price path, the net-log-growth column, the turnover decomposition and the Ryan replication.
+> R3b's instrument is `src/forfeit.py` — an adversarial score sequence against a Conformal PID
+> threshold — and it has no market model, no position, no cost rate and no matched-width
+> arms, so **G2's matching machinery has no referent** (`docs/GATES.md` G2, retired).
+> **Two things in this section survive and are load-bearing.** First, the finding that the γ
+> design is **published and fails on identification** (Genov et al.'s commitment-period arms
+> move level and variation together, their §4.4) — that is a reason a later session may not
+> revert to γ, and it stands whatever the paper measures. Second, the honest-exposure rule in
+> the pull-quote below: **state what a design change costs in the same sentence as what it
+> buys.** Applied to this session, it reads: the re-scope buys a paper whose every number is
+> reproducible from committed code, and it costs the entire decision-cost motivation the
+> project was started for.
 
 The abandoned design varied ACI's adaptation rate γ and measured turnover. Its recorded
 fatal risk was that `Σ|Δq|` might be approximately a monotone function of `E[L]` across the
@@ -423,7 +683,16 @@ These go in the paper. Sentences 1–7 are the related-work section (`paper/sect
    over forecast *revisions of a fixed target*, they carry no interval and no coverage
    object, and the effect is +0.00 % in their single-horizon arm.
 
-**8 — the R1 sentence.**
+**8 — the R1 sentence. SUPERSEDED 2026-08-20 BY SESSION S3: IT HAS LOST ITS REFERENT AND MAY
+NOT BE PRINTED.** Sentence 8 is the sentence that distinguishes **R1**, and **R1 is dropped**
+(§2.2c). The re-scoped paper carries no matched-marginal arm, no revision path and no decision
+charged to move, so the object the sentence distinguishes is absent from it. **The Pinson
+chain does not leave the paper with it** — `docs/GATES.md` G3.7's requirement that the
+probabilistic-forecast-verification chain appear in the opening is carried into **G7** through
+R3c, because R3c's L1×L3 cell is exactly that contact and this session measured it at 192
+documents. **Kept below, not deleted**, and its recorded weakness is kept with it, because the
+error it documents — two distinctions destroyed by a 2012 paper that predates the framing by
+fourteen years — is the clearest single illustration of what an abstract-level screen misses.
 
 > Matching a probabilistic forecast's level and comparing what its structure does is not
 > new: Pinson & Girard (2012) match the full marginal across three real wind-power scenario
@@ -456,6 +725,19 @@ their design — it is identically zero in it.
 
 **9 — the R2 sentence. REPLACED 2026-08-19 by session S2. The superseded wording is kept
 below the replacement.**
+
+> **BOTH WORDINGS ARE SUPERSEDED 2026-08-20 BY SESSION S3, AND THE REPLACEMENT IS FALSE IN ITS
+> LOAD-BEARING HALF. NEITHER MAY BE PRINTED. NEITHER IS DELETED.** The 2026-08-19 replacement
+> below asserts the **withdrawn exchange relation** in two clauses — *"the scorecaster is
+> confined to half the range … so at most half of the integrator's contribution to deployed
+> movement can be cancelled"* and *"the product of the guarantee's coverage-gap bound and the
+> integrator's own per-step movement is a constant of the horizon in which the penalty weight
+> does not appear"* — and both were withdrawn by S2's own wave-4 critic within hours of being
+> written (§2.2b). The sentence also survives only if the *derivation* is this project's, and
+> **it is not** (§2.2c, R3a). **What replaces sentence 9 is the R3a paragraph plus the R3b
+> result**, and its shape is different: it concedes the placement **and** the derivation by
+> name to arXiv:2508.13362 and arXiv:2410.13115v2, and then states what leaving O2CP's
+> published admissible set costs. `docs/GATES.md` G7.2, G7.4 and G7.5.
 
 > Placing a movement penalty on an online conformal threshold is not new, and neither is
 > putting it where it inherits a validity guarantee: Godahewa et al. (*IJF* 2025) publish the
@@ -537,11 +819,33 @@ about accuracy in general. That answer is defensible. It is not overwhelming.
    vertical and horizontal variants of both MAC and SDC. It will be corrected in review.
 4. **Do not lean on Van Belle's +0.00 % procrastination row** as evidence their effect is
    confined to multi-horizon revision. It is an artefact of their three-opportunity setup.
-5. **Coin a new term for the measured quantity.** Every natural name is taken: *smoothed
-   conformal* means randomised smoothing; *stable conformal* means Ndiaye's computational
-   stability; *smoothing-based conformal* is SCD-split; *interval stability* is Min et al.'s
-   run-to-run variance. And `Σ|Δq|` itself is already a published named metric (Zanotti's
-   MQC/SMQC), so the measurement instrument cannot be presented as new either.
+5. **Coin a new term for the measured quantity. REWRITTEN 2026-08-20 BY SESSION S3: THE COUNT
+   IS SIX TAKEN NAMES, NOT FOUR, AND THE COINED TERM IS *MORE* NECESSARY, NOT LESS.**
+   The four this rule already carried: *smoothed conformal* means randomised smoothing;
+   *stable conformal* means Ndiaye's computational stability; *smoothing-based conformal* is
+   SCD-split; *interval stability* is Min et al.'s run-to-run variance. And `Σ|Δq|` itself is
+   already a published named metric — Zanotti's MQC/SMQC — so the measurement instrument is
+   not new either. **Two more vocabularies exist for the quantity itself, both older than any
+   of the above, and one more in a field this project had not read at all:**
+   **jumpiness** — Zsótér, Buizza & Richardson, *Monthly Weather Review* 137(11), 2009,
+   doi 10.1175/2009MWR2960.1;
+   **convergence index** — Ehret, *Meteorologische Zeitschrift*, 2010,
+   doi 10.1127/0941-2948/2010/0480;
+   **forecast (in)consistency** — Pappenberger, Cloke, Persson & Demeritt, *HESS* 15, 2011,
+   doi 10.5194/hess-15-2391-2011;
+   and the discrete-time **IACER** (integral of absolute control-effort rate) of applied
+   control, which is what `Σ|Δq_t|` is in the anti-windup literature
+   (`research/S3/H1-antiwindup.json`).
+   **All three verification names are imported by Van Belle et al. (2026)** — the paper that
+   occupies C1′ — so they arrive attached to the project's nearest neighbour rather than from
+   a distant field. **A paper that coins a term without conceding these six will be read as
+   unread.** The three doi'd entries are missing from `audit/REFS_VERIFIED.bib` and are booked
+   as HIGH-priority bib gaps at `docs/OUTSTANDING.md` O48.
+   **The term this project has coined for the quantity is *travel*** — *quantile travel*, the
+   deployed threshold's travel `Σ|Δq_t|` — chosen against a recorded collision check
+   (`paper/sections/setup.tex`, which logs `"quantile travel"` at 0 hits and the rejected
+   alternatives with their counts), in the register of actuator travel in process control.
+   It collides with none of the six.
 6. **Defuse Min et al. Theorem 3.3 explicitly.** It shows a post-processing can preserve
    coverage while shortening mean length by returning ∅ on some draws — which is the exact
    failure mode of judging an interval by (coverage, mean length). The defence is that R1
@@ -557,6 +861,21 @@ about accuracy in general. That answer is defensible. It is not overwhelming.
 ---
 
 ## 8. The IPOC conditional — CLOSED 2026-08-19, in the project's favour
+
+> **OVERRIDDEN IN ITS OPERATIONAL HALF 2026-08-20 BY A BINDING OPERATOR POLICY. THE
+> HEADED-CHROME ROUTE BELOW IS WITHDRAWN AS A PERMISSIBLE INSTRUMENT.** *"Retrieval is headless
+> and API-based. No GUI browser, no headed Chrome, no Playwright `channel="chrome"` or
+> `headless=False`, no `launch_persistent_context`, no route that opens a window on the
+> operator's desktop or reads his browser profile. Where a source is unreachable without one,
+> it is an INSTRUMENT GAP and is recorded as such — never as a measured zero."* Issued
+> 2026-08-20 and **binding on every later session.** The headless substitutes that have
+> actually worked on this project, and the full list, are at `docs/OUTSTANDING.md` **O34**,
+> which is rewritten this session. Note that the withdrawal costs less than it looks: S3's H3
+> found Google Scholar serving the identical 429 to headless `curl`, to `hyperresearch fetch`
+> and to headed Chrome alike, and DTU Orbit's challenge cleared for none of them — **the block
+> is host- or IP-level, and no browser fingerprint defeated it.** What the IPOC read below
+> established about the ACM Digital Library's *content* (open access behind the challenge)
+> stands; what it established about the *route* does not.
 
 **IPOC has been read in full, and its coverage guarantee does not quantify over the
 movement-constrained object. R2's distinguishing sentence is not void.**
@@ -614,6 +933,18 @@ coverage theorem is unlikely, but this is formally unverified. `docs/GATES.md` G
 
 ## 8b. What replaced it — the conditionals that are actually open
 
+> **ITEMS 1–4 ARE RETIRED WITH R1, 2026-08-20 BY SESSION S3. ITEMS 5 AND 6 STAND AND ITEM 6 IS
+> NOW A RULE OF THE PAPER.** Items 1, 2, 3 and 4 are all conditionals on **R1** or on **R2**,
+> and §2.2c drops R1 and supersedes R2\*\*: the matched-marginal decision-value literature, the
+> Q3/Q5 rubric, the Pinson tally and the priced-movement-cost question all lose their referents
+> in a paper with no market model and no decision. **They are retained undeleted**, because
+> item 4 is the record of a claim this project printed and had to withdraw, and because a later
+> session that revives a decision-cost paper inherits every one of them unchanged. **Item 5
+> stands**: no sentence in this paper may imply the mechanism is recent. **Item 6 stands and
+> hardens into a gate criterion** — every negative claim is scoped to the instrument that
+> supports it, naming index, query family, count and date (`docs/GATES.md` G7.3), and S3's own
+> scoped sentence for R3c is in `research/S3/H3-fulltext-close.json`.
+
 **These are more constraining than the IPOC conditional was, and they are what a later
 session must attack.**
 
@@ -659,7 +990,9 @@ session must attack.**
    stated by someone else, with an attempted theorem attached.** R2 must now be positioned
    against Dupuy Theorem 2 specifically — as discharging the assumption they could not, or
    as not being written at all.
-4. **R1's Q3 leg — the last thing it owned — is now partially occupied, and the qualifier
+4. **RETIRED WITH R1 2026-08-20 (see the banner at the head of §8b). Retained undeleted, and
+   it is the record of a claim this project printed, defended and had to withdraw.**
+   **R1's Q3 leg — the last thing it owned — is now partially occupied, and the qualifier
    is what R1 has left.** **Ding, Pinson, Hu & Song, *IEEE Trans. Sustainable Energy*
    7(1):163–172 (2016)** generate scenarios by NORTA, so per-lead-time marginals are
    **identical by construction** for every value of the autoregressive factor ρ, sweep ρ from
@@ -734,3 +1067,15 @@ session must attack.**
   its result count.
 - `research/checkpoints/S1-W1-retrieval.md`, `S1-W2-synthesis.md` — the wave records.
 - `audit/REFS_VERIFIED.bib` — every entry built from a fetched canonical record.
+
+**Added 2026-08-20 by session S3, for §2.2c:**
+
+- `research/checkpoints/S3-W0-rescope.md`, `S3-W1-findings.md` — the re-scope preflight and the
+  wave record §2.2c is drawn from.
+- `research/S3/H1-antiwindup.json` (O42 closed as occupied; the IACER identification),
+  `H2-venue.json` (O20 closed; the venue call texts), `H3-fulltext-close.json` (286 logged
+  queries; the R3a occupancy; the R3c matrix; the Google Scholar block), `H4-repro.json` (the
+  forfeit reproduction), `H5-bridge.json` (900 references across 28 anchors; the six names; the
+  Andrew Theorem 7 correction; seven bib gaps).
+- `src/forfeit.py`, `src/test_forfeit.py`, and `results/forfeit-*.json` — every number in R3b.
+- `research/S3/records/arxiv_2508.13362.txt` — the fetched text carrying O2CP Corollary 2.

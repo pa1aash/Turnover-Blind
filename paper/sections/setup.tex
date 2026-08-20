@@ -1,128 +1,81 @@
-% ---------------------------------------------------------------------------
-% COINED TERM -- FRAMING sec. 7 rule 5 / docs/GATES.md G2.14. Candidates, the
-% collision check run against each, and the choice.
+% Setup -- minimal.  NO market model, NO position map, NO Kelly, NO transaction
+% costs, NO turnover, NO basis points, NO net log growth, NO Ryan replication.
+% Those belonged to a claim that no longer exists and are deleted, not compressed.
 %
-% ALREADY TAKEN, so ruled out before this draft began:
-%   "smoothed conformal"        = randomised smoothing.
-%   "stable conformal"          = Ndiaye's computational stability.
-%   "smoothing-based conformal" = SCD-split, arXiv:2509.22529.
-%   "interval stability"        = Min et al., Def. 4.1 (run-to-run variance).
-%   MQC / SMQC                  = the summed functional itself, already a named
-%                                 published forecast metric.
-% RULED OUT BY THE WAVE-1 FULL-TEXT SCREEN, and this one is a trap:
-%   "total variation"           = UNUSABLE. arXiv full-text search for
-%                                 "total variation" AND "conformal quantile"
-%                                 returns 70 hits and every one screened is the
-%                                 total-variation DISTANCE between measures.
-% COLLISION CHECK RUN FOR THIS DRAFT (arXiv full-text index, exact phrase,
-% 2026-08-19; that index serves a literal "No Results" page, so a zero is real):
-%   "quantile travel"      0 hits   <-- CHOSEN
-%   "quantile churn"       0 hits   -- rejected anyway: "prediction churn" is an
-%                                      established term for disagreement between
-%                                      model versions, a different object, and
-%                                      the association would be read in.
-%   "quantile turnover"    0 hits   -- rejected: "turnover" is already this
-%   "conformal turnover"   0 hits      paper's word for the position path.
-%   "quantile mileage"     0 hits   -- rejected on register.
-%   "width traverse"       0 hits   -- rejected on register.
-%   "revision travel"      0 hits   -- rejected on register.
-%   "threshold travel"    11 hits   -- rejected: all robotics / transport.
-%   "quantile path"        1 hit    -- too generic to name anything.
-%   "width path"         129 hits   -- generic.
-% The Semantic Scholar leg returned HTTP 429 throughout the drafting window under
-% 4s->40s backoff, so the check rests on the arXiv body-text index alone.
-% CHOICE: the TRAVEL of the deployed conformal threshold. Taken deliberately from
-% actuator travel in process control, which is the register the rest of the paper
-% is already in. The arithmetic is conceded to the published metric; the name
-% carries only the deployed-conformal reading of it.
-% ---------------------------------------------------------------------------
+% NUMBERING: the NeurIPS proceedings version of Conformal PID is cited and its
+% numbering used.  Theorem 1, Proposition 2, condition (4) and iteration (5) are
+% character-for-character identical between preprint and proceedings.
 %
-% NUMBERING: cite the NeurIPS proceedings version of Conformal PID and its
-% numbering. Theorem 1, Proposition 2, condition (4) and iteration (5) are
-% character-for-character identical between preprint and proceedings, but the
-% error-integration iteration is (9) in the preprint and (8) in the proceedings,
-% Proposition 2's bound (10) -> (9), and the proofs moved from Section 2.2 to
-% Appendix A. Named results and (4)/(5) only; no other bare equation numbers.
+% COINED TERM -- FRAMING sec. 7 rule 5.  "travel", from actuator travel in process
+% control.  Collision check (arXiv full-text, exact phrase, 2026-08-19):
+% "quantile travel" 0 hits; the nearer phrase "threshold travel" returns 11, all
+% transport-accessibility usages in geography, spatial optimisation and robotics
+% (S3 F1 finding 15), so the screen is recorded here as it was actually run.
+% Ruled out beforehand: "smoothed conformal" (randomised smoothing), "stable
+% conformal" (Ndiaye), "smoothing-based conformal" (SCD-split), "interval
+% stability" (Min et al.), "total variation" (unusable: 70 hits, all TV distance
+% between measures -- an instrument artefact, not a literature fact).
 %
-% LENGTH: measured 568.3 pt against a NeurIPS 2026 textheight of 650.4 pt
-% = 0.874 pages, compiled with the sglblindworkshop option. THE 0.75-PAGE TARGET
-% IS NOT MET, by 0.12 pages. What is left to cut, in the order it should go: the
-% over-relaxation clause (kappa > 1) at the end of the penalty paragraph; the CQR
-% / refit-forecaster caveat at the end of the measurement paragraph; and the
-% named Placement C, which duplicates one clause of related.tex. Cutting all
-% three reaches roughly 0.74 pages and costs three real caveats.
-% Base LaTeX + amsfonts only; no amsmath macro is used anywhere in this file.
+% WAVE-5 CORRECTION (S3 F1 finding 10): THE COUNT IS GONE.  The sentence used to
+% read "Six names are taken, which is why a seventh is used here"; the paper's
+% OWN Table 2 caption names ten, IACER makes eleven, and F1 adds path length /
+% variation budget, total variation of a sequence, and forecast-revision
+% volatility (arXiv:2510.04487).  Printing a count is the one move that lets a
+% referee retire a coined term with a single extra name.
+%
+% ZANOTTI IS PINNED TO v3.  v2 sec. 5 p.26 carries a conformal-stability sentence
+% that v3 p.24 deletes, and the two versions have different titles.
 
 \section{Setup}
 \label{sec:setup}
 
-\paragraph{Two producers, not one.} At time $t$ a forecaster fit on data before $t$ induces a
-score $s_t$; a threshold $q_t$ is emitted before $y_t$ is revealed; the deployed set is $C_t
-= \{ y : s_t(x_t,y) \le q_t \}$ and $\mathrm{err}_t = \mathbf{1}\{ s_t(x_t,y_t) > q_t \}$; the
-target is long-run coverage, $\frac{1}{T}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, which
-carries no probabilistic model on the data. The two producers used here are different
-machines. ACI \citep{gibbs2021aci} manipulates the miscoverage level, $\alpha_{t+1} =
-\alpha_t + \gamma(\alpha - \mathrm{err}_t)$, and deploys $q_t = \hat{Q}_t(1-\alpha_t)$.
+\paragraph{The producer.} At time $t$ a forecaster fit on data before $t$ induces a score $s_t$, a
+threshold $q_t$ is emitted before $y_t$ is revealed, the deployed set is $C_t = \{y : s_t(x_t,y)
+\le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$; the target is long-run
+coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
 Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
 \begin{equation}
-  q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big( \textstyle\sum_{i \le t} (\mathrm{err}_i - \alpha) \Big),
+  q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
 \end{equation}
-their iteration~(5), in which $\hat{q}_{t+1}$ is a \emph{scorecaster}, ``any function of the
-past: $x_i, y_i, q_i$, for $i \le t$'', and $r_t$ saturates: their condition~(4) requires
-$r_t(x) \ge b$ for $x \ge c\,h(t)$ and $r_t(x) \le -b$ for $x \le -c\,h(t)$, with $h$
-\emph{admissible} --- nonnegative, nondecreasing, sublinear. The ACI recursion manipulates
-$\alpha_t$ alone and offers a penalised value nothing to be added to. Throughout
-$\mathrm{err}_t$ is computed on the deployed $q_t$, and boundedness is read on the realised
-scores, which is what the proof of Proposition~2 uses.
+their iteration~(5), in which $r_t$ saturates: condition~(4) requires $r_t(x) \ge b$ for $x \ge
+c\,h(t)$ and $r_t(x) \le -b$ for $x \le -c\,h(t)$, with $h$ nonnegative, nondecreasing, sublinear.
+Writing $E_t = \sum_{i \le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, a
+coverage gap of at most $(c\,h(T)+1)/T$; boundedness is read on realised scores.
 
-\paragraph{The movement penalty, in both forms.} With $\hat{q}^{\mathrm{raw}}_{t+1}$ any
-scorecaster clipped to the observed score range, we carry two one-scalar penalties and this
-draft chooses between them nowhere:
-\begin{equation}
-  \underbrace{\hat{q}_{t+1} = (1-w)\,\hat{q}^{\mathrm{raw}}_{t+1} + w\,\hat{q}_t}_{L_2,\; w \in [0,1)}
-  \qquad
-  \underbrace{\hat{q}_{t+1} = \hat{q}_t + S_\tau\big(\hat{q}^{\mathrm{raw}}_{t+1} - \hat{q}_t\big)}_{L_1,\; S_\tau(u) = \mathrm{sign}(u)(|u|-\tau)_+ ,\; \tau \ge 0}
-  \label{eq:penalty}
-\end{equation}
-% [OPERATOR INPUT] Q7 -- L1 versus L2 is UNANSWERED and is deliberately left open
-% here. Both forms are presented; the experimental section must either sweep both
-% or record the operator's decision. Do not silently drop one.
-Both are convex combinations $\hat{q}_{t+1} = (1-\lambda_t)\hat{q}_t + \lambda_t
-\hat{q}^{\mathrm{raw}}_{t+1}$ with $\lambda_t \in [0,1]$: $\lambda_t = 1-w$ for $L_2$, and
-$\lambda_t = (1 - \tau/|\hat{q}^{\mathrm{raw}}_{t+1} - \hat{q}_t|)_+$ for $L_1$, via $S_\tau(u)
-= u(1-\tau/|u|)_+$. Two details are load-bearing: the anchor is the previous \emph{slot} value
-$\hat{q}_t$, not the deployed $q_t$, since anchoring to $q_t$ returns the unsaturated
-integrator output to the slot and puts a second accumulator in series with the first; and the
-shrinkage takes a unit step, an over-relaxed $\kappa>1$ leaving the interval spanned by its
-two arguments once $|\Delta_t| > \tau\kappa/(\kappa-1)$.
+\paragraph{One scalar, two readouts, two places to put it.} A movement penalty on a sequentially
+updated scalar has two standard readouts, both prior work: a quadratic cost gives linear partial
+adjustment towards the target, $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
+\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, and a proportional cost a no-trade band, moving only when the target is
+more than $\tau$ away and then pulling back by exactly $\tau$ \citep{constantinides1986,davis1990}. The first is what \citet{godahewa2025stability} publish as
+post-processing and \citet[Eq.~13]{binny2025whomoved} apply to a deployed conformal threshold. It has two distinct positions in (\ref{eq:pid}): \textbf{(B)} in the $\hat{q}_{t+1}$
+slot, where both readouts keep $\{\hat{q}_t\}$ in the convex hull of $\hat{q}_1$ and the raw
+scorecaster's range and so inside Corollary~2's admissible set; and \textbf{(A)} downstream of the
+completed $q_{t+1}$, outside it. Placement~A, what a designer reaches for because the deployed
+number is what has to sit still, is measured here.
 
-\paragraph{Placements, and what is measured.} The penalty admits at least three
-architecturally distinct positions in (\ref{eq:pid}): \textbf{(A)} downstream of the
-completed $q_{t+1}$; \textbf{(B)} in the $\hat{q}_{t+1}$ slot; \textbf{(C)} inside the
-integrator's argument, in place of $\mathrm{err}_i$. We compare A and B; C is named because
-\citet{dupuy2026relevance} and \citet{wu2025eci} occupy it and both report that the quantity
-the integrator drives to $\alpha$ is then no longer the miscoverage sum. Per arm we report
-realised coverage, mean interval width $\mathbb{E}[L]$, the deployed threshold's
-\emph{travel} $\mathcal{T}_H = \sum_{t=2}^{H} |q_t - q_{t-1}|$ split into the two shares of
-$\Delta q_t = \Delta\hat{q}_t + \Delta r_{t-1}$, and the turnover and net log growth of a
-position charged to move. Coverage and $\mathbb{E}[L]$ are matched across arms;
-$\mathcal{T}_H$ and the decision cost are what vary. $\mathcal{T}_H$ is half-width turnover
-only for a symmetric score with a frozen base forecaster: a refit forecaster also moves the
-centre, and the CQR score carries two thresholds.
+\paragraph{The quantity, and the names it already has.} We report the deployed threshold's
+\emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
+control. The arithmetic is not new and the name is a convenience: $\sum|\Delta q|$ over a
+predictive distribution is the Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc};
+verification calls the same movement \emph{jumpiness} \citep{zsoter2009jumpiness}, a
+\emph{convergence index} \citep{ehret2010convergence} and forecast \emph{(in)consistency}
+\citep{pappenberger2011consistency}, all three imported by \citet{vanbelle2026stabilizing};
+applied control calls it IACER \citep{sarhadi2025criteria}; and dynamic-regret online learning
+calls it a path length. Table~\ref{tab:bridge}'s caption names ten across four vocabularies:
+every natural name is taken, which is why a fresh one is used here, for one reading only.
+% Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
+% pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
+% criterion CR8) are all in audit/REFS_VERIFIED.bib and cited as \citep above.
 
-\paragraph{What is inherited, and what is not.} Under Placement~B both penalties in
-(\ref{eq:penalty}) keep $\{\hat{q}_t\}$ inside the convex hull of $\hat{q}_1$ and the raw
-scorecaster's range, so it is a bounded past-measurable sequence in $[-b/2,b/2]$, while
-(\ref{eq:pid}) and $r_t$ are untouched. Theorem~1 of \citet{angelopoulos2023pid} therefore
-applies unmodified and its Proposition~2 supplies $|\frac{1}{T}\sum_{t \le T}(\mathrm{err}_t
-- \alpha)| \le (c\,h(T)+1)/T$ with the constants of the unpenalised method, a convex
-combination neither enlarging $\sup|\hat{q}|$ nor forcing a larger $b$. \textbf{No new theorem
-is required and none is claimed}; Section~\ref{sec:related} records who states this already.
-What is not inherited is any statement about movement: Theorem~1 transfers coverage and only
-coverage, and the integrator's share of $\Delta q_t$ is the part the penalty does not reach.
-That share obeys an exchange relation: writing $\varepsilon$ for Proposition~2's bound at
-horizon $T$ and $M$ for the integrator's expected per-step contribution to travel,
-$\varepsilon M = 2\alpha(1-\alpha)b/T$ exactly for a constant-gain integrator --- the gain
-cancels and the penalty weight is absent --- and the product is likewise constant in $T$ for
-the tangent integrator.
+\paragraph{Harness.} $\alpha = 0.1$, $b = 2$, $c = 1$, $h(t) = \log(t+2)$, and the clipped
+saturator $r_t(x) = b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, which meets condition~(4) with equality.
+The scorecaster is null, legal and reducing (\ref{eq:pid}) to the pure error integration
+Proposition~2 is stated about, so the readout is the only manipulated variable. Neither free choice is
+neutral --- condition~(4) is a lower bound and this saturator meets it exactly, and Theorem~1
+permits scorecasters $b/2$ either side of the null one. The
+adversary is specified rather than tie-broken: it plays $s_t =
+\mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon = 10^{-9}$, against the
+\emph{deployed} $\tilde{q}_t$ --- the $\varepsilon\downarrow 0$ reading of ``sets the score at the
+threshold'', firing the strict indicator. Legality is Theorem~1's $[-b/2,b/2]$ on both sides, so
+$b/2+b/2 = b$ is exactly tight.

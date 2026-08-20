@@ -370,7 +370,7 @@
   pages     = {312--323},
   publisher = {Springer Nature Singapore},
   year      = {2026},
-  doi       = {10.1007/978-981-92-2014-4_25},
+  doi       = {10.1007/978-981-92-2014-4\_25},
   annote      = {[ADDED, AND MISSED BY THE MODULE E SWEEP] Published 14 July 2026. Model-free
                portfolio selection with risk estimated by conformal prediction; VaR taken
                from the lower bound of the prediction set; projected gradient descent for
@@ -967,7 +967,7 @@
   booktitle = {Communications in Computer and Information Science},
   pages     = {196--217},
   year      = {2026},
-  doi       = {10.1007/978-3-032-16708-8_17},
+  doi       = {10.1007/978-3-032-16708-8\_17},
   eprint    = {2510.02809},
   archivePrefix = {arXiv},
   annote      = {Crossref record saved at
@@ -1226,7 +1226,21 @@
                  in the slot R2 proposed to occupy. Together with Angelopoulos et al.'s own
                  three statements that the scorecaster may be any function of the past, and
                  with Dupuy et al.'s generic argument, it is the third independent source
-                 establishing that THE PLACEMENT IS NOT NEW. docs/FRAMING.md section 2.2b.}
+                 establishing that THE PLACEMENT IS NOT NEW. docs/FRAMING.md section 2.2b.
+                 **CORRECTED 2026-08-20 BY SESSION S3, AND THE PROJECT HAD THIS WRONG.** The
+                 full text (research/S3/records/mpidr\_wp-2024-016\_duerst.txt, 50,710 chars,
+                 read by the S3 orchestrator) shows the constraint is monotonicity in FORECAST
+                 HORIZON, not movement in calendar time: the authors' own reason is "because we
+                 assume that as the forecast length increases, so does the forecast
+                 uncertainty". They do adopt the scorecaster concept and cite Angelopoulos et
+                 al. explicitly -- "Angelopoulos et al. (2024) take on the same approach and
+                 call the model of the forecasting error distribution a scorecaster" -- and
+                 their scorecaster is a time-varying skew-normal model inside a forecast-path
+                 calibration pipeline. So this remains a witness that THE SLOT IS OCCUPIED, but
+                 it is NOT "a width-movement constraint inside a Conformal PID scorecaster" in
+                 the calendar-time sense S2 recorded, and no paper or document may say so. The
+                 word "online" occurs once in the whole document, in a URL. Correcting this
+                 REMOVES the nearest known threat to R3b.}
 }
 
 @article{bitran1986stylegoods,
@@ -1365,4 +1379,189 @@
              failed this session and the obstacle is a subscription wall rather than a search
              failure, so it needs a library card and not another crawler:
              research/S2/records/hardy2001-fetch-log.md.}
+}
+
+% ---------------------------------------------------------------------------
+% Added by session S3, 2026-08-20. Every entry below is built from a FETCHED
+% canonical record saved under research/S3/records/ whose CONTENT was audited,
+% not merely its existence. Retrieval was headless and API-based throughout,
+% per the operator's binding 2026-08-20 policy (docs/OUTSTANDING.md O34).
+% ---------------------------------------------------------------------------
+
+@misc{li2025o2cp,
+  author        = {Li, Ruipu and Menacho, Daniel and Rodr{\'i}guez, Alexander},
+  title         = {Optimization-based Online Conformal Prediction for Multi-step Forecasting},
+  year          = {2025},
+  eprint        = {2508.13362},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2508.13362},
+  annote        = {arXiv API record at research/S3/records/arxiv\_2508.13362\_s3.xml (2,921
+                 bytes); full text at research/S3/records/arxiv\_2508.13362.txt (67,041
+                 chars), submitted 2025-08-18, updated 2026-08-07. **THIS IS THE DERIVATION
+                 CONCESSION AND THE SINGLE MOST IMPORTANT CITATION IN THE S3 NOTE.** Its
+                 Corollary 2 already performs the fold-into-the-slot argument in Conformal
+                 PID's own notation: assume qhat_t in [-b/2, b/2], add a predictable d_t with
+                 |d_t| <= mu_t (b/2 - |qhat_t|), then "with qhat'_t = qhat_t + d_t, the
+                 selected threshold becomes q*_t = qhat'_t + R_{t-1}(E_{t-1}), which has
+                 exactly the CPID error-integration form with qhat'_t acting as the
+                 scorecaster ... The CPID saturation result therefore applies" and gives
+                 |E_T| <= c h(T) + 1 = o(T). Verified verbatim against the fetched text by the
+                 S3 orchestrator; the phrase "acting as the scorecaster" occurs exactly once
+                 in the document and "CPID" 100 times. **Its first and last authors are the
+                 authors of li2024neuralconformal**, which prints that a scorecaster "breaks
+                 the theoretical coverage guarantee". The record therefore contains both the
+                 false claim and its refutation, by the same people, unjoined.}
+}
+
+@misc{wang2026acmcp,
+  author        = {Wang, Xiaoqian and Hyndman, Rob J.},
+  title         = {Online conformal inference for multi-step time series forecasting},
+  year          = {2024},
+  eprint        = {2410.13115},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ME},
+  doi           = {10.48550/arXiv.2410.13115},
+  annote        = {arXiv API record at research/S3/records/arxiv\_2410.13115\_s3.xml (2,673
+                 bytes); submitted 2024-10-17, v2 2026-02-02. The INDEPENDENT SECOND INSTANCE
+                 of the derivation concession: it derives long-run coverage from the
+                 observation that the scorecaster "can be any function of the past
+                 observations ... and quantile estimates". Found by S3 wave 1 (H3).}
+}
+
+@misc{zhang2024bayesianocp,
+  author        = {Zhang, Zhiyu and Lu, Zhou and Yang, Heng},
+  title         = {The Benefit of Being {Bayesian} in Online Conformal Prediction},
+  year          = {2024},
+  eprint        = {2410.02561},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2410.02561},
+  annote        = {arXiv API record at research/S3/records/arxiv\_2410.02561\_s3.xml (3,431
+                 bytes). **ONE OF THE TWO WORKS THAT FALSIFY THE PROJECT'S LAST BRIDGE CELL.**
+                 Semantic Scholar's citations endpoint for kalai2005lazy returns 875 citing
+                 works, of which THREE are online conformal: this one, chen2023ipoc, and
+                 "Uncertainty-Aware Online Time Series Multi-Step Forecasting Framework in
+                 Cloud Systems" (2026), which agent H6 classified by content rather than by
+                 title (record: research/S3/ft/h6/s2b\_results.json). All 875 were scanned. The
+                 orchestrator's independent scan of the same endpoint keyed on title text and
+                 so recovered only the two title-matching cases; **the count is three and an
+                 earlier draft of this entry said two.** Online conformal prediction and switching-cost online learning
+                 are therefore NOT disconnected, and the S3 note may not say they are.}
+}
+
+@article{zsoter2009jumpiness,
+  author  = {Zs{\'o}t{\'e}r, Ervin and Buizza, Roberto and Richardson, David},
+  title   = {``{Jumpiness}'' of the {ECMWF} and {Met} {Office} {EPS} Control and
+             Ensemble-Mean Forecasts},
+  journal = {Monthly Weather Review},
+  volume  = {137},
+  number  = {11},
+  pages   = {3823--3836},
+  year    = {2009},
+  doi     = {10.1175/2009MWR2960.1},
+  annote  = {Crossref record at research/S3/records/crossref\_10\_1175\_2009MWR2960\_1.json
+            (11,633 bytes), content audited. One of the SIX taken names for the measured
+            quantity: forecast verification called it JUMPINESS in 2009. Imported by
+            vanbelle2026stabilizing. docs/FRAMING.md section 7 rule 5.}
+}
+
+@article{ehret2010convergence,
+  author  = {Ehret, Uwe},
+  title   = {Convergence Index: a new performance measure for the temporal stability of
+             operational rainfall forecasts},
+  journal = {Meteorologische Zeitschrift},
+  volume  = {19},
+  number  = {5},
+  pages   = {441--451},
+  year    = {2010},
+  doi     = {10.1127/0941-2948/2010/0480},
+  annote  = {Crossref record at research/S3/records/crossref\_10\_1127\_0941-2948\_2010\_0480.json
+            (1,932 bytes), content audited. A second of the six taken names: the CONVERGENCE
+            INDEX, and note that its own subtitle is "temporal stability". Imported by
+            vanbelle2026stabilizing.}
+}
+
+@article{pappenberger2011consistency,
+  author  = {Pappenberger, F. and Cloke, H. L. and Persson, A. and Demeritt, D.},
+  title   = {{HESS} {Opinions} ``On forecast (in)consistency in a hydro-meteorological chain:
+             curse or blessing?''},
+  journal = {Hydrology and Earth System Sciences},
+  volume  = {15},
+  number  = {7},
+  pages   = {2391--2400},
+  year    = {2011},
+  doi     = {10.5194/hess-15-2391-2011},
+  annote  = {Crossref record at research/S3/records/crossref\_10\_5194\_hess-15-2391-2011.json
+            (17,395 bytes), content audited. A third of the six taken names: forecast
+            (IN)CONSISTENCY. Imported by vanbelle2026stabilizing.}
+}
+
+@article{galeani2009antiwindup,
+  author  = {Galeani, Sergio and Tarbouriech, Sophie and Turner, Matthew and
+             Zaccarian, Luca},
+  title   = {A Tutorial on Modern Anti-windup Design},
+  journal = {European Journal of Control},
+  volume  = {15},
+  number  = {3-4},
+  pages   = {418--440},
+  year    = {2009},
+  doi     = {10.3166/ejc.15.418-440},
+  annote  = {Crossref record at research/S3/records/crossref\_10\_3166\_ejc\_15\_418-440.json
+            (35,489 bytes). **PROVENANCE NOTE, recorded rather than smoothed over: the CONTENT
+            audit was performed on the ECC 2009 version of the same tutorial by the same four
+            authors** (doi 10.23919/ecc.2009.7074421, record at
+            research/S3/records/crossref\_10\_23919\_ecc\_2009\_7074421.json, extracted text at
+            research/S3/records/zaccarian-tutorial-ecc09.txt), which S3 wave 1 read in full;
+            the EJC version's body was not obtained. It specifies free-until-the-bound-binds
+            as the FIELD'S DEFINING REQUIREMENT rather than a result, in two named items:
+            "(small signal preservation) if the unconstrained response is associated with a
+            controller output that does not exceed the saturation levels, then the response
+            with anti-windup augmentation coincides with the unconstrained response; (large
+            signal recovery) in all other cases...". This is why docs/OUTSTANDING.md O42 is
+            closed as OCCUPIED.}
+}
+
+@misc{sarhadi2025criteria,
+  author        = {Sarhadi, Pouria},
+  title         = {On the Standard Performance Criteria for Applied Control Design:
+                   {PID}, {MPC} or Machine Learning Controller?},
+  year          = {2025},
+  eprint        = {2503.14379},
+  archivePrefix = {arXiv},
+  primaryClass  = {eess.SY},
+  doi           = {10.48550/arXiv.2503.14379},
+  annote        = {arXiv API record at research/S3/records/arxiv\_2503.14379\_s3.xml (3,190
+                 bytes), submitted 2025-03-18. Its equation (6), criterion CR8, is the
+                 discrete-time IACER -- the summed absolute control increment. **A SIXTH taken
+                 name for the measured quantity, one field out**, and the reason the coined
+                 term in the S3 note is more necessary rather than less.}
+}
+
+@misc{gao2025coloke,
+  author        = {Gao, Ben and Patracone, Jordan and Chr{\'e}tien, St{\'e}phane and
+                   Alata, Olivier},
+  title         = {Conformal Online Learning of Deep {Koopman} Linear Embeddings},
+  year          = {2025},
+  eprint        = {2511.12760},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2511.12760},
+  annote        = {arXiv API record at research/S3/records/arxiv\_coloke.xml; full text at
+                 research/S3/records/arxiv\_2511.12760\_coloke.txt (65,398 chars), CONTENT
+                 AUDITED by the S3 orchestrator. Submitted 2025-11-16, updated 2026-01-27.
+                 **NOTE ON THE TITLE: wave 4's critic reported this work as "Conformal Online
+                 Learning" and as HAL-only; both are wrong.** The full title is as given, and
+                 it is on arXiv. Surfaced first by agent H6 through HAL's text\_fulltext API,
+                 then resolved to arXiv. **Why it matters to R3b:** COLoKe runs the online
+                 conformal recursion and gates MODEL updates on the conformity score, freezing
+                 the model rather than the deployed threshold -- the dual of the object this
+                 project measures. Its assumption **(A3): "The conformity thresholds satisfy
+                 sum_{t=1}^{T} q_t <= O(alpha h(T)) for some sublinear, nonnegative,
+                 nondecreasing function h"** is an EMPIRICAL hypothesis the authors support
+                 with a figure ("sublinear growth supporting (A3)") rather than derive -- and
+                 the accumulated-threshold divergence R3b measures is exactly that quantity
+                 failing. It makes no coverage claim: "miscoverage" and "marginal coverage"
+                 occur ZERO times in the full text, and "scorecaster" zero times; Theorem 3.3
+                 is a dynamic-regret result. **Not an occupant of R3a, R3b or R3c.**}
 }

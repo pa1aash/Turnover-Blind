@@ -1,0 +1,100 @@
+% The measured forfeit.  NEW FILE for session S3's claim set.
+%
+% EVERY NUMBER IN THIS SECTION TRACES TO A results/ JSON (docs/GATES.md G5.6):
+%   primary       results/forfeit-20260820T063045Z-83747c45.json
+%   tau-cliff     results/forfeit-20260820T063132Z-83747c45.json
+% Code: src/forfeit.py, src/test_forfeit.py.  Trace table in the wave-2 report.
+% TABLE 1 LISTS NINE OF THE ELEVEN ARMS RUN.  "partial adj. w = 0.5" (0.100030,
+% 7.70, 0.52, 0.0000, 18,113) and "growing time constant p = 0.5" (0.100030,
+% 12.60, 0.85, 0.0000, 330) were dropped in wave 5 to pay for the boundary-law
+% correction.  Both COVER and both sit inside the bound, so nothing adverse is
+% hidden; every count in the prose is stated against the nine that are listed.
+%
+% WAVE-5 CORRECTION (S3 F1, research/S3/F1-adversarial.json findings 0-4).  The
+% previous version of the "Coverage survives" paragraph printed "coverage
+% survives if and only if tau <= b/2" and "the failing set is (b/2,b]".  BOTH
+% ARE FALSE as general statements.  b/2 is the value of tau* = sup r_t +
+% sup qhat - b/2 at the NULL scorecaster and the MINIMAL admissible saturator;
+% a legal constant scorecaster moves it.  The failing set is unbounded above.
+% Wave-5 numbers (T = 10^6 unless stated) come from the F1 re-implementation,
+% validated arm-by-arm against the primary results/ JSON:
+%   research/S3/f1_probe2.json, f1_probe_scorecaster.json, f1_probe_saturator.json,
+%   f1_probe_iid.json, f1_boundary.py.  THESE ARE NOT YET BOOKED INTO results/ --
+%   flagged to the orchestrator in the wave-5 report.
+%
+% FRAMING sec. 3: every quantifier is a measurement; no forbidden construction.
+% The endpoint COVERS, so "tau > tau*" is the failing condition and writing
+% "tau >= tau*" would be wrong.
+
+\section{The forfeit, measured}
+\label{sec:forfeit}
+
+\begin{table}[tb]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold; one deterministic
+adversary, one pass to $T = 10^6$, the i.i.d.\ control at one seed. Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
+``ratio'' is $\max_t|E_t|$ over it, ``Sat.'' the rounds on which~(4) delivers its full $\pm b$.}
+\label{tab:forfeit}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Readout on the completed threshold & miscov.\ $2{\times}10^5$ & $\max_t|E_t|$ $10^6$ & ratio &
+Sat.\ $10^6$ & travel $10^6$ \\
+\midrule
+none (control)                & $0.100035$ & $7.80$        & $0.53$     & $0.0000$ & $28{,}311$ \\
+partial adj.\ $w = 0.9$       & $0.100030$ & $7.50$        & $0.51$     & $0.0000$ & $4{,}081$ \\
+partial adj.\ $w = 0.99$      & $0.100040$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}024$ \\
+partial adj.\ $w = 0.999$     & $0.100035$ & $623.70$      & $42.10$    & $0.0097$ & $202$ \\
+growing time constant $p=0.9$ & $0.100030$ & $53.00$       & $3.58$     & $0.3181$ & $16$ \\
+running mean                  & $0.099940$ & $49.50$       & $3.34$     & $0.3647$ & $9$ \\
+dead band $\tau = 0.5$        & $0.100035$ & $10.60$       & $0.72$     & $0.0000$ & $2{,}045$ \\
+dead band $\tau = 0.9$        & $0.100060$ & $13.20$       & $0.89$     & $0.0038$ & $1{,}051$ \\
+dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ & $1.0000$ & $0.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The rate is forfeited in the time constant that stability motivates raising.} A
+downstream partial adjustment of weight $w$ delays the correction the integrator has already
+computed. Its excursion at $T = 10^4$ is $6.30/63.00/623.70$ for $w = 0.9/0.99/0.999$, and for the
+last two it is \emph{flat in $T$} while the bound grows like $\log
+T$, so the ratio falls with the horizon, $61.08$ to $42.10$; the measured law across the arms
+is $\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$.
+Five of the nine exceed the bound at $T = 10^6$, so the forfeit is a property of the smoothing
+\emph{strength} rather than of Placement~A, and it buys something: the $w = 0.999$ arm cuts
+deployed travel from $28{,}311$ to $202$. The sign is the opposite of the intuitive one: a readout
+on the completed $q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put
+condition~(4) at risk; it delays the correction the integrator is waiting for, so the accumulator
+excurses \emph{further}. Smoothing the output does not damp $E_t$, it feeds it. The $623.70$ turns
+on the tie rule: an adversary playing the threshold \emph{exactly} gives it with ties scored as
+misses and $70.80$ under the strict indicator.
+
+\paragraph{Coverage survives most of the time, and then it does not.} Realised miscoverage at $T =
+2{\times}10^5$ lies in $0.099940$--$0.100060$ over the control and seven of the eight smoothed
+arms; the eighth loses coverage completely, and the width at which that happens is measurable. A dead band
+pulls the deployed threshold back by $\tau$, so under saturation it is pinned $\tau$ below the
+integrator's ceiling; measured, its realised supremum is $b-\tau$ to the printed digit at every
+$\tau \ge 0.9$. The adversary's best legal play is $b/2$, so coverage is lost exactly when that supremum
+drops below it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$; bands with $\tau \le
+\tau^{\star}$ cover. \textbf{The harness puts $\sup r_t = b$ and $\hat{q} \equiv 0$, so
+$\tau^{\star} = b/2$ here} --- one point of the admissible class, not a property of Placement~A.
+Under the equally legal constant $\hat{q} \equiv +b/2$ the same $\tau = 1.5$ band covers at $T =
+10^6$, miscoverage $0.100010$ and $\max_t|E_t| = 11.20$, inside the bound; under $\hat{q} \equiv
+-b/2$, also legal, $\tau^{\star} = 0$ and even $\tau = 0.5$ returns $1.000000$. At $\hat{q} \equiv
+0$ the transition is a step: $\tau = 1.000$ covers at $T = 10^5$ while $\tau = 1.001$ returns
+$1.000000$. Past $\tau^{\star}$ the threshold sits permanently below the reachable score range, the
+loop never closes and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T =
+10^6$; $\tau = 2.0$, $2.5$, $3.0$ and $5.0$ fail too, so the failing set is
+$(\tau^{\star},\infty)$, open at the left --- the endpoint covers. \textbf{And the failing arms
+have $\mathrm{Sat.} = 1.0000$}: the integrator delivers its full $\pm b$ on every round and the
+failure happens anyway. Condition~(4) holds by construction; what fails is Proposition~2's other
+hypothesis, that the threshold closing the loop \emph{is} the integrator's output.
+
+\paragraph{What that measures is that the conceded result is tight.} A dead band displaces the
+deployed threshold by exactly $\tau$ when it releases, so ``inside \citeauthor{li2025o2cp}'s
+Corollary~2'' reads $\tau \le \mu_t(b/2-|\hat{q}_t|)$, which at $\mu_t = 1$, $\hat{q}_t \equiv 0$
+is the $b/2$ that $\tau^{\star}$ returns. What is measured is therefore not a fresh boundary
+but that the published sufficient condition is \emph{necessary} there, and that the price of
+leaving the set is coverage rather than the rate. Elsewhere it is only sufficient: at $\hat{q}_t
+\equiv +b/2$ Corollary~2 permits radius $0$ while coverage survives to $\tau = b$.
