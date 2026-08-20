@@ -354,3 +354,42 @@ OpenReview submission invitation, and the fetched `neurips_2026.sty` and
       and it interacts with the decision to keep the repository public.
 
 These three are recorded in `docs/OUTSTANDING.md`.
+
+---
+
+# E-values compliance checklist — walked item by item, session S4, 2026-08-20
+
+**This is a checklist, not an analysis. Each row is checked against a record fetched and saved
+this session, headlessly, by `curl` with a desktop User-Agent — no GUI browser was used in any
+wave.** The venue itself remains `[OPERATOR INPUT]`; walking the checklist is not choosing.
+
+Records, both saved and content-audited this session (not merely confirmed to exist):
+- `research/S4/records/venue/evalues-index.html` — 17,787 bytes, HTTP 200,
+  sha256 `5a254411c40405268e8ea91c19665f22476eae114c505806ff13cf8918bf685a`
+- `research/S4/records/venue/or-invitation-E-values.json` — 4,417 bytes, HTTP 200
+
+| # | Item | Status | Value, and the evidence for it |
+|---|---|---|---|
+| 1 | **Deadline** | ✅ **CONFIRMED UNMOVED** since S3's H2 read | **2026-08-29, 23:59 AoE.** Page text: *"All deadlines are 23:59 Anywhere on Earth (AOE). Submission deadline August 29, 2026."* OpenReview enforces `duedate` = 2026-08-30 13:00:00 UTC and `expdate` = 13:30 UTC. **The two still disagree by 61 minutes in the safe direction** (AoE 23:59 on the 29th is 11:59 UTC on the 30th), so the form stays open an hour past the published deadline. **Plan to the published AoE time.** The invitation's `tmdate` is 2026-08-15, i.e. it has not been modified since before S3's read. |
+| 2 | **Anonymity regime** | ✅ verified, ⚠️ **volatile** | **Single-blind / non-anonymous; author names printed.** Page text: *"Submit your papers using the NeurIPS 2026 LaTeX template (with the sglblindworkshop option)."* |
+| 3 | **Exact LaTeX option** | ✅ verified in the style file, not just the call | `\usepackage[sglblindworkshop]{neurips_2026}`. `paper/neurips_2026.sty` sets `\@anonymousfalse` under that option, so `\@maketitle` prints `\@author`. Confirmed in the rendered PDF: the E-values build prints "Author Name", the TS-LIMITS build prints "Anonymous Author(s)". |
+| 4 | **Page limit** | ✅ verified, ✅ **met exactly** | *"Short papers up to 4 pages, excluding references and optional appendices."* The body is **exactly 4 pages** — verified by locating the `References` heading in the rendered PDF (first content on p.5, offset 6) rather than by trusting a page count. 6 pages total, references on pp.5–6. |
+| 5 | **Archival status** | ✅ verified | **Non-archival.** Page text: *"The workshop is non-archival."* No proceedings. |
+| 6 | **Dual-submission rule** | ⚠️ **NOT STATED BY THE VENUE** — recorded as unstated, not inferred | Zero occurrences of `dual`, `concurrent`, `preprint`, `arXiv` or `previously published` in the served page. Non-archival status conventionally implies concurrent submission is tolerated, **but the workshop has published no rule and this checklist does not invent one.** One email to `evalue.workshop.2026@gmail.com` resolves it, and is only needed if the operator intends to preprint or dual-submit. |
+| 7 | **Paper checklist required?** | ✅ verified **NO** | Not mentioned in the call, and **no checklist field exists on the OpenReview submission form**. Verified at the enforcement level by enumerating the form schema, not by reading prose: the fields are `title`, `authors`, `keywords`, `TLDR`, `abstract`, `pdf`, `email_sharing`, `data_release`, `venue`, `venueid`. **Do not include `paper/checklist.tex`** — `paper/main.tex` does not `\input` it, so no action is needed. |
+| 8 | **Programme committee** | ✅ retrieved; **no separate PC is published** | The call names an **organizing committee** only, alphabetically by last name: Shubhada Agrawal (IISc Bangalore), Sebastian Arnold (CWI Amsterdam), Yo Joong (YJ) Choe (INSEAD Singapore), Peter Grünwald (CWI Amsterdam and Leiden), Aaditya Ramdas (Stanford). **No reviewer-nomination field exists on the E-values form**, so the venue recruits its own reviewers. **No conflict of interest with this paper's subject:** Conformal PID is Angelopoulos, Candès & Tibshirani; none of the five is an author of it, of arXiv:2412.18144, or of arXiv:2508.13362. |
+| 9 | **OpenReview profile advisory** | ⚠️ **ADVISORY DATE ALREADY PASSED**, and it is an advisory rather than a bar | Page text: *"Please create your OpenReview profile at least two weeks before the submission deadline"* — i.e. by **2026-08-15**, five days before this session. It is phrased as a request, not an eligibility condition, and no enforcement of it appears in the submission invitation. **It is an operator action and this session cannot take it.** |
+| 10 | **Scope fit** | ✅ | The topic list names the paper's subject verbatim: *"Conformal prediction, adaptive coverage, and e-based prediction sets."* |
+
+**Does the open venue question block a clean build?** **No.** Both options build to a 4-page
+body with 0 TeX errors, 0 undefined citations, 0 undefined references, 0 overfull boxes, 0 LaTeX
+warnings and 0 bibtex warnings, with identical geometry, and each anonymises correctly for its
+own regime. **The option is preserved and is one-directional: it expires 2026-08-29 AoE.**
+
+> **VOLATILITY WARNING, carried forward from S3's H2 and still live.** The E-values anonymity
+> regime changed **three times in seventeen days**, traced commit by commit in the site's public
+> git history. The single-blind reading above is correct as of 2026-08-20 and **must be re-read
+> within 24 hours of submitting.** The repository also still contains a stale, unserved
+> `index.md` reading *"Submissions are double-blind and must be anonymized"*; a `.nojekyll` file
+> means GitHub Pages serves `index.html` raw and never builds that Markdown. **A future session
+> that reads `index.md` will get the wrong answer.**
