@@ -89,3 +89,7 @@ Thumbs.db
 *~
 .idea/
 .vscode/
+
+# macOS duplicate-file artefacts ("main 2.pdf")
+*[0-9].pdf
+* [0-9].*

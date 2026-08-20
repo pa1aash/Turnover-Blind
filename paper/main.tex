@@ -16,17 +16,42 @@
 % supersedes S3 wave 5's measurement, which had gone stale: the S4 resize cut R3c
 % and the body fell BELOW four pages before it was refilled.
 %   body = 4 pages under BOTH options, verified by locating the "References"
-%   heading in the rendered PDF (first content on p.5, offset 6) rather than by
-%   trusting a page count; 6 pages total, references on pp.5-6.
+%   heading in the rendered PDF: it is the FIRST content on p.5, OFFSET 0.
+%   6 pages total, references on pp.5-6.
+%   THE OFFSET IS THE TEST, NOT THE PAGE COUNT.  Wave 2 recorded "offset 6" and
+%   called it 4 pages; those six lines were BODY TEXT ON PAGE 5, i.e. an overrun
+%   past E-values' ceiling, and wave 4's instruction critic caught it by reading
+%   page 5 instead of trusting the field.  Any offset > 0 is an overrun.
 %   0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull boxes,
-%   0 underfull hboxes, 0 bibtex warnings -- the 14 underfull hboxes S3 recorded
-%   were in the two p-column tables, and K3's demotion of Table 2 to a single row
-%   removed them.
+%   3 underfull hboxes (ragged fill in the surviving Table 2 row), 0 LaTeX
+%   warnings, 0 bibtex warnings.  S3 recorded 14 underfull hboxes across two
+%   p-column tables; K3's demotion of Table 2 to a single row removed most.
+%
+% ONE STRUCTURAL HAZARD, RECORDED SO IT IS NOT REINTRODUCED: pdftex CANNOT split
+% a hyperref link across a page boundary.  It dies with "! This can't happen
+% (pdfvlistout)" after a \pdfendlink nesting warning, and produces no PDF.  After
+% wave 4's edits the page 2/3 break landed inside "Li et al. [2025, Corollary 2]",
+% which is why that one citation in sections/forfeit.tex is wrapped in \mbox.
 %   dblblindworkshop anonymises correctly ("Anonymous Author(s)"); sglblindworkshop
 %   prints the author block.  Identical geometry under both.
 %
 % THE BODY IS EXACTLY FULL.  Wave 5 paid for every addition with a cut; the
 % cuts are recorded in the header of the file each one was taken from.
+%
+% S4 WAVE 4 (orchestrator, after adversarial critic N1): RETITLED AGAIN, AND THE REASON
+% MATTERS.  Wave 2's title asserted flatly "The Admissible Radius Is Tight".  N1 showed on the
+% paper's own numbers that the radius is tight at exactly ONE non-degenerate setting -- the null
+% scorecaster with the minimal admissible saturator -- and LOOSE at three others, including
+% ACT23's own tangent integrator, the one they report using in all their experiments.  "Tight"
+% is existential in standard usage and the flat title is defensible on that reading, but a
+% referee meets the title before the qualifier, and the qualifier is 130 words into the abstract.
+% "Binds" locates the claim instead of asserting it, and locating is what the paper actually
+% does -- it says where the condition binds AND where it does not.  Collision-checked headlessly
+% on arXiv's classic FULL-TEXT index (searchtype=ft) 2026-08-20, calibrated both ways in the same
+% session: nonsense token 2,844 B "No Results"; positive control "conformal prediction" 12,337 B,
+% 258 hits; "admissible radius binds" 2,843 B, REAL ZERO.  Records under
+% research/S4/records/title/.  Superseded: "Coverage Is Turnover-Blind" (S0-S2), "Where the
+% Movement Penalty Goes" (S3), "The Admissible Radius Is Tight" (S4 wave 2).
 %
 % S4 WAVE 2 (2026-08-20, orchestrator): RETITLED.  "Where the Movement Penalty Goes"
 % was the last of the decision-cost register; the paper's claim is that O2CP Corollary 2's
@@ -71,7 +96,7 @@
 \usepackage{nicefrac}
 \usepackage{microtype}
 
-\title{The Admissible Radius Is Tight: a Correction and a Measured
+\title{Where the Admissible Radius Binds: a Correction and a Measured
 Boundary in Online Conformal Prediction}
 
 \workshoptitle{E-values: From Statistics to ML}
@@ -97,15 +122,17 @@ a published corollary retains its rate under any predictable perturbation of the
 deployed threshold inside an admissible radius. The opposite reading is in print
 too, under overlapping authorship, and acted on. We make two claims. The record
 holds both halves and we join them, conceding placement and derivation by name.
-And the corollary's condition is tight: a legal $L_1$ dead band on the
-\emph{completed} threshold leaves that set at $\tau^{\star} = \sup r_t +
-\sup\hat{q}_t - b/2$, its own radius at the null scorecaster, past which realised
-miscoverage is $1.000000$ against $\alpha = 0.1$ while saturation fires every
-round. Leaving it costs coverage, not only the rate: partial adjustment there
-overruns Proposition~2's bound $42\times$ at $T = 10^{6}$ and covers, $0.100035$
-at $2{\times}10^{5}$. That edge belongs to the saturator--scorecaster pair: under
-$\hat{q} \equiv +b/2$, equally legal, the failing band covers; under $\hat{q}
-\equiv -b/2$ both readouts return $1.000000$.
+And at the null scorecaster the corollary's condition is \emph{tight}: a legal
+$L_1$ dead band on the \emph{completed} threshold leaves that set past
+$\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, which is the published
+radius itself there, and past it realised miscoverage is $1.000000$ against
+$\alpha = 0.1$ while saturation fires every round. Leaving the set costs coverage
+and not only the rate: partial adjustment there overruns Proposition~2's bound
+$42\times$ at $T = 10^{6}$ and still covers, $0.100035$. The edge belongs to the
+saturator--scorecaster pair, not to the readout, and elsewhere the condition is
+sufficient only: under the equally legal $\hat{q} \equiv +b/2$ the failing band
+covers, and under $\hat{q} \equiv -b/2$ both the failing band and partial
+adjustment at $w = 0.999$ return $1.000000$.
 \end{abstract}
 
 \input{sections/intro}

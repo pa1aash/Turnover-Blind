@@ -1,7 +1,7 @@
 # FRAMING — locked 2026-08-19
 
 > **RUNNING HEADER — the paper's title, as of 2026-08-20 (session S4, agent K1).**
-> **_The Admissible Radius Is Tight: A Correction and a Measured Boundary in Online Conformal
+> **_Where the Admissible Radius Binds: A Correction and a Measured Boundary in Online Conformal
 > Prediction_.** It supersedes *Where the Movement Penalty Goes: a Correction and a Measured
 > Boundary in Online Conformal Prediction* (S3 wave 5) and, before that, *Coverage Is
 > Turnover-Blind: Why Adaptive Conformal Is Mis-Tuned for Costly Decisions* (the original plan,
@@ -470,6 +470,12 @@ in full. Where this section and any earlier section of this file disagree, this 
 >
 > **Coverage survives everywhere else, and the paper must say so in the same breath.** Nine of
 > the ten smoothed arms return realised miscoverage in **0.099940–0.100060** against `α = 0.1`.
+> *(**SCOPED 2026-08-20 by S4 wave 4, after the instruction critic found the identical unscoped
+> claim surviving here after §2.2b's copy had been fixed — the O51 shape again, inside the same
+> document.** That count is a count AT THE NULL SCORECASTER. The paper's Table 1 now lists
+> **eleven** arms, and at the equally legal `q̂ ≡ −b/2` partial adjustment at `w = 0.999` also
+> returns `1.000000`, as do seven of the eleven. **No readout is safe by construction**, and the
+> sentence may not be printed without its scorecaster.*)
 > The claim is the forfeit of the theorem and its finite-sample rate, plus the one exhibited
 > family that does lose coverage and the exact condition under which it does. **A general
 > "smoothing loses coverage" sentence is refuted by this session's own control arms.**

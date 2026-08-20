@@ -60,21 +60,16 @@
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{One construction, one adversary, one saturator, and $0.63/(1-w)$ is specific to its
-\emph{level}} rather than to its shape, and condition~(4) bounds that level only from below. \textbf{The
+\textbf{One construction, one adversary, one saturator}, and $0.63/(1-w)$ is specific to the
+saturator's \emph{level}, which condition~(4) bounds only from below. \textbf{The
 inherited guarantee is weak where it applies.} Under the tangent integrator $h(t) = t/\log t$, so
 the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$: what is forfeited
 was not a tight certificate. \textbf{The dead-band widths are absolute, and the failure is total
 only against the adversary.} $\tau$ is in score units with $b = 2$, so the failing $\tau = 1.5$ is
-$0.75\,b$; under i.i.d.\ scores that arm returns $0.249376$ rather than $1.000000$. What survives
-is the mechanism: a band wider than $\tau^{\star}$ caps the reachable threshold below the reachable
-score range. \textbf{The harness was rebuilt against numbers already read}, which carries less
-weight than a rerun done without sight of them; the free choices are registered in the code.
-\textbf{Placement~B, the readout Corollary~2 already covers, is not measured here}: it is
-conceded rather than tested, and this paper offers no evidence about it beyond the published
-argument. \textbf{One seed, and the grid brackets rather than locates.} Every arm is a single
-pass at one seed; the three widths per setting bracket each $\tau^{\star}$ but no bisection is
-booked, so the edge is located to within a tested interval and not to a digit. \textbf{What
-would overturn the tightness claim} is a legal $(\,r_t, \hat{q}_t)$ pair at which a dead band of
-width $\tau \le \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$ loses coverage, or one above it that
-keeps coverage; the run record contains neither, over the nineteen configurations it covers.
+$0.75\,b$; under i.i.d.\ scores it returns $0.249376$, which is not a retreat but an
+adversary-free confirmation of the mechanism --- the threshold pins at $b-\tau = 0.5$ and uniform
+scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly. \textbf{The harness was rebuilt against numbers already read}, which carries less
+weight than a rerun done without sight of them. \textbf{Placement~B is conceded, not tested.}
+\textbf{One seed, and only the null scorecaster's edge is located}; the other four settings are
+bracketed at three widths. \textbf{What would overturn the claim} is a legal $(r_t,\hat{q}_t)$ pair with $\tau \le
+\tau^{\star}$ that loses coverage, or $\tau > \tau^{\star}$ that keeps it; the sweep has neither.

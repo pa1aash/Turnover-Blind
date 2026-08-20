@@ -1,5 +1,11 @@
 % R3b, RECAST AS A TIGHTNESS RESULT.  Session S4 wave 1, agent K2.
 %
+% S4 WAVE 4: the li2025o2cp citation below is wrapped in \mbox BECAUSE IT MUST NOT BREAK
+% ACROSS A PAGE.  pdftex cannot split a hyperref link over a page boundary -- it dies with
+% "! This can't happen (pdfvlistout)" after a \pdfendlink nesting warning -- and after this
+% wave's edits the page 2/3 break landed inside "Li et al. [2025, Corollary 2]".  Do not
+% remove the \mbox without rebuilding and checking the page break.
+%
 % S4 WAVE 2 (orchestrator): the mandated L1/L2 finding sentence appeared TWICE after
 % wave 1 -- K1 put it in sections/setup.tex, where L1 and L2 are defined and where the
 % qhat = -b/2 clause sits in the same breath, and K2 put a second copy in the tightness
@@ -108,7 +114,7 @@ Sat.\ $10^6$ & travel $10^6$ \\
 none (control)                & $0.100035$ & $7.80$        & $0.53$     & $0.0000$ & $28{,}311$ \\
 partial adj.\ $w = 0.5$       & $0.100030$ & $7.70$        & $0.52$     & $0.0000$ & $18{,}113$ \\
 partial adj.\ $w = 0.9$       & $0.100030$ & $7.50$        & $0.51$     & $0.0000$ & $4{,}081$ \\
-partial adj.\ $w = 0.99$      & $0.100040$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}024$ \\
+partial adj.\ $w = 0.99$      & $0.100040$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}023$ \\
 partial adj.\ $w = 0.999$     & $0.100035$ & $623.70$      & $42.10$    & $0.0097$ & $202$ \\
 growing time constant $p=0.5$ & $0.100030$ & $12.60$       & $0.85$     & $0.0000$ & $330$ \\
 growing time constant $p=0.9$ & $0.100030$ & $53.00$       & $3.58$     & $0.3181$ & $16$ \\
@@ -121,7 +127,7 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ &
 \end{table}
 
 \paragraph{The retention result is published, and this section tests it from outside.}
-\citet[Corollary~2]{li2025o2cp} prove that a predictable $d_t$ with $|d_t| \le
+\mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
 and \emph{retains} $|E_T| \le c\,h(T)+1$; the admissible radius is theirs. A downstream partial
 adjustment of weight $w$ leaves it. Its excursion at $T = 10^4$ is $6.30/63.00/623.70$ for $w =
@@ -133,9 +139,11 @@ of Placement~A as such, and it buys something: the $w = 0.999$ arm cuts deployed
 $28{,}311$ to $202$. The sign is the opposite of the intuitive one. A readout on the completed
 $q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put condition~(4) at
 risk; it delays the correction the integrator has already computed, so the accumulator excurses
-\emph{further}. Smoothing the output does not damp $E_t$, it feeds it. The $623.70$ also turns on
-the tie rule: it is the figure for an adversary playing the threshold \emph{exactly} with ties
-scored as misses, and $70.80$ under the strict indicator this paper uses elsewhere.
+\emph{further}. Smoothing the output does not damp $E_t$, it feeds it. The $623.70$ is the primary
+regime's figure --- the adversary landing $\varepsilon = 10^{-9}$ above the deployed threshold
+under the harness's strict indicator --- and what it turns on is that $\varepsilon$ rather
+than the counting convention: an adversary playing the threshold \emph{exactly} returns $70.80$
+under the same indicator, because its signature move then covers.
 
 \paragraph{The $L_1$ dead band leaves the radius, and the edge is measurable.} A dead band pulls
 the deployed threshold back by exactly $\tau$ when it releases, so ``inside Corollary~2'' reads
@@ -143,11 +151,11 @@ $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned
 integrator's ceiling: its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
 0.9$. The adversary's best legal play is $b/2$, so coverage is lost exactly when that supremum
 drops below it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. Every dead-band
-configuration in the run record agrees, $19$ of $19$: three widths under each of the null
+dead-band configuration in the variation sweep agrees, $19$ of $19$: three widths under each of the null
 scorecaster, $\hat{q} \equiv +b/2$, $\hat{q} \equiv -b/2$, a saturator at level $4b$ and
 \citeauthor{angelopoulos2023pid}'s tangent integrator, plus four wider bands at the null
-scorecaster. Three widths per setting bracket each edge rather than locate it; a booked bisection
-in $\tau$ would locate it, and none is booked here. \textbf{Here $\sup r_t = b$ and $\hat{q} \equiv 0$, so
+scorecaster. An eleven-point grid at the null scorecaster \emph{locates} that edge between $\tau =
+1.000$ and $1.001$; the other four settings are bracketed at three widths and not located. \textbf{Here $\sup r_t = b$ and $\hat{q} \equiv 0$, so
 $\tau^{\star} = b/2$} --- one point of the admissible class, and both terms move it. At $\hat{q}
 \equiv +b/2$, legal, the same $\tau = 1.5$ band covers at $T = 10^6$ ($0.100010$, $\max_t|E_t| =
 11.20$, inside the bound); at $\hat{q} \equiv -b/2$, equally legal, $\tau^{\star} = 0$ and $\tau =
@@ -161,7 +169,10 @@ every width run here.} Outside it the transition is a step: $\tau = 1.000$ cover
 while $\tau = 1.001$ returns $1.000000$, and past $\tau^{\star}$ the threshold sits permanently
 below the reachable score range and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the
 bound at $T = 10^6$; $\tau = 2.0$, $2.5$, $3.0$ and $5.0$ fail too, so the failing set is
-$(\tau^{\star},\infty)$, open at the left --- the endpoint covers. \textbf{And the failing arms
+$(\tau^{\star},\infty)$, open at the left. \textbf{The endpoint is the one row in the record where
+the adversary's convention decides the answer}: at $\tau = \tau^{\star}$ the deployed supremum
+equals the adversary's own cap $b/2$, so the primary regime covers while the exact-threshold play
+returns $1.000000$ or $0.000000$ according to the tie rule. Every other row is convention-free. \textbf{And the failing arms
 have $\mathrm{Sat.} = 1.0000$}: condition~(4) delivers its full $\pm b$ on every round, and what
 fails is Proposition~2's other hypothesis, that the threshold closing the loop \emph{is} the
 integrator's output.
@@ -174,15 +185,9 @@ post-processing. Elsewhere the condition stays sufficient only --- at $\hat{q}_t
 +b/2$ Corollary~2 permits radius $0$ while every width run there covers --- which is what makes
 ``tight'' a located claim.
 
-\paragraph{The constructive reading, and it is \citeauthor{li2025o2cp}'s rather than ours.}
-Everything above is about leaving a sufficient condition, so the design consequences are
-readings of that condition and not results of this paper. Two follow. \textbf{Placement~B is
-covered already}: the same readout applied inside the $\hat{q}_{t+1}$ slot keeps
-$\{\hat{q}_t\}$ in the convex hull of $\hat{q}_1$ and the raw scorecaster's range, hence inside
-the admissible radius, so Theorem~1 carries it with no further argument --- which is why it is
-not measured here. \textbf{And at Placement~A the operative quantity is $\tau^{\star}$, which is
-partly a design variable.} Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising the
-saturator's level widens the admissible band at no cost to the theorem: that is the whole content
-of the $4b$ and tangent rows above. What the measurement adds is that the band has an edge, that
-the edge is computable before deployment from $\sup_x r_t(x)$ and $\sup_t \hat{q}_t$, and that
-crossing it is not a graceful degradation --- realised miscoverage goes to $1.000000$.
+\paragraph{The constructive reading, and it is the corollary's rather than ours.} Placement~B
+keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it already; and at
+Placement~A, condition~(4) bounds $\sup_x r_t(x) $ only from below, so raising the saturator's
+level widens the band at no cost to the theorem. What the measurement adds is that the band has
+an edge, that the edge is computable before deployment from $\sup_x r_t(x)$ and $\sup_t
+\hat{q}_t$, and that crossing it is not a graceful degradation.

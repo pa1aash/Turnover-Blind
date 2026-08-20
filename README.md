@@ -1,4 +1,4 @@
-# The Admissible Radius Is Tight
+# Where the Admissible Radius Binds
 
 **A correction and a measured boundary in online conformal prediction.**
 Internal project identifier: F7. Repository name `Turnover-Blind` is historical and
