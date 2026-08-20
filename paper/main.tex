@@ -127,6 +127,17 @@
 % partial texlive-basic install carrying only the legacy tikzlibraryarrows -- so anything
 % using arrows.meta fails to compile here even though pgf reports 3.1.11a.  Verified by
 % sub-session C and again by the orchestrator with find over all three texmf trees.
+% S5 WAVE 4: FLOAT GLUE TIGHTENED.  Four floats (two tables, two figures) in a
+% four-page body is more than LaTeX's default separation can pack: with the
+% defaults it put Table 1 and Figure 2 on the SAME page and left that page only
+% eight body lines, pushing 18 lines past the ceiling.  These reduce the WHITE
+% SPACE around floats only.  The venue's style file is NOT modified -- it sets
+% topfraction/textfraction/floatpagefraction at neurips_2026.sty:226-229 and
+% leaves the separation glue at LaTeX's defaults, which is what is overridden
+% here.  No content, no font size and no float is changed by this block.
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -180,22 +191,18 @@ Boundary in Online Conformal Prediction}
 \maketitle
 
 \begin{abstract}
-Conformal PID states long-run coverage for an arbitrary bounded scorecaster, and
-a published corollary retains its rate under any predictable perturbation of the
-deployed threshold inside an admissible radius. The opposite reading is in print
-too, under overlapping authorship, and acted on. We make two claims. The record
-holds both halves and we join them, conceding placement and derivation by name.
-And at the null scorecaster the corollary's condition is \emph{tight}: a legal
-$L_1$ dead band on the \emph{completed} threshold leaves that set past
-$\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, which is the published
-radius itself there, and past it realised miscoverage is $1.000000$ against
-$\alpha = 0.1$ while saturation fires every round. Leaving the set costs coverage
-and not only the rate: partial adjustment there overruns Proposition~2's bound
-$42\times$ at $T = 10^{6}$ and still covers, $0.100004$. The edge belongs to the
-saturator--scorecaster pair, not to the readout, and elsewhere the condition is
-sufficient only: under the equally legal $\hat{q} \equiv +b/2$ the failing band
-covers, and under $\hat{q} \equiv -b/2$ both the failing band and partial
-adjustment at $w = 0.999$ return $1.000000$.
+A printed claim that the scorecaster breaks online conformal coverage meets its
+refutation by overlapping authors; this paper joins them and proves where one legal
+perturbation family fails. Conformal PID states long-run coverage for any bounded
+scorecaster; a corollary keeps it for predictable perturbations of the deployed
+threshold inside an admissible radius. The claim was acted on; placement and derivation
+are conceded by name. At the null scorecaster the condition is \emph{tight}: a legal
+$L_1$ dead band on the \emph{completed} threshold leaves that set at that radius itself.
+Past it miscoverage is $1.000000$ at $\alpha = 0.1$: coverage goes, not just the
+rate. The edge is the saturator--scorecaster pair's, not the readout's; elsewhere the
+condition is sufficient only. Under the equally legal $\hat{q} \equiv +b/2$ the failing
+band covers; at $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$
+miscover every round.
 \end{abstract}
 
 \input{sections/intro}
@@ -205,5 +212,11 @@ adjustment at $w = 0.999$ return $1.000000$.
 \input{sections/limitations}
 \bibliographystyle{plainnat}
 \bibliography{../audit/REFS_VERIFIED}
+
+% APPENDIX AFTER THE REFERENCES.  E-values excludes BOTH from the 4-page ceiling
+% ("Short papers up to 4 pages, excluding references and optional appendices"), so
+% the body-end test is unchanged: References must still be the FIRST content on the
+% page after the body ends.
+\input{sections/appendix}
 
 \end{document}

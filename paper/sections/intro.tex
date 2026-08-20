@@ -48,56 +48,75 @@
 % third pass.  Do not remove the \mbox without rebuilding under BOTH venue options and
 % grepping main.log for pdfendlink.
 
+% S5 SUB-SESSION G1 (2026-08-20): PROSE AND PUNCTUATION PASS, AND A LINE CUT.
+% Structure and wording only.  Every citation key survives (19 in, 19 out, same
+% multiset), as do every quotation, printed page 18443, the 20 August 2026 date, the
+% four-surface list, the "any function of the past" quote, the Theorem 1 / Corollary 2
+% references and the bolded concession.  What changed:
+%   - ALL 7 em-dashes are gone.  Each was replaced by the construction its job called
+%     for: a colon where the following text explains what precedes (the "any function
+%     of the past" gloss, the dead-band apposition), a comma-delimited clause where the
+%     dash carried a parenthetical (the 18443 locator), a sentence break where it
+%     joined two independent clauses.
+%   - The 41-word four-surface sentence is now THREE sentences (query / surfaces /
+%     result), the 51-word Corollary 2 sentence is two, the 59-word Theorem 1 one is
+%     two.  No sentence in this file now exceeds 33 words.
+%   - LINE BUDGET.  The Introduction went from 31 typeset lines (body lines 15-45) to
+%     28 (body lines 12-39); the abstract went 14 -> 11.  Six lines back to the body,
+%     measured off the style file's own margin numbers, not estimated.
+%   - TWO FACTS MOVED RATHER THAN VANISHED, and both are still printed, so a reader
+%     loses nothing:
+%       (a) "conclude |E_T| <= c h(T)+1 = o(T)" -> "conclude |E_T| = o(T)".  The finite-T
+%           bound c h(T)+1 is Proposition 2 and is printed in sections/setup.tex (as
+%           Proposition 2 itself) and again in sections/forfeit.tex, where the
+%           retention argument uses it.  The o(T) conclusion, which is the coverage
+%           claim the paragraph is making, stays here.
+%       (b) The inline tau* = sup_x r_t(x) + sup_t qhat_t - b/2 is now "whose edge is
+%           the corollary's radius at the null scorecaster".  The formula is DERIVED,
+%           not merely restated, in sections/forfeit.tex, which prints it twice.  The
+%           located-ness of the edge, which is the claim, is untouched.
+%     Nothing else was cut: "refereed", "verbatim", "baselines paragraph", "already"
+%     (share a bibliography), "ordinary self-correction" and "there" (the scoping
+%     qualifier on the necessity claim) all survive verbatim.
+%   - "Those two claims are the paper; Section 4 sets them ..." -> "Section 4 sets both
+%     claims beside ...".  The two-claim count is still carried by "both claims", by the
+%     two numbered \paragraph heads and by the abstract, which is where S4 wave 1 put it.
+%   - \mbox{\citet{li2024neuralconformal}} is RETAINED, still inside the four-surface
+%     sentence, for the pdfvlistout reason recorded above.  Zero pdfendlink warnings.
 \section{Introduction}
 \label{sec:intro}
 
-An online conformal method emits a threshold before each observation and moves it afterwards.
-Forecast stability names that movement, scores it and prices it
+An online conformal method emits a threshold before each observation and moves it. Forecast
+stability names, scores and prices it
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
-pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying a forecast's temporal
-structure at fixed level was invented earlier, in forecast verification, where the predictive
-marginal is matched on real producers \citep{gneiting2007calibration,pinson2012scenarios,worsnop2018scenarios}; that coverage and
-mean length under-describe a deployed interval is established too
-\citep{min2026questioning,vaze2026simultaneous}. None of it is claimed here.
+pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying temporal structure at
+fixed level came earlier, in forecast verification, matching predictive marginals on real producers
+\citep{gneiting2007calibration,pinson2012scenarios,worsnop2018scenarios}. Coverage and mean length
+under-describe a deployed interval \citep{min2026questioning,vaze2026simultaneous}. None of it is
+claimed here.
 
 \paragraph{First: the record carries a claim and its refutation, and this paper joins them.}
 Conformal PID \citep{angelopoulos2023pid} adds a \emph{scorecaster} $\hat{q}_{t+1}$ to a saturating
-error integrator and asks of it only that it be predictable and lie in $[-b/2,b/2]$ --- ``any function of
-the past'' (Theorem~1) --- so a readout placed in that slot is already quantified over. Also in print, of the same
-method: ``[s]ince using a scorecaster (D-part) in C-PID breaks the theoretical coverage
-guarantee'' \citep{li2024neuralconformal} --- stated and acted on in that paper's baselines
-paragraph, refereed and verbatim on printed page $18443$. The refutation is in print too, twice
-and with proof:
-\citet[Corollary~2]{li2025o2cp} add an arbitrary predictable $d_t$
-with $|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, observe that the result ``has
-exactly the CPID error-integration form'', and conclude $|E_T| \le c\,h(T)+1 = o(T)$; the same
-generic-slot argument carries AcMCP's long-run coverage \citep{wang2026acmcp}. The first and last authors of \citet{li2025o2cp} are the authors
-of \citet{li2024neuralconformal} and cite it: the halves already share a bibliography, this is
-ordinary self-correction, and the joining is what this paper adds. Four surfaces, queried on 20 August 2026 for the two papers' identifiers and for
-``scorecaster'' --- arXiv full text, arXiv abstracts, OpenReview, and the six works Semantic
-Scholar records as citing \mbox{\citet{li2024neuralconformal}} --- return no document containing both
-the claim and the corollary. \citet{hu2026distinformed} still calls scorecaster choice ``arbitrary'' and
-lacking ``principled guidance'', while asserting valid coverage: model selection, not validity. \textbf{We claim neither the placement nor the derivation.}
-% Wave 3 closed both former bibliography gaps here: li2025o2cp (arXiv:2508.13362) and wang2026acmcp
-% (arXiv:2410.13115v2) are in audit/REFS_VERIFIED.bib and are cited as \citep above.
-%
-% WAVE-5 CORRECTIONS (S3 F1 findings 6-9), all in the "record contradicts itself" paragraph:
-%   - the quoted sentence is located IN PRINT: baselines paragraph of the experiments section,
-%     and it survives verbatim in the refereed AAAI 2025 camera-ready at printed page 18443
-%     (research/S3/records/f1/aaai_34029_ncc_cameraready.{pdf,txt}).  "scorecaster" and "D-part"
-%     each occur ONCE in those nine pages, so the paper says where the sentence sits rather than
-%     letting a referee discover it.
-%   - the citation edge is DISCLOSED: li2025o2cp cites li2024neuralconformal, once, for
-%     evaluation practice.  The former "the halves have not been put side by side" is now a
-%     four-surface measurement with a count, not a quantifier (FRAMING sec. 3).
-%   - hu2026distinformed is re-scoped: it complains about scorecaster model selection and
-%     variance, and asserts valid coverage itself, so it is no longer attached to a validity
-%     dispute (research/S2/ft/txt/2512.07770.txt, sec. 2.2).
+error integrator, asking only that it be predictable and lie in $[-b/2,b/2]$: ``any function of the
+past'' (Theorem~1). A readout there is already quantified over. Also in print, of that method:
+``[s]ince using a scorecaster (D-part) in C-PID breaks the theoretical coverage guarantee''
+\citep{li2024neuralconformal}, stated and acted on in its baselines paragraph, verbatim on refereed
+printed page $18443$. It is refuted twice, with proof. \citet[Corollary~2]{li2025o2cp} add an
+arbitrary predictable $d_t$ with $|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, note
+that the result ``has exactly the CPID error-integration form'', and conclude $|E_T| = o(T)$. The same
+generic-slot argument carries AcMCP's long-run coverage \citep{wang2026acmcp}. The first and last
+authors of \citet{li2025o2cp} wrote \citet{li2024neuralconformal} and cite it: the halves already
+share a bibliography, this is ordinary self-correction, and the joining is what this paper adds.
+Four surfaces were queried on 20 August 2026 for both identifiers and ``scorecaster''. They are
+arXiv full text, arXiv abstracts, OpenReview, and the six works Semantic Scholar records citing
+\mbox{\citet{li2024neuralconformal}}. None returns both the claim and the corollary.
+\citet{hu2026distinformed} still calls scorecaster choice ``arbitrary'' and lacking ``principled
+guidance'' while asserting valid coverage: model selection, not validity. \textbf{We claim neither
+the placement nor the derivation.}
 
 \paragraph{Second: that admissible set has an edge, and the condition there is tight.} Corollary~2
-is a \emph{retention} result, so what it leaves open is outside that set.
-Section~\ref{sec:forfeit} exhibits a legal perturbation that leaves it --- an $L_1$ dead band on
-the \emph{completed} threshold, the family characterised here --- and locates the edge at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, the corollary's own radius at the
-null scorecaster. Past it the price is coverage and not only the rate, so the published sufficient
-condition is necessary there. Those two claims are the paper;
-Section~\ref{sec:related} sets them beside four vocabularies for the same movement.
+is a \emph{retention} result: what it leaves open is outside. Section~\ref{sec:forfeit} exhibits a
+legal perturbation leaving it, the $L_1$ dead-band family characterised here on the \emph{completed}
+threshold, whose edge is the corollary's radius at the null scorecaster. Past it coverage goes,
+not only the rate: the published sufficient condition is necessary there.
+Section~\ref{sec:related} sets both claims beside four vocabularies for the same movement.

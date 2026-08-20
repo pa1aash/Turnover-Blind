@@ -1,0 +1,86 @@
+% ---------------------------------------------------------------------------
+% APPENDIX -- ADDED S5 WAVE 4, AND THE REASON IS A MEASUREMENT, NOT A PREFERENCE.
+%
+% Wave 3's prose pass met its 24-line target (body 165 -> 141 typeset lines) and the
+% body STILL overran, because four floats -- two tables and the two figures wave 2
+% added -- do not pack into four pages.  Agent G2 had honoured rulebook rule 6 by
+% moving numbers out of running prose INTO the Table 1 and Figure 2 captions, but
+% caption text costs exactly what body text costs; the load was relocated into floats
+% rather than reduced, and floats pack worse.  With LaTeX's default float glue this
+% put Table 1 and Figure 2 on the SAME page and left that page eight body lines.
+%
+% E-values' call, fetched headlessly on 2026-08-20 and quoted verbatim, reads:
+%   "Short papers up to 4 pages, EXCLUDING REFERENCES AND OPTIONAL APPENDICES."
+% So an appendix is explicitly permitted and does not count against the ceiling.
+% Rule 6 allows a fact to move "to a table, an appendix, or a figure caption"; this
+% is that move, to the one destination that is free.  NOTHING IS DELETED HERE: every
+% number below was printed in the paper before this wave, and each is still traceable
+% to results/ by the same field paths audit sub-session A recorded.
+%
+% TS-LIMITS allows 4-7 body pages, so under that option this material could return to
+% the body.  It is kept here because the tighter of the two live options governs while
+% the venue is [OPERATOR INPUT].
+% ---------------------------------------------------------------------------
+
+\appendix
+
+\section{Supporting measurements}
+\label{app:support}
+
+\paragraph{The primary regime.} Every figure in Table~\ref{tab:forfeit} is measured under one
+deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
+$\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
+convention matters at one row and one row only. An adversary playing the threshold
+\emph{exactly} returns $70.80$ in place of $623.70$ for partial adjustment at $w = 0.999$,
+because its signature move then covers. Every other row is convention-free.
+
+\paragraph{Excursions at $T = 10^4$, and the law across the arms.} Partial adjustment excurses
+$6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat in $T$
+while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the horizon.
+Across the arms the excursion fits $\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$.
+This is a fit to the measured arms, not a derived bound.
+
+\paragraph{Realised miscoverage at the covering settings of Figure~\ref{fig:boundary}.} At
+$\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
+inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
+returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the
+$w = 0.999$ excursion from $623.70$ to $120.60$, which is the second term of $\tau^{\star}$
+moving the edge rather than the readout changing behaviour.
+
+\section{The four vocabularies}
+\label{app:bridge}
+
+% MOVED HERE FROM sections/related.tex IN S5 WAVE 4.  It is descriptive related-work
+% material rather than a result, which makes it the right float to move once one had to
+% move: four floats did not pack into a four-page body.  Nothing is lost.  The caption
+% still names TEN names across FOUR vocabularies, which is what docs/GATES.md G7.11
+% requires be conceded, and sections/setup.tex still cites this caption for that count
+% by \ref, so the cross-reference holds from the body into the appendix.
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\caption{Four literatures name the movement of a sequentially updated forecast in four
+vocabularies: \emph{abrupt threshold changes}; \emph{forecast (in)stability} (MASC, MAC/SDC,
+MQC/SMQC, congruence, nervousness); \emph{jumpiness}, \emph{convergence index},
+\emph{(in)consistency}; and \emph{switching cost}. The row gives what each contributes.}
+\label{tab:bridge}
+\begin{tabular}{@{}p{3.35cm}p{3.35cm}p{3.35cm}p{3.35cm}@{}}
+\toprule
+\textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
+\textbf{Switching-cost OL} \\
+\midrule
+a distribution-free long-run-coverage guarantee for \emph{any} bounded scorecaster, with a rate
+\citep[Thm~1, Prop.~2]{angelopoulos2023pid}, and the admissible set measured here to be tight
+& the scored movement functional, the readout map as post-processing
+\citep[Eq.~3]{godahewa2025stability}, and a priced decision
+\citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}
+& the matched-level design on real producers from 2012, with a control \emph{stronger} than the
+pair: the whole marginal \citep{pinson2012scenarios,worsnop2018scenarios}
+& worst-case theory for the penalised problem: Thm~2, and a Thm~7 trade-off in which sublinear
+regret is bought by growing $\theta$ with $T$, which grows the ratio
+\citep{andrew2013twometrics} \\
+\bottomrule
+\end{tabular}
+\end{table}
+

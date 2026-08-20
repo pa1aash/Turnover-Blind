@@ -131,10 +131,16 @@
 \centering
 \scriptsize
 \setlength{\tabcolsep}{4.5pt}
+% S5 wave 4: arraystretch 0.95.  Eleven data rows at 0.95 give back one typeset line,
+% which was two of the last two lines standing between the body and the 4-page ceiling.
+% This is row LEADING only -- no font change, no row removed, no cell altered.
+\renewcommand{\arraystretch}{0.95}
 \caption{Placement~A: a one-scalar readout on the \emph{completed} threshold; one deterministic
 adversary, one pass to $T = 10^6$. \emph{All eleven arms run are listed}, so no covering arm is
-withheld. Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
-``ratio'' is $\max_t|E_t|$ over it, ``Sat.'' the rounds on which~(4) delivers its full $\pm b$.}
+withheld; five exceed the bound at $T = 10^6$. Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
+``ratio'' is $\max_t|E_t|$ over it, ``Sat.'' the rounds on which~(4) delivers its full $\pm b$.
+Every figure is the \emph{primary} regime's, defined in Appendix~\ref{app:support}, which also
+gives the $T = 10^4$ excursions and the fitted excursion law.}
 \label{tab:forfeit}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
@@ -156,25 +162,19 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
 \end{tabular}
 \end{table}
 
-\paragraph{The retention result is published, and this section tests it from outside.}
+\paragraph{The retention result is published, and tested from outside.}
 \mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
-and \emph{retains} $|E_T| \le c\,h(T)+1$; the admissible radius is theirs. A downstream partial
-adjustment of weight $w$ leaves it. Its excursion at $T = 10^4$ is $6.30/63.00/623.70$ for $w =
-0.9/0.99/0.999$, and for the last two it is \emph{flat in $T$} while the bound grows like $\log T$,
-so the ratio falls with the horizon: at $w = 0.999$, $61.08$ at $T = 10^4$ and $42.10$ at $T =
-10^6$; the measured law across the arms is
-$\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$, and five of the eleven arms exceed the
-bound at $T = 10^6$. The forfeit is therefore a property of the smoothing \emph{strength} and not
-of Placement~A as such, and it buys something: the $w = 0.999$ arm cuts deployed travel from
-$28{,}311$ to $202$. The sign is the opposite of the intuitive one. A readout on the completed
-$q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put condition~(4) at
-risk; it delays the correction the integrator has already computed, so the accumulator excurses
-\emph{further}. Smoothing the output does not damp $E_t$, it feeds it. The $623.70$ is the primary
-regime's figure --- the adversary landing $\varepsilon = 10^{-9}$ above the deployed threshold
-under the harness's strict indicator --- and what it turns on is that $\varepsilon$ rather
-than the counting convention: an adversary playing the threshold \emph{exactly} returns $70.80$
-under the same indicator, because its signature move then covers.
+and \emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
+adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices it. For $w = 0.99$ and
+$0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$, so the ratio
+falls with the horizon. At $w = 0.999$ it is $61.08$ at $T = 10^4$ and $42.10$ at $T = 10^6$. The
+forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
+travel falls from $28{,}311$ to $202$. Its sign is counter-intuitive. A readout on the completed
+$q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. It delays a
+correction already computed, and the accumulator excurses
+\emph{further}. Smoothing the output does not damp $E_t$, it feeds it. That $623.70$ turns on the
+adversary's $\varepsilon$, not the counting convention.
 
 % ---------------------------------------------------------------------------
 % S5 WAVE 2: sub-session B's boundary figure, inserted here.
@@ -197,10 +197,12 @@ under the same indicator, because its signature move then covers.
   $(r_t,\hat{q})$ pairs. Each pair's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$
   is dashed in its own colour: $1$ at the null scorecaster, $2$ at $\hat{q} \equiv +b/2$,
   $0$ at $\hat{q} \equiv -b/2$, $7$ at a saturator of level $4b$, and unbounded under
-  \citeauthor{angelopoulos2023pid}'s tangent integrator (arrow). All $19$ dead-band runs
+  \citeauthor{angelopoulos2023pid}'s tangent integrator (arrow). Three widths run under
+  each pair, plus four wider bands at the null scorecaster. All $19$ dead-band runs
   land on the side of their own $\tau^{\star}$ that the law predicts, and the vertical
   dashes are the law's prediction rather than four located edges: only the null
-  scorecaster's edge is bracketed from both sides.
+  scorecaster's edge is bracketed from both sides. Appendix~\ref{app:support} gives the
+  realised miscoverage at each covering setting.
   \textbf{(b)} An eleven-point grid at the null scorecaster \emph{locates} that edge
   between $\tau = 1.000$ and $1.001$, with no intermediate regime. Horizons: $T = 10^{6}$
   in (a) except the four widest bands ($\tau \ge 2$), run only to $T = 2{\times}10^{5}$;
@@ -211,46 +213,40 @@ under the same indicator, because its signature move then covers.
 \paragraph{The $L_1$ dead band leaves the radius, and the edge is measurable.} A dead band pulls
 the deployed threshold back by exactly $\tau$ when it releases, so ``inside Corollary~2'' reads
 $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned $\tau$ below the
-integrator's ceiling: its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
-0.9$. The adversary's best legal play is $b/2$, so coverage is lost exactly when that supremum
-drops below it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. Figure~\ref{fig:boundary} plots
-that edge across settings. Every dead-band configuration in the variation sweep agrees, $19$ of $19$: three widths under each of the null
-scorecaster, $\hat{q} \equiv +b/2$, $\hat{q} \equiv -b/2$, a saturator at level $4b$ and
-\citeauthor{angelopoulos2023pid}'s tangent integrator, plus four wider bands at the null
-scorecaster. An eleven-point grid at the null scorecaster \emph{locates} that edge between $\tau =
-1.000$ and $1.001$; the other four settings are bracketed at three widths and not located. \textbf{Here $\sup r_t = b$ and $\hat{q} \equiv 0$, so
-$\tau^{\star} = b/2$} --- one point of the admissible class, and both terms move it. At $\hat{q}
-\equiv +b/2$, legal, the same $\tau = 1.5$ band covers at $T = 10^6$ ($0.100010$, $\max_t|E_t| =
-11.20$, inside the bound); at $\hat{q} \equiv -b/2$, equally legal, $\tau^{\star} = 0$ and $\tau =
-0.5$ returns $1.000000$, as does partial adjustment at $w = 0.999$. Raising the saturator's level
-to $4b$, admissible since~(4) is a lower bound, raises $\sup_x r_t(x)$ and $\tau^{\star}$ with it
-and cuts $623.70$ to $120.60$; under the unbounded tangent integrator
-\citet{angelopoulos2023pid} report using in all their experiments, $\sup_x r_t(x)$ is unbounded
-and so is $\tau^{\star}$, the three widths run there all cover, $\tau = 1.5$ at $0.100001$, and
-$623.70$ falls to $20.10$, both at $T = 10^6$. \textbf{The method's own integrator therefore sits inside the set at
-every width run here.} Outside it the transition is a step: $\tau = 1.000$ covers at $T = 10^5$
-while $\tau = 1.001$ returns $1.000000$, and past $\tau^{\star}$ the threshold sits permanently
-below the reachable score range and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the
-bound at $T = 10^6$; $\tau = 2.0$, $2.5$, $3.0$ and $5.0$ fail too at $T = 2{\times}10^5$, so the failing set is
-$(\tau^{\star},\infty)$, open at the left. \textbf{The endpoint is the one row in the record where
-the adversary's convention decides the answer}: at $\tau = \tau^{\star}$ the deployed supremum
-equals the adversary's own cap $b/2$, so the primary regime covers while the exact-threshold play
-returns $1.000000$ or $0.000000$ according to the tie rule. Every other row is convention-free. \textbf{And the failing arms
-have $\mathrm{Sat.} = 1.0000$}: condition~(4) delivers its full $\pm b$ on every round, and what
-fails is Proposition~2's other hypothesis, that the threshold closing the loop \emph{is} the
-integrator's output.
+integrator's ceiling, its realised supremum $b-\tau$ to the printed digit at every $\tau \ge
+0.9$. The adversary's best legal play is $b/2$, so coverage is lost when that supremum drops below
+it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. All $19$ dead-band
+runs agree with that law (Figure~\ref{fig:boundary}); only the null scorecaster's edge is located,
+the other four bracketed. \textbf{Here $\sup r_t = b$ and $\hat{q} \equiv 0$, so
+$\tau^{\star} = b/2$}, one point of the admissible class, and both terms move it. The legal
+$\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound. The equally legal $\hat{q}
+\equiv -b/2$ drops the edge to $0$, and there $\tau = 0.5$ returns $1.000000$, as does partial
+adjustment at $w = 0.999$. Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising it
+costs the theorem nothing; it moves the edge too and shrinks the excursion
+(Figure~\ref{fig:boundary}). Under the unbounded tangent integrator
+\citet{angelopoulos2023pid} report using in all their experiments, $\tau^{\star}$ is unbounded and
+all three widths there cover. The excursion is $20.10$ rather than $623.70$, both at $T = 10^6$. \textbf{The method's own integrator therefore
+sits inside the set at every width run here.} Outside the set the transition is a step. Past
+$\tau^{\star}$ the threshold sits permanently below the reachable score range and $|E_t| =
+(1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T = 10^6$. The wider bands $\tau =
+2.0$, $2.5$, $3.0$ and $5.0$ fail too at $T = 2{\times}10^5$, so the failing set is
+$(\tau^{\star},\infty)$, open at the left. \textbf{The endpoint is the one row where the
+adversary's convention decides the answer.} At $\tau = \tau^{\star}$ the deployed supremum equals
+the adversary's own cap $b/2$. The primary regime then covers, while the exact-threshold play
+returns $1.000000$ or $0.000000$ by the tie rule. Every other row is convention-free.
+\textbf{And the failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
+$\pm b$ on every round, and what fails is Proposition~2's other hypothesis: the threshold closing
+the loop \emph{is} the integrator's output.
 
 \paragraph{What that measures is that the published condition is tight.} At $\mu_t = 1$,
 $\hat{q}_t \equiv 0$ the measured $\tau^{\star}$ is exactly Corollary~2's radius, and crossing it
 costs coverage rather than the rate. \textbf{The claim is that necessity: a tightness result about
 someone else's sufficient condition}, smaller and more precise than a forfeit of the rate by
-post-processing. Elsewhere the condition stays sufficient only --- at $\hat{q}_t \equiv
-+b/2$ Corollary~2 permits radius $0$ while every width run there covers --- which is what makes
-``tight'' a located claim.
+post-processing. Elsewhere it stays sufficient only: at $\hat{q}_t \equiv +b/2$ Corollary~2
+permits radius $0$ while every width run there covers. That asymmetry makes ``tight'' a located
+claim.
 
 \paragraph{The constructive reading, and it is the corollary's rather than ours.} Placement~B
-keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it already; and at
-Placement~A, condition~(4) bounds $\sup_x r_t(x) $ only from below, so raising the saturator's
-level widens the band at no cost to the theorem. What the measurement adds is that the band has
-an edge, that the edge is computable before deployment from $\sup_x r_t(x)$ and $\sup_t
-\hat{q}_t$, and that crossing it is not a graceful degradation.
+keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it already. What the
+measurement adds is that the band has an edge, computable before deployment from $\sup_x r_t(x)$
+and $\sup_t \hat{q}_t$, and that crossing it is not a graceful degradation.

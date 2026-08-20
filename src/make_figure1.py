@@ -216,7 +216,11 @@ def main():
         "lines.solid_capstyle": "butt",
     })
 
-    fig = plt.figure(figsize=(5.5, 2.45))
+    # 5.5in is exactly \textwidth in neurips_2026.sty, so width=\textwidth places the
+    # figure 1:1 and the base font lands at exactly 8pt.  HEIGHT REDUCED 2.45 -> 1.95in
+    # in S5 wave 4: the four floats did not pack into a four-page body, and this is the
+    # one saving that costs no content at all.  Re-checked visually after the change.
+    fig = plt.figure(figsize=(5.5, 1.95))
     gs = fig.add_gridspec(1, 2, width_ratios=[1.68, 1.0],
                           left=0.078, right=0.988, bottom=0.215, top=0.855, wspace=0.20)
     axA = fig.add_subplot(gs[0, 0])

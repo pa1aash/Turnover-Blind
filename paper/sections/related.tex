@@ -49,57 +49,55 @@
 % sections/limitations.tex still reads "Seven of the twenty-six anchors return an
 % empty reference list, so Table 2's counts are gaps rather than zeros."  Table 2
 % no longer prints counts, so that sentence is orphaned and should be cut.
+%
+% S5 SUB-SESSION G3 (2026-08-20): PROSE AND PUNCTUATION PASS.  No concession was
+% dropped, softened or renamed; every \cite key that was here is still here, and
+% Table 2 (caption, row, and the Andrew et al. Thm 7 TRADE-OFF wording) is
+% untouched.  What changed:
+%   (a) BOTH EM-DASHES ARE GONE.  The pair around "the admissible set around the
+%       deployed threshold" was a genuinely subordinate appositive, so it is now
+%       parenthesised.  File em-dash count 2 -> 0.
+%   (b) TOPIC SENTENCE PER CONCESSION.  The run-on enumeration is now one short
+%       declarative sentence per concession: placement / derivation / Section 2's
+%       objects / the four smoother-in-the-argument papers / anti-windup /
+%       gao2025coloke.  No sentence exceeds 28 words; the longest before was 45.
+%   (c) TWO CITATIONS MOVED TO THEIR natbib LOCATOR FORM, which prints the same
+%       information in fewer characters: \citet[Appendix~A]{dupuy2026relevance}
+%       and \citet[Corollary~2]{li2025o2cp}.  The second replaces a
+%       \citeauthor{...}'s Corollary~2 ... \citep{...} pair that named li2025o2cp
+%       twice.  G7.5 still reads on it: "Li et al. [2025, Corollary 2]" names the
+%       derivation's prior art in the printed text.
+%   (d) THE OPENING SENTENCE IS NOW RUN INTO THE CONCESSION PARAGRAPH and the
+%       \paragraph head is a \textbf run-in lead, which is the style
+%       sections/limitations.tex already uses.  THIS IS THE ONLY STRUCTURAL
+%       CHANGE AND IT IS WORTH EXACTLY ONE TYPESET LINE: the standalone opening
+%       paragraph ended a line 45 characters short, and merging recovers it.
+%       Reverting it (restore \paragraph{What is conceded, by name.} and the
+%       blank line) costs one line and nothing else.
+% MEASURED, three passes + bibtex: section 4 spanned margin lines 136-152 (17
+% typeset lines) before, 131-145 (15) after.  2 lines saved.  0 undefined
+% citations, 0 overfull boxes, 0 \pdfendlink warnings.
 
 \section{Where this sits}
 \label{sec:related}
 
-\begin{table}[tb]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2pt}
-\caption{Four literatures name the movement of a sequentially updated forecast in four
-vocabularies: \emph{abrupt threshold changes}; \emph{forecast (in)stability} (MASC, MAC/SDC,
-MQC/SMQC, congruence, nervousness); \emph{jumpiness}, \emph{convergence index},
-\emph{(in)consistency}; and \emph{switching cost}. The row gives what each contributes.}
-\label{tab:bridge}
-\begin{tabular}{@{}p{3.35cm}p{3.35cm}p{3.35cm}p{3.35cm}@{}}
-\toprule
-\textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
-\textbf{Switching-cost OL} \\
-\midrule
-a distribution-free long-run-coverage guarantee for \emph{any} bounded scorecaster, with a rate
-\citep[Thm~1, Prop.~2]{angelopoulos2023pid}, and the admissible set measured here to be tight
-& the scored movement functional, the readout map as post-processing
-\citep[Eq.~3]{godahewa2025stability}, and a priced decision
-\citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}
-& the matched-level design on real producers from 2012, with a control \emph{stronger} than the
-pair: the whole marginal \citep{pinson2012scenarios,worsnop2018scenarios}
-& worst-case theory for the penalised problem: Thm~2, and a Thm~7 trade-off in which sublinear
-regret is bought by growing $\theta$ with $T$, which grows the ratio
-\citep{andrew2013twometrics} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Four vocabularies name one quantity many ways, and the object that settles its validity --- the
-admissible set around the deployed threshold --- sits in the first of them.
-
-\paragraph{What is conceded, by name.} The placement is prior work:
-\citet{angelopoulos2023pid} state coverage for any admissible integrator and any scorecaster and
-run a smoothing-family model in that slot themselves; \citet{dupuy2026relevance} give the generic
-argument in their Appendix~A and \citet{duerst2024calibrating} adopt that
-scorecaster. The derivation is prior work too, and that is the
-concession that matters most: \citeauthor{li2025o2cp}'s Corollary~2 proves the retention statement
-in Conformal PID's own notation \citep{li2025o2cp}, with \citet{wang2026acmcp} an independent
-second instance. The smoother object, the metric arithmetic and both readout maps are conceded in
-Section~\ref{sec:setup}, and \citet{zheng2025scdsplit,wu2025eci,chen2023ipoc,lade2026bcaci} each
-place a smoother inside their own validity argument. One vocabulary out, this is integrator
-anti-windup with a feedforward path, where free-until-the-bound-binds is the defining
-specification rather than a finding \citep{galeani2009antiwindup}. Nearest in the
-other direction, \citet{gao2025coloke} run the same recursion but gate the \emph{model} update on
-the conformal score; their one non-standard assumption is that $\sum_{t \le T} q_t \le
-O(\alpha\,h(T))$ for a sublinear $h$, supported with a plot rather than derived. That accumulation
-is what Section~\ref{sec:forfeit} measures diverging.
+Four vocabularies name one quantity many ways, and the object that settles its validity (the admissible set
+around the deployed threshold) sits in the first of them. Table~\ref{tab:bridge} names them and
+what each contributes. \textbf{What is conceded, by name.}
+The placement is prior work:
+\citet{angelopoulos2023pid} state coverage for any admissible integrator and any scorecaster, and
+run a smoothing-family model in that slot themselves. \citet[Appendix~A]{dupuy2026relevance} give
+the generic argument, and \citet{duerst2024calibrating} adopt that scorecaster. The derivation is
+prior work too, and this concession matters most. \citet[Corollary~2]{li2025o2cp} proves the
+retention statement in Conformal PID's own notation, with \citet{wang2026acmcp} an independent
+second instance. Section~\ref{sec:setup} concedes the smoother object, the metric arithmetic and
+both readout maps. \citet{zheng2025scdsplit,wu2025eci,chen2023ipoc,lade2026bcaci} each place a
+smoother inside their own validity argument. One vocabulary out, this is integrator anti-windup
+with a feedforward path: free-until-the-bound-binds is its defining specification, not a finding
+\citep{galeani2009antiwindup}. Nearest in the other direction, \citet{gao2025coloke} run the same
+recursion but gate the \emph{model} update on the conformal score. Their one non-standard
+assumption is that $\sum_{t \le T} q_t \le O(\alpha\,h(T))$ for a sublinear $h$, supported with a
+plot rather than derived. Section~\ref{sec:forfeit} measures that accumulation diverging.
 % Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.
 %
 % gao2025coloke: "Conformal Online Learning of Deep Koopman Linear Embeddings", arXiv:2511.12760,

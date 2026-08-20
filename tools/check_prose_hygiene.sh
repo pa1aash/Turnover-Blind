@@ -90,7 +90,18 @@ if pdf and os.path.exists(pdf):
     print(f"  PDF em-dash (U+2014): {em}")
     if em:
         fail = 1
-    dm = list(dup.finditer(flat))
+    # Two false-positive classes are excluded, both demonstrated live on this paper
+    # in S5 and both artefacts of pdftotext rather than defects in the prose:
+    #   (a) SINGLE CHARACTERS.  pdftotext splits math subscripts, so
+    #       \sum_{i \le t}(err_i - alpha) extracts as "... (err - a) , (1) i i<=t",
+    #       yielding a bogus "i i".  No real English duplicate is one character.
+    #   (b) PURE NUMBERS.  Rotated axis tick labels extract out of order, and the
+    #       regex then matches the "1 1" inside "1 1.001".  A repeated numeral is
+    #       never the duplicated-word defect this check exists to find.
+    # The SOURCE-side check above has neither problem and stays strict; it is the
+    # authority.  This PDF pass is a cross-check, so narrowing it here costs nothing.
+    dm = [m for m in dup.finditer(flat)
+          if len(m.group(1)) > 1 and not re.fullmatch(r'[\d.,]+', m.group(1))]
     print(f"  PDF duplicate words: {len(dm)}")
     for m in dm:
         print(f"    FAIL '{m.group(0)}' ... {flat[max(0,m.start()-55):m.start()+60]}")

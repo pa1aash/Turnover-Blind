@@ -77,19 +77,18 @@
 \section{Setup}
 \label{sec:setup}
 
-\paragraph{The producer.} A forecaster fit on data before $t$ induces a score $s_t$, a
-threshold $q_t$ is emitted before $y_t$ is revealed, the deployed set is $C_t = \{y : s_t(x_t,y)
-\le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$; the target is long-run
+\paragraph{The producer.} A forecaster fit before $t$ induces a score $s_t$, and a threshold
+$q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
+\le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
 coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
-Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
+Conformal PID \citep{angelopoulos2023pid} manipulates it on the score scale,
 \begin{equation}
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
 \end{equation}
-their iteration~(5), in which $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the
-sign of $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Writing $E_t
-= \sum_{i \le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$; boundedness
-is read on realised scores.
+their iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
+$x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. With $E_t = \sum_{i
+\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
 
 % ---------------------------------------------------------------------------
 % S5 WAVE 2: sub-session C's placement schematic, inserted here.
@@ -159,46 +158,44 @@ is read on realised scores.
        ([shift={(-1.5mm,1.5mm)}]Anw) rectangle ([shift={(3mm,-1.5mm)}]Ase);
 \end{scope}
 \end{tikzpicture}
-\caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output; in \textbf{(A)} on $\tilde q_{t+1}$, which it never computed.}
+\caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output, and both readouts keep $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside Corollary~2's admissible set. In \textbf{(A)} it closes on $\tilde q_{t+1}$, which it never computed, and the deployed sequence leaves that set.}
 \label{fig:placements}
 \vspace{-4pt}
 \end{figure}
 
-\paragraph{One scalar, two readouts, two places to put it.} Damping the movement of a
-sequentially updated scalar has two standard readouts, both prior work: a quadratic cost gives linear partial
-adjustment towards the target, $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
-\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, and a proportional cost a no-trade band, moving
-only when the target is more than $\tau$ away and then pulling back by exactly $\tau$
-\citep{constantinides1986,davis1990}. The first is published as post-processing
-\citep{godahewa2025stability} and applied to a deployed conformal threshold
-\citep[Eq.~13]{binny2025whomoved}. It has two positions in (\ref{eq:pid}), drawn in Figure~\ref{fig:placements}: \textbf{(B)} in the
-$\hat{q}_{t+1}$ slot, where both readouts keep $\{\hat{q}_t\}$ in the convex hull of $\hat{q}_1$
-and the raw scorecaster's range, inside Corollary~2's admissible set; and \textbf{(A)} downstream
-of the completed $q_{t+1}$, outside it. Placement~A is measured here. \emph{The dead band (L1) is not a
-stylistic alternative to the partial-adjustment (L2) form}; it is the specific perturbation family
-whose failure \S\ref{sec:forfeit} characterises. Neither is safe by construction: L2 forfeits
-Proposition~2's rate while covering, L1 past $\tau^{\star}$ loses coverage, and at the legal
-$\hat{q}_t \equiv -b/2$ both lose it. What is tight is the radius, not a form.
+\paragraph{One scalar, two readouts, two places.} Damping a sequentially updated scalar
+has two standard readouts, both prior work. A quadratic cost gives linear partial adjustment
+$\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
+\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, published as post-processing
+\citep{godahewa2025stability} and applied to a deployed threshold
+\citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, moving only when the
+target is more than $\tau$ away, then pulling back exactly $\tau$
+\citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
+in Figure~\ref{fig:placements}; \textbf{(A)} is measured here.
+\emph{The dead band (L1) is not a stylistic alternative to the partial-adjustment (L2) form}; it
+is the family whose failure \S\ref{sec:forfeit} characterises. Neither is safe by construction:
+L2 forfeits Proposition~2's
+rate while covering, L1 past $\tau^{\star}$ loses coverage, and at the legal $\hat{q}_t \equiv
+-b/2$ both lose it. What is tight is the radius, not a form.
 
 \paragraph{The quantity, and the names it already has.} We report the deployed threshold's
 \emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
-control. The arithmetic is not new: $\sum|\Delta q|$ over a predictive distribution is the
+control. The arithmetic is not new. Over a predictive distribution $\sum|\Delta q|$ is the
 Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls it
-\emph{jumpiness}, a \emph{convergence index} and \emph{(in)consistency}
+\emph{jumpiness}, a \emph{convergence index}, \emph{(in)consistency}
 \citep{zsoter2009jumpiness,ehret2010convergence,pappenberger2011consistency}; applied control,
 IACER \citep{sarhadi2025criteria}; dynamic-regret online learning, a path length.
-Table~\ref{tab:bridge}'s caption names ten across four vocabularies, which is why a
-fresh one is used here.
+Table~\ref{tab:bridge}'s caption names ten, so a fresh one is used here.
 % Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
 % pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
 % criterion CR8) are all in audit/REFS_VERIFIED.bib and cited as \citep above.
 
-\paragraph{Harness.} $\alpha = 0.1$, $b = 2$, $c = 1$, $h(t) = \log(t+2)$, and the clipped
-saturator $r_t(x) = b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, which meets condition~(4) with equality.
+\paragraph{Harness.} The harness fixes $\alpha = 0.1$ and $b = 2$. Its saturator $r_t(x) =
+b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, with $c = 1$ and $h(t) = \log(t+2)$, meets~(4) with equality.
 The scorecaster is null and legal, reducing (\ref{eq:pid}) to the pure error integration
-Proposition~2 is stated about. Neither free choice is neutral: condition~(4) is a lower bound this saturator meets exactly, and Theorem~1
-permits scorecasters $b/2$ either side of the null one. The adversary is specified rather than
-tie-broken: it plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
-10^{-9}$, against the \emph{deployed} $\tilde{q}_t$ --- the $\varepsilon\downarrow 0$ reading of
+Proposition~2 addresses. Neither choice is neutral: (4) is a lower bound met exactly here, and
+Theorem~1 permits scorecasters $b/2$ either side of null. The adversary is specified, not
+tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
+10^{-9}$, against the \emph{deployed} $\tilde{q}_t$: the $\varepsilon\downarrow 0$ reading of
 ``sets the score at the threshold'', firing the strict indicator. Legality is Theorem~1's
 $[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight.
