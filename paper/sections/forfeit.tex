@@ -138,7 +138,7 @@
 \caption{Placement~A: a one-scalar readout on the \emph{completed} threshold; one deterministic
 adversary, one pass to $T = 10^6$. \emph{All eleven arms run are listed}, so no covering arm is
 withheld; five exceed the bound at $T = 10^6$. Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
-``ratio'' is $\max_t|E_t|$ over it, ``Sat.'' the rounds on which~(4) delivers its full $\pm b$.
+``ratio'' is $\max_t|E_t|$ over it, ``Sat.'' the fraction of rounds on which~(4) delivers its full $\pm b$.
 Every figure is the \emph{primary} regime's, defined in Appendix~\ref{app:support}, which also
 gives the $T = 10^4$ excursions and the fitted excursion law.}
 \label{tab:forfeit}
@@ -166,14 +166,14 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
 \mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
 and \emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
-adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices it. For $w = 0.99$ and
+adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices that departure. For $w = 0.99$ and
 $0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$, so the ratio
 falls with the horizon. At $w = 0.999$ it is $61.08$ at $T = 10^4$ and $42.10$ at $T = 10^6$. The
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
-travel falls from $28{,}311$ to $202$. Its sign is counter-intuitive. A readout on the completed
+travel falls from $28{,}311$ to $202$. The forfeit's sign is counter-intuitive. A readout on the completed
 $q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. It delays a
 correction already computed, and the accumulator excurses
-\emph{further}. Smoothing the output does not damp $E_t$, it feeds it. That $623.70$ turns on the
+\emph{further}. Smoothing the output does not damp $E_t$; it feeds it. That $623.70$ turns on the
 adversary's $\varepsilon$, not the counting convention.
 
 % ---------------------------------------------------------------------------
@@ -201,7 +201,7 @@ adversary's $\varepsilon$, not the counting convention.
   each pair, plus four wider bands at the null scorecaster. All $19$ dead-band runs
   land on the side of their own $\tau^{\star}$ that the law predicts, and the vertical
   dashes are the law's prediction rather than four located edges: only the null
-  scorecaster's edge is bracketed from both sides. Appendix~\ref{app:support} gives the
+  scorecaster's edge is located; the other four are bracketed. Appendix~\ref{app:support} gives the
   realised miscoverage at each covering setting.
   \textbf{(b)} An eleven-point grid at the null scorecaster \emph{locates} that edge
   between $\tau = 1.000$ and $1.001$, with no intermediate regime. Horizons: $T = 10^{6}$
@@ -217,7 +217,7 @@ integrator's ceiling, and its realised supremum is $b-\tau$ to the printed digit
 0.9$. The adversary's best legal play is $b/2$, so coverage is lost when that supremum drops below
 it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. All $19$ dead-band
 runs agree with that law (Figure~\ref{fig:boundary}); only the null scorecaster's edge is located,
-the other four bracketed. \textbf{Here $\sup r_t = b$ and $\hat{q} \equiv 0$, so
+the other four bracketed. \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
 $\tau^{\star} = b/2$}, one point of the admissible class, and both terms move it. The legal
 $\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound. The equally legal $\hat{q}
 \equiv -b/2$ drops the edge to $0$, and there $\tau = 0.5$ returns $1.000000$, as does partial
@@ -233,16 +233,16 @@ $\tau^{\star}$ the threshold sits permanently below the reachable score range an
 $(\tau^{\star},\infty)$, open at the left. \textbf{The endpoint is the one row where the
 adversary's convention decides the answer.} At $\tau = \tau^{\star}$ the deployed supremum equals
 the adversary's own cap $b/2$. The primary regime then covers, while the exact-threshold play
-returns $1.000000$ or $0.000000$ by the tie rule. Every other row is convention-free.
-\textbf{And the failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
+returns $1.000000$ or $0.000000$ by the tie rule. Every other verdict is convention-free.
+\textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
 $\pm b$ on every round, and what fails is Proposition~2's other hypothesis: the threshold closing
 the loop \emph{is} the integrator's output.
 
 \paragraph{What that measures is that the published condition is tight.} At $\mu_t = 1$,
-$\hat{q}_t \equiv 0$ the measured $\tau^{\star}$ is exactly Corollary~2's radius, and crossing it
+$\hat{q} \equiv 0$ the measured $\tau^{\star}$ is exactly Corollary~2's radius, and crossing it
 costs coverage rather than the rate. \textbf{The claim is that necessity: a tightness result about
 someone else's sufficient condition}, smaller and more precise than a forfeit of the rate by
-post-processing. Elsewhere it stays sufficient only: at $\hat{q}_t \equiv +b/2$ Corollary~2
+post-processing. Elsewhere it stays sufficient only: at $\hat{q} \equiv +b/2$ Corollary~2
 permits radius $0$ while every width run there covers. That asymmetry makes ``tight'' a located
 claim.
 

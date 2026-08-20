@@ -81,7 +81,7 @@
 $q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
 \le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
 coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
-Conformal PID \citep{angelopoulos2023pid} manipulates it on the score scale,
+Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
 \begin{equation}
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
@@ -116,7 +116,7 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
 %% ------------------------------- PANEL B -------------------------------
 \begin{scope}[xshift=0mm]
   \node[ttl] at (-1.5mm,6.2mm) {\textbf{(B)} in the $\hat q_{t+1}$ slot: inside the loop};
-  \node[sm]                    (Bsc)  at (0mm,0mm) {$\hat q_{t+1}$: smoother};
+  \node[sm]                    (Bsc)  at (0mm,0mm) {$\hat q_{t+1}$: readout};
   \node[jn,right=3.5mm of Bsc] (Bsum) {$+$};
   \node[bx,right=3.5mm of Bsum](Bq)   {$q_{t+1}$\\[-2pt]{\scriptsize deployed}};
   \node[bx,anchor=north west]  (Bint) at ([yshift=-5.6mm]Bsc.south west)
@@ -139,7 +139,7 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
   \node[bx]                    (Asc)  at (0mm,0mm) {$\hat q_{t+1}$};
   \node[jn,right=3.5mm of Asc] (Asum) {$+$};
   \node[bx,right=3.5mm of Asum](Aq)   {$q_{t+1}$};
-  \node[sm,right=6mm of Aq]    (Asm)  {smoother};
+  \node[sm,right=6mm of Aq]    (Asm)  {readout};
   \node[bx,right=3.5mm of Asm] (Aqt)  {$\tilde q_{t+1}$\\[-2pt]{\scriptsize deployed}};
   \node[bx,anchor=north west]  (Aint) at ([yshift=-5.6mm]Asc.south west)
         {$r_t(E_t)$, saturating};
@@ -172,10 +172,10 @@ $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
 target is more than $\tau$ away, then pulling back exactly $\tau$
 \citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
 in Figure~\ref{fig:placements}; \textbf{(A)} is measured here.
-\emph{The dead band (L1) is not a stylistic alternative to the partial-adjustment (L2) form}; it
-is the family whose failure \S\ref{sec:forfeit} characterises. Neither is safe by construction:
-L2 forfeits Proposition~2's
-rate while covering, L1 past $\tau^{\star}$ loses coverage, and at the legal $\hat{q}_t \equiv
+\emph{The dead band ($L_1$) is not a stylistic alternative to the partial-adjustment ($L_2$) form}; it
+is the family whose failure Section~\ref{sec:forfeit} characterises. Neither is safe by construction:
+$L_2$ forfeits Proposition~2's
+rate while covering, $L_1$ past $\tau^{\star}$ loses coverage, and at the legal $\hat{q} \equiv
 -b/2$ both lose it. What is tight is the radius, not a form.
 
 \paragraph{The quantity, and the names it already has.} We report the deployed threshold's

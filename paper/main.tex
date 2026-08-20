@@ -48,12 +48,22 @@
 %   2. TABLE 1 GAINED A "miscov. 10^6" COLUMN so the abstract's number is visible in the table
 %      it points at.  Seven columns fit: 0 overfull boxes, body still 4 pages, offset 0.
 %
-% RE-MEASURED, S5 SUB-SESSION A, BOTH VENUE OPTIONS, three passes + bibtex, artefacts deleted
-% first.  This supersedes the S4 wave 2 block below.
-%   body = 4 pages under BOTH options.  "References" is the FIRST content on p.5, OFFSET 0.
-%   6 pages total, references on pp.5-6.
-%   0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull boxes, 3 underfull
-%   hboxes, 0 bibtex warnings, 0 \pdfendlink warnings.
+% RE-MEASURED, S5 WAVE 5, BOTH VENUE OPTIONS, three passes + bibtex, artefacts deleted
+% first.  This supersedes every measurement block below it.
+%   sglblindworkshop (E-values, the BINDING option): body = 4 pages.  "References" is the
+%   FIRST content on p.5, OFFSET 0.  7 pages total: body pp.1-4, references pp.5-6,
+%   appendix p.7.  0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull
+%   boxes, 2 underfull hboxes, 0 bibtex warnings, 0 \pdfendlink warnings, main.aux
+%   13,526 bytes (a 0-byte aux is the SIGSEGV trap, not a clean run).
+%
+%   dblblindworkshop (TS-LIMITS): SAME counters, but the body runs 2 lines onto p.5,
+%   because the style file's anonymous author block is FOUR lines against our three.
+%   THIS IS NOT A DEFECT AND MUST NOT BE "FIXED": TS-LIMITS allows 4-7 body pages.
+%   CORRECTED S5 WAVE 5 -- the S5 sub-session A block this replaces claimed OFFSET 0
+%   under BOTH options, and that was never true after the figures went in.  The two
+%   builds have not shared an offset since wave 2.  docs/VENUE.md also records the
+%   TS-LIMITS "4-7pp" figure as NOT VERIFIED (its site did not yield to headless
+%   retrieval), so the binding constraint is E-values' 4 pages, which is met exactly.
 %
 % THE pdfvlistout HAZARD FIRED AGAIN AND IS NOW CLOSED AT ITS SOURCE.  The wider Table 1
 % moved the page 1/2 break into \citet{li2024neuralconformal} in sections/intro.tex, and

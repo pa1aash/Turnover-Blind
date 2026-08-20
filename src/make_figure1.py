@@ -86,7 +86,7 @@ SETTINGS = [
      "#D55E00", "^", 8.6, 1.7, (0, (1.6, 1.6))),
     ("saturator_level_4b", r"level $4b$", 4.0, 0.0, "clipped",
      "#009E73", "D", 7.6, 1.7, (0, (6.0, 1.8, 1.4, 1.8))),
-    ("saturator_tangent_ACT23", r"tangent (ACT23)", None, 0.0, "tangent",
+    ("saturator_tangent_ACT23", r"tangent integrator", None, 0.0, "tangent",
      "#CC79A7", "v", 10.2, 2.3, (0, (9.0, 2.4))),
 ]
 WIDE_KEY = "wide_deadbands_baseline"
@@ -300,7 +300,7 @@ def main():
     leg.get_title().set_color("0.35")
 
     # the four wide bands come from a shorter run; flag them in situ
-    axA.annotate(r"$\tau\!\geq\!2$: $T\!=\!2\!\cdot\!10^{5}$", xy=(3.05, 1.0),
+    axA.annotate(r"$\tau\!\geq\!2$: $T\!=\!2\!\times\!10^{5}$", xy=(3.05, 1.0),
                  xytext=(2.75, 0.46), fontsize=5.8, color="0.35", ha="left", va="center",
                  arrowprops=dict(arrowstyle="-", color="0.6", lw=0.5,
                                  shrinkA=1.0, shrinkB=2.0))
