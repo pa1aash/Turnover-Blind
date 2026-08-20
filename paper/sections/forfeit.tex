@@ -176,12 +176,45 @@ under the harness's strict indicator --- and what it turns on is that $\varepsil
 than the counting convention: an adversary playing the threshold \emph{exactly} returns $70.80$
 under the same indicator, because its signature move then covers.
 
+% ---------------------------------------------------------------------------
+% S5 WAVE 2: sub-session B's boundary figure, inserted here.
+% It is referenced by \ref{fig:boundary} from the paragraph immediately below.  It
+% appears AFTER the schematic in document order, so LaTeX typesets it as Figure 2.
+% Built by src/make_figure1.py, which reads results/ directly and whose check_law()
+% re-derives tau* per setting and tests it against every measured miscoverage, exiting
+% non-zero on any inconsistency -- so this figure cannot be produced from data that
+% contradicts the law it draws.  The generator pins CreationDate, so re-running it
+% reproduces figures/figure1_boundary.pdf byte for byte.
+% THE CAPTION CARRIES NO EM-DASH.  B delivered it with two; they were converted at
+% insertion (a colon for the list, a sentence split for the trailing clause) rather
+% than added and then removed again in wave 3.
+% ---------------------------------------------------------------------------
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
+  \caption{The dead-band coverage cliff, and the fact that its edge moves.
+  \textbf{(a)} Realised miscoverage against dead-band width $\tau$ under five admissible
+  $(r_t,\hat{q})$ pairs. Each pair's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$
+  is dashed in its own colour: $1$ at the null scorecaster, $2$ at $\hat{q} \equiv +b/2$,
+  $0$ at $\hat{q} \equiv -b/2$, $7$ at a saturator of level $4b$, and unbounded under
+  \citeauthor{angelopoulos2023pid}'s tangent integrator (arrow). All $19$ dead-band runs
+  land on the side of their own $\tau^{\star}$ that the law predicts, and the vertical
+  dashes are the law's prediction rather than four located edges: only the null
+  scorecaster's edge is bracketed from both sides.
+  \textbf{(b)} An eleven-point grid at the null scorecaster \emph{locates} that edge
+  between $\tau = 1.000$ and $1.001$, with no intermediate regime. Horizons: $T = 10^{6}$
+  in (a) except the four widest bands ($\tau \ge 2$), run only to $T = 2{\times}10^{5}$;
+  $T = 10^{5}$ in (b).}
+  \label{fig:boundary}
+\end{figure}
+
 \paragraph{The $L_1$ dead band leaves the radius, and the edge is measurable.} A dead band pulls
 the deployed threshold back by exactly $\tau$ when it releases, so ``inside Corollary~2'' reads
 $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned $\tau$ below the
 integrator's ceiling: its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
 0.9$. The adversary's best legal play is $b/2$, so coverage is lost exactly when that supremum
-drops below it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. Every dead-band configuration in the variation sweep agrees, $19$ of $19$: three widths under each of the null
+drops below it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. Figure~\ref{fig:boundary} plots
+that edge across settings. Every dead-band configuration in the variation sweep agrees, $19$ of $19$: three widths under each of the null
 scorecaster, $\hat{q} \equiv +b/2$, $\hat{q} \equiv -b/2$, a saturator at level $4b$ and
 \citeauthor{angelopoulos2023pid}'s tangent integrator, plus four wider bands at the null
 scorecaster. An eleven-point grid at the null scorecaster \emph{locates} that edge between $\tau =

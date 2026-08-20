@@ -120,22 +120,60 @@
 \usepackage{amsmath}
 \usepackage{nicefrac}
 \usepackage{microtype}
+% S5 WAVE 2.  graphicx for Figure~\ref{fig:boundary} (sub-session B, a data figure built
+% by src/make_figure1.py); tikz for Figure~\ref{fig:placements} (sub-session C, an inline
+% schematic).  ONLY the positioning library is loaded, and arrows.meta MUST NOT BE ADDED:
+% tikzlibraryarrows.meta.code.tex does not exist on this machine -- the local pgf tree is a
+% partial texlive-basic install carrying only the legacy tikzlibraryarrows -- so anything
+% using arrows.meta fails to compile here even though pgf reports 3.1.11a.  Verified by
+% sub-session C and again by the orchestrator with find over all three texmf trees.
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
 
-\title{Where the Admissible Radius Binds: a Correction and a Measured
+% ---------------------------------------------------------------------------
+% TITLE AND PDF METADATA -- SINGLE SOURCE OF TRUTH (S5 sub-session E).
+% The title is written ONCE, as \papertitle, and consumed by BOTH \title{} and
+% \hypersetup{pdftitle=}, so pdfinfo can never drift from the printed title.  A
+% LATER SESSION THAT RETITLES THE PAPER EDITS \papertitle AND NOTHING ELSE.
+% Keep \papertitle plain text: hyperref writes it verbatim into the PDF Info
+% dictionary, and LaTeX markup here would need \texorpdfstring.
+% Before this block, pdfinfo reported Title: (blank) and Author: (blank).
+% ---------------------------------------------------------------------------
+\newcommand{\papertitle}{Where the Admissible Radius Binds: a Correction and a Measured
 Boundary in Online Conformal Prediction}
+\newcommand{\paperauthor}{Palaash Gang}
+
+\title{\papertitle}
+
+\hypersetup{
+  pdftitle={\papertitle},
+  pdfauthor={\paperauthor},
+}
 
 \workshoptitle{E-values: From Statistics to ML}
 %\workshoptitle{Generalization for Time Series in Tight Settings (TS-LIMITS)}
 
-% AUTHOR BLOCK -- [OPERATOR INPUT].  Printed only under sglblindworkshop; the
-% dblblindworkshop option replaces it with the style file's own four-line
-% anonymous block.  Kept at four lines so the two builds have the same
-% first-page geometry.
+% AUTHOR BLOCK.  Printed only under sglblindworkshop; the dblblindworkshop
+% option replaces it with the style file's own four-line anonymous block.
+% NAME and EMAIL are settled and are NOT open questions.  THE AFFILIATION IS
+% [OPERATOR INPUT]: the visible value below is a placeholder, and the question
+% is docs/OPEN_QUESTIONS.md Q11.
+% NO ADDRESS LINE.  The NeurIPS 2026 template imposes no line count on \author
+% -- its own shell block runs to five lines -- and no postal address was
+% available, so none was invented.  The former claim here, that four lines were
+% needed so the two builds share first-page geometry, is FALSE in a narrow
+% measured way and is corrected rather than repeated: dropping the address moves
+% exactly ONE body line from p.2 up to p.1 in the sglblindworkshop build, and
+% \flushbottom re-absorbs it inside p.2, so pp.2 onward are line-for-line
+% identical between the two builds.  The body ENDS in the same place under both,
+% which is the invariant the 4-page ceiling is actually measured against.
+% An affiliation long enough to WRAP TO TWO LINES would undo that and must be
+% re-measured by the offset test, never by a page count.
 \author{%
-  Author Name \\
-  Affiliation \\
-  Address \\
-  \texttt{email@example.com}
+  \paperauthor \\
+  Independent Researcher \\
+  \texttt{palaashgang@gmail.com}
 }
 
 \begin{document}

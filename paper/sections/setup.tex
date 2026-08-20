@@ -91,6 +91,79 @@ sign of $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and subli
 = \sum_{i \le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$; boundedness
 is read on realised scores.
 
+% ---------------------------------------------------------------------------
+% S5 WAVE 2: sub-session C's placement schematic, inserted here.
+% It is referenced by \ref{fig:placements} from the paragraph immediately below and
+% NEVER by a literal number: it appears before the boundary figure in document order,
+% so LaTeX typesets it as Figure 1 and the boundary figure as Figure 2.
+% MEASURED COST at insertion: 10 typeset body lines (5 for the drawing, 5 for the float
+% apparatus).  Shrinking the graphic further does not help -- float packing around
+% Tables 1 and 2 quantizes the boundary, and a zero-height graphic with this caption
+% still costs 5.  arrows.meta is unavailable on this toolchain; see main.tex's preamble.
+% ---------------------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\setlength{\abovecaptionskip}{3pt}
+\begin{tikzpicture}[
+  font=\footnotesize,
+  bx/.style={draw,rounded corners=1pt,inner xsep=2.5pt,inner ysep=1.5pt,
+             minimum height=4mm,align=center},
+  sm/.style={bx,fill=black!10},
+  jn/.style={draw,circle,inner sep=0pt,minimum size=3.2mm},
+  sig/.style={->,thin},
+  lab/.style={font=\scriptsize,inner sep=1pt},
+  ttl/.style={font=\scriptsize,inner sep=1pt,anchor=west}
+]
+%% ------------------------------- PANEL B -------------------------------
+\begin{scope}[xshift=0mm]
+  \node[ttl] at (-1.5mm,6.2mm) {\textbf{(B)} in the $\hat q_{t+1}$ slot: inside the loop};
+  \node[sm]                    (Bsc)  at (0mm,0mm) {$\hat q_{t+1}$: smoother};
+  \node[jn,right=3.5mm of Bsc] (Bsum) {$+$};
+  \node[bx,right=3.5mm of Bsum](Bq)   {$q_{t+1}$\\[-2pt]{\scriptsize deployed}};
+  \node[bx,anchor=north west]  (Bint) at ([yshift=-5.6mm]Bsc.south west)
+        {$r_t(E_t)$, saturating};
+  \draw[sig] (Bsc) -- (Bsum);
+  \draw[sig] (Bsum) -- (Bq);
+  \draw[sig] (Bint.north -| Bsum) -- (Bsum);
+  \coordinate (Bt) at ([xshift=7mm]Bq.east);
+  \coordinate (Bc) at (Bt |- Bint.east);
+  \draw[thin] (Bq.east) -- (Bt) -- (Bc);
+  \draw[sig]  (Bc) -- (Bint.east) node[lab,pos=0.45,above] {$\mathbf{1}\{s_{t+1}>q_{t+1}\}$};
+  \path (Bsc.west |- Bq.north)   coordinate (Bnw);
+  \path (Bt       |- Bint.south) coordinate (Bse);
+  \draw[dashed,thin,rounded corners=2pt]
+       ([shift={(-1.5mm,1.5mm)}]Bnw) rectangle ([shift={(2mm,-1.5mm)}]Bse);
+\end{scope}
+%% ------------------------------- PANEL A -------------------------------
+\begin{scope}[xshift=59mm]
+  \node[ttl] at (-1.5mm,6.2mm) {\textbf{(A)} on the completed $q_{t+1}$: outside the loop};
+  \node[bx]                    (Asc)  at (0mm,0mm) {$\hat q_{t+1}$};
+  \node[jn,right=3.5mm of Asc] (Asum) {$+$};
+  \node[bx,right=3.5mm of Asum](Aq)   {$q_{t+1}$};
+  \node[sm,right=6mm of Aq]    (Asm)  {smoother};
+  \node[bx,right=3.5mm of Asm] (Aqt)  {$\tilde q_{t+1}$\\[-2pt]{\scriptsize deployed}};
+  \node[bx,anchor=north west]  (Aint) at ([yshift=-5.6mm]Asc.south west)
+        {$r_t(E_t)$, saturating};
+  \draw[sig] (Asc) -- (Asum);
+  \draw[sig] (Asum) -- (Aq);
+  \draw[sig] (Aq)  -- (Asm);
+  \draw[sig] (Asm) -- (Aqt);
+  \draw[sig] (Aint.north -| Asum) -- (Asum);
+  \coordinate (At) at ([xshift=4mm]Aqt.east);
+  \coordinate (Ac) at (At |- Aint.east);
+  \draw[thin] (Aqt.east) -- (At) -- (Ac);
+  \draw[sig]  (Ac) -- (Aint.east) node[lab,midway,above] {$\mathbf{1}\{s_{t+1}>\tilde q_{t+1}\}$};
+  \path (Asc.west |- Aqt.north)  coordinate (Anw);
+  \path (Aq.east  |- Aint.south) coordinate (Ase);
+  \draw[dashed,thin,rounded corners=2pt]
+       ([shift={(-1.5mm,1.5mm)}]Anw) rectangle ([shift={(3mm,-1.5mm)}]Ase);
+\end{scope}
+\end{tikzpicture}
+\caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output; in \textbf{(A)} on $\tilde q_{t+1}$, which it never computed.}
+\label{fig:placements}
+\vspace{-4pt}
+\end{figure}
+
 \paragraph{One scalar, two readouts, two places to put it.} Damping the movement of a
 sequentially updated scalar has two standard readouts, both prior work: a quadratic cost gives linear partial
 adjustment towards the target, $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
@@ -98,7 +171,7 @@ adjustment towards the target, $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{
 only when the target is more than $\tau$ away and then pulling back by exactly $\tau$
 \citep{constantinides1986,davis1990}. The first is published as post-processing
 \citep{godahewa2025stability} and applied to a deployed conformal threshold
-\citep[Eq.~13]{binny2025whomoved}. It has two positions in (\ref{eq:pid}): \textbf{(B)} in the
+\citep[Eq.~13]{binny2025whomoved}. It has two positions in (\ref{eq:pid}), drawn in Figure~\ref{fig:placements}: \textbf{(B)} in the
 $\hat{q}_{t+1}$ slot, where both readouts keep $\{\hat{q}_t\}$ in the convex hull of $\hat{q}_1$
 and the raw scorecaster's range, inside Corollary~2's admissible set; and \textbf{(A)} downstream
 of the completed $q_{t+1}$, outside it. Placement~A is measured here. \emph{The dead band (L1) is not a
