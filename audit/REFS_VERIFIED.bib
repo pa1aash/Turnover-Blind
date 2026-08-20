@@ -126,6 +126,7 @@
 @misc{vaze2026simultaneous,
   author = {Vaze, Rahul},
   title  = {Simultaneous Coverage and Efficiency Guarantee in Online Conformal Prediction},
+  howpublished = {arXiv:2607.26577v1},
   year   = {2026},
   eprint = {2607.26577},
   archivePrefix = {arXiv},
@@ -176,6 +177,7 @@
 @misc{min2026questioning,
   author = {Min, Yizhou and Lu, Yizhou and Li, Lanqi and Zhang, Zhen and Teng, Jiaye},
   title  = {Questioning the Coverage-Length Metric in Conformal Prediction: When Shorter Intervals Are Not Better},
+  howpublished = {arXiv:2601.21455v2},
   year   = {2026},
   eprint = {2601.21455},
   archivePrefix = {arXiv},
@@ -462,13 +464,26 @@
   author    = {Andrew, Lachlan L. H. and Barman, Siddharth and Ligett, Katrina and Lin, Minghong and Meyerson, Adam and Roytman, Alan and Wierman, Adam},
   title     = {A Tale of Two Metrics: Simultaneous Bounds on Competitiveness and Regret},
   booktitle = {Proceedings of the 26th Conference on Learning Theory (COLT 2013)},
+  pages     = {741--763},
   year      = {2013},
   eprint    = {1508.03769},
   archivePrefix = {arXiv},
   annote      = {[ADDED] No online algorithm can be simultaneously constant-competitive and
                no-regret under switching costs. A direct constraint on C2's claim to
                dominate both a fast and a slow baseline. Also appeared at SIGMETRICS 2013,
-               doi 10.1145/2465529.2465533.}
+               doi 10.1145/2465529.2465533.
+               S5-D COMPLETION: pages 741--763 added from DBLP
+               research/S5/records/dblp\_andrew\_s5.json (rec conf/colt/AndrewBLLMRW13, PMLR
+               volume 30). The body cites this work for ``Thm~2'' and a ``Thm~7'' trade-off,
+               so a page range was needed to make those locatable. **DO NOT SWAP IN THE
+               SIGMETRICS DOI NAMED ABOVE:** that record is pages 329--330, a two-page
+               extended abstract, which cannot contain Thm 7. The 23-page COLT version is the
+               one that can. NOTE FOR THE ORCHESTRATOR, NOT FIXED HERE: the eprint field
+               points at arXiv 1508.03769, which DBLP dates 2015 (rec
+               journals/corr/AndrewBLLMRW15), i.e. a later posting than the 2013 proceedings
+               version cited; theorem numbering need not agree between them, so which version
+               ``Thm~2'' and ``Thm~7'' refer to is a USAGE question left to the owner of
+               paper/.}
 }
 
 @inproceedings{chen2018obd,
@@ -655,6 +670,7 @@
 @misc{vanbelle2026stabilizing,
   author = {Van Belle, Jente and Wen, Honglin and Verbeke, Wouter and Pinson, Pierre},
   title  = {Stabilizing distribution-free probabilistic forecasts},
+  howpublished = {arXiv:2605.28531v1},
   year   = {2026},
   eprint = {2605.28531},
   archivePrefix = {arXiv},
@@ -811,6 +827,7 @@
   author = {Lade, Ankit and J., Sai Krishna and Kumar, Indar},
   title  = {Bias-Corrected Adaptive Conformal Inference for Multi-Horizon Time
             Series Forecasting},
+  howpublished = {arXiv:2604.13253v1},
   year   = {2026},
   eprint = {2604.13253},
   archivePrefix = {arXiv},
@@ -854,6 +871,7 @@
   author = {Zheng, Mingyi and Jiang, Hongyu and Lu, Yizhou and Teng, Jiaye},
   title  = {Smoothing-Based Conformal Prediction for Balancing Efficiency and
             Interpretability},
+  howpublished = {arXiv:2509.22529v1},
   year   = {2025},
   eprint = {2509.22529},
   archivePrefix = {arXiv},
@@ -945,6 +963,7 @@
   author = {Binny, Allen Emmanuel and Dixit, Anushri},
   title  = {Who Moved My Distribution? Conformal Prediction for Interactive Multi-Agent
             Systems},
+  howpublished = {arXiv:2511.11567v1},
   year   = {2025},
   eprint = {2511.11567},
   archivePrefix = {arXiv},
@@ -988,6 +1007,7 @@
 @misc{wu2025eci,
   author = {Wu, Junxi and Hu, Dongjian and Bao, Yajie and Xia, Shu-Tao and Zou, Changliang},
   title  = {Error-quantified Conformal Inference for Time Series},
+  howpublished = {arXiv:2502.00818v2},
   year   = {2025},
   eprint = {2502.00818},
   archivePrefix = {arXiv},
@@ -1190,6 +1210,7 @@
   author = {Zanotti, Marco},
   title  = {Analyzing the retraining frequency of global forecasting models:
             towards more stable forecasting systems},
+  howpublished = {arXiv:2506.05776v3},
   year   = {2026},
   eprint = {2506.05776},
   archivePrefix = {arXiv},
@@ -1304,14 +1325,46 @@
              citation only -- DEStech has no galley for it. docs/OUTSTANDING.md O30.}
 }
 
-@misc{li2024neuralconformal,
-  author = {Li, Ruipu and Rodr{\'i}guez, Alexander},
-  title  = {Neural Conformal Control for Time Series Forecasting},
-  year   = {2024},
-  eprint = {2412.18144},
+@inproceedings{li2024neuralconformal,
+  author    = {Li, Ruipu and Rodr{\'i}guez, Alexander},
+  title     = {Neural Conformal Control for Time Series Forecasting},
+  booktitle = {Proceedings of the {AAAI} Conference on Artificial Intelligence},
+  volume    = {39},
+  pages     = {18439--18447},
+  year      = {2025},
+  doi       = {10.1609/aaai.v39i17.34029},
+  eprint    = {2412.18144},
   archivePrefix = {arXiv},
   primaryClass = {cs.LG},
-  annote   = {Record from the arXiv API, saved at research/S2/records/arxiv\_2412.18144.xml;
+  annote   = {S5-D COMPLETION. Venue, volume, issue, page range and DOI added from the
+            Crossref record research/S5/records/crossref\_aaai\_34029.json, cross-confirmed
+            against DBLP research/S5/records/dblp\_ncc\_s5.json (rec conf/aaai/LiR25).
+            Crossref also gives issue 17 and ISSN 2374-3468/2159-5399; the number field is
+            deliberately ABSENT because plainnat emits ``can't use both volume and number
+            fields'' when both are present, and this bibliography must build warning-free.
+            **PAGE 18443 IS INSIDE THE FETCHED RANGE 18439--18447**, so the body's
+            ``printed page 18443'' is checkable against this entry; the sentence sits on the
+            page whose footer marker is 18443 in
+            research/S3/records/f1/aaai\_34029\_ncc\_cameraready.txt. AUTHOR LIST IS EXACTLY
+            TWO -- Ruipu Li and Alexander Rodr{\'i}guez -- so the body's ``Li and
+            Rodr{\'i}guez'' rendering is right and no ``et al.'' is owed.
+            **YEAR RESOLVED TO 2025 BY THE S5 ORCHESTRATOR, and the reason is the body's own
+            claim.** The field was 2024 through S1--S4. Crossref and DBLP both date the
+            refereed proceedings version 2025 (issued 2025-04-11, AAAI-25, volume 39); 2024 is
+            the arXiv preprint 2412.18144 (submitted 2024-12-24, DBLP CoRR abs/2412.18144).
+            The entry as it stood paired a 2025 volume and a 2025 DOI with a 2024 date. What
+            decides it is that sections/intro.tex asserts the quoted sentence is ``refereed and
+            verbatim on printed page 18443'' -- and printed page 18443 exists ONLY in the
+            AAAI-25 proceedings. A reader sent to a 2024 record lands on the preprint, which
+            has no page 18443 and has not been refereed, so the citation would not be
+            checkable against the very thing the sentence claims. Safe to change: three cite
+            sites, all \citep/\citet/\citeauthor with no hard-coded year anywhere in the
+            body, so the bib alone drives the rendering. The bib KEY still says 2024 and is
+            left alone -- a key is an identifier, not an assertion, and renaming it would touch
+            paper/ for no gain. Note this does not disturb G7.6 or the intro's authorship
+            sentence: the arXiv preprint is still 2412.18144, and Li and Rodr{\'i}guez are
+            still the first and last authors of li2025o2cp (Li, Menacho \& Rodr{\'i}guez).
+            Record from the arXiv API, saved at research/S2/records/arxiv\_2412.18144.xml;
             submitted 2024-12-24, one version. CITED FOR A CLAIM THAT IS FALSE, AND THAT IS
             WHY IT IS USEFUL. Its baselines paragraph prints: ``Since using a scorecaster
             (D-part) in C-PID breaks the theoretical coverage guarantee, we only use the
@@ -1325,6 +1378,7 @@
 @misc{hu2026distinformed,
   author = {Hu, Dongjian and Wu, Junxi and Xia, Shu-Tao and Zou, Changliang},
   title  = {Distribution-informed Online Conformal Prediction},
+  howpublished = {arXiv:2512.07770v2},
   year   = {2026},
   eprint = {2512.07770},
   archivePrefix = {arXiv},
@@ -1391,12 +1445,28 @@
 @misc{li2025o2cp,
   author        = {Li, Ruipu and Menacho, Daniel and Rodr{\'i}guez, Alexander},
   title         = {Optimization-based Online Conformal Prediction for Multi-step Forecasting},
+  howpublished  = {arXiv:2508.13362v3},
   year          = {2025},
   eprint        = {2508.13362},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
   doi           = {10.48550/arXiv.2508.13362},
-  annote        = {arXiv API record at research/S3/records/arxiv\_2508.13362\_s3.xml (2,921
+  annote        = {S5-D COMPLETION. The printed identifier is carried by howpublished because
+                 plainnat's misc function never emits doi, eprint or archivePrefix -- without
+                 it this entry rendered as a bare year and ``Corollary 2'' was uncheckable.
+                 **THE VERSION PIN IS LOAD-BEARING:** arXiv v1 (2025-08-18) is titled
+                 ``Adaptive Conformal Prediction Intervals Over Trajectory Ensembles'', and
+                 only v2 (2026-06-08) and v3 (2026-08-07) carry the title printed here
+                 (research/S5/records/arxiv\_2508.13362\_v1.xml, \_v2.xml, \_v3.xml). DBLP
+                 still indexes the v1 title only, so the bibliography title returns zero DBLP
+                 hits (research/S5/records/dblp\_o2cp\_s5b.json, 0 hits;
+                 research/S5/records/dblp\_ruipu\_li\_s5.json lists CoRR abs/2508.13362 under
+                 the OLD title). STILL ARXIV-ONLY as of 2026-08-20: OpenAlex types it
+                 ``preprint'' with arXiv as its only location and no venue
+                 (research/S5/records/openalex\_doi\_2508.json), DBLP has no venue record, and
+                 arXiv carries no journal-ref. Corollary 2 (``CPID admissible set'') is in the
+                 v3 text at research/S3/records/arxiv\_2508.13362.txt.
+                 arXiv API record at research/S3/records/arxiv\_2508.13362\_s3.xml (2,921
                  bytes); full text at research/S3/records/arxiv\_2508.13362.txt (67,041
                  chars), submitted 2025-08-18, updated 2026-08-07. **THIS IS THE DERIVATION
                  CONCESSION AND THE SINGLE MOST IMPORTANT CITATION IN THE S3 NOTE.** Its
@@ -1417,6 +1487,7 @@
 @misc{wang2026acmcp,
   author        = {Wang, Xiaoqian and Hyndman, Rob J.},
   title         = {Online conformal inference for multi-step time series forecasting},
+  howpublished  = {arXiv:2410.13115v2},
   year          = {2024},
   eprint        = {2410.13115},
   archivePrefix = {arXiv},
@@ -1526,6 +1597,7 @@
   author        = {Sarhadi, Pouria},
   title         = {On the Standard Performance Criteria for Applied Control Design:
                    {PID}, {MPC} or Machine Learning Controller?},
+  howpublished  = {arXiv:2503.14379v3},
   year          = {2025},
   eprint        = {2503.14379},
   archivePrefix = {arXiv},
@@ -1542,6 +1614,7 @@
   author        = {Gao, Ben and Patracone, Jordan and Chr{\'e}tien, St{\'e}phane and
                    Alata, Olivier},
   title         = {Conformal Online Learning of Deep {Koopman} Linear Embeddings},
+  howpublished  = {arXiv:2511.12760v2},
   year          = {2025},
   eprint        = {2511.12760},
   archivePrefix = {arXiv},
