@@ -78,6 +78,17 @@
 % typeset lines) before, 131-145 (15) after.  2 lines saved.  0 undefined
 % citations, 0 overfull boxes, 0 \pdfendlink warnings.
 
+% S5 WAVE 6, J1 FINDING 4: AN UNSUPPORTED CLAIM ABOUT OUR OWN MEASUREMENT IS DELETED.
+% This paragraph used to end "Section 3 measures that accumulation diverging", of
+% gao2025coloke's assumption that sum_{t<=T} q_t <= O(alpha h(T)).  SECTION 3 MEASURES NO
+% SUCH THING.  No results/ field holds sum_t q_t: aggregate_table carries max_abs_E and
+% deployed_travel, and travel is sum|delta q|, a DIFFERENT quantity.  Worse, the mean
+% deployed threshold is about +1.06 for the UNSMOOTHED control, so the sum the sentence
+% pointed at grows linearly for this paper's own baseline too -- cashed out, the sentence
+% indicted a neighbour's assumption on a ground our own control also violates.
+% G7.1's standard is that an untraceable claim is deleted rather than footnoted, so it is
+% deleted.  What survives is the accurate part: their assumption is supported with a plot
+% rather than derived, which is their own Fig. 2a caption's wording.
 \section{Where this sits}
 \label{sec:related}
 
@@ -97,7 +108,7 @@ with a feedforward path: free-until-the-bound-binds is its defining specificatio
 \citep{galeani2009antiwindup}. Nearest in the other direction, \citet{gao2025coloke} run the same
 recursion but gate the \emph{model} update on the conformal score. Their one non-standard
 assumption is that $\sum_{t \le T} q_t \le O(\alpha\,h(T))$ for a sublinear $h$, supported with a
-plot rather than derived. Section~\ref{sec:forfeit} measures that accumulation diverging.
+plot rather than derived.
 % Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.
 %
 % gao2025coloke: "Conformal Online Learning of Deep Koopman Linear Embeddings", arXiv:2511.12760,

@@ -8,8 +8,9 @@
 % bibliography is reached by relative path.  If your bibtex refuses the relative
 % path, use BIBINPUTS=".:../audit:" bibtex main instead.
 %
-% Every citation key resolves against audit/REFS_VERIFIED.bib (92 entries; 38
-% are cited).  No bibliography-gap marker survives: wave 3 closed all of them and
+% Every citation key resolves against audit/REFS_VERIFIED.bib (92 entries; 31
+% keys are cited, rendering 34 bibitems -- recounted S5 wave 6; the header's old
+% "38" was stale).  No bibliography-gap marker survives: wave 3 closed all of them and
 % wave 5 added gao2025coloke, so every work named in the body is a \citep.
 %
 % RE-MEASURED, S4 WAVE 2, BOTH VENUE OPTIONS, three passes + bibtex.  This block
@@ -167,10 +168,31 @@ Boundary in Online Conformal Prediction}
 
 \title{\papertitle}
 
-\hypersetup{
-  pdftitle={\papertitle},
-  pdfauthor={\paperauthor},
-}
+% PDF METADATA MUST RESPECT THE ANONYMITY REGIME.  Found 2026-08-21 by S5's
+% adversarial critic (J1 finding 2) and it was THIS SESSION'S OWN REGRESSION: an
+% unconditional \hypersetup{pdfauthor} makes the dblblindworkshop build print
+% "Anonymous Author(s)" on page 1 while pdfinfo reports "Palaash Gang".  `strings`
+% does not show it, because the Info dictionary sits in a compressed object stream,
+% which is why the sgl-only checks never saw it.  Before S5 added this block the
+% field was blank, i.e. anonymous BY ACCIDENT; setting it made the leak.
+% At a double-blind venue that is a de-anonymisation and a desk-reject risk.
+% \if@anonymous is the style file's own flag: neurips_2026.sty:78 declares it TRUE,
+% and only the non-anonymous options (sglblindworkshop, nonanonymous) clear it, so
+% this tracks the venue switch automatically and needs no second thing to remember.
+% NO COLOURED LINK BORDERS.  hyperref's default draws a box on every link: S5's
+% adversarial critic counted 130 annotations with /Border[0 0 1] /C[0 1 0] in the
+% compiled PDF, 41 of them on page 1 alone -- green boxes round every citation and
+% red round every \ref.  They print, and a referee sees them.  hidelinks keeps the
+% links live and clickable and removes the borders (J1 finding 9).
+\hypersetup{hidelinks}
+
+\makeatletter
+\if@anonymous
+  \hypersetup{pdftitle={\papertitle}, pdfauthor={Anonymous Author(s)}}
+\else
+  \hypersetup{pdftitle={\papertitle}, pdfauthor={\paperauthor}}
+\fi
+\makeatother
 
 \workshoptitle{E-values: From Statistics to ML}
 %\workshoptitle{Generalization for Time Series in Tight Settings (TS-LIMITS)}

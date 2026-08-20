@@ -308,12 +308,29 @@ also interacts with **Q8** — if there are co-authors, `\And` / `\AND` blocks a
 this one and the first-page geometry is re-measured, because a second author column changes
 the height of the title box.
 
-**What is already measured, so the answer does not reopen the page count.** With the
-three-line block, three passes plus bibtex under **both** venue options give: 6 pages total,
-last body line on p.4, `References` the **first** content on p.5, **offset 0**, 0 TeX errors,
-0 undefined citations, 0 undefined references, 0 overfull boxes, 0 LaTeX warnings, 0 bibtex
-warnings. Dropping the address line moves exactly **one** body line from p.2 up to p.1 in the
-`sglblindworkshop` build (37 numbered lines on p.1 against the anonymous build's 36);
-`\flushbottom` re-absorbs it inside p.2, and pp.2–6 are line-for-line identical between the
-two builds. **A longer affiliation string that wraps to two lines would undo that and must be
-re-measured** by the offset test, never by a page count. Record: `research/S5/E-template-metadata.json`.
+**What is already measured, so the answer does not reopen the page count.**
+**RE-MEASURED 2026-08-21 (S5 wave 6, after the instruction critic caught this paragraph
+carrying a stale claim).** The figures and the appendix went in after this question was
+written, and the numbers below replace the earlier ones. With the three-line author block,
+three passes plus bibtex, artefacts deleted first:
+
+| | pages | `References` first on its page? | offset | body pages |
+|---|---|---|---|---|
+| `sglblindworkshop` (E-values) | 7 | **yes**, p.5 | **0** | **4** |
+| `dblblindworkshop` (TS-LIMITS) | 7 | no, p.5 | **2** | 5 |
+
+Both: 0 TeX errors, 0 undefined citations, 0 undefined references, 0 overfull boxes,
+0 `\pdfendlink` warnings, 0 bibtex warnings. 7 pages, not 6, because the appendix adds one.
+
+**The two builds are no longer line-for-line identical**, and the earlier claim in this
+paragraph that they were is withdrawn. The `dblblindworkshop` body runs 2 lines onto p.5
+because the style file's anonymous block is four lines against our three. That is legal
+there (TS-LIMITS allows 4–7 body pages) but note `docs/VENUE.md` §75 records that 4–7
+figure as **not verified** — its site did not yield to headless retrieval — so the binding
+constraint is E-values' 4 pages, which is met exactly.
+
+**A longer affiliation string that wraps to two lines would break the E-values build and
+must be re-measured** by the offset test, never by a page count. The margin is zero: the
+body is exactly at the ceiling, and wave 5 measured a nine-character prose fix pushing it
+over. Records: `research/S5/E-template-metadata.json` (original),
+`research/S5/J2-instruction.json` N3 (the catch).

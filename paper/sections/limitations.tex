@@ -90,6 +90,19 @@
 % so there is no slack here that is not content.  The 2 lines this sub-session
 % owed came from sections/related.tex.
 
+% S5 WAVE 6 (J1 finding 6): "the other four settings are bracketed at three widths" WAS
+% FALSE and is corrected to "the other four are one-sided".  Verified against
+% results/forfeit-variations-*.json: ONLY the null scorecaster has dead-band runs on both
+% sides of its tau* (0.5, 0.9 below; 1.5, 2, 2.5, 3, 5 above).  At qhat = +b/2 (tau* = 2),
+% level 4b (tau* = 7) and the tangent integrator (tau* unbounded) EVERY width run -- 0.5,
+% 0.9, 1.5 -- lies BELOW tau*; at qhat = -b/2 (tau* = 0) every one lies above.  So none of
+% the four brackets its edge.
+% THE CONSEQUENCE, WHICH DOES NOT FIT IN THE BODY AND IS BOOKED AS docs/OUTSTANDING.md O64:
+% the falsification condition printed below has two disjuncts, and the second -- "tau >
+% tau* that keeps coverage" -- is UNTESTED at the three settings whose runs all sit below
+% tau*, because the sweep contains no tau > tau* run there at all.  "The sweep has neither"
+% is true and stays; what it cannot say is that it looked everywhere.  ONE RUN, tau = 2.5 at
+% qhat = +b/2, would make the law falsifiable at a second setting.
 \section{Limitations}
 \label{sec:limitations}
 
@@ -104,6 +117,5 @@ adversary-free confirmation of the mechanism rather than a retreat. The threshol
 $b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly.
 \textbf{The harness was rebuilt against numbers already read}, which carries less weight than a
 rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{One seed,
-and only the null scorecaster's edge is located}; the other four settings are bracketed at three
-widths. \textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
+and only the null scorecaster's edge is bracketed}; the others are one-sided. \textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
 \tau^{\star}$ that loses coverage, or $\tau > \tau^{\star}$ that keeps it; the sweep has neither.

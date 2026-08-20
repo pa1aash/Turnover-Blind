@@ -30,9 +30,15 @@
 \paragraph{The primary regime.} Every figure in Table~\ref{tab:forfeit} is measured under one
 deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
 $\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
-convention matters at one row and one row only. An adversary playing the threshold
-\emph{exactly} returns $70.80$ in place of $623.70$ for partial adjustment at $w = 0.999$,
-because its signature move then covers. Every other row is convention-free.
+specification is not a tie rule, and the distinction is measured rather than argued. Scoring
+an exact-threshold play \emph{as a miscoverage} reproduces the primary regime on every cell of
+Table~\ref{tab:forfeit}: $44$ of $44$ identical, all eleven arms at all four horizons. Scoring
+the same play under the \emph{strict} indicator does not, and it moves every row, because the
+adversary's signature move then covers rather than misses: partial adjustment at $w = 0.999$
+excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
+$1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading.
+\textbf{No row is convention-free with respect to the second}, which is why the adversary is
+specified rather than tie-broken.
 
 \paragraph{Excursions at $T = 10^4$, and the law across the arms.} Partial adjustment excurses
 $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat in $T$
@@ -44,7 +50,7 @@ This is a fit to the measured arms, not a derived bound.
 $\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
 inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
 returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the
-$w = 0.999$ excursion from $623.70$ to $120.60$, which is the second term of $\tau^{\star}$
+$w = 0.999$ excursion from $623.70$ to $120.60$, which is the first term of $\tau^{\star}$
 moving the edge rather than the readout changing behaviour.
 
 \section{The four vocabularies}
@@ -56,7 +62,12 @@ moving the edge rather than the readout changing behaviour.
 % still names TEN names across FOUR vocabularies, which is what docs/GATES.md G7.11
 % requires be conceded, and sections/setup.tex still cites this caption for that count
 % by \ref, so the cross-reference holds from the body into the appendix.
-\begin{table}[t]
+% [!h] rather than [t]: with [t] this table floated to the TOP of the page, landing
+% under Appendix A's heading, and left "B  The four vocabularies" as the last line of
+% the document with two-thirds of a blank page under it (S5 J1 finding 8).  It is the
+% only content in its section and the section is the last in the document, so there is
+% no reason to float it at all.
+\begin{table}[!h]
 \centering
 \scriptsize
 \setlength{\tabcolsep}{2pt}
