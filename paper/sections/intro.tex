@@ -1,4 +1,4 @@
-% Introduction -- the correction and its stakes.
+% Introduction -- the two claims, and nothing else.
 %
 % REWRITTEN for session S3's claim set (research/checkpoints/S3-W1-findings.md).
 % The previous file was written for a claim that no longer exists; the market
@@ -13,42 +13,62 @@
 % for "coverage and length are not sufficient" BEFORE this paper names its
 % quantity.
 % FRAMING sec. 3 watch-list: no forbidden construction appears in this file.
+%
+% S4 WAVE 1 (2026-08-20, agent K4) -- THE CONTRIBUTIONS SURFACE IS RESIZED TO TWO
+% CLAIMS.  This file and the abstract are the paper's contributions list; there is
+% no \paragraph{Contributions} and adding one would cost lines the 4-page body does
+% not have.  The two \paragraph leads are therefore numbered in words ("First:",
+% "Second:") so that a referee reading only the abstract and these two heads counts
+% exactly two claims and expects no third.
+%   CUTS TAKEN HERE, which pay for the abstract's growth in main.tex:
+%   (1) "Where the interval feeds a decision carrying an incumbent state that
+%       movement is charged" -> "Forecast stability names that movement".  The
+%       decision-cost register goes with the retitle; the chain-(a) citations that
+%       FRAMING sec. 7 rule 1 requires in the opening are untouched.
+%   (2) "so a movement penalty placed in that slot" -> "so a readout placed in that
+%       slot".  Same reason; "readout" is sections/setup.tex's own term.
+%   (3) "What is useful is that four surfaces ... return zero works printing both"
+%       -> the same measurement, subordinated to the joining.  As written it read
+%       as though the four-surface count were itself a contribution; the count is
+%       evidence that the halves are unjoined, and the CLAIM is the joining.
+%   (4) The closing sentence now sends the four-vocabulary placement to
+%       Section 4 as description.  R3c is not a contribution (docs/FRAMING.md
+%       sec. 2.2c, falsified by S3's own H6 agent) and the intro must not let a
+%       referee expect it as one.
+% Li & Rodriguez framing, unchanged in substance and preserved deliberately: the
+% claim is about THE RECORD, never about the people -- "the halves already share a
+% bibliography, this is ordinary self-correction, and the joining is what this paper
+% adds."  No form of "erred", "were wrong", "mistake" or "incorrectly" appears.
 
 \section{Introduction}
 \label{sec:intro}
 
 An online conformal method emits a threshold before each observation and moves it afterwards.
-Where the interval feeds a decision carrying an incumbent state that movement is charged, and
-forecast stability names it, scores it and prices it
+Forecast stability names that movement, scores it and prices it
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
-pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Holding a forecast's level
-fixed and comparing what its temporal structure does was invented earlier, in forecast
-verification, where the predictive marginal is matched on real producers and only the dependence
-varies \citep{gneiting2007calibration,pinson2012scenarios,worsnop2018scenarios}; that coverage and
+pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying a forecast's temporal
+structure at fixed level was invented earlier, in forecast verification, where the predictive
+marginal is matched on real producers \citep{gneiting2007calibration,pinson2012scenarios,worsnop2018scenarios}; that coverage and
 mean length under-describe a deployed interval is established too
 \citep{min2026questioning,vaze2026simultaneous}. None of it is claimed here.
 
-\paragraph{The record contradicts itself, and the halves sit in different papers.} Conformal PID
-\citep{angelopoulos2023pid} adds a \emph{scorecaster} $\hat{q}_{t+1}$ to a saturating error
-integrator and asks of it only that it be predictable and lie in $[-b/2,b/2]$ --- ``any function of
-the past'' (Theorem~1) --- so a movement penalty placed in that slot is already quantified over. Also in print, of the same
-method: ``[s]ince using a scorecaster (D-part) in C-PID breaks the theoretical coverage guarantee,
-we only use the quantile tracker and error integrator'' \citep{li2024neuralconformal} --- one
-sentence in the baselines paragraph of that paper's experiments, stated and acted on there, and
-refereed: it survives verbatim on printed page $18443$. The general statement is in print too,
-twice and with proof:
+\paragraph{First: the record carries a claim and its refutation, and this paper joins them.}
+Conformal PID \citep{angelopoulos2023pid} adds a \emph{scorecaster} $\hat{q}_{t+1}$ to a saturating
+error integrator and asks of it only that it be predictable and lie in $[-b/2,b/2]$ --- ``any function of
+the past'' (Theorem~1) --- so a readout placed in that slot is already quantified over. Also in print, of the same
+method: ``[s]ince using a scorecaster (D-part) in C-PID breaks the theoretical coverage
+guarantee'' \citep{li2024neuralconformal} --- stated and acted on in that paper's baselines
+paragraph, refereed and verbatim on printed page $18443$. The refutation is in print too, twice
+and with proof:
 \citet[Corollary~2]{li2025o2cp} add an arbitrary predictable $d_t$
 with $|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, observe that the result ``has
 exactly the CPID error-integration form'', and conclude $|E_T| \le c\,h(T)+1 = o(T)$; the same
 generic-slot argument carries AcMCP's long-run coverage \citep{wang2026acmcp}. The first and last authors of \citet{li2025o2cp} are the authors
-of \citet{li2024neuralconformal} and cite it, so the halves already share a bibliography; this is
-ordinary self-correction. What is useful is that four surfaces --- arXiv
-full text and abstracts, OpenReview, and the six works Semantic Scholar records as citing it ---
-return zero works printing both. A refereed 2026 paper separately calls the choice of
-scorecaster model ``arbitrary'' and lacking ``principled guidance''
-\citep{hu2026distinformed} while asserting valid coverage itself: a complaint about model
-selection and variance, not about validity. \textbf{We claim neither the placement nor the
-derivation.}
+of \citet{li2024neuralconformal} and cite it: the halves already share a bibliography, this is
+ordinary self-correction, and the joining is what this paper adds. Four surfaces, queried on 20 August 2026 --- arXiv full
+text and abstracts, OpenReview, and the six works Semantic Scholar records as citing it --- return
+zero printing both. \citet{hu2026distinformed} still calls scorecaster choice ``arbitrary'' and
+lacking ``principled guidance'', while asserting valid coverage: model selection, not validity. \textbf{We claim neither the placement nor the derivation.}
 % Wave 3 closed both former bibliography gaps here: li2025o2cp (arXiv:2508.13362) and wang2026acmcp
 % (arXiv:2410.13115v2) are in audit/REFS_VERIFIED.bib and are cited as \citep above.
 %
@@ -65,8 +85,11 @@ derivation.}
 %     variance, and asserts valid coverage itself, so it is no longer attached to a validity
 %     dispute (research/S2/ft/txt/2512.07770.txt, sec. 2.2).
 
-\paragraph{What that leaves open is the outside of the admissible set.} Corollary~2 is a
-\emph{retention} result: perturbations within $\mu_t(b/2-|\hat{q}_t|)$ keep $|E_T| \le c\,h(T)+1$.
-The modification a stability-motivated designer reaches for leaves that set --- a smoother on the
-\emph{completed} output. Section~\ref{sec:forfeit} measures what that costs and where it becomes
-a coverage failure.
+\paragraph{Second: that admissible set has an edge, and the condition there is tight.} Corollary~2
+is a \emph{retention} result, so what it leaves open is outside that set.
+Section~\ref{sec:forfeit} exhibits a legal perturbation that leaves it --- an $L_1$ dead band on
+the \emph{completed} threshold, the family characterised here --- and locates the edge at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, the corollary's own radius at the
+null scorecaster. Past it the price is coverage and not only the rate, so the published sufficient
+condition is necessary there. Those two claims are the paper;
+Section~\ref{sec:related}'s four vocabularies for the same movement are description, not a third
+claim.

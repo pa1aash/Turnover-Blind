@@ -239,6 +239,13 @@ congruence; Tunc et al. (2013) on the cost of system nervousness; Van Belle et a
 Balabdaoui & Raftery (2007); Pinson & Girard (2012); Worsnop et al. (2018); Pinson et al.
 (2008). Found only by the adversarial critic, in Wave 4.
 
+> **FALSIFIED. Do not cite this paragraph.** The claim of absence below was measured
+> title-and-abstract-level in one direction. S3 found three of the four cells connected and
+> S3's own wave-2 agent found the fourth occupied (875 works cite Kalai–Vempala, three are
+> online conformal). No disconnection may be claimed between any pair, the paper claims none,
+> and the bridge is not a contribution. Marked in place 2026-08-20 by session S4;
+> `docs/FRAMING.md` §2.2c, `docs/OUTSTANDING.md` O51.
+
 **The bridge is unbuilt.** On arXiv, `"conformal"` crossed with `"forecast stability"`,
 `"forecast instability"`, `"forecast congruence"`, `"jumpiness"` and `"forecast revision"`
 returns **zero** on every pairing in both directions. Not one of the papers citing Van Belle

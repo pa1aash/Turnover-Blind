@@ -30,9 +30,19 @@ experiment beyond it. No gate is recorded as signed. No `[OPERATOR INPUT]` is an
 
 R3b as wave 3 printed it — *a dead band on the completed output loses long-run coverage for
 `τ > b/2`* — **was wrong.** `b/2` is the **null-scorecaster** special case. The law, bisected by
-the critic at 15/15 points and **verified independently by the orchestrator at 31 of 32**, is
+the critic at 15/15 points and **confirmed at 19 of 19 committed dead-band configurations**
+(`results/forfeit-variations-20260820T101445Z.json`), is
 
 > **`τ* = sup_x r_t(x) + sup_t q̂_t − b/2`.**
+
+> **CORRECTED 2026-08-20 BY SESSION S4.** The sentence above originally read *"verified
+> independently by the orchestrator at 31 of 32"*. **That figure is withdrawn as untraceable**:
+> it rests on a single line of gitignored `research/S3/patch-log.json`, the 32-point grid is not
+> reconstructible from `results/`, and `docs/GATES.md` G7.1 forbids printing a number that does
+> not trace. The paper does not print it. The replacement — 19 of 19 committed dead-band
+> configurations, three widths under each of five (saturator, scorecaster) settings plus four
+> wider bands — was recomputed from `results/` and does trace. This report's *other* figure, the
+> critic's 15/15 bisection, is reproducible from committed results and stands.
 
 Both constant scorecasters `q̂ ≡ ±b/2` are legal under Theorem 1's *"any sequence of numbers in
 `[−b/2, b/2]`"*, and both move the boundary. Measured from committed code
@@ -66,6 +76,13 @@ occupied.
 
 > **A negative claim is a claim about an instrument, and one direction of one instrument is not
 > the literature.**
+
+> **SUPERSEDED 2026-08-20 BY SESSION S4.** The paper no longer prints "We claim no
+> disconnection" either: a bolded denial of a claim the paper does not make was the last
+> residue of the contribution and pointed a referee straight at it. R3c is demoted to
+> descriptive related work — what each literature *has*, cited plainly, nothing about what any
+> lacks. Table 2 keeps one row; the `Cites the other three?` row, the `Lacks that the others
+> have` row and the whole cross-citation paragraph are deleted. `research/S4/K3-demotion.json`.
 
 The paper now prints **"We claim no disconnection"** and keeps the payload, which never needed it:
 four fields name one quantity many ways, and the object that settles its validity sits in one of

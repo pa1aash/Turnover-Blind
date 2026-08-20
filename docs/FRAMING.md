@@ -1,5 +1,19 @@
 # FRAMING — locked 2026-08-19
 
+> **RUNNING HEADER — the paper's title, as of 2026-08-20 (session S4, agent K1).**
+> **_The Admissible Radius Is Tight: A Correction and a Measured Boundary in Online Conformal
+> Prediction_.** It supersedes *Where the Movement Penalty Goes: a Correction and a Measured
+> Boundary in Online Conformal Prediction* (S3 wave 5) and, before that, *Coverage Is
+> Turnover-Blind: Why Adaptive Conformal Is Mis-Tuned for Costly Decisions* (the original plan,
+> preserved verbatim in `docs/PLAN_ORIGINAL.md`). **Neither earlier title is deleted anywhere it
+> stands as history.** The change is forced by §2.2c: the decision-cost claim the first title
+> named no longer exists, and the movement penalty the second named is the instrument, not the
+> result. The result is that li2025o2cp Corollary 2's admissible radius is tight. Collision
+> check recorded in `research/S4/K1-retitle.json` (arXiv full text via
+> `arxiv.org/search_classic`, `searchtype=ft`, 2026-08-20, with a nonsense-token calibration
+> query and a known-positive control logged either side of every zero). **The repository is
+> still named `Turnover-Blind`; that is a historical name, not a claim.**
+
 **This file governs every later session.** Where it and any other document in this
 repository disagree, this file wins, except that `audit/PRIOR_ART.md` §7 is its evidentiary
 basis and `docs/GATES.md` is its enforcement mechanism.
@@ -44,6 +58,18 @@ R2 is the paper. R1 is the motivation.**
 > four-way disconnection is false, leaving one cell. **§2.3's STOP condition has fired and this
 > session is the re-scope it commissioned.** `docs/GATES.md` retires G2, G2-pre, G3 and G4 and
 > writes **G7** in their place.
+
+> **CORRECTED IN PLACE 2026-08-20 BY SESSION S4 — two clauses in the block above were already
+> false when it was written, and were corrected 370 lines below rather than here.** That gap is
+> the exact drift `tools/check_claim_drift.sh` now exists to catch, so it is repaired at the top
+> of the file, where a reader meets it. **(i) `τ > b/2` is not the law.** It is the law's value
+> at the null scorecaster and the minimal admissible saturator. The law is
+> **`τ* = sup_x r_t(x) + sup_t q̂_t − b/2`**, confirmed at **19 of 19** committed dead-band
+> configurations (`results/forfeit-variations-20260820T101445Z.json`), and the failing set is
+> `(τ*, ∞)`, open at the left. **(ii) No cell survives.** S3's own wave-2 agent falsified the
+> last one the same day: 875 works cite Kalai–Vempala and three are online conformal, one of
+> them cited by this paper. **R3c is not a claim any more** — S4 demoted it to descriptive
+> related work. **The paper makes exactly two claims, R3a and R3b.**
 
 ---
 
@@ -139,7 +165,16 @@ restatement of a 2026 result in a new instrument, and it is the leg that has bee
 > coverage outright. **(iii)** The claim *"Placement A does not lose coverage"* below is
 > **narrowed, not withdrawn**: it holds for nine of ten smoothed arms at
 > 0.099940–0.100060, and it fails for a dead band with `τ > b/2`, where miscoverage is
-> 1.000000. **The paper may not print the unqualified form in either direction.** Everything
+> 1.000000. *(**Corrected 2026-08-20 by S4, in two places, and the second was surfaced by
+> `tools/check_claim_drift.sh` on its first live run.** (a) `τ > b/2` becomes `τ > τ*`, with
+> `τ* = sup_x r_t(x) + sup_t q̂_t − b/2`; `b/2` is only this harness's value of it. (b) **The
+> whole sentence is scoped to the null scorecaster and was not marked as such.** The
+> nine-of-ten count is a count at `q̂ ≡ 0`; the paper's Table 1 now lists **eleven** arms, and
+> at the equally legal `q̂ ≡ −b/2` the partial-adjustment arm at `w = 0.999` **also** returns
+> 1.000000 (`results/forfeit-variations-20260820T101445Z.json`,
+> `scorecaster_const_minus_b_over_2`). So the narrowing stands, but the surviving claim is
+> narrower still: **no readout is safe by construction, and what is tight is the radius rather
+> than either form.**)* **The paper may not print the unqualified form in either direction.** Everything
 > else here — the withdrawn conservation law, "at most half", "irreducible" — stays withdrawn.
 > **O42, the route back to a theory result that this section names, is CLOSED as OCCUPIED**
 > (`docs/OUTSTANDING.md` O42): it is integrator anti-windup with a feedforward path, and the
@@ -332,6 +367,21 @@ applies verbatim. There is no a priori bound on the crossing count, and Proposit
 `|E_T|` rather than crossings. This is a new argument on the L1 side of `docs/OPEN_QUESTIONS.md`
 Q7, which remains an operator decision.
 
+> **SUPERSEDED 2026-08-20 BY SESSION S4 (agent K1). The paragraph above is kept as the S2
+> record and must not be read as a live design recommendation.** Two things changed under it.
+> (i) **Q7 is no longer an operator decision.** It is R3b restated, and it was closed by
+> measurement rather than by preference — see `docs/OPEN_QUESTIONS.md` Q7 and §2.2c above.
+> (ii) **The dead band may not be presented as a design lever anywhere in `paper/` or `docs/`.**
+> The L1 dead band on the *completed* threshold is the family this paper characterises the
+> failure of: past `τ* = sup r_t + sup q̂ − b/2` it leaves li2025o2cp Corollary 2's admissible
+> radius and returns realised miscoverage `1.000000`, with `frac_saturated = 1.0000` so
+> condition (4) holds at every round. The *relay saturator* of the paragraph above is a
+> different object — it sits inside the integrator, not on the completed output — but the
+> paragraph's framing ("a design lever") is the residue of a dead-band motivation that is now
+> doubly dead: S1 found its Gârleanu–Pedersen citation wrong (they derive L2, not L1), and S3
+> measured the L1 form's failure. The dead band appears from here on **only as the object of
+> study**, never as a recommendation. `results/forfeit-variations-20260820T101445Z.json`.
+
 **Evidentiary basis for all of §2.2b:** `research/S2/D1-reduction.json` (the reduction, both
 paper versions diffed, the Placement A analysis), `D2-attack.json` (the occupancy of the
 placement, the conservation law, the change-of-producer finding), `D3-neighbours.json` (the
@@ -394,7 +444,22 @@ in full. Where this section and any earlier section of this file disagree, this 
 > turns up**, with the measured law `max|E_t| ≈ max(0.5·h(T) + 0.9, 0.63/(1−w))`. Five of
 > eleven arms forfeit the bound at `T = 10⁶`.
 >
-> **The new result, and it is sharper than a forfeit of the rate.** A **dead band on the
+> **RESTATED 2026-08-20 BY SESSION S4 — read this before the paragraph below it.** R3b is a
+> **TIGHTNESS (necessity) result about someone else's sufficient condition**, not a forfeit
+> claim, and the paper now states it in that order. O2CP Corollary 2 proves retention inside
+> `μ_t(b/2 − |q̂_t|)`; this paper exhibits one legal perturbation that leaves the radius — the
+> L1 dead band on the completed threshold — and locates the edge at
+> **`τ* = sup_x r_t(x) + sup_t q̂_t − b/2`**, confirmed at **19 of 19** committed dead-band
+> configurations with no counterexample. At `μ = 1, q̂ ≡ 0` the measured edge **is** the
+> published radius and crossing it costs coverage, so the condition is **necessary there**;
+> elsewhere it is sufficient only, and the paper prints that counter-instance rather than
+> hiding it. **The "31 of 32 grid points" figure asserted in the S3 session record is WITHDRAWN
+> as untraceable**: it rests on one line of gitignored `research/S3/patch-log.json`, no such
+> grid is reconstructible from `results/`, and `docs/GATES.md` G7.1 forbids printing it.
+>
+> **The new result, and it is sharper than a forfeit of the rate.** *(**Superseded wording, kept
+> as the record: `τ > b/2` is the null-scorecaster corner, not the law. See the block above.**)*
+> A **dead band on the
 > completed output loses long-run coverage outright for `τ > b/2`** — strictly; `τ = b/2`
 > covers. Miscoverage **1.000000**, `max|E_t| = 0.9·T`. The deployed threshold has a fixed
 > point at `b − τ`, measured `sup q̃ = b − τ` to the printed digit at every `τ ≥ 0.9`; once
@@ -539,6 +604,8 @@ precisely the occupied leg. The replacement:
 > the day it was written. **This session is the re-scope the condition commissioned**, and R1
 > is not submitted by itself: it is dropped. What is submitted instead is §2.2c — a measurement
 > (R3b), a correction of the record (R3a) and a scoped bridge claim (R3c), at four pages.
+> *(**Corrected 2026-08-20 by S4: R3c is no longer a claim. It is descriptive related work, and
+> what is submitted is TWO claims — R3a and R3b — at four pages.**)*
 > The gate that governs it is `docs/GATES.md` **G7**, and G2, G2-pre, G3 and G4 are retired
 > with their reasons recorded. **The STOP condition is not re-armed against R3b by this
 > session; setting the next one is an operator decision and no automated session may fire or

@@ -1,34 +1,54 @@
-% Related work / the bridge.  REWRITTEN for session S3's claim set.
+% Related work.  SESSION S4 WAVE 1, AGENT K3: R3c IS DEMOTED TO DESCRIPTIVE RELATED
+% WORK AND IS NOT A CONTRIBUTION.  docs/FRAMING.md sec. 2.2c records that S3's own
+% H6 agent falsified the four-literature disconnection -- Semantic Scholar's
+% citations endpoint for kalai2005lazy returns 875 citing works, three of them
+% online conformal, one of them chen2023ipoc, which this paper already cites.  The
+% payload never needed the disconnection and is what survives here: four
+% vocabularies name one quantity, and this paper's object sits in one of them.
 %
-% The enumerating paragraphs of the previous draft are REPLACED by H5's bridge
-% table (research/S3/H5-bridge.json, printable_table), not joined to them.  H5's
-% "Name for the quantity" row is CUT, per its own instruction to cut that row
-% first if the budget will not take 0.69 pages; its content now lives in
-% sections/setup.tex, where the term is coined and the six taken names conceded.
-% The "Cites the other three?" row is KEPT -- H5's instruction not to cut it.
-% Every \citep key below resolves against audit/REFS_VERIFIED.bib.
+% WHAT WAS DELETED THIS WAVE.  All of it was the machinery of a claim the paper no
+% longer makes.
+%   (a) Table 2's "Cites the other three?" row -- 0/437, 1/437, 0/437; 1/226,
+%       8/226, 3/226; 0/106; 0/93.  A cross-citation census is evidence for or
+%       against a disconnection; with no disconnection claimed it supports nothing,
+%       and printed counts invite the reading the paper disowns.
+%   (b) Table 2's "Lacks that the others have" row.  A four-way comparative claim
+%       of ABSENCE, and three of its four cells were quantifiers ("any interval or
+%       coverage object", "a decision that pays to move", "a calendar-time path
+%       functional") rather than instrument-scoped counts.
+%   (c) The whole cross-citation paragraph: the 862 references, the 13 crossings,
+%       the "concentrated rather than sparse" gloss, the over-matching-index
+%       caveat, the bolded "We claim no disconnection", and the 875-citing-works
+%       refutation.  A printed denial of a claim the paper does not make is the
+%       last residue of the contribution: it tells a referee to look for a bridge
+%       claim that is not there.
+%   (d) The caption's closing cross-citation sentence, which sourced (a).
+% The surviving row is renamed from "Has that the others lack" -- itself a
+% comparative absence claim -- to a plain statement of what each field contributes.
 %
-% ANDREW ET AL. THEOREM 7 IS PRINTED AS THE TRADE-OFF IT IS: at fixed theta a
-% constant competitive ratio with linear regret, sublinear regret needing theta to
-% grow with T, which grows the ratio.  The repository's earlier gloss overstated
-% it as a one-dimensional free lunch.
+% KEPT DELIBERATELY.
+%   - The caption names TEN names across FOUR vocabularies and is load-bearing:
+%     sections/setup.tex cites this caption for that count, because docs/GATES.md
+%     G7.11 requires the names to be conceded and the total NOT to be printed.
+%   - "What is conceded, by name" is untouched in substance.  It carries G7.4's
+%     concession list (placement -> ACT23 / Dupuy / Duerst; derivation ->
+%     li2025o2cp Cor. 2 and wang2026acmcp; smoother object, metric arithmetic and
+%     both readout forms -> sections/setup.tex; anti-windup -> galeani2009antiwindup)
+%     and G7.5's concession of the derivation by name.
+%   - ANDREW ET AL. THEOREM 7 STAYS PRINTED AS THE TRADE-OFF IT IS (docs/FRAMING.md
+%     sec. 3, corrected 2026-08-20): sublinear regret is bought by growing theta
+%     with T, which grows the competitive ratio.
 %
-% FRAMING sec. 3: the negative statement is scoped to its instrument IN the
-% sentence that makes it, with the index named and the date given, and the two
-% instruments (bibliography membership vs body-text co-occurrence) are kept apart.
+% Every \citep key below resolves against audit/REFS_VERIFIED.bib.  Four keys this
+% file used to cite are now cited by no file: zinkevich2003ogd, kalai2005lazy,
+% zhang2024bayesianocp, ramalingam2025noregret.  They stay in the .bib and plainnat
+% prints only cited entries, so nothing breaks; they are reported to the
+% orchestrator in research/S4/K3-demotion.json.
 %
-% WAVE-5 CUTS (S3 F1 findings 11 and 12).  TWO CLAUSES WERE REMOVED BECAUSE THE
-% CRITIC FALSIFIED THEM ON THE INSTRUMENT EACH ONE NAMED:
-%   (a) "on the same arXiv index 'windup' and 'conformal' co-occur zero times" --
-%       search.arxiv.org returns 9 bare and 1 scoped to "conformal prediction".
-%       The genuine zero came from the arXiv API at ABSTRACT level, a different
-%       instrument, which is exactly the conflation this header forbids.
-%   (b) "the same index returns 192 for 'conformal prediction' with 'Gneiting'
-%       and 'sharpness'" -- that index's phrase matching is not exact (it returns
-%       2404.14642 for a phrase absent from all 137,412 chars of that paper), so
-%       192 is an unbounded upper bound and not a count.
-% Zeros on an over-matching index stay conservative, so the remaining zero counts
-% are unaffected.  The two cuts pay for the gao2025coloke sentence below.
+% DOWNSTREAM, REPORTED AS A HANDOFF (K3 does not own that file):
+% sections/limitations.tex still reads "Seven of the twenty-six anchors return an
+% empty reference list, so Table 2's counts are gaps rather than zeros."  Table 2
+% no longer prints counts, so that sentence is orphaned and should be cut.
 
 \section{Where this sits}
 \label{sec:related}
@@ -40,17 +60,15 @@
 \caption{Four literatures name the movement of a sequentially updated forecast in four
 vocabularies: \emph{abrupt threshold changes}; \emph{forecast (in)stability} (MASC, MAC/SDC,
 MQC/SMQC, congruence, nervousness); \emph{jumpiness}, \emph{convergence index},
-\emph{(in)consistency}; and \emph{switching cost}. Cross-citation from Semantic Scholar reference
-lists, 20 August 2026, over that column's anchors.}
+\emph{(in)consistency}; and \emph{switching cost}. The row gives what each contributes.}
 \label{tab:bridge}
-\begin{tabular}{@{}p{1.0cm}p{3.09cm}p{3.09cm}p{3.09cm}p{3.09cm}@{}}
+\begin{tabular}{@{}p{3.35cm}p{3.35cm}p{3.35cm}p{3.35cm}@{}}
 \toprule
-& \textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
+\textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
 \textbf{Switching-cost OL} \\
 \midrule
-\textbf{Has that the others lack}
-& a distribution-free long-run-coverage guarantee for \emph{any} bounded scorecaster, with a rate
-\citep[Thm~1, Prop.~2]{angelopoulos2023pid}---and an admissible set measured here to be tight
+a distribution-free long-run-coverage guarantee for \emph{any} bounded scorecaster, with a rate
+\citep[Thm~1, Prop.~2]{angelopoulos2023pid}, and the admissible set measured here to be tight
 & the scored movement functional, the readout map as post-processing
 \citep[Eq.~3]{godahewa2025stability}, and a priced decision
 \citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}
@@ -59,40 +77,12 @@ pair: the whole marginal \citep{pinson2012scenarios,worsnop2018scenarios}
 & worst-case theory for the penalised problem: Thm~2, and a Thm~7 trade-off in which sublinear
 regret is bought by growing $\theta$ with $T$, which grows the ratio
 \citep{andrew2013twometrics} \\
-\addlinespace
-\textbf{Lacks that the others have}
-& a calendar-time path functional and a decision charged to \emph{move} rather than to violate;
-its metric is ``zero for deterministic methods by design'' \citep[\S4]{min2026questioning}
-& a coverage object in its canonical works: \emph{conformal}, \emph{coverage}, \emph{prediction
-interval} occur $0$ times in
-\citet{godahewa2025stability,genov2026switching,vanbelle2026stabilizing}; \citet{zanotti2026smqc}
-excepted
-& a decision that pays to move---commissioned and declined \citep{pinson2012scenarios}---and the
-quantity itself: matched marginals fix the width path
-& any interval or coverage object; regret buys marginal coverage i.i.d.\ but not adversarially
-\citep{ramalingam2025noregret} \\
-\addlinespace
-\textbf{Cites the other three?}
-& $0/437$, $1/437$, $0/437$; cites the shared OCO ancestor \citep{zinkevich2003ogd}
-& $1/226$, $8/226$, $3/226$---all in three papers
-& $0/106$ in every direction available
-& $0/93$ in every direction available \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Of the $862$ references returned for Table~\ref{tab:bridge}'s twenty-six anchors, $13$ fall in a
-neighbouring literature and twelve of those sit in three forecast-stability papers:
-\citet{vanbelle2026stabilizing}, co-authored by Pierre Pinson, cite eight works of verification,
-\citet{genov2026switching} three of smoothed online optimisation, and \citet{zanotti2026smqc}
-build their intervals out of conformal prediction. The edge exists where an
-author bridges it, and the cross-citation is concentrated rather than sparse. \textbf{We claim no
-disconnection}, and the counts above do not support one: the arXiv full-text index that returns
-zero for the switching-cost method names paired with ``conformal'' over-matches phrases, so its
-zeros are conservative and its positives are not counts, and an exact instrument refutes the
-reading they invite --- of the $875$ works citing \citet{kalai2005lazy}, two are online conformal,
-\citet{chen2023ipoc}, cited here, and \citet{zhang2024bayesianocp}. Four fields name one quantity
-many ways; the object that settles its validity sits in one.
+Four vocabularies name one quantity many ways, and the object that settles its validity --- the
+admissible set around the deployed threshold --- sits in the first of them.
 
 \paragraph{What is conceded, by name.} The placement is prior work:
 \citet{angelopoulos2023pid} state coverage for any admissible integrator and any scorecaster and
@@ -108,16 +98,16 @@ anti-windup with a feedforward path, where free-until-the-bound-binds is the def
 specification rather than a finding \citep{galeani2009antiwindup}. Nearest in the
 other direction, \citet{gao2025coloke} run the same recursion but gate the \emph{model} update on
 the conformal score; their one non-standard assumption is that $\sum_{t \le T} q_t \le
-O(\alpha\,h(T))$ for a sublinear $h$, supported with a plot and left to later work to derive. That accumulation is what Section~\ref{sec:forfeit} measures diverging.
-% Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.  The
-% Stankeviciute gap is moot -- the 2->1 cross-citation cell is not printed with its work named.
+O(\alpha\,h(T))$ for a sublinear $h$, supported with a plot rather than derived. That accumulation
+is what Section~\ref{sec:forfeit} measures diverging.
+% Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.
 %
-% WAVE-5 ADDITION (S3 F1, col_coloke_ranking): gao2025coloke.  "Conformal Online Learning of
-% Deep Koopman Linear Embeddings", arXiv:2511.12760, submitted 2025-11-16, updated 2026-01-27;
-% full text read at research/S3/records/arxiv_2511.12760_coloke.txt before citing.  NO VENUE IS
-% ASSERTED: the critic reported NeurIPS 2025 and HAL-only, and the orchestrator found neither
-% claim supported by the arXiv record.  Their (A3) is quoted from p.6 of that text; their own
-% Fig. 2a caption calls it "sublinear growth supporting (A3)", i.e. a plot rather than a
-% derivation, and they write that "deriving it remains an important direction for future work".
-% Counted in the 65,398-character full text by the orchestrator: "miscoverage" 0, "marginal
-% coverage" 0, "scorecaster" 0 -- so it is a neighbour, not an occupant, and the paper says so.
+% gao2025coloke: "Conformal Online Learning of Deep Koopman Linear Embeddings", arXiv:2511.12760,
+% submitted 2025-11-16, updated 2026-01-27; full text read at
+% research/S3/records/arxiv_2511.12760_coloke.txt before citing.  NO VENUE IS ASSERTED: the S3
+% critic reported NeurIPS 2025 and HAL-only and the orchestrator found neither claim supported by
+% the arXiv record.  Their (A3) is quoted from p.6 of that text; their own Fig. 2a caption calls it
+% "sublinear growth supporting (A3)", i.e. a plot rather than a derivation, and they write that
+% "deriving it remains an important direction for future work".  Counted in the 65,398-character
+% full text by the orchestrator: "miscoverage" 0, "marginal coverage" 0, "scorecaster" 0 -- so it
+% is a neighbour, not an occupant, and the paper says so.

@@ -97,6 +97,10 @@ question has a clear answer; the calendar question does not.
 > L1 (proportional, dead-band) or L2 (quadratic, linear partial adjustment). G3.4's
 > tractability depends on it.
 >
+> > **RESOLVED 2026-08-20 by session S4 — see Q7 below.** The sentence above is kept as the S1
+> > record. The form is no longer open and was never a preference: it is R3b's result restated.
+> > G3.4 is retired with G3.
+>
 > **The question below is the original text, preserved unedited.**
 
 
@@ -163,7 +167,55 @@ the answer.
 
 ---
 
-## Q7 — L1 or L2 movement penalty?
+## Q7 — L1 or L2 movement penalty? — **CLOSED**
+
+> **CLOSED 2026-08-20 by session S4, agent K1 — resolved by measurement, not by operator
+> decision.** This question is not an [OPERATOR INPUT] and never should have been carried as
+> one. It is `docs/FRAMING.md` §2.2c's R3b restated. **The original text below is preserved
+> unedited**; read it as the record of how the question was posed, not as a live choice.
+>
+> **What closes it.** li2025o2cp (arXiv:2508.13362) **Corollary 2** proves that a predictable
+> modification of the deployed Conformal PID threshold **retains** Proposition 2's bound while
+> it stays inside a ball of radius `μ_t(b/2 − |q̂_t|)`. The **L1 (dead-band) form on the
+> completed threshold is exactly the family that leaves that ball**, and this project measured
+> where: the law is
+>
+> > **`τ* = sup_x r_t(x) + sup_t q̂_t − b/2`; bands with `τ ≤ τ*` cover, and the failing set is
+> > `(τ*, ∞)`, open at the left.**
+>
+> Past `τ*` the deployed threshold is pinned below the adversary's reachable score range, the
+> loop stops closing, `|E_t| = (1−α)t` grows linearly and realised miscoverage is **`1.000000`**
+> against `α = 0.1` — with **`frac_saturated = 1.0000`**, so condition (4) holds on every single
+> round and what fails is Proposition 2's *other* hypothesis, that the threshold closing the
+> loop *is* the integrator's output. **So L1 is not one of two styles to pick between; it is the
+> perturbation family whose failure is the paper's result.**
+>
+> **And L2 is not thereby certified — this is not a softening, it is the finding.** At the
+> harness's null scorecaster the L2 arm (EMA `w = 0.999`) **forfeits the rate** — `max|E_t| =
+> 623.70` against a Proposition 2 bound of `14.8155` at `T = 10⁶`, 42× — while **keeping**
+> coverage at `0.100035`. At the **equally legal** constant scorecaster `q̂ ≡ −b/2`, Corollary 2's
+> radius is `0` and the **L2 arm returns `1.000000` as well**, alongside every dead band measured
+> there; at `q̂ ≡ +b/2` the dead band that fails at the null scorecaster **covers**, at
+> `0.100010`. The boundary is a property of the **(saturator, scorecaster) pair**, which is
+> exactly why the paper's claim is a **tightness statement about Corollary 2's radius** and not a
+> blanket "L2 is safe".
+>
+> **Evidence.** `results/forfeit-variations-20260820T101445Z.json` (rows
+> `scorecaster_const_minus_b_over_2` / `ema_w0.999` and `.../deadband_tau*`;
+> `scorecaster_const_plus_b_over_2` / `deadband_tau1.5`; `boundary_law`),
+> `results/forfeit-20260820T063045Z-83747c45.json`, `results/forfeit-20260820T063132Z-83747c45.json`;
+> code `src/forfeit.py`, `src/test_forfeit.py`; `docs/FRAMING.md` §2.2c;
+> `docs/GATES.md` G7.9. The paper states it in `paper/sections/setup.tex` and
+> `paper/sections/forfeit.tex`.
+>
+> **Consequence, and it binds every document here.** No residual dead-band framing may survive
+> as a **design recommendation** in `paper/` or `docs/`. The dead band appears only as the object
+> of study whose failure is characterised, or as a historical record marked as superseded. Its
+> original motivation is doubly dead: S1 found the Gârleanu–Pedersen attribution wrong (they
+> derive L2 from quadratic costs), and S3 measured the L1 form's failure.
+>
+> **What this does NOT close.** OI-2 stays superseded and unanswered. Q3 (venue) stays
+> `[OPERATOR INPUT]`. Q8 (co-authors) stays open. **No gate is signed by this.**
 
 **The question.** The plan specifies an L1 movement penalty, which gives soft-thresholding
 and a dead-band, and attributes that form to Gârleanu & Pedersen (2013). **That
@@ -180,6 +232,9 @@ The mis-citation concealed a real design choice:
 
 Which does C2 use? The L2 route is analytically far more tractable and may make the C-a
 theorem reachable, at the cost of losing the dead-band that gives the paper its name.
+
+*(End of the original S1 text. The answer is in the CLOSED block at the top of this question,
+and the paper's name is no longer the dead band's — see `docs/FRAMING.md`'s running header.)*
 
 ---
 

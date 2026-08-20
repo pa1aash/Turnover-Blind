@@ -12,17 +12,41 @@
 % are cited).  No bibliography-gap marker survives: wave 3 closed all of them and
 % wave 5 added gao2025coloke, so every work named in the body is a \citep.
 %
-% RE-MEASURED, wave 5, both venue options, three passes + bibtex:
+% RE-MEASURED, S4 WAVE 2, BOTH VENUE OPTIONS, three passes + bibtex.  This block
+% supersedes S3 wave 5's measurement, which had gone stale: the S4 resize cut R3c
+% and the body fell BELOW four pages before it was refilled.
 %   body = 4 pages under BOTH options, verified by locating the "References"
-%   heading in the rendered PDF (it is the first thing on p.5, offset 0) rather
-%   than by trusting a page count; 6 pages total, references on pp.5-6.
+%   heading in the rendered PDF (first content on p.5, offset 6) rather than by
+%   trusting a page count; 6 pages total, references on pp.5-6.
 %   0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull boxes,
-%   0 LaTeX warnings, 0 bibtex warnings, 0 underfull vboxes.  14 underfull
-%   hboxes, all inside the two p-column tables (ragged fill).
-%   dblblindworkshop anonymises correctly ("Anonymous Author(s)").
+%   0 underfull hboxes, 0 bibtex warnings -- the 14 underfull hboxes S3 recorded
+%   were in the two p-column tables, and K3's demotion of Table 2 to a single row
+%   removed them.
+%   dblblindworkshop anonymises correctly ("Anonymous Author(s)"); sglblindworkshop
+%   prints the author block.  Identical geometry under both.
 %
 % THE BODY IS EXACTLY FULL.  Wave 5 paid for every addition with a cut; the
 % cuts are recorded in the header of the file each one was taken from.
+%
+% S4 WAVE 2 (2026-08-20, orchestrator): RETITLED.  "Where the Movement Penalty Goes"
+% was the last of the decision-cost register; the paper's claim is that O2CP Corollary 2's
+% admissible radius is tight, so the title says that.  Collision-checked on arXiv's classic
+% FULL-TEXT index (searchtype=ft) 2026-08-20, calibrated both ways first: the exact phrase
+% "admissible radius is tight" returns a real zero (2,846 B, literal "No Results."; zero
+% pages measure 2839-2847 B, hit pages 4005 B and up).  "admissible radius" returns 97, all
+% pure mathematics; paired with "conformal prediction", 2, both a reachability sense and
+% neither a title.  Record: research/S4/K1-retitle.json.  Superseded titles, for anyone
+% following a link: "Coverage Is Turnover-Blind" (S0-S2), "Where the Movement Penalty
+% Goes: ..." (S3).
+%
+% S4 WAVE 1 (2026-08-20, agent K4): THE ABSTRACT ONLY was rewritten, to state
+% exactly the two claims the paper now makes -- the joining of the two printed
+% halves, and the tightness of O2CP Corollary 2's admissible radius -- and to
+% drop the decision-cost register ("movement penalty") that the retitle removes.
+% Nothing else in this file was touched: \title, \workshoptitle, the venue
+% switch, the \usepackage lines and the author block are unchanged and the venue
+% stays [OPERATOR INPUT].  The abstract's growth is paid for by cuts inside
+% sections/intro.tex, recorded in that file's header.
 % ---------------------------------------------------------------------------
 \documentclass{article}
 
@@ -47,7 +71,7 @@
 \usepackage{nicefrac}
 \usepackage{microtype}
 
-\title{Where the Movement Penalty Goes: a Correction and a Measured
+\title{The Admissible Radius Is Tight: a Correction and a Measured
 Boundary in Online Conformal Prediction}
 
 \workshoptitle{E-values: From Statistics to ML}
@@ -69,18 +93,19 @@ Boundary in Online Conformal Prediction}
 
 \begin{abstract}
 Conformal PID states long-run coverage for an arbitrary bounded scorecaster, and
-a published corollary extends it to any predictable perturbation of the deployed
-threshold inside an admissible set; a contrary reading is in print, by the same
-authors, and is acted on. We join the halves and claim neither. What we add is a
-measurement outside that set: a one-scalar movement penalty on the
-\emph{completed} threshold forfeits Proposition~2's rate by $42\times$ at $T =
-10^{6}$ and, past a measurable width, returns realised miscoverage $1.000000$
-against $\alpha = 0.1$ while the saturation condition fires on every round. That
-width is $\tau^{\star} = \sup r_t + \sup\hat{q}_t - b/2$, exactly the
-corollary's admissible radius at the null scorecaster---so the conceded result
-is tight there, and leaving the set costs coverage rather than the rate. Under a
-legal non-zero scorecaster, or Conformal PID's own unbounded integrator, it does
-not.
+a published corollary retains its rate under any predictable perturbation of the
+deployed threshold inside an admissible radius. The opposite reading is in print
+too, under overlapping authorship, and acted on. We make two claims. The record
+holds both halves and we join them, conceding placement and derivation by name.
+And the corollary's condition is tight: a legal $L_1$ dead band on the
+\emph{completed} threshold leaves that set at $\tau^{\star} = \sup r_t +
+\sup\hat{q}_t - b/2$, its own radius at the null scorecaster, past which realised
+miscoverage is $1.000000$ against $\alpha = 0.1$ while saturation fires every
+round. Leaving it costs coverage, not only the rate: partial adjustment there
+overruns Proposition~2's bound $42\times$ at $T = 10^{6}$ and covers, $0.100035$
+at $2{\times}10^{5}$. That edge belongs to the saturator--scorecaster pair: under
+$\hat{q} \equiv +b/2$, equally legal, the failing band covers; under $\hat{q}
+\equiv -b/2$ both readouts return $1.000000$.
 \end{abstract}
 
 \input{sections/intro}

@@ -178,11 +178,11 @@ deployed width.
 |---|---|---|---|---|
 | `N0` | P-PID | — | No penalty. Rolling-empirical-quantile scorecaster, constant-gain clipped integrator | Reference arm. All matching is to `N0` |
 | `N0t` | P-PID | — | As `N0` with ACT23's tan integrator and their own `C_sat`, `K_I` heuristics | The opposite corner of the exchange: weak inherited rate, small injected movement |
-| `B1` | P-PID | **B** | L2 penalty on the slot: `q̂_{t+1} = (1−λ)q̂_t + λ q̂ʳᵃʷ_{t+1}`, `λ = 1−w` | **Working primary, pending OI-1 — NOT a decision.** The L2 form is carried as the reference treatment only so that the specification has a definite arm to match against; **OI-1 is what selects the primary and it is unanswered.** If the operator selects L1, `B1τ` becomes the primary and every match, power and reporting statement below transfers to it unchanged |
-| `B1τ` | P-PID | **B** | L1 penalty on the slot: `q̂_{t+1} = q̂_t + S_τ(q̂ʳᵃʷ_{t+1} − q̂_t)` | The other branch of OI-1. Implemented, not chosen here |
+| `B1` | P-PID | **B** | L2 penalty on the slot: `q̂_{t+1} = (1−λ)q̂_t + λ q̂ʳᵃʷ_{t+1}`, `λ = 1−w` | **RESOLVED 2026-08-20 by session S4 — §8 OI-1 is closed by measurement, not by operator choice.** Original wording, kept as the record: *"Working primary, pending OI-1 — NOT a decision. The L2 form is carried as the reference treatment only so that the specification has a definite arm to match against; OI-1 is what selects the primary and it is unanswered. If the operator selects L1, `B1τ` becomes the primary and every match, power and reporting statement below transfers to it unchanged."* **Live reading:** the L2 form is the reference treatment, and it is not certified by being one — at the null scorecaster it forfeits the rate while keeping coverage, and at the legal `q̂ ≡ −b/2` it loses coverage outright. `docs/OPEN_QUESTIONS.md` Q7 |
+| `B1τ` | P-PID | **B** | L1 penalty on the slot: `q̂_{t+1} = q̂_t + S_τ(q̂ʳᵃʷ_{t+1} − q̂_t)` | **RESOLVED 2026-08-20 by session S4.** Original wording: *"The other branch of OI-1. Implemented, not chosen here."* **Live reading:** this is not a branch anyone chooses between. The L1 dead band is the perturbation family whose failure `docs/FRAMING.md` §2.2c R3b characterises, past `τ* = sup r_t + sup q̂ − b/2`. `docs/OPEN_QUESTIONS.md` Q7 |
 | `B1a` | P-PID | **B** | As `B1τ` with asymmetric thresholds, `τ⁻/τ⁺ = α/(1−α) = 1/9` | Discharges `docs/GATES.md` G3.2: the accumulator's increments are `+(1−α)` on a miss and `−α` on a cover, so a symmetric threshold suppresses one direction only |
 | `B2` | P-PID | **B** | The penalty is applied to **deployed** movement: `q̂ʳᵃʷ` pre-subtracts `r_{t}(E_{t})`, then the L2/L1 penalty acts, then the result is clipped to `[−B_q, B_q]` | **PROMOTED 2026-08-19 from dilemma arm to the arm that carries what remains of the claim.** Wave 4 withdrew the on-paper result this protocol was first written around, and identified this arm as the only route to a non-degenerate one. **Two changes follow.** The clip is to a declared budget `B_q` rather than to `b/2`: Proposition 2's hypothesis is `[−b, b]`, so any split `B_q + B_s ≤ b` is admissible with the identical proof and the symmetric half-split carries no information. **`B_q/b` therefore becomes a swept parameter, not a constant.** And the arm must be run under distribution shift as well as stationarity, because that is where the answer stops being degenerate: a cancelling scorecaster cut deployed travel from 91.2 to 0.21 at `T = 10⁴` with the clip binding on 24 of 10,000 rounds, and the same construction under shift collapsed to a 1.12× reduction with the clip binding on 89 %. `research/S2/F1-adversarial.json`; `docs/OUTSTANDING.md` O42 |
-| `B3` | P-PID | design lever | Relay / dead-band integrator, `r_t(x) = b·sign(x)·1{|x| ≥ c·h(t)}`, no scorecaster penalty | Condition (4) lower-bounds `r_t` past the threshold and requires neither continuity nor strict monotonicity, so this integrator is admissible and Theorem 1 applies to it verbatim. It contributes exactly zero movement inside the band |
+| `B3` | P-PID | ~~design lever~~ **diagnostic arm (relabelled 2026-08-20, S4)** | Relay / dead-band integrator, `r_t(x) = b·sign(x)·1{|x| ≥ c·h(t)}`, no scorecaster penalty | Condition (4) lower-bounds `r_t` past the threshold and requires neither continuity nor strict monotonicity, so this integrator is admissible and Theorem 1 applies to it verbatim. It contributes exactly zero movement inside the band. **RELABELLED 2026-08-20 (S4): the analysis is unchanged and still correct — this is the saturator INSIDE the integrator, not the dead band on the completed output — but "design lever" is a design recommendation and the paper makes none for any dead band. `docs/OPEN_QUESTIONS.md` Q7** |
 | `A1` | P-PID | **A** | EMA on the completed output, `q̃_{t+1} = (1−w)q_{t+1} + w q̃_t`; the recursion is fed the **deployed** indicator `1{s_t > q̃_t}` | **The forfeit arm.** This is what a practitioner who smooths the output actually builds |
 | `A1b` | P-PID | **A** | As `A1`, but the recursion is fed the **raw** indicator `1{s_t > q_t}` | The variant in which the inherited identity certifies a set nobody deploys — `docs/FRAMING.md` §4, seventh item |
 | `A2` | P-PID | **A** | Running-mean smoother on the completed output (growing time constant) | Wave 1 measured `max_t|E_t|` growing faster than `h(T) = log T` here |
@@ -296,6 +296,9 @@ R1–R13 are `audit/RECONSTRUCTION_SPEC.md`'s register, in its numbering. R14–
 choices the corrected claim introduces. R1, R2, R6 and R7 are marked OPERATOR in the register;
 this protocol fixes values for all four and flags them for operator override at freeze time,
 which is not the same as leaving them open. Only OI-1 and OI-2 (§8) are genuinely open.
+**RESOLVED IN PART 2026-08-20 by session S4: OI-1 is closed — it turned out to be a
+measurement, not a preference (`docs/OPEN_QUESTIONS.md` Q7, §8 below). OI-2 stays superseded
+and unanswered.**
 
 ### R1 — Is the interval conformal at all?
 
@@ -635,6 +638,10 @@ which is not the same as leaving them open. Only OI-1 and OI-2 (§8) are genuine
   applies to it verbatim. Proposition 2 bounds `|E_T|` and does not bound the number of band
   crossings, so the crossing count is measured and reported (§7) and the arm is labelled a
   design lever with an empirical question attached, not a theorem.
+  **AMENDED 2026-08-20 (S4): "design lever" is withdrawn as framing. The object described is
+  admissible and the S2 analysis of it stands, but no dead band is recommended anywhere in this
+  project; the L1 dead band on the completed output is the family whose failure the paper
+  characterises. `docs/OPEN_QUESTIONS.md` Q7.**
 - **If wrong.** A gain too large makes the integrator's own movement dominate the total and
   leaves the penalty nothing to reduce; too small, and the inherited guarantee is weak enough
   that the "inherits an existing coverage guarantee" sentence over-promises. The `η` sweep
@@ -672,7 +679,10 @@ which is not the same as leaving them open. Only OI-1 and OI-2 (§8) are genuine
 - **Value. Both are implemented.** L2: `q̂_{t+1} = (1−λ)q̂_t + λ·q̂ʳᵃʷ_{t+1}` with
   `λ = 1 − w`. L1: `q̂_{t+1} = q̂_t + S_τ(q̂ʳᵃʷ_{t+1} − q̂_t)`, `S_τ(u) = sign(u)(|u| − τ)₊`.
   **The update step is unit (`κ = 1`); over-relaxed variants are excluded.** Asymmetric L1
-  variant `B1a` with `τ⁻/τ⁺ = 1/9`. **Which form is primary is OI-1 and is not decided here.**
+  variant `B1a` with `τ⁻/τ⁺ = 1/9`. **RESOLVED 2026-08-20 by session S4 — the original line
+  read "Which form is primary is OI-1 and is not decided here." It is decided, by measurement:
+  the L1 form is the family whose failure is characterised, and the L2 form is the reference
+  arm without being certified by that role. `docs/OPEN_QUESTIONS.md` Q7.**
 - **Justification.** Both forms are convex combinations of quantities already in
   `[−b/2, b/2]`, the L1 case because `S_τ(u) = u(1 − τ/|u|)₊` makes the update an exact convex
   combination with weight `λ_t = (1 − τ/|Δ_t|)₊ ∈ [0,1)`, so neither can enlarge the slot's
@@ -1062,10 +1072,47 @@ a defect, not noise.
 Two items are left open. Both are recorded with every option fully specified, so that
 answering either is a one-line decision and neither blocks implementation.
 
-### OI-1 — L1 or L2? (`docs/OPEN_QUESTIONS.md` Q7)
+> **AMENDED 2026-08-20 BY SESSION S4 (agent K1). The count is one, not two.** **OI-1 is
+> CLOSED** — see the block immediately below. **OI-2 remains SUPERSEDED and unanswered**, and
+> no automated session answers it. The venue (`docs/OPEN_QUESTIONS.md` Q3) and co-author
+> sign-off (Q8) are untouched and stay `[OPERATOR INPUT]`.
+
+### OI-1 — L1 or L2? (`docs/OPEN_QUESTIONS.md` Q7) — **CLOSED**
+
+> **CLOSED 2026-08-20 by session S4, agent K1 — resolved by measurement, not by operator
+> decision, and therefore never an [OPERATOR INPUT] at all.** The three considerations below
+> are preserved unedited as the S2 record; what follows is the finding that replaced them.
+>
+> **The finding.** li2025o2cp (arXiv:2508.13362) Corollary 2 publishes the admissible set: a
+> predictable modification of the deployed Conformal PID threshold **retains** `|E_T| ≤ c·h(T)+1`
+> while it stays inside `|d_t| ≤ μ_t(b/2 − |q̂_t|)`. **The L1 dead band on the completed threshold
+> is the family that leaves it**, and the edge is `τ* = sup_x r_t(x) + sup_t q̂_t − b/2`: bands
+> with `τ ≤ τ*` cover, and past it realised miscoverage is `1.000000` against `α = 0.1` with
+> `frac_saturated = 1.0000`, so condition (4) holds on every round and what breaks is
+> Proposition 2's induction. **L1 is therefore the object of study, not a style option.**
+>
+> **The other half, and it must be stated in the same breath.** L2 is **not** certified by L1's
+> failure. At the harness's null scorecaster the L2 arm (EMA `w = 0.999`) forfeits the **rate** —
+> `623.70` against a bound of `14.8155` at `T = 10⁶` — while **keeping** coverage at `0.100035`;
+> at the equally legal constant `q̂ ≡ −b/2` Corollary 2's radius is `0` and the same L2 arm
+> returns `1.000000`; at `q̂ ≡ +b/2` a dead band that fails at the null scorecaster covers, at
+> `0.100010`. The boundary belongs to the **(saturator, scorecaster) pair**. That is why the
+> paper's claim is a **tightness statement about Corollary 2's radius** and not "L2 is safe".
+>
+> **Evidence.** `results/forfeit-variations-20260820T101445Z.json`,
+> `results/forfeit-20260820T063045Z-83747c45.json`,
+> `results/forfeit-20260820T063132Z-83747c45.json`; `src/forfeit.py`, `src/test_forfeit.py`;
+> `docs/FRAMING.md` §2.2c; `docs/GATES.md` G7.9.
+>
+> **Consequence.** Consideration 2 below ("the L1 form is what the title's dead-band language
+> implies") and consideration 3 ("a design lever with an empirical question attached") **may not
+> be read as design recommendations.** The title no longer contains dead-band language — see
+> `docs/FRAMING.md`'s running header — and the dead band appears only as the object of study
+> whose failure is characterised. **No gate is signed by this closure.**
 
 **The question is recorded and not decided here. Both forms are implemented (R17). The
-operator chooses which is primary.**
+operator chooses which is primary.** *(Original S2 wording, superseded by the CLOSED block
+above.)*
 
 Considerations, all three of them, stated without resolution:
 
@@ -1096,6 +1143,12 @@ Considerations, all three of them, stated without resolution:
 the two citation chains leads the related-work paragraph. It changes no other choice in this
 document; both arms run either way, and the tractability of the lemma route in
 `docs/GATES.md` G3.4 depends on it.
+
+> **SUPERSEDED 2026-08-20 (S4).** G3.4 is retired with G3. What the measurement changed is not
+> which arm is "headline" but what the paper is about: the L1 family's departure from the
+> published admissible radius **is** the result, and both citation chains are printed — the
+> quadratic ⇒ partial-adjustment half to Gârleanu & Pedersen, the proportional ⇒ dead-band half
+> to Constantinides (1986) and Davis & Norman (1990).
 
 ### OI-2 — Confirm the regime calibration's numeric transcription (R2)
 
@@ -1140,7 +1193,9 @@ answer governs and this protocol is amended, not the other way round.
 
 ## 9. What this protocol does not settle
 
-1. **OI-1 and OI-2**, as recorded in §8.
+1. **OI-2**, as recorded in §8. *(**AMENDED 2026-08-20 (S4):** this item originally read
+   "OI-1 and OI-2". **OI-1 is closed** — it was a measurement, not a preference; see §8 and
+   `docs/OPEN_QUESTIONS.md` Q7. OI-2 stays superseded and unanswered.)*
 2. **Whether the horizon arithmetic closes for the applied arm.** At the G4 development
    window's roughly 1,511 days, a 1-point coverage bound forces about 0.024·`B` of deployed
    movement per step against 0.0036·`B` at the synthetic horizon. The applied arm therefore

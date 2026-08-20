@@ -1,31 +1,80 @@
-% Limitations.  REWRITTEN for session S3's claim set.  A concession list,
-% deliberately not softened; run-in bold leads rather than \paragraph blocks to
-% save vertical space in a 4-page body.  Every item is either something a referee
-% would otherwise find, or something this project's own audit already found.
-% The R1 items (market model, position map, Kelly, transaction costs, turnover,
-% basis points, net log growth, the Ryan replication and the measurement-leg
-% occupancy) are DELETED, not compressed: the claim they belonged to is gone.
+% Limitations.  A concession list, deliberately not softened; run-in bold leads
+%
+% S4 WAVE 2 (orchestrator): three additions, paid for by the space the R3c demotion freed
+% -- Placement B restated as CONCEDED rather than unrepaired, the single-seed and
+% bracket-not-bisect caveats made explicit, and a falsification condition printed. The
+% section was 11 typeset lines after wave 1, which is thin for a paper making a necessity
+% claim.
+% rather than \paragraph blocks to save vertical space in a 4-page body.  Every
+% item is either something a referee would otherwise find, or something this
+% project's own audit already found.  The R1 items (market model, position map,
+% Kelly, transaction costs, turnover, basis points, net log growth, the Ryan
+% replication and the measurement-leg occupancy) are DELETED, not compressed: the
+% claim they belonged to is gone.
+%
+% SESSION S4 WAVE 1, AGENT K2.  FOUR CUTS AND ONE MOVE, all recorded here.
+%
+% MOVED OUT, to sections/forfeit.tex: the saturator-level-4b result (623.70 ->
+% 120.60) and ACT23's tangent-integrator result (tau = 1.5 covers at 0.100001,
+% 623.70 -> 20.10).  Here they read as unexplained caveats on the headline.  They
+% are the SAME mechanism as the scorecaster sweep -- sup r_t and sup qhat are the
+% two terms of tau* -- so they belong in the characterisation, where raising
+% sup r_t is shown to raise the edge.  The lines this file loses pay for the lines
+% forfeit.tex gains; see that file's header for the other half of the exchange.
+%
+% CUT 1, G7.1, UNTRACEABLE NUMBER.  "under the tangent 0.100025" is DELETED.  It
+% is the i.i.d. control under the tangent integrator and it lives in
+% research/S3/f1_probe_iid.json (key iid_tangent_null[1].miscoverage), which was
+% never booked into results/.  The only 0.100025 anywhere in results/ belongs to a
+% different arm entirely (variations, scorecaster +b/2, dead band tau = 0.9,
+% T = 2e5).  G7.1: a number that cannot be traced is deleted, not footnoted.
+%
+% CUT 2, G7.1, UNTRACEABLE NUMBER.  "[0.821,0.979] at T = 2500" is DELETED, and
+% docs/OUTSTANDING.md O56 -- "the one untraced number in the body" -- is thereby
+% discharged by deletion rather than by sourcing.  S3's own F1 reproduced the
+% interval to four decimals but ONLY after supplying two constants the paper does
+% not state (K_I = b/2, and a delta with ceil(log(2500)delta) = 1), and it is
+% sensitive to both: K_I = b gives [0.844,0.956] and delta = 0.2 gives
+% [0.731,1.069].  T = 2500 appears nowhere in ACT23.  What survives is the RATE,
+% which is derivable from the printed formula (c h(T)+1)/T at h(t) = t/log t and
+% needs no constant: the certificate decays as O(1/log T), not O(1/T).
+%
+% CUT 3, ORPHANED BY K3.  "Seven of the twenty-six anchors return an empty
+% reference list, so Table 2's counts are gaps rather than zeros" is DELETED.
+% sections/related.tex no longer prints cross-citation counts, so the caveat had
+% nothing left to qualify.  This is K3's handoff, accepted.
+%
+% CUT 4, FRAMING sec. 3 WATCH-LIST.  "a blind rerun" -> "a rerun done without
+% sight of them", and "No downstream readout here recovers the bound" -> a scope
+% statement naming Placement B.  Both were quantifiers standing in for
+% measurements; neither word is load-bearing and both are cheap to retire.
+%
+% CUT 5, G7.1, ADDED MID-WAVE ON THE ORCHESTRATOR'S TRACE (research/S4/grid-trace.md).
+% An earlier draft of this file conceded "one grid point of the thirty-two checked
+% reached the record as a count rather than by name".  "31 of 32" does not trace to
+% any committed artefact -- it rests on one line of a gitignored S3 file -- so it is
+% not printed at all, here or in forfeit.tex, and the concession that referred to it
+% goes with it.  What forfeit.tex prints instead is the traceable 19-of-19 check and
+% its resolution caveat.
 
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{One construction, one adversary, one saturator --- and its \emph{level} is the operative
-choice.} $0.63/(1-w)$ is specific to that level, not to the saturator's shape: raising the level to
-$4b$ --- admissible, since~(4) is a lower bound --- cuts $623.70$ to $120.60$, and under the
-unbounded tangent integrator \citet{angelopoulos2023pid} use in all their own experiments no width
-tried loses coverage, $\tau = 1.5$ covering at $0.100001$ and $623.70$ falling to $20.10$. Both
-results are about \emph{bounded} admissible integrators, which is what~(4) permits and not what
-its authors run. \textbf{The inherited guarantee is weak where it applies.} With that integrator,
-$h(t) = t/\log t$ and their Appendix~C constants ($K_I$ at the score bound), the bound decays as
-$O(1/\log T)$: at $T = 2500$, our horizon, it certifies coverage only into $[0.821,0.979]$ against
-$0.90$. What is forfeited was not a tight certificate.
-\textbf{The dead-band widths are absolute, and the failure is total only against the adversary.}
-$\tau$ is in score units with $b = 2$, so the failing $\tau = 1.5$ is $0.75\,b$; under i.i.d.\
-scores that arm returns $0.249376$, under the tangent $0.100025$. What survives is the mechanism:
-a band wider than $\tau^{\star}$ caps the reachable threshold below the reachable score range.
-\textbf{The harness was rebuilt against numbers already read}, which carries less evidential
-weight than a blind rerun; the free choices are registered in the code and travel with every
-output.
-\textbf{Seven of the twenty-six anchors return an empty reference list}, so
-Table~\ref{tab:bridge}'s counts are gaps rather than zeros. \textbf{No downstream readout here
-recovers the bound.}
+\textbf{One construction, one adversary, one saturator, and $0.63/(1-w)$ is specific to its
+\emph{level}} rather than to its shape, and condition~(4) bounds that level only from below. \textbf{The
+inherited guarantee is weak where it applies.} Under the tangent integrator $h(t) = t/\log t$, so
+the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$: what is forfeited
+was not a tight certificate. \textbf{The dead-band widths are absolute, and the failure is total
+only against the adversary.} $\tau$ is in score units with $b = 2$, so the failing $\tau = 1.5$ is
+$0.75\,b$; under i.i.d.\ scores that arm returns $0.249376$ rather than $1.000000$. What survives
+is the mechanism: a band wider than $\tau^{\star}$ caps the reachable threshold below the reachable
+score range. \textbf{The harness was rebuilt against numbers already read}, which carries less
+weight than a rerun done without sight of them; the free choices are registered in the code.
+\textbf{Placement~B, the readout Corollary~2 already covers, is not measured here}: it is
+conceded rather than tested, and this paper offers no evidence about it beyond the published
+argument. \textbf{One seed, and the grid brackets rather than locates.} Every arm is a single
+pass at one seed; the three widths per setting bracket each $\tau^{\star}$ but no bisection is
+booked, so the edge is located to within a tested interval and not to a digit. \textbf{What
+would overturn the tightness claim} is a legal $(\,r_t, \hat{q}_t)$ pair at which a dead band of
+width $\tau \le \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$ loses coverage, or one above it that
+keeps coverage; the run record contains neither, over the nineteen configurations it covers.

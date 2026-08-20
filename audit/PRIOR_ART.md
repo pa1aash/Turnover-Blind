@@ -712,6 +712,19 @@ is **not supported by the paper**, and one agent's verdict rested on that gloss 
 others read the full text. That adjudication is recorded in `research/S1/B1-verdicts.md`
 §1.2.
 
+> **WITHDRAWN 2026-08-20 BY SESSION S4. The claim of absence in the paragraph below is FALSE
+> and may not be cited from this file.** It was measured title-and-abstract-level in one
+> direction only, and the paragraph says so itself. Two later instruments overturned it:
+> S3's full-text screen found L2×L3 and L2×L4 connected and L1×L3 strongly connected, and
+> S3's own wave-2 agent (H6) found the last cell occupied — Semantic Scholar's *citations*
+> endpoint for Kalai–Vempala returns **875** citing works, **three** of them online conformal,
+> one of which this project's own paper cites. **No disconnection may be claimed between any
+> pair of the four literatures**, the paper claims none, and the four-literature bridge is not
+> a contribution. `docs/FRAMING.md` §2.2c; `docs/GATES.md` G7.10; `docs/OUTSTANDING.md` O51.
+> **The text is kept unedited below, as this file's own convention requires** (cf. §7.9.3,
+> struck through and marked WITHDRAWN in place). A negative claim is a claim about an
+> instrument, and one direction of one instrument is not the literature.
+
 **The bridge between the two literatures is unbuilt.** On arXiv, `"conformal"` crossed with
 `"forecast stability"`, `"forecast instability"`, `"forecast congruence"`, `"jumpiness"` and
 `"forecast revision"` returns **zero** on every pairing in both directions, and
