@@ -27,14 +27,14 @@
 \section{Supporting measurements}
 \label{app:support}
 
-\paragraph{The primary regime.} Every figure in Table~\ref{tab:forfeit} is measured under one
+\paragraph{The primary regime.} Every number in Table~\ref{tab:forfeit} is measured under one
 deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
 $\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
 specification is not a tie rule, and the distinction is measured rather than argued. Scoring
 an exact-threshold play \emph{as a miscoverage} reproduces the primary regime on every cell of
 Table~\ref{tab:forfeit}: $44$ of $44$ identical, all eleven arms at all four horizons. Scoring
 the same play under the \emph{strict} indicator does not, and it moves every row, because the
-adversary's signature move then covers rather than misses: partial adjustment at $w = 0.999$
+adversary's signature move then covers rather than misses. Partial adjustment at $w = 0.999$
 excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
 $1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading.
 \textbf{No row is convention-free with respect to the second}, which is why the adversary is
@@ -60,8 +60,8 @@ excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last
 in $T$ while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the
 horizon. On the control and the four partial-adjustment arms the excursion fits
 $\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon. This is a fit to
-those five arms, not a derived bound, and it does not extend to the other six: the growing
-time constants, the running mean and the dead bands all excurse further than it predicts.
+those five arms, not a derived bound. It does not extend to the other six: the growing time
+constants, the running mean and the dead bands all excurse further than it predicts.
 
 % ---------------------------------------------------------------------------
 % S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
@@ -83,7 +83,7 @@ time constants, the running mean and the dead bands all excurse further than it 
   \includegraphics[width=\textwidth]{../figures/figure3_settings.pdf}
   % S6 SUB-SESSION B: written to the SAME rule as the other two captions -- describe the
   % axes, the encoding and the measurement conditions, and argue nothing.  Four sentences.
-  \caption{All nineteen dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
+  \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
   rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
   Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
   markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$. The rule on each
@@ -98,8 +98,8 @@ time constants, the running mean and the dead bands all excurse further than it 
 $\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
 inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
 returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the
-$w = 0.999$ excursion from $623.70$ to $120.60$, which is the first term of $\tau^{\star}$
-moving the edge rather than the readout changing behaviour.
+$w = 0.999$ excursion from $623.70$ to $120.60$. That is the first term of $\tau^{\star}$
+moving the edge, not the readout changing behaviour.
 
 % S6 SUB-SESSION E: \clearpage ADDED, AND IT IS A STRUCTURAL FIX, NOT A NUDGE.
 % S5's J1 finding 8 was this heading stranded away from its only content.  Wave 4 fixed it
