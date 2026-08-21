@@ -31,8 +31,9 @@
 deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
 $\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
 specification is not a tie rule, and the distinction is measured rather than argued. Scoring
-an exact-threshold play \emph{as a miscoverage} reproduces the primary regime on every cell of
-Table~\ref{tab:forfeit}: $44$ of $44$ identical, all eleven arms at all four horizons. Scoring
+an exact-threshold play \emph{as a miscoverage} reproduces every quantity
+Table~\ref{tab:forfeit} reports: $44$ of $44$ arm-horizon cells identical, all eleven arms at
+all four horizons. Scoring
 the same play under the \emph{strict} indicator does not, and it moves every row, because the
 adversary's signature move then covers rather than misses. Partial adjustment at $w = 0.999$
 excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
@@ -59,7 +60,8 @@ $1.000000$.
 excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat
 in $T$ while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the
 horizon. On the control and the four partial-adjustment arms the excursion fits
-$\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon. This is a fit to
+$\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon, most loosely at
+$w = 0.9$, the one arm whose two branches cross inside the horizon range. This is a fit to
 those five arms, not a derived bound. It does not extend to the other six: the growing time
 constants, the running mean and the dead bands all excurse further than it predicts.
 

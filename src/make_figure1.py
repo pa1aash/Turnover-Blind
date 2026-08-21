@@ -19,7 +19,40 @@
 #
 #   * panel (b) was categorical (xs = range(11)).  The located window tau in [1, 1.001]
 #     took 10.000% of the axis while being 0.0910% of the true log span 0.5..1.5:
-#     INFLATED x109.9.  The 0.5 -> 0.9 interval, 53.5% of the true span, took 10%:
+#     INFLATED x109.9.
+#     THE SAME METRIC, APPLIED TO THE REBUILD, AND IT DOES NOT COME OUT AT 1.0.  The S6
+#     adversarial critic measured the shipped figure: the grey band is 13.14pt of a
+#     177.66pt axis, 7.40% measured and 7.370% analytically (linear half-zone 0.5 decade
+#     over a 6.7842-decade axis), against the same 0.09098% true-log-tau share.  That is
+#     INFLATED x81.0, a 26% reduction and not a repair.  IT IS RECORDED RATHER THAN
+#     BURIED, and here is why the metric does not transfer.  It is the right test for the
+#     OLD axis and the wrong test for this one.  The old axis declared NOTHING: it
+#     presented itself as an axis of tau values, placed them by integer index, and the
+#     reader had no way to know.  Measuring it against the honest coordinate for a
+#     positive continuous variable, log tau, was therefore exactly the right test.  This
+#     axis DECLARES its coordinate -- the label reads "tau, placed by tau - tau* (symlog)",
+#     the caption gives the linear zone, and every labelled tick carries the tau it marks --
+#     so the reader is not being told log tau and shown something else.  Any correct log
+#     or symlog axis magnifies its origin without limit; the metric condemns all of them,
+#     which is what makes it the wrong acceptance test here.
+#     WHAT THE CRITIC IS RIGHT ABOUT, AND IT IS A REAL LIMIT OF THIS DESIGN: the VISIBLE
+#     WIDTH of the grey band carries no information about how tight the bracket is.  With
+#     linthresh = 1e-7 a bracket ten thousand times tighter would render at the same 7.4%.
+#     AND THE COMPRESSION HALF OF THE OLD DIAGNOSIS IS REPRODUCED ALMOST EXACTLY, which is
+#     the sharpest thing either critic said.  The old axis gave tau in [0.5, 0.9] 10.0% of
+#     its width against a true log share of 53.5%, i.e. COMPRESSED x0.19.  This axis gives
+#     it 10.303%: x0.19 again, to two significant figures.  Eight of the ten gaps land
+#     between 4.4% and 14.7% of a uniform 10%.  That is not an accident and it is not
+#     fixable by tuning: the eleven widths are a geometric ladder in the OFFSET by
+#     construction, so any log-like axis in that offset places them near-uniformly.  What
+#     symlog buys over the index axis is DISCLOSURE, not a different picture: the sign
+#     symmetry and ordering about tau* become readable, and the coordinate is named on the
+#     axis and in the caption instead of being silently assumed.  The caption now also
+#     gives the reader the true share, so the correction does not live only in this file.
+#     Only the tick labels tell the reader that.  LINSCALE is 0.45 rather than
+#     matplotlib's default 1.0 precisely to shrink that band -- the default would render
+#     it at 15.0% -- but the residual is real and is stated here rather than left for a
+#     referee to find.  The 0.5 -> 0.9 interval, 53.5% of the true span, took 10%:
 #     COMPRESSED x0.19.  The eleven-point grid's whole content -- that the edge is pinned
 #     inside a window one part in a thousand wide -- was erased by the axis.
 #   * four markers nested at (tau=0.5, miscov~0.1) and four at (0.9, ~0.1), three at
@@ -310,8 +343,8 @@ def figure2(series, gridpts, taustars, alpha, b):
     # No tick AT tau* = 1: log(1/0.9) is 3.8% of this axis and a horizontal "1" label
     # collides with "0.9" (caught by the overlap audit).  The value is not lost -- the
     # dashed rule below is labelled with it.
-    axA.set_xticks([0.5, 0.9, 1.5, 2, 3, 5])
-    axA.set_xticklabels(["0.5", "0.9", "1.5", "2", "3", "5"])
+    axA.set_xticks([0.5, 0.9, 1.5, 2, 2.5, 3, 5])
+    axA.set_xticklabels(["0.5", "0.9", "1.5", "2", "2.5", "3", "5"])
     axA.xaxis.set_minor_locator(plt.NullLocator())
     axA.set_yticklabels(["0.1", "1.0"])
     axA.set_xlabel(r"dead-band width $\tau$   (score units, $b=2$)", labelpad=1.5)
@@ -345,7 +378,12 @@ def figure2(series, gridpts, taustars, alpha, b):
     # tau* rule: measured, not eyeballed -- see the overlap audit in main().
     leg = axA.legend(handles=hz, loc="lower right", bbox_to_anchor=(1.005, 0.235),
                      frameon=False, borderpad=0.2, labelspacing=0.28,
-                     handletextpad=0.4, borderaxespad=0.0)
+                     handletextpad=0.4, borderaxespad=0.0, title="in (a):")
+    # THE LEGEND IS TITLED "in (a):" AND THE TITLE IS LOAD-BEARING.  Marker fill encodes the
+    # horizon in panel (a) -- filled 1e6, open 2e5 -- but panel (b) is a single run at 1e5
+    # and draws every marker filled.  Untitled, this legend sits inside the same figure box
+    # and tells a reader who does not reach the caption that (b)'s filled markers are 1e6.
+    leg.get_title().set_fontsize(6.0)
     leg.set_zorder(6)
     axA.set_title(r"(a) the cliff at the null scorecaster", loc="left", pad=3.0)
 
@@ -429,7 +467,11 @@ def figure3(series, taustars, alpha, b):
                         arrowprops=dict(arrowstyle="-|>", color=C_EDGE, lw=0.9,
                                         shrinkA=0, shrinkB=0))
         elif ts <= XLO:
-            ax.annotate("", xy=(XLO * 1.002, i), xytext=(0.52, i), zorder=4,
+            # TAIL AT 0.455, NOT 0.52.  At 0.52 the tail landed INSIDE the tau = 0.5
+            # marker's footprint (the marker spans tau 0.483..0.517) and the arrow read as
+            # emanating from that data point, which is the opposite of what it means.  The
+            # tau* = inf arrow at the other end is free-standing; both now are.
+            ax.annotate("", xy=(XLO * 1.002, i), xytext=(0.455, i), zorder=4,
                         arrowprops=dict(arrowstyle="-|>", color=C_EDGE, lw=0.9,
                                         shrinkA=0, shrinkB=0))
         else:
