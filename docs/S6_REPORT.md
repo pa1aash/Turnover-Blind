@@ -439,11 +439,24 @@ the paper is submittable once venue and affiliation are set — the two claims a
 were verified, every printed number traces to `results/`, both builds are clean at offset 0,
 and the double-blind variant leaks nothing.
 
-**The one blocker is the push.** Until `main` is pushed, the availability statement is false:
-the remote is still at S5's HEAD, so it holds neither Figure 3 nor the generator that made
-either figure, and `figure1_boundary.pdf` there is the very figure this session condemned. A
-referee clicking that link today sees an S5 tree. That is this sub-session's last action and
-it is verified against the remote below.
+**The blocker was the push, and it is now closed.** Until `main` was pushed the availability
+statement was false: the remote sat at S5's HEAD, holding neither Figure 3 nor the generator
+that made either figure, and the `figure1_boundary.pdf` there was the very figure this
+session condemned. An adversarial pass caught it. It is now fixed and **verified against the
+live remote, not assumed**:
+
+- Port 22 was blocked, so the push used GitHub's SSH-over-443 endpoint. **The stored remote
+  was not modified** — a one-off URL was used, and `git remote -v` still reads
+  `git@github.com:pa1aash/Turnover-Blind.git`.
+- Remote `main` HEAD is `47df291`, matching local. `GET /commits/47df291` → 200, where before
+  the push `GET /commits/a18fd04` → 422.
+- Both figures and the generator are present **and identical**, compared by blob SHA against
+  `git hash-object`, not merely by existence: `c0c98e6f6589`, `f664984e41aa`, `13460b7b6a29`,
+  all MATCH.
+- All five `results/` JSONs are present. `GET /contents/research` → **404**, so the gitignore
+  held and nothing under `research/` was ever committed.
+
+Everything the availability statement promises a reader is now actually there.
 
 **The E-values deadline is 2026-08-29 23:59 AoE. As of today, 2026-08-21, that is 8 days.**
 The OpenReview form enforces `duedate` 2026-08-30 13:00 UTC, 61 minutes past the published
