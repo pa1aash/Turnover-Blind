@@ -1,0 +1,121 @@
+% Limitations.  A concession list, deliberately not softened; run-in bold leads
+%
+% S4 WAVE 2 (orchestrator): three additions, paid for by the space the R3c demotion freed
+% -- Placement B restated as CONCEDED rather than unrepaired, the single-seed and
+% bracket-not-bisect caveats made explicit, and a falsification condition printed. The
+% section was 11 typeset lines after wave 1, which is thin for a paper making a necessity
+% claim.
+% rather than \paragraph blocks to save vertical space in a 4-page body.  Every
+% item is either something a referee would otherwise find, or something this
+% project's own audit already found.  The R1 items (market model, position map,
+% Kelly, transaction costs, turnover, basis points, net log growth, the Ryan
+% replication and the measurement-leg occupancy) are DELETED, not compressed: the
+% claim they belonged to is gone.
+%
+% SESSION S4 WAVE 1, AGENT K2.  FOUR CUTS AND ONE MOVE, all recorded here.
+%
+% MOVED OUT, to sections/forfeit.tex: the saturator-level-4b result (623.70 ->
+% 120.60) and ACT23's tangent-integrator result (tau = 1.5 covers at 0.100001,
+% 623.70 -> 20.10).  Here they read as unexplained caveats on the headline.  They
+% are the SAME mechanism as the scorecaster sweep -- sup r_t and sup qhat are the
+% two terms of tau* -- so they belong in the characterisation, where raising
+% sup r_t is shown to raise the edge.  The lines this file loses pay for the lines
+% forfeit.tex gains; see that file's header for the other half of the exchange.
+%
+% CUT 1, G7.1, UNTRACEABLE NUMBER.  "under the tangent 0.100025" is DELETED.  It
+% is the i.i.d. control under the tangent integrator and it lives in
+% research/S3/f1_probe_iid.json (key iid_tangent_null[1].miscoverage), which was
+% never booked into results/.  The only 0.100025 anywhere in results/ belongs to a
+% different arm entirely (variations, scorecaster +b/2, dead band tau = 0.9,
+% T = 2e5).  G7.1: a number that cannot be traced is deleted, not footnoted.
+%
+% CUT 2, G7.1, UNTRACEABLE NUMBER.  "[0.821,0.979] at T = 2500" is DELETED, and
+% docs/OUTSTANDING.md O56 -- "the one untraced number in the body" -- is thereby
+% discharged by deletion rather than by sourcing.  S3's own F1 reproduced the
+% interval to four decimals but ONLY after supplying two constants the paper does
+% not state (K_I = b/2, and a delta with ceil(log(2500)delta) = 1), and it is
+% sensitive to both: K_I = b gives [0.844,0.956] and delta = 0.2 gives
+% [0.731,1.069].  T = 2500 appears nowhere in ACT23.  What survives is the RATE,
+% which is derivable from the printed formula (c h(T)+1)/T at h(t) = t/log t and
+% needs no constant: the certificate decays as O(1/log T), not O(1/T).
+%
+% CUT 3, ORPHANED BY K3.  "Seven of the twenty-six anchors return an empty
+% reference list, so Table 2's counts are gaps rather than zeros" is DELETED.
+% sections/related.tex no longer prints cross-citation counts, so the caveat had
+% nothing left to qualify.  This is K3's handoff, accepted.
+%
+% CUT 4, FRAMING sec. 3 WATCH-LIST.  "a blind rerun" -> "a rerun done without
+% sight of them", and "No downstream readout here recovers the bound" -> a scope
+% statement naming Placement B.  Both were quantifiers standing in for
+% measurements; neither word is load-bearing and both are cheap to retire.
+%
+% CUT 5, G7.1, ADDED MID-WAVE ON THE ORCHESTRATOR'S TRACE (research/S4/grid-trace.md).
+% An earlier draft of this file conceded "one grid point of the thirty-two checked
+% reached the record as a count rather than by name".  "31 of 32" does not trace to
+% any committed artefact -- it rests on one line of a gitignored S3 file -- so it is
+% not printed at all, here or in forfeit.tex, and the concession that referred to it
+% goes with it.  What forfeit.tex prints instead is the traceable 19-of-19 check and
+% its resolution caveat.
+
+% S5 SUB-SESSION A (2026-08-20): "under i.i.d. scores it returns 0.249376" NOW NAMES ITS
+% HORIZON.  The figure is aggregate_table[163].miscoverage -- arm deadband_tau1.5, regime
+% iid, T = 10^6 -- and that arm's i.i.d. miscoverage moves with T (0.244700 / 0.250440 /
+% 0.250515 / 0.249376), so an unqualified number was ambiguous.  The framing is honest: with
+% n = T = 1,000,000 and p = 0.25, se = sqrt(p(1-p)/n) = 0.000433, and 0.249376 sits 1.44
+% standard errors below 0.25 -- ordinary sampling noise around the exact value the uniform
+% -score calculation predicts, not a discrepancy.  n_err = 249,376 is stored alongside it.
+
+% S5 SUB-SESSION G3 (2026-08-20): PROSE AND PUNCTUATION PASS.  EVERY CONCESSION
+% SURVIVES, including the horizon qualifier "at T = 10^6" that sub-session A
+% added, the O(1/log T) rate, the absolute dead-band widths, the rebuilt-harness
+% admission, Placement B, the single seed with only the null scorecaster's edge
+% located, and the falsification condition.  Nothing was cut for space.
+%   (a) THE ONE EM-DASH IS GONE.  "...confirmation of the mechanism --- the
+%       threshold pins at..." joined two independent clauses, so it is now a
+%       sentence break.  File em-dash count 1 -> 0.
+%   (b) THE FIRST BOLD LEAD IS NOW A SENTENCE.  "One construction, one adversary,
+%       one saturator, and 0.63/(1-w) is specific to..." had a nominal fragment
+%       joined by "and" to a clause.  "The evidence is one construction, one
+%       adversary, one saturator" keeps the concession word for word and makes
+%       the paragraph open on a plain claim.
+%   (c) "Under the tangent integrator h(t) = t/log t, SO the certified gap..."
+%       was ungrammatical; the "so" is dropped and the sentence split at the
+%       rate, which also brings both halves under the number-density rule.
+%   (d) THREE OTHER SENTENCES SPLIT so that none carries more than two numeric
+%       claims: the b = 2 conversion, the i.i.d. return at its horizon, and the
+%       pin-plus-uniform-score explanation are now three sentences, not one.
+% MEASURED, three passes + bibtex: the section spanned margin lines 153-165 (13
+% typeset lines) before and 146-158 (13) after.  It saved nothing and it was not
+% expected to: after wave 2 every line but the last was 91-106 characters full,
+% so there is no slack here that is not content.  The 2 lines this sub-session
+% owed came from sections/related.tex.
+
+% S5 WAVE 6 (J1 finding 6): "the other four settings are bracketed at three widths" WAS
+% FALSE and is corrected to "the other four are one-sided".  Verified against
+% results/forfeit-variations-*.json: ONLY the null scorecaster has dead-band runs on both
+% sides of its tau* (0.5, 0.9 below; 1.5, 2, 2.5, 3, 5 above).  At qhat = +b/2 (tau* = 2),
+% level 4b (tau* = 7) and the tangent integrator (tau* unbounded) EVERY width run -- 0.5,
+% 0.9, 1.5 -- lies BELOW tau*; at qhat = -b/2 (tau* = 0) every one lies above.  So none of
+% the four brackets its edge.
+% THE CONSEQUENCE, WHICH DOES NOT FIT IN THE BODY AND IS BOOKED AS docs/OUTSTANDING.md O64:
+% the falsification condition printed below has two disjuncts, and the second -- "tau >
+% tau* that keeps coverage" -- is UNTESTED at the three settings whose runs all sit below
+% tau*, because the sweep contains no tau > tau* run there at all.  "The sweep has neither"
+% is true and stays; what it cannot say is that it looked everywhere.  ONE RUN, tau = 2.5 at
+% qhat = +b/2, would make the law falsifiable at a second setting.
+\section{Limitations}
+\label{sec:limitations}
+
+\textbf{The evidence is one construction, one adversary, one saturator}; and $0.63/(1-w)$ is
+specific to the saturator's \emph{level}, which condition~(4) bounds only from below.
+\textbf{The inherited guarantee is weak where it applies.} Under the tangent integrator
+$h(t) = t/\log t$, the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$.
+What is forfeited was not a tight certificate. \textbf{The dead-band widths are absolute, and the
+failure is total only against the adversary.} $\tau$ is in score units with $b = 2$, so the
+failing $\tau = 1.5$ is $0.75\,b$. Under i.i.d.\ scores it returns $0.249376$ at $T = 10^6$, an
+adversary-free confirmation of the mechanism rather than a retreat. The threshold pins at
+$b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly.
+\textbf{The harness was rebuilt against numbers already read}, which carries less weight than a
+rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{One seed,
+and only the null scorecaster's edge is bracketed}; the others are one-sided. \textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
+\tau^{\star}$ that loses coverage, or $\tau > \tau^{\star}$ that keeps it; the sweep has neither.

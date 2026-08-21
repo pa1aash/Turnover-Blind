@@ -1,0 +1,122 @@
+% Related work.  SESSION S4 WAVE 1, AGENT K3: R3c IS DEMOTED TO DESCRIPTIVE RELATED
+% WORK AND IS NOT A CONTRIBUTION.  docs/FRAMING.md sec. 2.2c records that S3's own
+% H6 agent falsified the four-literature disconnection -- Semantic Scholar's
+% citations endpoint for kalai2005lazy returns 875 citing works, three of them
+% online conformal, one of them chen2023ipoc, which this paper already cites.  The
+% payload never needed the disconnection and is what survives here: four
+% vocabularies name one quantity, and this paper's object sits in one of them.
+%
+% WHAT WAS DELETED THIS WAVE.  All of it was the machinery of a claim the paper no
+% longer makes.
+%   (a) Table 2's "Cites the other three?" row -- 0/437, 1/437, 0/437; 1/226,
+%       8/226, 3/226; 0/106; 0/93.  A cross-citation census is evidence for or
+%       against a disconnection; with no disconnection claimed it supports nothing,
+%       and printed counts invite the reading the paper disowns.
+%   (b) Table 2's "Lacks that the others have" row.  A four-way comparative claim
+%       of ABSENCE, and three of its four cells were quantifiers ("any interval or
+%       coverage object", "a decision that pays to move", "a calendar-time path
+%       functional") rather than instrument-scoped counts.
+%   (c) The whole cross-citation paragraph: the 862 references, the 13 crossings,
+%       the "concentrated rather than sparse" gloss, the over-matching-index
+%       caveat, the bolded "We claim no disconnection", and the 875-citing-works
+%       refutation.  A printed denial of a claim the paper does not make is the
+%       last residue of the contribution: it tells a referee to look for a bridge
+%       claim that is not there.
+%   (d) The caption's closing cross-citation sentence, which sourced (a).
+% The surviving row is renamed from "Has that the others lack" -- itself a
+% comparative absence claim -- to a plain statement of what each field contributes.
+%
+% KEPT DELIBERATELY.
+%   - The caption names TEN names across FOUR vocabularies and is load-bearing:
+%     sections/setup.tex cites this caption for that count, because docs/GATES.md
+%     G7.11 requires the names to be conceded and the total NOT to be printed.
+%   - "What is conceded, by name" is untouched in substance.  It carries G7.4's
+%     concession list (placement -> ACT23 / Dupuy / Duerst; derivation ->
+%     li2025o2cp Cor. 2 and wang2026acmcp; smoother object, metric arithmetic and
+%     both readout forms -> sections/setup.tex; anti-windup -> galeani2009antiwindup)
+%     and G7.5's concession of the derivation by name.
+%   - ANDREW ET AL. THEOREM 7 STAYS PRINTED AS THE TRADE-OFF IT IS (docs/FRAMING.md
+%     sec. 3, corrected 2026-08-20): sublinear regret is bought by growing theta
+%     with T, which grows the competitive ratio.
+%
+% Every \citep key below resolves against audit/REFS_VERIFIED.bib.  Four keys this
+% file used to cite are now cited by no file: zinkevich2003ogd, kalai2005lazy,
+% zhang2024bayesianocp, ramalingam2025noregret.  They stay in the .bib and plainnat
+% prints only cited entries, so nothing breaks; they are reported to the
+% orchestrator in research/S4/K3-demotion.json.
+%
+% DOWNSTREAM, REPORTED AS A HANDOFF (K3 does not own that file):
+% sections/limitations.tex still reads "Seven of the twenty-six anchors return an
+% empty reference list, so Table 2's counts are gaps rather than zeros."  Table 2
+% no longer prints counts, so that sentence is orphaned and should be cut.
+%
+% S5 SUB-SESSION G3 (2026-08-20): PROSE AND PUNCTUATION PASS.  No concession was
+% dropped, softened or renamed; every \cite key that was here is still here, and
+% Table 2 (caption, row, and the Andrew et al. Thm 7 TRADE-OFF wording) is
+% untouched.  What changed:
+%   (a) BOTH EM-DASHES ARE GONE.  The pair around "the admissible set around the
+%       deployed threshold" was a genuinely subordinate appositive, so it is now
+%       parenthesised.  File em-dash count 2 -> 0.
+%   (b) TOPIC SENTENCE PER CONCESSION.  The run-on enumeration is now one short
+%       declarative sentence per concession: placement / derivation / Section 2's
+%       objects / the four smoother-in-the-argument papers / anti-windup /
+%       gao2025coloke.  No sentence exceeds 28 words; the longest before was 45.
+%   (c) TWO CITATIONS MOVED TO THEIR natbib LOCATOR FORM, which prints the same
+%       information in fewer characters: \citet[Appendix~A]{dupuy2026relevance}
+%       and \citet[Corollary~2]{li2025o2cp}.  The second replaces a
+%       \citeauthor{...}'s Corollary~2 ... \citep{...} pair that named li2025o2cp
+%       twice.  G7.5 still reads on it: "Li et al. [2025, Corollary 2]" names the
+%       derivation's prior art in the printed text.
+%   (d) THE OPENING SENTENCE IS NOW RUN INTO THE CONCESSION PARAGRAPH and the
+%       \paragraph head is a \textbf run-in lead, which is the style
+%       sections/limitations.tex already uses.  THIS IS THE ONLY STRUCTURAL
+%       CHANGE AND IT IS WORTH EXACTLY ONE TYPESET LINE: the standalone opening
+%       paragraph ended a line 45 characters short, and merging recovers it.
+%       Reverting it (restore \paragraph{What is conceded, by name.} and the
+%       blank line) costs one line and nothing else.
+% MEASURED, three passes + bibtex: section 4 spanned margin lines 136-152 (17
+% typeset lines) before, 131-145 (15) after.  2 lines saved.  0 undefined
+% citations, 0 overfull boxes, 0 \pdfendlink warnings.
+
+% S5 WAVE 6, J1 FINDING 4: AN UNSUPPORTED CLAIM ABOUT OUR OWN MEASUREMENT IS DELETED.
+% This paragraph used to end "Section 3 measures that accumulation diverging", of
+% gao2025coloke's assumption that sum_{t<=T} q_t <= O(alpha h(T)).  SECTION 3 MEASURES NO
+% SUCH THING.  No results/ field holds sum_t q_t: aggregate_table carries max_abs_E and
+% deployed_travel, and travel is sum|delta q|, a DIFFERENT quantity.  Worse, the mean
+% deployed threshold is about +1.06 for the UNSMOOTHED control, so the sum the sentence
+% pointed at grows linearly for this paper's own baseline too -- cashed out, the sentence
+% indicted a neighbour's assumption on a ground our own control also violates.
+% G7.1's standard is that an untraceable claim is deleted rather than footnoted, so it is
+% deleted.  What survives is the accurate part: their assumption is supported with a plot
+% rather than derived, which is their own Fig. 2a caption's wording.
+\section{Where this sits}
+\label{sec:related}
+
+Four vocabularies name one quantity many ways, and the object that settles its validity (the admissible set
+around the deployed threshold) sits in the first of them. Table~\ref{tab:bridge} in Appendix~\ref{app:bridge} names them and what each
+contributes. \textbf{What is conceded, by name.}
+The placement is prior work:
+\citet{angelopoulos2023pid} state coverage for any admissible integrator and any scorecaster, and
+run a smoothing-family model in that slot themselves. \citet[Appendix~A]{dupuy2026relevance} give
+the generic argument, and \citet{duerst2024calibrating} adopt that scorecaster. The derivation is
+prior work too, and this concession matters most. \citet[Corollary~2]{li2025o2cp} prove the
+retention statement in Conformal PID's own notation, with \citet{wang2026acmcp} an independent
+second instance. Section~\ref{sec:setup} concedes the smoother object, the metric arithmetic and
+both readout maps. \citet{zheng2025scdsplit,wu2025eci,chen2023ipoc,lade2026bcaci} each place a
+smoother inside their own validity argument. One vocabulary out, this is integrator anti-windup
+with a feedforward path: free-until-the-bound-binds is its defining specification, not a finding
+\citep{galeani2009antiwindup}. Nearest in the other direction, \citet{gao2025coloke} run the same
+recursion but gate the \emph{model} update on the conformal score. Their one non-standard
+assumption is that $\sum_{t \le T} q_t \le O(\alpha\,h(T))$ for a sublinear $h$, supported with a
+plot rather than derived.
+% Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.
+%
+% gao2025coloke: "Conformal Online Learning of Deep Koopman Linear Embeddings", arXiv:2511.12760,
+% submitted 2025-11-16, updated 2026-01-27; full text read at
+% research/S3/records/arxiv_2511.12760_coloke.txt before citing.  NO VENUE IS ASSERTED: the S3
+% critic reported NeurIPS 2025 and HAL-only and the orchestrator found neither claim supported by
+% the arXiv record.  Their (A3) is quoted from p.6 of that text; their own Fig. 2a caption calls it
+% "sublinear growth supporting (A3)", i.e. a plot rather than a derivation, and they write that
+% "deriving it remains an important direction for future work".  Counted in the 65,398-character
+% full text by the orchestrator: "miscoverage" 0, "marginal coverage" 0, "scorecaster" 0 -- so it
+% is a neighbour, not an occupant, and the paper says so.

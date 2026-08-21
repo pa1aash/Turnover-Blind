@@ -1,0 +1,325 @@
+% ---------------------------------------------------------------------------
+% Turnover-Blind -- workshop note, 4-page body.
+%
+% BUILD, from this directory (artefacts are untracked; .gitignore covers
+% *.aux *.log *.bbl *.blg *.out):
+%   pdflatex main && bibtex main && pdflatex main && pdflatex main && pdflatex main
+% FOUR pdflatex passes, not three, since S6 sub-session E added \clearpage to
+% sections/appendix.tex.  With three, pass 3 writes an .aux that differs from the one it
+% read and LaTeX emits "Label(s) may have changed.  Rerun to get cross-references right."
+% MEASURED BEFORE CHANGING THE RECIPE, not assumed: pass 4's .aux is byte-identical to
+% pass 3's and the rendered text of the two PDFs is identical, so the three-pass output was
+% already correct and the warning was page bookkeeping.  The fourth pass is there so the log
+% reads 0 LaTeX warnings and a future session does not have to re-derive that.
+% No TEXINPUTS/BIBINPUTS needed: neurips_2026.sty sits beside this file and the
+% bibliography is reached by relative path.  If your bibtex refuses the relative
+% path, use BIBINPUTS=".:../audit:" bibtex main instead.
+%
+% Every citation key resolves against audit/REFS_VERIFIED.bib (92 entries; 31
+% keys are cited, rendering 34 bibitems -- recounted S5 wave 6; the header's old
+% "38" was stale).  No bibliography-gap marker survives: wave 3 closed all of them and
+% wave 5 added gao2025coloke, so every work named in the body is a \citep.
+%
+% RE-MEASURED, S4 WAVE 2, BOTH VENUE OPTIONS, three passes + bibtex.  This block
+% supersedes S3 wave 5's measurement, which had gone stale: the S4 resize cut R3c
+% and the body fell BELOW four pages before it was refilled.
+%   body = 4 pages under BOTH options, verified by locating the "References"
+%   heading in the rendered PDF: it is the FIRST content on p.5, OFFSET 0.
+%   6 pages total, references on pp.5-6.
+%   THE OFFSET IS THE TEST, NOT THE PAGE COUNT.  Wave 2 recorded "offset 6" and
+%   called it 4 pages; those six lines were BODY TEXT ON PAGE 5, i.e. an overrun
+%   past E-values' ceiling, and wave 4's instruction critic caught it by reading
+%   page 5 instead of trusting the field.  Any offset > 0 is an overrun.
+%   0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull boxes,
+%   3 underfull hboxes (ragged fill in the surviving Table 2 row), 0 LaTeX
+%   warnings, 0 bibtex warnings.  S3 recorded 14 underfull hboxes across two
+%   p-column tables; K3's demotion of Table 2 to a single row removed most.
+%
+% ONE STRUCTURAL HAZARD, RECORDED SO IT IS NOT REINTRODUCED: pdftex CANNOT split
+% a hyperref link across a page boundary.  It dies with "! This can't happen
+% (pdfvlistout)" after a \pdfendlink nesting warning, and produces no PDF.  After
+% wave 4's edits the page 2/3 break landed inside "Li et al. [2025, Corollary 2]",
+% which is why that one citation in sections/forfeit.tex is wrapped in \mbox.
+%   dblblindworkshop anonymises correctly ("Anonymous Author(s)"); sglblindworkshop
+%   prints the author block.  Identical geometry under both.
+%
+% THE BODY IS EXACTLY FULL.  Wave 5 paid for every addition with a cut; the
+% cuts are recorded in the header of the file each one was taken from.
+%
+% S5 SUB-SESSION A (2026-08-20): NUMERIC PROVENANCE AUDIT.  Two things changed here.
+%   1. THE ABSTRACT'S MISCOVERAGE WAS THE WRONG HORIZON.  It read "overruns Proposition 2's
+%      bound 42x at T = 10^6 and still covers, 0.100035".  0.100035 is arm ema_w0.999's
+%      miscoverage at T = 2x10^5 (aggregate_table[18]); the 42x ratio is its T = 10^6 figure
+%      (aggregate_table[19].ratio = 42.0978).  The sentence paired a 10^6 ratio with a 2x10^5
+%      miscoverage while implying both were at 10^6.  The measurement EXISTS at the right
+%      horizon -- aggregate_table[19].miscoverage = 0.100004 -- so it is PRINTED, not footnoted.
+%   2. TABLE 1 GAINED A "miscov. 10^6" COLUMN so the abstract's number is visible in the table
+%      it points at.  Seven columns fit: 0 overfull boxes, body still 4 pages, offset 0.
+%
+% RE-MEASURED, S6 WAVE 2 (SUB-SESSION F), BOTH VENUE OPTIONS, FOUR passes + bibtex,
+% artefacts deleted first.  THIS SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT, INCLUDING
+% S5 WAVE 5's, WHICH IS NOW STALE IN ONE SPECIFIC WAY, CORRECTED HERE RATHER THAN LEFT:
+%   S5 wave 5 recorded that dblblindworkshop "runs 2 lines onto p.5" because the style
+%   file's anonymous author block is FOUR lines against our three, and told a later session
+%   not to "fix" it.  THAT IS NO LONGER TRUE.  After S6's Introduction rewrite and the
+%   Figure 2 height reduction, BOTH options are OFFSET 0: "References" is the FIRST content
+%   on p.5 under each.  The two builds share an offset again for the first time since wave 2.
+%   Nothing was done to make that happen and nothing should be done to preserve it -- it is
+%   a measurement, and TS-LIMITS allows 4-7 body pages either way.
+%
+%   BOTH OPTIONS, S6 wave 2: 0 TeX errors, 0 undefined citations, 0 undefined refs,
+%   0 overfull boxes, 3 underfull hboxes, 0 LaTeX warnings, 0 pdfendlink warnings,
+%   0 bibtex warnings, main.aux 14,016 bytes, 8 pages total.
+%   Body pp.1-4 (OFFSET 0), references pp.5-6, appendix A p.7, appendix B p.8.
+%   Pages went 7 -> 8 in S6 sub-session E: the appendix grew and \clearpage now starts
+%   appendix B on its own page.  E-values excludes appendices from the 4-page ceiling, so
+%   the page COUNT is not the test and never was.  THE OFFSET IS THE TEST.
+%   dblblindworkshop metadata re-checked in the same wave: pdfinfo Author reads
+%   "Anonymous Author(s)", and the compiled PDF contains 0 occurrences of the author's
+%   name in pdfinfo, 0 in the page text, and 0 of "github.com" (S6's availability
+%   statement is \if@anonymous-guarded, so it does not print there at all).
+%
+% SUPERSEDED, KEPT AS HISTORY -- S5 WAVE 5, BOTH VENUE OPTIONS, three passes + bibtex.
+%   sglblindworkshop (E-values, the BINDING option): body = 4 pages.  "References" is the
+%   FIRST content on p.5, OFFSET 0.  7 pages total: body pp.1-4, references pp.5-6,
+%   appendix p.7.  0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull
+%   boxes, 2 underfull hboxes, 0 bibtex warnings, 0 \pdfendlink warnings, main.aux
+%   13,526 bytes (a 0-byte aux is the SIGSEGV trap, not a clean run).
+%
+%   dblblindworkshop (TS-LIMITS): SAME counters, but the body runs 2 lines onto p.5,
+%   because the style file's anonymous author block is FOUR lines against our three.
+%   THIS IS NOT A DEFECT AND MUST NOT BE "FIXED": TS-LIMITS allows 4-7 body pages.
+%   CORRECTED S5 WAVE 5 -- the S5 sub-session A block this replaces claimed OFFSET 0
+%   under BOTH options, and that was never true after the figures went in.  The two
+%   builds have not shared an offset since wave 2.  docs/VENUE.md also records the
+%   TS-LIMITS "4-7pp" figure as NOT VERIFIED (its site did not yield to headless
+%   retrieval), so the binding constraint is E-values' 4 pages, which is met exactly.
+%
+% THE pdfvlistout HAZARD FIRED AGAIN AND IS NOW CLOSED AT ITS SOURCE.  The wider Table 1
+% moved the page 1/2 break into \citet{li2024neuralconformal} in sections/intro.tex, and
+% pdflatex SEGFAULTED (rc 139) on the third pass under dblblindworkshop -- it already emitted
+% one "\pdfendlink ended up in different nesting level" warning BEFORE this session's edits,
+% on that same citation, without dying.  That citation is now \mbox-wrapped, exactly as the
+% forfeit.tex one is, and both venues build with zero \pdfendlink warnings.  Bisected: the
+% table column alone reproduces the crash; none of the prose edits does.
+%
+% S4 WAVE 4 (orchestrator, after adversarial critic N1): RETITLED AGAIN, AND THE REASON
+% MATTERS.  Wave 2's title asserted flatly "The Admissible Radius Is Tight".  N1 showed on the
+% paper's own numbers that the radius is tight at exactly ONE non-degenerate setting -- the null
+% scorecaster with the minimal admissible saturator -- and LOOSE at three others, including
+% ACT23's own tangent integrator, the one they report using in all their experiments.  "Tight"
+% is existential in standard usage and the flat title is defensible on that reading, but a
+% referee meets the title before the qualifier, and the qualifier is 130 words into the abstract.
+% "Binds" locates the claim instead of asserting it, and locating is what the paper actually
+% does -- it says where the condition binds AND where it does not.  Collision-checked headlessly
+% on arXiv's classic FULL-TEXT index (searchtype=ft) 2026-08-20, calibrated both ways in the same
+% session: nonsense token 2,844 B "No Results"; positive control "conformal prediction" 12,337 B,
+% 258 hits; "admissible radius binds" 2,843 B, REAL ZERO.  Records under
+% research/S4/records/title/.  Superseded: "Coverage Is Turnover-Blind" (S0-S2), "Where the
+% Movement Penalty Goes" (S3), "The Admissible Radius Is Tight" (S4 wave 2).
+%
+% S4 WAVE 2 (2026-08-20, orchestrator): RETITLED.  "Where the Movement Penalty Goes"
+% was the last of the decision-cost register; the paper's claim is that O2CP Corollary 2's
+% admissible radius is tight, so the title says that.  Collision-checked on arXiv's classic
+% FULL-TEXT index (searchtype=ft) 2026-08-20, calibrated both ways first: the exact phrase
+% "admissible radius is tight" returns a real zero (2,846 B, literal "No Results."; zero
+% pages measure 2839-2847 B, hit pages 4005 B and up).  "admissible radius" returns 97, all
+% pure mathematics; paired with "conformal prediction", 2, both a reachability sense and
+% neither a title.  Record: research/S4/K1-retitle.json.  Superseded titles, for anyone
+% following a link: "Coverage Is Turnover-Blind" (S0-S2), "Where the Movement Penalty
+% Goes: ..." (S3).
+%
+% S4 WAVE 1 (2026-08-20, agent K4): THE ABSTRACT ONLY was rewritten, to state
+% exactly the two claims the paper now makes -- the joining of the two printed
+% halves, and the tightness of O2CP Corollary 2's admissible radius -- and to
+% drop the decision-cost register ("movement penalty") that the retitle removes.
+% Nothing else in this file was touched: \title, \workshoptitle, the venue
+% switch, the \usepackage lines and the author block are unchanged and the venue
+% stays [OPERATOR INPUT].  The abstract's growth is paid for by cuts inside
+% sections/intro.tex, recorded in that file's header.
+% ---------------------------------------------------------------------------
+\documentclass{article}
+
+% ===========================================================================
+% VENUE SWITCH -- [OPERATOR INPUT].  NOT DECIDED BY THIS DRAFT.
+% Exactly one pair is active.  Flip the \usepackage line and the
+% \workshoptitle line together; nothing else in the paper changes.  The body
+% is written anonymity-neutral, so the same text is legal under both regimes.
+%   sglblindworkshop -> E-values: From Statistics to ML   (4 pp. ceiling)
+%   dblblindworkshop -> TS-LIMITS                         (4-7 pp., anonymised)
+% ===========================================================================
+\usepackage[sglblindworkshop]{neurips_2026}    % E-values
+%\usepackage[dblblindworkshop]{neurips_2026}   % TS-LIMITS
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{microtype}
+% S5 WAVE 2.  graphicx for Figure~\ref{fig:boundary} (sub-session B, a data figure built
+% by src/make_figure1.py); tikz for Figure~\ref{fig:placements} (sub-session C, an inline
+% schematic).  ONLY the positioning library is loaded, and arrows.meta MUST NOT BE ADDED:
+% tikzlibraryarrows.meta.code.tex does not exist on this machine -- the local pgf tree is a
+% partial texlive-basic install carrying only the legacy tikzlibraryarrows -- so anything
+% using arrows.meta fails to compile here even though pgf reports 3.1.11a.  Verified by
+% sub-session C and again by the orchestrator with find over all three texmf trees.
+% S5 WAVE 4: FLOAT GLUE TIGHTENED.  Four floats (two tables, two figures) in a
+% four-page body is more than LaTeX's default separation can pack: with the
+% defaults it put Table 1 and Figure 2 on the SAME page and left that page only
+% eight body lines, pushing 18 lines past the ceiling.  These reduce the WHITE
+% SPACE around floats only.  The venue's style file is NOT modified -- it sets
+% topfraction/textfraction/floatpagefraction at neurips_2026.sty:226-229 and
+% leaves the separation glue at LaTeX's defaults, which is what is overridden
+% here.  No content, no font size and no float is changed by this block.
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% ---------------------------------------------------------------------------
+% TITLE AND PDF METADATA -- SINGLE SOURCE OF TRUTH (S5 sub-session E).
+% The title is written ONCE, as \papertitle, and consumed by BOTH \title{} and
+% \hypersetup{pdftitle=}, so pdfinfo can never drift from the printed title.  A
+% LATER SESSION THAT RETITLES THE PAPER EDITS \papertitle AND NOTHING ELSE.
+% Keep \papertitle plain text: hyperref writes it verbatim into the PDF Info
+% dictionary, and LaTeX markup here would need \texorpdfstring.
+% Before this block, pdfinfo reported Title: (blank) and Author: (blank).
+% ---------------------------------------------------------------------------
+\newcommand{\papertitle}{Where the Admissible Radius Binds: a Correction and a Measured
+Boundary in Online Conformal Prediction}
+\newcommand{\paperauthor}{Palaash Gang}
+
+\title{\papertitle}
+
+% PDF METADATA MUST RESPECT THE ANONYMITY REGIME.  Found 2026-08-21 by S5's
+% adversarial critic (J1 finding 2) and it was THIS SESSION'S OWN REGRESSION: an
+% unconditional \hypersetup{pdfauthor} makes the dblblindworkshop build print
+% "Anonymous Author(s)" on page 1 while pdfinfo reports "Palaash Gang".  `strings`
+% does not show it, because the Info dictionary sits in a compressed object stream,
+% which is why the sgl-only checks never saw it.  Before S5 added this block the
+% field was blank, i.e. anonymous BY ACCIDENT; setting it made the leak.
+% At a double-blind venue that is a de-anonymisation and a desk-reject risk.
+% \if@anonymous is the style file's own flag: neurips_2026.sty:78 declares it TRUE,
+% and only the non-anonymous options (sglblindworkshop, nonanonymous) clear it, so
+% this tracks the venue switch automatically and needs no second thing to remember.
+% NO COLOURED LINK BORDERS.  hyperref's default draws a box on every link: S5's
+% adversarial critic counted 130 annotations with /Border[0 0 1] /C[0 1 0] in the
+% compiled PDF, 41 of them on page 1 alone -- green boxes round every citation and
+% red round every \ref.  They print, and a referee sees them.  hidelinks keeps the
+% links live and clickable and removes the borders (J1 finding 9).
+\hypersetup{hidelinks}
+
+\makeatletter
+\if@anonymous
+  \hypersetup{pdftitle={\papertitle}, pdfauthor={Anonymous Author(s)}}
+\else
+  \hypersetup{pdftitle={\papertitle}, pdfauthor={\paperauthor}}
+\fi
+\makeatother
+
+\workshoptitle{E-values: From Statistics to ML}
+%\workshoptitle{Generalization for Time Series in Tight Settings (TS-LIMITS)}
+
+% AUTHOR BLOCK.  Printed only under sglblindworkshop; the dblblindworkshop
+% option replaces it with the style file's own four-line anonymous block.
+% NAME and EMAIL are settled and are NOT open questions.  THE AFFILIATION IS
+% [OPERATOR INPUT]: the visible value below is a placeholder, and the question
+% is docs/OPEN_QUESTIONS.md Q11.
+% NO ADDRESS LINE.  The NeurIPS 2026 template imposes no line count on \author
+% -- its own shell block runs to five lines -- and no postal address was
+% available, so none was invented.  The former claim here, that four lines were
+% needed so the two builds share first-page geometry, is FALSE in a narrow
+% measured way and is corrected rather than repeated: dropping the address moves
+% exactly ONE body line from p.2 up to p.1 in the sglblindworkshop build, and
+% \flushbottom re-absorbs it inside p.2, so pp.2 onward are line-for-line
+% identical between the two builds.  The body ENDS in the same place under both,
+% which is the invariant the 4-page ceiling is actually measured against.
+% An affiliation long enough to WRAP TO TWO LINES would undo that and must be
+% re-measured by the offset test, never by a page count.
+\author{%
+  \paperauthor \\
+  Independent Researcher \\
+  \texttt{palaashgang@gmail.com}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A printed claim that the scorecaster breaks online conformal coverage meets its
+refutation by overlapping authors; this paper joins them and locates the edge of the set that
+refutation relies on. Conformal PID states long-run coverage for any
+bounded scorecaster; a corollary keeps it for predictable perturbations of the deployed
+threshold inside an admissible radius. The claim was acted on; placement and derivation
+are conceded by name. At the null scorecaster that condition is \emph{tight}. A legal
+$L_1$ dead band on the \emph{completed} threshold leaves that set at its radius, and
+past it miscoverage is $1.000000$ against $\alpha = 0.1$. Coverage goes, not only the
+rate. The edge belongs to the
+saturator--scorecaster pair, not the readout; elsewhere the condition is sufficient
+only. Under the equally legal $\hat{q} \equiv +b/2$ the failing band covers; at
+$\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/setup}
+\input{sections/forfeit}
+\input{sections/related}
+\input{sections/limitations}
+\bibliographystyle{plainnat}
+\bibliography{REFS_VERIFIED}
+
+% ---------------------------------------------------------------------------
+% S6 SUB-SESSION D: CODE AND DATA AVAILABILITY.  This closes docs/OUTSTANDING.md O65.
+%
+% THE URL IS VERIFIED, NOT ASSUMED.  Checked headlessly on 2026-08-21 with
+%   curl -s https://api.github.com/repos/pa1aash/Turnover-Blind
+% which returned HTTP 200 with "private": false, "visibility": "public",
+% "default_branch": "main".  No browser was used and none is configured.
+%
+% IT IS GUARDED BY \if@anonymous, WHICH IS WHAT O65 ACTUALLY ASKED FOR.  A bare repository
+% link under dblblindworkshop is a de-anonymisation and a desk-reject risk, the same defect
+% class as the pdfauthor leak S5's adversarial critic found.  \if@anonymous is the style
+% file's own flag (neurips_2026.sty:78 declares it TRUE; only sglblindworkshop and
+% nonanonymous clear it), so this tracks the venue switch automatically and needs no second
+% thing to remember.  UNDER dblblindworkshop THIS SECTION DOES NOT PRINT AT ALL.
+% THE VENUE DECISION IS NOT TOUCHED BY THIS BLOCK.  It is correct under either option.
+%
+% PLACEMENT, AND WHY IT IS NOT THE DEFAULT ONE.  The S6 brief's default is a short
+% unnumbered paragraph immediately after Limitations, with "an unnumbered final section"
+% named as the other legitimate convention.  The default was BUILT AND MEASURED FIRST, in
+% sections/limitations.tex, and it does not fit: the body is exactly full at OFFSET 0 and the
+% statement is 2 typeset lines, which spilled onto p.5 in three successive shortenings.  The
+% only ways to buy those lines were to cut claim-bearing prose or to shrink Figure 2 past
+% what sub-session A's readability check certifies, and trading a claim for a metadata
+% statement is the wrong way round.  E-values excludes references and optional appendices
+% from the 4-page count, so this position is free and legal, and the section heading keeps it
+% findable in the PDF outline.  The NeurIPS 2026 template prescribes no position (checked:
+% paper/neurips_2026.tex and paper/checklist.tex mention the code submission policy but not
+% placement) and the E-values page cannot be re-read without a browser.
+% UNDER TS-LIMITS, which allows 4-7 body pages, this moves back after Limitations for free.
+%
+% IT DOES NOT OVERCLAIM.  It lists what is actually in the repository and claims nothing
+% about packaging, anonymisation or review-readiness.
+% ---------------------------------------------------------------------------
+\makeatletter
+\if@anonymous\else
+\section*{Code and data}
+The simulator, its frozen configuration, the \texttt{results/} files behind every figure and
+table, the generators that read them, and this project's audit trail across sessions are at
+\url{https://github.com/pa1aash/Turnover-Blind}.
+\fi
+\makeatother
+
+% APPENDIX AFTER THE REFERENCES.  E-values excludes BOTH from the 4-page ceiling
+% ("Short papers up to 4 pages, excluding references and optional appendices"), so
+% the body-end test is unchanged: References must still be the FIRST content on the
+% page after the body ends.
+\input{sections/appendix}
+
+\end{document}

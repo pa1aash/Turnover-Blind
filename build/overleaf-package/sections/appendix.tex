@@ -1,0 +1,156 @@
+% ---------------------------------------------------------------------------
+% APPENDIX -- ADDED S5 WAVE 4, AND THE REASON IS A MEASUREMENT, NOT A PREFERENCE.
+%
+% Wave 3's prose pass met its 24-line target (body 165 -> 141 typeset lines) and the
+% body STILL overran, because four floats -- two tables and the two figures wave 2
+% added -- do not pack into four pages.  Agent G2 had honoured rulebook rule 6 by
+% moving numbers out of running prose INTO the Table 1 and Figure 2 captions, but
+% caption text costs exactly what body text costs; the load was relocated into floats
+% rather than reduced, and floats pack worse.  With LaTeX's default float glue this
+% put Table 1 and Figure 2 on the SAME page and left that page eight body lines.
+%
+% E-values' call, fetched headlessly on 2026-08-20 and quoted verbatim, reads:
+%   "Short papers up to 4 pages, EXCLUDING REFERENCES AND OPTIONAL APPENDICES."
+% So an appendix is explicitly permitted and does not count against the ceiling.
+% Rule 6 allows a fact to move "to a table, an appendix, or a figure caption"; this
+% is that move, to the one destination that is free.  NOTHING IS DELETED HERE: every
+% number below was printed in the paper before this wave, and each is still traceable
+% to results/ by the same field paths audit sub-session A recorded.
+%
+% TS-LIMITS allows 4-7 body pages, so under that option this material could return to
+% the body.  It is kept here because the tighter of the two live options governs while
+% the venue is [OPERATOR INPUT].
+% ---------------------------------------------------------------------------
+
+\appendix
+
+\section{Supporting measurements}
+\label{app:support}
+
+\paragraph{The primary regime.} Every number in Table~\ref{tab:forfeit} is measured under one
+deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
+$\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
+specification is not a tie rule, and the distinction is measured rather than argued. Scoring
+an exact-threshold play \emph{as a miscoverage} reproduces every quantity
+Table~\ref{tab:forfeit} reports: $44$ of $44$ arm-horizon cells identical, all eleven arms at
+all four horizons. Scoring
+the same play under the \emph{strict} indicator does not, and it moves every row, because the
+adversary's signature move then covers rather than misses. Partial adjustment at $w = 0.999$
+excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
+$1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading.
+\textbf{No row is convention-free with respect to the second}, which is why the adversary is
+specified rather than tie-broken. At $\tau = \tau^{\star}$ itself the two readings part: the
+strict indicator returns $0.000000$ where scoring the exact play as a miscoverage returns
+$1.000000$.
+% S6 SUB-SESSION C, RULE-6 MOVE.  Those two numbers were in sections/forfeit.tex, in the
+% endpoint sentence, which already pointed here.  They are endpoint-convention detail, this
+% is the paragraph that discusses the convention, and the appendix does not count against
+% E-values' 4-page ceiling.  NOTHING IS DELETED: both are still printed, and the body still
+% states the claim they support.  This is what pays for the Introduction's new opening.
+
+% S6 SUB-SESSION E2: THE SCOPE OF THE FITTED LAW IS CORRECTED.  It read "Across the arms the
+% excursion fits ...", and recomputed against results/ that is not true.  The fit holds on the
+% control and the four partial-adjustment arms -- 20 arm-horizon cells, max relative error
+% 5.66% at ema_w0.9 / T = 1e5, median 1.01% -- and misses the other six badly: median relative
+% error 52.5% over their 24 cells, and every one of the 24 excurses FURTHER than predicted,
+% up to the failing dead band where |E_t| = (1-alpha)t is linear in T and the fit is off by
+% 100%.  The formula's own w exists only for the partial-adjustment family, which is the
+% structural tell.  Residual table: research/S6/E-spotcheck.json.
+\paragraph{Excursions at $T = 10^4$, and where the excursion law holds.} Partial adjustment
+excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat
+in $T$ while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the
+horizon. On the control and the four partial-adjustment arms the excursion fits
+$\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon, most loosely at
+$w = 0.9$, the one arm whose two branches cross inside the horizon range. This is a fit to
+those five arms, not a derived bound. It does not extend to the other six: the growing time
+constants, the running mean and the dead bands all excurse further than it predicts.
+
+% ---------------------------------------------------------------------------
+% S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
+% Figure 2 panel (a) held as a five-series overlay in one continuous panel.
+% THE AXIS PRINCIPLE, which is why this is a separate figure and not another panel:
+% the (r_t, qhat) SETTING is a categorical variable and gets a categorical axis (five
+% rows); tau is CONTINUOUS and keeps a log axis.  The overlay had to place five series
+% and five tau* markers on one continuous pair of axes, which is what produced four
+% nested markers at (tau = 0.5, miscoverage ~ 0.1) and a legend that overwrote two of
+% the tau* rules.  Rows do not collide.
+% IT LIVES IN THE APPENDIX because E-values excludes appendices from the 4-page ceiling
+% and the body is exactly full; nothing about the figure requires the body.  All 19 runs
+% appear, and the two tau* values that fall off the axis (0 and unbounded) are drawn as
+% arrows rather than dropped.
+% Built by the same generator as Figure~\ref{fig:boundary}: src/make_figure1.py.
+% ---------------------------------------------------------------------------
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figure3_settings.pdf}
+  % S6 SUB-SESSION B: written to the SAME rule as the other two captions -- describe the
+  % axes, the encoding and the measurement conditions, and argue nothing.  Four sentences.
+  \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
+  rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
+  Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
+  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$. The rule on each
+  row is that setting's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
+  at the right, and the tinted band is $\tau \le \tau^{\star}$. Two rules fall off the
+  axis and are drawn as arrows: $\tau^{\star} = 0$ at $\hat{q} \equiv -b/2$, and
+  $\tau^{\star}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator.}
+  \label{fig:settings}
+\end{figure}
+
+\paragraph{Realised miscoverage at the covering settings of Figure~\ref{fig:settings}.} At
+$\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
+inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
+returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the
+$w = 0.999$ excursion from $623.70$ to $120.60$. That is the first term of $\tau^{\star}$
+moving the edge, not the readout changing behaviour.
+
+% S6 SUB-SESSION E: \clearpage ADDED, AND IT IS A STRUCTURAL FIX, NOT A NUDGE.
+% S5's J1 finding 8 was this heading stranded away from its only content.  Wave 4 fixed it
+% by changing the table from [t] to [!h], which worked only while the appendix happened to
+% fit on one page.  E2's three extra lines pushed it over and the heading stranded again:
+% "B  The four vocabularies" alone at the foot of p.7, Table 2 alone on p.8.
+% This section is the LAST in the document and contains exactly ONE float and no prose, so
+% starting it on a fresh page makes the heading and its table inseparable by construction
+% rather than by luck.  Appendix pages are outside E-values' 4-page ceiling, so it is free.
+\clearpage
+\section{The four vocabularies}
+\label{app:bridge}
+
+% MOVED HERE FROM sections/related.tex IN S5 WAVE 4.  It is descriptive related-work
+% material rather than a result, which makes it the right float to move once one had to
+% move: four floats did not pack into a four-page body.  Nothing is lost.  The caption
+% still names TEN names across FOUR vocabularies, which is what docs/GATES.md G7.11
+% requires be conceded, and sections/setup.tex still cites this caption for that count
+% by \ref, so the cross-reference holds from the body into the appendix.
+% [!h] rather than [t]: with [t] this table floated to the TOP of the page, landing
+% under Appendix A's heading, and left "B  The four vocabularies" as the last line of
+% the document with two-thirds of a blank page under it (S5 J1 finding 8).  It is the
+% only content in its section and the section is the last in the document, so there is
+% no reason to float it at all.
+\begin{table}[!h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\caption{Four literatures name the movement of a sequentially updated forecast in four
+vocabularies: \emph{abrupt threshold changes}; \emph{forecast (in)stability} (MASC, MAC/SDC,
+MQC/SMQC, congruence, nervousness); \emph{jumpiness}, \emph{convergence index},
+\emph{(in)consistency}; and \emph{switching cost}. The row gives what each contributes.}
+\label{tab:bridge}
+\begin{tabular}{@{}p{3.35cm}p{3.35cm}p{3.35cm}p{3.35cm}@{}}
+\toprule
+\textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
+\textbf{Switching-cost online learning} \\
+\midrule
+a distribution-free long-run-coverage guarantee for \emph{any} bounded scorecaster, with a rate
+\citep[Thm~1, Prop.~2]{angelopoulos2023pid}, and the admissible set measured here to be tight
+& the scored movement functional, the readout map as post-processing
+\citep[Eq.~3]{godahewa2025stability}, and a priced decision
+\citep[\S4.2]{genov2026switching} and \citep{vanbelle2026stabilizing}
+& the matched-level design on real producers from 2012, with a control \emph{stronger} than the
+pair: the whole marginal \citep{pinson2012scenarios,worsnop2018scenarios}
+& worst-case theory for the penalised problem: Thm~2, and a Thm~7 trade-off in which sublinear
+regret is bought by growing $\theta$ with $T$, which grows the ratio
+\citep{andrew2013twometrics} \\
+\bottomrule
+\end{tabular}
+\end{table}
+

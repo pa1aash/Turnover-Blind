@@ -1,0 +1,201 @@
+% Setup -- minimal.  NO market model, NO position map, NO Kelly, NO transaction
+% costs, NO turnover, NO basis points, NO net log growth, NO Ryan replication.
+% Those belonged to a claim that no longer exists and are deleted, not compressed.
+%
+% NUMBERING: the NeurIPS proceedings version of Conformal PID is cited and its
+% numbering used.  Theorem 1, Proposition 2, condition (4) and iteration (5) are
+% character-for-character identical between preprint and proceedings.
+%
+% COINED TERM -- FRAMING sec. 7 rule 5.  "travel", from actuator travel in process
+% control.  Collision check (arXiv full-text, exact phrase, 2026-08-19):
+% "quantile travel" 0 hits; the nearer phrase "threshold travel" returns 11, all
+% transport-accessibility usages in geography, spatial optimisation and robotics
+% (S3 F1 finding 15), so the screen is recorded here as it was actually run.
+% Ruled out beforehand: "smoothed conformal" (randomised smoothing), "stable
+% conformal" (Ndiaye), "smoothing-based conformal" (SCD-split), "interval
+% stability" (Min et al.), "total variation" (unusable: 70 hits, all TV distance
+% between measures -- an instrument artefact, not a literature fact).
+%
+% WAVE-5 CORRECTION (S3 F1 finding 10): THE COUNT IS GONE.  The sentence used to
+% read "Six names are taken, which is why a seventh is used here"; the paper's
+% OWN Table 2 caption names ten, IACER makes eleven, and F1 adds path length /
+% variation budget, total variation of a sequence, and forecast-revision
+% volatility (arXiv:2510.04487).  Printing a count is the one move that lets a
+% referee retire a coined term with a single extra name.
+%
+% ZANOTTI IS PINNED TO v3.  v2 sec. 5 p.26 carries a conformal-stability sentence
+% that v3 p.24 deletes, and the two versions have different titles.
+
+% ---------------------------------------------------------------------------
+% SESSION S4 WAVE 1, AGENT K1 -- OI-1 IS WRITTEN IN AS A FINDING.
+%
+% docs/OPEN_QUESTIONS.md Q7 / docs/PROTOCOL.md OI-1 ("L1 or L2?") was recorded
+% as an operator decision.  It is not one.  It is R3b restated: the L1 dead band
+% on the COMPLETED threshold is the family that leaves li2025o2cp Corollary 2's
+% admissible radius, and the paper's result is where it leaves it.  The sentence
+% added to the "One scalar, two readouts" paragraph says so, and says in the same
+% breath that L2 is NOT thereby certified -- at the harness's null scorecaster L2
+% (w = 0.999) forfeits the rate while KEEPING coverage, and at the equally legal
+% constant qhat = -b/2 BOTH families return miscoverage 1.000000
+% (results/forfeit-variations-20260820T101445Z.json, rows
+% scorecaster_const_minus_b_over_2 / ema_w0.999 and .../deadband_tau*).  That
+% asymmetry is why the claim is a TIGHTNESS statement about the radius and not a
+% safety certificate for either form.  No dead-band DESIGN RECOMMENDATION
+% survives anywhere in this file.
+%
+% THE BODY IS EXACTLY FULL AND THE ADDITION IS PAID FOR IN THIS FILE.  Measured
+% by building HEAD and HEAD+this-edit and reading the style file's own margin
+% line numbers: HEAD = 157 body lines, references at p.5 offset 0; this file's
+% edit = 157 body lines, references at p.5 offset 0.  0 TeX errors, 0 undefined
+% citations/refs, 0 overfull boxes, 14 underfull hboxes (the two p-column
+% tables), identical to HEAD.  The finding is folded into the existing paragraph
+% rather than given its own \paragraph because a fifth \paragraph's vertical
+% skip could not be paid for; the key clause is \emph{}-ed instead.
+%
+% WHAT WAS CUT TO PAY FOR IT, all in this file:
+%   1. "Placement A, what a designer reaches for because the deployed number is
+%      what has to sit still, is measured here." -> "Placement A is measured
+%      here."  The motivation is now carried by the finding sentence.
+%   2. "a coverage gap of at most (c h(T)+1)/T" -- a restatement of the bound on
+%      the same line as the bound.
+%   3. Condition (4) restated in two half-line inequalities -> one signed form.
+%   4. The naming enumeration lost "the same movement", "forecast", "all three
+%      imported by \citet{vanbelle2026stabilizing}" (that key is still cited by
+%      sections/intro.tex and sections/related.tex) and the three separate
+%      \citep markers, which are now one grouped \citep.  EVERY CITATION KEY IS
+%      KEPT, and so is every conceded name: jumpiness, convergence index,
+%      (in)consistency, IACER, path length, Multi-Quantile Change.
+%   5. "and the name is a convenience", "for one reading only", "At time t",
+%      "so the readout is the only manipulated variable", "so b/2+b/2 = b is
+%      exactly tight", and "distinct" in "two distinct positions".
+%   6. "The first is what \citet{godahewa2025stability} publish as
+%      post-processing and \citet[Eq. 13]{binny2025whomoved} apply to ..." ->
+%      passive, shorter, both keys kept.
+% Nothing adverse, nothing conceded and no citation key was removed.
+% ---------------------------------------------------------------------------
+
+\section{Setup}
+\label{sec:setup}
+
+\paragraph{The producer.} A forecaster fit before $t$ induces a score $s_t$, and a threshold
+$q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
+\le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
+coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
+Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
+\begin{equation}
+  q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
+  \label{eq:pid}
+\end{equation}
+their iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
+$x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. With $E_t = \sum_{i
+\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
+
+% ---------------------------------------------------------------------------
+% S5 WAVE 2: sub-session C's placement schematic, inserted here.
+% It is referenced by \ref{fig:placements} from the paragraph immediately below and
+% NEVER by a literal number: it appears before the boundary figure in document order,
+% so LaTeX typesets it as Figure 1 and the boundary figure as Figure 2.
+% MEASURED COST at insertion: 10 typeset body lines (5 for the drawing, 5 for the float
+% apparatus).  Shrinking the graphic further does not help -- float packing around
+% Tables 1 and 2 quantizes the boundary, and a zero-height graphic with this caption
+% still costs 5.  arrows.meta is unavailable on this toolchain; see main.tex's preamble.
+% ---------------------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\setlength{\abovecaptionskip}{3pt}
+\begin{tikzpicture}[
+  font=\footnotesize,
+  bx/.style={draw,rounded corners=1pt,inner xsep=2.5pt,inner ysep=1.5pt,
+             minimum height=4mm,align=center},
+  sm/.style={bx,fill=black!10},
+  jn/.style={draw,circle,inner sep=0pt,minimum size=3.2mm},
+  sig/.style={->,thin},
+  lab/.style={font=\scriptsize,inner sep=1pt},
+  ttl/.style={font=\scriptsize,inner sep=1pt,anchor=west}
+]
+%% ------------------------------- PANEL B -------------------------------
+\begin{scope}[xshift=0mm]
+  \node[ttl] at (-1.5mm,6.2mm) {\textbf{(B)} in the $\hat q_{t+1}$ slot: inside the loop};
+  \node[sm]                    (Bsc)  at (0mm,0mm) {$\hat q_{t+1}$: readout};
+  \node[jn,right=3.5mm of Bsc] (Bsum) {$+$};
+  \node[bx,right=3.5mm of Bsum](Bq)   {$q_{t+1}$\\[-2pt]{\scriptsize deployed}};
+  \node[bx,anchor=north west]  (Bint) at ([yshift=-5.6mm]Bsc.south west)
+        {$r_t(E_t)$, saturating};
+  \draw[sig] (Bsc) -- (Bsum);
+  \draw[sig] (Bsum) -- (Bq);
+  \draw[sig] (Bint.north -| Bsum) -- (Bsum);
+  \coordinate (Bt) at ([xshift=7mm]Bq.east);
+  \coordinate (Bc) at (Bt |- Bint.east);
+  \draw[thin] (Bq.east) -- (Bt) -- (Bc);
+  \draw[sig]  (Bc) -- (Bint.east) node[lab,pos=0.45,above] {$\mathbf{1}\{s_{t+1}>q_{t+1}\}$};
+  \path (Bsc.west |- Bq.north)   coordinate (Bnw);
+  \path (Bt       |- Bint.south) coordinate (Bse);
+  \draw[dashed,thin,rounded corners=2pt]
+       ([shift={(-1.5mm,1.5mm)}]Bnw) rectangle ([shift={(2mm,-1.5mm)}]Bse);
+\end{scope}
+%% ------------------------------- PANEL A -------------------------------
+\begin{scope}[xshift=59mm]
+  \node[ttl] at (-1.5mm,6.2mm) {\textbf{(A)} on the completed $q_{t+1}$: outside the loop};
+  \node[bx]                    (Asc)  at (0mm,0mm) {$\hat q_{t+1}$};
+  \node[jn,right=3.5mm of Asc] (Asum) {$+$};
+  \node[bx,right=3.5mm of Asum](Aq)   {$q_{t+1}$};
+  \node[sm,right=6mm of Aq]    (Asm)  {readout};
+  \node[bx,right=3.5mm of Asm] (Aqt)  {$\tilde q_{t+1}$\\[-2pt]{\scriptsize deployed}};
+  \node[bx,anchor=north west]  (Aint) at ([yshift=-5.6mm]Asc.south west)
+        {$r_t(E_t)$, saturating};
+  \draw[sig] (Asc) -- (Asum);
+  \draw[sig] (Asum) -- (Aq);
+  \draw[sig] (Aq)  -- (Asm);
+  \draw[sig] (Asm) -- (Aqt);
+  \draw[sig] (Aint.north -| Asum) -- (Asum);
+  \coordinate (At) at ([xshift=4mm]Aqt.east);
+  \coordinate (Ac) at (At |- Aint.east);
+  \draw[thin] (Aqt.east) -- (At) -- (Ac);
+  \draw[sig]  (Ac) -- (Aint.east) node[lab,midway,above] {$\mathbf{1}\{s_{t+1}>\tilde q_{t+1}\}$};
+  \path (Asc.west |- Aqt.north)  coordinate (Anw);
+  \path (Aq.east  |- Aint.south) coordinate (Ase);
+  \draw[dashed,thin,rounded corners=2pt]
+       ([shift={(-1.5mm,1.5mm)}]Anw) rectangle ([shift={(3mm,-1.5mm)}]Ase);
+\end{scope}
+\end{tikzpicture}
+\caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output, and both readouts keep $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside Corollary~2's admissible set. In \textbf{(A)} it closes on $\tilde q_{t+1}$, which it never computed, and the deployed sequence leaves that set.}
+\label{fig:placements}
+\vspace{-4pt}
+\end{figure}
+
+\paragraph{One scalar, two readouts, two places.} Damping a sequentially updated scalar
+has two standard readouts, both prior work. A quadratic cost gives linear partial adjustment
+$\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
+\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, published as post-processing
+\citep{godahewa2025stability} and applied to a deployed threshold
+\citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, moving only when the
+target is more than $\tau$ away, then pulling back exactly $\tau$
+\citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
+in Figure~\ref{fig:placements}; \textbf{(A)} is measured here.
+\emph{The dead band ($L_1$) is not a stylistic alternative to the partial-adjustment ($L_2$) form}; it
+is the family whose failure Section~\ref{sec:forfeit} characterises. Neither is safe by construction:
+$L_2$ forfeits Proposition~2's
+rate while covering, $L_1$ past the radius loses coverage, and at the legal $\hat{q} \equiv
+-b/2$ both lose it. What is tight is the radius, not a form.
+
+\paragraph{The quantity, and the names it already has.} We report the deployed threshold's
+\emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
+control. The arithmetic is not new. Over a predictive distribution $\sum|\Delta q|$ is the
+Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls it
+\emph{jumpiness}, a \emph{convergence index}, \emph{(in)consistency}
+\citep{zsoter2009jumpiness,ehret2010convergence,pappenberger2011consistency}; applied control,
+IACER \citep{sarhadi2025criteria}; dynamic-regret online learning, a path length.
+Table~\ref{tab:bridge}'s caption names ten, so a fresh one is used here.
+% Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
+% pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
+% criterion CR8) are all in audit/REFS_VERIFIED.bib and cited as \citep above.
+
+\paragraph{Harness.} The harness fixes $\alpha = 0.1$ and $b = 2$. Its saturator $r_t(x) =
+b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, with $c = 1$ and $h(t) = \log(t+2)$, meets~(4) with equality.
+The scorecaster is null and legal, reducing (\ref{eq:pid}) to the pure error integration
+Proposition~2 addresses. Neither choice is neutral: (4) is a lower bound met exactly here, and
+Theorem~1 permits scorecasters $b/2$ either side of null. The adversary is specified, not
+tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
+10^{-9}$, against the \emph{deployed} $\tilde{q}_t$: the $\varepsilon\downarrow 0$ reading of
+``sets the score at the threshold'', firing the strict indicator. Legality is Theorem~1's
+$[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight.
