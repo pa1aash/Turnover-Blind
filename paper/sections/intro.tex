@@ -94,11 +94,76 @@
 % pronoun is the wrong way round under the wave-3 rulebook's rule 6.
 % APPLY THIS FIRST if the body ever gains a line -- e.g. under TS-LIMITS, which allows
 % 4-7 body pages, where the constraint does not bind at all.
+
+% ===========================================================================
+% S6 SUB-SESSION C (2026-08-21): THE INTRODUCTION IS REWRITTEN FROM SCRATCH.
+% Not another pass of the S5 rulebook.  The operator read the S5 result twice and
+% rejected it twice, and the problem was STRUCTURAL, not sentence-level: the old file
+% opened with three background sentences carrying eleven citations before the reader had
+% any reason to care, put the paper's actual hook in the SECOND paragraph, and organised
+% its two contributions under a mechanical "First:/Second:" scaffold.
+%
+% WHAT CHANGED
+%   1. THE HOOK IS NOW SENTENCES 1 AND 2, before any background citation.  The story is
+%      concrete from the first line: a refereed paper states the scorecaster breaks the
+%      guarantee; a later paper by the same first and last authors proves in the same
+%      notation that a bounded perturbation does not.
+%   2. THE BACKGROUND IS MOTIVATED RATHER THAN FRONT-LOADED.  It now follows the hook and
+%      is introduced by the thing the hook is about: an online conformal method moves a
+%      threshold, and that MOVEMENT is what the two chains already name, score and price.
+%      "None of it is claimed here" is unchanged and still discharges the same duty.
+%   3. "First:" and "Second:" are gone.  The two \paragraph heads survive, because S4
+%      wave 1 installed them so a referee reading only the abstract and the heads counts
+%      exactly two claims and expects no third, and there is no room for a
+%      \paragraph{Contributions}.  They are RETITLED as narrative beats, and the second
+%      head is a transition out of the first: "The claim, and the refutation already in
+%      print." then "Where that refutation stops."
+%   4. The closing roadmap is one plain sentence and still carries the count ("both
+%      claims"), which is what the numbered heads were carrying.
+%
+% NOTHING WAS DROPPED.  Measured, not asserted: all 16 distinct citation keys survive
+% (19 instances -> 17; li2024neuralconformal falls from 3 to 2 and li2025o2cp from 2 to
+% 1, because the sentence "The first and last authors of [o2cp] wrote [neuralconformal]
+% and cite it" became the hook's own prose, where the same two facts are stated without a
+% second \citet).  Page 18443, the 20 August 2026 date, the four-surface list, the six-
+% citer count, the "any function of the past" quote, the [s]ince-quote, the
+% error-integration quote, the "arbitrary"/"principled guidance" quotes, Theorem 1,
+% Corollary 2 and the bolded concession are all present.  Word count 352 -> 375.
+%
+% A RECORDED RESIDUAL FROM S5 IS FIXED HERE FOR FREE.  The old opening's second "it" --
+% "emits a threshold ... and moves it.  Forecast stability names, scores and prices it" --
+% took "threshold" as its nearest antecedent when what is priced is the MOVEMENT.  S5
+% measured the fix as not fitting and recorded it rather than forcing it.  The rewrite
+% reorders the paragraph anyway, so it now reads "prices that movement".
+%
+% FRAMING sec. 7 RULE 1, AND HOW THIS FILE STANDS TO IT.  The rule says the two chains
+% (forecast stability; probabilistic-forecast verification) go "in the OPENING, not in
+% related work", and its stated rationale is that a paper WITHOUT chain (b) repeats the
+% failure mode that occupied C1', with Pinson an author in that chain and a likely
+% reviewer.  Both chains are still in the Introduction, in its second paragraph, inside
+% the first 120 words, with all nine keys intact and "None of it is claimed here"
+% unchanged.  What moved is their POSITION relative to the hook, not their presence, and
+% the rule's purpose is met in full.  This is recorded rather than done silently.
+% FRAMING sec. 7 rule 2 is untouched: min2026questioning and vaze2026simultaneous are
+% still cited before sections/setup.tex names travel.
+%
+% ONE FACTUAL CORRECTION TO THE S6 BRIEF, WHICH C1 ASKED FOR AND WHICH WOULD HAVE BEEN AN
+% ERROR TO FOLLOW.  The brief says to open on the fact that "neither cites the other".
+% They DO cite each other: this paper's own established finding is that "the halves
+% already share a bibliography".  The real hook is stronger and is what is written --
+% the correction is in the record and is nowhere STATED as a correction, which is what
+% the four-surface check measures.
+% ===========================================================================
 \section{Introduction}
 \label{sec:intro}
 
+A refereed paper states that a scorecaster breaks Conformal PID's coverage guarantee. A later
+one, by the same first and last authors, proves in the same notation that a bounded
+perturbation of the deployed threshold does not. They share a bibliography, so this is ordinary
+self-correction, and the joining is what this paper adds.
+
 An online conformal method emits a threshold before each observation and moves it. Forecast
-stability names, scores and prices it
+stability names, scores and prices that movement
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
 pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying temporal structure at
 fixed level came earlier, in forecast verification, matching predictive marginals on real producers
@@ -106,28 +171,27 @@ fixed level came earlier, in forecast verification, matching predictive marginal
 under-describe a deployed interval \citep{min2026questioning,vaze2026simultaneous}. None of it is
 claimed here.
 
-\paragraph{First: the record carries a claim and its refutation, and this paper joins them.}
-Conformal PID \citep{angelopoulos2023pid} adds a \emph{scorecaster} $\hat{q}_{t+1}$ to a saturating
-error integrator, asking only that it be predictable and lie in $[-b/2,b/2]$: ``any function of the
-past'' (Theorem~1). A readout there is already quantified over. Also in print, of that method:
-``[s]ince using a scorecaster (D-part) in C-PID breaks the theoretical coverage guarantee''
-\citep{li2024neuralconformal}, stated and acted on in its baselines paragraph, verbatim on refereed
-printed page $18443$. It is refuted twice, with proof. \citet[Corollary~2]{li2025o2cp} add an
-arbitrary predictable $d_t$ with $|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, note
-that the result ``has exactly the CPID error-integration form'', and conclude $|E_T| = o(T)$. The same
-generic-slot argument carries AcMCP's long-run coverage \citep{wang2026acmcp}. The first and last
-authors of \citet{li2025o2cp} wrote \citet{li2024neuralconformal} and cite it: the halves already
-share a bibliography, this is ordinary self-correction, and the joining is what this paper adds.
-Four surfaces were queried on 20 August 2026 for both identifiers and ``scorecaster''. They are
-arXiv full text, arXiv abstracts, OpenReview, and the six works Semantic Scholar records citing
+\paragraph{Claim and refutation, both in print.} Conformal PID \citep{angelopoulos2023pid}
+adds a \emph{scorecaster} $\hat{q}_{t+1}$ to a saturating error integrator, asking only that it
+be predictable and lie in $[-b/2,b/2]$: ``any function of the past'' (Theorem~1). Such a readout
+is already quantified over. The claim reads ``[s]ince using a scorecaster (D-part) in
+C-PID breaks the theoretical coverage guarantee'' \citep{li2024neuralconformal}, stated and
+acted on in its baselines paragraph, verbatim on refereed printed page $18443$. It is refuted
+twice, with proof. \citet[Corollary~2]{li2025o2cp} add an arbitrary predictable $d_t$ with
+$|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, note that the result ``has exactly
+the CPID error-integration form'', and conclude $|E_T| = o(T)$. The same generic-slot argument
+carries AcMCP's long-run coverage \citep{wang2026acmcp}. Four surfaces were queried on 20 August
+2026 for both identifiers and ``scorecaster''. They are arXiv full text, arXiv abstracts,
+OpenReview, and the six works Semantic Scholar records citing
 \mbox{\citet{li2024neuralconformal}}. None returns both the claim and the corollary.
 \citet{hu2026distinformed} still call scorecaster choice ``arbitrary'' and lacking ``principled
-guidance'' while asserting valid coverage: model selection, not validity. \textbf{We claim neither
-the placement nor the derivation.}
+guidance'' while asserting valid coverage: model selection, not validity. \textbf{We claim
+neither the placement nor the derivation.}
 
-\paragraph{Second: that admissible set has an edge, and the condition there is tight.} Corollary~2
-is a \emph{retention} result: what it leaves open is outside. Section~\ref{sec:forfeit} exhibits a
-legal perturbation leaving it, the $L_1$ dead-band family characterised here on the \emph{completed}
-threshold, whose edge is the corollary's radius at the null scorecaster. Past it coverage goes,
-not only the rate: the published sufficient condition is necessary there.
-Section~\ref{sec:related} sets both claims beside four vocabularies for the same movement.
+\paragraph{Where that refutation stops.} Corollary~2 is a \emph{retention} result, silent
+outside its radius, and the question it leaves is whether that radius is sharp.
+Section~\ref{sec:forfeit} exhibits a legal perturbation leaving it: the $L_1$ dead-band family
+characterised here on the \emph{completed} threshold, whose edge is the corollary's radius at
+the null scorecaster. Past it coverage goes, not only the rate: the published sufficient
+condition is necessary there. Section~\ref{sec:related} sets both claims beside four
+vocabularies for the same movement.

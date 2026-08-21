@@ -275,16 +275,20 @@ def figure2(series, gridpts, taustars, alpha, b):
     pts = series[FEATURED]
 
     # 5.5in is exactly \textwidth in neurips_2026.sty, so width=\textwidth places the
-    # figure 1:1 and the base font lands at exactly 8pt.  Height is S5's 1.95in,
-    # unchanged: the four-page body was packed against that number and a taller figure
-    # would spend body lines this session has not earned.
-    fig = plt.figure(figsize=(5.5, 1.95))
+    # figure 1:1 and the base font lands at exactly 8pt.
+    # HEIGHT 1.95 -> 1.75in, S6 sub-session C.  S5 needed 1.95 to separate five overlaid
+    # series in panel (a); panel (a) now carries ONE, and the vertical range holds two
+    # attainable values.  The 0.20in this returns is what pays for the Introduction's
+    # new opening paragraph.  Legibility is not traded for it: fonts are unchanged and
+    # the bottom margin is RAISED 0.255 -> 0.285 so panel (b)'s rotated labels keep
+    # their room.  overlap_audit() below is what checks that, not an opinion.
+    fig = plt.figure(figsize=(5.5, 1.75))
     # WIDTH SPLIT IS MEASURED, NOT CHOSEN BY EYE.  Panel (b) carries eleven rotated
     # tick labels against panel (a)'s six, so it gets the WIDER half even though it
     # is the zoom: at [1.14, 1.0] the overlap audit below flagged 0.9/0.95 and
     # 1.05/1.1 colliding in (b).  At [0.92, 1.0] every label clears.
     gs = fig.add_gridspec(1, 2, width_ratios=[0.92, 1.0],
-                          left=0.079, right=0.988, bottom=0.255, top=0.855, wspace=0.115)
+                          left=0.079, right=0.988, bottom=0.285, top=0.845, wspace=0.115)
     axA = fig.add_subplot(gs[0, 0])
     axB = fig.add_subplot(gs[0, 1])
 
