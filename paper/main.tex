@@ -3,7 +3,14 @@
 %
 % BUILD, from this directory (artefacts are untracked; .gitignore covers
 % *.aux *.log *.bbl *.blg *.out):
-%   pdflatex main && bibtex main && pdflatex main && pdflatex main
+%   pdflatex main && bibtex main && pdflatex main && pdflatex main && pdflatex main
+% FOUR pdflatex passes, not three, since S6 sub-session E added \clearpage to
+% sections/appendix.tex.  With three, pass 3 writes an .aux that differs from the one it
+% read and LaTeX emits "Label(s) may have changed.  Rerun to get cross-references right."
+% MEASURED BEFORE CHANGING THE RECIPE, not assumed: pass 4's .aux is byte-identical to
+% pass 3's and the rendered text of the two PDFs is identical, so the three-pass output was
+% already correct and the warning was page bookkeeping.  The fourth pass is there so the log
+% reads 0 LaTeX warnings and a future session does not have to re-derive that.
 % No TEXINPUTS/BIBINPUTS needed: neurips_2026.sty sits beside this file and the
 % bibliography is reached by relative path.  If your bibtex refuses the relative
 % path, use BIBINPUTS=".:../audit:" bibtex main instead.
@@ -49,8 +56,30 @@
 %   2. TABLE 1 GAINED A "miscov. 10^6" COLUMN so the abstract's number is visible in the table
 %      it points at.  Seven columns fit: 0 overfull boxes, body still 4 pages, offset 0.
 %
-% RE-MEASURED, S5 WAVE 5, BOTH VENUE OPTIONS, three passes + bibtex, artefacts deleted
-% first.  This supersedes every measurement block below it.
+% RE-MEASURED, S6 WAVE 2 (SUB-SESSION F), BOTH VENUE OPTIONS, FOUR passes + bibtex,
+% artefacts deleted first.  THIS SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT, INCLUDING
+% S5 WAVE 5's, WHICH IS NOW STALE IN ONE SPECIFIC WAY, CORRECTED HERE RATHER THAN LEFT:
+%   S5 wave 5 recorded that dblblindworkshop "runs 2 lines onto p.5" because the style
+%   file's anonymous author block is FOUR lines against our three, and told a later session
+%   not to "fix" it.  THAT IS NO LONGER TRUE.  After S6's Introduction rewrite and the
+%   Figure 2 height reduction, BOTH options are OFFSET 0: "References" is the FIRST content
+%   on p.5 under each.  The two builds share an offset again for the first time since wave 2.
+%   Nothing was done to make that happen and nothing should be done to preserve it -- it is
+%   a measurement, and TS-LIMITS allows 4-7 body pages either way.
+%
+%   BOTH OPTIONS, S6 wave 2: 0 TeX errors, 0 undefined citations, 0 undefined refs,
+%   0 overfull boxes, 3 underfull hboxes, 0 LaTeX warnings, 0 pdfendlink warnings,
+%   0 bibtex warnings, main.aux 14,016 bytes, 8 pages total.
+%   Body pp.1-4 (OFFSET 0), references pp.5-6, appendix A p.7, appendix B p.8.
+%   Pages went 7 -> 8 in S6 sub-session E: the appendix grew and \clearpage now starts
+%   appendix B on its own page.  E-values excludes appendices from the 4-page ceiling, so
+%   the page COUNT is not the test and never was.  THE OFFSET IS THE TEST.
+%   dblblindworkshop metadata re-checked in the same wave: pdfinfo Author reads
+%   "Anonymous Author(s)", and the compiled PDF contains 0 occurrences of the author's
+%   name in pdfinfo, 0 in the page text, and 0 of "github.com" (S6's availability
+%   statement is \if@anonymous-guarded, so it does not print there at all).
+%
+% SUPERSEDED, KEPT AS HISTORY -- S5 WAVE 5, BOTH VENUE OPTIONS, three passes + bibtex.
 %   sglblindworkshop (E-values, the BINDING option): body = 4 pages.  "References" is the
 %   FIRST content on p.5, OFFSET 0.  7 pages total: body pp.1-4, references pp.5-6,
 %   appendix p.7.  0 TeX errors, 0 undefined citations, 0 undefined refs, 0 overfull
