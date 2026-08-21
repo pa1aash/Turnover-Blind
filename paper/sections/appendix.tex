@@ -47,11 +47,21 @@ $1.000000$.
 % E-values' 4-page ceiling.  NOTHING IS DELETED: both are still printed, and the body still
 % states the claim they support.  This is what pays for the Introduction's new opening.
 
-\paragraph{Excursions at $T = 10^4$, and the law across the arms.} Partial adjustment excurses
-$6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat in $T$
-while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the horizon.
-Across the arms the excursion fits $\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$.
-This is a fit to the measured arms, not a derived bound.
+% S6 SUB-SESSION E2: THE SCOPE OF THE FITTED LAW IS CORRECTED.  It read "Across the arms the
+% excursion fits ...", and recomputed against results/ that is not true.  The fit holds on the
+% control and the four partial-adjustment arms -- 20 arm-horizon cells, max relative error
+% 5.66% at ema_w0.9 / T = 1e5, median 1.01% -- and misses the other six badly: median relative
+% error 52.5% over their 24 cells, and every one of the 24 excurses FURTHER than predicted,
+% up to the failing dead band where |E_t| = (1-alpha)t is linear in T and the fit is off by
+% 100%.  The formula's own w exists only for the partial-adjustment family, which is the
+% structural tell.  Residual table: research/S6/E-spotcheck.json.
+\paragraph{Excursions at $T = 10^4$, and where the excursion law holds.} Partial adjustment
+excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat
+in $T$ while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the
+horizon. On the control and the four partial-adjustment arms the excursion fits
+$\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon. This is a fit to
+those five arms, not a derived bound, and it does not extend to the other six: the growing
+time constants, the running mean and the dead bands all excurse further than it predicts.
 
 % ---------------------------------------------------------------------------
 % S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
@@ -91,6 +101,15 @@ returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact
 $w = 0.999$ excursion from $623.70$ to $120.60$, which is the first term of $\tau^{\star}$
 moving the edge rather than the readout changing behaviour.
 
+% S6 SUB-SESSION E: \clearpage ADDED, AND IT IS A STRUCTURAL FIX, NOT A NUDGE.
+% S5's J1 finding 8 was this heading stranded away from its only content.  Wave 4 fixed it
+% by changing the table from [t] to [!h], which worked only while the appendix happened to
+% fit on one page.  E2's three extra lines pushed it over and the heading stranded again:
+% "B  The four vocabularies" alone at the foot of p.7, Table 2 alone on p.8.
+% This section is the LAST in the document and contains exactly ONE float and no prose, so
+% starting it on a fresh page makes the heading and its table inseparable by construction
+% rather than by luck.  Appendix pages are outside E-values' 4-page ceiling, so it is free.
+\clearpage
 \section{The four vocabularies}
 \label{app:bridge}
 
