@@ -34,11 +34,12 @@
 # It is a smoke alarm, not a proof. False positives are expected and are cheap;
 # the failure it exists to stop has cost three sessions.
 #
-# Usage:  sh tools/check_claim_drift.sh [SESSION_TAG]      (default: S5)
+# Usage:  sh tools/check_claim_drift.sh [SESSION_TAG]      (default: S6)
 #         The default is bumped BY EACH SESSION.  S5's adversarial critic found the
 #         default still reading S4, which makes a bare invocation index the WRONG
 #         session's artefacts and report findings that belong to neither.  A bare run
 #         must index the CURRENT session or it is worse than no run at all.
+#         BUMPED S4 -> S5 (S5 wave 1), S5 -> S6 (S6 sub-session A).
 # Exit:   0 clean, 1 if any claim is UNSUPPORTED or CONTRADICTED.
 #
 # BINDING: this runs as the last step of every wave that touches
@@ -49,7 +50,7 @@ set -u
 root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "not a git repo" >&2; exit 1; }
 cd "$root" || exit 1
 
-SESSION=${1:-S5}
+SESSION=${1:-S6}
 TRACKED="docs/FRAMING.md docs/GATES.md"
 LOADBEARING='occupied|clear|tight|false|falsif|refut|verif|measur|supersede|retired|withdraw|closed|resolved|[0-9]'
 FALSIFY='falsif|refut|withdraw|supersede|overturn|wrong|incorrect|does not hold|not supported|corrected from'

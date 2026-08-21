@@ -46,7 +46,36 @@ while Proposition~2's bound grows like $\log T$, which is why the ratio falls wi
 Across the arms the excursion fits $\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$.
 This is a fit to the measured arms, not a derived bound.
 
-\paragraph{Realised miscoverage at the covering settings of Figure~\ref{fig:boundary}.} At
+% ---------------------------------------------------------------------------
+% S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
+% Figure 2 panel (a) held as a five-series overlay in one continuous panel.
+% THE AXIS PRINCIPLE, which is why this is a separate figure and not another panel:
+% the (r_t, qhat) SETTING is a categorical variable and gets a categorical axis (five
+% rows); tau is CONTINUOUS and keeps a log axis.  The overlay had to place five series
+% and five tau* markers on one continuous pair of axes, which is what produced four
+% nested markers at (tau = 0.5, miscoverage ~ 0.1) and a legend that overwrote two of
+% the tau* rules.  Rows do not collide.
+% IT LIVES IN THE APPENDIX because E-values excludes appendices from the 4-page ceiling
+% and the body is exactly full; nothing about the figure requires the body.  All 19 runs
+% appear, and the two tau* values that fall off the axis (0 and unbounded) are drawn as
+% arrows rather than dropped.
+% Built by the same generator as Figure~\ref{fig:boundary}: src/make_figure1.py.
+% ---------------------------------------------------------------------------
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/figure3_settings.pdf}
+  \caption{Every dead-band run, at all five admissible $(r_t,\hat{q})$ settings. Rows are
+  settings, ordered by $\tau^{\star}$; the shared horizontal axis is $\tau$. Blue markers
+  cover at $\approx \alpha$ and orange markers return $1.000000$; filled markers are
+  $T = 10^{6}$ and open markers $T = 2{\times}10^{5}$. The rule on each row is that
+  setting's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, whose value is
+  printed at the right, and the tinted band is $\tau \le \tau^{\star}$. Two rules fall
+  off the axis and are drawn as arrows: $\tau^{\star} = 0$ at $\hat{q} \equiv -b/2$, and
+  $\tau^{\star}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator.}
+  \label{fig:settings}
+\end{figure}
+
+\paragraph{Realised miscoverage at the covering settings of Figure~\ref{fig:settings}.} At
 $\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
 inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
 returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the

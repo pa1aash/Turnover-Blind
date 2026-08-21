@@ -188,34 +188,46 @@ adversary's $\varepsilon$, not the counting convention.
 % S5 WAVE 2: sub-session B's boundary figure, inserted here.
 % It is referenced by \ref{fig:boundary} from the paragraph immediately below.  It
 % appears AFTER the schematic in document order, so LaTeX typesets it as Figure 2.
-% Built by src/make_figure1.py, which reads results/ directly and whose check_law()
-% re-derives tau* per setting and tests it against every measured miscoverage, exiting
-% non-zero on any inconsistency -- so this figure cannot be produced from data that
-% contradicts the law it draws.  The generator pins CreationDate, so re-running it
-% reproduces figures/figure1_boundary.pdf byte for byte.
-% THE CAPTION CARRIES NO EM-DASH.  B delivered it with two; they were converted at
-% insertion (a colon for the list, a sentence split for the trailing clause) rather
-% than added and then removed again in wave 3.
+%
+% S6 SUB-SESSION A: REBUILT.  Two measured defects drove it, both recorded in
+% research/S6/A0-diagnosis.json and both re-measured against the RENDERED artefact
+% rather than read off the generator:
+%   (1) the old panel (b) placed the eleven-point grid by INDEX.  The located window
+%       tau in [1, 1.001] took 10.000% of that axis while being 0.0910% of the true log
+%       span: inflated x109.9, which erased the one thing the grid was run to show.  It
+%       is now placed by tau - tau* on matplotlib's native SYMLOG scale, linthresh 1e-3.
+%   (2) panel (a) carried five settings, five tau* markers in three styles, two inline
+%       annotations and a legend.  Four markers nested at (tau=0.5, miscov~0.1) and the
+%       legend frame overwrote 627 px of the tau*=1 rule and 651 px of the tau*=2 rule
+%       (pixel diff, legend drawn vs not drawn, 400 dpi).  Panel (a) now carries ONE
+%       setting: the null scorecaster, the only one with runs on both sides of its own
+%       tau*.  The five-setting comparison moved to Figure~\ref{fig:settings} in
+%       Appendix~\ref{app:support}, where a categorical axis can do it properly.
+% NOT A DEFECT, recorded because the S6 brief asserted it was one: panel (a)'s x-axis was
+% ALREADY log-scaled under S5.  Its rendered tick positions matched true log positions to
+% 1.1e-16 and the gap-by-gap distortion factor was exactly 1.000 at all six gaps.
+%
+% Built by src/make_figure1.py, which reads results/ directly and whose check_law() and
+% check_grid_law() re-derive tau* per setting and test it against every measured
+% miscoverage, exiting non-zero on any inconsistency -- so neither figure can be produced
+% from data that contradicts the law it draws.  Its overlap_audit() then fails the build
+% on any two text or legend boxes that come within 1.6pt of each other.  The generator
+% pins CreationDate, so re-running it reproduces both PDFs byte for byte.
+% THE CAPTION CARRIES NO EM-DASH.
 % ---------------------------------------------------------------------------
 \begin{figure}[tb]
   \centering
   \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
-  \caption{The dead-band coverage cliff, and the fact that its edge moves.
-  \textbf{(a)} Realised miscoverage against dead-band width $\tau$ under five admissible
-  $(r_t,\hat{q})$ pairs. Each pair's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$
-  is marked in its own colour, dashed where it falls on the axis and arrowed where it does
-  not: $1$ at the null scorecaster, $2$ at $\hat{q} \equiv +b/2$ and $7$ at a saturator of
-  level $4b$ are dashed; $0$ at $\hat{q} \equiv -b/2$ and unbounded under
-  \citeauthor{angelopoulos2023pid}'s tangent integrator are arrows. Three widths run under
-  each pair, plus four wider bands at the null scorecaster. All $19$ dead-band runs
-  land on the side of their own $\tau^{\star}$ that the law predicts, and the vertical
-  dashes are the law's prediction, not four located edges: only the null scorecaster's
-  edge has runs on both sides of $\tau^{\star}$. Appendix~\ref{app:support} gives the
-  realised miscoverage at each covering setting.
-  \textbf{(b)} An eleven-point grid at the null scorecaster \emph{locates} that edge
-  between $\tau = 1.000$ and $1.001$, with no intermediate regime. Horizons: $T = 10^{6}$
-  in (a) except the four widest bands ($\tau \ge 2$), run only to $T = 2{\times}10^{5}$;
-  $T = 10^{5}$ in (b).}
+  \caption{The dead-band coverage cliff at the null scorecaster, and that edge located.
+  \textbf{(a)} Realised miscoverage against dead-band width $\tau$ under
+  $\hat{q} \equiv 0$ with a saturator of level $b$. Filled markers are $T = 10^{6}$ and
+  open markers $T = 2{\times}10^{5}$. The dashed rule is $\tau^{\star} = \sup_x r_t(x) +
+  \sup_t \hat{q}_t - b/2$, which is $1$ at this setting.
+  \textbf{(b)} Eleven measured widths at the same setting at $T = 10^{5}$, placed by
+  $\tau - \tau^{\star}$ on a symlog axis whose linear zone is $|\tau - \tau^{\star}| \le
+  10^{-3}$; ticks carry the $\tau$ they mark. The grey band spans the widest covering
+  width to the narrowest failing one. Figure~\ref{fig:settings} gives the other four
+  $(r_t,\hat{q})$ settings.}
   \label{fig:boundary}
 \end{figure}
 
@@ -225,14 +237,14 @@ $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned
 integrator's ceiling, and its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
 0.9$. The adversary's best legal play is $b/2$, so coverage is lost when that supremum drops below
 it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. All $19$ dead-band
-runs agree with that law (Figure~\ref{fig:boundary}); only the null scorecaster's edge is located,
-the others one-sided. \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
+runs agree with that law (Figure~\ref{fig:settings}); only the null scorecaster's edge is located
+(Figure~\ref{fig:boundary}), the others one-sided. \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
 $\tau^{\star} = b/2$}, one point of the admissible class, and both terms move it. The legal
 $\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound. The equally legal $\hat{q}
 \equiv -b/2$ drops the edge to $0$, and there $\tau = 0.5$ returns $1.000000$, as does partial
 adjustment at $w = 0.999$. Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising it
 costs the theorem nothing; it moves the edge too and shrinks the excursion
-(Figure~\ref{fig:boundary}). Under the unbounded tangent integrator
+(Figure~\ref{fig:settings}). Under the unbounded tangent integrator
 \citet{angelopoulos2023pid} report using in all their experiments, $\tau^{\star}$ is unbounded and
 all three widths there cover. The excursion is $20.10$ rather than $623.70$, both at $T = 10^6$. \textbf{The method's own integrator therefore
 sits inside the set at every width run here.} Outside the set the transition is a step. Past
