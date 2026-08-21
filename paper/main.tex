@@ -245,6 +245,48 @@ $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 \bibliographystyle{plainnat}
 \bibliography{../audit/REFS_VERIFIED}
 
+% ---------------------------------------------------------------------------
+% S6 SUB-SESSION D: CODE AND DATA AVAILABILITY.  This closes docs/OUTSTANDING.md O65.
+%
+% THE URL IS VERIFIED, NOT ASSUMED.  Checked headlessly on 2026-08-21 with
+%   curl -s https://api.github.com/repos/pa1aash/Turnover-Blind
+% which returned HTTP 200 with "private": false, "visibility": "public",
+% "default_branch": "main".  No browser was used and none is configured.
+%
+% IT IS GUARDED BY \if@anonymous, WHICH IS WHAT O65 ACTUALLY ASKED FOR.  A bare repository
+% link under dblblindworkshop is a de-anonymisation and a desk-reject risk, the same defect
+% class as the pdfauthor leak S5's adversarial critic found.  \if@anonymous is the style
+% file's own flag (neurips_2026.sty:78 declares it TRUE; only sglblindworkshop and
+% nonanonymous clear it), so this tracks the venue switch automatically and needs no second
+% thing to remember.  UNDER dblblindworkshop THIS SECTION DOES NOT PRINT AT ALL.
+% THE VENUE DECISION IS NOT TOUCHED BY THIS BLOCK.  It is correct under either option.
+%
+% PLACEMENT, AND WHY IT IS NOT THE DEFAULT ONE.  The S6 brief's default is a short
+% unnumbered paragraph immediately after Limitations, with "an unnumbered final section"
+% named as the other legitimate convention.  The default was BUILT AND MEASURED FIRST, in
+% sections/limitations.tex, and it does not fit: the body is exactly full at OFFSET 0 and the
+% statement is 2 typeset lines, which spilled onto p.5 in three successive shortenings.  The
+% only ways to buy those lines were to cut claim-bearing prose or to shrink Figure 2 past
+% what sub-session A's readability check certifies, and trading a claim for a metadata
+% statement is the wrong way round.  E-values excludes references and optional appendices
+% from the 4-page count, so this position is free and legal, and the section heading keeps it
+% findable in the PDF outline.  The NeurIPS 2026 template prescribes no position (checked:
+% paper/neurips_2026.tex and paper/checklist.tex mention the code submission policy but not
+% placement) and the E-values page cannot be re-read without a browser.
+% UNDER TS-LIMITS, which allows 4-7 body pages, this moves back after Limitations for free.
+%
+% IT DOES NOT OVERCLAIM.  It lists what is actually in the repository and claims nothing
+% about packaging, anonymisation or review-readiness.
+% ---------------------------------------------------------------------------
+\makeatletter
+\if@anonymous\else
+\section*{Code and data}
+The simulator, its frozen configuration, the \texttt{results/} files behind every figure and
+table, the generators that read them, and this project's audit trail across sessions are at
+\url{https://github.com/pa1aash/Turnover-Blind}.
+\fi
+\makeatother
+
 % APPENDIX AFTER THE REFERENCES.  E-values excludes BOTH from the 4-page ceiling
 % ("Short papers up to 4 pages, excluding references and optional appendices"), so
 % the body-end test is unchanged: References must still be the FIRST content on the
