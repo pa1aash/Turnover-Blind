@@ -334,3 +334,44 @@ must be re-measured** by the offset test, never by a page count. The margin is z
 body is exactly at the ceiling, and wave 5 measured a nine-character prose fix pushing it
 over. Records: `research/S5/E-template-metadata.json` (original),
 `research/S5/J2-instruction.json` N3 (the catch).
+
+---
+
+## Q12 — The availability statement's repo URL carries your GitHub handle: accept it, or change it? (added S7, 2026-08-21)
+
+**The question.** The availability statement's repo URL contains the operator's GitHub
+handle. It is guarded out of the double-blind build. Confirm this is acceptable for the
+single-blind submission, or provide an alternative (a de-identified mirror, an anonymized
+link service, or removal of the statement).
+
+**The concrete text, as it now reads in `paper/main.tex`** (an unnumbered
+`\section*{Code and data}` after the bibliography, printed only when the active template
+is single-blind):
+
+> The simulator, its frozen configuration, the `results/` files behind every figure and
+> table, the generators that read them, and this project's audit trail across sessions are
+> at `https://github.com/pa1aash/Turnover-Blind`.
+
+**Why this is here rather than decided.** Session S6 introduced this text in a session
+whose own brief froze author identity, and its own report flagged the tension without
+resolving it: new author-identifying text (the handle `pa1aash`), added under an identity
+freeze, guarded correctly out of the anonymous build but not decided as acceptable for the
+one build that does print. Session S7 re-verified the guard independently — a fresh
+`dblblindworkshop` build, checked by decompressing every compressed object stream with
+`qpdf --qdf --object-streams=disable` (not just `strings`, which the object-stream leak
+that S5's critic found would evade) and grepping the result: **0 occurrences** of
+`Palaash`, `pa1aash`, or `github` anywhere in the double-blind build, against **5** in the
+same check run on the single-blind control. `pdfinfo` also reads `Author: Anonymous
+Author(s)` under `dblblindworkshop`. The guard holds. **Whether the handle should print
+at all in the build that does ship is a different question, and it is the operator's, not
+the session's.**
+
+**Answer one of:**
+- (a) The current URL is acceptable for the single-blind submission — keep it as is; or
+- (b) Replace it with a de-identified mirror or anonymized link service — name which; or
+- (c) Remove the availability statement entirely for this submission.
+
+**Why it matters more than it looks.** This is the last remaining piece of author identity
+in the paper that has not been given an explicit operator answer — venue, affiliation, and
+author name/email all already have one (Q3, Q11, and the author block itself). Answering
+this closes that list.
