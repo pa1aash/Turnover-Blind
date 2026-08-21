@@ -143,12 +143,22 @@
 % which was two of the last two lines standing between the body and the 4-page ceiling.
 % This is row LEADING only -- no font change, no row removed, no cell altered.
 \renewcommand{\arraystretch}{0.95}
-\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold; one deterministic
-adversary, one pass to $T = 10^6$. \emph{All eleven arms run are listed}, so no covering arm is
-withheld; five exceed the bound at $T = 10^6$. Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
-``ratio'' is $\max_t|E_t|$ over it, ``Sat.'' the fraction of rounds on which~(4) delivers its full $\pm b$.
-Every figure is the \emph{primary} regime's, defined in Appendix~\ref{app:support}, which also
-gives the $T = 10^4$ excursions and the fitted excursion law.}
+% S6 SUB-SESSION B: CAPTION REWRITTEN TO DESCRIBE ONLY.  Two clauses left, and neither
+% was deleted:
+%   "so no covering arm is withheld" was a REBUTTAL, not a description.  The fact it
+%     defended -- that every arm run appears -- is still the caption's first sentence.
+%   "five exceed the bound at T = 10^6" was a CONCLUSION about the data, and it existed
+%     NOWHERE ELSE in the paper (grepped: one hit, this caption).  It moved into the
+%     retention paragraph below, where Table 1 is first discussed.  Independently
+%     recounted from the table's own ratio column: 4.25, 42.10, 3.58, 3.34 and 60,747
+%     exceed 1, so five is right.
+\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold, under one
+deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed.
+Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
+``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
+delivers its full $\pm b$. Every figure is the \emph{primary} regime's, defined in
+Appendix~\ref{app:support}, which also gives the $T = 10^4$ excursions and the fitted
+excursion law.}
 \label{tab:forfeit}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
@@ -174,7 +184,8 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
 \mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
 and \emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
-adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices that departure. For $w = 0.99$ and
+adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices that departure, and five of its
+eleven arms exceed the bound at $T = 10^6$. For $w = 0.99$ and
 $0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$, so the ratio
 falls with the horizon. At $w = 0.999$ it is $61.08$ at $T = 10^4$ and $42.10$ at $T = 10^6$. The
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
@@ -218,16 +229,16 @@ adversary's $\varepsilon$, not the counting convention.
 \begin{figure}[tb]
   \centering
   \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
-  \caption{The dead-band coverage cliff at the null scorecaster, and that edge located.
-  \textbf{(a)} Realised miscoverage against dead-band width $\tau$ under
-  $\hat{q} \equiv 0$ with a saturator of level $b$. Filled markers are $T = 10^{6}$ and
-  open markers $T = 2{\times}10^{5}$. The dashed rule is $\tau^{\star} = \sup_x r_t(x) +
-  \sup_t \hat{q}_t - b/2$, which is $1$ at this setting.
-  \textbf{(b)} Eleven measured widths at the same setting at $T = 10^{5}$, placed by
-  $\tau - \tau^{\star}$ on a symlog axis whose linear zone is $|\tau - \tau^{\star}| \le
-  10^{-3}$; ticks carry the $\tau$ they mark. The grey band spans the widest covering
-  width to the narrowest failing one. Figure~\ref{fig:settings} gives the other four
-  $(r_t,\hat{q})$ settings.}
+  \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
+  $\hat{q} \equiv 0$ with a saturator of level $b$, where $\tau^{\star} = \sup_x r_t(x) +
+  \sup_t \hat{q}_t - b/2$ is $1$. \textbf{(a)} The full sweep: filled markers run to
+  $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
+  covers, orange forfeits, and the dashed rule is $\tau^{\star}$. \textbf{(b)} The same
+  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star}$ on
+  a symlog axis whose linear zone is $|\tau - \tau^{\star}| \le 10^{-3}$, each tick
+  carrying the $\tau$ it marks. The grey band spans the widest covering width to the
+  narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
+  settings.}
   \label{fig:boundary}
 \end{figure}
 
