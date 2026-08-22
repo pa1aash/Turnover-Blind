@@ -324,11 +324,15 @@ That is a test of the deployment, not of Section~\ref{sec:forfeit}.
 \paragraph{The boundary transfers exactly, because $M_t$ sees only $(t, E_t)$.} Since
 $\mathrm{err}_i \in \{0,1\}$, the product collapses. Writing $N_t$ for the miss count and using
 $N_t = \alpha t + E_t$,
-\[
-  \log M_t \;=\; K(\lambda)\,t \;+\; L(\lambda)\,E_t, \qquad
-  K(\lambda) = \alpha\log\!\big(1+\lambda(1-\alpha)\big) + (1-\alpha)\log(1-\lambda\alpha), \qquad
-  L(\lambda) = \log\frac{1+\lambda(1-\alpha)}{1-\lambda\alpha} ,
-\]
+% S12 SUB-SESSION F1/F: the one-line \[ ... \] display here originally produced an overfull
+% hbox 74.6pt (about an inch) into the right margin -- the only overfull box in the document,
+% found by F1's independent adversarial pass. Split into a gather* (amsmath, already loaded)
+% across three centred lines. No symbol, no claim, and no number changes; typographic only.
+\begin{gather*}
+  \log M_t \;=\; K(\lambda)\,t \;+\; L(\lambda)\,E_t, \\
+  K(\lambda) = \alpha\log\!\big(1+\lambda(1-\alpha)\big) + (1-\alpha)\log(1-\lambda\alpha), \\
+  L(\lambda) = \log\frac{1+\lambda(1-\alpha)}{1-\lambda\alpha} .
+\end{gather*}
 with $K(\lambda) \le 0$, $K(\lambda) = 0$ only at $\lambda = 0$, and $\operatorname{sign}
 L(\lambda) = \operatorname{sign}\lambda$. So $M_t$ depends on the path only through the horizon and
 the accumulator -- the same statistic Section~\ref{sec:forfeit}'s dichotomy is stated in -- and the
@@ -338,7 +342,7 @@ $|E_t| \le c\,h(t)+1$ is logarithmic, so $\log M_t \le K(\lambda)t + |L(\lambda)
 every round. Since $K(\lambda) < 0$ the right side falls to $-\infty$ linearly, so $M_T \to 0$
 exponentially; and since it is continuous with a single interior maximum it has a finite supremum
 $S(\lambda)$ over all $t$, so $\sup_t M_t \le e^{S(\lambda)}$ \emph{uniformly in the horizon}. The
-test therefore never rejects at any level $\eta \le e^{-S(\lambda)}$, however long the deployment
+test therefore never rejects at any level $\eta < e^{-S(\lambda)}$, however long the deployment
 runs. It is the uniform bound and not the limit that non-rejection needs, because Ville's
 inequality prices the supremum. Past either boundary $|E_T|$ is linear in $T$, so some fixed
 $\lambda$ of the sign of $E_T$ makes $\log M_T$ grow linearly and the test rejects at any fixed
@@ -352,7 +356,11 @@ where $\tau^{\star+} = \tau^{\star-} = 1$, and the two dead bands that bracket t
 Table~\ref{tab:forfeit} (App.~\ref{app:support}). \emph{Past the edge}, $\tau = 1.5$ returns
 miscoverage $1.000000$ and $\max_t|E_t| = 900{,}000$ at $T = 10^6$; the run records
 $n_{\mathrm{err}} = T$ at all four horizons, so the per-round path is exactly $\mathrm{err}_t = 1$
-and $E_t = (1-\alpha)t$, and no reconstruction is involved. At $\lambda = 1$ -- a round number well
+and $E_t = (1-\alpha)t$, and no reconstruction is involved. A genuine pre-registered deployment
+fixes $\lambda$, sign included, before the data arrive -- by running both signs as one two-sided
+test, or by a mixture over $\lambda$ -- and the single sign used per arm below is chosen after the
+fact, to illustrate the identity on a trajectory already known to fail or to hold; it is not itself
+a claim of a pre-registered test. At $\lambda = 1$ -- a round number well
 inside $[-10/9,10]$, not the aggressive endpoint -- the identity above gives $M_t = 1.9^{\,t}$, so
 at level $\eta = 0.05$, threshold $1/\eta = 20$: $M_4 = 13.03$ and $M_5 = 24.76$. \textbf{The
 anytime-valid test rejects on the fifth deployed interval.} At $\eta = 0.001$ it rejects on the
