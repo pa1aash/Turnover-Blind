@@ -109,16 +109,22 @@
 % bracketed; the others are one-sided." read as ONE concession joined by "and", so a
 % reader could take the seed to belong to the (seed-free, deterministic-adversary)
 % dead-band sweep rather than to the i.i.d.\ check three sentences earlier.  It is now
-% two bolded leads: the i.i.d.\ check's seed is named explicitly (20260820, T = 10^6,
+% three bolded leads: the i.i.d.\ check's seed is named explicitly (20260820, T = 10^6,
 % traced to src/forfeit.py's Config.seed and results/forfeit-20260820T063045Z-83747c45.json's
 % "seed": 20260820 field, which is also the file whose iid/deadband_tau1.5/T=1e6 row
 % carries the 0.249376 already printed above), with an explicit "the primary,
-% adversarial harness ... uses none"; then the bracket concession is restated as
-% belonging to "that (seed-free) dead-band sweep".  Nothing is cut: both concessions
-% survive word for word in substance, only the seam between them is now marked.
-% sections/appendix.tex's "primary regime" paragraph carries the other half: an explicit
-% "consumes no randomness and needs no seed" clause where the primary harness is first
-% and most fully described, so a reader meets "no seed" before ever meeting "one seed".
+% adversarial harness uses none"; then the bracket concession is restated as belonging
+% to that harness's null-scorecaster edge.  Nothing is cut: both concessions survive in
+% substance, only the seam between them is now marked.  S8 WAVE 2 (INTEGRATION):
+% RETIGHTENED, not re-litigated -- "behind Table~\ref{tab:forfeit} and the figures" and
+% "(seed-free) dead-band sweep" were dropped as words, not as facts: both are already
+% stated in sections/appendix.tex's "primary regime" paragraph (which a reader meets
+% BEFORE this sentence) and in the table caption itself, so repeating them here bought
+% no new information at the cost of the two-line page-4/5 spill W0.6 measured before this
+% session touched anything.  sections/appendix.tex's "primary regime" paragraph carries
+% the other half: an explicit "consumes no randomness and needs no seed" clause where the
+% primary harness is first and most fully described, so a reader meets "no seed" before
+% ever meeting "one seed".
 \section{Limitations}
 \label{sec:limitations}
 
@@ -133,7 +139,7 @@ adversary-free confirmation of the mechanism rather than a retreat. The threshol
 $b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly.
 \textbf{The harness was rebuilt against numbers already read}, which carries less weight than a
 rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{The i.i.d.\
-check above used one seed}, $20260820$ at $T = 10^6$; the primary, adversarial harness behind
-Table~\ref{tab:forfeit} and the figures uses none. \textbf{Only the null scorecaster's edge is
-bracketed} by that (seed-free) dead-band sweep; the others are one-sided. \textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
+check above used one seed} ($20260820$, $T = 10^6$); \textbf{the primary, adversarial harness uses
+none}, and \textbf{only its null-scorecaster edge is bracketed}; the others are one-sided.
+\textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
 \tau^{\star}$ that loses coverage, or $\tau > \tau^{\star}$ that keeps it; the sweep has neither.
