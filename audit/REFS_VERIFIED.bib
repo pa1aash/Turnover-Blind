@@ -75,6 +75,34 @@
                2023-07-31 and DBLP records the venue as NeurIPS 2023.}
 }
 
+@misc{angelopoulos2021gentle,
+  author        = {Angelopoulos, Anastasios N. and Bates, Stephen},
+  title         = {A Gentle Introduction to Conformal Prediction and Distribution-Free
+                 Uncertainty Quantification},
+  howpublished  = {arXiv:2107.07511v6},
+  year          = {2021},
+  eprint        = {2107.07511},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2107.07511},
+  annote        = {S8 SUB-SESSION B. Orientation reference for readers new to conformal
+                 prediction; the only survey-class entry in this bibliography, cited once,
+                 in the Introduction. VERIFIED FROM THE PRIMARY SOURCE, HEADLESS, 2026-08-22:
+                 arXiv API record at research/S8/records/arxiv\_2107.07511\_s8.xml gives
+                 exactly this title, authors Anastasios N. Angelopoulos and Stephen Bates,
+                 submitted 2021-07-15, latest version v6 dated 2022-12-07, primary class
+                 cs.LG. CITED AS THE ARXIV RECORD AND NOT AS A JOURNAL ARTICLE, DELIBERATELY:
+                 DBLP returns exactly one hit for the title and types it ``Informal and Other
+                 Publications'', CoRR abs/2107.07511, with no venue and no doi
+                 (research/S8/records/dblp\_gentle\_s8.json), and a Crossref bibliographic
+                 query for the same title returned no matching journal record, only peer
+                 reviews of an unrelated tutorial (research/S8/records/crossref\_gentle\_s8.json).
+                 A later Foundations and Trends monograph is widely asserted but was NOT
+                 confirmed by either surface under headless retrieval, so it is not printed
+                 here. howpublished carries the version pin because plainnat's misc function
+                 emits neither eprint nor archivePrefix; same mechanism as li2025o2cp.}
+}
+
 @inproceedings{bhatnagar2023saocp,
   author    = {Bhatnagar, Aadyot and Wang, Huan and Xiong, Caiming and Bai, Yu},
   title     = {Improved Online Conformal Prediction via Strongly Adaptive Online Learning},
@@ -1481,7 +1509,27 @@
                  in the document and "CPID" 100 times. **Its first and last authors are the
                  authors of li2024neuralconformal**, which prints that a scorecaster "breaks
                  the theoretical coverage guarantee". The record therefore contains both the
-                 false claim and its refutation, by the same people, unjoined.}
+                 false claim and its refutation, by the same people, unjoined.
+                 **S8 SUB-SESSION B, 2026-08-22: RE-DERIVED FROM ARXIV FROM SCRATCH, NOT
+                 TAKEN FROM THE PARAGRAPH ABOVE, BECAUSE AN ADVERSARIAL REVIEW DOUBTED BOTH
+                 HALVES OF IT. Every claim above survives.** Per-version API queries
+                 (research/S8/records/arxiv\_2508.13362\_v1\_s8.xml, \_v2\_s8.xml,
+                 \_v3\_s8.xml) return: v1 published 2025-08-18, title ``Adaptive Conformal
+                 Prediction Intervals Over Trajectory Ensembles''; v2 updated 2026-06-08 and
+                 v3 updated 2026-08-07, both titled as printed here. The title change is a
+                 fact arXiv itself serves, not an anomaly. The review also said it ``could
+                 not fetch v3''; https://arxiv.org/pdf/2508.13362v3 was fetched headlessly and
+                 is BYTE-IDENTICAL to the S3 copy (md5 515a7671437c34e2df18102b615ab994 on
+                 both), so the S3 record is v3 and the two sources are the same artefact
+                 rather than two agreeing witnesses. ``Corollary 2 (CPID admissible set)''
+                 occurs verbatim in it, with the hypotheses and the conclusion the body
+                 attributes to it: mu\^{}CPID\_t in [0,1] predictable, r\^{}CPID\_t = mu\^{}CPID\_t
+                 (b/2 - |qhat\_t|), and a proof closing ``|E\_T| <= c h(T) + 1 = o(T)''. NOTE
+                 FOR ANY FUTURE GREP: plain grep reports NO matches in the saved .txt because
+                 it classifies the file as binary; use grep -a or read it in Python.
+                 The intro's restatement was made self-contained in the same sub-session, so
+                 the body no longer depends on a result NUMBER holding in a revising preprint.
+                 Full S8 audit at research/S8/B-citation-audit.json.}
 }
 
 @misc{wang2026acmcp,

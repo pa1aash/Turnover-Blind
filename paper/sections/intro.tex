@@ -162,7 +162,8 @@ one, by the same first and last authors, proves in the same notation that a boun
 perturbation of the deployed threshold does not. The later cites the earlier, so this is ordinary
 self-correction, and the joining is what this paper adds.
 
-An online conformal method emits a threshold before each observation and moves it. Forecast
+An online conformal method \citep{angelopoulos2021gentle} emits a threshold before each
+observation and moves it. Forecast
 stability names, scores and prices that movement
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
 pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying temporal structure at
@@ -177,9 +178,10 @@ be predictable and lie in $[-b/2,b/2]$: ``any function of the past'' (Theorem~1)
 is already quantified over. The claim reads ``[s]ince using a scorecaster (D-part) in
 C-PID breaks the theoretical coverage guarantee'' \citep{li2024neuralconformal}, stated and
 acted on in its baselines paragraph, verbatim on refereed printed page $18443$. It is refuted
-twice, with proof. \citet[Corollary~2]{li2025o2cp} add an arbitrary predictable $d_t$ with
-$|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, note that the result ``has exactly
-the CPID error-integration form'', and conclude $|E_T| = o(T)$. The same generic-slot argument
+twice, with proof. \citet[Corollary~2]{li2025o2cp} add any predictable $d_t$, $|d_t| \le
+\mu_t(b/2-|\hat{q}_t|)$ with $\mu_t \in [0,1]$ predictable, to the deployed threshold; since
+$\hat{q}_t + d_t$ still lies in $[-b/2,b/2]$ it is itself a legal scorecaster, so the result
+``has exactly the CPID error-integration form'' and $|E_T| = o(T)$. The same generic-slot argument
 carries AcMCP's long-run coverage \citep{wang2026acmcp}. Four surfaces were queried on 20 August
 2026 for both identifiers and ``scorecaster''. They are arXiv full text, arXiv abstracts,
 OpenReview, and the six works Semantic Scholar records citing

@@ -81,7 +81,8 @@
 $q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
 \le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
 coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
-Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
+Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale, where
+adaptive conformal inference \citep{gibbs2021aci} and DtACI \citep{gibbs2024dtaci} move the level,
 \begin{equation}
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
