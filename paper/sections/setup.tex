@@ -113,15 +113,17 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
   sm/.style={bx,fill=black!10},
   jn/.style={draw,circle,inner sep=0pt,minimum size=3.2mm},
   sig/.style={->,thin},
-  lab/.style={font=\scriptsize,inner sep=1pt},
-  ttl/.style={font=\scriptsize,inner sep=1pt,anchor=west}
+  lab/.style={font=\footnotesize,inner sep=1pt},
+  ttl/.style={font=\footnotesize,inner sep=1pt,anchor=west},
+  legswatch/.style={draw,rounded corners=1pt,fill=black!10,minimum width=3mm,
+             minimum height=3mm,inner sep=0pt}
 ]
 %% ------------------------------- PANEL B -------------------------------
 \begin{scope}[xshift=0mm]
   \node[ttl] at (-1.5mm,6.2mm) {\textbf{(B)} in the $\hat q_{t+1}$ slot: inside the loop};
   \node[sm]                    (Bsc)  at (0mm,0mm) {$\hat q_{t+1}$: readout};
   \node[jn,right=3.5mm of Bsc] (Bsum) {$+$};
-  \node[bx,right=3.5mm of Bsum](Bq)   {$q_{t+1}$\\[-2pt]{\scriptsize deployed}};
+  \node[bx,right=3.5mm of Bsum](Bq)   {$q_{t+1}$\\[-2pt]{\footnotesize deployed}};
   \node[bx,anchor=north west]  (Bint) at ([yshift=-5.6mm]Bsc.south west)
         {$r_t(E_t)$, saturating};
   \draw[sig] (Bsc) -- (Bsum);
@@ -143,7 +145,7 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
   \node[jn,right=3.5mm of Asc] (Asum) {$+$};
   \node[bx,right=3.5mm of Asum](Aq)   {$q_{t+1}$};
   \node[sm,right=6mm of Aq]    (Asm)  {readout};
-  \node[bx,right=3.5mm of Asm] (Aqt)  {$\tilde q_{t+1}$\\[-2pt]{\scriptsize deployed}};
+  \node[bx,right=3.5mm of Asm] (Aqt)  {$\tilde q_{t+1}$\\[-2pt]{\footnotesize deployed}};
   \node[bx,anchor=north west]  (Aint) at ([yshift=-5.6mm]Asc.south west)
         {$r_t(E_t)$, saturating};
   \draw[sig] (Asc) -- (Asum);
@@ -160,6 +162,9 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
   \draw[dashed,thin,rounded corners=2pt]
        ([shift={(-1.5mm,1.5mm)}]Anw) rectangle ([shift={(3mm,-1.5mm)}]Ase);
 \end{scope}
+%% ------------------------------- LEGEND -------------------------------
+\node[legswatch] (Leg) at (26.5mm,-15.5mm) {};
+\node[lab,anchor=west] at ([xshift=1.5mm]Leg.east) {readout (the grey box)};
 \end{tikzpicture}
 \caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output, and both readouts keep $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside Corollary~2's admissible set. In \textbf{(A)} it closes on $\tilde q_{t+1}$, which it never computed, and the deployed sequence leaves that set.}
 \label{fig:placements}
