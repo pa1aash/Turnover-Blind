@@ -363,7 +363,7 @@ def figure2(series, gridpts, taustars, alpha, b):
                  mfc=(C_COVER if c else C_FAIL) if T == T_MAIN else "white")
 
     axA.axvline(ts, color=C_EDGE, lw=0.9, ls=(0, (3.2, 2.0)), zorder=2)
-    axA.text(ts * 1.055, YHI * 0.94, r"$\tau^{\star}=1$", color=C_EDGE, fontsize=6.6,
+    axA.text(ts * 1.055, YHI * 0.94, r"$\tau^{\star+}=1$", color=C_EDGE, fontsize=6.6,
              ha="left", va="top")
     axA.text(0.435, alpha * 1.15, r"$\alpha=0.1$", fontsize=6.4, color="0.35",
              ha="left", va="bottom")
@@ -409,7 +409,7 @@ def figure2(series, gridpts, taustars, alpha, b):
     axB.set_xticks([t - ts for t in gtau if t not in LADDER], minor=True)
     axB.tick_params(axis="x", which="minor", length=1.3)
     axB.set_yticklabels([])
-    axB.set_xlabel(r"$\tau$, placed by $\tau-\tau^{\star}$ (symlog)", labelpad=1.0)
+    axB.set_xlabel(r"$\tau$, placed by $\tau-\tau^{\star+}$ (symlog)", labelpad=1.0)
 
     icut = next(i for i, p in enumerate(gridpts) if not covers(p[1], alpha))
     axB.axvspan(gx[icut - 1], gx[icut], color=C_EDGE, alpha=0.10, lw=0, zorder=0)
@@ -491,7 +491,7 @@ def figure3(series, taustars, alpha, b):
                          else f"{taustars[s[0]]:g}" for s in SETTINGS])
     sec.tick_params(axis="y", length=0)
     sec.spines["right"].set_visible(False)
-    ax.text(1.037, 1.055, r"$\tau^{\star}$", transform=ax.transAxes,
+    ax.text(1.037, 1.055, r"$\tau^{\star+}$", transform=ax.transAxes,
             ha="center", va="bottom", fontsize=7.5)
     ax.text(-0.007, 1.055, r"$(r_t,\hat{q})$", transform=ax.transAxes,
             ha="right", va="bottom", fontsize=7.5)
@@ -502,7 +502,7 @@ def figure3(series, taustars, alpha, b):
                  mfc=C_FAIL, label="total forfeit (1.0)"),
           Line2D([], [], ls="none", marker="o", ms=4.6, mew=1.1, mec="0.25",
                  mfc="white", label=r"open: $T=2{\times}10^{5}$"),
-          Line2D([], [], color=C_EDGE, lw=1.1, label=r"$\tau^{\star}$ from the law")]
+          Line2D([], [], color=C_EDGE, lw=1.1, label=r"$\tau^{\star+}$ from the law")]
     ax.legend(handles=hz, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=4,
               frameon=False, borderpad=0.2, handletextpad=0.45, columnspacing=1.5,
               borderaxespad=0.0)

@@ -197,8 +197,12 @@ Table~\ref{tab:bridge}'s caption names ten, so a fresh one is used here.
 b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, with $c = 1$ and $h(t) = \log(t+2)$, meets~(4) with equality.
 The scorecaster is null and legal, reducing (\ref{eq:pid}) to the pure error integration
 Proposition~2 addresses. Neither choice is neutral: (4) is a lower bound met exactly here, and
-Theorem~1 permits scorecasters $b/2$ either side of null. The adversary is specified, not
+Theorem~1 permits scorecasters $b/2$ either side of null, predictable but not constant in $t$.
+The adversary is specified, not
 tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
 10^{-9}$, against the \emph{deployed} $\tilde{q}_t$: the $\varepsilon\downarrow 0$ reading of
 ``sets the score at the threshold'', firing the strict indicator. Legality is Theorem~1's
-$[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight.
+$[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight. \emph{That specification names one
+member of a class}: any adapted $s_t \in [-b/2,b/2]$ is legal, the constant $s_t \equiv -b/2$
+included. Every number in Table~\ref{tab:forfeit} is measured against the one adversary above;
+Section~\ref{sec:forfeit}'s two boundaries are quantified over the class, and they differ.

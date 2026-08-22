@@ -131,8 +131,65 @@
 % FRAMING sec. 3: every quantifier is a measurement; no forbidden construction.
 % The endpoint COVERS, so "tau > tau*" is the failing condition and writing
 % "tau >= tau*" would be wrong.
+%   SUPERSEDED S9 SUB-SESSION C, and the correction is the point of this wave.  "The
+%   endpoint covers" is true OF THE SPECIFIED ADVERSARY and false of the legal adversary
+%   CLASS: at the baseline setting tau*+ = tau*- = 1, so the endpoint is simultaneously the
+%   closed upper boundary and the open lower one, and the mirror adversary s_t == -b/2 fails
+%   there.  That mirror failure is already in results/forfeit-20260820T063132Z-83747c45.json,
+%   in its exact_threshold_strict column, which is the SAME error process (both give
+%   err_t = 1{q~_t < -b/2} under the strict indicator).  See the S9 block below.
+%
+% =========================================================================================
+% S9 SUB-SESSION C (2026-08-22): THE LAW IS NOW A THEOREM, AND ITS SCOPE IS CORRECTED.
+%
+% Two prior sub-sessions did the mathematics: A drafted a general proof, B attacked it
+% independently with a re-derivation and a validated simulator.  The outcome, in one line:
+%
+%   tau* = sup_x r_t(x) + sup_t qhat_t - b/2  is EXACTLY RIGHT as a NECESSARY condition,
+%   over the whole admissible class including a time-varying scorecaster, and it is FALSE
+%   as a SUFFICIENT one, on three independent axes, each with a legal counterexample.
+%
+%   (i)  sup_x r_t(x) is not a level the dynamics can reach.  Condition (4) constrains r_t
+%        only OUTSIDE |x| < c h(t) and only from below, so a legal r_t may put its supremum
+%        on a set the accumulator never visits: |E_t| <= max(alpha, 1-alpha) t, so an r_t
+%        equal to the harness's inside |x| <= t^2 and to +-10b outside it has sup_x r_t = 20,
+%        the printed tau* = 19, and a measured edge at 1.  Retention must use the level (4)
+%        GUARANTEES at the radius, not the supremum.
+%   (ii) sup_t qhat_t certifies the best round and applies the certificate to the worst.
+%        Retention needs inf_t.  The two coincide iff qhat is constant, which all five
+%        tested settings are, which is why five settings could not expose it.
+%   (iii) the law was one-sided.  A second legal adversary, s_t == -b/2, has its own
+%        boundary tau*- = sup_t(|inf_x r_t(x)| - qhat_{t+1}) - b/2, and it BINDS FIRST
+%        whenever qhat > 0 or the saturator is asymmetric downward.
+%
+% WHAT SURVIVED EVERY ATTACK B COULD MOUNT, and is what this file now states:
+%   NECESSITY over the full class (no attainment, no constancy, no finiteness needed), and
+%   RETENTION over the full class stated through the guaranteed reach, the two meeting with
+%   NO GAP exactly on the sub-class where qhat is constant and the saturator reaches its
+%   extremes at the condition-(4) radius.  All five tested settings are in that sub-class.
+%   B could not break the sharp statement in 16 necessity attacks at overshoots down to
+%   1e-6, in four endpoint orderings, or with an adversarial in-band saturator.
+%
+% NOTHING MEASURED IS WITHDRAWN.  All 19 dead-band runs still agree with tau*+ read against
+% the adversary the harness plays; Table 1, Figures 2 and 3 and every printed number are
+% unchanged.  What changes is the STATUS of the claim (proved, not observed) and its SCOPE
+% (two-sided, and retention keyed to the reach rather than the supremum).
+%
+% THE OPEN PROBLEM IS STATED RATHER THAN HIDDEN.  For a NON-CONSTANT qhat the two
+% boundaries separate and the band sigma+ < tau <= tau*+ is genuinely open: neither
+% direction is claimed there, and it is not vacuous.  Table 2's last two rows are inside it.
+%
+% NEW COMMITTED CODE AND DATA, so that every number Table 2 prints traces to results/ as
+% docs/GATES.md G7.1 requires:
+%   src/boundary_stress.py           imports src/forfeit.py UNMODIFIED, makes the
+%                                    scorecaster / saturator / adversary pluggable, and
+%                                    VALIDATES the transcription against the committed
+%                                    forfeit.run_arm numbers (19 exact checks) before
+%                                    running anything.
+%   results/boundary-stress-20260822T103716Z-cd208b98.json   210 rows, its `rows` field.
+% =========================================================================================
 
-\section{The edge of the admissible set, measured}
+\section{The edge of the admissible set, located and proved}
 \label{sec:forfeit}
 
 \begin{table}[tb]
@@ -230,56 +287,183 @@ adversary's $\varepsilon$, not the counting convention.
   \centering
   \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
   \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
-  $\hat{q} \equiv 0$ with a saturator of level $b$, where $\tau^{\star} = \sup_x r_t(x) +
-  \sup_t \hat{q}_t - b/2$ is $1$. \textbf{(a)} The full sweep: filled markers run to
+  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
+  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full sweep: filled markers run to
   $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
-  covers, orange forfeits, and the dashed rule is $\tau^{\star}$. \textbf{(b)} The same
-  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star}$ on
-  a symlog axis whose linear zone is $|\tau - \tau^{\star}| \le 10^{-3}$, which magnifies the
-  neighbourhood of $\tau^{\star}$: visual spacing here is not proportional to true distance in
+  covers, orange forfeits, and the dashed rule is $\tau^{\star+}$. \textbf{(b)} The same
+  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star+}$ on
+  a symlog axis whose linear zone is $|\tau - \tau^{\star+}| \le 10^{-3}$, which magnifies the
+  neighbourhood of $\tau^{\star+}$: visual spacing here is not proportional to true distance in
   $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
   narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
-  settings.}
+  settings. The same eleven widths under the \emph{mirror} adversary, which locates
+  $\tau^{\star-}$, are in Appendix~\ref{app:support}.}
   \label{fig:boundary}
 \end{figure}
 
-\paragraph{The $L_1$ dead band leaves the radius, and the edge is measurable.} A dead band pulls
-the deployed threshold back by exactly $\tau$ when it releases, so ``inside Corollary~2'' reads
+\paragraph{The $L_1$ dead band leaves the radius, and the edge is a theorem.} A dead band pulls
+the deployed threshold back by exactly $\tau$ when it releases and holds it otherwise, so
+$|\tilde{q}_{t+1}-q_{t+1}| \le \tau$ at every round and ``inside Corollary~2'' reads
 $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned $\tau$ below the
 integrator's ceiling, and its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
-0.9$. The adversary's best legal play is $b/2$, so coverage is lost when that supremum drops below
-it, at $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$. All $19$ dead-band
-runs agree with that law (Figure~\ref{fig:settings}); only the null scorecaster's edge is located
-(Figure~\ref{fig:boundary}), the others one-sided. \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
-$\tau^{\star} = b/2$}, one point of the admissible class, and both terms move it. The legal
-$\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound. The equally legal $\hat{q}
-\equiv -b/2$ drops the edge to $0$, and there $\tau = 0.5$ returns $1.000000$, as does partial
-adjustment at $w = 0.999$. Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising it
-costs the theorem nothing; it moves the edge too (Figure~\ref{fig:settings}) and shrinks
-the excursion. Under the unbounded tangent integrator
-\citet{angelopoulos2023pid} report using in all their experiments, $\tau^{\star}$ is unbounded and
-all three widths there cover. The excursion is $20.10$ rather than $623.70$, both at $T = 10^6$. \textbf{The method's own integrator therefore
-sits inside the set at every width run here.} Outside the set the transition is a step. Past
-$\tau^{\star}$ the threshold sits permanently below the reachable score range and $|E_t| =
-(1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T = 10^6$. The wider bands $\tau =
-2.0$, $2.5$, $3.0$ and $5.0$ fail too at $T = 2{\times}10^5$ (Figure~\ref{fig:boundary}), so the
-failing set is $(\tau^{\star},\infty)$, open at the left. \textbf{The endpoint is where the adversary's
-specification decides the answer.} At $\tau = \tau^{\star}$ the deployed supremum equals the
-adversary's own cap $b/2$, so the clip forces an exact play and the reading settles it: the
-primary regime covers. Appendix~\ref{app:support} separates the two readings and prints both.
-\textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
+0.9$. Outside the radius two levels decide the answer and condition~(4) names only one of them.
+Write $A^{+}_t = \sup_x r_t(x)$ and $A^{-}_t = \inf_x r_t(x)$ for the integrator's extremes, and
+$\Lambda^{+}_t = \inf_{x \ge c\,h(t)} r_t(x)$, $\Lambda^{-}_t = \sup_{x \le -c\,h(t)} r_t(x)$ for
+the levels it is \emph{guaranteed} to reach once the accumulator clears the radius.
+Condition~(4) says exactly $\Lambda^{+}_t \ge b$ and $\Lambda^{-}_t \le -b$; that
+$\Lambda^{\pm}_t = A^{\pm}_t$, that the integrator reaches its extremes where~(4) puts them, is a
+further hypothesis and not one~(4) supplies. Set
+\begin{equation}
+  \tau^{\star\pm} \;=\; \sup_t\big(|A^{\pm}_t| \pm \hat{q}_{t+1}\big) - b/2,
+  \qquad
+  \sigma^{\pm} \;=\; \inf_t\big(|\Lambda^{\pm}_t| \pm \hat{q}_{t+1}\big) - b/2 .
+  \label{eq:boundaries}
+\end{equation}
+
+\textbf{Failure, over the whole admissible class.} If $\tau > \tau^{\star+}$ then $\hat{q}_{t+1} +
+A^{+}_t - \tau < b/2$ at every round, so $\tilde{q}_{t+1} \le \max(\tilde{q}_t, q_{t+1}-\tau)$
+makes $\{\tilde{q} < b/2\}$ absorbing: a release upward lands below $b/2$, and a hold or a
+release downward cannot lift the deployed value at all. Against $s_t =
+\mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ the indicator is then $\mathbf{1}\{\tilde{q}_t <
+b/2\}$ and every round misses. If $\tau \ge \tau^{\star-}$ the constant legal play $s_t \equiv
+-b/2$ makes $\{\tilde{q} \ge -b/2\}$ absorbing by the mirror inequality, so no round can miss and
+the realised rate is $0$ rather than $\alpha$.
+Either way long-run coverage is lost, with $|E_T|$ linear in $T$. Nothing
+here asks $\hat{q}$ to be constant, asks the extremes to be attained anywhere, or asks $A^{\pm}_t$
+to be finite beyond what the hypothesis already forces. \textbf{Retention, keyed to the reach
+rather than the supremum.} If $\tau \le \sigma^{+}$ then $E_{t-1} \ge c\,h(t-1)$ forces $q_t \ge
+b/2+\tau$ and so $\tilde{q}_t \ge b/2$, whence $\mathrm{err}_t = 0$ against \emph{every} legal
+adversary; if $\tau < \sigma^{-}$ the mirror forces $\mathrm{err}_t = 1$ below $-c\,h(t-1)$. The
+accumulator cannot then leave $[-c\,h(t),c\,h(t)]$ by more than one round, and $|E_T| \le
+c\,h(T)+1$: Proposition~2's own bound, retained verbatim rather than weakened to $o(T)$. Using
+condition~(4) alone this already certifies $\tau \le b/2+\inf_t\hat{q}_t$ and $\tau < b/2 -
+\sup_t\hat{q}_t$, which for a constant scorecaster is Corollary~2's radius at $\mu_t = 1$.
+
+\paragraph{The two directions meet, with no gap, on the sub-class the five settings inhabit.} If
+$\hat{q}_t \equiv \hat{q}$, if $\Lambda^{\pm}_t = A^{\pm}_t$, and if neither depends on $t$, then
+$\sigma^{\pm} = \tau^{\star\pm}$ and \textbf{coverage is retained against every legal adapted
+adversary if and only if $\tau \le \tau^{\star+}$ and $\tau < \tau^{\star-}$.} For a symmetric
+saturator that is one line: coverage if and only if $\tau \le \sup_x r_t(x) - b/2 - |\hat{q}|$,
+with the endpoint included only when $\hat{q} < 0$. Every setting run here is in that sub-class,
+so the sharp form applies to all five. \textbf{What was printed before is the failure half.}
+$\tau^{\star+}$ is the rule Figures~\ref{fig:boundary} and~\ref{fig:settings} draw, and all $19$
+dead-band runs agree with it read against the adversary the harness plays. It is not a retention
+condition, and Table~\ref{tab:stress} separates the two with legal objects only. The supremum can
+sit where the dynamics never go: $|E_t| \le (1-\alpha)t$, so a saturator equal to the harness's
+inside $|x| \le t^2$ and to $\pm 10b$ outside it satisfies~(4), reads $\tau^{\star+} = 19$, and
+fails at $\tau = 1.001$. A legal time-varying $\hat{q}$ splits $\sup_t$ from $\inf_t$: $\hat{q}_t =
+b/2$ on $t$ a power of two and $0$ elsewhere reads $\tau^{\star+} = 2$ against $\sigma^{+} = 1$.
+And $\tau^{\star-}$ was missing entirely.
+
+\paragraph{The mirror boundary is already measured, on this paper's own grid.} Under the strict
+indicator both $s_t \equiv -b/2$ and $s_t = \mathrm{clip}(\tilde{q}_t,\pm b/2)$ give
+$\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$, so they are one error process. The
+$\tau$-cliff run's exact-threshold column under that indicator is therefore the mirror adversary,
+measured at the null scorecaster on eleven widths: it returns between $0.09992$ and $0.09997$ at
+$\tau = 0.5$ through $0.999$, and $0.000000$ with $\max_t|E_t| = 10{,}000 = \alpha T$ at $\tau = 1$
+and at every wider band. That is $\tau^{\star-} = 1$, closed on the failing side, exactly where
+(\ref{eq:boundaries}) puts it. \textbf{So the failure criterion is $|E_T|$, not the miscoverage
+rate.} Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
+$\alpha T$; and once $\hat{q}$ varies the rate stops being a tell at all. At $\tau = 1.9$ with the
+power-of-two scorecaster the rate is $0.110960$ against $\alpha = 0.1$ while $\max_t|E_t|$ is
+$84{,}745.70$ at $T = 10^6$, so a reader watching only the rate would call that coverage.
+
+\paragraph{Both degenerate edges, and what they need.} An unbounded supremum is not on its own
+enough for $\tau^{\star+} = \infty$ to mean what it looks like: the same unreachable-set
+construction with $r_t(x) = x$ past $|x| > t^2$ has no finite supremum and fails at $\tau = 1.5$.
+What the tangent family has, and that construction does not, is a genuine reach:
+$\Lambda_t(X) = \tan(\arctan(b)X/(c\,h(t)))$, so the accumulator level at which the deployed
+threshold is forced to $b/2$ is $\kappa(\tau)\,c\,h(t)$ with $\kappa(\tau) = \arctan(b/2+\tau -
+\hat{q})/\arctan(b)$, finite at every finite $\tau$. Coverage is retained at every width, as
+measured; but $\kappa(\tau) > 1$ once $\tau > b/2 + \hat{q}$, so Proposition~2's own
+\emph{constant} is forfeited past $\tau = b/2$ while coverage is not. At $\tau = 1.5$, $T = 10^6$
+the excursion is $15.10$ against Proposition~2's $14.8155$ and against $\kappa(1.5)\,c\,h(T)+1 =
+15.8530$. At the other edge, $\sup_t \hat{q}_t = -b/2$ forces $\hat{q} \equiv -b/2$, since every
+$\hat{q}_t$ is at least $-b/2$ already. There $q_{t+1}-\tau \le -b/2+b-\tau < b/2$ for every
+$\tau > 0$ and every $t$, and $\tilde{q}_1 = 0 < b/2$, so the failing set is absorbing from
+round~$1$ with no transient: the admissible window is the single point $\tau = 0$, and $\tau = 0.5$
+returns $1.000000$, as does partial adjustment at $w = 0.999$.
+
+\begin{table}[tb]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.1pt}
+\renewcommand{\arraystretch}{0.95}
+% S9 SUB-SESSION C: NEW.  Every cell is
+% results/boundary-stress-20260822T103716Z-cd208b98.json, field `rows', selected by
+% (config, tau, adversary, T).  Produced by src/boundary_stress.py, which imports
+% src/forfeit.py unmodified and validates its transcription against
+% results/forfeit-20260820T063132Z-83747c45.json (19 exact checks) before running.
+% Nothing here is read off a figure and nothing is rounded by hand.
+\caption{Legal $(r_t,\hat{q})$ configurations on which the printed $\tau^{\star}$ over-certifies,
+each under two legal adversaries. ``Proved window'' is where (\ref{eq:boundaries}) certifies
+retention against every legal adversary; between it and the failure boundaries
+$\tau^{\star\pm}$ neither direction is claimed, and the rows built on a supremum the dynamics
+cannot reach or never attain sit there. Here $\emptyset$ marks a configuration for which no
+width is certified, $\tau = 0$ included. $T = 10^5$ except the two power-of-two rows, at
+$T = 10^6$. The last row carries no dead band at all.}
+\label{tab:stress}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+ & & & & \multicolumn{2}{c}{$s_t = \tilde{q}_t+\varepsilon$} &
+ \multicolumn{2}{c}{$s_t \equiv -b/2$} \\
+\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+$(r_t,\hat{q})$ configuration & $\tau$ & printed $\tau^{\star}$ & proved window &
+miscov. & $\max_t|E_t|$ & miscov. & $\max_t|E_t|$ \\
+\midrule
+$\hat{q} \equiv +0.4$, level $b$        & $0.599$ & $1.4$ & $\tau < 0.6$ & $0.100010$ & $7.20$ & $0.099890$ & $11.60$ \\
+$\hat{q} \equiv +0.4$, level $b$        & $0.8$   & $1.4$ & $\tau < 0.6$ & $0.100050$ & $8.70$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\sup_x r_t = 10b$, off the reach       & $1.001$ & $19$  & $\tau < 1$   & $\mathbf{1.000000}$ & $90{,}000$ & $0.000000$ & $10{,}000$ \\
+$\sup_x r_t$ unbounded, off the reach   & $1.5$   & $\infty$ & $\tau < 1$ & $\mathbf{1.000000}$ & $90{,}000$ & $0.000000$ & $10{,}000$ \\
+$A^{+} = 4b$, $A^{-} = -b$              & $1.5$   & $7$   & $\tau < 1$   & $0.100020$ & $4.30$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+level $4b$, $\hat{q} \equiv 0$          & $6.999$ & $7$   & $\tau < 7$   & $0.100070$ & $12.20$ & $0.100050$ & $11.60$ \\
+level $4b$, $\hat{q} \equiv 0$          & $7.0$   & $7$   & $\tau < 7$   & $0.100090$ & $12.20$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\sup_x r_t = 2b$, unattained           & $2.99$  & $3$   & $\tau < 1$   & $0.100320$ & $211.10$ & $0.098010$ & $210.50$ \\
+$\sup_x r_t = 2b$, unattained           & $3.0$   & $3$   & $\tau < 1$   & $\mathbf{1.000000}$ & $90{,}000$ & $0.000000$ & $10{,}000$ \\
+$\sup_x r_t = 2b$, attained             & $3.0$   & $3$   & $\tau < 3$   & $0.100000$ & $12.20$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\hat{q}_t = b/2$ on powers of $2$      & $1.0$   & $2$   & $\emptyset$    & $0.100009$ & $14.30$ & $\mathbf{0.000000}$ & $100{,}000$ \\
+$\hat{q}_t = b/2$ on powers of $2$      & $1.9$   & $2$   & $\emptyset$    & $\mathbf{0.110960}$ & $84{,}745.70$ & $0.000000$ & $100{,}000$ \\
+$\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.100000$ & $0.90$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{What survives of the measurement, and what its status now is.} Outside the admissible
+window the transition is a step. Past $\tau^{\star+}$ the threshold sits permanently below the
+reachable score range and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T =
+10^6$; the wider bands $\tau = 2.0$, $2.5$, $3.0$ and $5.0$ fail too at $T = 2{\times}10^5$
+(Figure~\ref{fig:boundary}). \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
+$\tau^{\star+} = \tau^{\star-} = b/2$}, one point of the admissible class, and both terms move it.
+The legal $\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound against the
+specified adversary, and against the mirror one no width covers there, the unsmoothed control
+included. Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising it costs the failure
+direction nothing; it moves the edge too (Figure~\ref{fig:settings}) and shrinks the excursion,
+from $623.70$ to $20.10$ under the tangent integrator \citet{angelopoulos2023pid} report using in
+all their experiments, both at $T = 10^6$. \textbf{The method's own integrator therefore sits
+inside the set at every width run here.} \textbf{The endpoint is where the two boundaries part.}
+The upper one is closed and the lower one is open, which the null scorecaster cannot show because
+$\tau^{\star+}$ and $\tau^{\star-}$ coincide there: four saturators with $\tau^{\star+} <
+\tau^{\star-}$ cover at $\tau = \tau^{\star+}$ exactly under both adversaries, and at $\hat{q}
+\equiv +0.4$, where $\tau^{\star-} = 0.6 < 1.4 = \tau^{\star+}$, the width $0.599$ covers under
+both while $0.6$ fails under the mirror. At the baseline the two coincide at $1$, so the primary
+regime covers there and the mirror adversary does not; Appendix~\ref{app:support} prints both
+readings. \textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
 $\pm b$ on every round, and what fails is Proposition~2's other hypothesis: the threshold closing
 the loop \emph{is} the integrator's output.
 
-\paragraph{What that measures is that the published condition is tight.} At $\mu_t = 1$,
-$\hat{q} \equiv 0$ the measured $\tau^{\star}$ is exactly Corollary~2's radius, and crossing it
-costs coverage rather than the rate. \textbf{The claim is that necessity: a tightness result about
-someone else's sufficient condition}, smaller and more precise than a forfeit of the rate by
-post-processing. Elsewhere it stays sufficient only: at $\hat{q} \equiv +b/2$ Corollary~2
-permits radius $0$ while every width run there covers. That asymmetry makes ``tight'' a located
-claim.
+\paragraph{What that establishes is that the published condition is tight.} At $\mu_t = 1$,
+$\hat{q} \equiv 0$ the boundary is exactly Corollary~2's radius, crossing it costs coverage rather
+than the rate, and (\ref{eq:boundaries}) makes that an if-and-only-if against the whole legal
+adversary class rather than a pattern across five settings. \textbf{The claim is that necessity: a
+tightness result about someone else's sufficient condition}, smaller and more precise than a
+forfeit of the rate by post-processing. Elsewhere it stays sufficient only, and now measurably so:
+under the tangent integrator no finite width forfeits coverage, and at $\hat{q} \equiv +b/2$
+Corollary~2 permits radius $0$ and $0$ is what (\ref{eq:boundaries}) permits as well. That
+asymmetry makes ``tight'' a located claim.
 
 \paragraph{The constructive reading, and it is the corollary's rather than ours.} Placement~B
-keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it already. What the
-measurement adds is that the band has an edge, computable before deployment from $\sup_x r_t(x)$
-and $\sup_t \hat{q}_t$, and that crossing it is not a graceful degradation.
+keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it already. What
+Section~\ref{sec:forfeit} adds is that the band has two edges, both computable before deployment
+from the integrator's guaranteed reach and the scorecaster's range, that crossing either is not a
+graceful degradation, and that between $\sigma^{\pm}$ and $\tau^{\star\pm}$, which separate only
+when $\hat{q}$ varies in $t$, neither direction is settled here.

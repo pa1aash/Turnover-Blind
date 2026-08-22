@@ -51,9 +51,27 @@ adversary's signature move then covers rather than misses. Partial adjustment at
 excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
 $1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading.
 \textbf{No row is convention-free with respect to the second}, which is why the adversary is
-specified rather than tie-broken. At $\tau = \tau^{\star}$ itself the two readings part: the
+specified rather than tie-broken. At $\tau = \tau^{\star+}$ itself the two readings part: the
 strict indicator returns $0.000000$ where scoring the exact play as a miscoverage returns
-$1.000000$.
+$1.000000$. \textbf{Neither of those is coverage.} They are $|E_T| = \alpha T$ and
+$(1-\alpha)T$, failures of the same order and opposite sign. Under the strict indicator the
+exact-threshold play scores $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$, which is also the
+indicator of the constant legal play $s_t \equiv -b/2$, so that column is
+Section~\ref{sec:forfeit}'s \emph{mirror adversary} rather than a second convention. It returns
+between $0.09992$ and $0.09997$ at $\tau = 0.5$, $0.9$, $0.95$, $0.99$ and $0.999$, and
+$0.000000$ with $\max_t|E_t| = 10{,}000$ at $\tau = 1$, $1.001$, $1.01$, $1.05$, $1.1$ and $1.5$.
+That locates $\tau^{\star-} = 1$ on the same eleven widths Figure~\ref{fig:boundary} uses, closed
+on the failing side. The convention decides which legal adversary realises the endpoint failure,
+not whether one occurs.
+% S9 SUB-SESSION C: THE TWO SENTENCES ABOVE ARE ADDED, AND NOTHING PRIOR IS WITHDRAWN.  The
+% pre-S9 text was factually correct and is kept verbatim; what it did not say is that the
+% strict indicator's 0.000000 is itself a linear-in-T failure rather than a covering row, and
+% that the exact_threshold_strict column is a SECOND LEGAL ADVERSARY under the paper's own
+% indicator, not an indicator variant.  Both are read straight off
+% results/forfeit-20260820T063132Z-83747c45.json, aggregate_table, regime
+% exact_threshold_strict, T = 1e5, all eleven deadband_tau rows; the identity of the two error
+% processes is re-verified bit for bit by src/boundary_stress.py's validate(), 8 of its 19
+% checks.
 % S6 SUB-SESSION C, RULE-6 MOVE.  Those two numbers were in sections/forfeit.tex, in the
 % endpoint sentence, which already pointed here.  They are endpoint-convention detail, this
 % is the paragraph that discusses the convention, and the appendix does not count against
@@ -100,11 +118,14 @@ constants, the running mean and the dead bands all excurse further than it predi
   \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
   rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
   Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
-  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$. The rule on each
-  row is that setting's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
-  at the right, and the tinted band is $\tau \le \tau^{\star}$. Two rules fall off the
-  axis and are drawn as arrows: $\tau^{\star} = 0$ at $\hat{q} \equiv -b/2$, and
-  $\tau^{\star}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator.}
+  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$, all under the
+  \emph{specified} adversary. The rule on each
+  row is that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
+  at the right, and the tinted band is $\tau \le \tau^{\star+}$. Two rules fall off the
+  axis and are drawn as arrows: $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$, and
+  $\tau^{\star+}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator. The
+  mirror boundary $\tau^{\star-}$ of (\ref{eq:boundaries}) is not drawn here and differs from
+  $\tau^{\star+}$ at the two non-null scorecasters.}
   \label{fig:settings}
 \end{figure}
 
