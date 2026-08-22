@@ -66,8 +66,8 @@
 deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed.
 Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
 ``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
-delivers its full $\pm b$. Every number is the \emph{primary} regime's, defined in the
-paragraph below, which also gives the $T = 10^4$ excursions and the fitted
+delivers its full $\pm b$. Every number is the \emph{primary} regime's, defined in this
+appendix, which also gives the $T = 10^4$ excursions and the fitted
 excursion law.}
 \label{tab:forfeit}
 \begin{tabular}{@{}lrrrrrr@{}}
@@ -100,7 +100,15 @@ all four horizons. Scoring
 the same play under the \emph{strict} indicator does not, and it moves every row, because the
 adversary's signature move then covers rather than misses. Partial adjustment at $w = 0.999$
 excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
-$1.000000$. That $623.70$ turns on the adversary's $\varepsilon$, not the counting convention. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading.
+$1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading, and
+that $623.70$ turns on the adversary's $\varepsilon$, not the counting convention.
+% S10 WAVE F: THE "That 623.70 turns on the adversary's epsilon" SENTENCE, WHICH S10 SUB-SESSION
+% D's C7(b) MOVED HERE FROM THE BODY, IS REORDERED, NOT REWRITTEN.  D placed it immediately after
+% the sentence demonstrating that the COUNTING CONVENTION moves 623.70 to 70.80, so a reader met
+% "623.70 does not turn on the counting convention" one clause after watching the convention move
+% it.  Both statements are true under this paragraph's own thesis, but the adjacency stopped the
+% reader.  It now follows the epsilon sentence it actually depends on.  Not one number, and no
+% claim, is changed.  Found by S10's F1 adversarial critic.
 \textbf{No row is convention-free with respect to the second}, which is why the adversary is
 specified rather than tie-broken. At $\tau = \tau^{\star+}$ itself the two readings part: the
 strict indicator returns $0.000000$ where scoring the exact play as a miscoverage returns
@@ -157,7 +165,7 @@ not whether one occurs.
   $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
   narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
   settings. The same eleven widths under the \emph{mirror} adversary, which locates
-  $\tau^{\star-}$, are read off in the paragraph above.}
+  $\tau^{\star-}$, are read off in this appendix's primary-regime paragraph.}
   \label{fig:boundary}
 \end{figure}
 
@@ -212,10 +220,19 @@ $w = 0.999$ excursion from $623.70$ to $120.60$. That is the first term of $\tau
 moving the edge, not the readout changing behaviour.
 
 % S10 SUB-SESSION D: THIS PARAGRAPH MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD,
-% except for two cross-references that pointed AT this appendix from the body and would
-% now be self-referential: "(Figure 2, App. A)" is now just "(Figure 2)", and
-% "Appendix A prints both readings" now names the two places in this appendix that do.
-% Every claim, every number and the bold leads are unchanged.  See that file for why.
+% except for ONE cross-reference that pointed AT this appendix from the body and would now be
+% self-referential: "Appendix A prints both readings" was rewritten to name the two places in
+% this appendix that do.  Every claim, every number and the bold leads are unchanged.  See that
+% file for why.
+% S10 WAVE F, CORRECTION TO THE COMMENT ABOVE AND TO THE EDIT IT DESCRIBES.  (1) D's comment
+% claimed a SECOND cross-reference edit here, "(Figure 2, App. A)" -> "(Figure 2)".  That edit
+% never happened: the pre-move body text already read "(Figure~\ref{fig:boundary})" with no
+% "App. A".  The claim is withdrawn, not repeated.  (2) D's one real rewrite was WRONG.  It read
+% "Table~\ref{tab:forfeit} and the primary-regime paragraph above print both readings", and
+% Table 1 has no tau = 1 dead-band row at all (its dead-band rows are 0.5, 0.9 and 1.5), so it
+% prints NEITHER reading at the endpoint.  The primary-regime reading at tau = 1 is in
+% Figure~\ref{fig:boundary} panel (b); the mirror reading is in this appendix's primary-regime
+% paragraph.  The pointer now names those two.  Found by S10's F1 adversarial critic.
 \paragraph{What survives of the measurement, and what its status now is.} Outside the admissible
 window the transition is a step. Past $\tau^{\star+}$ the threshold sits permanently below the
 reachable score range and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T =
@@ -234,8 +251,8 @@ $\tau^{\star+}$ and $\tau^{\star-}$ coincide there: four saturators with $\tau^{
 \tau^{\star-}$ cover at $\tau = \tau^{\star+}$ exactly under both adversaries, and at $\hat{q}
 \equiv +0.4$, where $\tau^{\star-} = 0.6 < 1.4 = \tau^{\star+}$, the width $0.599$ covers under
 both while $0.6$ fails under the mirror. At the baseline the two coincide at $1$, so the primary
-regime covers there and the mirror adversary does not; Table~\ref{tab:forfeit} and the primary-regime paragraph above print both
-readings. \textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
+regime covers there and the mirror adversary does not; Figure~\ref{fig:boundary} and this
+appendix's primary-regime paragraph print both readings. \textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
 $\pm b$ on every round, and what fails is Proposition~2's other hypothesis: the threshold closing
 the loop \emph{is} the integrator's output.
 
@@ -291,14 +308,28 @@ $\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.
 \end{tabular}
 \end{table}
 
+% S10 WAVE F: SENTENCE MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD.  It illustrates the
+% body's claim that once qhat varies the miscoverage rate stops being a tell, and the row it reads
+% is Table~\ref{tab:stress}'s power-of-two row at tau = 1.9, ten lines above.  The claim itself is
+% still made in the body; only its illustration moved, to pay for the two claim-bearing additions
+% wave F made to the 4-page body.
+\paragraph{Where the rate stops being a tell.} At $\tau = 1.9$ with the power-of-two scorecaster
+the rate is $0.110960$ against $\alpha = 0.1$ while $\max_t|E_t|$ is $84{,}745.70$ at $T = 10^6$,
+so a reader watching only the rate would call that coverage.
+
 % S6 SUB-SESSION E: \clearpage ADDED, AND IT IS A STRUCTURAL FIX, NOT A NUDGE.
 % S5's J1 finding 8 was this heading stranded away from its only content.  Wave 4 fixed it
 % by changing the table from [t] to [!h], which worked only while the appendix happened to
 % fit on one page.  E2's three extra lines pushed it over and the heading stranded again:
 % "B  The four vocabularies" alone at the foot of p.7, Table 2 alone on p.8.
-% This section is the LAST in the document and contains exactly ONE float and no prose, so
-% starting it on a fresh page makes the heading and its table inseparable by construction
-% rather than by luck.  Appendix pages are outside E-values' 4-page ceiling, so it is free.
+% This section contains exactly ONE float and no prose, so starting it on a fresh page makes the
+% heading and its table inseparable by construction rather than by luck.  Appendix pages are
+% outside E-values' 4-page ceiling, so it is free.
+% S10 WAVE F: THE COMMENT ABOVE USED TO SAY "This section is the LAST in the document", WHICH IS
+% NO LONGER TRUE -- S10 sub-session D moved "Where this sits" here as Appendix~C, which now
+% follows.  The \clearpage still does exactly what it was added for (it keeps this heading with
+% its only float), so nothing renders differently; only the stale half of the recorded reasoning
+% is removed, so that a later session does not act on it.  Found by S10's F1 adversarial critic.
 \clearpage
 \section{The four vocabularies}
 \label{app:bridge}

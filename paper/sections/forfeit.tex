@@ -207,11 +207,11 @@
 \mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
 and \emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
-adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices that departure, and five of its
-eleven arms exceed the bound at $T = 10^6$, and for the strongest two the excursion is
-\emph{flat in $T$} while the bound grows like $\log T$. The
+adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} (App.~\ref{app:support}) prices that
+departure, and five of its eleven arms exceed the bound at $T = 10^6$, and for $w = 0.99$ and
+$0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$. The
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
-travel falls from $28{,}311$ to $202$. The forfeit's sign is counter-intuitive. A readout on the completed
+travel falls from $28{,}311$ to $202$. A readout on the completed
 $q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. It delays a
 correction already computed, and the accumulator excurses
 \emph{further}. Smoothing the output does not damp $E_t$; it feeds it.
@@ -337,18 +337,23 @@ And $\tau^{\star-}$ was missing entirely.
 % kept; the CLAIM (tau*- = 1, closed on the failing side, exactly where (2) puts it, measured
 % on this paper's own grid) is unchanged and still in the body.  Nothing is deleted from the
 % paper: every number is still printed, once, in Appendix~A.
-\paragraph{The mirror boundary is already measured, on this paper's own grid.} Under the strict
-indicator both $s_t \equiv -b/2$ and $s_t = \mathrm{clip}(\tilde{q}_t,\pm b/2)$ give
-$\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$, so they are one error process. The
-$\tau$-cliff run's exact-threshold column under that indicator is therefore the mirror adversary,
-measured at the null scorecaster on the same eleven widths, and it locates $\tau^{\star-} = 1$,
-closed on the failing side, exactly where
-(\ref{eq:boundaries}) puts it; Appendix~\ref{app:support} prints the eleven readings.
+\paragraph{The mirror boundary is already measured, on this paper's own grid.} The $\tau$-cliff
+run's exact-threshold column under the strict indicator is the mirror adversary $s_t \equiv -b/2$
+(one error process, $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$), and on the same eleven
+widths at the null scorecaster it locates $\tau^{\star-} = 1$, closed on the failing side, exactly
+where (\ref{eq:boundaries}) puts it; Appendix~\ref{app:support} prints the eleven readings.
 \textbf{So the failure criterion is $|E_T|$, not the miscoverage
 rate.} Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
-$\alpha T$; and once $\hat{q}$ varies the rate stops being a tell at all. At $\tau = 1.9$ with the
-power-of-two scorecaster the rate is $0.110960$ against $\alpha = 0.1$ while $\max_t|E_t|$ is
-$84{,}745.70$ at $T = 10^6$, so a reader watching only the rate would call that coverage.
+$\alpha T$; and once $\hat{q}$ varies the rate stops being a tell at all.
+% S10 WAVE F: THE ONE ILLUSTRATION OF THAT LAST CLAUSE -- "At tau = 1.9 with the power-of-two
+% scorecaster the rate is 0.110960 against alpha = 0.1 while max_t|E_t| is 84,745.70 at T = 10^6,
+% so a reader watching only the rate would call that coverage" -- MOVED TO sections/appendix.tex,
+% WORD FOR WORD, into the paragraph immediately after Table~\ref{tab:stress}, whose row 12 is the
+% measurement it reads.  Same class of move as S10 sub-session D's: a measurement detail into the
+% appendix that already carries its table.  It pays for the two HIGH-severity body additions this
+% wave makes (the +b/2 reconciliation and the headline covering-vs-failing numbers), which are
+% both claim-bearing and could not be paid for out of protected content.  The CLAIM the sentence
+% illustrated stays here, in the clause immediately above.
 
 \paragraph{Both degenerate edges, and what they need.} An unbounded supremum is not on its own
 enough for $\tau^{\star+} = \infty$ to mean what it looks like: the same unreachable-set
@@ -390,14 +395,17 @@ returns $1.000000$, as does partial adjustment at $w = 0.999$.
 
 \paragraph{What that establishes is that the published condition is tight.} At $\mu_t = 1$,
 $\hat{q} \equiv 0$ the boundary is exactly Corollary~2's radius, crossing it costs coverage rather
-than the rate, and (\ref{eq:boundaries}) makes that an if-and-only-if against the whole legal
-adversary class rather than a pattern across five settings. \textbf{The claim is that necessity: a
+than the rate ($\tau = 0.9$ covers at $0.100012$, $\tau = 1.5$ returns $1.000000$ with
+$\max_t|E_t| = 900{,}000$, $60{,}747$ times Proposition~2's bound at $T = 10^6$;
+Table~\ref{tab:forfeit}, App.~\ref{app:support}), and (\ref{eq:boundaries}) makes that an
+if-and-only-if against the whole legal adversary class rather than a pattern across five settings. \textbf{The claim is that necessity: a
 tightness result about someone else's sufficient condition}, smaller and more precise than a
 forfeit of the rate by post-processing. Elsewhere it stays sufficient only, and now provably so:
 under the tangent integrator Corollary~2 permits $\tau \le b/2$ while no finite width forfeits
 coverage against any legal adversary, because the reach is genuine at every level. At $\hat{q}
 \equiv +b/2$ the looseness goes the other way and disappears: Corollary~2 permits radius $0$, and
-(\ref{eq:boundaries}) permits no width at all, the unsmoothed control included. That asymmetry
+(\ref{eq:boundaries}) permits no width at all against the mirror adversary, the unsmoothed control
+included, though $\tau = 1.5$ covers there against the specified one. That asymmetry
 makes ``tight'' a located claim.
 
 \paragraph{The constructive reading, and it is the corollary's rather than ours.} Placement~B
