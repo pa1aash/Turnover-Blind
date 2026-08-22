@@ -22,13 +22,25 @@
 % the venue is [OPERATOR INPUT].
 % ---------------------------------------------------------------------------
 
+% S8 SUB-SESSION C (2026-08-22): "THE PRIMARY REGIME" PARAGRAPH NOW SAYS, IN ITS OWN
+% FIRST SENTENCE, THAT THE DETERMINISTIC ADVERSARY CONSUMES NO RANDOMNESS AND NEEDS NO
+% SEED.  This is src/forfeit.py's own F9 comment ("The primary `adversarial` regime is
+% fully deterministic and consumes no randomness at all; its 'seed' is a formality
+% recorded for completeness"), stated in the paper rather than only in the code.  The
+% reason: sections/limitations.tex separately reports a genuinely seeded i.i.d.
+% robustness check (seed 20260820, T = 10^6), and a reader who meets "one seed" there
+% without first meeting an explicit "no seed" claim for the primary harness could read
+% the two as the same procedure. This is the disambiguating half; see
+% sections/limitations.tex's own S8 sub-session C note for the other half.
+% ---------------------------------------------------------------------------
+
 \appendix
 
 \section{Supporting measurements}
 \label{app:support}
 
 \paragraph{The primary regime.} Every number in Table~\ref{tab:forfeit} is measured under one
-deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
+deterministic adversary, which consumes no randomness and needs no seed. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
 $\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
 specification is not a tie rule, and the distinction is measured rather than argued. Scoring
 an exact-threshold play \emph{as a miscoverage} reproduces every quantity
