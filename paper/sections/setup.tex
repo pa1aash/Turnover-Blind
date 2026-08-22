@@ -81,13 +81,15 @@
 $q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
 \le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
 coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
-Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale, where
-adaptive conformal inference \citep{gibbs2021aci} and DtACI \citep{gibbs2024dtaci} move the level,
+Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
+generalizing the running-error feedback that adaptive conformal inference
+\citep{gibbs2021aci} and its distribution-shift variant DtACI \citep{gibbs2024dtaci} already
+apply directly to the threshold:
 \begin{equation}
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
 \end{equation}
-their iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
+Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
 $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. With $E_t = \sum_{i
 \le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
 
