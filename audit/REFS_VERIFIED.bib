@@ -1686,3 +1686,93 @@
                  occur ZERO times in the full text, and "scorecaster" zero times; Theorem 3.3
                  is a dynamic-regret result. **Not an occupant of R3a, R3b or R3c.**}
 }
+
+% ---------------------------------------------------------------------------
+% Added by session S10 sub-session A, 2026-08-22, for the e-value / anytime-valid
+% bridge paragraph in sections/related.tex.  Every entry below was built from a
+% record fetched and READ in that sub-session, not from memory:
+%   - Crossref api.crossref.org/works/<doi> for all three DOIs (type, title,
+%     authors, container, volume, issue, year, ISBN);
+%   - Project Euclid's own article pages for the two IMS page ranges, which
+%     Crossref does not carry;
+%   - the arXiv PDFs, read in full for the definitions the paragraph relies on.
+% Titles follow the JOURNAL OF RECORD where one exists, not the arXiv title:
+% Crossref gives "E-values: Calibration, combination and applications" (no comma
+% before "and"), against the preprint's "combination, and applications".
+% NOTE ON WHAT IS AND IS NOT CLAIMED FROM THESE SOURCES.  They are cited for
+% definitions (e-value, test martingale, e-process, Ville's inequality, the
+% Skeptic/Forecaster/Reality protocol) and for nothing else.  None of them
+% studies Conformal PID, and the paragraph says so: it denies that E_t is an
+% e-process rather than asserting that it is.
+% ---------------------------------------------------------------------------
+
+@book{shafer2019gtfpf,
+  author    = {Shafer, Glenn and Vovk, Vladimir},
+  title     = {Game-Theoretic Foundations for Probability and Finance},
+  publisher = {Wiley},
+  series    = {Wiley Series in Probability and Statistics},
+  year      = {2019},
+  isbn      = {9780470903056},
+  doi       = {10.1002/9781118548035},
+  annote    = {Crossref monograph record (type "monograph", published 2019-05-07,
+             ISBNs 9780470903056 print / 9781118548035 online). CITED FOR THE PROTOCOL
+             ONLY: the game-theoretic forecasting game in which Forecaster announces
+             prices, Skeptic buys payoffs at those prices, and Reality chooses outcomes,
+             so that Skeptic's capital process is defined with no probability measure
+             anywhere. That protocol is what makes the paper's E_t readable as a capital
+             process on an adversarial path. The book itself is not read here beyond
+             its role as the canonical reference for that protocol, which
+             \citet{ramdas2023savi} restates in Section 1 and which is the version
+             actually read.}
+}
+
+@article{ramdas2023savi,
+  author  = {Ramdas, Aaditya and Gr{\"u}nwald, Peter and Vovk, Vladimir and Shafer, Glenn},
+  title   = {Game-Theoretic Statistics and Safe Anytime-Valid Inference},
+  journal = {Statistical Science},
+  volume  = {38},
+  number  = {4},
+  pages   = {576--601},
+  year    = {2023},
+  doi     = {10.1214/23-STS894},
+  eprint  = {2210.01948},
+  archivePrefix = {arXiv},
+  annote  = {Crossref record for the DOI (Statistical Science 38(4), November 2023);
+             page range 576--601 from the Project Euclid article page, which Crossref
+             does not carry. The arXiv v2 PDF (25 pp.) was read in full. The definitions
+             this project relies on are all in its Section 2, verbatim: a test
+             (super)martingale is a nonnegative (super)martingale with M_0 = 1 and is
+             "the wealth process of a gambler who bets against P"; an e-process for a
+             composite P is a nonnegative process dominated by a test martingale for
+             every P in P, equivalently one whose value at every stopping time is an
+             e-value; Ville's inequality is P(sup_t M_t >= a) <= 1/a, and its composite
+             form sup_P P(exists t: E_t >= 1/alpha) <= alpha, which is what "converts
+             e-processes into sequential tests". Section 1 gives the
+             Forecaster/Skeptic/Reality protocol. Section 7 notes that testing whether
+             probabilistic forecasters are CALIBRATED has been done game-theoretically
+             with test supermartingales and e-processes -- the nearest existing object to
+             the reading this paper's bridge paragraph offers, and the reason that
+             paragraph claims the reading is available rather than new.}
+}
+
+@article{vovk2021evalues,
+  author  = {Vovk, Vladimir and Wang, Ruodu},
+  title   = {E-values: Calibration, combination and applications},
+  journal = {The Annals of Statistics},
+  volume  = {49},
+  number  = {3},
+  pages   = {1736--1754},
+  year    = {2021},
+  doi     = {10.1214/20-AOS2020},
+  eprint  = {1912.06116},
+  archivePrefix = {arXiv},
+  annote  = {Crossref record for the DOI (Annals of Statistics 49(3), June 2021); page
+             range 1736--1754 from the Project Euclid article page. The arXiv PDF (48 pp.)
+             was read for the definition only, which is stated in its Introduction:
+             "an e-variable is a nonnegative extended random variable whose expected
+             value under the null hypothesis is at most 1, and an e-value is a value
+             taken by an e-variable". THAT DEFINITION IS THE WHOLE REASON THIS KEY IS
+             CITED: the paper's E_t is signed and has no null attached to it, so it
+             fails the definition on both counts, and the bridge paragraph cites this
+             entry at the point where it says so.}
+}
