@@ -128,8 +128,11 @@
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{The evidence is one construction, one adversary, one saturator}; and $0.63/(1-w)$ is
-specific to the saturator's \emph{level}, which condition~(4) bounds only from below.
+\textbf{The retention direction is proved with no gap only where the two boundaries meet}: a
+constant scorecaster and a saturator attaining its extremes at the condition-(4) radius, which
+is every setting run here; a genuinely time-varying $\hat{q}$ leaves the band $\sigma^{+} <
+\tau \le \tau^{\star+}$ open in neither direction (Section~\ref{sec:forfeit}). And $0.63/(1-w)$
+is specific to the saturator's \emph{level}, which condition~(4) bounds only from below.
 \textbf{The inherited guarantee is weak where it applies.} Under the tangent integrator
 $h(t) = t/\log t$, the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$.
 What is forfeited was not a tight certificate. \textbf{The dead-band widths are absolute, and the
@@ -141,5 +144,7 @@ $b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exact
 rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{The i.i.d.\
 check above used one seed} ($20260820$, $T = 10^6$); \textbf{the primary, adversarial harness uses
 none}, and \textbf{only its null-scorecaster edge is bracketed}; the others are one-sided.
-\textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
-\tau^{\star}$ that loses coverage, or $\tau > \tau^{\star}$ that keeps it; the sweep has neither.
+\textbf{What remains open is the band between the two boundaries.} For a genuinely
+time-varying $\hat{q}$, coverage in $\sigma^{+} < \tau \le \tau^{\star+}$ is neither proved nor
+falsified; Table~\ref{tab:stress}'s power-of-two rows sit there, and closing that band is
+future work, not a sweep this paper has already run.
