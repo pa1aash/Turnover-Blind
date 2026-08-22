@@ -75,6 +75,34 @@
                2023-07-31 and DBLP records the venue as NeurIPS 2023.}
 }
 
+@misc{angelopoulos2021gentle,
+  author        = {Angelopoulos, Anastasios N. and Bates, Stephen},
+  title         = {A Gentle Introduction to Conformal Prediction and Distribution-Free
+                 Uncertainty Quantification},
+  howpublished  = {arXiv:2107.07511v6},
+  year          = {2021},
+  eprint        = {2107.07511},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2107.07511},
+  annote        = {S8 SUB-SESSION B. Orientation reference for readers new to conformal
+                 prediction; the only survey-class entry in this bibliography, cited once,
+                 in the Introduction. VERIFIED FROM THE PRIMARY SOURCE, HEADLESS, 2026-08-22:
+                 arXiv API record at research/S8/records/arxiv\_2107.07511\_s8.xml gives
+                 exactly this title, authors Anastasios N. Angelopoulos and Stephen Bates,
+                 submitted 2021-07-15, latest version v6 dated 2022-12-07, primary class
+                 cs.LG. CITED AS THE ARXIV RECORD AND NOT AS A JOURNAL ARTICLE, DELIBERATELY:
+                 DBLP returns exactly one hit for the title and types it ``Informal and Other
+                 Publications'', CoRR abs/2107.07511, with no venue and no doi
+                 (research/S8/records/dblp\_gentle\_s8.json), and a Crossref bibliographic
+                 query for the same title returned no matching journal record, only peer
+                 reviews of an unrelated tutorial (research/S8/records/crossref\_gentle\_s8.json).
+                 A later Foundations and Trends monograph is widely asserted but was NOT
+                 confirmed by either surface under headless retrieval, so it is not printed
+                 here. howpublished carries the version pin because plainnat's misc function
+                 emits neither eprint nor archivePrefix; same mechanism as li2025o2cp.}
+}
+
 @inproceedings{bhatnagar2023saocp,
   author    = {Bhatnagar, Aadyot and Wang, Huan and Xiong, Caiming and Bai, Yu},
   title     = {Improved Online Conformal Prediction via Strongly Adaptive Online Learning},
@@ -1481,7 +1509,27 @@
                  in the document and "CPID" 100 times. **Its first and last authors are the
                  authors of li2024neuralconformal**, which prints that a scorecaster "breaks
                  the theoretical coverage guarantee". The record therefore contains both the
-                 false claim and its refutation, by the same people, unjoined.}
+                 false claim and its refutation, by the same people, unjoined.
+                 **S8 SUB-SESSION B, 2026-08-22: RE-DERIVED FROM ARXIV FROM SCRATCH, NOT
+                 TAKEN FROM THE PARAGRAPH ABOVE, BECAUSE AN ADVERSARIAL REVIEW DOUBTED BOTH
+                 HALVES OF IT. Every claim above survives.** Per-version API queries
+                 (research/S8/records/arxiv\_2508.13362\_v1\_s8.xml, \_v2\_s8.xml,
+                 \_v3\_s8.xml) return: v1 published 2025-08-18, title ``Adaptive Conformal
+                 Prediction Intervals Over Trajectory Ensembles''; v2 updated 2026-06-08 and
+                 v3 updated 2026-08-07, both titled as printed here. The title change is a
+                 fact arXiv itself serves, not an anomaly. The review also said it ``could
+                 not fetch v3''; https://arxiv.org/pdf/2508.13362v3 was fetched headlessly and
+                 is BYTE-IDENTICAL to the S3 copy (md5 515a7671437c34e2df18102b615ab994 on
+                 both), so the S3 record is v3 and the two sources are the same artefact
+                 rather than two agreeing witnesses. ``Corollary 2 (CPID admissible set)''
+                 occurs verbatim in it, with the hypotheses and the conclusion the body
+                 attributes to it: mu\^{}CPID\_t in [0,1] predictable, r\^{}CPID\_t = mu\^{}CPID\_t
+                 (b/2 - |qhat\_t|), and a proof closing ``|E\_T| <= c h(T) + 1 = o(T)''. NOTE
+                 FOR ANY FUTURE GREP: plain grep reports NO matches in the saved .txt because
+                 it classifies the file as binary; use grep -a or read it in Python.
+                 The intro's restatement was made self-contained in the same sub-session, so
+                 the body no longer depends on a result NUMBER holding in a revising preprint.
+                 Full S8 audit at research/S8/B-citation-audit.json.}
 }
 
 @misc{wang2026acmcp,
@@ -1637,4 +1685,94 @@
                  failing. It makes no coverage claim: "miscoverage" and "marginal coverage"
                  occur ZERO times in the full text, and "scorecaster" zero times; Theorem 3.3
                  is a dynamic-regret result. **Not an occupant of R3a, R3b or R3c.**}
+}
+
+% ---------------------------------------------------------------------------
+% Added by session S10 sub-session A, 2026-08-22, for the e-value / anytime-valid
+% bridge paragraph in sections/related.tex.  Every entry below was built from a
+% record fetched and READ in that sub-session, not from memory:
+%   - Crossref api.crossref.org/works/<doi> for all three DOIs (type, title,
+%     authors, container, volume, issue, year, ISBN);
+%   - Project Euclid's own article pages for the two IMS page ranges, which
+%     Crossref does not carry;
+%   - the arXiv PDFs, read in full for the definitions the paragraph relies on.
+% Titles follow the JOURNAL OF RECORD where one exists, not the arXiv title:
+% Crossref gives "E-values: Calibration, combination and applications" (no comma
+% before "and"), against the preprint's "combination, and applications".
+% NOTE ON WHAT IS AND IS NOT CLAIMED FROM THESE SOURCES.  They are cited for
+% definitions (e-value, test martingale, e-process, Ville's inequality, the
+% Skeptic/Forecaster/Reality protocol) and for nothing else.  None of them
+% studies Conformal PID, and the paragraph says so: it denies that E_t is an
+% e-process rather than asserting that it is.
+% ---------------------------------------------------------------------------
+
+@book{shafer2019gtfpf,
+  author    = {Shafer, Glenn and Vovk, Vladimir},
+  title     = {Game-Theoretic Foundations for Probability and Finance},
+  publisher = {Wiley},
+  series    = {Wiley Series in Probability and Statistics},
+  year      = {2019},
+  isbn      = {9780470903056},
+  doi       = {10.1002/9781118548035},
+  annote    = {Crossref monograph record (type "monograph", published 2019-05-07,
+             ISBNs 9780470903056 print / 9781118548035 online). CITED FOR THE PROTOCOL
+             ONLY: the game-theoretic forecasting game in which Forecaster announces
+             prices, Skeptic buys payoffs at those prices, and Reality chooses outcomes,
+             so that Skeptic's capital process is defined with no probability measure
+             anywhere. That protocol is what makes the paper's E_t readable as a capital
+             process on an adversarial path. The book itself is not read here beyond
+             its role as the canonical reference for that protocol, which
+             \citet{ramdas2023savi} restates in Section 1 and which is the version
+             actually read.}
+}
+
+@article{ramdas2023savi,
+  author  = {Ramdas, Aaditya and Gr{\"u}nwald, Peter and Vovk, Vladimir and Shafer, Glenn},
+  title   = {Game-Theoretic Statistics and Safe Anytime-Valid Inference},
+  journal = {Statistical Science},
+  volume  = {38},
+  number  = {4},
+  pages   = {576--601},
+  year    = {2023},
+  doi     = {10.1214/23-STS894},
+  eprint  = {2210.01948},
+  archivePrefix = {arXiv},
+  annote  = {Crossref record for the DOI (Statistical Science 38(4), November 2023);
+             page range 576--601 from the Project Euclid article page, which Crossref
+             does not carry. The arXiv v2 PDF (25 pp.) was read in full. The definitions
+             this project relies on are all in its Section 2, verbatim: a test
+             (super)martingale is a nonnegative (super)martingale with M_0 = 1 and is
+             "the wealth process of a gambler who bets against P"; an e-process for a
+             composite P is a nonnegative process dominated by a test martingale for
+             every P in P, equivalently one whose value at every stopping time is an
+             e-value; Ville's inequality is P(sup_t M_t >= a) <= 1/a, and its composite
+             form sup_P P(exists t: E_t >= 1/alpha) <= alpha, which is what "converts
+             e-processes into sequential tests". Section 1 gives the
+             Forecaster/Skeptic/Reality protocol. Section 7 notes that testing whether
+             probabilistic forecasters are CALIBRATED has been done game-theoretically
+             with test supermartingales and e-processes -- the nearest existing object to
+             the reading this paper's bridge paragraph offers, and the reason that
+             paragraph claims the reading is available rather than new.}
+}
+
+@article{vovk2021evalues,
+  author  = {Vovk, Vladimir and Wang, Ruodu},
+  title   = {E-values: Calibration, combination and applications},
+  journal = {The Annals of Statistics},
+  volume  = {49},
+  number  = {3},
+  pages   = {1736--1754},
+  year    = {2021},
+  doi     = {10.1214/20-AOS2020},
+  eprint  = {1912.06116},
+  archivePrefix = {arXiv},
+  annote  = {Crossref record for the DOI (Annals of Statistics 49(3), June 2021); page
+             range 1736--1754 from the Project Euclid article page. The arXiv PDF (48 pp.)
+             was read for the definition only, which is stated in its Introduction:
+             "an e-variable is a nonnegative extended random variable whose expected
+             value under the null hypothesis is at most 1, and an e-value is a value
+             taken by an e-variable". THAT DEFINITION IS THE WHOLE REASON THIS KEY IS
+             CITED: the paper's E_t is signed and has no null attached to it, so it
+             fails the definition on both counts, and the bridge paragraph cites this
+             entry at the point where it says so.}
 }

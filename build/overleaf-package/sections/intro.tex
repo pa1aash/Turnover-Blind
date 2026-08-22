@@ -154,6 +154,46 @@
 % the correction is in the record and is nowhere STATED as a correction, which is what
 % the four-surface check measures.
 % ===========================================================================
+%
+% S8 SUB-SESSION D (2026-08-22): FOUR-SURFACE SENTENCE COMPRESSED TO ONE, FOR LINE
+% BUDGET.  The body overran onto page 5 by two lines before the References heading
+% (measured from a from-HEAD rebuild by sub-session B, who added citations elsewhere
+% without worsening it).  This is one of the two compressions authorised to close that
+% gap.  What changed: the three-sentence "Four surfaces were queried on 20 August 2026
+% ... None returns both the claim and the corollary" became one sentence.  NOTHING WAS
+% CUT: the two identifiers, "scorecaster", all four surfaces (arXiv full text, arXiv
+% abstracts, OpenReview, the six citing works), \citet{li2024neuralconformal} (still
+% \mbox-wrapped, see the S5 sub-session A note above -- do not remove the \mbox), and
+% the negative result ("none returns both the claim and the corollary") are all still
+% printed. THE DATE IS GONE, ON PURPOSE, NOT AS AN OVERSIGHT: it was a stale specific
+% calendar date used to assert currency, which is a separate problem sub-session C was
+% independently asked to fix in this same sentence. Dropping the date rather than
+% updating it satisfies that concern too, since there is no longer a date to go stale.
+% If sub-session C's edit landed first, this compresses that (already-de-dated) version;
+% if it lands after, there is nothing left for it to do here.
+%
+% SECOND PASS, SAME EDIT LOCATION.  Sub-session C's own concurrent edits added roughly
+% two lines back to sections/limitations.tex (the seed/determinism split, out of scope
+% for this session to touch), so the first pass above was not enough on its own. This
+% sentence was tightened further -- "Four surfaces were queried for ... : ... citing
+% MACRO, and none returns" became "Both identifiers and ``scorecaster'' were searched
+% across ... : ... citers of MACRO: none returns" -- shaving redundant words ("works",
+% "records") without dropping any surface, either identifier, "scorecaster", the six
+% count, \citet{li2024neuralconformal} (still \mbox-wrapped), or "the claim and the
+% corollary" as the stated negative result. See sections/related.tex's matching S8
+% sub-session D note for the second half of this pass.
+%
+% MEASURED, NOT ASSUMED: THIS CUT DOES NOT REACH THE SPILL PAGE. An isolated A/B
+% rebuild (this file's compression applied, sections/related.tex held at its pre-S8
+% baseline) produced a page-4/5 boundary byte-for-byte identical to the reverse test
+% (this file at baseline, sections/related.tex compressed). Figure~1 lands on page~2
+% regardless of how many characters this paragraph sheds, and nothing downstream of it
+% reflows either -- the saving here is real (this section is measurably shorter) but it
+% is absorbed on page~1 rather than reaching the References boundary two sections later.
+% The line this session actually recovered on the spill page came from
+% sections/related.tex alone; see that file's S8 sub-session D note for the honest
+% accounting of what these two authorised compressions did and did not close.
+% ===========================================================================
 \section{Introduction}
 \label{sec:intro}
 
@@ -162,7 +202,8 @@ one, by the same first and last authors, proves in the same notation that a boun
 perturbation of the deployed threshold does not. The later cites the earlier, so this is ordinary
 self-correction, and the joining is what this paper adds.
 
-An online conformal method emits a threshold before each observation and moves it. Forecast
+An online conformal method \citep{angelopoulos2021gentle} emits a threshold before each
+observation and moves it. Forecast
 stability names, scores and prices that movement
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
 pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying temporal structure at
@@ -177,13 +218,13 @@ be predictable and lie in $[-b/2,b/2]$: ``any function of the past'' (Theorem~1)
 is already quantified over. The claim reads ``[s]ince using a scorecaster (D-part) in
 C-PID breaks the theoretical coverage guarantee'' \citep{li2024neuralconformal}, stated and
 acted on in its baselines paragraph, verbatim on refereed printed page $18443$. It is refuted
-twice, with proof. \citet[Corollary~2]{li2025o2cp} add an arbitrary predictable $d_t$ with
-$|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ to the deployed threshold, note that the result ``has exactly
-the CPID error-integration form'', and conclude $|E_T| = o(T)$. The same generic-slot argument
-carries AcMCP's long-run coverage \citep{wang2026acmcp}. Four surfaces were queried on 20 August
-2026 for both identifiers and ``scorecaster''. They are arXiv full text, arXiv abstracts,
-OpenReview, and the six works Semantic Scholar records citing
-\mbox{\citet{li2024neuralconformal}}. None returns both the claim and the corollary.
+twice, with proof. \citet[Corollary~2]{li2025o2cp} add any predictable $d_t$, $|d_t| \le
+\mu_t(b/2-|\hat{q}_t|)$ with $\mu_t \in [0,1]$ predictable, to the deployed threshold; since
+$\hat{q}_t + d_t$ still lies in $[-b/2,b/2]$ it is itself a legal scorecaster, so the result
+``has exactly the CPID error-integration form'' and $|E_T| = o(T)$. The same generic-slot argument
+carries AcMCP's long-run coverage \citep{wang2026acmcp}. Both identifiers and ``scorecaster'' were
+searched across arXiv full text, arXiv abstracts, OpenReview, and Semantic Scholar's six citers of
+\mbox{\citet{li2024neuralconformal}}: none returns both the claim and the corollary.
 \citet{hu2026distinformed} still call scorecaster choice ``arbitrary'' and lacking ``principled
 guidance'' while asserting valid coverage: model selection, not validity. \textbf{We claim
 neither the placement nor the derivation.}
@@ -193,5 +234,5 @@ outside its radius, and the question it leaves is whether that radius is sharp.
 Section~\ref{sec:forfeit} exhibits a legal perturbation leaving it: the $L_1$ dead-band family
 characterised here on the \emph{completed} threshold, whose edge is the corollary's radius at
 the null scorecaster. Past it coverage goes, not only the rate: the published sufficient
-condition is necessary there. Section~\ref{sec:related} sets both claims beside four
-vocabularies for the same movement.
+condition is necessary there. Appendix~\ref{sec:related} sets both claims beside four
+vocabularies for the same movement, and reads $E_t$ as a game-theoretic capital process.

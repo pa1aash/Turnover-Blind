@@ -89,15 +89,128 @@
 % G7.1's standard is that an untraceable claim is deleted rather than footnoted, so it is
 % deleted.  What survives is the accurate part: their assumption is supported with a plot
 % rather than derived, which is their own Fig. 2a caption's wording.
+
+% S8 SUB-SESSION D (2026-08-22): OPENING POINTER TRIMMED, NOT RESTRUCTURED.  This
+% session verified the four-vocabularies material is NOT duplicated in the body -- this
+% opening is already just a two-sentence pointer at Table~\ref{tab:bridge} in
+% Appendix~\ref{app:bridge}, and the concession paragraph that follows is separate
+% content already conceding by name, not a restatement of the table.  Cut, each because
+% it is redundant with material established elsewhere rather than because it is
+% unwanted: "many ways" (filler); "the object that settles its validity" and "around the
+% deployed threshold" (both glossing what the admissible set is, which sections/setup.tex
+% already establishes -- see its Fig.~2 caption and "The quantity, and the names it
+% already has"); and "and what each contributes" (the table's own caption already says
+% "The row gives what each contributes"); and "the object that settles its validity
+% ... sits in the first of them" (the claim that the admissible set is specifically the
+% first of the four vocabularies -- also redundant with setup.tex's framing, and
+% recoverable from Table~\ref{tab:bridge}'s own first row rather than asserted twice).
+% CORRECTED 2026-08-22 (S8-F adversarial critic caught this comment overstating what
+% survived): what actually remains is ONE clause, not a sentence pair -- that four
+% vocabularies name one quantity, and a pointer to Table~\ref{tab:bridge} that still
+% names the appendix explicitly (App.~\ref{app:bridge}) rather than relying on the
+% reader to follow the cross-reference blind. The admissible-set-is-first claim is not
+% restated in body prose; it is still readable off the table's own first row, which is
+% why the cut is defensible -- but the prior wording here was wrong to say that clause
+% survived in prose.
+%
+% MEASURED AGAINST THE 4-PAGE CEILING, AND REPORTED HONESTLY.  sub-session C's own
+% concurrent edits to sections/limitations.tex (the seed/determinism split, out of scope
+% here) added roughly two typeset lines back to this same page.  This paragraph and the
+% Introduction's four-surface sentence (sections/intro.tex) are the two compressions this
+% session was authorised to make.  Isolated A/B rebuilds (reverting each file to its
+% pre-S8 baseline one at a time, holding the other fixed) showed the Introduction's cut
+% does not reach this page at all -- Figure~1's placement absorbs it two pages upstream --
+% while THIS paragraph, once trimmed this far, recovers exactly one typeset line on the
+% page the spill is on. That closes one of the body's two spilling lines. The second
+% spilling line survives after this paragraph is cut to its bridging-pointer minimum;
+% no further reduction here is a compression rather than a deletion, and the two
+% authorised categories are now exhausted. See sections/intro.tex's matching note and
+% research/S8/D-compression.json for the measured before/after and the honest verdict.
+%
+% S10 SUB-SESSION A (2026-08-22): THE E-VALUE / ANYTIME-VALID BRIDGE PARAGRAPH IS ADDED HERE,
+% AT THE END OF THIS SECTION, AND NOWHERE ELSE.  The venue is E-values, and E_t is a running
+% sum of centred miscoverage indicators, which is one transform from that venue's own object.
+% It goes here rather than in sections/intro.tex because this section is the paper's
+% positioning section and the Introduction's hook-then-two-claims structure (S6 sub-session C)
+% has no slot for a third register before the claims are stated.
+%
+% WHAT LEVEL OF CONNECTION IS CLAIMED, AND WHY THAT LEVEL.  A STRUCTURAL CORRESPONDENCE THAT
+% BECOMES FORMAL ONLY AFTER THE STANDARD EXPONENTIAL TRANSFORM -- NOT A SPECIAL CASE, AND NOT
+% AN ANYTIME-VALID GUARANTEE.  The paragraph states three things and no fourth:
+%   (1) TRUE AND EXACT, no hedge needed.  In the Shafer-Vovk protocol, a Skeptic who pays
+%       alpha each round for the payoff err_t has cumulative net gain sum_{i<=t}(err_i - alpha)
+%       = E_t.  That is an identity, not an analogy, and it needs no probability measure --
+%       which is why it survives on this paper's adversarial paths.
+%   (2) EXPLICITLY DENIED.  E_t is NOT an e-value and NOT an e-process.  Vovk and Wang's
+%       definition is a NONNEGATIVE variable with expectation at most 1 under a null; E_t is
+%       signed, is unbounded below, and has no null attached -- Conformal PID's Proposition 2
+%       is a PATHWISE bound obtained by feedback (the saturating integrator forces it), not a
+%       probabilistic statement obtained from Ville's inequality.  Claiming otherwise at an
+%       e-values venue would be the single most scrutinised sentence in the paper, so the
+%       paragraph denies it in its second sentence rather than leaving it to be inferred.
+%   (3) TRUE, AND THE ONLY FORMAL PART.  Under the null err_t | F_{t-1} ~ Bernoulli(alpha),
+%       M_t = prod (1 + lambda(err_i - alpha)) is a test martingale for lambda in
+%       [-1/(1-alpha), 1/alpha] (nonnegative by that range, M_0 = 1, exactly a martingale
+%       since E[err_i - alpha | F_{i-1}] = 0), and log(1+x) = x + O(x^2) gives
+%       log M_t = lambda E_t + O(lambda^2 t).  So the paper's accumulator is the FIRST-ORDER
+%       LOG of a test martingale, which is a real correspondence and is all of one.
+% WHY S9's IFF THEOREM MAKES THIS STATEABLE (brief point 3, answered YES).  The transferred
+% statement is about the GROWTH RATE of |E_T| across a whole class, not about one setting: on
+% the retention side |E_T| <= c h(T) + 1 = O(log T), so log M_T = lambda O(log T) -
+% Theta(lambda^2 T) -> -infty and every nonzero fixed stake is wiped out; on the failure side
+% |E_T| = (1-alpha)T or alpha T, so a fixed lambda of the right sign grows M_T exponentially
+% and a Ville-based test rejects at any fixed level in O(1) rounds.  A single measured
+% miscoverage figure would have licensed neither half: it says nothing about the other
+% adversaries in the class and nothing about the growth rate.  Because S9 proved the boundary
+% two-sidedly IN |E_T| rather than in the miscoverage rate, the e-process reading inherits the
+% dichotomy for free, and the paragraph says "proved in both directions" for exactly that
+% reason.  This also matches the paper's own line that "the failure criterion is |E_T|, not
+% the miscoverage rate" (sections/forfeit.tex).
+% NOT TOUCHED, and out of scope by the brief: R3a's substance, and the open band
+% sigma^+ < tau <= tau^{star+} for a genuinely time-varying scorecaster.  The paragraph's
+% dichotomy is asserted only where the theorem is two-sided, i.e. on the same sub-class
+% Section 3 states it for.
+% CITATIONS.  Three new keys, all fetched and read this sub-session and all recorded with
+% Crossref/Project Euclid metadata in audit/REFS_VERIFIED.bib's S10 block: shafer2019gtfpf
+% (the protocol), ramdas2023savi (test martingale / e-process / Ville, and the existing
+% game-theoretic work on testing forecaster CALIBRATION, which is why the reading is offered
+% as available rather than as new), vovk2021evalues (the definition E_t fails).  One key was
+% ALREADY IN THE .bib AND UNCITED and is now cited: podkopaev2024betting -- the nearest
+% neighbour, and the paragraph distinguishes it correctly, since its betting is
+% Orabona-Pal coin betting used as a PARAMETER-FREE OPTIMISER for the threshold, not a test
+% martingale used as evidence.  Record: research/S10/A-evalue-bridge.json.
+% S10 SUB-SESSION D (2026-08-22): THIS FILE MOVED OUT OF THE BODY, WHOLE AND UNCUT.
+% main.tex no longer \inputs it between sections/forfeit.tex and sections/limitations.tex;
+% it is \input AFTER sections/appendix.tex, so \appendix is already in force and this
+% renders as Appendix~C.  NOT ONE WORD OF EITHER PARAGRAPH IS CHANGED -- the concession
+% list and sub-session A's e-value / anytime-valid bridge paragraph are byte-identical to
+% what they were at HEAD 5a8019e, including the explicit denial that E_t is an e-process.
+% WHY: the E-values ceiling is 4 body pages "excluding references and optional appendices",
+% and after S9's theorem and S10's two additions the body measured 5.934 pages.  This
+% section is the largest block in the body that is not a result, and moving it is a
+% RELOCATION, not a cut: the section is still in the PDF, still numbered, still findable in
+% the outline, and sections/intro.tex's closing roadmap sentence now points at it by name
+% and names the game-theoretic reading so a reader at an e-values venue meets it in the
+% body.  \label{sec:related} is unchanged, so that pointer resolves automatically.
+% REVERTING IS ONE LINE EACH WAY: move the \input back above \input{sections/limitations}
+% in main.tex and restore "Section~\ref{sec:related}" in sections/intro.tex.  Under
+% TS-LIMITS (4-7 body pages) that revert is free.
 \section{Where this sits}
 \label{sec:related}
 
-Four vocabularies name one quantity many ways, and the object that settles its validity (the admissible set
-around the deployed threshold) sits in the first of them. Table~\ref{tab:bridge} in Appendix~\ref{app:bridge} names them and what each
-contributes. \textbf{What is conceded, by name.}
+% S10 WAVE F: THE OPENING SENTENCE IS RE-POINTED AND GIVEN A FRAME.  It was written for a
+% position four pages away from Table~\ref{tab:bridge}, and after S10 sub-session D moved this
+% section into the appendices it sits about ten lines UNDER that table, so its
+% "(App.~\ref{app:bridge})" pointer had become redundant and the section opened on a bare
+% cross-reference with nothing saying what the section is for.  The pointer is dropped and a
+% clause naming the section's job replaces it.  No claim, concession or citation is changed.
+% Found by S10's F1 adversarial critic.
+Four vocabularies name one quantity, and Table~\ref{tab:bridge} names all four; this appendix
+places this paper's claim and its concessions among them. \textbf{What is conceded, by name.}
 The placement is prior work:
-\citet{angelopoulos2023pid} state coverage for any admissible integrator and any scorecaster, and
-run a smoothing-family model in that slot themselves. \citet[Appendix~A]{dupuy2026relevance} give
+\citet[Thm.~1, Prop.~2]{angelopoulos2023pid} state coverage, with a rate, for any admissible
+integrator and any scorecaster, and run a smoothing-family model in that slot themselves; this
+paper proves that admissible set tight. \citet[Appendix~A]{dupuy2026relevance} give
 the generic argument, and \citet{duerst2024calibrating} adopt that scorecaster. The derivation is
 prior work too, and this concession matters most. \citet[Corollary~2]{li2025o2cp} prove the
 retention statement in Conformal PID's own notation, with \citet{wang2026acmcp} an independent
@@ -108,7 +221,27 @@ with a feedforward path: free-until-the-bound-binds is its defining specificatio
 \citep{galeani2009antiwindup}. Nearest in the other direction, \citet{gao2025coloke} run the same
 recursion but gate the \emph{model} update on the conformal score. Their one non-standard
 assumption is that $\sum_{t \le T} q_t \le O(\alpha\,h(T))$ for a sublinear $h$, supported with a
-plot rather than derived.
+plot rather than derived. Verification's matched-level design tests real producers from 2012, with
+a control stronger than the pair: the whole marginal
+\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning adds a Thm.~7
+trade-off in which sublinear regret is bought by growing $\theta$ with $T$, which grows the ratio
+\citep[Thm.~7]{andrew2013twometrics}.
+
+\textbf{The accumulator, read as a bet.} A Skeptic who each round pays $\alpha$ for the payoff
+$\mathrm{err}_t$ has cumulative net gain exactly $E_t$, so this paper's accumulator is a
+game-theoretic capital process at unit stake \citep{shafer2019gtfpf,ramdas2023savi}. It is not an
+e-value and not an e-process: it is signed, and Proposition~2 bounds it pathwise by feedback
+rather than under a null by Ville's inequality \citep{vovk2021evalues}. What is formal is the
+standard transform. Under the null that $\mathrm{err}_t \mid \mathcal{F}_{t-1}$ is
+Bernoulli$(\alpha)$, $M_t = \prod_{i \le t}\big(1+\lambda(\mathrm{err}_i-\alpha)\big)$ is a test
+martingale for each $\lambda \in [-1/(1-\alpha),1/\alpha]$, with $\log M_t = \lambda E_t +
+O(\lambda^2 t)$. Section~\ref{sec:forfeit}'s boundary is stated in $|E_T|$ and proved in both
+directions, so it transfers as a dichotomy rather than as a measured rate: inside the window
+$|E_T| \le c\,h(T)+1$ and $M_T \to 0$ exponentially at every $\lambda \neq 0$; past it $|E_T|$ is
+linear in $T$ and some fixed $\lambda$ grows $M_T$ exponentially, so an anytime-valid test of the
+deployed intervals' calibration rejects at any fixed level within $O(1)$ rounds. Betting enters
+online conformal inference elsewhere as an optimiser rather than as evidence
+\citep{podkopaev2024betting}. We construct no e-value here and claim none.
 % Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.
 %
 % gao2025coloke: "Conformal Online Learning of Deep Koopman Linear Embeddings", arXiv:2511.12760,

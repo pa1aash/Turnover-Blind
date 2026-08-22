@@ -103,11 +103,36 @@
 % tau*, because the sweep contains no tau > tau* run there at all.  "The sweep has neither"
 % is true and stays; what it cannot say is that it looked everywhere.  ONE RUN, tau = 2.5 at
 % qhat = +b/2, would make the law falsifiable at a second setting.
+
+% S8 SUB-SESSION C (2026-08-22): THE SEED/DETERMINISM CONTRADICTION IS RESOLVED, NOT BY
+% ADDING A CLAUSE BUT BY REPHRASING.  "One seed, and only the null scorecaster's edge is
+% bracketed; the others are one-sided." read as ONE concession joined by "and", so a
+% reader could take the seed to belong to the (seed-free, deterministic-adversary)
+% dead-band sweep rather than to the i.i.d.\ check three sentences earlier.  It is now
+% three bolded leads: the i.i.d.\ check's seed is named explicitly (20260820, T = 10^6,
+% traced to src/forfeit.py's Config.seed and results/forfeit-20260820T063045Z-83747c45.json's
+% "seed": 20260820 field, which is also the file whose iid/deadband_tau1.5/T=1e6 row
+% carries the 0.249376 already printed above), with an explicit "the primary,
+% adversarial harness uses none"; then the bracket concession is restated as belonging
+% to that harness's null-scorecaster edge.  Nothing is cut: both concessions survive in
+% substance, only the seam between them is now marked.  S8 WAVE 2 (INTEGRATION):
+% RETIGHTENED, not re-litigated -- "behind Table~\ref{tab:forfeit} and the figures" and
+% "(seed-free) dead-band sweep" were dropped as words, not as facts: both are already
+% stated in sections/appendix.tex's "primary regime" paragraph (which a reader meets
+% BEFORE this sentence) and in the table caption itself, so repeating them here bought
+% no new information at the cost of the two-line page-4/5 spill W0.6 measured before this
+% session touched anything.  sections/appendix.tex's "primary regime" paragraph carries
+% the other half: an explicit "consumes no randomness and needs no seed" clause where the
+% primary harness is first and most fully described, so a reader meets "no seed" before
+% ever meeting "one seed".
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{The evidence is one construction, one adversary, one saturator}; and $0.63/(1-w)$ is
-specific to the saturator's \emph{level}, which condition~(4) bounds only from below.
+\textbf{The retention direction is proved with no gap only where the two boundaries meet}: a
+constant scorecaster and a saturator attaining its extremes at the condition-(4) radius, which
+is every setting run here; a genuinely time-varying $\hat{q}$ leaves the band $\sigma^{+} <
+\tau \le \tau^{\star+}$ open in neither direction (Section~\ref{sec:forfeit}). And $0.63/(1-w)$
+is specific to the saturator's \emph{level}, which condition~(4) bounds only from below.
 \textbf{The inherited guarantee is weak where it applies.} Under the tangent integrator
 $h(t) = t/\log t$, the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$.
 What is forfeited was not a tight certificate. \textbf{The dead-band widths are absolute, and the
@@ -116,6 +141,10 @@ failing $\tau = 1.5$ is $0.75\,b$. Under i.i.d.\ scores it returns $0.249376$ at
 adversary-free confirmation of the mechanism rather than a retreat. The threshold pins at
 $b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly.
 \textbf{The harness was rebuilt against numbers already read}, which carries less weight than a
-rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{One seed,
-and only the null scorecaster's edge is bracketed}; the others are one-sided. \textbf{What would overturn the claim} is a legal $(r_t,\hat{q})$ pair with $\tau \le
-\tau^{\star}$ that loses coverage, or $\tau > \tau^{\star}$ that keeps it; the sweep has neither.
+rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{The i.i.d.\
+check above used one seed} ($20260820$, $T = 10^6$); \textbf{the primary, adversarial harness uses
+none}, and \textbf{only its null-scorecaster edge is bracketed}; the others are one-sided.
+\textbf{What remains open is the band between the two boundaries.} For a genuinely
+time-varying $\hat{q}$, coverage in $\sigma^{+} < \tau \le \tau^{\star+}$ is neither proved nor
+falsified; Table~\ref{tab:stress}'s power-of-two rows sit there, and closing that band is
+future work, not a sweep this paper has already run.

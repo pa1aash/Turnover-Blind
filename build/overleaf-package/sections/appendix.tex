@@ -22,13 +22,76 @@
 % the venue is [OPERATOR INPUT].
 % ---------------------------------------------------------------------------
 
+% S8 SUB-SESSION C (2026-08-22): "THE PRIMARY REGIME" PARAGRAPH NOW SAYS, IN ITS OWN
+% FIRST SENTENCE, THAT THE DETERMINISTIC ADVERSARY CONSUMES NO RANDOMNESS AND NEEDS NO
+% SEED.  This is src/forfeit.py's own F9 comment ("The primary `adversarial` regime is
+% fully deterministic and consumes no randomness at all; its 'seed' is a formality
+% recorded for completeness"), stated in the paper rather than only in the code.  The
+% reason: sections/limitations.tex separately reports a genuinely seeded i.i.d.
+% robustness check (seed 20260820, T = 10^6), and a reader who meets "one seed" there
+% without first meeting an explicit "no seed" claim for the primary harness could read
+% the two as the same procedure. This is the disambiguating half; see
+% sections/limitations.tex's own S8 sub-session C note for the other half.
+% ---------------------------------------------------------------------------
+
 \appendix
 
 \section{Supporting measurements}
 \label{app:support}
 
+% S10 SUB-SESSION D: TABLE 1 MOVED HERE FROM sections/forfeit.tex, CAPTION AND ALL ELEVEN
+% ARM ROWS CELL FOR CELL UNCHANGED, except that the caption's pointer at "the primary
+% regime, defined in Appendix A" now reads "defined in the paragraph below", because the
+% table and that paragraph are no longer in different sections.  Placed at the head of
+% Appendix A so document order preserves the numbering (1 arms, 2 boundary stress, 3
+% vocabularies).  Reason: the E-values 4-page ceiling, which excludes appendices.
+\begin{table}[!ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+% S5 wave 4: arraystretch 0.95.  Eleven data rows at 0.95 give back one typeset line,
+% which was two of the last two lines standing between the body and the 4-page ceiling.
+% This is row LEADING only -- no font change, no row removed, no cell altered.
+\renewcommand{\arraystretch}{0.95}
+% S6 SUB-SESSION B: CAPTION REWRITTEN TO DESCRIBE ONLY.  Two clauses left, and neither
+% was deleted:
+%   "so no covering arm is withheld" was a REBUTTAL, not a description.  The fact it
+%     defended -- that every arm run appears -- is still the caption's first sentence.
+%   "five exceed the bound at T = 10^6" was a CONCLUSION about the data, and it existed
+%     NOWHERE ELSE in the paper (grepped: one hit, this caption).  It moved into the
+%     retention paragraph below, where Table 1 is first discussed.  Independently
+%     recounted from the table's own ratio column: 4.25, 42.10, 3.58, 3.34 and 60,747
+%     exceed 1, so five is right.
+\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold, under one
+deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed.
+Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
+``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
+delivers its full $\pm b$. Every number is the \emph{primary} regime's, defined in this
+appendix, which also gives the $T = 10^4$ excursions and the fitted
+excursion law.}
+\label{tab:forfeit}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Readout on the completed threshold & miscov.\ $2{\times}10^5$ & miscov.\ $10^6$ &
+$\max_t|E_t|$ $10^6$ & ratio & Sat.\ $10^6$ & travel $10^6$ \\
+\midrule
+none (control)                & $0.100035$ & $0.100007$ & $7.80$        & $0.53$     & $0.0000$ & $28{,}311$ \\
+partial adj.\ $w = 0.5$       & $0.100030$ & $0.100007$ & $7.70$        & $0.52$     & $0.0000$ & $18{,}113$ \\
+partial adj.\ $w = 0.9$       & $0.100030$ & $0.100007$ & $7.50$        & $0.51$     & $0.0000$ & $4{,}081$ \\
+partial adj.\ $w = 0.99$      & $0.100040$ & $0.100006$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}023$ \\
+partial adj.\ $w = 0.999$     & $0.100035$ & $\mathbf{0.100004}$ & $623.70$      & $42.10$    & $0.0097$ & $202$ \\
+growing time constant $p=0.5$ & $0.100030$ & $0.100006$ & $12.60$       & $0.85$     & $0.0000$ & $330$ \\
+growing time constant $p=0.9$ & $0.100030$ & $0.100024$ & $53.00$       & $3.58$     & $0.3181$ & $16$ \\
+running mean                  & $0.099940$ & $0.100010$ & $49.50$       & $3.34$     & $0.3647$ & $9$ \\
+dead band $\tau = 0.5$        & $0.100035$ & $0.100005$ & $10.60$       & $0.72$     & $0.0000$ & $2{,}045$ \\
+dead band $\tau = 0.9$        & $0.100060$ & $0.100012$ & $13.20$       & $0.89$     & $0.0038$ & $1{,}051$ \\
+dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ & $1.0000$ & $0.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \paragraph{The primary regime.} Every number in Table~\ref{tab:forfeit} is measured under one
-deterministic adversary. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
+deterministic adversary, which consumes no randomness and needs no seed. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
 $\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
 specification is not a tie rule, and the distinction is measured rather than argued. Scoring
 an exact-threshold play \emph{as a miscoverage} reproduces every quantity
@@ -37,11 +100,37 @@ all four horizons. Scoring
 the same play under the \emph{strict} indicator does not, and it moves every row, because the
 adversary's signature move then covers rather than misses. Partial adjustment at $w = 0.999$
 excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
-$1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading.
+$1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading, and
+that $623.70$ turns on the adversary's $\varepsilon$, not the counting convention.
+% S10 WAVE F: THE "That 623.70 turns on the adversary's epsilon" SENTENCE, WHICH S10 SUB-SESSION
+% D's C7(b) MOVED HERE FROM THE BODY, IS REORDERED, NOT REWRITTEN.  D placed it immediately after
+% the sentence demonstrating that the COUNTING CONVENTION moves 623.70 to 70.80, so a reader met
+% "623.70 does not turn on the counting convention" one clause after watching the convention move
+% it.  Both statements are true under this paragraph's own thesis, but the adjacency stopped the
+% reader.  It now follows the epsilon sentence it actually depends on.  Not one number, and no
+% claim, is changed.  Found by S10's F1 adversarial critic.
 \textbf{No row is convention-free with respect to the second}, which is why the adversary is
-specified rather than tie-broken. At $\tau = \tau^{\star}$ itself the two readings part: the
+specified rather than tie-broken. At $\tau = \tau^{\star+}$ itself the two readings part: the
 strict indicator returns $0.000000$ where scoring the exact play as a miscoverage returns
-$1.000000$.
+$1.000000$. \textbf{Neither of those is coverage.} They are $|E_T| = \alpha T$ and
+$(1-\alpha)T$, failures of the same order and opposite sign. Under the strict indicator the
+exact-threshold play scores $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$, which is also the
+indicator of the constant legal play $s_t \equiv -b/2$, so that column is
+Section~\ref{sec:forfeit}'s \emph{mirror adversary} rather than a second convention. It returns
+between $0.09992$ and $0.09997$ at $\tau = 0.5$, $0.9$, $0.95$, $0.99$ and $0.999$, and
+$0.000000$ with $\max_t|E_t| = 10{,}000$ at $\tau = 1$, $1.001$, $1.01$, $1.05$, $1.1$ and $1.5$.
+That locates $\tau^{\star-} = 1$ on the same eleven widths Figure~\ref{fig:boundary} uses, closed
+on the failing side. The convention decides which legal adversary realises the endpoint failure,
+not whether one occurs.
+% S9 SUB-SESSION C: THE TWO SENTENCES ABOVE ARE ADDED, AND NOTHING PRIOR IS WITHDRAWN.  The
+% pre-S9 text was factually correct and is kept verbatim; what it did not say is that the
+% strict indicator's 0.000000 is itself a linear-in-T failure rather than a covering row, and
+% that the exact_threshold_strict column is a SECOND LEGAL ADVERSARY under the paper's own
+% indicator, not an indicator variant.  Both are read straight off
+% results/forfeit-20260820T063132Z-83747c45.json, aggregate_table, regime
+% exact_threshold_strict, T = 1e5, all eleven deadband_tau rows; the identity of the two error
+% processes is re-verified bit for bit by src/boundary_stress.py's validate(), 8 of its 19
+% checks.
 % S6 SUB-SESSION C, RULE-6 MOVE.  Those two numbers were in sections/forfeit.tex, in the
 % endpoint sentence, which already pointed here.  They are endpoint-convention detail, this
 % is the paragraph that discusses the convention, and the appendix does not count against
@@ -56,10 +145,34 @@ $1.000000$.
 % up to the failing dead band where |E_t| = (1-alpha)t is linear in T and the fit is off by
 % 100%.  The formula's own w exists only for the partial-adjustment family, which is the
 % structural tell.  Residual table: research/S6/E-spotcheck.json.
+% S10 SUB-SESSION D: FIGURE 2 MOVED HERE FROM sections/forfeit.tex, GRAPHIC AND CAPTION
+% UNCHANGED.  It is placed BEFORE Figure~\ref{fig:settings} so that the document order, and
+% therefore the numbering, is exactly what it was: Figure 1 the placements schematic in the
+% body, Figure 2 the cliff, Figure 3 the five settings.  The reason for the move is the
+% 4-page ceiling alone.  Its rebuild history is in sections/forfeit.tex's header, where the
+% figure used to sit.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figure1_boundary.pdf}
+  \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
+  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
+  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full sweep: filled markers run to
+  $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
+  covers, orange forfeits, and the dashed rule is $\tau^{\star+}$. \textbf{(b)} The same
+  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star+}$ on
+  a symlog axis whose linear zone is $|\tau - \tau^{\star+}| \le 10^{-3}$, which magnifies the
+  neighbourhood of $\tau^{\star+}$: visual spacing here is not proportional to true distance in
+  $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
+  narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
+  settings. The same eleven widths under the \emph{mirror} adversary, which locates
+  $\tau^{\star-}$, are read off in this appendix's primary-regime paragraph.}
+  \label{fig:boundary}
+\end{figure}
+
 \paragraph{Excursions at $T = 10^4$, and where the excursion law holds.} Partial adjustment
 excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat
 in $T$ while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the
-horizon. On the control and the four partial-adjustment arms the excursion fits
+horizon: at $w = 0.999$ it is $61.08$ at $T = 10^4$ and $42.10$ at $T = 10^6$. On the control and the four partial-adjustment arms the excursion fits
 $\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon, most loosely at
 $w = 0.9$, the one arm whose two branches cross inside the horizon range. This is a fit to
 those five arms, not a derived bound. It does not extend to the other six: the growing time
@@ -88,11 +201,14 @@ constants, the running mean and the dead bands all excurse further than it predi
   \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
   rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
   Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
-  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$. The rule on each
-  row is that setting's $\tau^{\star} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
-  at the right, and the tinted band is $\tau \le \tau^{\star}$. Two rules fall off the
-  axis and are drawn as arrows: $\tau^{\star} = 0$ at $\hat{q} \equiv -b/2$, and
-  $\tau^{\star}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator.}
+  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$, all under the
+  \emph{specified} adversary. The rule on each
+  row is that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
+  at the right, and the tinted band is $\tau \le \tau^{\star+}$. Two rules fall off the
+  axis and are drawn as arrows: $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$, and
+  $\tau^{\star+}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator. The
+  mirror boundary $\tau^{\star-}$ of (\ref{eq:boundaries}) is not drawn here and differs from
+  $\tau^{\star+}$ at the two non-null scorecasters.}
   \label{fig:settings}
 \end{figure}
 
@@ -103,14 +219,117 @@ returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact
 $w = 0.999$ excursion from $623.70$ to $120.60$. That is the first term of $\tau^{\star}$
 moving the edge, not the readout changing behaviour.
 
+% S10 SUB-SESSION D: THIS PARAGRAPH MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD,
+% except for ONE cross-reference that pointed AT this appendix from the body and would now be
+% self-referential: "Appendix A prints both readings" was rewritten to name the two places in
+% this appendix that do.  Every claim, every number and the bold leads are unchanged.  See that
+% file for why.
+% S10 WAVE F, CORRECTION TO THE COMMENT ABOVE AND TO THE EDIT IT DESCRIBES.  (1) D's comment
+% claimed a SECOND cross-reference edit here, "(Figure 2, App. A)" -> "(Figure 2)".  That edit
+% never happened: the pre-move body text already read "(Figure~\ref{fig:boundary})" with no
+% "App. A".  The claim is withdrawn, not repeated.  (2) D's one real rewrite was WRONG.  It read
+% "Table~\ref{tab:forfeit} and the primary-regime paragraph above print both readings", and
+% Table 1 has no tau = 1 dead-band row at all (its dead-band rows are 0.5, 0.9 and 1.5), so it
+% prints NEITHER reading at the endpoint.  The primary-regime reading at tau = 1 is in
+% Figure~\ref{fig:boundary} panel (b); the mirror reading is in this appendix's primary-regime
+% paragraph.  The pointer now names those two.  Found by S10's F1 adversarial critic.
+\paragraph{What survives of the measurement, and what its status now is.} Outside the admissible
+window the transition is a step. Past $\tau^{\star+}$ the threshold sits permanently below the
+reachable score range and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T =
+10^6$; the wider bands $\tau = 2.0$, $2.5$, $3.0$ and $5.0$ fail too at $T = 2{\times}10^5$
+(Figure~\ref{fig:boundary}). \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
+$\tau^{\star+} = \tau^{\star-} = b/2$}, one point of the admissible class, and both terms move it.
+The legal $\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound against the
+specified adversary, and against the mirror one no width covers there, the unsmoothed control
+included. Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising it costs the failure
+direction nothing; it moves the edge too (Figure~\ref{fig:settings}) and shrinks the excursion,
+from $623.70$ to $20.10$ under the tangent integrator \citet{angelopoulos2023pid} report using in
+all their experiments, both at $T = 10^6$. \textbf{The method's own integrator therefore sits
+inside the set at every width run here.} \textbf{The endpoint is where the two boundaries part.}
+The upper one is closed and the lower one is open, which the null scorecaster cannot show because
+$\tau^{\star+}$ and $\tau^{\star-}$ coincide there: four saturators with $\tau^{\star+} <
+\tau^{\star-}$ cover at $\tau = \tau^{\star+}$ exactly under both adversaries, and at $\hat{q}
+\equiv +0.4$, where $\tau^{\star-} = 0.6 < 1.4 = \tau^{\star+}$, the width $0.599$ covers under
+both while $0.6$ fails under the mirror. At the baseline the two coincide at $1$, so the primary
+regime covers there and the mirror adversary does not; Figure~\ref{fig:boundary} and this
+appendix's primary-regime paragraph print both readings. \textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
+$\pm b$ on every round, and what fails is Proposition~2's other hypothesis: the threshold closing
+the loop \emph{is} the integrator's output.
+
+% S10 SUB-SESSION D: TABLE 2 MOVED HERE FROM sections/forfeit.tex, WHOLE AND CELL FOR CELL
+% UNCHANGED (caption, column heads, all thirteen rows, the \label, the S9 provenance comment
+% below).  The reason is the 4-page ceiling and nothing else: it is a measurement table, this
+% appendix is titled "Supporting measurements", and E-values excludes appendices from the
+% count.  Section~\ref{sec:forfeit} still \ref's it and still states in prose the three
+% configurations it exhibits.  Placed after the Figure~\ref{fig:settings} paragraph so that
+% Appendix~A reads measurement-then-boundary-stress; [!ht] rather than [tb] because the
+% appendix has no page-top competition and floating it to a later page would strand it.
+\begin{table}[!ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.1pt}
+\renewcommand{\arraystretch}{0.95}
+% S9 SUB-SESSION C: NEW.  Every cell is
+% results/boundary-stress-20260822T103716Z-cd208b98.json, field `rows', selected by
+% (config, tau, adversary, T).  Produced by src/boundary_stress.py, which imports
+% src/forfeit.py unmodified and validates its transcription against
+% results/forfeit-20260820T063132Z-83747c45.json (19 exact checks) before running.
+% Nothing here is read off a figure and nothing is rounded by hand.
+\caption{Legal $(r_t,\hat{q})$ configurations on which the printed $\tau^{\star}$ over-certifies,
+each under two legal adversaries. ``Proved window'' is where (\ref{eq:boundaries}) certifies
+retention against every legal adversary; between it and the failure boundaries
+$\tau^{\star\pm}$ neither direction is claimed, and the rows built on a supremum the dynamics
+cannot reach or never attain sit there. Here $\emptyset$ marks a configuration for which no
+width is certified, $\tau = 0$ included. $T = 10^5$ except the two power-of-two rows, at
+$T = 10^6$. The last row carries no dead band at all.}
+\label{tab:stress}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+ & & & & \multicolumn{2}{c}{$s_t = \tilde{q}_t+\varepsilon$} &
+ \multicolumn{2}{c}{$s_t \equiv -b/2$} \\
+\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+$(r_t,\hat{q})$ configuration & $\tau$ & printed $\tau^{\star}$ & proved window &
+miscov. & $\max_t|E_t|$ & miscov. & $\max_t|E_t|$ \\
+\midrule
+$\hat{q} \equiv +0.4$, level $b$        & $0.599$ & $1.4$ & $\tau < 0.6$ & $0.100010$ & $7.20$ & $0.099890$ & $11.60$ \\
+$\hat{q} \equiv +0.4$, level $b$        & $0.8$   & $1.4$ & $\tau < 0.6$ & $0.100050$ & $8.70$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\sup_x r_t = 10b$, off the reach       & $1.001$ & $19$  & $\tau < 1$   & $\mathbf{1.000000}$ & $90{,}000$ & $0.000000$ & $10{,}000$ \\
+$\sup_x r_t$ unbounded, off the reach   & $1.5$   & $\infty$ & $\tau < 1$ & $\mathbf{1.000000}$ & $90{,}000$ & $0.000000$ & $10{,}000$ \\
+$A^{+} = 4b$, $A^{-} = -b$              & $1.5$   & $7$   & $\tau < 1$   & $0.100020$ & $4.30$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+level $4b$, $\hat{q} \equiv 0$          & $6.999$ & $7$   & $\tau < 7$   & $0.100070$ & $12.20$ & $0.100050$ & $11.60$ \\
+level $4b$, $\hat{q} \equiv 0$          & $7.0$   & $7$   & $\tau < 7$   & $0.100090$ & $12.20$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\sup_x r_t = 2b$, unattained           & $2.99$  & $3$   & $\tau < 1$   & $0.100320$ & $211.10$ & $0.098010$ & $210.50$ \\
+$\sup_x r_t = 2b$, unattained           & $3.0$   & $3$   & $\tau < 1$   & $\mathbf{1.000000}$ & $90{,}000$ & $0.000000$ & $10{,}000$ \\
+$\sup_x r_t = 2b$, attained             & $3.0$   & $3$   & $\tau < 3$   & $0.100000$ & $12.20$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\hat{q}_t = b/2$ on powers of $2$      & $1.0$   & $2$   & $\emptyset$    & $0.100009$ & $14.30$ & $\mathbf{0.000000}$ & $100{,}000$ \\
+$\hat{q}_t = b/2$ on powers of $2$      & $1.9$   & $2$   & $\emptyset$    & $\mathbf{0.110960}$ & $84{,}745.70$ & $0.000000$ & $100{,}000$ \\
+$\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.100000$ & $0.90$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% S10 WAVE F: SENTENCE MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD.  It illustrates the
+% body's claim that once qhat varies the miscoverage rate stops being a tell, and the row it reads
+% is Table~\ref{tab:stress}'s power-of-two row at tau = 1.9, ten lines above.  The claim itself is
+% still made in the body; only its illustration moved, to pay for the two claim-bearing additions
+% wave F made to the 4-page body.
+\paragraph{Where the rate stops being a tell.} At $\tau = 1.9$ with the power-of-two scorecaster
+the rate is $0.110960$ against $\alpha = 0.1$ while $\max_t|E_t|$ is $84{,}745.70$ at $T = 10^6$,
+so a reader watching only the rate would call that coverage.
+
 % S6 SUB-SESSION E: \clearpage ADDED, AND IT IS A STRUCTURAL FIX, NOT A NUDGE.
 % S5's J1 finding 8 was this heading stranded away from its only content.  Wave 4 fixed it
 % by changing the table from [t] to [!h], which worked only while the appendix happened to
 % fit on one page.  E2's three extra lines pushed it over and the heading stranded again:
 % "B  The four vocabularies" alone at the foot of p.7, Table 2 alone on p.8.
-% This section is the LAST in the document and contains exactly ONE float and no prose, so
-% starting it on a fresh page makes the heading and its table inseparable by construction
-% rather than by luck.  Appendix pages are outside E-values' 4-page ceiling, so it is free.
+% This section contains exactly ONE float and no prose, so starting it on a fresh page makes the
+% heading and its table inseparable by construction rather than by luck.  Appendix pages are
+% outside E-values' 4-page ceiling, so it is free.
+% S10 WAVE F: THE COMMENT ABOVE USED TO SAY "This section is the LAST in the document", WHICH IS
+% NO LONGER TRUE -- S10 sub-session D moved "Where this sits" here as Appendix~C, which now
+% follows.  The \clearpage still does exactly what it was added for (it keeps this heading with
+% its only float), so nothing renders differently; only the stale half of the recorded reasoning
+% is removed, so that a later session does not act on it.  Found by S10's F1 adversarial critic.
 \clearpage
 \section{The four vocabularies}
 \label{app:bridge}
@@ -140,16 +359,12 @@ MQC/SMQC, congruence, nervousness); \emph{jumpiness}, \emph{convergence index},
 \textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
 \textbf{Switching-cost online learning} \\
 \midrule
-a distribution-free long-run-coverage guarantee for \emph{any} bounded scorecaster, with a rate
-\citep[Thm~1, Prop.~2]{angelopoulos2023pid}, and the admissible set measured here to be tight
-& the scored movement functional, the readout map as post-processing
-\citep[Eq.~3]{godahewa2025stability}, and a priced decision
-\citep[\S4.2]{genov2026switching} and \citep{vanbelle2026stabilizing}
-& the matched-level design on real producers from 2012, with a control \emph{stronger} than the
-pair: the whole marginal \citep{pinson2012scenarios,worsnop2018scenarios}
-& worst-case theory for the penalised problem: Thm~2, and a Thm~7 trade-off in which sublinear
-regret is bought by growing $\theta$ with $T$, which grows the ratio
-\citep{andrew2013twometrics} \\
+Distribution-free long-run coverage for any bounded scorecaster
+\citep[Thm~1, Prop.~2]{angelopoulos2023pid}
+& Movement functional; readout as post-processing \citep[Eq.~3]{godahewa2025stability}; priced
+decision \citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}
+& Matched-level design, real producers (2012) \citep{pinson2012scenarios,worsnop2018scenarios}
+& Worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics} \\
 \bottomrule
 \end{tabular}
 \end{table}
