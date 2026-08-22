@@ -179,6 +179,22 @@
 % neighbour, and the paragraph distinguishes it correctly, since its betting is
 % Orabona-Pal coin betting used as a PARAMETER-FREE OPTIMISER for the threshold, not a test
 % martingale used as evidence.  Record: research/S10/A-evalue-bridge.json.
+% S10 SUB-SESSION D (2026-08-22): THIS FILE MOVED OUT OF THE BODY, WHOLE AND UNCUT.
+% main.tex no longer \inputs it between sections/forfeit.tex and sections/limitations.tex;
+% it is \input AFTER sections/appendix.tex, so \appendix is already in force and this
+% renders as Appendix~C.  NOT ONE WORD OF EITHER PARAGRAPH IS CHANGED -- the concession
+% list and sub-session A's e-value / anytime-valid bridge paragraph are byte-identical to
+% what they were at HEAD 5a8019e, including the explicit denial that E_t is an e-process.
+% WHY: the E-values ceiling is 4 body pages "excluding references and optional appendices",
+% and after S9's theorem and S10's two additions the body measured 5.934 pages.  This
+% section is the largest block in the body that is not a result, and moving it is a
+% RELOCATION, not a cut: the section is still in the PDF, still numbered, still findable in
+% the outline, and sections/intro.tex's closing roadmap sentence now points at it by name
+% and names the game-theoretic reading so a reader at an e-values venue meets it in the
+% body.  \label{sec:related} is unchanged, so that pointer resolves automatically.
+% REVERTING IS ONE LINE EACH WAY: move the \input back above \input{sections/limitations}
+% in main.tex and restore "Section~\ref{sec:related}" in sections/intro.tex.  Under
+% TS-LIMITS (4-7 body pages) that revert is free.
 \section{Where this sits}
 \label{sec:related}
 
