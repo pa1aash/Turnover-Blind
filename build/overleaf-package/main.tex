@@ -1,5 +1,5 @@
 % ---------------------------------------------------------------------------
-% Turnover-Blind -- workshop note, 4-page body.
+% Turnover-Blind -- workshop note.
 %
 % BUILD, from this directory (artefacts are untracked; .gitignore covers
 % *.aux *.log *.bbl *.blg *.out):
@@ -11,9 +11,63 @@
 % pass 3's and the rendered text of the two PDFs is identical, so the three-pass output was
 % already correct and the warning was page bookkeeping.  The fourth pass is there so the log
 % reads 0 LaTeX warnings and a future session does not have to re-derive that.
-% No TEXINPUTS/BIBINPUTS needed in this package: neurips_2026.sty and
-% REFS_VERIFIED.bib both sit beside this file (this note differs from the source
-% repository's copy, where the bibliography instead lives in ../audit/).
+% (S15 sub-session D removed that \clearpage; the four-pass recipe is KEPT rather than
+% re-derived down to three, since a spare pass costs seconds and cannot be wrong.)
+% No TEXINPUTS/BIBINPUTS needed: neurips_2026.sty sits beside this file and the
+% bibliography is reached by relative path.  If your bibtex refuses the relative
+% path, use BIBINPUTS=".:../audit:" bibtex main instead.
+%
+% ===========================================================================
+% S15 SUB-SESSION D (2026-08-24).  THIS BLOCK SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT,
+% AND IT ALSO REPLACES THE TEST THEY ALL USE.
+%
+% THE OFFSET TEST IS RETIRED.  Every block below measures where the "References" heading
+% falls, because E-values' ceiling was 4 pages "excluding references and optional
+% appendices" -- a BODY-ONLY ceiling, which made body length the whole question and appendix
+% length free.  TS-LIMITS' call reads "4 to 7 pages plus references" and states NO appendix
+% exclusion anywhere; that was re-verified fresh by a targeted full-text search of the call
+% on 2026-08-24 (research/S15/A-venue-verification.json, a1_findings.3_appendix_policy:
+% "NOT MENTIONED, at all, anywhere in the call ... Assume NO appendix allowance").  The
+% ceiling therefore covers BODY PLUS APPENDICES.
+%   THE TEST IS NOW: (total PDF pages) - (pages occupied by the bibliography) <= 7.
+%   Where "References" starts is a matter of taste and measures nothing admissible.
+%
+% MEASURED THIS SUB-SESSION, artefacts deleted first, four passes + bibtex, BOTH options:
+%   BEFORE (HEAD b55afc3):  13 pages; references 2.32; COUNTED CONTENT 9.99 pages.
+%   AFTER  (this commit):   12 pages; references 2.25; COUNTED CONTENT 9.08 pages.
+%   sglblindworkshop and dblblindworkshop both build to 12 pages and agree to 0.1 pp.
+%   0 TeX errors, 0 overfull boxes, 0 underfull hboxes, 0 undefined refs, 0 undefined
+%   citations, 0 LaTeX warnings, 0 \pdfendlink warnings, 0 bibtex warnings.
+%
+% THE PAPER IS OVER THE CEILING BY ~2.1 PAGES AND THIS SUB-SESSION DID NOT CLOSE THAT.
+% It could not: its brief is placement, and RELOCATION MOVES ZERO PAGES under a whole-
+% document ceiling.  The 0.91 pages it did recover are all duplication and dead structure --
+% a four-row body table that duplicated four rows of an eleven-row one, a \clearpage
+% protecting a float deleted in S13, and a one-paragraph appendix section pointed at by the
+% section it had been split from.  Closing the remaining ~2.1 pages requires content
+% decisions (what is cut, what is compressed) that this sub-session was not authorised to
+% take; they are enumerated with sizes in research/S15/D-restructuring.json under
+% "residual_overage", for the orchestrator.
+%
+% WHAT MOVED, AND THE ONE RULE: every move was decided on READER EXPERIENCE, because page
+% budget no longer distinguishes the destinations.  Nothing was deleted except duplication.
+%   Table 1 (eleven arms)          appendix -> body Section 3, merged with the four-row
+%                                  duplicate, which is deleted.
+%   Figure 2 (the cliff)           appendix -> body Section 3.
+%   Figure 3 (19 runs)             appendix -> body Section 3.
+%   "Where this sits"              Appendix C -> body Section 4 (S10's own recorded revert).
+%   "The four vocabularies"        Appendix B -> merged into Section 4's first paragraph.
+%   Table 2 (boundary stress)      STAYS in Appendix A -- re-decided, not inherited.
+%   Appendix A's five paragraphs   STAY.
+%   The e-value section            STAYS an appendix, now Appendix B, in its own file
+%                                  sections/evalue.tex.  Not one word of it changed.
+% Sections are now 1 Introduction, 2 Setup, 3 The edge ..., 4 Where this sits,
+% 5 Limitations; appendices A Supporting measurements, B The accumulator as a bet.
+% Figure numbering is UNCHANGED (1 schematic, 2 cliff, 3 settings).  Table numbering shifts
+% by construction: the eleven-arm table is Table 1 and boundary stress is Table 2, since the
+% four-row duplicate that used to be Table 1 no longer exists.  No table or figure number is
+% hardcoded anywhere in the paper, so every \ref resolves without edit.
+% ===========================================================================
 %
 % ===========================================================================
 % RE-MEASURED, S10 SUB-SESSION D (2026-08-22), BOTH VENUE OPTIONS, artefacts deleted
@@ -61,7 +115,7 @@
 % research/S10/D-compression.json.
 % ===========================================================================
 %
-% Every citation key resolves against REFS_VERIFIED.bib (96 entries; 41
+% Every citation key resolves against audit/REFS_VERIFIED.bib (96 entries; 41
 % keys are cited, rendering 41 bibitems -- recounted S11 sub-session C; the S5 wave 6
 % figures this replaces (92/31/34) went stale when S10 sub-session A added
 % shafer2019gtfpf, ramdas2023savi, vovk2021evalues and cited the already-present
@@ -196,8 +250,8 @@
 %   sglblindworkshop -> E-values: From Statistics to ML   (4 pp. ceiling)
 %   dblblindworkshop -> TS-LIMITS                         (4-7 pp., anonymised)
 % ===========================================================================
-\usepackage[sglblindworkshop]{neurips_2026}    % E-values
-%\usepackage[dblblindworkshop]{neurips_2026}   % TS-LIMITS
+%\usepackage[sglblindworkshop]{neurips_2026}   % E-values
+\usepackage[dblblindworkshop]{neurips_2026}    % TS-LIMITS
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -279,8 +333,8 @@ Boundary in Online Conformal Prediction}
 \fi
 \makeatother
 
-\workshoptitle{E-values: From Statistics to ML}
-%\workshoptitle{Generalization for Time Series in Tight Settings (TS-LIMITS)}
+%\workshoptitle{E-values: From Statistics to ML}
+\workshoptitle{Generalization for Time Series in Tight Settings: Latency, Inference, Memory, prIvacy and susTainability}
 
 % AUTHOR BLOCK.  Printed only under sglblindworkshop; the dblblindworkshop
 % option replaces it with the style file's own four-line anonymous block.
@@ -322,14 +376,21 @@ only. Under the equally legal $\hat{q} \equiv +b/2$ the failing band covers; at
 $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 \end{abstract}
 
-% S10 SUB-SESSION D: sections/related.tex IS NO LONGER \input HERE.  It moved, whole and
-% unedited in substance, to the appendix (it is now Appendix~C, \input after
-% sections/appendix.tex below), because the body had to reach E-values' 4-page ceiling and
-% a positioning section is the largest block in it that is not a result.  The body keeps a
-% pointer at the end of sections/intro.tex.  NOTHING IN THAT FILE IS CUT.
+% S10 SUB-SESSION D: sections/related.tex IS NO LONGER \input HERE.  It moved to the appendix
+% because the body had to reach E-values' 4-page ceiling and a positioning section is the
+% largest block in it that is not a result.
+% S15 SUB-SESSION D (2026-08-24): REVERSED.  It is \input here again, as Section 4, between
+% the result and the Limitations -- the position S10 recorded as the one-line revert.  The
+% trigger is that TS-LIMITS' "4 to 7 pages plus references" states NO appendix exclusion, so
+% an appendix page and a body page cost the same and the exile bought nothing.  See that
+% file's own S15 header for why the section belongs in the body on reader grounds.
+% THE E-VALUE SECTION DOES NOT COME WITH IT.  sections/related.tex used to carry both "Where
+% this sits" and "The accumulator as a bet"; the latter is now sections/evalue.tex, \input
+% after sections/appendix.tex, and stays an appendix.  Not one word of it changed.
 \input{sections/intro}
 \input{sections/setup}
 \input{sections/forfeit}
+\input{sections/related}
 \input{sections/limitations}
 \bibliographystyle{plainnat}
 \bibliography{REFS_VERIFIED}
@@ -370,7 +431,11 @@ $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 % findable in the PDF outline.  The NeurIPS 2026 template prescribes no position (checked:
 % paper/neurips_2026.tex and paper/checklist.tex mention the code submission policy but not
 % placement) and the E-values page cannot be re-read without a browser.
-% UNDER TS-LIMITS, which allows 4-7 body pages, this moves back after Limitations for free.
+% CORRECTED S15 SUB-SESSION D: the line here used to read "UNDER TS-LIMITS, which allows 4-7
+% BODY pages, this moves back after Limitations for free."  Both halves are wrong.  TS-LIMITS'
+% 4-7 pages cover the whole document, so nothing about a move is free; and under
+% dblblindworkshop this section DOES NOT PRINT AT ALL (the \if@anonymous guard below), so
+% there is nothing to move.  The position is left exactly where it is.
 %
 % IT DOES NOT OVERCLAIM.  It lists what is actually in the repository and claims nothing
 % about packaging, anonymisation or review-readiness.
@@ -379,7 +444,7 @@ $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 \if@anonymous\else
 \section*{Code and data}
 The simulator, its frozen configuration, the \texttt{results/} files behind every figure and
-table, the generators that read them, and this project's audit trail across sessions are at
+table, the generators that read them, and this project's reproducibility records are at
 \texttt{https://[REPOSITORY LINK - INSERTED BY AUTHOR PRIOR TO SUBMISSION]}.
 \fi
 \makeatother
@@ -388,9 +453,28 @@ table, the generators that read them, and this project's audit trail across sess
 % ("Short papers up to 4 pages, excluding references and optional appendices"), so
 % the body-end test is unchanged: References must still be the FIRST content on the
 % page after the body ends.
+%
+% S15 SUB-SESSION D (2026-08-24): THE OFFSET TEST NO LONGER MEASURES THE BINDING CONSTRAINT,
+% AND THIS IS WHERE THAT IS RECORDED SO NOBODY OPTIMISES THE WRONG NUMBER AGAIN.
+% TS-LIMITS' call reads "4 to 7 pages plus references" and states NO appendix exclusion
+% anywhere -- confirmed by a targeted full-text search of the call on 2026-08-24
+% (research/S15/A-venue-verification.json, a1_findings.3_appendix_policy).  So the ceiling
+% covers BODY PLUS APPENDICES, and where the References heading falls is now a matter of
+% taste rather than of admissibility.  THE TEST IS THE TOTAL: pages of the compiled PDF,
+% less the pages the bibliography occupies, must be at most 7.
+% MEASURED AT THE START OF THIS SUB-SESSION, under sglblindworkshop, four passes + bibtex:
+% 13 pages total, references 2.32 pages, so 9.99 pages of counted content against a ceiling
+% of 7.  That is the paper's real constraint now, and no relocation touches it -- moving a
+% float between the body and an appendix moves zero pages.  What this sub-session recovered
+% is duplication and dead structure only (a four-row table that duplicated four rows of an
+% eleven-row one; a \clearpage protecting a float deleted two sessions ago; a one-paragraph
+% appendix section pointed at by the section it was split from).  Closing the remaining gap
+% needs content decisions this sub-session's brief does not authorise; they are set out, with
+% sizes, in research/S15/D-restructuring.json under "residual_overage".
+%
+% Appendix A is sections/appendix.tex.  Appendix B is sections/evalue.tex, split out of
+% sections/related.tex by this sub-session when "Where this sits" returned to the body.
 \input{sections/appendix}
-% S10 SUB-SESSION D: "Where this sits" now sits here, as Appendix~C.  It is the same file,
-% moved rather than rewritten; see the note at the \input block above.
-\input{sections/related}
+\input{sections/evalue}
 
 \end{document}

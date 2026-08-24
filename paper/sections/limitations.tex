@@ -125,8 +125,35 @@
 % the other half: an explicit "consumes no randomness and needs no seed" clause where the
 % primary harness is first and most fully described, so a reader meets "no seed" before
 % ever meeting "one seed".
+% ---------------------------------------------------------------------------
+% S15 SUB-SESSION E (2026-08-24): DE-COMPRESSION, AND EVERY HEDGE IS BYTE-IDENTICAL.
+% This file's own header records that run-in bold leads were chosen over \paragraph blocks
+% "to save vertical space in a 4-page body".  TS-LIMITS is 4-7 pages for the whole document,
+% so that reason is gone, but the run-in style is KEPT: S5 sub-session G3 measured this
+% section as having no slack that is not content, and re-cutting it into \paragraph blocks
+% would be a structural change, which is sub-session D's brief this session, not this one's.
+% What changed, and it is three additions and no deletion:
+%   (a) ONE ORIENTING SENTENCE opens the section, so a reader meets a list knowing it is a
+%       list.  It makes no claim about the result.
+%   (b) TWO PARAGRAPH BREAKS, before the evidence concessions and before the open band, with
+%       one four-word transition at the first.  The eleven bolded leads are unchanged, in the
+%       same order, with the same wording.
+%   (c) "Placement~B is conceded, not tested." gains the clause that says what the concession
+%       rests on: Theorem 1 carries Placement B (sections/forfeit.tex's closing paragraph
+%       states this), and no arm in Table~\ref{tab:forfeit} is a Placement-B arm (its caption
+%       says every number is Placement A).  This makes the concession MORE specific, not less.
+% CHECKED LINE BY LINE AND NOT TOUCHED: the sigma+/tau*+ band statement, 0.63/(1-w) being
+% specific to the saturator's level, the O(1/log T) rate, "What is forfeited was not a tight
+% certificate", the absolute dead-band widths, 0.249376 with its T = 10^6 horizon, the
+% rebuilt-harness admission, the seed split (one seed for the i.i.d. check, none for the
+% primary harness), the one-sided bracketing, and the closing "neither proved nor falsified".
+% Record: research/S15/E-decompression.json.
+% ---------------------------------------------------------------------------
 \section{Limitations}
 \label{sec:limitations}
+
+The result above is narrow in several specific ways. They are listed here rather than left to be
+found, and the run-in bold marks where one concession ends and the next begins.
 
 \textbf{The retention direction is proved with no gap only where the two boundaries meet}: a
 constant scorecaster and a saturator attaining its extremes at the condition-(4) radius, which
@@ -140,10 +167,15 @@ failure is total only against the adversary.} $\tau$ is in score units with $b =
 failing $\tau = 1.5$ is $0.75\,b$. Under i.i.d.\ scores it returns $0.249376$ at $T = 10^6$, an
 adversary-free confirmation of the mechanism rather than a retreat. The threshold pins at
 $b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly.
+
+What follows concerns the evidence rather than the statement.
 \textbf{The harness was rebuilt against numbers already read}, which carries less weight than a
-rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{The i.i.d.\
+rerun done without sight of them. \textbf{Placement~B is conceded, not tested}: the argument that
+it stays inside the admissible radius is Theorem~1's, and no arm run here exercises it.
+\textbf{The i.i.d.\
 check above used one seed} ($20260820$, $T = 10^6$); \textbf{the primary, adversarial harness uses
 none}, and \textbf{only its null-scorecaster edge is bracketed}; the others are one-sided.
+
 \textbf{What remains open is the band between the two boundaries.} For a genuinely
 time-varying $\hat{q}$, coverage in $\sigma^{+} < \tau \le \tau^{\star+}$ is neither proved nor
 falsified; Table~\ref{tab:stress}'s power-of-two rows sit there, and closing that band is

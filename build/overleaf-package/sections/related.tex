@@ -193,10 +193,97 @@
 % and names the game-theoretic reading so a reader at an e-values venue meets it in the
 % body.  \label{sec:related} is unchanged, so that pointer resolves automatically.
 % REVERTING IS ONE LINE EACH WAY: move the \input back above \input{sections/limitations}
-% in main.tex and restore "Section~\ref{sec:related}" in sections/intro.tex.  Under
-% TS-LIMITS (4-7 body pages) that revert is free.
+% in main.tex and restore "Section~\ref{sec:related}" in sections/intro.tex.
+%
+% =========================================================================================
+% S15 SUB-SESSION D (2026-08-24): REVERTED, EXACTLY AS S10 DESCRIBED THE REVERT, AND
+% APPENDIX~B IS MERGED IN.  This file is \input between sections/forfeit.tex and
+% sections/limitations.tex again, so it is a NUMBERED BODY SECTION -- Section 4 -- and
+% sections/intro.tex's roadmap says "Section~\ref{sec:related}" rather than "Appendix".
+%
+% THE REVERT IS NOT FREE, AND IT IS NOT MADE BECAUSE IT IS FREE.  S10's note above and the
+% appendix header both assumed TS-LIMITS' 4-7 pages were BODY pages.  They are not: the call
+% reads "4 to 7 pages plus references" and states no appendix exclusion anywhere (verified
+% fresh 2026-08-24, research/S15/A-venue-verification.json, a1_findings.3_appendix_policy), so
+% appendices count against the same ceiling and this section costs the same wherever it sits.
+% It comes back on merit:
+%   IT IS RELATED WORK, AND RELATED WORK IS BODY MATERIAL.  A referee decides what this paper
+%   claims partly from what it concedes, and this section is where the concessions are made by
+%   name (docs/GATES.md G7.4 and G7.5): the placement to angelopoulos2023pid / dupuy2026relevance
+%   / duerst2024calibrating, and -- the one that matters most -- the DERIVATION to
+%   li2025o2cp Corollary 2 and wang2026acmcp.  The Introduction ends on the bolded "We claim
+%   neither the placement nor the derivation"; the section that cashes that sentence out should
+%   not be behind the bibliography, where a reader who stops at the references never meets it.
+%   ITS EXILE HAD EXACTLY ONE STATED CAUSE, AND THAT CAUSE IS GONE.  S10's own words: "the body
+%   had to reach E-values' 4-page ceiling and a positioning section is the largest block in it
+%   that is not a result."  Not a reader argument -- an arithmetic one, against a ceiling this
+%   paper is no longer submitted under.
+%
+% APPENDIX~B "THE FOUR VOCABULARIES" IS MERGED IN HERE, AS THIS SECTION'S FIRST PARAGRAPH.
+% It was one paragraph of related-work prose under its own section heading, and this section
+% opened by pointing at it. Two sections, one topic, split only by their separate histories
+% (it was a table in the appendix; this was a body section in exile). The paragraph is moved
+% WORD FOR WORD from sections/appendix.tex -- every \citep key with its locator, and the
+% ten-name list docs/GATES.md G7.11 requires -- and \label{app:bridge} is retired with the
+% section it labelled. Both of its live pointers are repointed at \ref{sec:related}:
+% sections/setup.tex's "names ten across four vocabularies", and this section's own opening
+% sentence, which no longer needs a cross-reference at all now that the four vocabularies are
+% the paragraph above it.
+% Record: research/S15/D-restructuring.json.
+% =========================================================================================
+%
+% S15 SUB-SESSION E (2026-08-24): DE-COMPRESSION, ONE SENTENCE, AND IT IS A REVERSAL OF
+% d90a1ef (S8 sub-session D).  That commit trimmed this section's opening to a bare pointer to
+% buy one typeset line on the page the 4-page body was spilling onto; its own corrected note
+% concedes the wording overstated what survived, and defends the cut of "the object that
+% settles its validity ... sits in the first of them" on the ground that it was "still readable
+% off the table's own first row".  THAT DEFENCE NO LONGER HOLDS: S13 sub-session B (b9191ca)
+% deleted Table 4, so there is no first row to read it off, and the claim now lives nowhere.
+% Restored, with two wordings changed and neither of them a strengthening: "the object that
+% settles its validity" -> "the object that settles a deployed interval's validity", because
+% "its" had no unambiguous antecedent; and the em-dash pair S5 sub-session G3 removed stays
+% removed, so the apposition is parenthesised (file em-dash count still 0).
+% NOTE -- WRITTEN AGAINST THE PRE-SPLIT FILE, RECONCILED BY S15 SUB-SESSION H (2026-08-25):
+% this de-compression was made against the sentence as it stood before sub-session D also
+% rewrote it (retiring the Appendix~\ref{app:bridge} pointer and moving "Four vocabularies
+% name one quantity" up to become this section's own opening paragraph, immediately above).
+% Restoring E's sentence verbatim would have reprinted, one line down, exactly the words the
+% new opening paragraph already says.  What is NOT redundant with that paragraph is kept: the
+% claim that the admissible set is specifically the FIRST of the four vocabularies, which
+% appears nowhere else in the merged document.  "and what each contributes" is dropped rather
+% than restored a second time: it is what every sentence of the new opening paragraph already
+% does, one literature at a time, so E's own reasoning for restoring it (a caption saying so
+% went with the deleted table) is superseded by prose that already does the same job.  No
+% concession, citation key or locator in the paragraph below is touched.
+% Record: research/S15/E-decompression.json.
 \section{Where this sits}
 \label{sec:related}
+
+% S13 SUB-SESSION B (2026-08-24): TABLE 4 (\label{tab:bridge}) DELETED AND ITS CONTENT
+% FOLDED INTO THE PARAGRAPH BELOW.  Flagged in the original adversarial review before S8
+% and never fixed. Every \citep key the table cited is preserved here with the same
+% locator: angelopoulos2023pid [Thm~1, Prop.~2], godahewa2025stability [Eq.~3],
+% genov2026switching [\S4.2], vanbelle2026stabilizing, pinson2012scenarios,
+% worsnop2018scenarios, andrew2013twometrics [Thm~2] -- verified against the table's
+% four cells before deletion, none dropped. The caption's ten-name list (docs/GATES.md
+% G7.11's concession) is also kept, as the paragraph's opening sentence, so
+% sections/setup.tex's count-based cross-reference still resolves to real content.
+% Reads as related-work prose, not a result, and argues nothing beyond what each
+% vocabulary contributes -- description only, matching the caption it replaces.
+% S15 SUB-SESSION D: this paragraph was Appendix~B; it is unchanged, and it now opens the
+% section that used to point at it from a different part of the document.
+\paragraph{One quantity, four names.} Four literatures name the movement of a
+sequentially updated forecast in four vocabularies: \emph{abrupt threshold changes};
+\emph{forecast (in)stability} (MASC, MAC/SDC, MQC/SMQC, congruence, nervousness);
+\emph{jumpiness}, \emph{convergence index}, \emph{(in)consistency}; and \emph{switching
+cost}. Online conformal prediction gives distribution-free long-run coverage for any
+bounded scorecaster \citep[Thm~1, Prop.~2]{angelopoulos2023pid}. Forecast stability
+treats the movement as a functional, read out as post-processing
+\citep[Eq.~3]{godahewa2025stability}, against a priced decision to switch
+\citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}. Verification work uses a
+matched-level design against real producers from 2012
+\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning gives
+worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics}.
 
 % S10 WAVE F: THE OPENING SENTENCE IS RE-POINTED AND GIVEN A FRAME.  It was written for a
 % position four pages away from Table~\ref{tab:bridge}, and after S10 sub-session D moved this
@@ -210,8 +297,23 @@
 % now a paragraph in sections/appendix.tex's Appendix B); \label{app:bridge} on the
 % section itself is untouched, so the reference still resolves to the same place. No
 % other word in this sentence changed.
-Four vocabularies name one quantity, and Appendix~\ref{app:bridge} names all four; this appendix
-places this paper's claim and its concessions among them. \textbf{What is conceded, by name.}
+% S15 SUB-SESSION D: THE CROSS-REFERENCE IS RETIRED, NOT REPOINTED, BECAUSE ITS TARGET IS NOW
+% THE PARAGRAPH DIRECTLY ABOVE.  The sentence used to say "Four vocabularies name one quantity,
+% and Appendix~\ref{app:bridge} names all four; this appendix places this paper's claim and its
+% concessions among them" -- written when the four vocabularies were a section elsewhere in the
+% document.  With that paragraph merged in above, a pointer at it would send the reader to the
+% line they just read, and "this appendix" is the wrong noun for a body section.  The clause
+% naming the section's job (S10 wave F's fix, kept) survives verbatim; only the pointer and the
+% noun change.  No claim, concession or citation is touched.
+% S15 SUB-SESSION H (2026-08-25): E's decompression restored "the object that settles a
+% deployed interval's validity (the admissible set around the deployed threshold) sits in the
+% first of them" here -- see this file's note above the paragraph above.  That clause is kept,
+% since it is not said anywhere else in the merged document; "Four vocabularies name one
+% quantity" and "what each contributes" are not, since the paragraph directly above already
+% says both.
+The object that settles a deployed interval's validity (the admissible set around the deployed
+threshold) sits in the first of them. Those four vocabularies are where this paper's claim and
+its concessions have to be placed. \textbf{What is conceded, by name.}
 The placement is prior work:
 \citet[Thm.~1, Prop.~2]{angelopoulos2023pid} state coverage, with a rate, for any admissible
 integrator and any scorecaster, and run a smoothing-family model in that slot themselves; this
@@ -251,149 +353,3 @@ not repeated here.
 % full text by the orchestrator: "miscoverage" 0, "marginal coverage" 0, "scorecaster" 0 -- so it
 % is a neighbour, not an occupant, and the paper says so.
 
-% =========================================================================================
-% S12 SUB-SESSION C1 (draft) / C2 (adversarial attack) / E (integration).
-% Promotes the single disclaimed paragraph that used to sit above ("The accumulator, read as
-% a bet.") into its own appendix section. Source draft: research/S12/C1-evalue-draft.json.
-% Attack: research/S12/C2-attack.json, verdict proceed_with_fix, 7 of 10 attacks landed,
-% arithmetic re-verified independently against results/forfeit-20260820T063045Z-83747c45.json
-% with zero discrepancies. Every fix below is applied verbatim from C2's fix_if_needed field;
-% none of C1's substantive content is otherwise altered. Placement is the appendix, per C2's
-% explicit recommendation: the workshop title is "E-values: From Statistics to ML", and a
-% numbered BODY section on the one construction the paper disclaims would reopen exactly the
-% framing question the current abstract avoids. The two body signpost sentences C2 supplied
-% (its fix for finding "4") are instead placed in sections/forfeit.tex, as the new paragraph
-% "The boundary read as a bet." immediately after Section 3's open-band disclosure.
-%
-% PER SESSION S12'S STANDING INSTRUCTION: this section's own hedges, once drafted (C1) and
-% attacked (C2), are now PROTECTED CONTENT for the remainder of this session, on the same
-% footing as the four-boundary definitions, the two proof directions, the two degenerate
-% cases and the open-band disclosure in sections/forfeit.tex. Do not soften them to make room
-% for anything else this session adds.
-%
-% NO NUMBERED EQUATIONS IN THIS SECTION. Deliberate. The paper writes "condition~(4)" and
-% "iteration~(5)" as literal references to the cited paper's own numbering; this section's
-% \begin{equation} counter must never be allowed to collide with that by reaching 4. It stood
-% at 2 (eq:pid, eq:boundaries) before this session; sub-session B's closed-form insert in
-% sections/forfeit.tex took it to 3 (eq:closed). Every display below is therefore \[ ... \],
-% unnumbered. Do not "fix" this by labelling them.
-% =========================================================================================
-
-\section{The accumulator as a bet, and a calibration test built on the boundary}
-\label{sec:evalue}
-
-\paragraph{What is assumed here, and by whom.} Everything Section~\ref{sec:forfeit} proves is
-deterministic and pathwise. Proposition~2's window $|E_T| \le c\,h(T)+1$, and the boundaries
-(\ref{eq:boundaries}) that locate its edge, hold on every trajectory a legal adapted adversary can
-produce; no distributional model on the data appears in either statement, and neither is a
-statement about a null hypothesis. This section neither uses that nor weakens it. It runs the
-other way: it takes the error sequence a deployment actually produced as \emph{data}, and tests a
-hypothesis about it. The hypothesis is imposed here, for the test alone, with $\mathcal{F}_{t-1}$
-the history through round $t-1$ (scores, deployed thresholds and errors) against which $\hat{q}_t$
-is already required to be predictable:
-\[
-  H_0: \qquad \mathrm{err}_t \mid \mathcal{F}_{t-1} \;\sim\; \mathrm{Bernoulli}(\alpha)
-  \quad\text{for every } t ,
-\]
-and it says that the shipped intervals were conditionally calibrated at the target rate. $H_0$ is
-the object under test. It is not a premise of Proposition~2, of (\ref{eq:boundaries}), or of any
-other claim in this paper; nothing above requires it, implies it, or is disturbed if it fails.
-When it fails, what loses validity is the test below and nothing else. We are explicit about this
-because the rest of the paper assumes no distribution at all, and a reader who meets a Bernoulli
-null on this page must not read it backwards into the pages before it.
-
-\paragraph{The accumulator is a capital process, and it is signed.} A Skeptic who each round pays
-$\alpha$ for the payoff $\mathrm{err}_t$ has cumulative net gain exactly $E_t$, so this paper's
-accumulator is a game-theoretic capital process at unit stake
-\citep{shafer2019gtfpf,ramdas2023savi}. It is not an e-value and not an e-process: it is signed,
-it goes negative on exactly the trajectories the mirror boundary $\tau^{\star-}$ governs, and
-Proposition~2 bounds it pathwise by feedback rather than under a null by Ville's inequality
-\citep{vovk2021evalues}. Nothing below proposes $E_t$, or a transform of it, as a certificate for
-any claim this paper makes. What is formal is the standard transform, and it is invoked rather
-than invented.
-
-\paragraph{The test martingale, and why it is one.} Fix $\lambda$ and set $M_0 = 1$,
-\[
-  M_t \;=\; \prod_{i \le t}\big(1 + \lambda(\mathrm{err}_i - \alpha)\big) .
-\]
-Each factor takes one of two values, $1 + \lambda(1-\alpha)$ on a miss and $1 - \lambda\alpha$ on a
-cover, so $M_t \ge 0$ for every path if and only if $\lambda \in [-1/(1-\alpha), 1/\alpha]$, which
-for $\alpha = 0.1$ is $[-10/9, 10]$. Under $H_0$, $\mathbb{E}[\mathrm{err}_t \mid
-\mathcal{F}_{t-1}] = \alpha$, so each factor is conditionally mean one and $\mathbb{E}[M_t \mid
-\mathcal{F}_{t-1}] = M_{t-1}$: $M_t$ is a nonnegative martingale started at $1$, i.e.\ a test
-martingale for $H_0$. Ville's inequality then gives $\mathbb{P}_{H_0}(\sup_t M_t \ge 1/\eta) \le
-\eta$, so ``reject $H_0$ the first time $M_t \ge 1/\eta$'' is an anytime-valid level-$\eta$ test of
-the deployed intervals' calibration, at any stopping time and with no horizon fixed in advance.
-That is a test of the deployment, not of Section~\ref{sec:forfeit}.
-
-\paragraph{The boundary transfers exactly, because $M_t$ sees only $(t, E_t)$.} Since
-$\mathrm{err}_i \in \{0,1\}$, the product collapses. Writing $N_t$ for the miss count and using
-$N_t = \alpha t + E_t$,
-% S12 SUB-SESSION F1/F: the one-line \[ ... \] display here originally produced an overfull
-% hbox 74.6pt (about an inch) into the right margin -- the only overfull box in the document,
-% found by F1's independent adversarial pass. Split into a gather* (amsmath, already loaded)
-% across three centred lines. No symbol, no claim, and no number changes; typographic only.
-\begin{gather*}
-  \log M_t \;=\; K(\lambda)\,t \;+\; L(\lambda)\,E_t, \\
-  K(\lambda) = \alpha\log\!\big(1+\lambda(1-\alpha)\big) + (1-\alpha)\log(1-\lambda\alpha), \\
-  L(\lambda) = \log\frac{1+\lambda(1-\alpha)}{1-\lambda\alpha} .
-\end{gather*}
-with $K(\lambda) \le 0$, $K(\lambda) = 0$ only at $\lambda = 0$, and $\operatorname{sign}
-L(\lambda) = \operatorname{sign}\lambda$. So $M_t$ depends on the path only through the horizon and
-the accumulator -- the same statistic Section~\ref{sec:forfeit}'s dichotomy is stated in -- and the
-transfer is an identity rather than the first-order expansion $\log M_t = \lambda E_t +
-O(\lambda^2 t)$. It transfers as a dichotomy, not as a measured rate. Inside the retained band
-$|E_t| \le c\,h(t)+1$ is logarithmic, so $\log M_t \le K(\lambda)t + |L(\lambda)|(c\,h(t)+1)$ at
-every round. Since $K(\lambda) < 0$ the right side falls to $-\infty$ linearly, so $M_T \to 0$
-exponentially; and since it is continuous with a single interior maximum it has a finite supremum
-$S(\lambda)$ over all $t$, so $\sup_t M_t \le e^{S(\lambda)}$ \emph{uniformly in the horizon}. The
-test therefore never rejects at any level $\eta < e^{-S(\lambda)}$, however long the deployment
-runs. It is the uniform bound and not the limit that non-rejection needs, because Ville's
-inequality prices the supremum. Past either boundary $|E_T|$ is linear in $T$, so some fixed
-$\lambda$ of the sign of $E_T$ makes $\log M_T$ grow linearly and the test rejects at any fixed
-level within $O(1)$ rounds. Both signs are needed, and that is the point of the two-sided form:
-the $\tau^{\star+}$ failure drives $E_T$ up and calls for $\lambda > 0$, the mirror failure at
-$\tau^{\star-}$ drives it down and calls for $\lambda < 0$.
-
-\paragraph{Worked on this paper's own frozen arms, at the null scorecaster.} Take the harness of
-Section~\ref{sec:setup} ($\alpha = 0.1$, $b = 2$, $c = 1$, $h(t) = \log(t+2)$, $\hat{q} \equiv 0$),
-where $\tau^{\star+} = \tau^{\star-} = 1$, and the two dead bands that bracket that edge in
-Table~\ref{tab:forfeit} (App.~\ref{app:support}). \emph{Past the edge}, $\tau = 1.5$ returns
-miscoverage $1.000000$ and $\max_t|E_t| = 900{,}000$ at $T = 10^6$; the run records
-$n_{\mathrm{err}} = T$ at all four horizons, so the per-round path is exactly $\mathrm{err}_t = 1$
-and $E_t = (1-\alpha)t$, and no reconstruction is involved. A genuine pre-registered deployment
-fixes $\lambda$, sign included, before the data arrive -- by running both signs as one two-sided
-test, or by a mixture over $\lambda$ -- and the single sign used per arm below is chosen after the
-fact, to illustrate the identity on a trajectory already known to fail or to hold; it is not itself
-a claim of a pre-registered test. At $\lambda = 1$ -- a round number well
-inside $[-10/9,10]$, not the aggressive endpoint -- the identity above gives $M_t = 1.9^{\,t}$, so
-at level $\eta = 0.05$, threshold $1/\eta = 20$: $M_4 = 13.03$ and $M_5 = 24.76$. \textbf{The
-anytime-valid test rejects on the fifth deployed interval.} At $\eta = 0.001$ it rejects on the
-eleventh ($M_{10} = 613.11$, $M_{11} = 1164.90$). \emph{Inside the edge}, $\tau = 0.9$ covers at
-$0.100012$ with $\max_t|E_t| = 13.20$ against Proposition~2's $14.8155$ at the same $T = 10^6$, and
-the same $\lambda = 1$ gives $\log M_t \le -0.030639\,t + 9.8632$ from the measured excursion
-alone: below $\log 20$ from round $225$, below $0$ from round $322$, and $M_T \le e^{-30{,}629}$ at
-$T = 10^6$. The measured excursion bounds one run; the theorem bounds every one. This width sits
-inside $\sigma^{\pm}$, so the retention half applies and $|E_t| \le c\,h(t)+1$ holds at every
-round, whence $S(1) = \sup_t\big(K(1)t + L(1)(\log(t+2)+1)\big) = 2.448$, attained at $t = 22$, and
-$M_t \le 11.57$ at every round and every horizon. The test cannot reject at $\eta = 0.05$ -- not
-merely after round $225$, but ever. Five rounds against never, on two arms of one frozen grid.
-\emph{The mirror direction}, on the same $\tau = 1.5$ configuration read under the strict indicator
-against $s_t \equiv -b/2$: miscoverage $0.000000$, $\mathrm{err}_t = 0$ at every round, $E_t =
--\alpha t$, and $\lambda = -1$ gives $M_t = 1.1^{\,t}$, which crosses $20$ at $t = 32$ ($M_{31} =
-19.19$). The asymmetry is not a defect of the test: a forced miss carries $\log 1.9$ nats per round
-against a forced cover's $\log 1.1$, because $\alpha = 0.1$ makes misses the rarer event under
-$H_0$.
-
-\paragraph{What this adds, and what it does not.} It adds a diagnostic and a reading, not a result.
-The reading is that $E_t$ is the Skeptic's capital and that Section~\ref{sec:forfeit} therefore
-locates, in a quantity a bettor already cares about, the exact width at which a dead band turns a
-calibrated deployment into one that an anytime-valid test convicts within a handful of rounds. The
-diagnostic is runnable online by a practitioner who has the errors and not the proof. Neither
-statement is a claim about $E_t$'s status: $E_t$ is not an e-process, $M_t$ is a textbook transform
-imposed on top of the result rather than a part of it, and this paper's contribution is the
-tightness of someone else's admissible radius, proved pathwise. $M_t$ is itself an e-value, and we
-say so: an e-value for $H_0$ alone, a hypothesis about one deployment's error sequence, imposed on
-this page and nowhere else in the paper. No result of this paper is an e-value result or rests on
-one. Betting enters online conformal inference elsewhere as an optimiser rather than as evidence
-\citep{podkopaev2024betting}.

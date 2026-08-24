@@ -28,6 +28,12 @@
 % (app:bridge); the ten-name count that sentence below cites is kept, in that paragraph's
 % own opening clause, so the pointer just below is repointed at the appendix section
 % rather than the deleted table's caption. Nothing about the count or the names changed.
+% S15 SUB-SESSION D (2026-08-24): REPOINTED AGAIN, TO Section~\ref{sec:related}.  That
+% paragraph is no longer an appendix section of its own: it was merged into "Where this
+% sits", which is a numbered BODY section again, and \label{app:bridge} was retired with the
+% heading it labelled.  The ten names and the count are in the same paragraph, unchanged --
+% only the noun and the label in the pointer differ, so docs/GATES.md G7.11's concession
+% (the names conceded, the total not printed) reads exactly as before.
 %
 % ZANOTTI IS PINNED TO v3.  v2 sec. 5 p.26 carries a conformal-stability sentence
 % that v3 p.24 deletes, and the two versions have different titles.
@@ -80,11 +86,51 @@
 % Nothing adverse, nothing conceded and no citation key was removed.
 % ---------------------------------------------------------------------------
 
+% ---------------------------------------------------------------------------
+% S15 SUB-SESSION E (2026-08-24): DE-COMPRESSION.  The venue is TS-LIMITS, 4-7 pages for the
+% WHOLE document, so the "THE BODY IS EXACTLY FULL" constraint that the S4 wave 1 block above
+% paid for with six cuts no longer binds.  Five of those six cuts are reversed here, each
+% listed by its number in that block (commit 2668003, S4 waves 1-2):
+%   CUT 1 REVERSED.  "Placement A is measured here." -> "Placement A is the one measured here,
+%     and it is the one a designer reaches for, because the deployed number is what has to sit
+%     still."  This is S4's own deleted clause, restored to the sentence it was cut from; the
+%     motivation it carries is not stated anywhere else in the paper.
+%   CUT 2 REVERSED.  The coverage-gap restatement (c h(T)+1)/T is printed again, with the
+%     reason it vanishes.  S4 cut it as "a restatement of the bound on the same line as the
+%     bound"; for a first-time reader it is the line that turns a bound on |E_T| into a
+%     statement about coverage, which is what the section is about.
+%   CUT 3 REVERSED.  Condition (4) is back in its two half-line inequalities rather than the
+%     signed one-liner, plus one sentence saying in words what they mean.  NO CHANGE OF
+%     CONTENT: "|r_t(x)| >= b with the sign of x once |x| >= c h(t)" and the restored pair are
+%     the same condition, and the added gloss ("at least a full b in the direction that reduces
+%     it") asserts only what the pair already says.
+%   CUT 4 REVERSED.  The naming enumeration gets "the same movement" back, its three separate
+%     \citep markers back (so each taken name carries its own source), and "all three imported
+%     by \citet{vanbelle2026stabilizing}" back.  That last is not a new claim: all three
+%     entries in audit/REFS_VERIFIED.bib carry "Imported by vanbelle2026stabilizing" in their
+%     audited annote fields.  No key is added or dropped; the multiset is identical.
+%   CUT 5 PARTIALLY REVERSED, and every restored fragment is a HEDGE or a scope statement, not
+%     a claim: "At time t" and "fit on data before t" (orientation), "so the readout is the
+%     only manipulated variable" (what the null scorecaster buys), "and the name is a
+%     convenience rather than a contribution" and "for one reading only" (both hedges on the
+%     coined term, which docs/FRAMING.md sec. 7 rule 5 governs).  NOT restored: "so b/2+b/2 = b
+%     is exactly tight", which is already present, and "distinct", which was noise.
+%   CUT 6 REVERSED.  The two attributions are active and named again ("which
+%     \citet{godahewa2025stability} publish as post-processing and \citet[Eq.~13]
+%     {binny2025whomoved} apply to a deployed conformal threshold") rather than passive.
+% ALSO DE-COMPRESSED, not a reversal of a recorded cut: "Neither choice is neutral" is unpacked
+% into what makes each choice an edge case of what (4) and Theorem 1 allow.  IT ADDS NO
+% CONFIDENCE: the paragraph's closing sentence, which already scopes the measurement to one
+% adversary and points the two boundaries at the class, is untouched, and no claim is made here
+% about whether results at this harness transfer.
+% Record: research/S15/E-decompression.json.
+% ---------------------------------------------------------------------------
+
 \section{Setup}
 \label{sec:setup}
 
-\paragraph{The producer.} A forecaster fit before $t$ induces a score $s_t$, and a threshold
-$q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
+\paragraph{The producer.} At time $t$ a forecaster fit on data before $t$ induces a score $s_t$,
+and a threshold $q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
 \le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
 coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
 Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
@@ -95,9 +141,13 @@ apply directly to the threshold:
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
 \end{equation}
-Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
-$x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. With $E_t = \sum_{i
-\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
+Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: condition~(4) requires $r_t(x) \ge b$
+for $x \ge c\,h(t)$ and $r_t(x) \le -b$ for $x \le -c\,h(t)$, with $h$ nonnegative, nondecreasing
+and sublinear. In words: once the accumulated error clears $c\,h(t)$ in either direction, the
+correction is at least a full $b$ in the direction that reduces it. With $E_t = \sum_{i
+\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised
+scores; that is a coverage gap of at most $(c\,h(T)+1)/T$, which vanishes because $h$ is
+sublinear.
 
 % ---------------------------------------------------------------------------
 % S5 WAVE 2: sub-session C's placement schematic, inserted here.
@@ -194,12 +244,13 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
 \paragraph{One scalar, two readouts, two places.} Damping a sequentially updated scalar
 has two standard readouts, both prior work. A quadratic cost gives linear partial adjustment
 $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
-\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, published as post-processing
-\citep{godahewa2025stability} and applied to a deployed threshold
-\citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, moving only when the
+\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, which \citet{godahewa2025stability} publish as
+post-processing and \citet[Eq.~13]{binny2025whomoved} apply to a deployed conformal threshold. A
+proportional cost gives a no-trade band, moving only when the
 target is more than $\tau$ away, then pulling back exactly $\tau$
 \citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
-in Figure~\ref{fig:placements}; \textbf{(A)}, Placement~A, is measured here.
+in Figure~\ref{fig:placements}. \textbf{(A)}, Placement~A, is the one measured here, and it is
+the one a designer reaches for, because the deployed number is what has to sit still.
 \emph{The dead band ($L_1$) is not a stylistic alternative to the partial-adjustment ($L_2$) form}; it
 is the family whose failure Section~\ref{sec:forfeit} characterises. Neither is safe by construction:
 $L_2$ forfeits Proposition~2's
@@ -208,12 +259,16 @@ rate while covering, $L_1$ past the radius loses coverage, and at the legal $\ha
 
 \paragraph{The quantity, and the names it already has.} We report the deployed threshold's
 \emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
-control. The arithmetic is not new. Over a predictive distribution $\sum|\Delta q|$ is the
-Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls it
-\emph{jumpiness}, a \emph{convergence index}, \emph{(in)consistency}
-\citep{zsoter2009jumpiness,ehret2010convergence,pappenberger2011consistency}; applied control,
-IACER \citep{sarhadi2025criteria}; dynamic-regret online learning, a path length.
-Appendix~\ref{app:bridge} names ten across four vocabularies, so a fresh one is used here.
+control. The arithmetic is not new, and the name is a convenience rather than a contribution.
+Over a predictive distribution $\sum|\Delta q|$ is the
+Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls the same movement
+\emph{jumpiness} \citep{zsoter2009jumpiness}, a \emph{convergence index}
+\citep{ehret2010convergence} and forecast \emph{(in)consistency}
+\citep{pappenberger2011consistency}, all three imported by \citet{vanbelle2026stabilizing};
+applied control calls it IACER \citep{sarhadi2025criteria}; and dynamic-regret online learning
+calls it a path length.
+Section~\ref{sec:related} names ten across four vocabularies, so a fresh one is used here, for one
+reading only.
 % Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
 % pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
 % criterion CR8) are all in audit/REFS_VERIFIED.bib and cited as \citep above.
@@ -221,14 +276,16 @@ Appendix~\ref{app:bridge} names ten across four vocabularies, so a fresh one is 
 \paragraph{Harness.} The harness fixes $\alpha = 0.1$ and $b = 2$. Its saturator $r_t(x) =
 b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, with $c = 1$ and $h(t) = \log(t+2)$, meets~(4) with equality.
 The scorecaster is null and legal, reducing (\ref{eq:pid}) to the pure error integration
-Proposition~2 addresses. Neither choice is neutral: (4) is a lower bound met exactly here, and
-Theorem~1 permits scorecasters $b/2$ either side of null, predictable but not constant in $t$.
-The adversary is specified, not
+Proposition~2 addresses, so the readout is the only manipulated variable. Neither choice is
+neutral, and each sits at an edge of what condition~(4) and Theorem~1 allow rather than in the
+middle of it: (4) is a lower bound, and this saturator meets it exactly rather than exceeding it,
+while Theorem~1 permits scorecasters anywhere within $b/2$ either side of null, predictable but
+not required to be constant in $t$. The adversary is specified, not
 tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
 10^{-9}$, against the \emph{deployed} $\tilde{q}_t$: the $\varepsilon\downarrow 0$ reading of
 ``sets the score at the threshold'', firing the strict indicator. Legality is Theorem~1's
 $[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight. \emph{That specification names one
 member of a class}: any adapted $s_t \in [-b/2,b/2]$ is legal, the constant $s_t \equiv -b/2$
-included. Every number in Table~\ref{tab:forfeit} (App.~\ref{app:support}) is measured against the
+included. Every number in Table~\ref{tab:forfeit} is measured against the
 one adversary above;
 Section~\ref{sec:forfeit}'s two boundaries are quantified over the class, and they differ.

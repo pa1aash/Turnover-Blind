@@ -193,7 +193,40 @@
 % The line this session actually recovered on the spill page came from
 % sections/related.tex alone; see that file's S8 sub-session D note for the honest
 % accounting of what these two authorised compressions did and did not close.
+%
 % ===========================================================================
+% S15 SUB-SESSION E (2026-08-24): DE-COMPRESSION.  The venue is TS-LIMITS, 4-7 pages for the
+% WHOLE document, so the 4-page body ceiling that drove S5's, S8's and S10's cuts here no
+% longer binds.  Three reversals, each naming the commit whose compression it undoes:
+%   1. THE FOUR-SURFACE SENTENCE IS THREE SENTENCES AGAIN (reverses d90a1ef, S8 sub-session D,
+%      whose own note says the compression was taken to close a two-line page-4/5 spill and
+%      that it "does not reach the spill page" anyway).  Query / surfaces / result, exactly as
+%      before that commit.  THE DATE DOES NOT COME BACK: S8 dropped "on 20 August 2026"
+%      deliberately, as a stale calendar date asserting currency, and that reason is unaffected
+%      by the page budget.  No surface, identifier or count changed; the \mbox stays.
+%   2. PROPOSITION 2's FINITE-HORIZON BOUND IS NAMED AGAIN in the Corollary 2 restatement
+%      (reverses af018bb, S5 wave 3 / sub-session G1 cut (a), which reduced "conclude
+%      |E_T| <= c h(T)+1 = o(T)" to "|E_T| = o(T)" for line budget).  Restored IN WORDS, not in
+%      symbols: c and h are defined in sections/setup.tex, not here, so printing the formula in
+%      the Introduction would import two undefined symbols to recover one fact.  The retention
+%      wording matches sections/forfeit.tex's own ("retains |E_T| <= c h(T)+1").
+%   3. THE SECOND CONTRIBUTION HEAD GAINS THE EXPLANATION ITS ONE-LINER DODGED.  "It is a
+%      retention result, silent outside that radius" now says what silence means in both
+%      directions, and "whether the radius is sharp" now says what sharpness would require.
+%      NO CONFIDENCE IS ADDED: "whose edge is the corollary's radius" -> "whose edge coincides
+%      with the corollary's radius", which is what (\ref{eq:closed}) states and no more, and the
+%      scoping "there" on the necessity claim is untouched.
+%   4. The background paragraph's four telegraphic assertions gain connective tissue only.  All
+%      nine citation keys, their order, and "None of it is claimed here" are unchanged, and
+%      "that movement" still guards the S5 wave 5 / S6 antecedent fix.
+% Record: research/S15/E-decompression.json.
+% ===========================================================================
+% S15 SUB-SESSION D (2026-08-24): THE ROADMAP'S FIRST POINTER READS "Section~\ref{sec:related}"
+% AGAIN.  S10 sub-session D changed it to "Appendix" when it exiled that section to pay for
+% E-values' 4-page body ceiling, and recorded the revert as one line.  This is that line.  The
+% second pointer still reads "Appendix~\ref{sec:evalue}", which is still correct: that section
+% stays an appendix, on reader grounds rather than page-budget ones (see sections/evalue.tex).
+% Nothing else in this paragraph, and nothing else in this file, is touched.
 \section{Introduction}
 \label{sec:intro}
 
@@ -202,13 +235,15 @@ one, by the same first and last authors, proves in the same notation that a boun
 perturbation of the deployed threshold does not. The later cites the earlier, so this is ordinary
 self-correction, and the joining is what this paper adds.
 
-An online conformal method \citep{angelopoulos2021gentle} moves a threshold each round. Forecast
-stability names, scores and prices that movement
+An online conformal method \citep{angelopoulos2021gentle} moves a threshold each round, and that
+movement is not an unnamed quantity. Forecast stability names, scores and prices it
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
-pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying temporal structure at
-fixed level came earlier, in forecast verification, matching predictive marginals on real producers
-\citep{gneiting2007calibration,pinson2012scenarios,worsnop2018scenarios}. Coverage and mean length
-under-describe a deployed interval \citep{min2026questioning,vaze2026simultaneous}. None of it is
+pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Holding the level fixed and
+comparing the temporal structure came earlier still, in forecast verification, which matches
+predictive marginals on real producers
+\citep{gneiting2007calibration,pinson2012scenarios,worsnop2018scenarios}. A third strand reports
+that the two numbers usually printed of a deployed interval, coverage and mean length,
+under-describe it \citep{min2026questioning,vaze2026simultaneous}. None of it is
 claimed here.
 
 \paragraph{The record carries a claim and its refutation; this paper joins them.} Conformal PID \citep{angelopoulos2023pid}
@@ -220,19 +255,24 @@ acted on in its baselines paragraph, verbatim on refereed printed page $18443$. 
 twice, with proof. \citet[Corollary~2]{li2025o2cp} add any predictable $d_t$, $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ with $\mu_t \in [0,1]$ predictable, to the deployed threshold; since
 $\hat{q}_t + d_t$ still lies in $[-b/2,b/2]$ it is itself a legal scorecaster, so the result
-``has exactly the CPID error-integration form'' and $|E_T| = o(T)$. The same generic-slot argument
-carries AcMCP's long-run coverage \citep{wang2026acmcp}. Both identifiers and ``scorecaster'' were
-searched across arXiv full text, arXiv abstracts, OpenReview, and Semantic Scholar's six citers of
-\mbox{\citet{li2024neuralconformal}}: none returns both the claim and the corollary.
+``has exactly the CPID error-integration form'' and Proposition~2's own finite-horizon bound on
+$|E_T|$ is retained, whence $|E_T| = o(T)$. The same generic-slot argument
+carries AcMCP's long-run coverage \citep{wang2026acmcp}. Four surfaces were searched for both
+identifiers and ``scorecaster''. They are arXiv full text, arXiv abstracts, OpenReview, and the
+six works Semantic Scholar records citing \mbox{\citet{li2024neuralconformal}}. None returns both
+the claim and the corollary.
 \citet{hu2026distinformed} still call scorecaster choice ``arbitrary'' and lacking ``principled
 guidance'' while asserting valid coverage: model selection, not validity. \textbf{We claim
 neither the placement nor the derivation.}
 
-\paragraph{Where Corollary~2 stops, its radius condition is tight.} It is a \emph{retention} result, silent
-outside that radius, and the question it leaves is whether the radius is sharp.
+\paragraph{Where Corollary~2 stops, its radius condition is tight.} It is a \emph{retention}
+result, silent outside that radius: perturbations inside the radius keep the guarantee, and
+perturbations outside it are not addressed either way. A sufficient condition can be conservative,
+so the question the corollary leaves open is whether its radius is sharp, that is, whether
+something legal just outside it actually fails.
 Section~\ref{sec:forfeit} exhibits a legal perturbation leaving it: the $L_1$ dead-band family
-characterised here on the \emph{completed} threshold, whose edge is the corollary's radius at
-the null scorecaster. Past it coverage fails outright, not merely its rate: the published
-sufficient condition is necessary there. Appendix~\ref{sec:related} sets both claims beside four
+characterised here on the \emph{completed} threshold, whose edge coincides with the corollary's
+radius at the null scorecaster. Past it coverage fails outright, not merely its rate: the published
+sufficient condition is necessary there. Section~\ref{sec:related} sets both claims beside four
 vocabularies for the same movement; Appendix~\ref{sec:evalue} reads $E_t$ as a capital process
 and builds a calibration test on it.

@@ -17,9 +17,38 @@
 % number below was printed in the paper before this wave, and each is still traceable
 % to results/ by the same field paths audit sub-session A recorded.
 %
-% TS-LIMITS allows 4-7 body pages, so under that option this material could return to
-% the body.  It is kept here because the tighter of the two live options governs while
-% the venue is [OPERATOR INPUT].
+% =========================================================================================
+% S15 SUB-SESSION D (2026-08-24): THE PARAGRAPH ABOVE DESCRIBES A DESTINATION THAT IS NO
+% LONGER FREE, AND EVERY PLACEMENT DECISION IN THIS FILE WAS RE-TAKEN ON THAT BASIS.
+%
+% TS-LIMITS' call reads "4 to 7 pages plus references" and states NO appendix exclusion
+% anywhere -- verified fresh 2026-08-24 by a targeted full-text search of the call
+% (research/S15/A-venue-verification.json, field a1_findings.3_appendix_policy: "NOT
+% MENTIONED, at all, anywhere in the call ... Assume NO appendix allowance").  So the
+% 4-7 page range covers the WHOLE document, body and appendices together.  There is no
+% page-exempt destination any more, and "move it to the appendix" is no longer a way to buy
+% body pages -- it is only a way to tell a reader that something is secondary.
+%
+% The header text above is KEPT rather than deleted because it is the accurate record of why
+% this file exists, and a later session that flips the venue back to E-values needs it.  What
+% is deleted is the sentence that used to follow it -- "TS-LIMITS allows 4-7 BODY pages, so
+% under that option this material could return to the body.  It is kept here because the
+% tighter of the two live options governs" -- because its premise ("body pages") is now known
+% to be wrong and a later session could act on it.
+%
+% WHAT STAYED AND WHY, decided element by element rather than reflexively:
+%   Table 1 (eleven arms)          -> BODY.  Split table de-duplicated; see below.
+%   Figure 2 (the cliff)           -> BODY.  It is the headline claim's picture.
+%   Figure 3 (19 runs, 5 settings) -> BODY.  It is the class claim's picture.
+%   Table~\ref{tab:stress}         -> STAYS.  Body prose already states all three
+%                                     configurations it exhibits, with their numbers.
+%   The five prose paragraphs here -> STAY.  Convention analysis, provenance, and measurement
+%                                     commentary whose load-bearing conclusions the body
+%                                     states independently.
+%   "The four vocabularies"        -> MERGED into Section~\ref{sec:related}; see below.
+% Record, with the reasoning and the full before/after cross-reference map:
+% research/S15/D-restructuring.json.
+% =========================================================================================
 % ---------------------------------------------------------------------------
 
 % S8 SUB-SESSION C (2026-08-22): "THE PRIMARY REGIME" PARAGRAPH NOW SAYS, IN ITS OWN
@@ -39,64 +68,15 @@
 \section{Supporting measurements}
 \label{app:support}
 
-% S10 SUB-SESSION D: TABLE 1 MOVED HERE FROM sections/forfeit.tex, CAPTION AND ALL ELEVEN
-% ARM ROWS CELL FOR CELL UNCHANGED, except that the caption's pointer at "the primary
-% regime, defined in Appendix A" now reads "defined in this appendix", because the
-% table and that paragraph are no longer in different sections.  Placed at the head of
-% Appendix A so document order preserves the numbering (1 arms, 2 boundary stress, 3
-% vocabularies).  Reason: the E-values 4-page ceiling, which excludes appendices.
-% S11 SUB-SESSION C: this comment's own wording of the edit ("now reads 'defined in the
-% paragraph below'") did not match the caption text below ("defined in this appendix");
-% corrected here to quote it exactly. Not a content change -- the caption itself was
-% already correct.
-\begin{table}[!ht]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{4.5pt}
-% S5 wave 4: arraystretch 0.95.  Eleven data rows at 0.95 give back one typeset line,
-% which was two of the last two lines standing between the body and the 4-page ceiling.
-% This is row LEADING only -- no font change, no row removed, no cell altered.
-\renewcommand{\arraystretch}{0.95}
-% S6 SUB-SESSION B: CAPTION REWRITTEN TO DESCRIBE ONLY.  Two clauses left, and neither
-% was deleted:
-%   "so no covering arm is withheld" was a REBUTTAL, not a description.  The fact it
-%     defended -- that every arm run appears -- is still the caption's first sentence.
-%   "five exceed the bound at T = 10^6" was a CONCLUSION about the data, and it existed
-%     NOWHERE ELSE in the paper (grepped: one hit, this caption).  It moved into the
-%     retention paragraph below, where Table 1 is first discussed.  Independently
-%     recounted from the table's own ratio column: 4.25, 42.10, 3.58, 3.34 and 60,747
-%     exceed 1, so five is right.
-\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold, under one
-deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed. A
-four-arm subset of this table -- the control, the strongest partial-adjustment arm, and the
-two dead-band widths bracketing $\tau^{\star+}$ -- appears in the body as
-Table~\ref{tab:forfeit-body}; this table adds the remaining seven arms, the
-$T = 2{\times}10^5$ horizon, saturation fraction, and threshold travel the body table omits.
-Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
-``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
-delivers its full $\pm b$. Every number is the \emph{primary} regime's, defined in this
-appendix, which also gives the $T = 10^4$ excursions and the fitted
-excursion law.}
-\label{tab:forfeit}
-\begin{tabular}{@{}lrrrrrr@{}}
-\toprule
-Readout on the completed threshold & miscov.\ $2{\times}10^5$ & miscov.\ $10^6$ &
-$\max_t|E_t|$ $10^6$ & ratio & Sat.\ $10^6$ & travel $10^6$ \\
-\midrule
-none (control)                & $0.100035$ & $0.100007$ & $7.80$        & $0.53$     & $0.0000$ & $28{,}311$ \\
-partial adj.\ $w = 0.5$       & $0.100030$ & $0.100007$ & $7.70$        & $0.52$     & $0.0000$ & $18{,}113$ \\
-partial adj.\ $w = 0.9$       & $0.100030$ & $0.100007$ & $7.50$        & $0.51$     & $0.0000$ & $4{,}081$ \\
-partial adj.\ $w = 0.99$      & $0.100040$ & $0.100006$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}023$ \\
-partial adj.\ $w = 0.999$     & $0.100035$ & $\mathbf{0.100004}$ & $623.70$      & $42.10$    & $0.0097$ & $202$ \\
-growing time constant $p=0.5$ & $0.100030$ & $0.100006$ & $12.60$       & $0.85$     & $0.0000$ & $330$ \\
-growing time constant $p=0.9$ & $0.100030$ & $0.100024$ & $53.00$       & $3.58$     & $0.3181$ & $16$ \\
-running mean                  & $0.099940$ & $0.100010$ & $49.50$       & $3.34$     & $0.3647$ & $9$ \\
-dead band $\tau = 0.5$        & $0.100035$ & $0.100005$ & $10.60$       & $0.72$     & $0.0000$ & $2{,}045$ \\
-dead band $\tau = 0.9$        & $0.100060$ & $0.100012$ & $13.20$       & $0.89$     & $0.0038$ & $1{,}051$ \\
-dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ & $1.0000$ & $0.5$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+% S10 SUB-SESSION D moved Table~\ref{tab:forfeit} here from sections/forfeit.tex, for one
+% reason: "the E-values 4-page ceiling, which excludes appendices."
+% S15 SUB-SESSION D (2026-08-24) MOVED IT BACK.  TS-LIMITS counts the whole document, so the
+% split between a four-row body table and this eleven-row one bought nothing and cost the
+% reader the same four rows twice plus a caption reconciling them.  The eleven-row table,
+% caption and cells unchanged, now sits in Section~\ref{sec:forfeit} beside the paragraph
+% that prices the departure its rows measure, and the four-row duplicate is deleted.  The
+% paragraph below, which defines the regime every one of those cells is measured in, stays
+% here: it is convention analysis, not a result, and the caption points at it by name.
 
 \paragraph{The primary regime.} Every number in Table~\ref{tab:forfeit} is measured under one
 deterministic adversary, which consumes no randomness and needs no seed. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
@@ -153,29 +133,11 @@ not whether one occurs.
 % up to the failing dead band where |E_t| = (1-alpha)t is linear in T and the fit is off by
 % 100%.  The formula's own w exists only for the partial-adjustment family, which is the
 % structural tell.  Residual table: research/S6/E-spotcheck.json.
-% S10 SUB-SESSION D: FIGURE 2 MOVED HERE FROM sections/forfeit.tex, GRAPHIC AND CAPTION
-% UNCHANGED.  It is placed BEFORE Figure~\ref{fig:settings} so that the document order, and
-% therefore the numbering, is exactly what it was: Figure 1 the placements schematic in the
-% body, Figure 2 the cliff, Figure 3 the five settings.  The reason for the move is the
-% 4-page ceiling alone.  Its rebuild history is in sections/forfeit.tex's header, where the
-% figure used to sit.
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
-  \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
-  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
-  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full sweep: filled markers run to
-  $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
-  covers, orange forfeits, and the dashed rule is $\tau^{\star+}$. \textbf{(b)} The same
-  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star+}$ on
-  a symlog axis whose linear zone is $|\tau - \tau^{\star+}| \le 10^{-3}$, which magnifies the
-  neighbourhood of $\tau^{\star+}$: visual spacing here is not proportional to true distance in
-  $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
-  narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
-  settings. The same eleven widths under the \emph{mirror} adversary, which locates
-  $\tau^{\star-}$, are read off in this appendix's primary-regime paragraph.}
-  \label{fig:boundary}
-\end{figure}
+% S10 SUB-SESSION D moved Figure~\ref{fig:boundary} here, "the reason for the move is the
+% 4-page ceiling alone".  S15 SUB-SESSION D (2026-08-24) MOVED IT BACK to
+% sections/forfeit.tex, together with Figure~\ref{fig:settings}, since TS-LIMITS counts
+% appendix pages and that reason is void.  Document order and therefore numbering are
+% unchanged.  See that file's S15 comment block for the reader-side argument.
 
 \paragraph{Excursions at $T = 10^4$, and where the excursion law holds.} Partial adjustment
 excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat
@@ -186,46 +148,26 @@ $w = 0.9$, the one arm whose two branches cross inside the horizon range. This i
 those five arms, not a derived bound. It does not extend to the other six: the growing time
 constants, the running mean and the dead bands all excurse further than it predicts.
 
-% ---------------------------------------------------------------------------
-% S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
-% Figure 2 panel (a) held as a five-series overlay in one continuous panel.
-% THE AXIS PRINCIPLE, which is why this is a separate figure and not another panel:
-% the (r_t, qhat) SETTING is a categorical variable and gets a categorical axis (five
-% rows); tau is CONTINUOUS and keeps a log axis.  The overlay had to place five series
-% and five tau* markers on one continuous pair of axes, which is what produced four
-% nested markers at (tau = 0.5, miscoverage ~ 0.1) and a legend that overwrote two of
-% the tau* rules.  Rows do not collide.
-% IT LIVES IN THE APPENDIX because E-values excludes appendices from the 4-page ceiling
-% and the body is exactly full; nothing about the figure requires the body.  All 19 runs
-% appear, and the two tau* values that fall off the axis (0 and unbounded) are drawn as
-% arrows rather than dropped.
-% Built by the same generator as Figure~\ref{fig:boundary}: src/make_figure1.py.
-% ---------------------------------------------------------------------------
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width=\textwidth]{../figures/figure3_settings.pdf}
-  % S6 SUB-SESSION B: written to the SAME rule as the other two captions -- describe the
-  % axes, the encoding and the measurement conditions, and argue nothing.  Four sentences.
-  \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
-  rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
-  Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
-  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$, all under the
-  \emph{specified} adversary. The rule on each
-  row is that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
-  at the right, and the tinted band is $\tau \le \tau^{\star+}$. Two rules fall off the
-  axis and are drawn as arrows: $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$, and
-  $\tau^{\star+}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator. The
-  mirror boundary $\tau^{\star-}$ of (\ref{eq:boundaries}) is not drawn here and differs from
-  $\tau^{\star+}$ at the two non-null scorecasters.}
-  \label{fig:settings}
-\end{figure}
+% S6 SUB-SESSION A created Figure~\ref{fig:settings} here.  Its "IT LIVES IN THE APPENDIX
+% because E-values excludes appendices from the 4-page ceiling" note is void under TS-LIMITS,
+% and S15 SUB-SESSION D moved the figure into sections/forfeit.tex, where its rebuild and
+% axis-design history now sits with it.  The paragraph below still reads off it and refers to
+% it by \ref, so nothing here depends on which section typesets it.
 
+% S15 SUB-SESSION E (2026-08-24): DE-COMPRESSION, ONE SENTENCE.  "That is the first term of
+% tau* moving the edge, not the readout changing behaviour" was flagged by S13 sub-session A
+% (97bbb6e) as an antecedent gap -- "that" has no referent in its own sentence and "the first
+% term" is never identified -- and DEFERRED there, because appendix.tex was sub-session B's
+% active file that wave and touching it would have collided.  Closed here: the sentence now
+% names sup_x r_t(x), points at (\ref{eq:boundaries}) where it is the first term, and says
+% which of the two things moved.  No number, no measurement and no claim changes.
 \paragraph{Realised miscoverage at the covering settings of Figure~\ref{fig:settings}.} At
 $\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
 inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
 returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the
-$w = 0.999$ excursion from $623.70$ to $120.60$. That is the first term of $\tau^{\star}$
-moving the edge, not the readout changing behaviour.
+$w = 0.999$ excursion from $623.70$ to $120.60$. That level is $\sup_x r_t(x)$, which is the
+first term of $\tau^{\star\pm}$ in (\ref{eq:boundaries}), so what the change moves is the edge
+itself; the readout is unaltered and behaves no differently.
 
 % S10 SUB-SESSION D: THIS PARAGRAPH MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD,
 % except for ONE cross-reference that pointed AT this appendix from the body and would now be
@@ -266,12 +208,19 @@ the loop \emph{is} the integrator's output.
 
 % S10 SUB-SESSION D: TABLE 2 MOVED HERE FROM sections/forfeit.tex, WHOLE AND CELL FOR CELL
 % UNCHANGED (caption, column heads, all thirteen rows, the \label, the S9 provenance comment
-% below).  The reason is the 4-page ceiling and nothing else: it is a measurement table, this
-% appendix is titled "Supporting measurements", and E-values excludes appendices from the
-% count.  Section~\ref{sec:forfeit} still \ref's it and still states in prose the three
-% configurations it exhibits.  Placed after the Figure~\ref{fig:settings} paragraph so that
-% Appendix~A reads measurement-then-boundary-stress; [!ht] rather than [tb] because the
-% appendix has no page-top competition and floating it to a later page would strand it.
+% below).  Its stated reason was "the 4-page ceiling and nothing else".
+% S15 SUB-SESSION D RE-DECIDED THIS ONE FROM SCRATCH AND KEPT IT HERE.  The old reason is void
+% under TS-LIMITS, so keeping it could not be inherited; it had to be re-earned, and it is.
+% Section~\ref{sec:forfeit} states, in prose and with the numbers, all three configurations
+% this table exhibits: the unreachable supremum ("reads tau*+ = 19, and fails at tau = 1.001"),
+% the varying-qhat split ("reads tau*+ = 2 against sigma+ = 1"), and -- via
+% sections/limitations.tex's open-band disclosure -- the power-of-two rows.  A reader following
+% the argument therefore needs none of the thirteen rows; a referee auditing it wants all
+% thirteen, with the "proved window" column and its three empty-set entries.  That asymmetry is
+% what an appendix is for, and it is the same verdict the S15 brief's operator guessed for this
+% table -- confirmed on the argument, not assumed.  Placed after the Figure~\ref{fig:settings}
+% paragraph so that Appendix~A reads measurement-then-boundary-stress; [!ht] rather than [tb]
+% because the appendix has no page-top competition and floating it later would strand it.
 \begin{table}[!ht]
 \centering
 \scriptsize
@@ -325,46 +274,27 @@ $\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.
 the rate is $0.110960$ against $\alpha = 0.1$ while $\max_t|E_t|$ is $84{,}745.70$ at $T = 10^6$,
 so a reader watching only the rate would call that coverage.
 
-% S6 SUB-SESSION E: \clearpage ADDED, AND IT IS A STRUCTURAL FIX, NOT A NUDGE.
-% S5's J1 finding 8 was this heading stranded away from its only content.  Wave 4 fixed it
-% by changing the table from [t] to [!h], which worked only while the appendix happened to
-% fit on one page.  E2's three extra lines pushed it over and the heading stranded again:
-% "B  The four vocabularies" alone at the foot of p.7, Table 2 alone on p.8.
-% This section contains exactly ONE float and no prose, so starting it on a fresh page makes the
-% heading and its table inseparable by construction rather than by luck.  Appendix pages are
-% outside E-values' 4-page ceiling, so it is free.
-% S10 WAVE F: THE COMMENT ABOVE USED TO SAY "This section is the LAST in the document", WHICH IS
-% NO LONGER TRUE -- S10 sub-session D moved "Where this sits" here as Appendix~C, which now
-% follows.  The \clearpage still does exactly what it was added for (it keeps this heading with
-% its only float), so nothing renders differently; only the stale half of the recorded reasoning
-% is removed, so that a later session does not act on it.  Found by S10's F1 adversarial critic.
-\clearpage
-\section{The four vocabularies}
-\label{app:bridge}
-
-% S13 SUB-SESSION B (2026-08-24): TABLE 4 (\label{tab:bridge}) DELETED AND ITS CONTENT
-% FOLDED INTO THE PARAGRAPH BELOW.  Flagged in the original adversarial review before S8
-% and never fixed. Every \citep key the table cited is preserved here with the same
-% locator: angelopoulos2023pid [Thm~1, Prop.~2], godahewa2025stability [Eq.~3],
-% genov2026switching [\S4.2], vanbelle2026stabilizing, pinson2012scenarios,
-% worsnop2018scenarios, andrew2013twometrics [Thm~2] -- verified against the table's
-% four cells before deletion, none dropped. The caption's ten-name list (docs/GATES.md
-% G7.11's concession) is also kept, as the paragraph's opening sentence, so
-% sections/setup.tex's count-based cross-reference still resolves to real content; that
-% file's pointer is repointed at this section rather than at the deleted table's caption
-% (see its own header note). Reads as related-work prose, not a result, and argues
-% nothing beyond what each vocabulary contributes -- description only, matching the
-% caption it replaces.
-\paragraph{One quantity, four names.} Four literatures name the movement of a
-sequentially updated forecast in four vocabularies: \emph{abrupt threshold changes};
-\emph{forecast (in)stability} (MASC, MAC/SDC, MQC/SMQC, congruence, nervousness);
-\emph{jumpiness}, \emph{convergence index}, \emph{(in)consistency}; and \emph{switching
-cost}. Online conformal prediction gives distribution-free long-run coverage for any
-bounded scorecaster \citep[Thm~1, Prop.~2]{angelopoulos2023pid}. Forecast stability
-treats the movement as a functional, read out as post-processing
-\citep[Eq.~3]{godahewa2025stability}, against a priced decision to switch
-\citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}. Verification work uses a
-matched-level design against real producers from 2012
-\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning gives
-worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics}.
-
+% =========================================================================================
+% S15 SUB-SESSION D (2026-08-24): APPENDIX B "THE FOUR VOCABULARIES" NO LONGER EXISTS AS A
+% SECTION, AND ITS \clearpage IS GONE.  Both changes are removals of dead structure.
+%
+% (1) THE SECTION.  After S13 sub-session B deleted Table 4 and folded its content into a
+%     paragraph, "The four vocabularies" was a section heading over ONE paragraph of
+%     related-work prose.  "Where this sits" opened by pointing at it ("Four vocabularies
+%     name one quantity, and Appendix~B names all four; this appendix places this paper's
+%     claim and its concessions among them") -- i.e. two sections, one topic, split only
+%     because one of them used to be a table in the appendix and the other used to be a body
+%     section exiled by the 4-page ceiling.  The paragraph now opens
+%     Section~\ref{sec:related} in sections/related.tex, WORD FOR WORD, with every \citep key
+%     and its locator intact and the ten-name list (docs/GATES.md G7.11's concession) intact.
+%     \label{app:bridge} is retired with the section; its two live pointers, in
+%     sections/setup.tex and in that section's own opening sentence, are repointed at
+%     \ref{sec:related} -- see those files.
+%
+% (2) THE \clearpage.  S6 sub-session E added it so that this heading could not strand away
+%     from "its only float", and priced it at zero because "appendix pages are outside
+%     E-values' 4-page ceiling".  BOTH HALVES OF THAT ARE NOW FALSE: the float it protected
+%     was deleted in S13, so it protected nothing, and TS-LIMITS counts appendix pages, so a
+%     forced page break is not free.  MEASURED, not assumed: it was leaving Table~\ref{tab:stress}
+%     alone on a page 69% white.  Removing it lets the remaining appendix material pack.
+% =========================================================================================
