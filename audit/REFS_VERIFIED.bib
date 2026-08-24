@@ -39,12 +39,17 @@
   author  = {Gibbs, Isaac and Cand{\`e}s, Emmanuel},
   title   = {Conformal Inference for Online Prediction with Arbitrary Distribution Shifts},
   journal = {Journal of Machine Learning Research},
+  volume  = {25},
+  number  = {162},
+  pages   = {1--36},
   year    = {2024},
   eprint  = {2208.08401},
   archivePrefix = {arXiv},
   annote    = {The method known as DtACI. Preprint 2022-08-17; journal publication 2024.
              The planning document cites this as ``DtACI 2022'', which is the preprint
-             year, not the publication year.}
+             year, not the publication year. S13 SUB-SESSION C: volume/number/pages added,
+             fetched from http://jmlr.org/papers/v25/22-1218.html ("25(162):1-36, 2024"),
+             record at research/S13/records/gibbs2024dtaci_jmlr.md.}
 }
 
 @inproceedings{angelopoulos2023pid,
@@ -75,32 +80,42 @@
                2023-07-31 and DBLP records the venue as NeurIPS 2023.}
 }
 
-@misc{angelopoulos2021gentle,
+@article{angelopoulos2021gentle,
   author        = {Angelopoulos, Anastasios N. and Bates, Stephen},
-  title         = {A Gentle Introduction to Conformal Prediction and Distribution-Free
-                 Uncertainty Quantification},
-  howpublished  = {arXiv:2107.07511v6},
-  year          = {2021},
+  title         = {Conformal Prediction: A Gentle Introduction},
+  journal       = {Foundations and Trends in Machine Learning},
+  volume        = {16},
+  number        = {4},
+  pages         = {494--591},
+  year          = {2023},
+  doi           = {10.1561/2200000101},
   eprint        = {2107.07511},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
-  doi           = {10.48550/arXiv.2107.07511},
   annote        = {S8 SUB-SESSION B. Orientation reference for readers new to conformal
                  prediction; the only survey-class entry in this bibliography, cited once,
                  in the Introduction. VERIFIED FROM THE PRIMARY SOURCE, HEADLESS, 2026-08-22:
                  arXiv API record at research/S8/records/arxiv\_2107.07511\_s8.xml gives
                  exactly this title, authors Anastasios N. Angelopoulos and Stephen Bates,
                  submitted 2021-07-15, latest version v6 dated 2022-12-07, primary class
-                 cs.LG. CITED AS THE ARXIV RECORD AND NOT AS A JOURNAL ARTICLE, DELIBERATELY:
-                 DBLP returns exactly one hit for the title and types it ``Informal and Other
-                 Publications'', CoRR abs/2107.07511, with no venue and no doi
-                 (research/S8/records/dblp\_gentle\_s8.json), and a Crossref bibliographic
-                 query for the same title returned no matching journal record, only peer
-                 reviews of an unrelated tutorial (research/S8/records/crossref\_gentle\_s8.json).
-                 A later Foundations and Trends monograph is widely asserted but was NOT
-                 confirmed by either surface under headless retrieval, so it is not printed
-                 here. howpublished carries the version pin because plainnat's misc function
-                 emits neither eprint nor archivePrefix; same mechanism as li2025o2cp.}
+                 cs.LG. AS OF S8, THE FnT ML MONOGRAPH WAS NOT CONFIRMED: DBLP returned only
+                 the arXiv/CoRR ``Informal and Other Publications'' record and a Crossref
+                 title-string query returned no matching journal record
+                 (research/S8/records/dblp\_gentle\_s8.json,
+                 research/S8/records/crossref\_gentle\_s8.json).
+                 S13 SUB-SESSION C: THE FnT ML VERSION IS NOW CONFIRMED. Direct DOI
+                 resolution (https://doi.org/10.1561/2200000101, which redirects to the
+                 publisher-of-record page at emerald.com/ftmal/article/16/4/494/1332423/)
+                 gives the published title ``Conformal Prediction: A Gentle Introduction'',
+                 same authors, Foundations and Trends in Machine Learning 16(4):494--591,
+                 published 2023-03-27, matching scope (distribution-free non-asymptotic
+                 guarantees; extensions to structured outputs, distribution shift, time
+                 series, outliers). Entry converted from \texttt{@misc} (arXiv-only) to
+                 \texttt{@article} citing the published version; eprint/archivePrefix kept
+                 as a secondary pointer to the arXiv preprint of the same work. No prose in
+                 paper/sections/*.tex referred to this as an ``arXiv preprint'', so no
+                 surrounding text needed changing. Record at
+                 research/S13/records/angelopoulos2021gentle\_fntml.md.}
 }
 
 @inproceedings{bhatnagar2023saocp,
@@ -235,16 +250,25 @@
             PRIOR_ART section 4.5.}
 }
 
-@misc{podkopaev2024betting,
-  author = {Podkopaev, Aleksandr and Xu, Darren and Lee, Kuang-Chih},
-  title  = {Adaptive Conformal Inference by Betting},
-  year   = {2024},
-  eprint = {2412.19318},
+@inproceedings{podkopaev2024betting,
+  author    = {Podkopaev, Aleksandr and Xu, Darren and Lee, Kuang-Chih},
+  title     = {Adaptive Conformal Inference by Betting},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML 2024)},
+  volume    = {235},
+  pages     = {40886--40907},
+  year      = {2024},
+  eprint    = {2412.19318},
   archivePrefix = {arXiv},
   annote   = {[ADDED] Parameter-free adaptive conformal inference. Stated motivation is
             that existing methods depend explicitly on, and are sensitive to, the choice
             of learning rate. Directly relevant to the claim that the field has not
-            noticed the step size matters.}
+            noticed the step size matters. S13 SUB-SESSION C: VERIFIED AS ICML 2024, not
+            arXiv-only -- fetched proceedings.mlr.press/v235/podkopaev24a.html, PMLR
+            volume 235, pages 40886-40907, cross-checked against icml.cc/virtual/2024/
+            poster/33190 and the ACM DL record. Author name "Darren Xu" confirmed against
+            arXiv and the ICML poster page (an earlier PMLR-page fetch mis-summarized it
+            as "Dong Xu"; not changed). Record at
+            research/S13/records/podkopaev2024betting_icml.md.}
 }
 
 % ---------------------------------------------------------------------------
@@ -1011,7 +1035,11 @@
   author    = {Dupuy, Th{\'e}o and Xu, Binbin and Perrey, St{\'e}phane and
                Montmain, Jacky and Imoussaten, Abdelhak},
   title     = {Relevance-Aware Thresholding in Online Conformal Prediction for Time Series},
-  booktitle = {Communications in Computer and Information Science},
+  booktitle = {Artificial Intelligence for Healthcare, and Hybrid Models for Coupling
+               Deductive and Inductive Reasoning: First International Joint Conference,
+               HC@AIxIA+HYDRA 2025, Bologna, Italy, October 25--26, 2025, Proceedings},
+  series    = {Communications in Computer and Information Science},
+  volume    = {2830},
   pages     = {196--217},
   year      = {2026},
   doi       = {10.1007/978-3-032-16708-8_17},
@@ -1029,7 +1057,11 @@
                by the smoothed signal, and it needs an extra domination hypothesis that the
                authors immediately disown** as "pretty strong" and "highly dependent on the
                choice of parameters". That is R2's thesis, stated by someone else, with an
-               attempted theorem attached.}
+               attempted theorem attached. S13 SUB-SESSION C: full proceedings title and CCIS
+               volume 2830 added (booktitle previously held only the generic series name);
+               fetched via Crossref book-level DOI and cross-checked against dblp's
+               HC@AIxIA+HYDRA 2025 page. Record at
+               research/S13/records/dupuy2026relevance_ccis.md.}
 }
 
 @misc{wu2025eci,
