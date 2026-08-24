@@ -23,6 +23,12 @@
 % volatility (arXiv:2510.04487).  Printing a count is the one move that lets a
 % referee retire a coined term with a single extra name.
 %
+% S13 SUB-SESSION B (2026-08-24): Table 2 (tab:bridge, "the four vocabularies") is
+% deleted and its content folded into a paragraph in sections/appendix.tex's Appendix B
+% (app:bridge); the ten-name count that sentence below cites is kept, in that paragraph's
+% own opening clause, so the pointer just below is repointed at the appendix section
+% rather than the deleted table's caption. Nothing about the count or the names changed.
+%
 % ZANOTTI IS PINNED TO v3.  v2 sec. 5 p.26 carries a conformal-stability sentence
 % that v3 p.24 deletes, and the two versions have different titles.
 
@@ -103,6 +109,20 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
 % Tables 1 and 2 quantizes the boundary, and a zero-height graphic with this caption
 % still costs 5.  arrows.meta is unavailable on this toolchain; see main.tex's preamble.
 % ---------------------------------------------------------------------------
+% S13 SUB-SESSION B (2026-08-24): CAPTION'S CLOSING CLAUSE REWORDED, ONE WORD.  Panel B's
+% clause says both readouts keep $\{\hat q_t\}$ inside Corollary 2's admissible set; panel
+% A's clause used to say "the deployed sequence leaves that set" -- an unconditional claim
+% that Section 3's own text contradicts ("the forfeit is a property of the smoothing
+% strength, not Placement A"; "Placement B keeps $\{\hat q_t\}$ inside the admissible
+% radius ... What Section 3 adds is that the band has two edges"): Placement A does not
+% always leave the set, it is simply not GUARANTEED to stay inside it the way B is, and
+% Section 3 is exactly the characterisation of when it does and does not. "leaves that
+% set" -> "nothing keeps the deployed sequence inside that set" states the true,
+% unconditional fact (no built-in guarantee, unlike B) without asserting the false
+% unconditional one (always departs). Flagged twice before (S10, and the review before
+% S12) and left unfixed; fixed here. Font-size legibility (node labels >= 8pt at compiled
+% size) checked separately and found already satisfied -- see research/S13/
+% B-captions-tables.json for the rendered measurement.
 \begin{figure}[t]
 \centering
 \setlength{\abovecaptionskip}{3pt}
@@ -166,7 +186,7 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
 \node[legswatch] (Leg) at (26.5mm,-15.5mm) {};
 \node[lab,anchor=west] at ([xshift=1.5mm]Leg.east) {readout (the grey box)};
 \end{tikzpicture}
-\caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output, and both readouts keep $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside Corollary~2's admissible set. In \textbf{(A)} it closes on $\tilde q_{t+1}$, which it never computed, and the deployed sequence leaves that set.}
+\caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output, and both readouts keep $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside Corollary~2's admissible set. In \textbf{(A)} it closes on $\tilde q_{t+1}$, which it never computed, and nothing keeps the deployed sequence inside that set.}
 \label{fig:placements}
 \vspace{-4pt}
 \end{figure}
@@ -179,12 +199,12 @@ $\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
 \citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, moving only when the
 target is more than $\tau$ away, then pulling back exactly $\tau$
 \citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
-in Figure~\ref{fig:placements}; \textbf{(A)} is measured here.
+in Figure~\ref{fig:placements}; \textbf{(A)}, Placement~A, is measured here.
 \emph{The dead band ($L_1$) is not a stylistic alternative to the partial-adjustment ($L_2$) form}; it
 is the family whose failure Section~\ref{sec:forfeit} characterises. Neither is safe by construction:
 $L_2$ forfeits Proposition~2's
 rate while covering, $L_1$ past the radius loses coverage, and at the legal $\hat{q} \equiv
--b/2$ both lose it. What is tight is the radius, not a form.
+-b/2$ both lose it. So the tight quantity is the radius, not either form.
 
 \paragraph{The quantity, and the names it already has.} We report the deployed threshold's
 \emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
@@ -193,7 +213,7 @@ Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls i
 \emph{jumpiness}, a \emph{convergence index}, \emph{(in)consistency}
 \citep{zsoter2009jumpiness,ehret2010convergence,pappenberger2011consistency}; applied control,
 IACER \citep{sarhadi2025criteria}; dynamic-regret online learning, a path length.
-Table~\ref{tab:bridge}'s caption names ten, so a fresh one is used here.
+Appendix~\ref{app:bridge} names ten across four vocabularies, so a fresh one is used here.
 % Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
 % pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
 % criterion CR8) are all in audit/REFS_VERIFIED.bib and cited as \citep above.

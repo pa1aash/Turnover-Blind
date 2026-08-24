@@ -342,38 +342,29 @@ so a reader watching only the rate would call that coverage.
 \section{The four vocabularies}
 \label{app:bridge}
 
-% MOVED HERE FROM sections/related.tex IN S5 WAVE 4.  It is descriptive related-work
-% material rather than a result, which makes it the right float to move once one had to
-% move: four floats did not pack into a four-page body.  Nothing is lost.  The caption
-% still names TEN names across FOUR vocabularies, which is what docs/GATES.md G7.11
-% requires be conceded, and sections/setup.tex still cites this caption for that count
-% by \ref, so the cross-reference holds from the body into the appendix.
-% [!h] rather than [t]: with [t] this table floated to the TOP of the page, landing
-% under Appendix A's heading, and left "B  The four vocabularies" as the last line of
-% the document with two-thirds of a blank page under it (S5 J1 finding 8).  It is the
-% only content in its section and the section is the last in the document, so there is
-% no reason to float it at all.
-\begin{table}[!h]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2pt}
-\caption{Four literatures name the movement of a sequentially updated forecast in four
-vocabularies: \emph{abrupt threshold changes}; \emph{forecast (in)stability} (MASC, MAC/SDC,
-MQC/SMQC, congruence, nervousness); \emph{jumpiness}, \emph{convergence index},
-\emph{(in)consistency}; and \emph{switching cost}. The row gives what each contributes.}
-\label{tab:bridge}
-\begin{tabular}{@{}p{3.35cm}p{3.35cm}p{3.35cm}p{3.35cm}@{}}
-\toprule
-\textbf{Online conformal} & \textbf{Forecast stability} & \textbf{Verification} &
-\textbf{Switching-cost online learning} \\
-\midrule
-Distribution-free long-run coverage for any bounded scorecaster
-\citep[Thm~1, Prop.~2]{angelopoulos2023pid}
-& Movement functional; readout as post-processing \citep[Eq.~3]{godahewa2025stability}; priced
-decision \citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}
-& Matched-level design, real producers (2012) \citep{pinson2012scenarios,worsnop2018scenarios}
-& Worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics} \\
-\bottomrule
-\end{tabular}
-\end{table}
+% S13 SUB-SESSION B (2026-08-24): TABLE 4 (\label{tab:bridge}) DELETED AND ITS CONTENT
+% FOLDED INTO THE PARAGRAPH BELOW.  Flagged in the original adversarial review before S8
+% and never fixed. Every \citep key the table cited is preserved here with the same
+% locator: angelopoulos2023pid [Thm~1, Prop.~2], godahewa2025stability [Eq.~3],
+% genov2026switching [\S4.2], vanbelle2026stabilizing, pinson2012scenarios,
+% worsnop2018scenarios, andrew2013twometrics [Thm~2] -- verified against the table's
+% four cells before deletion, none dropped. The caption's ten-name list (docs/GATES.md
+% G7.11's concession) is also kept, as the paragraph's opening sentence, so
+% sections/setup.tex's count-based cross-reference still resolves to real content; that
+% file's pointer is repointed at this section rather than at the deleted table's caption
+% (see its own header note). Reads as related-work prose, not a result, and argues
+% nothing beyond what each vocabulary contributes -- description only, matching the
+% caption it replaces.
+\paragraph{Four vocabularies for one quantity.} Four literatures name the movement of a
+sequentially updated forecast in four vocabularies: \emph{abrupt threshold changes};
+\emph{forecast (in)stability} (MASC, MAC/SDC, MQC/SMQC, congruence, nervousness);
+\emph{jumpiness}, \emph{convergence index}, \emph{(in)consistency}; and \emph{switching
+cost}. Online conformal prediction gives distribution-free long-run coverage for any
+bounded scorecaster \citep[Thm~1, Prop.~2]{angelopoulos2023pid}. Forecast stability
+treats the movement as a functional, read out as post-processing
+\citep[Eq.~3]{godahewa2025stability}, against a priced decision to switch
+\citep[\S4.2]{genov2026switching,vanbelle2026stabilizing}. Verification work uses a
+matched-level design against real producers from 2012
+\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning gives
+worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics}.
 
