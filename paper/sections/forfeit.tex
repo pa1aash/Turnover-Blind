@@ -213,8 +213,8 @@ $0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$.
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
 travel falls from $28{,}311$ to $202$. A readout on the completed
 $q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. It delays a
-correction already computed, and the accumulator excurses
-\emph{further}. Smoothing the output does not damp $E_t$; it feeds it.
+correction already computed, so the accumulator excurses
+\emph{further}: smoothing the output does not damp $E_t$ but feeds it.
 
 % S12 SUB-SESSION D / E: BODY RESULTS TABLE.  Drafted in research/S12/D-body-table.json.
 % Every cell is a straight copy of Table~\ref{tab:forfeit} (App.~\ref{app:support}), no new
@@ -226,7 +226,7 @@ correction already computed, and the accumulator excurses
 \scriptsize
 \setlength{\tabcolsep}{4.5pt}
 \renewcommand{\arraystretch}{0.95}
-\caption{Placement~A, primary regime, $T = 10^6$: four arms of Table~\ref{tab:forfeit}
+\caption{Placement~A, primary regime (\S\ref{sec:setup}'s harness), $T = 10^6$: four arms of Table~\ref{tab:forfeit}
 (App.~\ref{app:support}), which lists the remaining seven and finer detail. Proposition~2's
 bound is $14.8155$; ``ratio'' is $\max_t|E_t|$ over it.}
 \label{tab:forfeit-body}
@@ -303,8 +303,8 @@ dead band $\tau = 1.5$      & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ \\
 the deployed threshold back by exactly $\tau$ when it releases and holds it otherwise, so
 $|\tilde{q}_{t+1}-q_{t+1}| \le \tau$ at every round and ``inside Corollary~2'' reads
 $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned $\tau$ below the
-integrator's ceiling, and its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
-0.9$. Outside the radius two levels decide the answer and condition~(4) names only one of them.
+integrator's ceiling, and the deployed value's realised supremum is $b-\tau$ to the printed
+digit at every $\tau \ge 0.9$. Outside the radius two levels decide the answer and condition~(4) names only one of them.
 Write $A^{+}_t = \sup_x r_t(x)$ and $A^{-}_t = \inf_x r_t(x)$ for the integrator's extremes, and
 $\Lambda^{+}_t = \inf_{x \ge c\,h(t)} r_t(x)$, $\Lambda^{-}_t = \sup_{x \le -c\,h(t)} r_t(x)$ for
 the levels it is \emph{guaranteed} to reach once the accumulator clears the radius.
@@ -353,7 +353,7 @@ sit where the dynamics never go: $|E_t| \le (1-\alpha)t$, so a saturator equal t
 inside $|x| \le t^2$ and to $\pm 10b$ outside it satisfies~(4), reads $\tau^{\star+} = 19$, and
 fails at $\tau = 1.001$. A legal time-varying $\hat{q}$ splits $\sup_t$ from $\inf_t$: $\hat{q}_t =
 b/2$ on $t$ a power of two and $0$ elsewhere reads $\tau^{\star+} = 2$ against $\sigma^{+} = 1$.
-And $\tau^{\star-}$ was missing entirely.
+And that printed rule omits $\tau^{\star-}$ entirely.
 
 % S12 SUB-SESSION B / E: CLOSED-FORM RESTATEMENT.  Drafted in research/S12/B-closed-form.json,
 % attacked by no adversarial pass (only C1/C2's e-value section required one this session),
@@ -392,9 +392,9 @@ run's exact-threshold column under the strict indicator is the mirror adversary 
 (one error process, $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$), and on the same eleven
 widths at the null scorecaster it locates $\tau^{\star-} = 1$, closed on the failing side, exactly
 where (\ref{eq:boundaries}) puts it; Appendix~\ref{app:support} prints the eleven readings.
-\textbf{So the failure criterion is $|E_T|$, not the miscoverage
-rate.} Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
-$\alpha T$; and once $\hat{q}$ varies the rate stops being a tell at all.
+Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
+$\alpha T$, \textbf{so the failure criterion is $|E_T|$, not the miscoverage
+rate}; and once $\hat{q}$ varies the rate stops being a tell at all.
 % S10 WAVE F: THE ONE ILLUSTRATION OF THAT LAST CLAUSE -- "At tau = 1.9 with the power-of-two
 % scorecaster the rate is 0.110960 against alpha = 0.1 while max_t|E_t| is 84,745.70 at T = 10^6,
 % so a reader watching only the rate would call that coverage" -- MOVED TO sections/appendix.tex,
