@@ -223,9 +223,17 @@
 % topfraction/textfraction/floatpagefraction at neurips_2026.sty:226-229 and
 % leaves the separation glue at LaTeX's defaults, which is what is overridden
 % here.  No content, no font size and no float is changed by this block.
-\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
-\setlength{\floatsep}{8pt plus 2pt minus 2pt}
-\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+%
+% S12 SUB-SESSION E, SUPERSEDED BY F1'S REVIEW (finding 5, cosmetic): a fifth float (the body
+% results table) forced the same choice one more notch, for the same reason and under the same
+% constraint -- white space around floats only, the venue's style file untouched. The original
+% S5 values above were dead code once these replaced them; F1 flagged setting the same three
+% lengths twice as clutter, so the S5 values are commented rather than left to be silently
+% overridden.  \setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+%  \setlength{\floatsep}{8pt plus 2pt minus 2pt}  \setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{7pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 1pt minus 1pt}
+\setlength{\intextsep}{6pt plus 1pt minus 1pt}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -304,11 +312,11 @@ A printed claim that the scorecaster breaks online conformal coverage meets its
 refutation by overlapping authors; this paper joins them and locates the edge of the set that
 refutation relies on. Conformal PID states long-run coverage for any
 bounded scorecaster; a corollary keeps it for predictable perturbations of the deployed
-threshold inside an admissible radius. The claim was acted on; placement and derivation
-are conceded by name. At the null scorecaster that condition is \emph{tight}. A legal
-$L_1$ dead band on the \emph{completed} threshold leaves that set at its radius, and
-past it miscoverage is $1.000000$ against $\alpha = 0.1$. Coverage goes, not only the
-rate. The edge belongs to the
+threshold inside an admissible radius. The claim was acted on; the readout's
+placement and derivation are conceded by name. At the null scorecaster
+that condition is \emph{tight}. A legal dead band on the \emph{completed} threshold
+leaves that set at its radius, and past it miscoverage is $1.000000$ against
+$\alpha = 0.1$: coverage fails outright, not merely its rate. The edge belongs to the
 saturator--scorecaster pair, not the readout; elsewhere the condition is sufficient
 only. Under the equally legal $\hat{q} \equiv +b/2$ the failing band covers; at
 $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.

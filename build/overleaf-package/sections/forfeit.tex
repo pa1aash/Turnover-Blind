@@ -213,8 +213,34 @@ $0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$.
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
 travel falls from $28{,}311$ to $202$. A readout on the completed
 $q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. It delays a
-correction already computed, and the accumulator excurses
-\emph{further}. Smoothing the output does not damp $E_t$; it feeds it.
+correction already computed, so the accumulator excurses
+\emph{further}: smoothing the output does not damp $E_t$ but feeds it.
+
+% S12 SUB-SESSION D / E: BODY RESULTS TABLE.  Drafted in research/S12/D-body-table.json.
+% Every cell is a straight copy of Table~\ref{tab:forfeit} (App.~\ref{app:support}), no new
+% computation.  This is the body's only table; it becomes LaTeX's "Table 1" by document
+% order and \ref{tab:forfeit} becomes "Table 2" automatically -- no hardcoded number anywhere
+% in the paper names either table, so nothing breaks.
+\begin{table}[!ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{0.95}
+\caption{Placement~A, primary regime, $T = 10^6$: four arms of Table~\ref{tab:forfeit}
+(App.~\ref{app:support}), which lists the remaining seven and finer detail. Proposition~2's
+bound is $14.8155$; ``ratio'' is $\max_t|E_t|$ over it.}
+\label{tab:forfeit-body}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Arm & miscov.\ $10^6$ & $\max_t|E_t|$ $10^6$ & ratio \\
+\midrule
+none (control)              & $0.100007$          & $7.80$    & $0.53$     \\
+partial adj.\ $w = 0.999$   & $\mathbf{0.100004}$ & $623.70$  & $42.10$    \\
+dead band $\tau = 0.9$      & $0.100012$          & $13.20$   & $0.89$     \\
+dead band $\tau = 1.5$      & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 % S10 SUB-SESSION D: TWO SENTENCES OF TABLE-1 DETAIL MOVED FROM HERE INTO
 % sections/appendix.tex, WHERE TABLE 1 AND THE PARAGRAPHS THAT DISCUSS IT NOW LIVE.  Both
 % were already duplicated there in substance and are now printed once, in full:
@@ -277,8 +303,8 @@ correction already computed, and the accumulator excurses
 the deployed threshold back by exactly $\tau$ when it releases and holds it otherwise, so
 $|\tilde{q}_{t+1}-q_{t+1}| \le \tau$ at every round and ``inside Corollary~2'' reads
 $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned $\tau$ below the
-integrator's ceiling, and its realised supremum is $b-\tau$ to the printed digit at every $\tau \ge
-0.9$. Outside the radius two levels decide the answer and condition~(4) names only one of them.
+integrator's ceiling, and the deployed value's realised supremum is $b-\tau$ to the printed
+digit at every $\tau \ge 0.9$. Outside the radius two levels decide the answer and condition~(4) names only one of them.
 Write $A^{+}_t = \sup_x r_t(x)$ and $A^{-}_t = \inf_x r_t(x)$ for the integrator's extremes, and
 $\Lambda^{+}_t = \inf_{x \ge c\,h(t)} r_t(x)$, $\Lambda^{-}_t = \sup_{x \le -c\,h(t)} r_t(x)$ for
 the levels it is \emph{guaranteed} to reach once the accumulator clears the radius.
@@ -327,7 +353,31 @@ sit where the dynamics never go: $|E_t| \le (1-\alpha)t$, so a saturator equal t
 inside $|x| \le t^2$ and to $\pm 10b$ outside it satisfies~(4), reads $\tau^{\star+} = 19$, and
 fails at $\tau = 1.001$. A legal time-varying $\hat{q}$ splits $\sup_t$ from $\inf_t$: $\hat{q}_t =
 b/2$ on $t$ a power of two and $0$ elsewhere reads $\tau^{\star+} = 2$ against $\sigma^{+} = 1$.
-And $\tau^{\star-}$ was missing entirely.
+And that printed rule omits $\tau^{\star-}$ entirely.
+
+% S12 SUB-SESSION B / E: CLOSED-FORM RESTATEMENT.  Drafted in research/S12/B-closed-form.json,
+% attacked by no adversarial pass (only C1/C2's e-value section required one this session),
+% integrated verbatim by sub-session E.  Pure insertion between the paragraph above (whose
+% counterexamples -- tau*+ = 19 unattained, tau*+ = 2 vs sigma+ = 1 under a varying qhat -- this
+% paragraph explicitly leans on) and the S10 comment block below.  Adds a third numbered
+% equation (eq:pid, eq:boundaries, eq:closed); no reference to the cited paper's own numbered
+% condition~(4) or iteration~(5) is affected, since those are hardcoded prose, not \ref.
+\paragraph{The sharp form is one number, and its hypotheses are what buy it.} Specialise to a
+symmetric saturator that meets~(4) with equality and attains its extremes there
+($\Lambda^{\pm}_t = A^{\pm}_t = \pm b$; the harness's $r_t = b\,\mathrm{clip}(x/(c\,h(t)),\pm 1)$ is
+one, Section~\ref{sec:setup}), and to a constant $\hat{q}$. Then
+\begin{equation}
+  \min(\tau^{\star+},\tau^{\star-}) \;=\; b/2 - |\hat{q}| ,
+  \label{eq:closed}
+\end{equation}
+with the endpoint admissible only when $\hat{q} < 0$: exactly Corollary~2's radius at $\mu_t = 1$,
+now as an if-and-only-if. \textbf{The necessity direction above assumes none of it}: $\tau >
+\tau^{\star+}$, or $\tau \ge \tau^{\star-}$, forfeits coverage against every admissible $r_t$ and
+every legal predictable $\{\hat{q}_t\}$, extremes attained or not, and that unrestricted statement
+is what this section claims. The two hypotheses are load-bearing rather than decorative: the
+unattained supremum and the varying-$\hat{q}$ split two paragraphs above are exactly what they
+rule out. Equation~(\ref{eq:closed}) is where the reach meets the supremum, not evidence that they
+always do.
 
 % S10 SUB-SESSION D: THE ELEVEN MEASURED WIDTHS ARE NOT REPRINTED HERE.  This paragraph used
 % to spell out "between 0.09992 and 0.09997 at tau = 0.5 through 0.999, and 0.000000 with
@@ -342,9 +392,9 @@ run's exact-threshold column under the strict indicator is the mirror adversary 
 (one error process, $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$), and on the same eleven
 widths at the null scorecaster it locates $\tau^{\star-} = 1$, closed on the failing side, exactly
 where (\ref{eq:boundaries}) puts it; Appendix~\ref{app:support} prints the eleven readings.
-\textbf{So the failure criterion is $|E_T|$, not the miscoverage
-rate.} Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
-$\alpha T$; and once $\hat{q}$ varies the rate stops being a tell at all.
+Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
+$\alpha T$, \textbf{so the failure criterion is $|E_T|$, not the miscoverage
+rate}; and once $\hat{q}$ varies the rate stops being a tell at all.
 % S10 WAVE F: THE ONE ILLUSTRATION OF THAT LAST CLAUSE -- "At tau = 1.9 with the power-of-two
 % scorecaster the rate is 0.110960 against alpha = 0.1 while max_t|E_t| is 84,745.70 at T = 10^6,
 % so a reader watching only the rate would call that coverage" -- MOVED TO sections/appendix.tex,
@@ -414,3 +464,18 @@ Section~\ref{sec:forfeit} adds is that the band has two edges, both computable b
 from the integrator's guaranteed reach and the scorecaster's range, that crossing either is not a
 graceful degradation, and that between $\sigma^{\pm}$ and $\tau^{\star\pm}$, which separate only
 when $\hat{q}$ varies in $t$, neither direction is settled here.
+
+% S12 SUB-SESSION C1/C2/E: A LOCAL BODY SIGNPOST FOR THE PROMOTED E-VALUE APPENDIX WAS DRAFTED
+% HERE AND CUT FOR SPACE, NOT FOR SUBSTANCE.  C1 drafted a two-sentence pointer; C2's
+% adversarial attack (research/S12/C2-attack.json, finding "4") found four defects in C1's
+% wording and supplied fixed text; sub-session E compressed that fixed text twice more
+% (research/S12/patch-log.json) to one four-line paragraph, at which point it was still the
+% single largest non-protected block of NEW body content and the 4-page ceiling would not close
+% without cutting it. It is cut here in full, not softened or trimmed further in place, because
+% Section~\ref{sec:intro}'s roadmap paragraph already signposts Appendix~\ref{sec:evalue} from
+% the body ("Appendix~\ref{sec:related} sets both claims beside four vocabularies for the same
+% movement; Appendix~\ref{sec:evalue} reads $E_t$ as a capital process and builds a calibration
+% test on it") -- so the appendix section remains "clearly signposted from the body" per S12's
+% brief (E3) with that one pointer, and this second, more detailed, in-Section-3 pointer was
+% genuine redundant duplication, the exact category S10 licensed for trimming, not protected
+% content. Nothing about the appendix section itself changed; only this local echo of it did.
