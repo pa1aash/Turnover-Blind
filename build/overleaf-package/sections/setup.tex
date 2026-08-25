@@ -28,6 +28,15 @@
 % (app:bridge); the ten-name count that sentence below cites is kept, in that paragraph's
 % own opening clause, so the pointer just below is repointed at the appendix section
 % rather than the deleted table's caption. Nothing about the count or the names changed.
+% S16 SUB-SESSION C (2026-08-26): THE NOUN, AND ONLY THE NOUN, CHANGES BACK TO "Appendix".
+% sections/related.tex is \input after sections/appendix.tex again (E-values excludes optional
+% appendices from its 4-page BODY ceiling), so "Where this sits" renders as Appendix~B and a
+% pointer calling it a Section would be wrong on the page.  \label{sec:related} is NOT renamed
+% and the merge of "the four vocabularies" into that section is NOT undone, so the label, the
+% ten names and the count are all exactly as S15 sub-session D left them.  The Table~1 pointer
+% in the Harness paragraph below likewise regains its "(App.~\ref{app:support})" locator,
+% because the eleven-row table is back in the appendix.
+% Record: research/S16/C-appendix-reversal.json.
 % S15 SUB-SESSION D (2026-08-24): REPOINTED AGAIN, TO Section~\ref{sec:related}.  That
 % paragraph is no longer an appendix section of its own: it was merged into "Where this
 % sits", which is a numbered BODY section again, and \label{app:bridge} was retired with the
@@ -129,25 +138,33 @@
 \section{Setup}
 \label{sec:setup}
 
-\paragraph{The producer.} At time $t$ a forecaster fit on data before $t$ induces a score $s_t$,
-and a threshold $q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
+% S16 SUB-SESSION D (2026-08-26): S15 SUB-SESSION E's DE-COMPRESSIONS IN THIS FILE ARE REVERSED,
+% one by one, because the venue is E-values again and its 4-page BODY ceiling binds where
+% TS-LIMITS' whole-document ceiling did not.  Each reversal below restores the wording that stood
+% at 351655d^ (i.e. the state 2668003 left).  EXCEPTIONS, KEPT DELIBERATELY: the three hedges
+% S15-E restored from 2668003 -- "and the name is a convenience rather than a contribution",
+% "for one reading only" and "so the readout is the only manipulated variable" -- stay, and so
+% does "not required to be constant in $t$", which S15-E installed as the NARROWER of the two
+% readings and which reverting would strengthen.  Hedges are outside this sub-session's licence.
+\paragraph{The producer.} A forecaster fit before $t$ induces a score $s_t$, and a threshold
+$q_t$ is emitted before $y_t$ is revealed. The deployed set is $C_t = \{y : s_t(x_t,y)
 \le q_t\}$ and $\mathrm{err}_t = \mathbf{1}\{s_t(x_t,y_t) > q_t\}$. The target is long-run
 coverage, $T^{-1}\sum_{t \le T}\mathrm{err}_t = \alpha + o(1)$, with no model on the data.
-Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale,
-generalizing the running-error feedback that adaptive conformal inference
-\citep{gibbs2021aci} and its distribution-shift variant DtACI \citep{gibbs2024dtaci} already
-apply directly to the threshold:
+% S16 SUB-SESSION D (2026-08-26): THE ACI/DtACI LINEAGE CLAUSE IS RELOCATED, NOT DELETED.  It read
+% "generalizing the running-error feedback that adaptive conformal inference \citep{gibbs2021aci}
+% and its distribution-shift variant DtACI \citep{gibbs2024dtaci} already apply directly to the
+% threshold", which is related-work positioning rather than setup: nothing in this paper's argument
+% reads off it, and the operator's tier 4 has already put that kind of material in the appendix.
+% It now stands in sections/related.tex beside that appendix's own Conformal PID sentence, with
+% both citation keys and the word "already" intact, so the bibliography is unchanged.
+Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score scale:
 \begin{equation}
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
 \end{equation}
-Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: condition~(4) requires $r_t(x) \ge b$
-for $x \ge c\,h(t)$ and $r_t(x) \le -b$ for $x \le -c\,h(t)$, with $h$ nonnegative, nondecreasing
-and sublinear. In words: once the accumulated error clears $c\,h(t)$ in either direction, the
-correction is at least a full $b$ in the direction that reduces it. With $E_t = \sum_{i
-\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised
-scores; that is a coverage gap of at most $(c\,h(T)+1)/T$, which vanishes because $h$ is
-sublinear.
+Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
+$x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. With $E_t = \sum_{i
+\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
 
 % ---------------------------------------------------------------------------
 % S5 WAVE 2: sub-session C's placement schematic, inserted here.
@@ -233,8 +250,14 @@ sublinear.
        ([shift={(-1.5mm,1.5mm)}]Anw) rectangle ([shift={(3mm,-1.5mm)}]Ase);
 \end{scope}
 %% ------------------------------- LEGEND -------------------------------
-\node[legswatch] (Leg) at (26.5mm,-15.5mm) {};
-\node[lab,anchor=west] at ([xshift=1.5mm]Leg.east) {readout (the grey box)};
+% S16 SUB-SESSION D (2026-08-26): THE LEGEND ROW IS REMOVED AND THE CAPTION TIGHTENED, as the
+% "tighter figure presentation" the operator's escalation clause authorises.  The legend said only
+% "readout (the grey box)", which the caption's own first four words ("One scalar readout (grey)")
+% already say, so it was a duplicate key; removing it takes ~6mm of vertical space off the float.
+% NOTHING ELSE ABOUT THE FIGURE CHANGES: both placements, both loops, every node label and the
+% dashed boundary are untouched, and the caption keeps its hedge word for word ("nothing keeps the
+% deployed sequence inside that set") and keeps the Placement~B admissible-set sentence, which is
+% the surviving site for the constructive-reading paragraph cut from sections/forfeit.tex.
 \end{tikzpicture}
 \caption{One scalar readout (grey) in its two places in~(\ref{eq:pid}); dashed is the loop $r_t$ closes. In \textbf{(B)} the loop closes on the integrator's own output, and both readouts keep $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside Corollary~2's admissible set. In \textbf{(A)} it closes on $\tilde q_{t+1}$, which it never computed, and nothing keeps the deployed sequence inside that set.}
 \label{fig:placements}
@@ -257,31 +280,42 @@ has two standard readouts, both prior work. A quadratic cost gives linear partia
 % e-value literature it cites).  Authorised by the operator's Wave 3 patch brief, which delegates
 % the collision call to this sub-session.
 $\tilde{q}_{t+1} = (1-w)\hat{q}^{\,\mathrm{raw}}_{t+1} +
-w\tilde{q}_t$ \citep{garleanu2013dynamic}, which \citet{godahewa2025stability} publish as
-post-processing and \citet[Eq.~13]{binny2025whomoved} apply to a deployed conformal threshold. A
-proportional cost gives a no-trade band, moving only when the
+w\tilde{q}_t$ \citep{garleanu2013dynamic}, published as post-processing
+\citep{godahewa2025stability} and applied to a deployed threshold
+\citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, moving only when the
 target is more than $\tau$ away, then pulling back exactly $\tau$
 \citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
-in Figure~\ref{fig:placements}. \textbf{(A)}, Placement~A, is the one measured here, and it is
-the one a designer reaches for, because the deployed number is what has to sit still.
+in Figure~\ref{fig:placements}; \textbf{(A)}, Placement~A, is measured here.
 \emph{The dead band ($L_1$) is not a stylistic alternative to the partial-adjustment ($L_2$) form}; it
 is the family whose failure Section~\ref{sec:forfeit} characterises. Neither is safe by construction:
 $L_2$ forfeits Proposition~2's
 rate while covering, $L_1$ past the radius loses coverage, and at the legal $\hat{q} \equiv
--b/2$ both lose it. So the tight quantity is the radius, not either form.
+-b/2$ both lose it.
+% S16 SUB-SESSION D (2026-08-26): "So the tight quantity is the radius, not either form." is cut
+% as a redundant restatement.  It is a forward summary of Section~\ref{sec:forfeit}'s whole result
+% placed before the result, and the same narrowing is printed in the ABSTRACT ("The edge belongs
+% to the saturator--scorecaster pair, not the readout"), which is the stronger site because it is
+% what a referee reads first.  The three-part concession it followed ("Neither is safe by
+% construction ... both lose it") is untouched, so nothing this paragraph concedes is withdrawn.
 
 \paragraph{The quantity, and the names it already has.} We report the deployed threshold's
 \emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
-control. The arithmetic is not new, and the name is a convenience rather than a contribution.
-Over a predictive distribution $\sum|\Delta q|$ is the
-Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls the same movement
-\emph{jumpiness} \citep{zsoter2009jumpiness}, a \emph{convergence index}
-\citep{ehret2010convergence} and forecast \emph{(in)consistency}
-\citep{pappenberger2011consistency}, all three imported by \citet{vanbelle2026stabilizing};
-applied control calls it IACER \citep{sarhadi2025criteria}; and dynamic-regret online learning
-calls it a path length.
-Section~\ref{sec:related} names ten across four vocabularies, so a fresh one is used here, for one
-reading only.
+% S16 SUB-SESSION D (2026-08-26): THE FIVE-NAME ENUMERATION IS CUT TO ITS OWN POINTER (tier 3/4).
+% The sentence that stood here -- "Over a predictive distribution $\sum|\Delta q|$ is the
+% Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls it
+% \emph{jumpiness}, a \emph{convergence index}, \emph{(in)consistency}
+% \citep{zsoter2009jumpiness,ehret2010convergence,pappenberger2011consistency}; applied control,
+% IACER \citep{sarhadi2025criteria}; dynamic-regret online learning, a path length." -- printed
+% five of the ten names that the very next clause says Appendix~\ref{sec:related} names in full.
+% It was the weaker of the two statements of one point, and the operator's tier 4 already moved
+% that discussion out of the body.  ALL FIVE CITATIONS ARE RELOCATED, NOT DROPPED: they are now in
+% sections/related.tex's "One quantity, four names." paragraph, each on the same name, each with
+% its locator, so the bibliography is unchanged.  The two hedges here ("the name is a convenience
+% rather than a contribution", "for one reading only") are kept word for word, and the definition
+% of travel, which the body actually uses, is untouched.
+control. The arithmetic is not new, and the name is a convenience rather than a contribution,
+used here for one reading only: Appendix~\ref{sec:related} names ten for the same movement across
+four vocabularies.
 % Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
 % pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
 % criterion CR8) are all in audit/REFS_VERIFIED.bib and cited as \citep above.
@@ -290,15 +324,13 @@ reading only.
 b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, with $c = 1$ and $h(t) = \log(t+2)$, meets~(4) with equality.
 The scorecaster is null and legal, reducing (\ref{eq:pid}) to the pure error integration
 Proposition~2 addresses, so the readout is the only manipulated variable. Neither choice is
-neutral, and each sits at an edge of what condition~(4) and Theorem~1 allow rather than in the
-middle of it: (4) is a lower bound, and this saturator meets it exactly rather than exceeding it,
-while Theorem~1 permits scorecasters anywhere within $b/2$ either side of null, predictable but
-not required to be constant in $t$. The adversary is specified, not
+neutral: (4) is a lower bound met exactly here, and Theorem~1 permits scorecasters $b/2$ either
+side of null, predictable but not required to be constant in $t$. The adversary is specified, not
 tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
 10^{-9}$, against the \emph{deployed} $\tilde{q}_t$: the $\varepsilon\downarrow 0$ reading of
-``sets the score at the threshold'', firing the strict indicator. Legality is Theorem~1's
-$[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight. \emph{That specification names one
+``sets the score at the threshold'', firing the strict indicator, legal on both sides of
+Theorem~1's $[-b/2,b/2]$, so $b/2+b/2 = b$ is exactly tight. \emph{That specification names one
 member of a class}: any adapted $s_t \in [-b/2,b/2]$ is legal, the constant $s_t \equiv -b/2$
-included. Every number in Table~\ref{tab:forfeit} is measured against the
+included. Every number in Table~\ref{tab:forfeit} (App.~\ref{app:support}) is measured against the
 one adversary above;
 Section~\ref{sec:forfeit}'s two boundaries are quantified over the class, and they differ.
