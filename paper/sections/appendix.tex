@@ -97,6 +97,170 @@
 \label{app:support}
 
 
+% =========================================================================================
+% S16 SUB-SESSION C (2026-08-26): TABLE~\ref{tab:forfeit}, FIGURE~\ref{fig:boundary} AND
+% FIGURE~\ref{fig:settings} ARE BACK HERE, AT THE HEAD OF THIS APPENDIX, IN THE ORDER THEY
+% HELD BEFORE S15 SUB-SESSION D: eleven-arm table, the cliff, the five settings, then
+% Table~\ref{tab:stress}.  THIS IS A REVERSAL OF A VENUE-SPECIFIC MOVE, NOT A NEW DECISION.
+%
+% THE PREMISE THAT MOVED THEM OUT IS GONE.  S15 sub-session D promoted all three into
+% Section~\ref{sec:forfeit} on one stated ground: TS-LIMITS' "4 to 7 pages plus references"
+% states no appendix exclusion, so "an appendix page and a body page cost the same" and
+% "relocation now moves zero pages".  The paper is submitted to E-values again, whose call
+% reads "Short papers up to 4 pages, EXCLUDING REFERENCES AND OPTIONAL APPENDICES" -- the
+% sentence quoted at the top of this file, re-verified 2026-08-26 by a byte-identical page
+% fetch with the same sha256 as S4's 2026-08-20 record (research/S16/A-venue-reconfirmation.json).
+% Under that call the destination this file was built for is free again, D's promotion buys
+% nothing and costs three floats' worth of a four-page body, and the placement S10 sub-session D
+% and S6 recorded -- which the paper then held at exactly 4 body pages from S10 through S14 --
+% is restored.
+%
+% WHAT MOVED, AND WHAT DID NOT.  All three floats move WHOLE: graphic or tabular, caption word
+% for word, \label, float specifier, and the provenance comments that sit inside them.  Every
+% post-S15 repair travels unchanged -- S15 sub-session D2's caption repointing at
+% Section~\ref{sec:setup} on Table~\ref{tab:forfeit}, and its repointing of
+% Figure~\ref{fig:boundary}'s last clause at the exact-threshold column (which is why that
+% caption is NOT self-referential now that the figure sits inside the appendix it used to name).
+% The five deleted Appendix~A prose paragraphs are NOT restored: that was an authorised content
+% cut, it is out of this sub-session's scope, and nothing moved here points at them.
+% NOT MOVED, and unchanged in the body: the four-boundary theorem and both proof directions,
+% (\ref{eq:boundaries}), (\ref{eq:closed}) and the closed-form paragraph, both degenerate cases,
+% the hedges, and the folded-in e-value diagnostic paragraph.
+%
+% NUMBERING.  Document order gives the body's four-row table Table 1, the eleven-arm table
+% Table 2 and the boundary stress Table 3; figures keep 1 schematic / 2 cliff / 3 settings,
+% since both figures were already in this order and no float crosses another.  No table or
+% figure number is hardcoded anywhere in the paper, so every \ref resolves without edit.
+% Record: research/S16/C-appendix-reversal.json.
+% =========================================================================================
+% S10 SUB-SESSION D: TABLE 1 MOVED HERE FROM sections/forfeit.tex, CAPTION AND ALL ELEVEN
+% ARM ROWS CELL FOR CELL UNCHANGED.  Placed at the head of Appendix~A so document order
+% preserves the numbering.  Reason: the E-values 4-page ceiling, which excludes appendices.
+% S16 SUB-SESSION C: that reason is live again, and the caption differs from S10's in one
+% respect only -- it points at Section~\ref{sec:setup} for the adversary rather than at this
+% appendix's deleted primary-regime paragraph, which is S15 sub-session D2's repair, kept.
+\begin{table}[!ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+% S5 wave 4: arraystretch 0.95.  Eleven data rows at 0.95 give back one typeset line.
+% This is row LEADING only -- no font change, no row removed, no cell altered.
+\renewcommand{\arraystretch}{0.95}
+% S6 SUB-SESSION B: CAPTION REWRITTEN TO DESCRIBE ONLY.  Two clauses left, and neither
+% was deleted:
+%   "so no covering arm is withheld" was a REBUTTAL, not a description.  The fact it
+%     defended -- that every arm run appears -- is still the caption's first sentence.
+%   "five exceed the bound at T = 10^6" was a CONCLUSION about the data, and it existed
+%     NOWHERE ELSE in the paper.  It moved into the retention paragraph, where Table 1 is
+%     first discussed.  Independently recounted from the table's own ratio column: 4.25,
+%     42.10, 3.58, 3.34 and 60,747 exceed 1, so five is right.
+\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold, under one
+deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed.
+Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
+``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
+delivers its full $\pm b$. Every number is measured against the adversary
+Section~\ref{sec:setup} specifies.}
+% S15 SUB-SESSION D2 (2026-08-25): THE CAPTION'S LAST SENTENCE IS REPOINTED, NOT SOFTENED.  It
+% read "Every number is the PRIMARY regime's, defined in Appendix~\ref{app:support}, which also
+% gives the T = 10^4 excursions and the fitted excursion law."  All three of those targets --
+% the regime definition, the T = 10^4 excursions and the fitted law -- were in the two Appendix
+% A paragraphs the operator authorised deleting this sub-session, so the sentence pointed at
+% content that no longer exists.  The regime IS still specified, in the body, in
+% Section~\ref{sec:setup}'s Harness paragraph, which is where the caption now points.  No
+% number and no claim about the table changes.
+\label{tab:forfeit}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Readout on the completed threshold & miscov.\ $2{\times}10^5$ & miscov.\ $10^6$ &
+$\max_t|E_t|$ $10^6$ & ratio & Sat.\ $10^6$ & travel $10^6$ \\
+\midrule
+none (control)                & $0.100035$ & $0.100007$ & $7.80$        & $0.53$     & $0.0000$ & $28{,}311$ \\
+partial adj.\ $w = 0.5$       & $0.100030$ & $0.100007$ & $7.70$        & $0.52$     & $0.0000$ & $18{,}113$ \\
+partial adj.\ $w = 0.9$       & $0.100030$ & $0.100007$ & $7.50$        & $0.51$     & $0.0000$ & $4{,}081$ \\
+partial adj.\ $w = 0.99$      & $0.100040$ & $0.100006$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}023$ \\
+partial adj.\ $w = 0.999$     & $0.100035$ & $\mathbf{0.100004}$ & $623.70$      & $42.10$    & $0.0097$ & $202$ \\
+growing time constant $p=0.5$ & $0.100030$ & $0.100006$ & $12.60$       & $0.85$     & $0.0000$ & $330$ \\
+growing time constant $p=0.9$ & $0.100030$ & $0.100024$ & $53.00$       & $3.58$     & $0.3181$ & $16$ \\
+running mean                  & $0.099940$ & $0.100010$ & $49.50$       & $3.34$     & $0.3647$ & $9$ \\
+dead band $\tau = 0.5$        & $0.100035$ & $0.100005$ & $10.60$       & $0.72$     & $0.0000$ & $2{,}045$ \\
+dead band $\tau = 0.9$        & $0.100060$ & $0.100012$ & $13.20$       & $0.89$     & $0.0038$ & $1{,}051$ \\
+dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ & $1.0000$ & $0.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% S10 SUB-SESSION D: FIGURE 2 MOVED HERE FROM sections/forfeit.tex, GRAPHIC AND CAPTION
+% UNCHANGED.  It is placed BEFORE Figure~\ref{fig:settings} so that the document order, and
+% therefore the numbering, is exactly what it was: Figure 1 the placements schematic in the
+% body, Figure 2 the cliff, Figure 3 the five settings.  Its rebuild history is in
+% sections/forfeit.tex's header, where the figure used to sit.
+% S16 SUB-SESSION C (2026-08-26): RESTORED TO THIS POSITION after S15 sub-session D's
+% venue-specific promotion into the body; see the block at the head of this appendix.  The
+% caption's last clause is S15 sub-session D2's wording, not S10's -- it names the run's
+% exact-threshold column instead of the deleted primary-regime paragraph -- so it reads
+% correctly from inside this appendix and no cross-reference in it is self-referential.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
+  \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
+  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
+  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full sweep: filled markers run to
+  $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
+  covers, orange forfeits, and the dashed rule is $\tau^{\star+}$. \textbf{(b)} The same
+  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star+}$ on
+  a symlog axis whose linear zone is $|\tau - \tau^{\star+}| \le 10^{-3}$, which magnifies the
+  neighbourhood of $\tau^{\star+}$: visual spacing here is not proportional to true distance in
+  $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
+  narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
+  settings. The same eleven widths under the \emph{mirror} adversary, which locates
+  $\tau^{\star-}$, are this run's exact-threshold column read under the strict indicator.}
+  % S15 SUB-SESSION D2 (2026-08-25): REPOINTED.  The clause read "are read off in
+  % Appendix~\ref{app:support}'s primary-regime paragraph", and that paragraph is deleted this
+  % sub-session on operator authorisation, so the pointer would have dangled.  It now names
+  % WHERE THE READING COMES FROM instead of where it was printed, which is the same fact the
+  % deleted paragraph opened with and is also stated in the mirror-boundary paragraph below.
+  % The eleven individual readings are no longer printed anywhere; that loss is recorded in
+  % research/S15/D2-budget-closure.json rather than papered over.
+  \label{fig:boundary}
+\end{figure}
+
+% S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
+% Figure 2 panel (a) held as a five-series overlay in one continuous panel.
+% THE AXIS PRINCIPLE, which is why this is a separate figure and not another panel:
+% the (r_t, qhat) SETTING is a categorical variable and gets a categorical axis (five
+% rows); tau is CONTINUOUS and keeps a log axis.  The overlay had to place five series
+% and five tau* markers on one continuous pair of axes, which is what produced four
+% nested markers at (tau = 0.5, miscoverage ~ 0.1) and a legend that overwrote two of
+% the tau* rules.  Rows do not collide.
+% All 19 runs appear, and the two tau* values that fall off the axis (0 and unbounded) are
+% drawn as arrows rather than dropped.
+% Built by the same generator as Figure~\ref{fig:boundary}: src/make_figure1.py.
+% S6's own note said "IT LIVES IN THE APPENDIX because E-values excludes appendices from the
+% 4-page ceiling and the body is exactly full; nothing about the figure requires the body."
+% S15 sub-session D dropped that clause as obsolete under TS-LIMITS.  S16 SUB-SESSION C
+% (2026-08-26) RESTORES IT, because the venue it was written against is the venue again --
+% see the block at the head of this appendix.  It is quoted rather than paraphrased so that a
+% later session flipping venues can read the trigger without reconstructing it.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/figure3_settings.pdf}
+  % S6 SUB-SESSION B: written to the SAME rule as the other two captions -- describe the
+  % axes, the encoding and the measurement conditions, and argue nothing.  Four sentences.
+  \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
+  rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
+  Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
+  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$, all under the
+  \emph{specified} adversary. The rule on each
+  row is that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
+  at the right, and the tinted band is $\tau \le \tau^{\star+}$. Two rules fall off the
+  axis and are drawn as arrows: $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$, and
+  $\tau^{\star+}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator. The
+  mirror boundary $\tau^{\star-}$ of (\ref{eq:boundaries}) is not drawn here and differs from
+  $\tau^{\star+}$ at the two non-null scorecasters.}
+  \label{fig:settings}
+\end{figure}
+
+
 % S10 SUB-SESSION D: TABLE 2 MOVED HERE FROM sections/forfeit.tex, WHOLE AND CELL FOR CELL
 % UNCHANGED (caption, column heads, all thirteen rows, the \label, the S9 provenance comment
 % below).  Its stated reason was "the 4-page ceiling and nothing else".

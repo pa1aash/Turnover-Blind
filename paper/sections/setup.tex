@@ -28,6 +28,15 @@
 % (app:bridge); the ten-name count that sentence below cites is kept, in that paragraph's
 % own opening clause, so the pointer just below is repointed at the appendix section
 % rather than the deleted table's caption. Nothing about the count or the names changed.
+% S16 SUB-SESSION C (2026-08-26): THE NOUN, AND ONLY THE NOUN, CHANGES BACK TO "Appendix".
+% sections/related.tex is \input after sections/appendix.tex again (E-values excludes optional
+% appendices from its 4-page BODY ceiling), so "Where this sits" renders as Appendix~B and a
+% pointer calling it a Section would be wrong on the page.  \label{sec:related} is NOT renamed
+% and the merge of "the four vocabularies" into that section is NOT undone, so the label, the
+% ten names and the count are all exactly as S15 sub-session D left them.  The Table~1 pointer
+% in the Harness paragraph below likewise regains its "(App.~\ref{app:support})" locator,
+% because the eleven-row table is back in the appendix.
+% Record: research/S16/C-appendix-reversal.json.
 % S15 SUB-SESSION D (2026-08-24): REPOINTED AGAIN, TO Section~\ref{sec:related}.  That
 % paragraph is no longer an appendix section of its own: it was merged into "Where this
 % sits", which is a numbered BODY section again, and \label{app:bridge} was retired with the
@@ -280,7 +289,7 @@ Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls t
 \citep{pappenberger2011consistency}, all three imported by \citet{vanbelle2026stabilizing};
 applied control calls it IACER \citep{sarhadi2025criteria}; and dynamic-regret online learning
 calls it a path length.
-Section~\ref{sec:related} names ten across four vocabularies, so a fresh one is used here, for one
+Appendix~\ref{sec:related} names ten across four vocabularies, so a fresh one is used here, for one
 reading only.
 % Wave 3 closed every bibliography gap in this file: zsoter2009jumpiness, ehret2010convergence,
 % pappenberger2011consistency and sarhadi2025criteria (IACER, arXiv:2503.14379 eq. (6),
@@ -299,6 +308,6 @@ tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\v
 ``sets the score at the threshold'', firing the strict indicator. Legality is Theorem~1's
 $[-b/2,b/2]$ on both sides, so $b/2+b/2 = b$ is exactly tight. \emph{That specification names one
 member of a class}: any adapted $s_t \in [-b/2,b/2]$ is legal, the constant $s_t \equiv -b/2$
-included. Every number in Table~\ref{tab:forfeit} is measured against the
+included. Every number in Table~\ref{tab:forfeit} (App.~\ref{app:support}) is measured against the
 one adversary above;
 Section~\ref{sec:forfeit}'s two boundaries are quantified over the class, and they differ.

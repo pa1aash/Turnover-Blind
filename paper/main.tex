@@ -469,10 +469,23 @@ $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 % THE E-VALUE SECTION DOES NOT COME WITH IT.  sections/related.tex used to carry both "Where
 % this sits" and "The accumulator as a bet"; the latter is now sections/evalue.tex, \input
 % after sections/appendix.tex, and stays an appendix.  Not one word of it changed.
+% S16 SUB-SESSION C (2026-08-26): sections/related.tex IS NOT \input HERE.  It is \input AFTER
+% sections/appendix.tex again, so \appendix is in force and "Where this sits" renders as
+% Appendix~B.  S15 sub-session D brought it into the body on one enabling premise -- TS-LIMITS'
+% "4 to 7 pages plus references" counting appendices, so "this section costs the same wherever
+% it sits" -- and that premise is void: E-values' call reads "Short papers up to 4 pages,
+% excluding references and optional appendices" (re-verified 2026-08-26, byte-identical fetch,
+% research/S16/A-venue-reconfirmation.json).  D's merit argument for the body is not disputed;
+% it is outranked by the 4-page BODY ceiling, which is the same trade S10 sub-session D made.
+% THE MERGE IS NOT UNDONE.  "The four vocabularies" stays merged into that section's opening
+% paragraph, word for word: it was a heading over one paragraph, which is a simplification
+% unrelated to the venue, and \label{app:bridge} stays retired.  Only the \input point moves.
+% The two body pointers at \ref{sec:related} -- sections/intro.tex's roadmap and
+% sections/setup.tex's ten-name sentence -- change the noun "Section" to "Appendix" and nothing
+% else; the label is untouched.  Record: research/S16/C-appendix-reversal.json.
 \input{sections/intro}
 \input{sections/setup}
 \input{sections/forfeit}
-\input{sections/related}
 \input{sections/limitations}
 \bibliographystyle{plainnat}
 \bibliography{../audit/REFS_VERIFIED}
@@ -561,6 +574,11 @@ table, the generators that read them, and this project's audit trail across sess
 % S15 SUB-SESSION D2 (2026-08-25): APPENDIX B NO LONGER EXISTS.  sections/evalue.tex IS DELETED
 % AND SO IS ITS \input, ON EXPLICIT OPERATOR AUTHORISATION, TO CLOSE THE PAGE BUDGET.
 % There is exactly ONE appendix now: A, Supporting measurements, holding Table~\ref{tab:stress}.
+% AMENDED S16 SUB-SESSION C (2026-08-26): there are TWO appendices again -- A, Supporting
+% measurements, now holding Table~\ref{tab:forfeit}, Figure~\ref{fig:boundary},
+% Figure~\ref{fig:settings} and Table~\ref{tab:stress}, and B, "Where this sits"
+% (sections/related.tex), \input below.  sections/evalue.tex is still deleted and is NOT
+% restored; the count above was correct only while related.tex was a body section.
 % MEASURED, NOT ASSUMED, AND THIS IS WHY IT IS A DELETION RATHER THAN A COMPRESSION.  The
 % authorisation said to exhaust compression first where compression and deletion would save
 % comparable space.  They do not, and the reason is quantisation, not prose.  With the
@@ -583,5 +601,10 @@ table, the generators that read them, and this project's audit trail across sess
 % no \ref to a deleted label survives anywhere.
 % ===========================================================================
 \input{sections/appendix}
+% S16 SUB-SESSION C (2026-08-26): "Where this sits" sits here again, as Appendix~B, exactly as
+% it did from S10 sub-session D through S14.  It is the same file, moved rather than rewritten
+% (the four-vocabularies merge S15 sub-session D made inside it is kept); see the note at the
+% body \input block above for why, and research/S16/C-appendix-reversal.json for the record.
+\input{sections/related}
 
 \end{document}

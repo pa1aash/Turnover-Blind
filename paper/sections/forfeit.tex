@@ -232,7 +232,7 @@
 \mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
 \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
 and \emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
-adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} prices that
+adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} (App.~\ref{app:support}) prices that
 departure, and five of its eleven arms exceed the bound at $T = 10^6$, and for $w = 0.99$ and
 $0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$. The
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
@@ -243,81 +243,58 @@ it does instead is delay a correction that has already been computed, so the acc
 \emph{further} rather than less: smoothing the output does not damp $E_t$ but feeds it.
 
 % =========================================================================================
-% S15 SUB-SESSION D (2026-08-24): THE SPLIT TABLE IS RE-MERGED INTO ONE, HERE, IN THE BODY.
+% S16 SUB-SESSION C (2026-08-26): THE SPLIT TABLE IS RESTORED.  THE ELEVEN-ROW TABLE GOES BACK
+% TO sections/appendix.tex AND A FOUR-ROW ILLUSTRATIVE TABLE STANDS HERE, AS IT DID BEFORE S15.
 %
-% WHAT WAS HERE BEFORE, AND WHY IT IS GONE.  S12 sub-sessions D/E built a FOUR-ROW body
-% table (\label{tab:forfeit-body}) whose every cell was, in its own comment's words, "a
-% straight copy of Table~\ref{tab:forfeit} ..., no new computation".  It existed because
-% E-values' 4-page BODY ceiling could not hold the eleven-row table while the appendix was
-% page-exempt, so the reader met four of the eleven arms in the body and the other seven
-% four pages later, plus a five-line caption in the appendix whose only job was to reconcile
-% the two.  TS-LIMITS states "4 to 7 pages plus references" and states NO appendix exclusion
-% anywhere (verified fresh 2026-08-24, research/S15/A-venue-verification.json field
-% a1_findings.3_appendix_policy), so an appendix page costs exactly what a body page costs
-% and the split buys nothing.  It is therefore decided on reader-experience alone: ONE table,
-% met ONCE, at the paragraph that prices the departure its rows measure.
+% THIS REVERSES S15 SUB-SESSION D's MERGE, WHOSE ONLY TRIGGER WAS THE VENUE.  D merged the two
+% tables because TS-LIMITS counts appendix pages against the same 4-7 page ceiling, so a split
+% "buys nothing" -- its own words -- and placement became a reader question only.  The paper is
+% submitted to E-values again: "Short papers up to 4 pages, EXCLUDING REFERENCES AND OPTIONAL
+% APPENDICES" (re-verified 2026-08-26, byte-identical page fetch and the same sha256 as S4's
+% 2026-08-20 record, research/S16/A-venue-reconfirmation.json).  An appendix page is free again
+% and a body page is not, so the split buys exactly what S12 built it to buy.
 %
-% NO CELL AND NO NUMBER IS LOST.  The eleven-row table below is Appendix~A's former table
-% moved here verbatim -- caption, column heads, all eleven arm rows, the \label{tab:forfeit},
-% the \scriptsize / tabcolsep / arraystretch settings, cell for cell.  The four-row table's
-% every cell was a duplicate of four of those rows, so deleting it removes duplication only.
-% TWO CAPTION SENTENCES ARE DROPPED, and they are the only text dropped anywhere in this
-% move: "A four-arm subset of this table ... appears in the body as Table~\ref{tab:forfeit-body};
-% this table adds the remaining seven arms, the $T = 2{\times}10^5$ horizon, saturation
-% fraction, and threshold travel the body table omits."  Both sentences describe the
-% relationship between the two tables and nothing else; with one table there is no
-% relationship left to describe, and \label{tab:forfeit-body} no longer exists.
+% NOTHING IS DELETED AND NOTHING IS INVENTED.  The eleven-row table moves WHOLE to the head of
+% Appendix~\ref{app:support} -- caption, column heads, all eleven arm rows, \label{tab:forfeit},
+% the \scriptsize / tabcolsep / arraystretch settings, cell for cell -- carrying S15 sub-session
+% D2's caption repointing at Section~\ref{sec:setup} unchanged.  The four-row table below is S12
+% sub-sessions D/E's body table restored from the pre-S15 file: every cell a straight copy of
+% four of Table~\ref{tab:forfeit}'s rows, no new computation, the same four arms (the control,
+% the strongest partial-adjustment arm, and the two dead-band widths bracketing tau*+).
 %
-% NUMBERING.  This is now LaTeX's Table 1 by document order and Table~\ref{tab:stress} in
-% Appendix~A is Table 2.  No hardcoded table number appears anywhere in the paper, so every
-% \ref resolves without edit.  Record: research/S15/D-restructuring.json.
+% ONE WORD PAIR IS DROPPED FROM THE RESTORED CAPTION, AND ONLY ONE: "primary regime".  It read
+% "Placement~A, primary regime, $T = 10^6$".  The paragraph that DEFINED the primary regime was
+% deleted from the appendix by S15 sub-session D2 on operator authorisation and is out of this
+% sub-session's scope to restore, so the term would name nothing in this document.  The
+% provenance is not lost: Table~\ref{tab:forfeit}'s own caption states that every number is
+% measured against the adversary Section~\ref{sec:setup} specifies, and this caption points at
+% that table.  No number and no claim changes.
+%
+% NUMBERING.  This is LaTeX's Table 1 by document order, the eleven-row table is Table 2 and the
+% boundary-stress table Table 3 -- the pre-S15 arrangement.  No hardcoded table number appears
+% anywhere in the paper, so every \ref resolves without edit.
+% Record: research/S16/C-appendix-reversal.json.
 % =========================================================================================
+% S12 SUB-SESSION D / E: BODY RESULTS TABLE.  Drafted in research/S12/D-body-table.json.
+% Every cell is a straight copy of Table~\ref{tab:forfeit} (App.~\ref{app:support}), no new
+% computation.
 \begin{table}[!ht]
 \centering
 \scriptsize
 \setlength{\tabcolsep}{4.5pt}
-% S5 wave 4: arraystretch 0.95.  Eleven data rows at 0.95 give back one typeset line.
-% This is row LEADING only -- no font change, no row removed, no cell altered.
 \renewcommand{\arraystretch}{0.95}
-% S6 SUB-SESSION B: CAPTION REWRITTEN TO DESCRIBE ONLY.  Two clauses left, and neither
-% was deleted:
-%   "so no covering arm is withheld" was a REBUTTAL, not a description.  The fact it
-%     defended -- that every arm run appears -- is still the caption's first sentence.
-%   "five exceed the bound at T = 10^6" was a CONCLUSION about the data, and it existed
-%     NOWHERE ELSE in the paper.  It moved into the retention paragraph, where Table 1 is
-%     first discussed.  Independently recounted from the table's own ratio column: 4.25,
-%     42.10, 3.58, 3.34 and 60,747 exceed 1, so five is right.
-\caption{Placement~A: a one-scalar readout on the \emph{completed} threshold, under one
-deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed.
-Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
-``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
-delivers its full $\pm b$. Every number is measured against the adversary
-Section~\ref{sec:setup} specifies.}
-% S15 SUB-SESSION D2 (2026-08-25): THE CAPTION'S LAST SENTENCE IS REPOINTED, NOT SOFTENED.  It
-% read "Every number is the PRIMARY regime's, defined in Appendix~\ref{app:support}, which also
-% gives the T = 10^4 excursions and the fitted excursion law."  All three of those targets --
-% the regime definition, the T = 10^4 excursions and the fitted law -- were in the two Appendix
-% A paragraphs the operator authorised deleting this sub-session, so the sentence pointed at
-% content that no longer exists.  The regime IS still specified, in the body, in
-% Section~\ref{sec:setup}'s Harness paragraph, which is where the caption now points.  No
-% number and no claim about the table changes.
-\label{tab:forfeit}
-\begin{tabular}{@{}lrrrrrr@{}}
+\caption{Placement~A, $T = 10^6$: four arms of Table~\ref{tab:forfeit}
+(App.~\ref{app:support}), which lists the remaining seven and finer detail. Proposition~2's
+bound is $14.8155$; ``ratio'' is $\max_t|E_t|$ over it.}
+\label{tab:forfeit-body}
+\begin{tabular}{@{}lrrr@{}}
 \toprule
-Readout on the completed threshold & miscov.\ $2{\times}10^5$ & miscov.\ $10^6$ &
-$\max_t|E_t|$ $10^6$ & ratio & Sat.\ $10^6$ & travel $10^6$ \\
+Arm & miscov.\ $10^6$ & $\max_t|E_t|$ $10^6$ & ratio \\
 \midrule
-none (control)                & $0.100035$ & $0.100007$ & $7.80$        & $0.53$     & $0.0000$ & $28{,}311$ \\
-partial adj.\ $w = 0.5$       & $0.100030$ & $0.100007$ & $7.70$        & $0.52$     & $0.0000$ & $18{,}113$ \\
-partial adj.\ $w = 0.9$       & $0.100030$ & $0.100007$ & $7.50$        & $0.51$     & $0.0000$ & $4{,}081$ \\
-partial adj.\ $w = 0.99$      & $0.100040$ & $0.100006$ & $63.00$       & $4.25$     & $0.0007$ & $1{,}023$ \\
-partial adj.\ $w = 0.999$     & $0.100035$ & $\mathbf{0.100004}$ & $623.70$      & $42.10$    & $0.0097$ & $202$ \\
-growing time constant $p=0.5$ & $0.100030$ & $0.100006$ & $12.60$       & $0.85$     & $0.0000$ & $330$ \\
-growing time constant $p=0.9$ & $0.100030$ & $0.100024$ & $53.00$       & $3.58$     & $0.3181$ & $16$ \\
-running mean                  & $0.099940$ & $0.100010$ & $49.50$       & $3.34$     & $0.3647$ & $9$ \\
-dead band $\tau = 0.5$        & $0.100035$ & $0.100005$ & $10.60$       & $0.72$     & $0.0000$ & $2{,}045$ \\
-dead band $\tau = 0.9$        & $0.100060$ & $0.100012$ & $13.20$       & $0.89$     & $0.0038$ & $1{,}051$ \\
-dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ & $1.0000$ & $0.5$ \\
+none (control)              & $0.100007$          & $7.80$    & $0.53$     \\
+partial adj.\ $w = 0.999$   & $\mathbf{0.100004}$ & $623.70$  & $42.10$    \\
+dead band $\tau = 0.9$      & $0.100012$          & $13.20$   & $0.89$     \\
+dead band $\tau = 1.5$      & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -427,7 +404,8 @@ adversary if and only if $\tau \le \tau^{\star+}$ and $\tau < \tau^{\star-}$.} F
 saturator that is one line: coverage if and only if $\tau \le \sup_x r_t(x) - b/2 - |\hat{q}|$,
 with the endpoint included only when $\hat{q} < 0$. Every setting run here is in that sub-class,
 so the sharp form applies to all five. \textbf{What was printed before is the failure half.}
-$\tau^{\star+}$ is the rule Figures~\ref{fig:boundary} and~\ref{fig:settings} draw, and all $19$
+$\tau^{\star+}$ is the rule Figures~\ref{fig:boundary} and~\ref{fig:settings} (App.~\ref{app:support})
+draw, and all $19$
 dead-band runs agree with it read against the adversary the harness plays. It is not a retention
 condition, and Table~\ref{tab:stress} (App.~\ref{app:support}) separates the two with legal
 objects only. The supremum can
@@ -438,96 +416,31 @@ b/2$ on $t$ a power of two and $0$ elsewhere reads $\tau^{\star+} = 2$ against $
 And that printed rule omits $\tau^{\star-}$ entirely.
 
 % =========================================================================================
-% S15 SUB-SESSION D (2026-08-24): FIGURES 2 AND 3 ARE BACK IN THE BODY, HERE, AS A PAIR.
+% S16 SUB-SESSION C (2026-08-26): FIGURES 2 AND 3 GO BACK TO Appendix~\ref{app:support}, AS A
+% PAIR, REVERSING S15 SUB-SESSION D's PROMOTION OF BOTH INTO THIS SECTION.
 %
-% THE REASON THEY LEFT IS GONE.  S10 sub-session D moved both to Appendix~A and recorded a
-% single trigger for each: "the E-values 4-page ceiling, which excludes appendices."  Under
-% TS-LIMITS -- "4 to 7 pages plus references", with no appendix exclusion stated anywhere in
-% the call (verified fresh 2026-08-24, research/S15/A-venue-verification.json field
-% a1_findings.3_appendix_policy) -- an appendix page and a body page cost the same, so the
-% move buys NOTHING and the placement is a reader question only.
-%
-% WHY THE BODY, ON READER GROUNDS, AND WHY BOTH RATHER THAN ONE.  They carry the two halves
-% of a tightness claim, and the paragraph immediately above needs both in the same breath:
-%   Figure~\ref{fig:boundary} is the SHARPNESS half.  The abstract's headline -- past the edge
-%     "miscoverage is 1.000000 against alpha = 0.1: coverage fails outright, not merely its
-%     rate" -- is exactly what panel (a) shows and panel (b) locates.  A reader who meets that
-%     sentence four pages from the picture takes it on trust.
-%   Figure~\ref{fig:settings} is the CLASS half.  Section~\ref{sec:forfeit} claims necessity
-%     over an adversary CLASS and over five (r_t, qhat) settings, and states both degenerate
-%     edges; all 19 runs, the five tau*+ rules, and the two degenerate rules drawn as arrows
-%     are in that one figure and nowhere else.  It is the evidence that the boundary is a law
-%     rather than a fit to the null scorecaster.
-% Splitting them -- one in the body, one behind the references -- would leave the section
-% arguing sharpness with a picture and generality without one, which is the weaker half
-% arguing alone.
+% D's promotion rested on one premise and that premise is gone.  D wrote that under TS-LIMITS
+% "an appendix page and a body page cost the same, so the move buys NOTHING and the placement
+% is a reader question only".  The paper is submitted to E-values again -- "Short papers up to
+% 4 pages, excluding references and optional appendices", re-verified 2026-08-26
+% (research/S16/A-venue-reconfirmation.json) -- so an appendix page costs nothing against the
+% ceiling and a body page costs against a 4-page one.  D's reader argument is not withdrawn; it
+% is outranked by an admissibility constraint, which is the same order of precedence S6 and S10
+% sub-session D recorded when they put both figures in the appendix in the first place.
 %
 % NOTHING IS EDITED.  Both floats move whole: graphic, caption word for word, \label, float
-% specifier.  ONE caption cross-reference is repointed, in Figure~\ref{fig:boundary}'s last
-% sentence, because it said "this appendix's primary-regime paragraph" of a paragraph that
-% stays in Appendix~A while the figure does not; it now names Appendix~\ref{app:support}
-% explicitly.  No number, axis, marker or claim changes.
+% specifier, and S15 sub-session D2's repointing inside Figure~\ref{fig:boundary}'s caption
+% (which names the exact-threshold column rather than a deleted appendix paragraph, so it is
+% not self-referential once the figure sits inside that appendix).  The S5/S6 rebuild history
+% for Figure~\ref{fig:boundary} stays HERE, above, where the figure used to sit;
+% Figure~\ref{fig:settings}'s axis-principle note travels with it.
 % DOCUMENT ORDER, HENCE NUMBERING, IS PRESERVED: Figure 1 is the placements schematic in
 % Section~\ref{sec:setup}, Figure 2 the cliff, Figure 3 the five settings.  Every \ref in the
 % paper resolves to the number it resolved to before.
+% The body sentence naming both figures regains its "(App.~\ref{app:support})" locator, which
+% is what it carried before S15 sub-session D removed it.
+% Record: research/S16/C-appendix-reversal.json.
 % =========================================================================================
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\textwidth]{../figures/figure1_boundary.pdf}
-  \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
-  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
-  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full sweep: filled markers run to
-  $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
-  covers, orange forfeits, and the dashed rule is $\tau^{\star+}$. \textbf{(b)} The same
-  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star+}$ on
-  a symlog axis whose linear zone is $|\tau - \tau^{\star+}| \le 10^{-3}$, which magnifies the
-  neighbourhood of $\tau^{\star+}$: visual spacing here is not proportional to true distance in
-  $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
-  narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
-  settings. The same eleven widths under the \emph{mirror} adversary, which locates
-  $\tau^{\star-}$, are this run's exact-threshold column read under the strict indicator.}
-  % S15 SUB-SESSION D2 (2026-08-25): REPOINTED.  The clause read "are read off in
-  % Appendix~\ref{app:support}'s primary-regime paragraph", and that paragraph is deleted this
-  % sub-session on operator authorisation, so the pointer would have dangled.  It now names
-  % WHERE THE READING COMES FROM instead of where it was printed, which is the same fact the
-  % deleted paragraph opened with and is also stated in the mirror-boundary paragraph below.
-  % The eleven individual readings are no longer printed anywhere; that loss is recorded in
-  % research/S15/D2-budget-closure.json rather than papered over.
-  \label{fig:boundary}
-\end{figure}
-
-% S6 SUB-SESSION A: FIGURE 3, NEW.  It carries the five-setting comparison that S5's
-% Figure 2 panel (a) held as a five-series overlay in one continuous panel.
-% THE AXIS PRINCIPLE, which is why this is a separate figure and not another panel:
-% the (r_t, qhat) SETTING is a categorical variable and gets a categorical axis (five
-% rows); tau is CONTINUOUS and keeps a log axis.  The overlay had to place five series
-% and five tau* markers on one continuous pair of axes, which is what produced four
-% nested markers at (tau = 0.5, miscoverage ~ 0.1) and a legend that overwrote two of
-% the tau* rules.  Rows do not collide.
-% All 19 runs appear, and the two tau* values that fall off the axis (0 and unbounded) are
-% drawn as arrows rather than dropped.
-% Built by the same generator as Figure~\ref{fig:boundary}: src/make_figure1.py.
-% S6's note here also said "IT LIVES IN THE APPENDIX because E-values excludes appendices
-% from the 4-page ceiling and the body is exactly full".  That clause is obsolete under
-% TS-LIMITS and is dropped rather than left to be acted on by a later session.
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\textwidth]{../figures/figure3_settings.pdf}
-  % S6 SUB-SESSION B: written to the SAME rule as the other two captions -- describe the
-  % axes, the encoding and the measurement conditions, and argue nothing.  Four sentences.
-  \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
-  rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
-  Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
-  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$, all under the
-  \emph{specified} adversary. The rule on each
-  row is that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
-  at the right, and the tinted band is $\tau \le \tau^{\star+}$. Two rules fall off the
-  axis and are drawn as arrows: $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$, and
-  $\tau^{\star+}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator. The
-  mirror boundary $\tau^{\star-}$ of (\ref{eq:boundaries}) is not drawn here and differs from
-  $\tau^{\star+}$ at the two non-null scorecasters.}
-  \label{fig:settings}
-\end{figure}
 
 % S12 SUB-SESSION B / E: CLOSED-FORM RESTATEMENT.  Drafted in research/S12/B-closed-form.json,
 % attacked by no adversarial pass (only C1/C2's e-value section required one this session),
@@ -639,7 +552,7 @@ returns $1.000000$, as does partial adjustment at $w = 0.999$.
 $\hat{q} \equiv 0$ the boundary is exactly Corollary~2's radius, crossing it costs coverage rather
 than the rate ($\tau = 0.9$ covers at $0.100012$, $\tau = 1.5$ returns $1.000000$ with
 $\max_t|E_t| = 900{,}000$, $60{,}747$ times Proposition~2's bound at $T = 10^6$;
-Table~\ref{tab:forfeit}), and (\ref{eq:boundaries}) makes that an
+Table~\ref{tab:forfeit}, App.~\ref{app:support}), and (\ref{eq:boundaries}) makes that an
 if-and-only-if against the whole legal adversary class rather than a pattern across five settings. \textbf{The claim is that necessity: a
 tightness result about someone else's sufficient condition}, smaller and more precise than a
 forfeit of the rate by post-processing. Elsewhere it stays sufficient only, and now provably so:
