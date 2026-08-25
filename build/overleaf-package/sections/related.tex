@@ -346,6 +346,23 @@ trade-off in which sublinear regret is bought by growing $\theta$ with $T$, whic
 % carries no content of its own -- it is a pointer, not a claim.  The betting reading itself is
 % not lost: it is stated in the body, in Section~\ref{sec:forfeit}'s "The boundary read as a
 % bet." paragraph, with the construction, the two arms and every one of the section's hedges.
+% S15 SUB-SESSION J (2026-08-25): THE THREE CLAIMS IN THE SENTENCE ABOVE ARE OVERSTATED AND ARE
+% CORRECTED HERE RATHER THAN REWRITTEN, SO THE RECORD SHOWS WHAT D2 WROTE AND WHAT IS TRUE
+% (I1 finding F8).  What the body paragraph actually carries is LESS than "the construction, the
+% two arms and every one of the section's hedges":
+%   (a) "the construction" -- only $M_t$'s formula survives.  The closed form with $K$ and $L$,
+%       the uniform bound $\sup_t M_t \le e^{S(\lambda)}$, and the derivation of the nonnegativity
+%       range are all gone with sections/evalue.tex and are not restored.
+%   (b) "the two arms" -- only the $\tau = 1.5$ arm is named.  The $\tau = 0.9$ arm survives only
+%       as the unquantified "inside the edge the same test cannot reject at that level at any
+%       horizon", and the mirror arm is gone entirely.
+%   (c) "every one of the section's hedges" -- two were NOT carried by D2: the admissible range
+%       for $\lambda$ and the pre-registration caveat.  Both are restored by this sub-session in
+%       forfeit.tex ("$\lambda$ is fixed in $[-1/(1-\alpha),\,1/\alpha]$, and its sign above is
+%       chosen after the fact, not pre-registered"), so (c) is true as of this commit and was not
+%       true at 72cc82f.
+% main.tex's own D2 block is more careful and says "its four-of-five surviving hedges"; this
+% comment was the outlier.  Nothing here renders.
 % Wave 3 closed the galeani2009antiwindup bibliography gap; it is cited as \citep above.
 %
 % gao2025coloke: "Conformal Online Learning of Deep Koopman Linear Embeddings", arXiv:2511.12760,

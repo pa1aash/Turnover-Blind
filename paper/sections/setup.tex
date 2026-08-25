@@ -243,8 +243,21 @@ sublinear.
 
 \paragraph{One scalar, two readouts, two places.} Damping a sequentially updated scalar
 has two standard readouts, both prior work. A quadratic cost gives linear partial adjustment
-$\tilde{q}_{t+1} = (1-\lambda)\hat{q}^{\,\mathrm{raw}}_{t+1} +
-\lambda\tilde{q}_t$ \citep{garleanu2013dynamic}, which \citet{godahewa2025stability} publish as
+% S15 SUB-SESSION J (2026-08-25): F4 FIX -- THE SMOOTHING WEIGHT IS RENAMED $\lambda$ -> $w$.
+% Two reasons, one new and one pre-existing.  NEW: D2's fold-in moved the Skeptic's betting stake
+% $\lambda$ out of the deleted appendix and into the BODY (forfeit.tex, "The boundary read as a
+% bet."), so from 72cc82f the body carried two unrelated $\lambda$s three pages apart (I1 finding
+% F4).  PRE-EXISTING: this line was the ONLY place the smoothing weight was ever called $\lambda$
+% -- Table~\ref{tab:forfeit}'s column, forfeit.tex:235 ("A downstream partial adjustment of weight
+% $w$") and the Limitations hedge all call the same quantity $w$, so the paper defined the weight
+% under one name and used it under another and never joined them.  The rename fixes both at once
+% and is semantics-preserving: no claim, number, hypothesis or hedge changes, and $w$ was
+% previously unused in this file.  It is also the CHEAPER of I1's two options (renaming the
+% betting stake instead would have moved the paper off the standard symbol for a stake in the
+% e-value literature it cites).  Authorised by the operator's Wave 3 patch brief, which delegates
+% the collision call to this sub-session.
+$\tilde{q}_{t+1} = (1-w)\hat{q}^{\,\mathrm{raw}}_{t+1} +
+w\tilde{q}_t$ \citep{garleanu2013dynamic}, which \citet{godahewa2025stability} publish as
 post-processing and \citet[Eq.~13]{binny2025whomoved} apply to a deployed conformal threshold. A
 proportional cost gives a no-trade band, moving only when the
 target is more than $\tau$ away, then pulling back exactly $\tau$

@@ -18,7 +18,51 @@
 % path, use BIBINPUTS=".:../audit:" bibtex main instead.
 %
 % ===========================================================================
-% S15 SUB-SESSION D2 (2026-08-25).  THIS BLOCK SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT.
+% S15 SUB-SESSION J (2026-08-25).  THIS BLOCK SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT,
+% INCLUDING D2's.  The test is unchanged: (total PDF pages) - (bibliography pages) <= 7.
+%
+% MEASURED BY THIS SUB-SESSION, artefacts deleted first, four pdflatex passes + bibtex, from an
+% isolated scratchpad copy, BOTH options:
+%     9 pages; references 2.233 (dbl) / 2.236 (sgl);
+%     COUNTED CONTENT 6.767 (dbl) / 6.764 (sgl), against a ceiling of 7.
+%     References starts p.7, 37.8% down under dblblindworkshop and 31.2% down under
+%     sglblindworkshop, and runs to p.9.  Both options: 0 TeX errors, 0 overfull boxes,
+%     0 underfull hboxes, 0 underfull vboxes, 0 undefined refs, 0 undefined citations,
+%     0 LaTeX warnings, 0 \pdfendlink warnings, 0 bibtex warnings.
+% D2's dbl figures reproduce to 0.001pp (6.767 vs its 6.768); the sgl figures differ by 0.015pp
+% because this sub-session's edits reflowed the sgl bibliography by one line.  I1's independent
+% rebuild of both options agreed with D2 to 0.001pp before these fixes.
+%
+% WHAT CHANGED HERE, AND WHY, ALL OF IT REPAIR OF SIDE-EFFECTS OF D2's AUTHORISED CUT:
+%   F1  sections/limitations.tex -- a surviving Limitations hedge referenced $0.63/(1-w)$, whose
+%       only definition was in an Appendix A paragraph D2 deleted.  Reworded to name the
+%       quantity instead of the orphaned constant.  Hedge substance unchanged.
+%   F2  sections/forfeit.tex -- the pre-registration caveat was cut but the claim it qualified
+%       ("convicts the tau = 1.5 arm on its fifth interval at the 5% level") survived.  Restored
+%       as "its sign above is chosen after the fact, not pre-registered".
+%   F3  sections/forfeit.tex -- $\lambda$ reached the body with no admissible range, which made
+%       the surviving clause "$M_t$ is an e-value for that imposed null alone" false outside it.
+%       Restored as "$\lambda$ is fixed in $[-1/(1-\alpha),\,1/\alpha]$".
+%   F4  sections/setup.tex -- the smoothing weight is renamed $\lambda$ -> $w$, because D2's
+%       fold-in put a second, unrelated $\lambda$ (the Skeptic's stake) in the body, and because
+%       $w$ is what Table 1 and sections/forfeit.tex already call that same weight.
+%   Plus one non-rendering correction to an overstated D2 comment in sections/related.tex.
+% CONSEQUENCE FOR D2's BLOCK BELOW: its sentence "sections/limitations.tex and sections/setup.tex
+% are BYTE-IDENTICAL to fc8328a" was true at 72cc82f and is NO LONGER TRUE.  Both files are
+% edited here, each by exactly one clause, each recorded in that file's own J block.
+%
+% THE MARGIN IS A FLOAT-FIT MARGIN, NOT A LINE MARGIN.  Measured, not assumed: ONE extra typeset
+% line of body text moves the References heading down one line, which moves a three-line
+% bibliography entry from p.8 to p.9, which leaves Table~\ref{tab:stress}'s float too little room
+% and evicts it to a TENTH page -- taking counted content from 6.767 straight to 7.724, i.e.
+% 0.72pp OVER the ceiling.  There is no value in between.  Two longer wordings of the F1 clause
+% were built and both did exactly this; the wording that shipped is the one that reflows into the
+% same four lines the deleted clause occupied.  Treat the budget as ZERO lines of headroom.
+% Record: research/S15/patch-log.json.  Operator authorisation: docs/OPERATOR_DECISIONS.md.
+%
+% ===========================================================================
+% S15 SUB-SESSION D2 (2026-08-25).  SUPERSEDED BY THE J BLOCK ABOVE; KEPT AS THE RECORD OF THE
+% CUT ITSELF.  ITS MEASUREMENTS ARE THE PRE-J STATE.
 % THE TEST IS D's, UNCHANGED: (total PDF pages) - (pages the bibliography occupies) <= 7.
 %
 % THE CEILING IS MET, WITH MARGIN, AND IT COST TWO DELETIONS THE OPERATOR AUTHORISED BY NAME.

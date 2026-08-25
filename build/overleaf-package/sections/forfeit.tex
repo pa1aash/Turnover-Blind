@@ -685,7 +685,30 @@ $\tau = 1.5$ arm on its fifth interval at the $5\%$ level, and inside the edge t
 cannot reject at that level at any horizon. It adds a diagnostic and a reading, not a result: the
 test is Ville's inequality applied to the standard martingale $M_t = \prod_{i \le t}\big(1 +
 \lambda(\mathrm{err}_i - \alpha)\big)$, whose logarithm depends on the path only through $t$ and
-$E_t$ \citep{shafer2019gtfpf,ramdas2023savi,vovk2021evalues}; $M_t$ is an e-value for that imposed
+% S15 SUB-SESSION J (2026-08-25): F2 + F3 FIX, ONE INSERTION SERVING BOTH.  Two qualifiers that
+% lived in the deleted sections/evalue.tex are restored here, because the claims they qualified
+% survived D2's fold-in without them (I1 findings F2 and F3).
+%   F3, the range.  The deleted section stated "M_t >= 0 for every path if and only if lambda in
+%   [-1/(1-alpha), 1/alpha]".  That range is exactly what makes M_t a NONNEGATIVE martingale,
+%   hence a test martingale, hence an e-value, hence subject to Ville's inequality.  Without it
+%   the surviving clause "$M_t$ is an e-value for that imposed null alone" is FALSE for lambda
+%   outside the interval, so this is a correctness fix, not a cosmetic one.  The range is given
+%   inline rather than derived; the deleted section's derivation is not restored.
+%   F2, the pre-registration caveat.  The deleted section read: "A genuine pre-registered
+%   deployment fixes $\lambda$, sign included, before the data arrive ... and the single sign
+%   used per arm below is chosen after the fact, to illustrate the identity on a trajectory
+%   already known to fail or to hold; it is not itself a claim of a pre-registered test."  D2
+%   recorded this as "lost WITH the example it qualified", but the example's HEADLINE VERDICT
+%   ("convicts the tau = 1.5 arm on its fifth interval at the 5% level") is precisely what
+%   survives in this paragraph, so the conclusion outlived its qualifier.  "its sign above" points
+%   back at that verdict.  The restored substance is the operative half of the original and
+%   nothing more: the sign was chosen after the fact and is not a pre-registered test.
+% Placed at lambda's introduction rather than beside the verdict so that both qualifiers attach
+% to the symbol they constrain and the paragraph carries ONE inserted clause instead of two.
+% Authorised by the operator's Wave 3 patch brief, which names both fixes explicitly.
+$E_t$ \citep{shafer2019gtfpf,ramdas2023savi,vovk2021evalues}; $\lambda$ is fixed in
+$[-1/(1-\alpha),\,1/\alpha]$, and its sign above is chosen after the fact, not pre-registered;
+$M_t$ is an e-value for that imposed
 null alone, the accumulator itself is signed and is neither an e-value nor an e-process, and no
 result above assumes that null or is certified by that test.
 % =========================================================================================

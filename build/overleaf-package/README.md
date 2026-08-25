@@ -60,18 +60,19 @@ line just below it, and rebuild.
    so it is moot for a TS-LIMITS submission as currently configured; insert the real URL only if
    you switch to a non-anonymous venue option.
 
-## The isolated compile result (S15 sub-session H, 2026-08-25; content resynced by D2)
+## The isolated compile result (S15 sub-session J, 2026-08-25; content resynced by J)
 
-The `.tex` sources here were resynced by S15 sub-session D2 after its budget-closing cut, so
-they match `paper/` exactly apart from the two relative-path rewrites that let this directory
-compile standalone (`../audit/REFS_VERIFIED` to `REFS_VERIFIED`, `../figures/` to `figures/`).
-D2 RE-RAN THE ISOLATED COMPILE against the post-cut sources, from a temp directory with no path
-back to this repository: **9 pages, References p.7 through p.9 = 2.232 pages, counted content
-6.768 pages, 0 TeX errors, 0 undefined citations or references, 0 overfull boxes, 0 underfull
-boxes, 0 LaTeX warnings, 0 pdfendlink warnings, 0 bibtex warnings**, and the isolated build's
-rendered text is byte-identical to `paper/main.pdf`. `/Author` reads `Anonymous Author(s)`, no
-XMP block, and a raw byte-grep for the operator's name, email and `github.com` returns zero
-matches. The narrative below is sub-session H's original record, kept for its detail.
+The `.tex` sources here were resynced by S15 sub-session J after its three post-cut correctness
+fixes, so they match `paper/` exactly apart from the three relative-path rewrites that let this
+directory compile standalone (`../audit/REFS_VERIFIED` to `REFS_VERIFIED`, and the two
+`../figures/` to `figures/`). J RE-RAN THE ISOLATED COMPILE against the fixed sources, from a
+temp directory with no path back to this repository: **9 pages, References p.7 through p.9 =
+2.233 pages, counted content 6.767 pages, 0 TeX errors, 0 undefined citations or references, 0
+overfull boxes, 0 underfull boxes, 0 LaTeX warnings, 0 pdfendlink warnings, 0 bibtex
+warnings**, and the isolated build's rendered text is byte-identical to `paper/main.pdf`.
+`/Author` reads `Anonymous Author(s)`, no XMP block, and a raw byte-grep for the operator's
+name, email and `github.com` returns zero matches. The narrative below is sub-session H's
+original record, kept for its detail.
 
 This package was rebuilt fresh against the merged S15 content (sub-sessions B/C/D/E: venue
 switch, identity sweep, body/appendix restructuring, prose de-compression) and compiled from a
@@ -91,13 +92,19 @@ identity leak found — consistent with sub-session B's own check.
 
 ## Page count: inside the TS-LIMITS ceiling
 
-**9 total pages. References starts on page 7 (36% down the page under `dblblindworkshop`, 28%
-under `sglblindworkshop`) and runs through page 9, i.e. occupies 2.232 pages (dbl) / 2.251
-pages (sgl). Counted content (everything except the bibliography) is 6.768 pages (dbl) / 6.749
-pages (sgl) against TS-LIMITS' 7-page whole-document ceiling.** Both options are inside it.
+**9 total pages. References starts on page 7 (37.8% down the page under `dblblindworkshop`,
+31.2% under `sglblindworkshop`) and runs through page 9, i.e. occupies 2.233 pages (dbl) /
+2.236 pages (sgl). Counted content (everything except the bibliography) is 6.767 pages (dbl) /
+6.764 pages (sgl) against TS-LIMITS' 7-page whole-document ceiling.** Both options are inside
+it. These are sub-session J's own re-measurements after its three fixes, not carried forward
+from D2.
 
-This closed a 2.77-page gap, and it cost real content. S15 sub-session D2 deleted, on explicit
-operator authorisation and on nothing else, (a) Appendix A's five prose paragraphs and (b) the
+This closed a 2.72-page gap, and it cost real content. (Earlier records in this project said
+2.77. That figure came from commit `fc8328a`'s message, whose page geometry was wrong; S15
+sub-session I1 rebuilt `fc8328a` from a clean archive and measured 12 pages, bibliography 2.284,
+counted content 9.716, so the overage was 2.72 and the recovery 2.95.) S15 sub-session D2
+deleted, on explicit operator authorisation and on nothing else, (a) Appendix A's five prose
+paragraphs and (b) the
 whole e-value appendix, `sections/evalue.tex`, whose load-bearing sentences and surviving
 hedges moved into the body paragraph "The boundary read as a bet." in `sections/forfeit.tex`.
 What that cut and what it kept, with the deleted text quoted in full, is
@@ -133,5 +140,11 @@ compile cleanly, so once it's rendered there:
       glance.
 - [ ] If you change the venue switch or the affiliation line, rebuild and re-check the page
       count and where References starts before assuming the change is free — this document
-      clears its 7-page ceiling by about 0.23 pages, and the last page is nearly full, so a
-      single extra line of body text can push it to a tenth page and a whole page over.
+      clears its 7-page ceiling by about 0.23 pages, but that number badly overstates the real
+      margin. S15 sub-session J measured the mechanism: **one extra typeset line of body text
+      pushes the References heading down one line, which pushes a three-line bibliography entry
+      from page 8 onto page 9, which leaves Table 2's float too little room and evicts it onto a
+      tenth page — taking counted content from 6.767 straight to 7.724, i.e. 0.72 pages OVER the
+      ceiling.** There is no value in between; the metric is quantised at whole pages. J
+      confirmed this by building it, twice, with two different one-line-longer wordings of the
+      same sentence. Treat the budget as zero lines of headroom, not 0.23 pages.
