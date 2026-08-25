@@ -300,9 +300,28 @@
 \paragraph{One quantity, four names.} Four literatures name the movement of a
 sequentially updated forecast in four vocabularies: \emph{abrupt threshold changes};
 \emph{forecast (in)stability} (MASC, MAC/SDC, MQC/SMQC, congruence, nervousness);
-\emph{jumpiness}, \emph{convergence index}, \emph{(in)consistency}; and \emph{switching
-cost}. Online conformal prediction gives distribution-free long-run coverage for any
-bounded scorecaster \citep[Thm~1, Prop.~2]{angelopoulos2023pid}. Forecast stability
+\emph{jumpiness} \citep{zsoter2009jumpiness}, \emph{convergence index}
+\citep{ehret2010convergence}, \emph{(in)consistency} \citep{pappenberger2011consistency}; and
+\emph{switching cost}. The same arithmetic is the Multi-Quantile Change over a predictive
+distribution \citep[v3, \S3.4.1]{zanotti2026smqc}, IACER in applied control
+\citep{sarhadi2025criteria}, and a path length in dynamic-regret online learning.
+% S16 SUB-SESSION D (2026-08-26): THESE FIVE CITATIONS ARRIVE FROM sections/setup.tex, where the
+% body's own five-name enumeration is cut to a pointer to close E-values' 4-page body ceiling.
+% They are RELOCATED, not deleted: zanotti2026smqc, zsoter2009jumpiness, ehret2010convergence,
+% pappenberger2011consistency and sarhadi2025criteria were cited nowhere else in the document, so
+% cutting the body enumeration without this insertion would have dropped five entries from the
+% bibliography.  Each key keeps its locator (zanotti2026smqc keeps "v3, \S3.4.1") and each is
+% attached to the same name it carried in the body.  This appendix already named all of these
+% names; it now carries their citations too, which is the whole of the change.
+Online conformal prediction gives distribution-free long-run coverage for any
+bounded scorecaster \citep[Thm~1, Prop.~2]{angelopoulos2023pid}, generalizing the running-error
+feedback that adaptive conformal inference \citep{gibbs2021aci} and its distribution-shift variant
+DtACI \citep{gibbs2024dtaci} already apply directly to the threshold.
+% S16 SUB-SESSION D (2026-08-26): the ACI/DtACI clause arrives from sections/setup.tex, where it
+% was related-work positioning inside the Setup section.  Both keys are cited nowhere else, so
+% relocating rather than deleting keeps them in the bibliography.  Wording unchanged apart from
+% the subject, which was "Conformal PID" there and is the same paper's Thm~1/Prop.~2 here.
+Forecast stability
 treats the movement as a functional, read out as post-processing
 \citep[Eq.~3]{godahewa2025stability}, against a priced decision to switch
 \citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}. Verification work uses a

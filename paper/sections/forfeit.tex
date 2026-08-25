@@ -228,19 +228,33 @@
 % move's one and only reason is gone and the table is back here, below.  The S4/S5
 % provenance notes above stay here as history; they always belonged beside this section.
 
-\paragraph{The retention result is published, and tested from outside.}
-\mbox{\citet[Corollary~2]{li2025o2cp}} prove that a predictable $d_t$ with $|d_t| \le
-\mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration form
-and \emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
+% S16 SUB-SESSION D (2026-08-26): TWO REDUNDANT RESTATEMENTS CUT FROM THIS PARAGRAPH (tier 3).
+%   (a) The formal restatement of Corollary~2 -- "prove that a predictable $d_t$ with $|d_t| \le
+%       \mu_t(b/2-|\hat{q}_t|)$ on the deployed threshold keeps (\ref{eq:pid}) in error-integration
+%       form and \emph{retains}" -- was the paper's SECOND statement of the same corollary in the
+%       same notation.  Section~\ref{sec:intro} states it first and at greater length, quoting the
+%       source's own "has exactly the CPID error-integration form"; that is the stronger of the
+%       two, so this echo goes and a pointer replaces it.  "the radius is theirs" (the attribution
+%       hedge) and "$|E_T| \le c\,h(T)+1$" (the bound the next clause measures against) both stay.
+%   (b) "and for $w = 0.99$ and $0.999$ the excursion is \emph{flat in $T$} while the bound grows
+%       like $\log T$" -- a second measurement of the same L2 departure the preceding clause has
+%       already priced, and readable off Table~\ref{tab:forfeit}'s own two-horizon columns
+%       (App.~\ref{app:support}), which survive untouched.  The five-of-eleven count, which is what
+%       the argument uses, stays.
+% Hedges H-F1 through H-F4 all survive verbatim.  No number that any surviving sentence depends on
+% is lost; verbatim before/after in research/S16/D-content-removal.json.
+\paragraph{The retention result is published, and tested from outside.} The radius restated in
+Section~\ref{sec:intro} is the one \mbox{\citet[Corollary~2]{li2025o2cp}} prove, and it
+\emph{retains} $|E_T| \le c\,h(T)+1$: the radius is theirs. A downstream partial
 adjustment of weight $w$ leaves it; Table~\ref{tab:forfeit} (App.~\ref{app:support}) prices that
-departure, and five of its eleven arms exceed the bound at $T = 10^6$, and for $w = 0.99$ and
-$0.999$ the excursion is \emph{flat in $T$} while the bound grows like $\log T$. The
+departure, and five of its eleven arms exceed the bound at $T = 10^6$. The
 forfeit is a property of the smoothing \emph{strength}, not Placement~A, and it buys something:
-travel falls from $28{,}311$ to $202$. The forfeit's sign is counter-intuitive, so it is worth
-saying what does and does not break. A readout on the completed
-$q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. What
-it does instead is delay a correction that has already been computed, so the accumulator excurses
-\emph{further} rather than less: smoothing the output does not damp $E_t$ but feeds it.
+% S16 SUB-SESSION D (2026-08-26): S15-E's three de-compressions in this file are reversed to the
+% wording at 351655d^ (39d5914's and 2668003's compressed forms), because E-values' 4-page BODY
+% ceiling binds again.  Every hedge in the reversed text predates S15-E and survives verbatim.
+travel falls from $28{,}311$ to $202$. A readout on the completed
+$q_{t+1}$ touches neither $r_t$ nor the integrator's argument, so it cannot put~(4) at risk. It delays a
+correction already computed, so smoothing the output does not damp $E_t$ but feeds it.
 
 % =========================================================================================
 % S16 SUB-SESSION C (2026-08-26): THE SPLIT TABLE IS RESTORED.  THE ELEVEN-ROW TABLE GOES BACK
@@ -278,26 +292,32 @@ it does instead is delay a correction that has already been computed, so the acc
 % S12 SUB-SESSION D / E: BODY RESULTS TABLE.  Drafted in research/S12/D-body-table.json.
 % Every cell is a straight copy of Table~\ref{tab:forfeit} (App.~\ref{app:support}), no new
 % computation.
-\begin{table}[!ht]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{4.5pt}
-\renewcommand{\arraystretch}{0.95}
-\caption{Placement~A, $T = 10^6$: four arms of Table~\ref{tab:forfeit}
-(App.~\ref{app:support}), which lists the remaining seven and finer detail. Proposition~2's
-bound is $14.8155$; ``ratio'' is $\max_t|E_t|$ over it.}
-\label{tab:forfeit-body}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Arm & miscov.\ $10^6$ & $\max_t|E_t|$ $10^6$ & ratio \\
-\midrule
-none (control)              & $0.100007$          & $7.80$    & $0.53$     \\
-partial adj.\ $w = 0.999$   & $\mathbf{0.100004}$ & $623.70$  & $42.10$    \\
-dead band $\tau = 0.9$      & $0.100012$          & $13.20$   & $0.89$     \\
-dead band $\tau = 1.5$      & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+% =========================================================================================
+% S16 SUB-SESSION D (2026-08-26): THE FOUR-ROW BODY TABLE IS CUT, AS REDUNDANT RESTATEMENT.
+% This is the operator's tier 3 ("keep the stronger statement, cut the weaker echo"), taken
+% after tiers 1 and 2 left the body 26 typeset lines over E-values' 4-page ceiling.  The case,
+% checked rather than asserted:
+%   (1) NOTHING REFERENCED IT.  \label{tab:forfeit-body} had zero \ref sites in the whole
+%       document (grep over sections/*.tex and main.tex).  No prose read off it.
+%   (2) EVERY CELL WAS ALREADY PRINTED TWICE.  The block's own S12 note says "every cell is a
+%       straight copy of Table~\ref{tab:forfeit} (App.~\ref{app:support}), no new computation",
+%       and that table survives intact with all eleven arms.
+%   (3) THE TWO ROWS THE ARGUMENT USES SURVIVE IN BODY PROSE, VERBATIM, one paragraph below:
+%       "$\tau = 0.9$ covers at $0.100012$, $\tau = 1.5$ returns $1.000000$ with
+%       $\max_t|E_t| = 900{,}000$, $60{,}747$ times Proposition~2's bound at $T = 10^6$".  The
+%       prose is the STRONGER statement of the pair: it says what the numbers mean.
+%   (4) NO HEDGE IS LOST.  The caption's hedge (the body table is a selection, App.~A lists the
+%       rest) is carried by the surviving prose "Table~\ref{tab:forfeit} (App.~\ref{app:support})
+%       prices that departure, and five of its eleven arms exceed the bound at $T = 10^6$", which
+%       states the eleven-arm count and points at the appendix.  The caption's other number,
+%       Proposition~2's bound $14.8155$, is still printed twice: in the degenerate-edges paragraph
+%       below ("against Proposition~2's $14.8155$") and in Table~\ref{tab:forfeit}'s own caption.
+%   (5) THE CONTROL AND $w = 0.999$ ROWS lose their body printing.  Recorded, not papered over:
+%       both are in Table~\ref{tab:forfeit} (App.~\ref{app:support}), and the body's use of them
+%       ("five of its eleven arms exceed the bound", "travel falls from $28{,}311$ to $202$") is
+%       stated in prose above and does not read off this table.
+% The cut text is preserved verbatim in research/S16/D-content-removal.json.
+% =========================================================================================
 % S10 SUB-SESSION D: TWO SENTENCES OF TABLE-1 DETAIL MOVED FROM HERE INTO
 % sections/appendix.tex, WHERE TABLE 1 AND THE PARAGRAPHS THAT DISCUSS IT NOW LIVE.  Both
 % were already duplicated there in substance and are now printed once, in full:
@@ -356,15 +376,20 @@ dead band $\tau = 1.5$      & $\mathbf{1.000000}$ & $900{,}000$ & $60{,}747$ \\
 % Section~\ref{sec:setup}; 2 = the cliff; 3 = the five settings), so every \ref still reads
 % the same number.  The S6 sub-session A rebuild note above STAYS HERE, as history.
 
-\paragraph{The $L_1$ dead band leaves the radius, and the edge is a theorem.} A dead band pulls
-the deployed threshold back by exactly $\tau$ when it releases and holds it otherwise, so
-$|\tilde{q}_{t+1}-q_{t+1}| \le \tau$ at every round and ``inside Corollary~2'' reads
+% S16 SUB-SESSION D (2026-08-26): the dead band's mechanics are DEFINED in
+% Section~\ref{sec:setup} ("a no-trade band, moving only when the target is more than $\tau$ away,
+% then pulling back exactly $\tau$"), so the restatement that opened this paragraph -- "A dead band
+% pulls the deployed threshold back by exactly $\tau$ when it releases and holds it otherwise" --
+% was the second printing of one definition (tier 3).  The consequence the section actually uses,
+% $|\tilde{q}_{t+1}-q_{t+1}| \le \tau$ at every round, is kept.  Also cut: "and the deployed
+% value's realised supremum is $b-\tau$ to the printed digit at every $\tau \ge 0.9$", a measured
+% confirmation of the pinning sentence beside it, whose own statement of the pin survives, as does
+% Section~\ref{sec:limitations}'s "The threshold pins at $b-\tau = 0.5$".
+\paragraph{The $L_1$ dead band leaves the radius, and the edge is a theorem.} The dead band of
+Section~\ref{sec:setup} keeps $|\tilde{q}_{t+1}-q_{t+1}| \le \tau$ at every round, so ``inside
+Corollary~2'' reads
 $\tau \le \mu_t(b/2-|\hat{q}_t|)$. Under saturation the deployed value is pinned $\tau$ below the
-integrator's ceiling, and the deployed value's realised supremum is $b-\tau$ to the printed
-digit at every $\tau \ge 0.9$. Outside the radius the answer turns on two different levels of the
-integrator, and condition~(4) names only one of them. The two are the largest correction $r_t$
-ever issues and the correction it is guaranteed to issue once the accumulator has cleared the
-radius; where they differ, a boundary written with the first of them over-certifies.
+integrator's ceiling. Outside the radius two levels decide the answer and condition~(4) names only one of them.
 Write $A^{+}_t = \sup_x r_t(x)$ and $A^{-}_t = \inf_x r_t(x)$ for the integrator's extremes, and
 $\Lambda^{+}_t = \inf_{x \ge c\,h(t)} r_t(x)$, $\Lambda^{-}_t = \sup_{x \le -c\,h(t)} r_t(x)$ for
 the levels it is \emph{guaranteed} to reach once the accumulator clears the radius.
@@ -406,14 +431,21 @@ with the endpoint included only when $\hat{q} < 0$. Every setting run here is in
 so the sharp form applies to all five. \textbf{What was printed before is the failure half.}
 $\tau^{\star+}$ is the rule Figures~\ref{fig:boundary} and~\ref{fig:settings} (App.~\ref{app:support})
 draw, and all $19$
+% S16 SUB-SESSION D (2026-08-26): SENTENCE-LEVEL MERGES ONLY IN THIS BLOCK.  Both counterexamples
+% keep their construction and both of their numbers, because the PROTECTED paragraphs below name
+% them back ("the unattained supremum and the varying-$\hat{q}$ split two paragraphs above" in
+% (\ref{eq:closed})'s paragraph, and "the same unreachable-set construction with $r_t(x) = x$ past
+% $|x| > t^2$" in the degenerate-edges paragraph); nothing that either back-reference depends on
+% is touched.  "And that printed rule omits $\tau^{\star-}$ entirely" is folded into the
+% "not a retention condition" sentence, which is the other thing the printed rule fails to be.
 dead-band runs agree with it read against the adversary the harness plays. It is not a retention
-condition, and Table~\ref{tab:stress} (App.~\ref{app:support}) separates the two with legal
-objects only. The supremum can
-sit where the dynamics never go: $|E_t| \le (1-\alpha)t$, so a saturator equal to the harness's
-inside $|x| \le t^2$ and to $\pm 10b$ outside it satisfies~(4), reads $\tau^{\star+} = 19$, and
-fails at $\tau = 1.001$. A legal time-varying $\hat{q}$ splits $\sup_t$ from $\inf_t$: $\hat{q}_t =
-b/2$ on $t$ a power of two and $0$ elsewhere reads $\tau^{\star+} = 2$ against $\sigma^{+} = 1$.
-And that printed rule omits $\tau^{\star-}$ entirely.
+condition, it omits $\tau^{\star-}$ entirely, and Table~\ref{tab:stress}
+(App.~\ref{app:support}) separates the two with legal objects only. The supremum can
+sit where the dynamics never go: since $|E_t| \le (1-\alpha)t$, a saturator equal to the harness's
+inside $|x| \le t^2$ and to $\pm 10b$ outside it satisfies~(4), reads $\tau^{\star+} = 19$ and
+fails at $\tau = 1.001$; and a legal time-varying $\hat{q}$ splits $\sup_t$ from $\inf_t$,
+$\hat{q}_t = b/2$ on $t$ a power of two and $0$ elsewhere reading $\tau^{\star+} = 2$ against
+$\sigma^{+} = 1$.
 
 % =========================================================================================
 % S16 SUB-SESSION C (2026-08-26): FIGURES 2 AND 3 GO BACK TO Appendix~\ref{app:support}, AS A
@@ -474,10 +506,18 @@ always do.
 % kept; the CLAIM (tau*- = 1, closed on the failing side, exactly where (2) puts it, measured
 % on this paper's own grid) is unchanged and still in the body.  Nothing is deleted from the
 % paper: every number is still printed, once, in Appendix~A.
+% S16 SUB-SESSION D (2026-08-26): the identification of the exact-threshold column with the mirror
+% adversary is printed a second time, in Figure~\ref{fig:boundary}'s own caption
+% (App.~\ref{app:support}): "The same eleven widths under the \emph{mirror} adversary, which
+% locates $\tau^{\star-}$, are this run's exact-threshold column read under the strict indicator."
+% That caption is the stronger site (it sits on the figure the reading comes off), so the body
+% keeps the RESULT and points at it, and the parenthetical gloss "(one error process,
+% $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$)" goes with the identification it glossed.
+% Hedge H-F17 (the failure criterion is $|E_T|$, not the rate) is untouched below.
 \paragraph{The mirror boundary is already measured, on this paper's own grid.} The $\tau$-cliff
-run's exact-threshold column under the strict indicator is the mirror adversary $s_t \equiv -b/2$
-(one error process, $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$), and on the same eleven
-widths at the null scorecaster it locates $\tau^{\star-} = 1$, closed on the failing side, exactly
+run's exact-threshold column, read against the mirror adversary $s_t
+\equiv -b/2$ (Figure~\ref{fig:boundary}, App.~\ref{app:support}), locates $\tau^{\star-} = 1$ at
+the null scorecaster, closed on the failing side, exactly
 where (\ref{eq:boundaries}) puts it.
 % S15 SUB-SESSION D2 (2026-08-25): "; Appendix~\ref{app:support} prints the eleven readings" is
 % DROPPED from the sentence above, because the paragraph that printed them is deleted this
@@ -548,29 +588,61 @@ returns $1.000000$, as does partial adjustment at $w = 0.999$.
 % load-bearing conclusions the body already states, which is what an appendix is for.  Its
 % original trigger, the 4-page ceiling, is void and is recorded as void.
 
+% S16 SUB-SESSION D (2026-08-26): TWO ECHOES OF THE PROTECTED PARAGRAPHS ABOVE ARE CUT (tier 3).
+%   (a) "At $\mu_t = 1$, $\hat{q} \equiv 0$ the boundary is exactly Corollary~2's radius" repeats
+%       (\ref{eq:closed})'s own sentence one paragraph up -- "exactly Corollary~2's radius at
+%       $\mu_t = 1$, now as an if-and-only-if" -- which is protected and is the stronger of the
+%       two (it carries the display equation).  The setting is kept as the antecedent of
+%       "crossing it" so the numbers still say which boundary they cross.
+%   (b) "under the tangent integrator Corollary~2 permits $\tau \le b/2$ while no finite width
+%       forfeits coverage against any legal adversary, because the reach is genuine at every
+%       level" repeats the degenerate-edges paragraph immediately above, which is protected and
+%       which derives the same fact from $\kappa(\tau)$ rather than asserting it.  Replaced by a
+%       clause naming the case and pointing back, so H-F21 ("Elsewhere it stays sufficient only,
+%       and now provably so") keeps the example that earns "provably".
+% H-F21, H-F22, H-F23 and every number survive verbatim.
+% S16 SUB-SESSION D (2026-08-26): "crossing it costs coverage rather than the rate" is the paper's
+% THIRD printing of that contrast -- the abstract has "coverage fails outright, not merely its
+% rate" and Section~\ref{sec:intro} has it word for word -- so the weaker third instance goes and
+% the measurement it introduced stays, stated directly.  No number changes.
 \paragraph{What that establishes is that the published condition is tight.} At $\mu_t = 1$,
-$\hat{q} \equiv 0$ the boundary is exactly Corollary~2's radius, crossing it costs coverage rather
-than the rate ($\tau = 0.9$ covers at $0.100012$, $\tau = 1.5$ returns $1.000000$ with
-$\max_t|E_t| = 900{,}000$, $60{,}747$ times Proposition~2's bound at $T = 10^6$;
-Table~\ref{tab:forfeit}, App.~\ref{app:support}), and (\ref{eq:boundaries}) makes that an
-if-and-only-if against the whole legal adversary class rather than a pattern across five settings. \textbf{The claim is that necessity: a
+$\hat{q} \equiv 0$, $\tau = 0.9$ covers at $0.100012$ while $\tau = 1.5$ returns $1.000000$ with
+$\max_t|E_t| = 900{,}000$, $60{,}747$ times Proposition~2's bound at $T = 10^6$
+(Table~\ref{tab:forfeit}, App.~\ref{app:support}); (\ref{eq:boundaries}) makes that an
+if-and-only-if against the whole legal adversary class, not a pattern across five settings. \textbf{The claim is that necessity: a
 tightness result about someone else's sufficient condition}, smaller and more precise than a
 forfeit of the rate by post-processing. Elsewhere it stays sufficient only, and now provably so:
-under the tangent integrator Corollary~2 permits $\tau \le b/2$ while no finite width forfeits
-coverage against any legal adversary, because the reach is genuine at every level. At $\hat{q}
-\equiv +b/2$ the looseness goes the other way and disappears: Corollary~2 permits radius $0$, and
-(\ref{eq:boundaries}) permits no width at all against the mirror adversary, the unsmoothed control
-included, though $\tau = 1.5$ covers there against the specified one. The condition therefore
-binds at some legal settings and is slack at others, and that asymmetry is what
-makes ``tight'' a located claim rather than a global one: what is stated here is where the radius
-is sharp, and equally where it is not.
+the tangent integrator above forfeits no coverage at any width Corollary~2 permits. At $\hat{q}
+\equiv +b/2$ the looseness goes the other way and disappears: Corollary~2 permits radius $0$ and
+(\ref{eq:boundaries}) no width at all against the mirror adversary, the unsmoothed control
+included, though $\tau = 1.5$ covers there against the specified one. That asymmetry
+makes ``tight'' a located claim.
 
-\paragraph{The constructive reading, and it is the corollary's rather than ours.} Placement~B
-keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it already. What
-Section~\ref{sec:forfeit} adds is that the band has two edges, both computable before deployment
-from the integrator's guaranteed reach and the scorecaster's range, that crossing either is not a
-graceful degradation, and that between $\sigma^{\pm}$ and $\tau^{\star\pm}$, which separate only
-when $\hat{q}$ varies in $t$, neither direction is settled here.
+% =========================================================================================
+% S16 SUB-SESSION D (2026-08-26): \paragraph{The constructive reading, and it is the corollary's
+% rather than ours.} IS CUT, AS REDUNDANT RESTATEMENT (operator tier 3).  It was a four-clause
+% summary of things this paper states elsewhere and more strongly; each clause was checked
+% against a surviving site before the paragraph went:
+%   "Placement~B keeps $\{\hat{q}_t\}$ inside the admissible radius, so Theorem~1 carries it
+%     already."  -> Figure~\ref{fig:placements}'s caption, sections/setup.tex: "both readouts keep
+%     $\{\hat q_t\}$ in the convex hull of $\hat q_1$ and the raw scorecaster's range, inside
+%     Corollary~2's admissible set."  Same fact, at the figure that draws Placement~B.
+%   "the band has two edges, both computable before deployment from the integrator's guaranteed
+%     reach and the scorecaster's range"  -> (\ref{eq:boundaries}) IS that pair of edges, written
+%     out of exactly those two ingredients, and the paragraph introducing it says so.
+%   "crossing either is not a graceful degradation"  -> Section~\ref{sec:intro}: "Past it coverage
+%     fails outright, not merely its rate"; and, in this section, "\textbf{so the failure criterion
+%     is $|E_T|$, not the miscoverage rate}".
+%   "between $\sigma^{\pm}$ and $\tau^{\star\pm}$ ... neither direction is settled here"  ->
+%     Section~\ref{sec:limitations}, TWICE, and there it is a signed concession rather than an
+%     aside: "a genuinely time-varying $\hat{q}$ leaves the band $\sigma^{+} < \tau \le
+%     \tau^{\star+}$ open in neither direction" and "\textbf{What remains open is the band between
+%     the two boundaries.} ... neither proved nor falsified".
+%   The head's attribution hedge ("it is the corollary's rather than ours") -> Section~\ref{sec:intro}'s
+%     "\textbf{We claim neither the placement nor the derivation.}" and this section's own "the
+%     radius is theirs".
+% No hedge, number or citation is lost.  Verbatim text in research/S16/D-content-removal.json.
+% =========================================================================================
 
 % S15 SUB-SESSION E (2026-08-24): THE LOCAL BODY SIGNPOST S12 CUT FOR SPACE IS RESTORED.  The
 % block below records that S12 sub-session E drafted it (C1), had it adversarially attacked (C2),
@@ -589,15 +661,29 @@ when $\hat{q}$ varies in $t$, neither direction is settled here.
 % "transfers verbatim", which contradicted the appendix's own "as a dichotomy, not as a measured
 % rate".  Appendix~\ref{sec:evalue}'s own hedges are untouched and this paragraph adds no claim
 % they do not already carry.
-\paragraph{The boundary read as a bet.} The boundary is stated in $|E_T|$, which is the net gain
-of a Skeptic who pays $\alpha$ each round for $\mathrm{err}_t$, so it has a betting reading.
-Impose, for that reading alone and on nothing else here, the null that $\mathrm{err}_t \mid
-\mathcal{F}_{t-1}$ is Bernoulli$(\alpha)$, with $\mathcal{F}_{t-1}$ the history through round
-$t-1$: past the edge an anytime-valid test of the deployed intervals' calibration convicts the
-$\tau = 1.5$ arm on its fifth interval at the $5\%$ level, and inside the edge the same test
-cannot reject at that level at any horizon. It adds a diagnostic and a reading, not a result: the
-test is Ville's inequality applied to the standard martingale $M_t = \prod_{i \le t}\big(1 +
-\lambda(\mathrm{err}_i - \alpha)\big)$, whose logarithm depends on the path only through $t$ and
+% S16 SUB-SESSION D (2026-08-26): THIS PARAGRAPH IS COMPRESSED TO A BODY POINTER AND ITS
+% DERIVATION MOVED TO Appendix~\ref{app:evalue}.  The venue is E-values again, whose ceiling is
+% "4 pages, excluding references and optional appendices"; the body stood at 5 pages and this was
+% the densest block of secondary material in it (the martingale definition, Ville's inequality,
+% three citations, lambda's range, the pre-registration caveat and the worked five-interval
+% verdict).  NOTHING IS DELETED: every one of those moves to Appendix~\ref{app:evalue} verbatim in
+% substance.  WHAT STAYS IN THE BODY, because the operator's brief names it protected: the
+% self-limit "It adds a diagnostic and a reading, not a result" and "no result above assumes that
+% null or is certified by that test", plus the scoping "imposed for that reading alone and on
+% nothing else here", the tau = 1.5 attribution, the 5% level and "cannot reject ... at any
+% horizon".  \mathcal{F}_{t-1} is no longer named in the body, so its gloss travels with it and no
+% undefined symbol is left behind.
+% S16 SUB-SESSION D (2026-08-26): the Skeptic gloss ("$|E_T|$ is a Skeptic's net gain at $\alpha$ a
+% round, so") travels to Appendix~\ref{app:evalue} with the rest of the derivation, on the same
+% ground as the first cut of this paragraph: it says WHY the boundary has a betting reading, which
+% is construction rather than claim.  The reading itself, its scoping ("for that reading alone and
+% on nothing else here"), the verdict and both protected hedges stay here.
+\paragraph{The boundary read as a bet.} The boundary has a betting reading
+(Appendix~\ref{app:evalue}): under a Bernoulli$(\alpha)$ null on $\mathrm{err}_t$, imposed
+for that reading alone and on nothing else here, an anytime-valid test
+convicts the $\tau = 1.5$ arm past the edge at the $5\%$ level and cannot reject inside it at any
+horizon. It adds a diagnostic and a reading, not a result, and no
+result above assumes that null or is certified by that test.
 % S15 SUB-SESSION J (2026-08-25): F2 + F3 FIX, ONE INSERTION SERVING BOTH.  Two qualifiers that
 % lived in the deleted sections/evalue.tex are restored here, because the claims they qualified
 % survived D2's fold-in without them (I1 findings F2 and F3).
@@ -619,11 +705,14 @@ test is Ville's inequality applied to the standard martingale $M_t = \prod_{i \l
 % Placed at lambda's introduction rather than beside the verdict so that both qualifiers attach
 % to the symbol they constrain and the paragraph carries ONE inserted clause instead of two.
 % Authorised by the operator's Wave 3 patch brief, which names both fixes explicitly.
-$E_t$ \citep{shafer2019gtfpf,ramdas2023savi,vovk2021evalues}; $\lambda$ is fixed in
-$[-1/(1-\alpha),\,1/\alpha]$, and its sign above is chosen after the fact, not pre-registered;
-$M_t$ is an e-value for that imposed
-null alone, the accumulator itself is signed and is neither an e-value nor an e-process, and no
-result above assumes that null or is certified by that test.
+% S16 SUB-SESSION D: the sentence that stood here -- "$E_t$ \citep{shafer2019gtfpf,ramdas2023savi,
+% vovk2021evalues}; $\lambda$ is fixed in $[-1/(1-\alpha),\,1/\alpha]$, and its sign above is
+% chosen after the fact, not pre-registered; $M_t$ is an e-value for that imposed null alone, the
+% accumulator itself is signed and is neither an e-value nor an e-process, and no result above
+% assumes that null or is certified by that test." -- is now in Appendix~\ref{app:evalue}, all of
+% it, except the closing "no result above assumes that null or is certified by that test", which
+% stays in the body pointer above because the operator's brief protects it there.  The three
+% game-theoretic-probability citations travel with it, so none leaves the bibliography.
 % =========================================================================================
 % S15 SUB-SESSION D2 (2026-08-25): THE LAST SENTENCE OF THIS PARAGRAPH IS REWRITTEN BECAUSE THE
 % APPENDIX IT POINTED AT IS DELETED.  This is the hedge-preserving half of that deletion, and

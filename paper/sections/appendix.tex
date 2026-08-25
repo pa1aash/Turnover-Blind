@@ -320,6 +320,37 @@ $\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.
 \end{tabular}
 \end{table}
 
+% =========================================================================================
+% S16 SUB-SESSION D (2026-08-26): NEW APPENDIX SECTION, RECEIVING THE DERIVATION HALF OF
+% Section~\ref{sec:forfeit}'s "The boundary read as a bet." paragraph.  E-values' ceiling is
+% "4 pages, excluding references and optional appendices" and the body stood one full page over
+% it; that paragraph was the densest block of secondary material in the body.  Everything below
+% is RELOCATED, not rewritten: the martingale, Ville's inequality, the three citations, the
+% \mathcal{F}_{t-1} gloss, lambda's range, the pre-registration caveat, the five-interval verdict
+% and the e-value/e-process disclosure are the same text the body carried, reordered only so the
+% construction precedes the verdict it produces.  The two hedges the operator's brief protects in
+% the BODY ("It adds a diagnostic and a reading, not a result" and "no result above assumes that
+% null or is certified by that test") stay in the body pointer AND the second is restated here in
+% its own scope, so neither section can be read alone and over-claim.
+% =========================================================================================
+\section{The betting reading}
+\label{app:evalue}
+
+The boundary is stated in $|E_T|$, which is the net gain of a Skeptic who pays $\alpha$ each round
+for $\mathrm{err}_t$; that is what gives it a betting reading. The reading
+Section~\ref{sec:forfeit} points at is Ville's inequality applied to the standard
+martingale $M_t = \prod_{i \le t}\big(1 + \lambda(\mathrm{err}_i - \alpha)\big)$, whose logarithm
+depends on the path only through $t$ and $E_t$
+\citep{shafer2019gtfpf,ramdas2023savi,vovk2021evalues}, under the imposed null that
+$\mathrm{err}_t \mid \mathcal{F}_{t-1}$ is Bernoulli$(\alpha)$, with $\mathcal{F}_{t-1}$ the
+history through round $t-1$. Here $\lambda$ is fixed in $[-1/(1-\alpha),\,1/\alpha]$, and its
+sign is chosen after the fact, not pre-registered. So read, an anytime-valid test of the deployed
+intervals' calibration convicts the $\tau = 1.5$ arm on its fifth interval at the $5\%$ level,
+and inside the edge the same test cannot reject at that level at any horizon. $M_t$ is an e-value
+for that imposed null alone; the accumulator itself is signed and is neither an e-value nor an
+e-process, and no result in Section~\ref{sec:forfeit} assumes that null or is certified by that
+test.
+
 
 % =========================================================================================
 % S15 SUB-SESSION D (2026-08-24): APPENDIX B "THE FOUR VOCABULARIES" NO LONGER EXISTS AS A
