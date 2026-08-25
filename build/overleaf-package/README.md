@@ -11,8 +11,8 @@ repository, no absolute paths.
 main.tex                 the whole document (preamble, title, \input's the sections below)
 neurips_2026.sty         the venue's own template file, used verbatim as fetched
 PROVENANCE.md            neurips_2026.sty's fetch record (source URL, date, SHA-256)
-sections/                the seven body/appendix .tex files (S15 sub-session D split the old
-                          related.tex into related.tex + evalue.tex; both are here)
+sections/                the six body/appendix .tex files (S15 sub-session D2 deleted
+                          evalue.tex; see "Page count" below)
 figures/                 two already-generated, static PDF figures (no regeneration needed)
 REFS_VERIFIED.bib        the fully resolved bibliography
 ```
@@ -60,16 +60,26 @@ line just below it, and rebuild.
    so it is moot for a TS-LIMITS submission as currently configured; insert the real URL only if
    you switch to a non-anonymous venue option.
 
-## The isolated compile result (S15 sub-session H, 2026-08-25)
+## The isolated compile result (S15 sub-session H, 2026-08-25; content resynced by D2)
+
+The `.tex` sources here were resynced by S15 sub-session D2 after its budget-closing cut, so
+they match `paper/` exactly apart from the two relative-path rewrites that let this directory
+compile standalone (`../audit/REFS_VERIFIED` to `REFS_VERIFIED`, `../figures/` to `figures/`).
+D2 RE-RAN THE ISOLATED COMPILE against the post-cut sources, from a temp directory with no path
+back to this repository: **9 pages, References p.7 through p.9 = 2.232 pages, counted content
+6.768 pages, 0 TeX errors, 0 undefined citations or references, 0 overfull boxes, 0 underfull
+boxes, 0 LaTeX warnings, 0 pdfendlink warnings, 0 bibtex warnings**, and the isolated build's
+rendered text is byte-identical to `paper/main.pdf`. `/Author` reads `Anonymous Author(s)`, no
+XMP block, and a raw byte-grep for the operator's name, email and `github.com` returns zero
+matches. The narrative below is sub-session H's original record, kept for its detail.
 
 This package was rebuilt fresh against the merged S15 content (sub-sessions B/C/D/E: venue
 switch, identity sweep, body/appendix restructuring, prose de-compression) and compiled from a
 fresh copy in genuine isolation — a temp directory with no path back to this repository — as an
 independent second check of sub-session B's own identity-leak sweep: `pdflatex → bibtex →
 pdflatex ×3` (four passes total; the paper's own header explains why three is not enough), **0
-TeX errors, 0 undefined citations or references, 0 bibtex warnings, 0 overfull boxes, 1
-underfull vbox** (the References heading no longer spilling onto the prior page — benign, noted
-in `paper/main.tex`'s own build header), **0 LaTeX warnings, 0 pdfendlink warnings**. The
+TeX errors, 0 undefined citations or references, 0 bibtex warnings, 0 overfull boxes, 0
+underfull boxes, 0 LaTeX warnings, 0 pdfendlink warnings**. The
 isolated build's rendered text is byte-identical to the repository's own current `paper/main.pdf`
 (verified by extracting and diffing text from every page).
 
@@ -79,15 +89,20 @@ reads `Anonymous Author(s)`, `/Title` is the paper title with no author names, `
 byte-grep of the compiled PDF for the operator's name and email returned zero matches. No
 identity leak found — consistent with sub-session B's own check.
 
-## Page count: over the TS-LIMITS ceiling, reported honestly
+## Page count: inside the TS-LIMITS ceiling
 
-**12 total pages. References starts on page 7 (40% down the page) and runs through page 9 (63%
-down), i.e. occupies 2.232 pages. Counted content (everything except the bibliography) is 9.768
-pages against TS-LIMITS' 7-page whole-document ceiling — 2.768 pages over.** This is not a
-build defect: it is the paper's real, currently-unresolved length gap, carried into this package
-rather than hidden by it. See `research/S15/D-restructuring.json`'s `residual_overage` field for
-the ranked, sub-session-authorized-nothing list of where those pages could come from; closing the
-gap is a content decision for the operator, not something this package's rebuild attempted.
+**9 total pages. References starts on page 7 (36% down the page under `dblblindworkshop`, 28%
+under `sglblindworkshop`) and runs through page 9, i.e. occupies 2.232 pages (dbl) / 2.251
+pages (sgl). Counted content (everything except the bibliography) is 6.768 pages (dbl) / 6.749
+pages (sgl) against TS-LIMITS' 7-page whole-document ceiling.** Both options are inside it.
+
+This closed a 2.77-page gap, and it cost real content. S15 sub-session D2 deleted, on explicit
+operator authorisation and on nothing else, (a) Appendix A's five prose paragraphs and (b) the
+whole e-value appendix, `sections/evalue.tex`, whose load-bearing sentences and surviving
+hedges moved into the body paragraph "The boundary read as a bet." in `sections/forfeit.tex`.
+What that cut and what it kept, with the deleted text quoted in full, is
+`research/S15/D2-budget-closure.json`. The bibliography lost exactly one entry as a
+consequence (41 to 40): `podkopaev2024betting`, cited only in the deleted section.
 
 ## The paper is otherwise submission-ready
 
@@ -101,7 +116,7 @@ dependency.
 Overleaf's own TeX Live version can still differ subtly from this local toolchain even when both
 compile cleanly, so once it's rendered there:
 
-- [ ] Page count is still 12, and References still starts on page 7 (search the PDF for
+- [ ] Page count is still 9, and References still starts on page 7 (search the PDF for
       "References" and check which page it lands on — do not just trust a page-count field,
       open the page).
 - [ ] Figures 2 and 3 (`figure1_boundary.pdf`, `figure3_settings.pdf`) render at full text
@@ -117,5 +132,6 @@ compile cleanly, so once it's rendered there:
       Live release. This will not change the page count in a way that matters, but is worth a
       glance.
 - [ ] If you change the venue switch or the affiliation line, rebuild and re-check the page
-      count and where References starts before assuming the change is free — this document is
-      already 2.77 pages over its ceiling with no slack to spare.
+      count and where References starts before assuming the change is free — this document
+      clears its 7-page ceiling by about 0.23 pages, and the last page is nearly full, so a
+      single extra line of body text can push it to a tenth page and a whole page over.

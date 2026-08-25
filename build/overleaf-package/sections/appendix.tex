@@ -44,167 +44,58 @@
 %                                     configurations it exhibits, with their numbers.
 %   The five prose paragraphs here -> STAY.  Convention analysis, provenance, and measurement
 %                                     commentary whose load-bearing conclusions the body
-%                                     states independently.
+%                                     states independently.   [REVERSED BY D2; SEE BELOW.]
 %   "The four vocabularies"        -> MERGED into Section~\ref{sec:related}; see below.
 % Record, with the reasoning and the full before/after cross-reference map:
 % research/S15/D-restructuring.json.
 % =========================================================================================
+%
+% =========================================================================================
+% S15 SUB-SESSION D2 (2026-08-25): THE FIVE PROSE PARAGRAPHS ARE DELETED, ON EXPLICIT
+% OPERATOR AUTHORISATION, TO CLOSE THE PAGE BUDGET.  THIS REVERSES D's "STAY" ABOVE.
+%
+% D measured the paper at 9.77 counted pages (total pages less the bibliography) against
+% TS-LIMITS' 7-page whole-document ceiling, recovered 0.91pp of pure duplication, and then
+% DECLINED to cut content, recording the two largest cuttable blocks for the operator
+% (research/S15/D-restructuring.json, "residual_overage").  The operator authorised both.
+% This file's half is rank 2: the five paragraphs, 1.04pp.
+%
+% DELETED HERE, and each is quoted in full in research/S15/D2-budget-closure.json:
+%   "The primary regime."                       -- convention analysis.  The adversary it
+%       describes is fully specified in the BODY, in sections/setup.tex's Harness paragraph
+%       ("It plays $s_t = clip(qtilde_t + eps, +-b/2)$, eps = 1e-9, against the DEPLOYED
+%       qtilde_t ... firing the strict indicator"), which also states that every number in
+%       Table~\ref{tab:forfeit} is measured against it.  What is lost is the 44-of-44
+%       cell-identity check between the two counting conventions and the eleven mirror
+%       readings, not the specification.
+%   "Excursions at $T = 10^4$ ..."              -- a fitted law the paper itself disowns
+%       ("a fit to those five arms, not a derived bound").
+%   "Realised miscoverage at the covering settings of Figure~\ref{fig:settings}."
+%   "What survives of the measurement ..."      -- its two claim-bearing conclusions are
+%       stated independently in the body: the tangent integrator sitting inside the set is
+%       the tightness paragraph of Section~\ref{sec:forfeit}, and that condition~(4) is not
+%       what fails is that section's opening paragraph.  Its endpoint evidence is
+%       Table~\ref{tab:stress}'s first two rows, which stay.
+%   "Where the rate stops being a tell."        -- an illustration of a claim the body makes
+%       in the clause immediately before its pointer, off Table~\ref{tab:stress} row 12.
+%
+% NOTHING ELSE IN THIS FILE IS TOUCHED.  Table~\ref{tab:stress} keeps all thirteen rows, its
+% caption, its column heads and its \label; the appendix heading and \label{app:support} stay.
+% Three body sentences that pointed AT the deleted paragraphs are repointed, not left to
+% dangle: Table~\ref{tab:forfeit}'s caption, Figure~\ref{fig:boundary}'s caption, and the
+% mirror-boundary paragraph -- all in sections/forfeit.tex, each marked there.
+% THIS IS A DELIBERATE DEVIATION from this session's standing "restore, don't cut" rule and
+% from this project's convention that deleting measurement description is a serious act.  It
+% is taken on explicit operator authorisation and on nothing else.
+% =========================================================================================
 % ---------------------------------------------------------------------------
 
-% S8 SUB-SESSION C (2026-08-22): "THE PRIMARY REGIME" PARAGRAPH NOW SAYS, IN ITS OWN
-% FIRST SENTENCE, THAT THE DETERMINISTIC ADVERSARY CONSUMES NO RANDOMNESS AND NEEDS NO
-% SEED.  This is src/forfeit.py's own F9 comment ("The primary `adversarial` regime is
-% fully deterministic and consumes no randomness at all; its 'seed' is a formality
-% recorded for completeness"), stated in the paper rather than only in the code.  The
-% reason: sections/limitations.tex separately reports a genuinely seeded i.i.d.
-% robustness check (seed 20260820, T = 10^6), and a reader who meets "one seed" there
-% without first meeting an explicit "no seed" claim for the primary harness could read
-% the two as the same procedure. This is the disambiguating half; see
-% sections/limitations.tex's own S8 sub-session C note for the other half.
-% ---------------------------------------------------------------------------
 
 \appendix
 
 \section{Supporting measurements}
 \label{app:support}
 
-% S10 SUB-SESSION D moved Table~\ref{tab:forfeit} here from sections/forfeit.tex, for one
-% reason: "the E-values 4-page ceiling, which excludes appendices."
-% S15 SUB-SESSION D (2026-08-24) MOVED IT BACK.  TS-LIMITS counts the whole document, so the
-% split between a four-row body table and this eleven-row one bought nothing and cost the
-% reader the same four rows twice plus a caption reconciling them.  The eleven-row table,
-% caption and cells unchanged, now sits in Section~\ref{sec:forfeit} beside the paragraph
-% that prices the departure its rows measure, and the four-row duplicate is deleted.  The
-% paragraph below, which defines the regime every one of those cells is measured in, stays
-% here: it is convention analysis, not a result, and the caption points at it by name.
-
-\paragraph{The primary regime.} Every number in Table~\ref{tab:forfeit} is measured under one
-deterministic adversary, which consumes no randomness and needs no seed. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with
-$\varepsilon = 10^{-9}$ against the \emph{deployed} threshold, and the indicator is strict. The
-specification is not a tie rule, and the distinction is measured rather than argued. Scoring
-an exact-threshold play \emph{as a miscoverage} reproduces every quantity
-Table~\ref{tab:forfeit} reports: $44$ of $44$ arm-horizon cells identical, all eleven arms at
-all four horizons. Scoring
-the same play under the \emph{strict} indicator does not, and it moves every row, because the
-adversary's signature move then covers rather than misses. Partial adjustment at $w = 0.999$
-excurses $70.80$ in place of $623.70$, and the failing dead band returns $0.000000$ in place of
-$1.000000$. The $\varepsilon \downarrow 0$ limit the harness specifies is the first reading, and
-that $623.70$ turns on the adversary's $\varepsilon$, not the counting convention.
-% S10 WAVE F: THE "That 623.70 turns on the adversary's epsilon" SENTENCE, WHICH S10 SUB-SESSION
-% D's C7(b) MOVED HERE FROM THE BODY, IS REORDERED, NOT REWRITTEN.  D placed it immediately after
-% the sentence demonstrating that the COUNTING CONVENTION moves 623.70 to 70.80, so a reader met
-% "623.70 does not turn on the counting convention" one clause after watching the convention move
-% it.  Both statements are true under this paragraph's own thesis, but the adjacency stopped the
-% reader.  It now follows the epsilon sentence it actually depends on.  Not one number, and no
-% claim, is changed.  Found by S10's F1 adversarial critic.
-\textbf{No row is convention-free with respect to the second}, which is why the adversary is
-specified rather than tie-broken. At $\tau = \tau^{\star+}$ itself the two readings part: the
-strict indicator returns $0.000000$ where scoring the exact play as a miscoverage returns
-$1.000000$. \textbf{Neither of those is coverage.} They are $|E_T| = \alpha T$ and
-$(1-\alpha)T$, failures of the same order and opposite sign. Under the strict indicator the
-exact-threshold play scores $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$, which is also the
-indicator of the constant legal play $s_t \equiv -b/2$, so that column is
-Section~\ref{sec:forfeit}'s \emph{mirror adversary} rather than a second convention. It returns
-between $0.09992$ and $0.09997$ at $\tau = 0.5$, $0.9$, $0.95$, $0.99$ and $0.999$, and
-$0.000000$ with $\max_t|E_t| = 10{,}000$ at $\tau = 1$, $1.001$, $1.01$, $1.05$, $1.1$ and $1.5$.
-That locates $\tau^{\star-} = 1$ on the same eleven widths Figure~\ref{fig:boundary} uses, closed
-on the failing side. The convention decides which legal adversary realises the endpoint failure,
-not whether one occurs.
-% S9 SUB-SESSION C: THE TWO SENTENCES ABOVE ARE ADDED, AND NOTHING PRIOR IS WITHDRAWN.  The
-% pre-S9 text was factually correct and is kept verbatim; what it did not say is that the
-% strict indicator's 0.000000 is itself a linear-in-T failure rather than a covering row, and
-% that the exact_threshold_strict column is a SECOND LEGAL ADVERSARY under the paper's own
-% indicator, not an indicator variant.  Both are read straight off
-% results/forfeit-20260820T063132Z-83747c45.json, aggregate_table, regime
-% exact_threshold_strict, T = 1e5, all eleven deadband_tau rows; the identity of the two error
-% processes is re-verified bit for bit by src/boundary_stress.py's validate(), 8 of its 19
-% checks.
-% S6 SUB-SESSION C, RULE-6 MOVE.  Those two numbers were in sections/forfeit.tex, in the
-% endpoint sentence, which already pointed here.  They are endpoint-convention detail, this
-% is the paragraph that discusses the convention, and the appendix does not count against
-% E-values' 4-page ceiling.  NOTHING IS DELETED: both are still printed, and the body still
-% states the claim they support.  This is what pays for the Introduction's new opening.
-
-% S6 SUB-SESSION E2: THE SCOPE OF THE FITTED LAW IS CORRECTED.  It read "Across the arms the
-% excursion fits ...", and recomputed against results/ that is not true.  The fit holds on the
-% control and the four partial-adjustment arms -- 20 arm-horizon cells, max relative error
-% 5.66% at ema_w0.9 / T = 1e5, median 1.01% -- and misses the other six badly: median relative
-% error 52.5% over their 24 cells, and every one of the 24 excurses FURTHER than predicted,
-% up to the failing dead band where |E_t| = (1-alpha)t is linear in T and the fit is off by
-% 100%.  The formula's own w exists only for the partial-adjustment family, which is the
-% structural tell.  Residual table: research/S6/E-spotcheck.json.
-% S10 SUB-SESSION D moved Figure~\ref{fig:boundary} here, "the reason for the move is the
-% 4-page ceiling alone".  S15 SUB-SESSION D (2026-08-24) MOVED IT BACK to
-% sections/forfeit.tex, together with Figure~\ref{fig:settings}, since TS-LIMITS counts
-% appendix pages and that reason is void.  Document order and therefore numbering are
-% unchanged.  See that file's S15 comment block for the reader-side argument.
-
-\paragraph{Excursions at $T = 10^4$, and where the excursion law holds.} Partial adjustment
-excurses $6.30$, $63.00$ and $623.70$ at $w = 0.9$, $0.99$ and $0.999$. The last two are flat
-in $T$ while Proposition~2's bound grows like $\log T$, which is why the ratio falls with the
-horizon: at $w = 0.999$ it is $61.08$ at $T = 10^4$ and $42.10$ at $T = 10^6$. On the control and the four partial-adjustment arms the excursion fits
-$\max_t|E_t| \approx \max\{0.5\,h(T)+0.9,\ 0.63/(1-w)\}$ at every horizon, most loosely at
-$w = 0.9$, the one arm whose two branches cross inside the horizon range. This is a fit to
-those five arms, not a derived bound. It does not extend to the other six: the growing time
-constants, the running mean and the dead bands all excurse further than it predicts.
-
-% S6 SUB-SESSION A created Figure~\ref{fig:settings} here.  Its "IT LIVES IN THE APPENDIX
-% because E-values excludes appendices from the 4-page ceiling" note is void under TS-LIMITS,
-% and S15 SUB-SESSION D moved the figure into sections/forfeit.tex, where its rebuild and
-% axis-design history now sits with it.  The paragraph below still reads off it and refers to
-% it by \ref, so nothing here depends on which section typesets it.
-
-% S15 SUB-SESSION E (2026-08-24): DE-COMPRESSION, ONE SENTENCE.  "That is the first term of
-% tau* moving the edge, not the readout changing behaviour" was flagged by S13 sub-session A
-% (97bbb6e) as an antecedent gap -- "that" has no referent in its own sentence and "the first
-% term" is never identified -- and DEFERRED there, because appendix.tex was sub-session B's
-% active file that wave and touching it would have collided.  Closed here: the sentence now
-% names sup_x r_t(x), points at (\ref{eq:boundaries}) where it is the first term, and says
-% which of the two things moved.  No number, no measurement and no claim changes.
-\paragraph{Realised miscoverage at the covering settings of Figure~\ref{fig:settings}.} At
-$\hat{q} \equiv +b/2$ the $\tau = 1.5$ band returns $0.100010$ with $\max_t|E_t| = 11.20$,
-inside the bound. Under \citeauthor{angelopoulos2023pid}'s tangent integrator the same width
-returns $0.100001$. Raising the saturator's level to $4b$ leaves coverage intact and cuts the
-$w = 0.999$ excursion from $623.70$ to $120.60$. That level is $\sup_x r_t(x)$, which is the
-first term of $\tau^{\star\pm}$ in (\ref{eq:boundaries}), so what the change moves is the edge
-itself; the readout is unaltered and behaves no differently.
-
-% S10 SUB-SESSION D: THIS PARAGRAPH MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD,
-% except for ONE cross-reference that pointed AT this appendix from the body and would now be
-% self-referential: "Appendix A prints both readings" was rewritten to name the two places in
-% this appendix that do.  Every claim, every number and the bold leads are unchanged.  See that
-% file for why.
-% S10 WAVE F, CORRECTION TO THE COMMENT ABOVE AND TO THE EDIT IT DESCRIBES.  (1) D's comment
-% claimed a SECOND cross-reference edit here, "(Figure 2, App. A)" -> "(Figure 2)".  That edit
-% never happened: the pre-move body text already read "(Figure~\ref{fig:boundary})" with no
-% "App. A".  The claim is withdrawn, not repeated.  (2) D's one real rewrite was WRONG.  It read
-% "Table~\ref{tab:forfeit} and the primary-regime paragraph above print both readings", and
-% Table 1 has no tau = 1 dead-band row at all (its dead-band rows are 0.5, 0.9 and 1.5), so it
-% prints NEITHER reading at the endpoint.  The primary-regime reading at tau = 1 is in
-% Figure~\ref{fig:boundary} panel (b); the mirror reading is in this appendix's primary-regime
-% paragraph.  The pointer now names those two.  Found by S10's F1 adversarial critic.
-\paragraph{What survives of the measurement, and what its status now is.} Outside the admissible
-window the transition is a step. Past $\tau^{\star+}$ the threshold sits permanently below the
-reachable score range and $|E_t| = (1-\alpha)t$ grows linearly, $60{,}747$ times the bound at $T =
-10^6$; the wider bands $\tau = 2.0$, $2.5$, $3.0$ and $5.0$ fail too at $T = 2{\times}10^5$
-(Figure~\ref{fig:boundary}). \textbf{Here $\sup_x r_t(x) = b$ and $\hat{q} \equiv 0$, so
-$\tau^{\star+} = \tau^{\star-} = b/2$}, one point of the admissible class, and both terms move it.
-The legal $\hat{q} \equiv +b/2$ carries the $\tau = 1.5$ band inside the bound against the
-specified adversary, and against the mirror one no width covers there, the unsmoothed control
-included. Condition~(4) bounds $\sup_x r_t(x)$ only from below, so raising it costs the failure
-direction nothing; it moves the edge too (Figure~\ref{fig:settings}) and shrinks the excursion,
-from $623.70$ to $20.10$ under the tangent integrator \citet{angelopoulos2023pid} report using in
-all their experiments, both at $T = 10^6$. \textbf{The method's own integrator therefore sits
-inside the set at every width run here.} \textbf{The endpoint is where the two boundaries part.}
-The upper one is closed and the lower one is open, which the null scorecaster cannot show because
-$\tau^{\star+}$ and $\tau^{\star-}$ coincide there: four saturators with $\tau^{\star+} <
-\tau^{\star-}$ cover at $\tau = \tau^{\star+}$ exactly under both adversaries, and at $\hat{q}
-\equiv +0.4$, where $\tau^{\star-} = 0.6 < 1.4 = \tau^{\star+}$, the width $0.599$ covers under
-both while $0.6$ fails under the mirror. At the baseline the two coincide at $1$, so the primary
-regime covers there and the mirror adversary does not; Figure~\ref{fig:boundary} and this
-appendix's primary-regime paragraph print both readings. \textbf{The failing arms have $\mathrm{Sat.} = 1.0000$.} Condition~(4) delivers its full
-$\pm b$ on every round, and what fails is Proposition~2's other hypothesis: the threshold closing
-the loop \emph{is} the integrator's output.
 
 % S10 SUB-SESSION D: TABLE 2 MOVED HERE FROM sections/forfeit.tex, WHOLE AND CELL FOR CELL
 % UNCHANGED (caption, column heads, all thirteen rows, the \label, the S9 provenance comment
@@ -265,14 +156,6 @@ $\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.
 \end{tabular}
 \end{table}
 
-% S10 WAVE F: SENTENCE MOVED HERE FROM sections/forfeit.tex, WORD FOR WORD.  It illustrates the
-% body's claim that once qhat varies the miscoverage rate stops being a tell, and the row it reads
-% is Table~\ref{tab:stress}'s power-of-two row at tau = 1.9, ten lines above.  The claim itself is
-% still made in the body; only its illustration moved, to pay for the two claim-bearing additions
-% wave F made to the 4-page body.
-\paragraph{Where the rate stops being a tell.} At $\tau = 1.9$ with the power-of-two scorecaster
-the rate is $0.110960$ against $\alpha = 0.1$ while $\max_t|E_t|$ is $84{,}745.70$ at $T = 10^6$,
-so a reader watching only the rate would call that coverage.
 
 % =========================================================================================
 % S15 SUB-SESSION D (2026-08-24): APPENDIX B "THE FOUR VOCABULARIES" NO LONGER EXISTS AS A

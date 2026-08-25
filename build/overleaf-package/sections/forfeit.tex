@@ -291,9 +291,16 @@ it does instead is delay a correction that has already been computed, so the acc
 deterministic adversary, on one pass to $T = 10^6$; all eleven arms run are listed.
 Proposition~2's bound is $13.2061$ at $T = 2{\times}10^5$ and $14.8155$ at $T = 10^6$;
 ``ratio'' is $\max_t|E_t|$ over it, and ``Sat.'' the fraction of rounds on which~(4)
-delivers its full $\pm b$. Every number is the \emph{primary} regime's, defined in
-Appendix~\ref{app:support}, which also gives the $T = 10^4$ excursions and the fitted
-excursion law.}
+delivers its full $\pm b$. Every number is measured against the adversary
+Section~\ref{sec:setup} specifies.}
+% S15 SUB-SESSION D2 (2026-08-25): THE CAPTION'S LAST SENTENCE IS REPOINTED, NOT SOFTENED.  It
+% read "Every number is the PRIMARY regime's, defined in Appendix~\ref{app:support}, which also
+% gives the T = 10^4 excursions and the fitted excursion law."  All three of those targets --
+% the regime definition, the T = 10^4 excursions and the fitted law -- were in the two Appendix
+% A paragraphs the operator authorised deleting this sub-session, so the sentence pointed at
+% content that no longer exists.  The regime IS still specified, in the body, in
+% Section~\ref{sec:setup}'s Harness paragraph, which is where the caption now points.  No
+% number and no claim about the table changes.
 \label{tab:forfeit}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
@@ -478,7 +485,14 @@ And that printed rule omits $\tau^{\star-}$ entirely.
   $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
   narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
   settings. The same eleven widths under the \emph{mirror} adversary, which locates
-  $\tau^{\star-}$, are read off in Appendix~\ref{app:support}'s primary-regime paragraph.}
+  $\tau^{\star-}$, are this run's exact-threshold column read under the strict indicator.}
+  % S15 SUB-SESSION D2 (2026-08-25): REPOINTED.  The clause read "are read off in
+  % Appendix~\ref{app:support}'s primary-regime paragraph", and that paragraph is deleted this
+  % sub-session on operator authorisation, so the pointer would have dangled.  It now names
+  % WHERE THE READING COMES FROM instead of where it was printed, which is the same fact the
+  % deleted paragraph opened with and is also stated in the mirror-boundary paragraph below.
+  % The eleven individual readings are no longer printed anywhere; that loss is recorded in
+  % research/S15/D2-budget-closure.json rather than papered over.
   \label{fig:boundary}
 \end{figure}
 
@@ -551,7 +565,14 @@ always do.
 run's exact-threshold column under the strict indicator is the mirror adversary $s_t \equiv -b/2$
 (one error process, $\mathrm{err}_t = \mathbf{1}\{\tilde{q}_t < -b/2\}$), and on the same eleven
 widths at the null scorecaster it locates $\tau^{\star-} = 1$, closed on the failing side, exactly
-where (\ref{eq:boundaries}) puts it; Appendix~\ref{app:support} prints the eleven readings.
+where (\ref{eq:boundaries}) puts it.
+% S15 SUB-SESSION D2 (2026-08-25): "; Appendix~\ref{app:support} prints the eleven readings" is
+% DROPPED from the sentence above, because the paragraph that printed them is deleted this
+% sub-session on operator authorisation.  The CLAIM is untouched -- tau*- = 1, closed on the
+% failing side, on this paper's own eleven widths -- and the sentence still says which column of
+% which run it is read from, so nothing here reads more confidently than it did.  What is gone
+% is the digit-by-digit print of the eleven mirror readings; recorded, not hidden, in
+% research/S15/D2-budget-closure.json.
 Both $1.000000$ and $0.000000$ are failures of the same order, $|E_T| = (1-\alpha)T$ and
 $\alpha T$, \textbf{so the failure criterion is $|E_T|$, not the miscoverage
 rate}; and once $\hat{q}$ varies the rate stops being a tell at all.
@@ -661,9 +682,47 @@ Impose, for that reading alone and on nothing else here, the null that $\mathrm{
 \mathcal{F}_{t-1}$ is Bernoulli$(\alpha)$, with $\mathcal{F}_{t-1}$ the history through round
 $t-1$: past the edge an anytime-valid test of the deployed intervals' calibration convicts the
 $\tau = 1.5$ arm on its fifth interval at the $5\%$ level, and inside the edge the same test
-cannot reject at that level at any horizon. Appendix~\ref{sec:evalue} gives the construction, the
-arithmetic and the two arms; the accumulator itself is signed and is neither an e-value nor an
-e-process, and no result above assumes that null or is certified by that test.
+cannot reject at that level at any horizon. It adds a diagnostic and a reading, not a result: the
+test is Ville's inequality applied to the standard martingale $M_t = \prod_{i \le t}\big(1 +
+\lambda(\mathrm{err}_i - \alpha)\big)$, whose logarithm depends on the path only through $t$ and
+$E_t$ \citep{shafer2019gtfpf,ramdas2023savi,vovk2021evalues}; $M_t$ is an e-value for that imposed
+null alone, the accumulator itself is signed and is neither an e-value nor an e-process, and no
+result above assumes that null or is certified by that test.
+% =========================================================================================
+% S15 SUB-SESSION D2 (2026-08-25): THE LAST SENTENCE OF THIS PARAGRAPH IS REWRITTEN BECAUSE THE
+% APPENDIX IT POINTED AT IS DELETED.  This is the hedge-preserving half of that deletion, and
+% every word added here is lifted from the deleted section rather than composed.
+%
+% It read: "Appendix~\ref{sec:evalue} gives the construction, the arithmetic and the two arms;
+% the accumulator itself is signed and is neither an e-value nor an e-process, and no result
+% above assumes that null or is certified by that test."  With sections/evalue.tex gone that
+% first clause promised content the paper no longer contains, AND -- worse -- it would have
+% left this paragraph asserting a numerical verdict ("convicts the tau = 1.5 arm on its fifth
+% interval at the 5% level") with the construction behind it nowhere in the document.
+%
+% WHAT IS NOW CARRIED HERE, ALL OF IT VERBATIM IN SUBSTANCE FROM sections/evalue.tex:
+%   the test martingale M_t and its two properties (nonnegative martingale under H0; log M_t a
+%     function of (t, E_t) only), so the claim above is checkable;
+%   Ville's inequality, named as what makes the test anytime-valid;
+%   the three game-theoretic-probability citations, which were cited nowhere else in the paper
+%     and would otherwise have left the bibliography.  podkopaev2024betting is NOT carried over:
+%     its sentence ("betting enters online conformal inference elsewhere as an optimiser rather
+%     than as evidence") was a positioning note about the deleted section's own construction, and
+%     with that section gone it has nothing to position.  It is the one citation this cut loses;
+%     no claim rested on it.
+%   THE SECTION'S OWN SELF-LIMIT, "It adds a diagnostic and a reading, not a result", which the
+%     operator's authorisation named as worth keeping as a sentence even if its elaboration
+%     went;
+%   the disclosure that M_t IS an e-value for H0 alone.  This is ADDED rather than dropped on
+%     purpose: without it, "the accumulator itself is ... neither an e-value nor an e-process"
+%     would be the paper's only statement on the subject and would read as a broader disclaimer
+%     than the appendix ever made.  Cutting must not raise apparent confidence, and here it does
+%     not: the paragraph now concedes MORE about the transform's status than it did before.
+% The pre-existing hedges are untouched word for word: "for that reading alone and on nothing
+% else here", the tau = 1.5 attribution, "cannot reject at that level at any horizon", "signed",
+% "neither an e-value nor an e-process", "no result above assumes that null or is certified by
+% that test".  Every one of C2's four scoping defences therefore still stands.
+% =========================================================================================
 
 % S12 SUB-SESSION C1/C2/E: A LOCAL BODY SIGNPOST FOR THE PROMOTED E-VALUE APPENDIX WAS DRAFTED
 % HERE AND CUT FOR SPACE, NOT FOR SUBSTANCE.  C1 drafted a two-sentence pointer; C2's

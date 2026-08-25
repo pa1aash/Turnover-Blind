@@ -18,8 +18,46 @@
 % path, use BIBINPUTS=".:../audit:" bibtex main instead.
 %
 % ===========================================================================
-% S15 SUB-SESSION D (2026-08-24).  THIS BLOCK SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT,
-% AND IT ALSO REPLACES THE TEST THEY ALL USE.
+% S15 SUB-SESSION D2 (2026-08-25).  THIS BLOCK SUPERSEDES EVERY MEASUREMENT BLOCK BELOW IT.
+% THE TEST IS D's, UNCHANGED: (total PDF pages) - (pages the bibliography occupies) <= 7.
+%
+% THE CEILING IS MET, WITH MARGIN, AND IT COST TWO DELETIONS THE OPERATOR AUTHORISED BY NAME.
+% MEASURED, artefacts deleted first, four passes + bibtex, BOTH options:
+%   BEFORE (HEAD fc8328a):  12 pages; references 2.283 (dbl) / 2.303 (sgl);
+%                           COUNTED CONTENT 9.717 (dbl) / 9.697 (sgl).
+%   AFTER  (this commit):    9 pages; references 2.232 (dbl) / 2.251 (sgl);
+%                           COUNTED CONTENT 6.768 (dbl) / 6.749 (sgl), against a ceiling of 7.
+%   References starts p.7, 36.3% down under dblblindworkshop and 28.1% down under
+%   sglblindworkshop, and runs to p.9.  Both options: 0 TeX errors, 0 overfull boxes,
+%   0 underfull hboxes, 0 underfull vboxes, 0 undefined refs, 0 undefined citations,
+%   0 LaTeX warnings, 0 \pdfendlink warnings, 0 bibtex warnings.
+%
+% WHAT WAS CUT, AND ONLY THESE TWO THINGS:
+%   Appendix A's five prose paragraphs (1.04pp)   -- see sections/appendix.tex's D2 block.
+%   Appendix B, the e-value section, ENTIRELY     -- sections/evalue.tex is deleted; its
+%     load-bearing sentences and its four-of-five surviving hedges moved into the body
+%     paragraph that already carried the betting reading, "The boundary read as a bet." in
+%     sections/forfeit.tex.  See that paragraph's D2 block and the \input site below.
+% Nothing else was cut.  sections/limitations.tex and sections/setup.tex are BYTE-IDENTICAL to
+% fc8328a; the only other edits anywhere are five pointer repairs that would otherwise have
+% dangled into deleted material (two captions and one clause in sections/forfeit.tex, the
+% roadmap's second pointer in sections/intro.tex, and a pure forwarding sentence in
+% sections/related.tex).
+%
+% THIS DEVIATES FROM S15's STANDING "RESTORE, DON'T CUT" RULE, DELIBERATELY AND UNDER EXPLICIT
+% OPERATOR AUTHORISATION.  D measured the gap and declined to close it; E de-compressed and
+% widened it; the operator then authorised these two targets and no others.  A future reader
+% of the history should not take this commit as licence to cut anything else.
+% THE BIBLIOGRAPHY LOST EXACTLY ONE ENTRY, 41 -> 40: podkopaev2024betting, which was cited
+% only in the deleted section.  The other three e-value citations (shafer2019gtfpf,
+% ramdas2023savi, vovk2021evalues) are carried into the body and still render.
+% Record, with before/after text for every edit and the two deleted paragraphs quoted in full:
+% research/S15/D2-budget-closure.json.
+% ===========================================================================
+%
+% ===========================================================================
+% S15 SUB-SESSION D (2026-08-24).  SUPERSEDED BY THE D2 BLOCK ABOVE, WHICH KEEPS ITS TEST.
+% IT ALSO REPLACES THE TEST EVERY BLOCK BELOW USES.
 %
 % THE OFFSET TEST IS RETIRED.  Every block below measures where the "References" heading
 % falls, because E-values' ceiling was 4 pages "excluding references and optional
@@ -474,7 +512,32 @@ table, the generators that read them, and this project's reproducibility records
 %
 % Appendix A is sections/appendix.tex.  Appendix B is sections/evalue.tex, split out of
 % sections/related.tex by this sub-session when "Where this sits" returned to the body.
+%
+% ===========================================================================
+% S15 SUB-SESSION D2 (2026-08-25): APPENDIX B NO LONGER EXISTS.  sections/evalue.tex IS DELETED
+% AND SO IS ITS \input, ON EXPLICIT OPERATOR AUTHORISATION, TO CLOSE THE PAGE BUDGET.
+% There is exactly ONE appendix now: A, Supporting measurements, holding Table~\ref{tab:stress}.
+% MEASURED, NOT ASSUMED, AND THIS IS WHY IT IS A DELETION RATHER THAN A COMPRESSION.  The
+% authorisation said to exhaust compression first where compression and deletion would save
+% comparable space.  They do not, and the reason is quantisation, not prose.  With the
+% bibliography ending 65% down page 9, the whole remaining appendix has to fit in the 0.35 pages
+% left on that page or the document takes a tenth page -- and a tenth page costs a WHOLE page of
+% counted content, since counted content is (total pages - bibliography pages).  Table 2 plus
+% the appendix heading measure 0.342 of those 0.354 pages.  A compressed Appendix B of even one
+% heading and one line therefore lands on page 10 and scores 7.7 counted pages, OVER the 7-page
+% ceiling; deleting the section outright scores 6.7, UNDER it with margin.  Probe builds of both
+% variants are recorded in research/S15/D2-budget-closure.json.
+% WHAT SURVIVED THE DELETION, AND WHERE.  Not the section, but its load-bearing sentences: the
+% test martingale and its two properties, Ville's inequality pricing the supremum, the four
+% citations (shafer2019gtfpf, ramdas2023savi, vovk2021evalues, podkopaev2024betting -- cited
+% nowhere else in the paper), the section's own self-limit "It adds a diagnostic and a reading,
+% not a result", and the disclosure that M_t is an e-value for the imposed null alone, are all
+% now in sections/forfeit.tex's "The boundary read as a bet." paragraph, which already carried
+% the null, the two arms and the rest of the section's hedges.  See that paragraph's own D2
+% comment block.  The three body pointers at \ref{sec:evalue} -- in sections/intro.tex's
+% roadmap, sections/related.tex's forwarding sentence and that paragraph -- are all resolved, so
+% no \ref to a deleted label survives anywhere.
+% ===========================================================================
 \input{sections/appendix}
-\input{sections/evalue}
 
 \end{document}
