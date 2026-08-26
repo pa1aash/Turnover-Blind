@@ -415,7 +415,23 @@ Boundary in Online Conformal Prediction}
 \fi
 \makeatother
 
-\workshoptitle{E-values: From Statistics to ML}
+% VENUE-DETECTION PASS (2026-08-26): the workshop's own live CFP page
+% (https://e-values-workshop.github.io/, fetched fresh, cache-busted, and re-fetched a second
+% time to rule out a caching artefact -- both fetches byte-identical) states its own name as
+% "E-Values: From Statistics to ML" in three places that agree with each other: the <title>
+% tag, the og:title meta tag, and the page's own <h1>.  That is a capital V in "E-Values";
+% every prior session's \workshoptitle used a lowercase v ("E-values").  OpenReview's own
+% metadata is NOT consistent with either: the domain's `content.title` field reads "NeurIPS
+% 2026 Workshop on E-values: From Statistics To ML" (lowercase v, capital T in "To"), and its
+% `content.subtitle` reads "NeurIPS 2026 Workshop E-values" (lowercase v).  Three official
+% sources, three different capitalisations, and the machine-readable OpenReview group id
+% itself ("NeurIPS.cc/2026/Workshop/E-values") is an identifier, not a display string, so it
+% settles nothing either way.  This is a single-letter cosmetic discrepancy with no bearing on
+% the venue's identity, blind mode, deadline, or page limit, all of which are unambiguous and
+% unchanged.  Set to the workshop's own public self-presentation (the page a reader or
+% reviewer actually sees), since that is literally what "the CFP itself states" means; if the
+% operator prefers to match OpenReview's internal casing instead, revert this one line.
+\workshoptitle{E-Values: From Statistics to ML}
 %\workshoptitle{Generalization for Time Series in Tight Settings: Latency, Inference, Memory, prIvacy and susTainability}
 
 % AUTHOR BLOCK.  Printed only under sglblindworkshop; the dblblindworkshop
