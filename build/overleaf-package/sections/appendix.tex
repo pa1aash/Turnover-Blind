@@ -202,25 +202,33 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{figures/figure1_boundary.pdf}
+  % S17 SUB-SESSION C (2026-08-26): CAPTION COMPRESSED 6 SENTENCES/150 WORDS -> 3 SENTENCES,
+  % DESCRIPTION-ONLY, for the E-values caption-length pass.  Sentences 1+2 merged (setup +
+  % panel (a), joined by a colon) and the grey-band clause folded into panel (a)'s sentence,
+  % since both are panel-(a) visual elements; the symlog-distortion disclosure survives as its
+  % own clause inside panel (b)'s sentence, unabridged ("visual spacing ... is not proportional
+  % to true distance in tau") because it is a legibility-honesty disclosure, not filler.  The
+  % unlabelled-minor-tick values (0.95, 1.05) are KEPT, folded parenthetically into panel (b)'s
+  % sentence -- nothing is lost, only re-punctuated.  CUT ENTIRELY, not relocated: the closing
+  % sentence identifying the mirror-adversary reading with this run's exact-threshold column.
+  % That fact is ALREADY STATED, near-verbatim, in the body: sections/forfeit.tex's "The mirror
+  % boundary is already measured, on this paper's own grid" paragraph reads "The tau-cliff run's
+  % exact-threshold column, read against the mirror adversary $s_t \equiv -b/2$
+  % (Figure~\ref{fig:boundary}, App.~\ref{app:support}), locates $\tau^{\star-} = 1$ at the null
+  % scorecaster, closed on the failing side, exactly where (\ref{eq:boundaries}) puts it." So
+  % cutting the caption's copy loses nothing; the stronger, argument-bearing site is the body
+  % paragraph, which already points back at this figure. Record: research/S17/C-caption-compression.json.
   \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
   $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
-  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full sweep: filled markers run to
-  $T = 10^{6}$ and the four widest bands, drawn open, to $T = 2{\times}10^{5}$; blue
-  covers, orange forfeits, and the dashed rule is $\tau^{\star+}$. \textbf{(b)} The same
-  setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau - \tau^{\star+}$ on
-  a symlog axis whose linear zone is $|\tau - \tau^{\star+}| \le 10^{-3}$, which magnifies the
-  neighbourhood of $\tau^{\star+}$: visual spacing here is not proportional to true distance in
-  $\tau$. Unlabelled minor ticks mark $\tau = 0.95$ and $1.05$. The grey band spans the widest covering width to the
-  narrowest failing one; Figure~\ref{fig:settings} gives the other four $(r_t,\hat{q})$
-  settings. The same eleven widths under the \emph{mirror} adversary, which locates
-  $\tau^{\star-}$, are this run's exact-threshold column read under the strict indicator.}
-  % S15 SUB-SESSION D2 (2026-08-25): REPOINTED.  The clause read "are read off in
-  % Appendix~\ref{app:support}'s primary-regime paragraph", and that paragraph is deleted this
-  % sub-session on operator authorisation, so the pointer would have dangled.  It now names
-  % WHERE THE READING COMES FROM instead of where it was printed, which is the same fact the
-  % deleted paragraph opened with and is also stated in the mirror-boundary paragraph below.
-  % The eleven individual readings are no longer printed anywhere; that loss is recorded in
-  % research/S15/D2-budget-closure.json rather than papered over.
+  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$: \textbf{(a)} the
+  full sweep, filled markers to $T = 10^{6}$ and the four widest bands, drawn open, to $T =
+  2{\times}10^{5}$, blue covering and orange forfeiting, with the dashed rule at $\tau^{\star+}$
+  and the grey band spanning the widest covering width to the narrowest failing one.
+  \textbf{(b)} The same setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau -
+  \tau^{\star+}$ on a symlog axis (linear zone $|\tau - \tau^{\star+}| \le 10^{-3}$; unlabelled
+  minor ticks at $\tau = 0.95$ and $1.05$) that magnifies the neighbourhood of $\tau^{\star+}$,
+  so visual spacing there is not proportional to true distance in $\tau$. Figure~\ref{fig:settings}
+  gives the other four $(r_t,\hat{q})$ settings.}
   \label{fig:boundary}
 \end{figure}
 
@@ -246,14 +254,20 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
   \includegraphics[width=\textwidth]{figures/figure3_settings.pdf}
   % S6 SUB-SESSION B: written to the SAME rule as the other two captions -- describe the
   % axes, the encoding and the measurement conditions, and argue nothing.  Four sentences.
-  \caption{All $19$ dead-band runs, at the five admissible $(r_t,\hat{q})$ settings:
-  rows are settings ordered by $\tau^{\star}$, and the shared horizontal axis is $\tau$.
-  Blue markers cover at $\approx \alpha$ and orange markers return $1.000000$; filled
-  markers run to $T = 10^{6}$ and open markers to $T = 2{\times}10^{5}$, all under the
-  \emph{specified} adversary. The rule on each
-  row is that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$, printed
-  at the right, and the tinted band is $\tau \le \tau^{\star+}$. Two rules fall off the
-  axis and are drawn as arrows: $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$, and
+  % S17 SUB-SESSION C (2026-08-26): COMPRESSED 5 SENTENCES/118 WORDS -> 3 SENTENCES,
+  % description-only, for the E-values caption-length pass.  NOTHING IS CUT: sentences 1+2
+  % (axes/rows + marker encoding) are joined by a colon, and sentences 3+4 (the per-row rule/
+  % tinted band + the two off-axis arrow cases) are joined by a semicolon; the closing
+  % mirror-boundary scope sentence stands alone, unabridged, because it is not stated anywhere
+  % else in the paper and this is the only figure it disambiguates against ("not drawn here").
+  % Record: research/S17/C-caption-compression.json.
+  \caption{All $19$ dead-band runs at the five admissible $(r_t,\hat{q})$ settings, rows
+  ordered by $\tau^{\star}$ on the shared horizontal $\tau$ axis: blue markers cover at
+  $\approx \alpha$ and orange markers return $1.000000$, filled to $T = 10^{6}$ and open to
+  $T = 2{\times}10^{5}$, all under the \emph{specified} adversary. The rule on each row is
+  that setting's upward boundary $\tau^{\star+} = \sup_x r_t(x) + \sup_t \hat{q}_t - b/2$,
+  printed at the right, with the tinted band $\tau \le \tau^{\star+}$; two rules fall off the
+  axis and are drawn as arrows, $\tau^{\star+} = 0$ at $\hat{q} \equiv -b/2$ and
   $\tau^{\star+}$ unbounded under \citeauthor{angelopoulos2023pid}'s tangent integrator. The
   mirror boundary $\tau^{\star-}$ of (\ref{eq:boundaries}) is not drawn here and differs from
   $\tau^{\star+}$ at the two non-null scorecasters.}
@@ -287,12 +301,20 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
 % src/forfeit.py unmodified and validates its transcription against
 % results/forfeit-20260820T063132Z-83747c45.json (19 exact checks) before running.
 % Nothing here is read off a figure and nothing is rounded by hand.
+% S17 SUB-SESSION C (2026-08-26): COMPRESSED 5 SENTENCES/82 WORDS -> 3 SENTENCES,
+% description-only, for the E-values caption-length pass.  NOTHING IS CUT: sentence 1 (the
+% configurations + adversary count) is joined to sentence 2 (the "proved window" column gloss
+% and its scope disclosure) by a semicolon; sentence 3 ($\emptyset$'s meaning) is joined to
+% sentence 4 (the horizon exception) by "and"; the closing sentence on the dead-band-free last
+% row stands alone, unabridged.  The "neither direction is claimed" clause is kept as a
+% description of what the "proved window" column means, not as an argued conclusion.
+% Record: research/S17/C-caption-compression.json.
 \caption{Legal $(r_t,\hat{q})$ configurations on which the printed $\tau^{\star}$ over-certifies,
-each under two legal adversaries. ``Proved window'' is where (\ref{eq:boundaries}) certifies
-retention against every legal adversary; between it and the failure boundaries
-$\tau^{\star\pm}$ neither direction is claimed, and the rows built on a supremum the dynamics
-cannot reach or never attain sit there. Here $\emptyset$ marks a configuration for which no
-width is certified, $\tau = 0$ included. $T = 10^5$ except the two power-of-two rows, at
+each under two legal adversaries; ``proved window'' is where (\ref{eq:boundaries}) certifies
+retention against every legal adversary, and between it and the failure boundaries
+$\tau^{\star\pm}$ neither direction is claimed, with rows built on a supremum the dynamics
+cannot reach or never attain sitting there. Here $\emptyset$ marks a configuration for which no
+width is certified, $\tau = 0$ included, and $T = 10^5$ except the two power-of-two rows, at
 $T = 10^6$. The last row carries no dead band at all.}
 \label{tab:stress}
 \begin{tabular}{@{}lrrrrrrr@{}}
