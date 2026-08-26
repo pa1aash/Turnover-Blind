@@ -671,4 +671,26 @@ table, the generators that read them, and this project's audit trail across sess
 % body \input block above for why, and research/S16/C-appendix-reversal.json for the record.
 \input{sections/related}
 
+% ---------------------------------------------------------------------------
+% S18 SUB-SESSION C (2026-08-27): NEURIPS PAPER CHECKLIST WIRED IN.  Sub-session A of this
+% session verified, against the official template (checklist.tex's own instruction block,
+% which states unconditionally "The papers not including the checklist will be desk
+% rejected", with no track-scoping conditional) and the venue's own CFP (silent, not a
+% waiver), that a checklist IS REQUIRED for this submission. A checklist file existed at
+% paper/checklist.tex since an earlier commit but was never \input anywhere, so main.pdf
+% was silently shipping with NO checklist at all -- a desk-reject risk this closes.
+%
+% PLACEMENT.  The template's own instruction (quoted in checklist.tex before this session
+% deleted the instruction block per its own "delete this instruction block" directive)
+% reads: "The checklist should follow the references and follow the (optional) supplemental
+% material." This document's references render via \bibliography{../audit/REFS_VERIFIED}
+% above, and its one supplemental section is sections/related.tex ("Where this sits",
+% Appendix~B), \input immediately above this block. So the checklist is placed here: after
+% both, immediately before \end{document}. THE CHECKLIST DOES NOT COUNT AGAINST THE 4-PAGE
+% BODY CEILING -- this is stated explicitly in the template's own instruction block, so no
+% page-budget re-verification of the body was needed, only a confirmation that appending it
+% does not disturb the body/references boundary (re-verified: body still ends p.4,
+% References still opens p.5, exactly as before).
+\input{checklist}
+
 \end{document}
