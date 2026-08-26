@@ -443,18 +443,66 @@ Boundary in Online Conformal Prediction}
 \begin{document}
 \maketitle
 
+% ---------------------------------------------------------------------------
+% S17 SUB-SESSION B (2026-08-26): TITLE + ABSTRACT PRECISION PASS.  Wording only --
+% zero claims added, zero removed, zero strengthened.  Abstract stays 12 typeset lines
+% and the body still ends p.4 with "References" first on p.5 (offset 0); this was the
+% binding constraint on every candidate below, so any future rewording must be
+% char-budgeted against line 12, not merely "short enough".
+% THE TITLE IS KEPT, AND THE REASONING IS RECORDED SO IT IS NOT RE-LITIGATED.
+% "Binds" still does what S4 wave 4's critic bought it for: it LOCATES the claim rather
+% than asserting it, which is exactly what the four-boundary result does.  "a Measured
+% Boundary" was tested for underselling now that both directions are proved, and KEPT:
+% the paper positions its own claim as "smaller and more precise" than a rate forfeit
+% (sections/forfeit.tex), and a title reading "Proved" would fight that positioning.
+% "a Correction" was tested for overclaiming and KEPT: it names the correction the paper
+% DELIVERS to the record, and sentence 3 of the abstract disclaims authorship of both
+% halves within 40 words of it.
+% FOUR ABSTRACT EDITS, each a wording fix for a defect, not a preference:
+%   1. "conceded by name" -> "credited by name".  "Concede" reads as admitting a fault in
+%      the derivation; the intent is intro.tex's "We claim neither the placement nor the
+%      derivation", i.e. attribution.  Same length, so free.
+%   2. "At the null scorecaster THAT CONDITION is tight" -> "At the null scorecaster AND
+%      THE MINIMAL ADMISSIBLE SATURATOR THAT RADIUS is tight".  TWO defects in one clause.
+%      (a) "that condition" had no antecedent -- the nearest noun phrase two sentences back
+%      is "an admissible radius", and sentence 3 sits between them; "that radius" points at
+%      it directly.  (b) THE SCOPE WAS WRONG, and wrong in the direction S4 wave 4's
+%      adversarial critic (N1) already caught once in the TITLE: tightness holds at the null
+%      scorecaster PAIRED WITH the minimal admissible saturator, not at the null scorecaster
+%      for every admissible saturator.  The tangent integrator at null q-hat forfeits no
+%      coverage at any width Corollary 2 permits (sections/forfeit.tex), so the unscoped
+%      reading is false on the paper's own numbers.  Sentence 6 already says the edge belongs
+%      to the saturator--scorecaster PAIR; naming the saturator here is what makes that land,
+%      and it also introduces "saturator" before sentence 6 leans on it.
+%   3. "leaves that set at its radius" -> "exits that set at its radius"; ", and past it" ->
+%      "; past it".  "Leaves X at Y" is idiomatically "abandons X, positioned at Y" -- the
+%      opposite parse from the one meant.  The semicolon pays back 4 chars toward edit 2.
+%   4. "the failing band covers" -> "the failing band covers, as measured".  At q-hat = +b/2
+%      the body has only a measurement against the SPECIFIED adversary -- (5) permits no width
+%      at all there against the mirror adversary -- so the unqualified verb read as a
+%      guarantee over the legal class.  "as measured" is sections/forfeit.tex's own idiom for
+%      exactly this ("Coverage is retained at every width, as measured").  The qualifier
+%      attaches to the +b/2 clause ONLY: the -b/2 clause is proved as well as measured.
+% CONSIDERED AND DECLINED, so a later session does not redo the analysis:
+%   - Adding "predictable" to "any bounded scorecaster" (sentence 2).  Predictability is
+%     definitional for a scorecaster, which is why intro.tex spends its emphasis on the
+%     BOUND; the asymmetry with "predictable perturbations" in the same sentence is correct,
+%     since a perturbation is not predictable by definition.
+%   - Stating the unrestricted necessity direction in the abstract.  Body-supported, but it
+%     is a CLAIM the abstract does not currently make, and this pass adds none.
+% ---------------------------------------------------------------------------
 \begin{abstract}
 A printed claim that the scorecaster breaks online conformal coverage meets its
 refutation by overlapping authors; this paper joins them and locates the edge of the set that
 refutation relies on. Conformal PID states long-run coverage for any
 bounded scorecaster; a corollary keeps it for predictable perturbations of the deployed
 threshold inside an admissible radius. The claim was acted on; the readout's
-placement and the corollary's derivation are conceded by name. At the null scorecaster
-that condition is \emph{tight}. A legal dead band on the \emph{completed} threshold
-leaves that set at its radius, and past it miscoverage is $1.000000$ against
+placement and the corollary's derivation are credited by name. At the null scorecaster
+and the minimal admissible saturator that radius is \emph{tight}. A legal dead band on
+the \emph{completed} threshold exits that set at its radius; past it miscoverage is $1.000000$ against
 $\alpha = 0.1$: coverage fails outright, not merely its rate. The edge belongs to the
 saturator--scorecaster pair, not the readout; elsewhere the condition is sufficient
-only. Under the equally legal $\hat{q} \equiv +b/2$ the failing band covers; at
+only. Under the equally legal $\hat{q} \equiv +b/2$ the failing band covers, as measured; at
 $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 \end{abstract}
 
