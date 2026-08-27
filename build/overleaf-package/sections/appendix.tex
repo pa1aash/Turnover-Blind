@@ -363,6 +363,71 @@ $\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.
 % the BODY ("It adds a diagnostic and a reading, not a result" and "no result above assumes that
 % null or is certified by that test") stay in the body pointer AND the second is restated here in
 % its own scope, so neither section can be read alone and over-claim.
+%
+% S18 SUB-SESSION B (2026-08-27): VALIDITY FIX.  The clause S15 sub-session J restored as F2 --
+% "lambda is fixed in [-1/(1-alpha), 1/alpha], and its sign is chosen after the fact, not
+% pre-registered" -- did not qualify the verdict it sat next to; it INVALIDATED it.  A test whose
+% betting direction is picked once the realised path is known is not a test martingale at all, so
+% Ville's inequality does not apply and "anytime-valid ... at the 5% level" was not a claim the
+% construction supported.  Verified against the primary sources this paragraph already cites,
+% not against the audit's characterisation of them:
+%   Ramdas, Gruenwald, Vovk & Shafer, arXiv:2210.01948v2 (the ramdas2023savi preprint), Sec. 5.2,
+%     eq. (24), states the identical process family prod_i (1 + lambda_i (X_i - mu)) over the
+%     identical null class (bounded, E[X_i | F_{i-1}] = mu, which contains conditional
+%     Bernoulli(alpha)) and says of it: "The lambda_i are naturally interpreted as bets on the
+%     X_i; they must be predictable because a bet on X_i must be made before seeing X_i."
+%     "Predictable" is defined in its Sec. 1.1 as F_{t-1}-measurable.  Its Sec. 2.5 states Ville's
+%     inequality with the hypothesis "if M is a test martingale for P", and Sec. 2.2 defines that
+%     as nonnegative, M_0 = 1, and E_P[M_t | F_{t-1}] = M_{t-1}.  A post-hoc lambda cannot be
+%     pulled out of that conditional expectation, so the martingale property fails outright.
+%   Sec. 2.9 of the same paper is the closure property the fix rests on: "Test (super)martingales
+%     and e-processes can also be mixed, yielding mixture (super)martingales or e-processes", and
+%     for the e-value form, "even if E_1 and E_2 are dependent (for example, calculated in
+%     different ways using the same data)" -- which is exactly the M(+1)/M(-1) case, since both
+%     are computed from one path.  Sec. 5.1 gives the continuous two-sided version (a centred
+%     Gaussian mixing distribution over lambda); the two-atom mixture used here is its discrete
+%     special case.  Vovk & Wang (vovk2021evalues), Sec. 1 and Thm. 3.2, and Shafer & Vovk
+%     (shafer2019gtfpf), whose Ville's-theorem statement ramdas2023savi Sec. 2.5 restates, agree.
+%   The 1/0.05 = 20 threshold is that literature's own default, stated in ramdas2023savi Sec. 2.6:
+%     "simply reject the null (and stop) the first time the process reaches or exceeds 1/alpha".
+%     It is always valid, and conservative rather than unimprovable, so printing it is safe.
+% WHY THE MIXTURE (option b) AND NOT A PRE-REGISTERED PAIR OF ONE-SIDED TESTS (option a).  A pair
+% of one-sided tests each read at 5% is two tests, and the paragraph's second claim says "the SAME
+% test cannot reject inside the edge"; keeping one object keeps that sentence meaning what it
+% says, and avoids a multiplicity caveat the paragraph has no room to state properly.  The mixture
+% is also the honest answer to the defect: it needs no direction in advance at all, rather than
+% asserting a pre-registration that this paper's runs did not actually perform.
+% WHAT THE CLAUSE'S SUBSTANCE COST.  Nothing is quietly dropped.  S15's F3 (lambda's range, a
+% correctness fix, since it is what makes M nonnegative) is KEPT, now attached to both signs.  F2
+% (the pre-registration caveat) is REMOVED rather than softened, because under the mixture there
+% is no after-the-fact choice left for it to disclose; the honesty it was protecting is now
+% supplied by the construction instead of by a warning about the construction.  The concession
+% side of the paragraph is untouched word for word: "for that imposed null alone", "signed",
+% "neither an e-value nor an e-process", "no result in Section 4 assumes that null or is certified
+% by that test".
+% THE NUMBERS, ALL RECOMPUTED, NONE CARRIED OVER.  alpha = 0.1 (sections/setup.tex, "The harness
+% fixes alpha = 0.1 and b = 2"); threshold 1/0.05 = 20.  The err_t sequences are regenerated from
+% the committed src/forfeit.py, whose adversarial regime is fully deterministic and consumes no
+% randomness, and the regeneration was checked against the frozen
+% results/forfeit-20260820T063132Z-83747c45.json: miscoverage and max|E| agree to the last stored
+% digit at T = 10^4 and 10^5 for tau = 0.5, 0.9 and 1.5.
+%   tau = 1.5 past the edge misses every round (miscoverage 1.000000), so M_t(+1) = 1.9^t and
+%     M_t(-1) = 0.1^t.  Mixture: 1.000, 1.810, 3.430, 6.516, 12.381, 23.523 at t = 1..6.  It
+%     crosses 20 on round SIX, not the fifth.  The old "fifth" was M_t(+1) alone (13.032 then
+%     24.761), i.e. the single-sided number the invalid post-hoc sign bought.  The mixture's
+%     factor of two is the whole difference, and it costs exactly one round here.
+%   Inside the edge the mixture peaks at 2.0259 (tau = 0.5, round 8) and 3.9230 (tau = 0.9,
+%     round 23) and decays after, over the full 10^6-round run; printed rounded to 2.03 and 3.92.
+%   "at any horizon" is not just measured, it is closed: log M_t(+1) = t log 0.9 + (E_t + 0.1t)
+%     log(19/9) and log M_t(-1) = t log 1.1 - (E_t + 0.1t) log 11, so both are maximised over
+%     paths at |E_t| = c h(t) + 1, Proposition 2's bound.  Feeding that bound in, the mixture
+%     cannot reach 20 at any t >= 62 on ANY retention-side trajectory, and t <= 61 is inside the
+%     measured range.  Hence "from round 62 on ... forbids rejection on every retained
+%     trajectory", which is a stronger and checkable statement, not a softer one.
+%   Mirror direction, for the record and not printed: on an all-cover trajectory (err_t = 0 every
+%     round, the tau*- failure the theorem's mirror half produces) M_t(-1) = 1.1^t crosses 20 on
+%     round 32 and the mixture on round 39.  The paragraph makes no mirror claim, so none is added.
+% Working: research/S18/B-martingale-fix.json (research/ is gitignored).
 % =========================================================================================
 \section{The betting reading}
 \label{app:evalue}
@@ -370,17 +435,26 @@ $\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.
 The boundary is stated in $|E_T|$, which is the net gain of a Skeptic who pays $\alpha$ each round
 for $\mathrm{err}_t$; that is what gives it a betting reading. The reading
 Section~\ref{sec:forfeit} points at is Ville's inequality applied to the standard
-martingale $M_t = \prod_{i \le t}\big(1 + \lambda(\mathrm{err}_i - \alpha)\big)$, whose logarithm
-depends on the path only through $t$ and $E_t$
+martingale $M_t(\lambda) = \prod_{i \le t}\big(1 + \lambda(\mathrm{err}_i - \alpha)\big)$, whose
+logarithm depends on the path only through $t$ and $E_t$
 \citep{shafer2019gtfpf,ramdas2023savi,vovk2021evalues}, under the imposed null that
 $\mathrm{err}_t \mid \mathcal{F}_{t-1}$ is Bernoulli$(\alpha)$, with $\mathcal{F}_{t-1}$ the
-history through round $t-1$. Here $\lambda$ is fixed in $[-1/(1-\alpha),\,1/\alpha]$, and its
-sign is chosen after the fact, not pre-registered. So read, an anytime-valid test of the deployed
-intervals' calibration convicts the $\tau = 1.5$ arm on its fifth interval at the $5\%$ level,
-and inside the edge the same test cannot reject at that level at any horizon. $M_t$ is an e-value
-for that imposed null alone; the accumulator itself is signed and is neither an e-value nor an
-e-process, and no result in Section~\ref{sec:forfeit} assumes that null or is certified by that
-test.
+history through round $t-1$. Ville's inequality needs each bet to be predictable, fixed by the
+history before the round it is scored on, so the direction of failure cannot be read off the
+realised path first. The diagnostic is therefore
+the two-sided mixture $M_t = \tfrac{1}{2}M_t(+1) + \tfrac{1}{2}M_t(-1)$, which is a test
+martingale for the same null because a convex combination of test martingales is one, and which
+fixes no direction in advance; both signs lie in $[-1/(1-\alpha),\,1/\alpha]$, the range on which
+$M_t(\lambda) \ge 0$ on every path, the magnitude $1$ is the same for every arm and both
+directions, and the mixture costs a factor of two against a correctly guessed direction. So read,
+an anytime-valid test of the deployed intervals' calibration convicts the $\tau = 1.5$ arm on its
+sixth interval at the $5\%$ level, where $M_5 = 12.38$ and $M_6 = 23.52$ against the rejection
+threshold $1/0.05 = 20$. Inside the edge the same test cannot reject at that level at any horizon:
+it peaks at $2.03$ for $\tau = 0.5$ and $3.92$ for $\tau = 0.9$, and from round $62$ on
+Proposition~2's bound on $|E_t|$ forbids rejection on every retained trajectory. $M_t$ is an
+e-value for that imposed null alone; the accumulator itself is signed and is neither an e-value
+nor an e-process, and no result in Section~\ref{sec:forfeit} assumes that null or is certified by
+that test.
 
 
 % =========================================================================================

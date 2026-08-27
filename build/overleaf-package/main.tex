@@ -40,6 +40,12 @@
 %   F2  sections/forfeit.tex -- the pre-registration caveat was cut but the claim it qualified
 %       ("convicts the tau = 1.5 arm on its fifth interval at the 5% level") survived.  Restored
 %       as "its sign above is chosen after the fact, not pre-registered".
+%       [S18 SUB-SESSION B, 2026-08-27: BOTH HALVES OF F2 ARE NOW SUPERSEDED.  The restored
+%       caveat did not qualify that verdict, it invalidated it -- a post-hoc betting sign is not
+%       a test martingale, so Ville's inequality never applied.  sections/appendix.tex now runs
+%       the two-sided mixture (1/2)M(+1) + (1/2)M(-1), which needs no direction in advance, and
+%       the verdict is the SIXTH interval, not the fifth.  The quotations above are kept as the
+%       accurate record of what the text said at S15; they no longer describe the live paper.]
 %   F3  sections/forfeit.tex -- $\lambda$ reached the body with no admissible range, which made
 %       the surviving clause "$M_t$ is an e-value for that imposed null alone" false outside it.
 %       Restored as "$\lambda$ is fixed in $[-1/(1-\alpha),\,1/\alpha]$".
@@ -670,5 +676,27 @@ table, the generators that read them, and this project's audit trail across sess
 % (the four-vocabularies merge S15 sub-session D made inside it is kept); see the note at the
 % body \input block above for why, and research/S16/C-appendix-reversal.json for the record.
 \input{sections/related}
+
+% ---------------------------------------------------------------------------
+% S18 SUB-SESSION C (2026-08-27): NEURIPS PAPER CHECKLIST WIRED IN.  Sub-session A of this
+% session verified, against the official template (checklist.tex's own instruction block,
+% which states unconditionally "The papers not including the checklist will be desk
+% rejected", with no track-scoping conditional) and the venue's own CFP (silent, not a
+% waiver), that a checklist IS REQUIRED for this submission. A checklist file existed at
+% paper/checklist.tex since an earlier commit but was never \input anywhere, so main.pdf
+% was silently shipping with NO checklist at all -- a desk-reject risk this closes.
+%
+% PLACEMENT.  The template's own instruction (quoted in checklist.tex before this session
+% deleted the instruction block per its own "delete this instruction block" directive)
+% reads: "The checklist should follow the references and follow the (optional) supplemental
+% material." This document's references render via \bibliography{../audit/REFS_VERIFIED}
+% above, and its one supplemental section is sections/related.tex ("Where this sits",
+% Appendix~B), \input immediately above this block. So the checklist is placed here: after
+% both, immediately before \end{document}. THE CHECKLIST DOES NOT COUNT AGAINST THE 4-PAGE
+% BODY CEILING -- this is stated explicitly in the template's own instruction block, so no
+% page-budget re-verification of the body was needed, only a confirmation that appending it
+% does not disturb the body/references boundary (re-verified: body still ends p.4,
+% References still opens p.5, exactly as before).
+\input{checklist}
 
 \end{document}

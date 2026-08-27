@@ -14,6 +14,10 @@ PROVENANCE.md            neurips_2026.sty's fetch record (source URL, date, SHA-
 sections/                the six body/appendix .tex files (evalue.tex was deleted in S15;
                           its surviving content is folded into forfeit.tex and, as of S16,
                           partly relocated to a new appendix section, app:evalue)
+checklist.tex            the completed NeurIPS Paper Checklist (S18 sub-session C; required
+                          unconditionally by the template regardless of track, per S18
+                          sub-session A's primary-source verification -- \input by main.tex
+                          after references/appendix, per the template's own placement rule)
 figures/                 two already-generated, static PDF figures (no regeneration needed)
 REFS_VERIFIED.bib        the fully resolved bibliography
 ```
@@ -41,9 +45,19 @@ below it, and `\workshoptitle` set to "E-values: From Statistics to ML". This re
 switch to TS-LIMITS/double-blind (see git history: S16 sub-sessions B and E). S16 wave 0
 (`research/S16/A-venue-reconfirmation.json`) re-confirmed E-values fresh on 2026-08-26 — a
 byte-identical page fetch to S4's 2026-08-20 record: short papers up to 4 pages excluding
-references and optional appendices, single-blind, no checklist, deadline 2026-08-29 23:59 AoE.
+references and optional appendices, single-blind, deadline 2026-08-29 23:59 AoE. (The CFP text
+itself does not mention a checklist; see the correction directly below -- the template's own
+requirement applies regardless.)
 If you are not submitting to E-values, flip which of the two `\usepackage[...]{neurips_2026}`
 lines is active, flip the matching `\workshoptitle{...}` line just below it, and rebuild.
+
+**Checklist correction (S18 sub-session A, 2026-08-27):** the CFP text itself is silent on
+"checklist" one way or the other; earlier sessions read that silence as a waiver. That was
+wrong. The template's own `checklist.tex` states unconditionally, with no track-scoping
+`\if` anywhere in it, "The papers not including the checklist will be desk rejected," and
+`neurips_2026.tex` `\input`s it with no conditional wrapper, in the same master document
+shared by all seven tracks. A checklist is required regardless of venue silence, and this
+package includes one, completed honestly (`checklist.tex`, S18 sub-session C).
 
 ## Two fields still yours to set
 
@@ -59,23 +73,22 @@ lines is active, flip the matching `\workshoptitle{...}` line just below it, and
    under the active option), so the placeholder is visible in the current build; insert the real
    URL before submission.
 
-## The isolated compile result (S16 sub-session G, 2026-08-26; package rebuilt fresh)
+## The isolated compile result (S18 Wave 3 sub-session E, 2026-08-27; package rebuilt fresh)
 
-This package was rebuilt fresh, from scratch, against the current single-blind E-values content
-(S16 sub-sessions B/C/D/E: venue switch, appendix-placement reversal, content compression,
-template conversion) — every stale `sections/*.tex` and `main.tex` from the TS-LIMITS
-double-blind package was deleted first, not patched, and re-copied from `paper/` with the three
-relative-path rewrites that let this directory compile standalone (`../audit/REFS_VERIFIED` to
-`REFS_VERIFIED`, and the two `../figures/` to `figures/`, which as of S16 sub-session C live in
-`sections/appendix.tex` rather than `sections/forfeit.tex` — the old package still had them in
-the wrong file, which is exactly why a fresh rebuild rather than a patch was required).
+This package was rebuilt fresh, from scratch, against the current content (S18: sub-session A's
+checklist-requirement correction, B's Appendix B martingale fix, C's completed checklist wired
+into `main.tex`, D's endpoint-framing clarification and the page-budget compression it required)
+— every stale `sections/*.tex`, `main.tex`, and (newly) `checklist.tex` was deleted/copied fresh
+from `paper/`, with the same two relative-path rewrites prior sessions established
+(`../audit/REFS_VERIFIED` to `REFS_VERIFIED`, and the two `../figures/` in `sections/appendix.tex`
+to `figures/`).
 
-Compiled from a copy in genuine isolation — a temp directory with no path back to this
-repository, confirmed by grepping the copy for the repository's absolute path (zero hits):
-`pdflatex → bibtex → pdflatex ×3` (four passes total; the paper's own header explains why three
-is not enough). **0 TeX errors, 0 undefined citations or references, 0 bibtex warnings.** The
-isolated build's rendered text is **byte-identical** to the repository's own current
-`paper/main.pdf` (verified by extracting and diffing text from every page: `diff` exit code 0).
+Compiled from a copy in genuine isolation — this package's own directory, with no other reference
+to the rest of the repository: `pdflatex → bibtex → pdflatex ×2` (four passes total). **0 TeX
+errors, 0 undefined citations or references.** The isolated build's rendered text is
+**SHA-256-identical** to the repository's own current `paper/main.pdf` (verified by extracting
+text from every page with `pdftotext` and comparing checksums directly, not just a `diff` exit
+code).
 
 **Metadata check (`pdfinfo`):** `/Author` reads `Palaash Gang` — correct and expected under the
 active `sglblindworkshop` (single-blind) option, which is not an identity leak here the way it
@@ -84,18 +97,21 @@ would be under a double-blind option. Page-1 rendered text confirms the visible 
 
 ## Page count: inside the E-values 4-page body ceiling
 
-**9 total pages. Body is exactly 4 pages** (verified by the opened-page method, not a page-count
-estimate: page 4 ends with Limitations' closing sentence, page 5 opens with the literal word
-"References" as its first line). E-values' call is "Short papers up to 4 pages, excluding
-references and optional appendices" — the body is what's measured against that ceiling, and it
-meets it exactly, with References the first thing on the following page.
+**17 total pages. Body is exactly 4 pages** (verified by the opened-page method, not a
+page-count estimate: page 4 ends with the closing Limitations-adjacent sentence, page 5 opens
+with the literal word "References" as its first line). E-values' call is "Short papers up to 4
+pages, excluding references and optional appendices" — the body is what's measured against that
+ceiling, and it meets it exactly. The jump from S17's 9 total pages to 17 is entirely the
+checklist (pages ~9–17, per the template's own "does NOT count towards the page limit"
+statement, quoted verbatim in `checklist.tex`'s own header) — nothing else grew.
 
-This is the result of S16 sub-sessions C (reversing S15's TS-LIMITS-specific move of Table 1,
-Figure 2 and Figure 3 into the body, back to the appendix) and D (genuine content
-removal/compression: the folded-in e-value diagnostic paragraph compressed and partly relocated
-to a new appendix section `app:evalue`; S15 sub-session E's TS-LIMITS-driven prose
-de-compression reversed; one redundant-restatement paragraph cut whole). Full records:
-`research/S16/C-appendix-reversal.json`, `research/S16/D-content-removal.json`.
+**A real page-budget regression was caught and fixed this session, not silently absorbed.** S18
+sub-session D's one-sentence clarifying addition to `sections/forfeit.tex` initially pushed 4
+lines of pre-existing body prose onto page 5, ahead of References — verified by an independent
+rebuild at each intermediate commit, not trusted from any sub-agent's self-report. It was fixed
+by compressing the added clause (not by cutting anything else) until the clean page 4/5 break
+was empirically restored across four rebuild-and-measure cycles. Full record:
+`research/checkpoints/S18-E-integration.md`.
 
 ## The paper is otherwise submission-ready
 
@@ -109,9 +125,12 @@ dependency.
 Overleaf's own TeX Live version can still differ subtly from this local toolchain even when both
 compile cleanly, so once it's rendered there:
 
-- [ ] Page count is still 9, and References still starts on page 5, as the first thing on that
+- [ ] Page count is still 17, and References still starts on page 5, as the first thing on that
       page (search the PDF for "References" and check which page it lands on and whether
       anything precedes it there — do not just trust a page-count field, open the page).
+- [ ] The completed NeurIPS Paper Checklist renders after References/appendices (search for
+      "NeurIPS Paper Checklist"), with no `\answerTODO`/`\justificationTODO` red `[TODO]` markers
+      left anywhere in it.
 - [ ] Figures 2 and 3 (`figure1_boundary.pdf`, `figure3_settings.pdf`) render at full text
       width, not stretched or clipped, and Figure 1 (the inline schematic) renders correctly —
       it is drawn by TikZ at compile time, not a static file, so it is the one figure genuinely
