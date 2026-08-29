@@ -219,15 +219,15 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
   % cutting the caption's copy loses nothing; the stronger, argument-bearing site is the body
   % paragraph, which already points back at this figure. Record: research/S17/C-caption-compression.json.
   \caption{Realised miscoverage against dead-band width $\tau$ at the null scorecaster,
-  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary,
-  where the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$: \textbf{(a)} the
-  full sweep, filled markers to $T = 10^{6}$ and the four widest bands, drawn open, to $T =
-  2{\times}10^{5}$, blue covering and orange forfeiting, with the dashed rule at $\tau^{\star+}$
-  and the grey band spanning the widest covering width to the narrowest failing one.
+  $\hat{q} \equiv 0$ with a saturator of level $b$, under the \emph{specified} adversary, where
+  the upward boundary $\tau^{\star+}$ of (\ref{eq:boundaries}) is $1$. \textbf{(a)} The full
+  sweep. Filled markers run to $T = 10^{6}$ and the four widest bands, drawn open, to $T =
+  2{\times}10^{5}$; blue covers and orange forfeits. The dashed rule is at $\tau^{\star+}$ and the
+  grey band spans the widest covering width to the narrowest failing one.
   \textbf{(b)} The same setting at $T = 10^{5}$ over eleven measured widths, placed by $\tau -
-  \tau^{\star+}$ on a symlog axis (linear zone $|\tau - \tau^{\star+}| \le 10^{-3}$; unlabelled
-  minor ticks at $\tau = 0.95$ and $1.05$) that magnifies the neighbourhood of $\tau^{\star+}$,
-  so visual spacing there is not proportional to true distance in $\tau$. Figure~\ref{fig:settings}
+  \tau^{\star+}$ on a symlog axis that magnifies the neighbourhood of $\tau^{\star+}$, so visual
+  spacing there is not proportional to true distance in $\tau$. The linear zone is $|\tau -
+  \tau^{\star+}| \le 10^{-3}$, with unlabelled minor ticks at $\tau = 0.95$ and $1.05$. Figure~\ref{fig:settings}
   gives the other four $(r_t,\hat{q})$ settings.}
   \label{fig:boundary}
 \end{figure}
@@ -319,10 +319,10 @@ dead band $\tau = 1.5$        & $\mathbf{1.000000}$ & $\mathbf{1.000000}$ & $900
 % characters longer; re-measured after the edit: 9 pages, body still ends p.4, References still
 % first on p.5.  Record: research/S17/F-final-read.json.
 \caption{Legal $(r_t,\hat{q})$ configurations on which the printed $\tau^{\star}$ over-certifies,
-each under two legal adversaries; ``proved window'' is where (\ref{eq:boundaries}) certifies
-retention against every legal adversary, and between it and the failure boundaries
-$\tau^{\star\pm}$ neither direction is claimed, which is where the rows built on a supremum the
-dynamics cannot reach or never attain sit. Here $\emptyset$ marks a configuration for which no
+each under two legal adversaries. ``Proved window'' is where (\ref{eq:boundaries}) certifies
+retention against every legal adversary; between it and the failure boundaries
+$\tau^{\star\pm}$ neither direction is claimed. The rows built on a supremum that the dynamics
+cannot reach, or that is never attained, sit in that gap. Here $\emptyset$ marks a configuration for which no
 width is certified, $\tau = 0$ included, and $T = 10^5$ except the two power-of-two rows, at
 $T = 10^6$. The last row carries no dead band at all.}
 \label{tab:stress}
@@ -346,7 +346,7 @@ $\sup_x r_t = 2b$, unattained           & $3.0$   & $3$   & $\tau < 1$   & $\mat
 $\sup_x r_t = 2b$, attained             & $3.0$   & $3$   & $\tau < 3$   & $0.100000$ & $12.20$ & $\mathbf{0.000000}$ & $10{,}000$ \\
 $\hat{q}_t = b/2$ on powers of $2$      & $1.0$   & $2$   & $\emptyset$    & $0.100009$ & $14.30$ & $\mathbf{0.000000}$ & $100{,}000$ \\
 $\hat{q}_t = b/2$ on powers of $2$      & $1.9$   & $2$   & $\emptyset$    & $\mathbf{0.110960}$ & $84{,}745.70$ & $0.000000$ & $100{,}000$ \\
-$\hat{q} \equiv +b/2$, no band          & $0$     & $2$   & $\emptyset$    & $0.100000$ & $0.90$ & $\mathbf{0.000000}$ & $10{,}000$ \\
+$\hat{q} \equiv +b/2$, no band          & $0.0$   & $2$   & $\emptyset$    & $0.100000$ & $0.90$ & $\mathbf{0.000000}$ & $10{,}000$ \\
 \bottomrule
 \end{tabular}
 \end{table}

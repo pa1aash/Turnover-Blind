@@ -281,7 +281,7 @@
 % REVERTING IS STILL ONE LINE EACH WAY, exactly as S10 recorded it.
 % Record: research/S16/C-appendix-reversal.json.
 % =========================================================================================
-\section{Where this sits}
+\section{Related work}
 \label{sec:related}
 
 % S13 SUB-SESSION B (2026-08-24): TABLE 4 (\label{tab:bridge}) DELETED AND ITS CONTENT
@@ -297,7 +297,7 @@
 % vocabulary contributes -- description only, matching the caption it replaces.
 % S15 SUB-SESSION D: this paragraph was Appendix~B; it is unchanged, and it now opens the
 % section that used to point at it from a different part of the document.
-\paragraph{One quantity, four names.} Four literatures name the movement of a
+\paragraph{One quantity, four vocabularies.} Four literatures name the movement of a
 sequentially updated forecast in four vocabularies: \emph{abrupt threshold changes};
 \emph{forecast (in)stability} (MASC, MAC/SDC, MQC/SMQC, congruence, nervousness);
 \emph{jumpiness} \citep{zsoter2009jumpiness}, \emph{convergence index}
@@ -314,7 +314,7 @@ distribution \citep[v3, \S3.4.1]{zanotti2026smqc}, IACER in applied control
 % attached to the same name it carried in the body.  This appendix already named all of these
 % names; it now carries their citations too, which is the whole of the change.
 Online conformal prediction gives distribution-free long-run coverage for any
-bounded scorecaster \citep[Thm~1, Prop.~2]{angelopoulos2023pid}, generalizing the running-error
+bounded scorecaster \citep[Thm.~1, Prop.~2]{angelopoulos2023pid}. It generalises the running-error
 feedback that adaptive conformal inference \citep{gibbs2021aci} and its distribution-shift variant
 DtACI \citep{gibbs2024dtaci} already apply directly to the threshold.
 % S16 SUB-SESSION D (2026-08-26): the ACI/DtACI clause arrives from sections/setup.tex, where it
@@ -322,12 +322,9 @@ DtACI \citep{gibbs2024dtaci} already apply directly to the threshold.
 % relocating rather than deleting keeps them in the bibliography.  Wording unchanged apart from
 % the subject, which was "Conformal PID" there and is the same paper's Thm~1/Prop.~2 here.
 Forecast stability
-treats the movement as a functional, read out as post-processing
-\citep[Eq.~3]{godahewa2025stability}, against a priced decision to switch
-\citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}. Verification work uses a
-matched-level design against real producers from 2012
-\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning gives
-worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics}.
+treats the movement as a functional. It is read out as post-processing
+\citep[Eq.~3]{godahewa2025stability} and priced against a decision to switch
+\citep[\S4.2]{genov2026switching}, \citep{vanbelle2026stabilizing}.
 
 % S10 WAVE F: THE OPENING SENTENCE IS RE-POINTED AND GIVEN A FRAME.  It was written for a
 % position four pages away from Table~\ref{tab:bridge}, and after S10 sub-session D moved this
@@ -356,26 +353,26 @@ worst-case theory for the penalised problem \citep[Thm~2]{andrew2013twometrics}.
 % quantity" and "what each contributes" are not, since the paragraph directly above already
 % says both.
 The object that settles a deployed interval's validity (the admissible set around the deployed
-threshold) sits in the first of them. Those four vocabularies are where this paper's claim and
+threshold) sits in the first of those four literatures. They are where this paper's claim and
 its concessions have to be placed. \textbf{What is conceded, by name.}
 The placement is prior work:
 \citet[Thm.~1, Prop.~2]{angelopoulos2023pid} state coverage, with a rate, for any admissible
-integrator and any scorecaster, and run a smoothing-family model in that slot themselves; this
-paper proves that admissible set tight. \citet[Appendix~A]{dupuy2026relevance} give
+integrator and any scorecaster, and they run a smoothing-family model in that slot themselves.
+This paper proves that admissible set tight. \citet[Appendix~A]{dupuy2026relevance} give
 the generic argument, and \citet{duerst2024calibrating} adopt that scorecaster. The derivation is
-prior work too, and this concession matters most. \citet[Corollary~2]{li2025o2cp} prove the
+prior work too. That concession matters most. \citet[Corollary~2]{li2025o2cp} prove the
 retention statement in Conformal PID's own notation, with \citet{wang2026acmcp} an independent
-second instance. Section~\ref{sec:setup} concedes the smoother object, the metric arithmetic and
+second instance. Section~\ref{sec:setup} concedes the smoother object, the metric arithmetic, and
 both readout maps. \citet{zheng2025scdsplit,wu2025eci,chen2023ipoc,lade2026bcaci} each place a
-smoother inside their own validity argument. One vocabulary out, this is integrator anti-windup
+smoother inside their own validity argument. In one more vocabulary, this is integrator anti-windup
 with a feedforward path: free-until-the-bound-binds is its defining specification, not a finding
 \citep{galeani2009antiwindup}. Nearest in the other direction, \citet{gao2025coloke} run the same
 recursion but gate the \emph{model} update on the conformal score. Their one non-standard
-assumption is that $\sum_{t \le T} q_t \le O(\alpha\,h(T))$ for a sublinear $h$, supported with a
-plot rather than derived. Verification's matched-level design tests real producers from 2012, with
-a control stronger than the pair: the whole marginal
-\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning adds a Thm.~7
-trade-off in which sublinear regret is bought by growing $\theta$ with $T$, which grows the ratio
+assumption is that $\sum_{t \le T} q_t \le O(\alpha\,h(T))$ for a sublinear $h$. They support it
+with a plot rather than deriving it. Verification's matched-level design tests real producers from
+2012, with a control stronger than the pair: the whole marginal
+\citep{pinson2012scenarios,worsnop2018scenarios}. Switching-cost online learning adds a trade-off:
+sublinear regret is bought by growing $\theta$ with $T$, and growing $\theta$ grows the ratio
 \citep[Thm.~7]{andrew2013twometrics}.
 
 % S12 SUB-SESSION C1/C2/E: this paragraph is PROMOTED, not duplicated. Its content -- the

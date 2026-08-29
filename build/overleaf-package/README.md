@@ -73,15 +73,23 @@ package includes one, completed honestly (`checklist.tex`, S18 sub-session C).
    under the active option), so the placeholder is visible in the current build; insert the real
    URL before submission.
 
-## The isolated compile result (S18 Wave 3 sub-session E, 2026-08-27; package rebuilt fresh)
+## The isolated compile result (S19 Wave 6, 2026-08-27; package rebuilt fresh)
 
-This package was rebuilt fresh, from scratch, against the current content (S18: sub-session A's
-checklist-requirement correction, B's Appendix B martingale fix, C's completed checklist wired
-into `main.tex`, D's endpoint-framing clarification and the page-budget compression it required)
-— every stale `sections/*.tex`, `main.tex`, and (newly) `checklist.tex` was deleted/copied fresh
-from `paper/`, with the same two relative-path rewrites prior sessions established
-(`../audit/REFS_VERIFIED` to `REFS_VERIFIED`, and the two `../figures/` in `sections/appendix.tex`
-to `figures/`).
+This package was rebuilt fresh, from scratch, against the current content (S19: an exhaustive
+16-category prose audit across the whole manuscript, 60 fixes applied to abstract, introduction,
+setup, forfeit, limitations, appendix and related-work prose — 2 later surgically reverted for
+the page budget, 58 stand) — every stale `sections/*.tex`, `main.tex`, and `checklist.tex` was
+deleted/copied fresh from `paper/`, with the same two relative-path rewrites prior sessions
+established (`../audit/REFS_VERIFIED` to `REFS_VERIFIED`, and the two `../figures/` in
+`sections/appendix.tex` to `figures/`).
+
+**S19 touched presentation only.** No mathematical claim, hypothesis, proof, hedge, or verified
+number changed. The four-boundary theorem, both proof directions, the closed form, both
+degenerate cases, every Limitations hedge's claim/strength/scope, the S18 checklist content, and
+S18's corrected martingale passage were all independently re-verified byte-identical to the
+pre-S19 state after every wave. **Two possible substantive (non-prose) issues were surfaced as a
+byproduct of the audit and require your own mathematical review before any action** — see
+`docs/S19_REPORT.md` for both, stated in full; this package does not attempt to resolve either.
 
 Compiled from a copy in genuine isolation — this package's own directory, with no other reference
 to the rest of the repository: `pdflatex → bibtex → pdflatex ×2` (four passes total). **0 TeX
@@ -101,17 +109,16 @@ would be under a double-blind option. Page-1 rendered text confirms the visible 
 page-count estimate: page 4 ends with the closing Limitations-adjacent sentence, page 5 opens
 with the literal word "References" as its first line). E-values' call is "Short papers up to 4
 pages, excluding references and optional appendices" — the body is what's measured against that
-ceiling, and it meets it exactly. The jump from S17's 9 total pages to 17 is entirely the
-checklist (pages ~9–17, per the template's own "does NOT count towards the page limit"
-statement, quoted verbatim in `checklist.tex`'s own header) — nothing else grew.
+ceiling, and it meets it exactly.
 
-**A real page-budget regression was caught and fixed this session, not silently absorbed.** S18
-sub-session D's one-sentence clarifying addition to `sections/forfeit.tex` initially pushed 4
-lines of pre-existing body prose onto page 5, ahead of References — verified by an independent
-rebuild at each intermediate commit, not trusted from any sub-agent's self-report. It was fixed
-by compressing the added clause (not by cutting anything else) until the clean page 4/5 break
-was empirically restored across four rebuild-and-measure cycles. Full record:
-`research/checkpoints/S18-E-integration.md`.
+**A real page-budget regression was caught and fixed this session, not silently absorbed.**
+Two of S19's applied abstract fixes (both net length additions) pushed 2 lines of pre-existing
+body prose onto page 5, ahead of References. Both had been independently flagged by two
+different fix sub-sessions during their own isolated checks, not discovered late. Fixed
+surgically per this session's own escalation rule: reverted the two responsible fixes one at a
+time, rebuilding and re-measuring after each (the first revert alone was insufficient; the
+second restored the clean break) — no other fix, in the body or otherwise, was touched. Full
+record: `research/checkpoints/S19-K-integration.md`.
 
 ## The paper is otherwise submission-ready
 
