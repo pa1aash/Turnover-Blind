@@ -187,14 +187,14 @@ is every setting run here; a genuinely time-varying $\hat{q}$ leaves the band $\
 is specific to the saturator's \emph{level}, which condition~(4) bounds only from below.
 \textbf{The inherited guarantee is weak where it applies.} Under the tangent integrator
 $h(t) = t/\log t$, the certified gap $(c\,h(T)+1)/T$ decays as $O(1/\log T)$ rather than $O(1/T)$.
-What is forfeited was not a tight certificate. \textbf{The dead-band widths are absolute, and the
+The forfeited certificate was not a tight one. \textbf{The dead-band widths are absolute, and the
 failure is total only against the adversary.} $\tau$ is in score units with $b = 2$, so the
 failing $\tau = 1.5$ is $0.75\,b$. Under i.i.d.\ scores it returns $0.249376$ at $T = 10^6$, an
 adversary-free confirmation of the mechanism rather than a retreat. The threshold pins at
 $b-\tau = 0.5$, and uniform scores on $[-b/2,b/2]$ put $P(s > 0.5) = 0.25$ exactly.
-\textbf{The harness was rebuilt against numbers already read}, which carries less weight than a
+\textbf{The harness was rebuilt against numbers already read}, and that carries less weight than a
 rerun done without sight of them. \textbf{Placement~B is conceded, not tested.} \textbf{The i.i.d.\
-check above used one seed} ($20260820$, $T = 10^6$); \textbf{the primary, adversarial harness uses
+check above used one seed} (seed \texttt{20260820}, $T = 10^6$). \textbf{The primary, adversarial harness uses
 none}, and \textbf{only its null-scorecaster edge is bracketed}; the others are one-sided.
 \textbf{What remains open is the band between the two boundaries.} For a genuinely
 time-varying $\hat{q}$, coverage in $\sigma^{+} < \tau \le \tau^{\star+}$ is neither proved nor
