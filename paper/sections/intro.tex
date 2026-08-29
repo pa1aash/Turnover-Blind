@@ -240,7 +240,7 @@
 A refereed paper states that a scorecaster breaks Conformal PID's coverage guarantee. A later
 one, by the same first and last authors, proves in the same notation that a bounded
 perturbation of the deployed threshold does not. The later cites the earlier, so this is ordinary
-self-correction, and the joining is what this paper adds.
+self-correction. The joining is what this paper adds.
 
 % S16 SUB-SESSION D (2026-08-26): S15-E's four de-compressions in this file are reversed to the
 % wording at 351655d^ (d90a1ef's and af018bb's compressed forms, and the pre-S15-E second head),
@@ -249,7 +249,7 @@ self-correction, and the joining is what this paper adds.
 % and "coincides with the corollary's radius" (S15-E installed it as the NARROWER reading of
 % "is the corollary's radius"; reverting it would strengthen a claim, which is outside licence).
 An online conformal method \citep{angelopoulos2021gentle} moves a threshold each round. Forecast
-stability names, scores and prices that movement
+stability names, scores, and prices that movement
 \citep{tunc2013nervousness,godahewa2025stability,vanbelle2023deepstability,%
 pritularga2024congruence,genov2026switching,vanbelle2026stabilizing}. Varying temporal structure at
 fixed level came earlier, in forecast verification, matching predictive marginals on real producers
@@ -257,28 +257,28 @@ fixed level came earlier, in forecast verification, matching predictive marginal
 under-describe a deployed interval \citep{min2026questioning,vaze2026simultaneous}. None of it is
 claimed here.
 
-\paragraph{The record carries a claim and its refutation; this paper joins them.} Conformal PID \citep{angelopoulos2023pid}
+\paragraph{The claim and the refutation in print.} Conformal PID \citep{angelopoulos2023pid}
 adds a \emph{scorecaster} $\hat{q}_{t+1}$ to a saturating error integrator, asking only that it
-be predictable and lie in $[-b/2,b/2]$: ``any function of the past'' (Theorem~1). Such a readout
-is already quantified over. The claim reads ``[s]ince using a scorecaster (D-part) in
-C-PID breaks the theoretical coverage guarantee'' \citep{li2024neuralconformal}, stated and
-acted on in its baselines paragraph, verbatim on refereed printed page $18443$. It is refuted
-twice, with proof. \citet[Corollary~2]{li2025o2cp} add any predictable $d_t$, $|d_t| \le
-\mu_t(b/2-|\hat{q}_t|)$ with $\mu_t \in [0,1]$ predictable, to the deployed threshold; since
+be predictable and lie in $[-b/2,b/2]$: ``any function of the past'' (Theorem~1). Anything placed
+in that slot is already quantified over. The claim reads ``[s]ince using a scorecaster (D-part) in
+C-PID breaks the theoretical coverage guarantee'' \citep{li2024neuralconformal}. It is stated and
+acted on in that paper's baselines paragraph, verbatim on refereed printed page 18443. It is refuted
+twice, with proof. \citet[Corollary~2]{li2025o2cp} add to the deployed threshold any predictable
+$d_t$ with $|d_t| \le \mu_t(b/2-|\hat{q}_t|)$ and $\mu_t \in [0,1]$ predictable. Since
 $\hat{q}_t + d_t$ still lies in $[-b/2,b/2]$ it is itself a legal scorecaster, so the result
 ``has exactly the CPID error-integration form'' and $|E_T| = o(T)$. The same generic-slot argument
-carries AcMCP's long-run coverage \citep{wang2026acmcp}. Both identifiers and ``scorecaster'' were
+carries the long-run coverage of \citet{wang2026acmcp}. Both identifiers and ``scorecaster'' were
 searched across arXiv full text, arXiv abstracts, OpenReview, and Semantic Scholar's six citers of
 \mbox{\citet{li2024neuralconformal}}: none returns both the claim and the corollary.
 \citet{hu2026distinformed} still call scorecaster choice ``arbitrary'' and lacking ``principled
-guidance'' while asserting valid coverage: model selection, not validity. \textbf{We claim
+guidance'' while asserting valid coverage: their complaint is model selection, not validity. \textbf{We claim
 neither the placement nor the derivation.}
 
-\paragraph{Where Corollary~2 stops, its radius condition is tight.} It is a \emph{retention} result, silent
-outside that radius, and the question it leaves is whether the radius is sharp.
-Section~\ref{sec:forfeit} exhibits a legal perturbation leaving it: the $L_1$ dead-band family
+\paragraph{Where Corollary~2 stops, its radius condition binds.} It is a \emph{retention} result, silent
+outside that radius, and it leaves open whether the radius is sharp.
+A legal perturbation leaves it: the $L_1$ dead-band family
 characterised here on the \emph{completed} threshold, whose edge coincides with the corollary's
-radius at the null scorecaster. Past it coverage fails outright, not merely its rate: the published
+radius at the null scorecaster (Section~\ref{sec:forfeit}). Past it coverage fails outright: the published
 sufficient condition is necessary there. Appendix~\ref{sec:related} sets both claims beside four
 vocabularies for the same movement.
 % S15 SUB-SESSION D2 (2026-08-25): THE ROADMAP'S SECOND POINTER IS DROPPED, NOT REWORDED.  It
