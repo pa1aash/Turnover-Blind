@@ -607,12 +607,16 @@ $\hat{q} \equiv -b/2$ both it and partial adjustment at $w = 0.999$ miscover.
 %
 % IT DOES NOT OVERCLAIM.  It lists what is actually in the repository and claims nothing
 % about packaging, anonymisation or review-readiness.
+% S21: the sentence used to end "...and this project's audit trail are at [URL]" -- a soft
+% self-referential leak (narrates the paper's own multi-session construction) and also simply
+% wrong against what the S21 data-release package ships (simulator, frozen config, results,
+% generation scripts -- no audit trail). Reworded to name only what is actually shipped.
 % ---------------------------------------------------------------------------
 \makeatletter
 \if@anonymous\else
 \section*{Code and data}
-The harness, its frozen configuration, the \texttt{results/} files behind every figure and
-table, the generators that read them, and this project's audit trail are at
+The simulator, its frozen configuration, the \texttt{results/} files behind every figure and
+table, and the scripts that generate them are at
 \texttt{https://[REPOSITORY LINK - INSERTED BY AUTHOR PRIOR TO SUBMISSION]}.
 \fi
 \makeatother
