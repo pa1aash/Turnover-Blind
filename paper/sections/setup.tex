@@ -162,9 +162,9 @@ Conformal PID \citep{angelopoulos2023pid} manipulates the threshold on the score
   q_{t+1} \;=\; \hat{q}_{t+1} \;+\; r_t\Big(\textstyle\sum_{i \le t}(\mathrm{err}_i - \alpha)\Big),
   \label{eq:pid}
 \end{equation}
-Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: condition~(4) requires $|r_t(x)| \ge b$ with the sign of
-$x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. With $E_t = \sum_{i
-\le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
+Angelopoulos et al.'s iteration~(5). Its $r_t$ saturates: their condition~(4) requires $|r_t(x)| \ge b$ with the sign of
+$x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing, and sublinear. With the accumulator
+$E_t = \sum_{i \le t}(\mathrm{err}_i-\alpha)$, Proposition~2 gives $|E_T| \le c\,h(T)+1$, read on realised scores.
 
 % ---------------------------------------------------------------------------
 % S5 WAVE 2: sub-session C's placement schematic, inserted here.
@@ -264,7 +264,7 @@ $x$ once $|x| \ge c\,h(t)$, for $h$ nonnegative, nondecreasing and sublinear. Wi
 \vspace{-4pt}
 \end{figure}
 
-\paragraph{One scalar, two readouts, two places.} Damping a sequentially updated scalar
+\paragraph{Two readouts, two placements.} Damping a sequentially updated scalar
 has two standard readouts, both prior work. A quadratic cost gives linear partial adjustment
 % S15 SUB-SESSION J (2026-08-25): F4 FIX -- THE SMOOTHING WEIGHT IS RENAMED $\lambda$ -> $w$.
 % Two reasons, one new and one pre-existing.  NEW: D2's fold-in moved the Skeptic's betting stake
@@ -282,8 +282,8 @@ has two standard readouts, both prior work. A quadratic cost gives linear partia
 $\tilde{q}_{t+1} = (1-w)\hat{q}^{\,\mathrm{raw}}_{t+1} +
 w\tilde{q}_t$ \citep{garleanu2013dynamic}, published as post-processing
 \citep{godahewa2025stability} and applied to a deployed threshold
-\citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, moving only when the
-target is more than $\tau$ away, then pulling back exactly $\tau$
+\citep[Eq.~13]{binny2025whomoved}. A proportional cost gives a no-trade band, which moves only when the
+target is more than $\tau$ away and then pulls back exactly $\tau$
 \citep{constantinides1986,davis1990}. Either readout has two positions in (\ref{eq:pid}), drawn
 in Figure~\ref{fig:placements}; \textbf{(A)}, Placement~A, is measured here.
 \emph{The dead band ($L_1$) is not a stylistic alternative to the partial-adjustment ($L_2$) form}; it
@@ -299,7 +299,7 @@ rate while covering, $L_1$ past the radius loses coverage, and at the legal $\ha
 % construction ... both lose it") is untouched, so nothing this paragraph concedes is withdrawn.
 
 \paragraph{The quantity, and the names it already has.} We report the deployed threshold's
-\emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, after actuator travel in process
+\emph{travel}, $\mathcal{T}_H = \sum_{t=2}^{H}|q_t-q_{t-1}|$, named after actuator travel in process
 % S16 SUB-SESSION D (2026-08-26): THE FIVE-NAME ENUMERATION IS CUT TO ITS OWN POINTER (tier 3/4).
 % The sentence that stood here -- "Over a predictive distribution $\sum|\Delta q|$ is the
 % Multi-Quantile Change \citep[v3, \S3.4.1]{zanotti2026smqc}; verification calls it
@@ -324,13 +324,14 @@ four vocabularies.
 b\,\mathrm{clip}(x/(c\,h(t)),-1,1)$, with $c = 1$ and $h(t) = \log(t+2)$, meets~(4) with equality.
 The scorecaster is null and legal, reducing (\ref{eq:pid}) to the pure error integration
 Proposition~2 addresses, so the readout is the only manipulated variable. Neither choice is
-neutral: (4) is a lower bound met exactly here, and Theorem~1 permits scorecasters $b/2$ either
+neutral: condition~(4) is a lower bound met with equality here, and Theorem~1 permits scorecasters $b/2$ either
 side of null, predictable but not required to be constant in $t$. The adversary is specified, not
-tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$, $\varepsilon =
+tie-broken. It plays $s_t = \mathrm{clip}(\tilde{q}_t+\varepsilon,\pm b/2)$ with $\varepsilon =
 10^{-9}$, against the \emph{deployed} $\tilde{q}_t$: the $\varepsilon\downarrow 0$ reading of
-``sets the score at the threshold'', firing the strict indicator, legal on both sides of
-Theorem~1's $[-b/2,b/2]$, so $b/2+b/2 = b$ is exactly tight. \emph{That specification names one
+``sets the score at the threshold''. That play fires the strict indicator and is legal on both
+sides of Theorem~1's $[-b/2,b/2]$, so $b/2+b/2 = b$ is tight. \emph{That specification names one
 member of a class}: any adapted $s_t \in [-b/2,b/2]$ is legal, the constant $s_t \equiv -b/2$
 included. Every number in Table~\ref{tab:forfeit} (App.~\ref{app:support}) is measured against the
 one adversary above;
-Section~\ref{sec:forfeit}'s two boundaries are quantified over the class, and they differ.
+Section~\ref{sec:forfeit}'s two boundaries, which differ from each other, are quantified over the
+whole class.
